@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "en-US",
     baseUrl: "notes.swasilewski.com",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "VAULT-INSTRUCTIONS.md"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
