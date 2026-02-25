@@ -42,6 +42,7 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 | L1.1 | Administration & Course Intro | Kanoulas | | [[IR-L01 - Introduction]] |
 | L1.2 | Introduction to IR | Kanoulas | Lin et al. 1, 2-2.7, 3-3.1 | [[IR-L02 - IR Fundamentals]] |
 | **Reading** | | | SEIRiP 2.3, 4.1-4.3, 5.3, 5.6-5.7, 6.2, 7, 8 | |
+| **Book** | | | | [[IR-PTR Ch1 - Introduction]], [[IR-PTR Ch2 - Setting the Stage]], [[IR-SEIRiP Ch4 - Processing Text]], [[IR-SEIRiP Ch5 - Ranking with Indexes]], [[IR-SEIRiP Ch7 - Retrieval Models]] |
 | **Assignment** | A0: Warmup | | | [[IR-A00 - Warmup]] |
 
 ### Week 2 — Retrieval Models & Evaluation
@@ -57,6 +58,7 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 | L4 | Neural IR: Intro & Reranking | Heuss | Lin et al. 2+3 | [[IR-L05 - Neural IR Intro & Reranking]] |
 | L5 | Dense Retrieval | Heuss | Lin et al. 4+5 | [[IR-L06 - Dense Retrieval]] |
 | **Reading** | | | Dense Text Retrieval Survey | |
+| **Book** | | | | [[IR-PTR Ch3 - Multi-Stage Architectures for Reranking]], [[IR-PTR Ch4 - Refining Query and Document Representations]], [[IR-PTR Ch5 - Dense Retrieval and Learned Sparse Retrieval]] |
 
 ### Week 4 — Advanced Neural IR *(current)*
 | | Topic | Lecturer | Readings | Notes |

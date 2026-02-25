@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [ε-greedy, epsilon-greedy, e-greedy, Epsilon-Greedy]
+aliases: [ε-greedy, epsilon-greedy, e-greedy, Epsilon-Greedy, epsilon-greedy policy, ε-greedy Exploration]
 course: [RL]
 tags: [foundations, exam-topic]
 status: complete

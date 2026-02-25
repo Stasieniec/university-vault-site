@@ -78,18 +78,21 @@ tags: [moc]
 |---|-------|-----------|-------|
 | L9 | REINFORCE | RL:AI 13.1-13.4, 13.7; Survey §2.4.1.2 | |
 | L10 | PGT, DPG & Evaluation | RL:AI 13.5 + papers | |
+| **Book** | | | [[RL-Book Ch13 - Policy Gradient Methods]] |
 
 ### Week 6 — Advanced Methods
 | | Topic | Literature | Notes |
 |---|-------|-----------|-------|
 | L11 | SAC, Decision Transformer, Decision Diffuser | Papers | |
 | L12 | Planning and Learning | RL:AI 8.1-8.2, 8.8, 8.10-8.11, 8.13, 16.6 | |
+| **Book** | | | [[RL-Book Ch8 - Planning and Learning]], [[RL-Book Ch16 - Applications and Case Studies]] |
 
 ### Week 7 — Wrap-Up
 | | Topic | Literature | Notes |
 |---|-------|-----------|-------|
 | L13 | Partial Observability | RL:AI 17.3 | |
 | L14 | Recap & Exam FAQ | | |
+| **Book** | | | [[RL-Book Ch17 - Frontiers]] |
 | **Exam** | March 27, 2026 | | |
 
 ---

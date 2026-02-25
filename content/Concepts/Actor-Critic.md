@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [Actor-Critic architecture, AC]
+aliases: [Actor-Critic architecture, AC, Actor-Critic Methods]
 course: [RL]
 tags: [policy-gradient, actor-critic, exam-topic]
 status: complete
