@@ -76,8 +76,8 @@ tags: [moc]
 ### Week 5 — Policy Gradient Methods
 | | Topic | Literature | Notes |
 |---|-------|-----------|-------|
-| L9 | REINFORCE | RL:AI 13.1-13.4, 13.7; Survey §2.4.1.2 | |
-| L10 | PGT, DPG & Evaluation | RL:AI 13.5 + papers | |
+| L9 | REINFORCE | RL:AI 13.1-13.4, 13.7; Survey §2.4.1.2 | [[RL-L09 - Policy Gradient Methods]] |
+| L10 | PGT, DPG & Evaluation | RL:AI 13.5 + papers | [[RL-L10 - Advanced Policy Search]] |
 | **Book** | | | [[RL-Book Ch13 - Policy Gradient Methods]] |
 
 ### Week 6 — Advanced Methods
@@ -120,4 +120,4 @@ Key concepts covered in this course (see [[Concepts/]] folder):
 
 **Off-Policy:** [[On-Policy vs Off-Policy]] · [[Deadly Triad]] · [[Gradient-TD Methods]]
 
-**Policy Gradient:** *(weeks 5-6)* [[REINFORCE]] · [[Policy Gradient Theorem]] · [[Actor-Critic]] · [[Soft Actor-Critic (SAC)]]
+**Policy Gradient:** [[Policy Gradient Methods]] · [[REINFORCE]] · [[Policy Gradient Theorem]] · [[Actor-Critic]] · [[Softmax Policy]] · [[Gaussian Policy]] · [[Baseline]] · [[Deterministic Policy Gradient]] · [[Natural Policy Gradient]] · [[Advantage Function]] · [[Generalized Advantage Estimation]] · [[PPO]] · [[Soft Actor-Critic (SAC)]]

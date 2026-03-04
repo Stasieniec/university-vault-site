@@ -71,8 +71,8 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 ### Week 5 — Learning to Rank
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
-| L9 | Offline LTR | Hager | LTR for IR 1.2-1.3, 2-2.2.1, 2.4.2, 3, 4.2 | |
-| L10 | LTR from Interactions | Hager | Unbiased LTR paper | |
+| L9 | Offline LTR | Hager | LTR for IR 1.2-1.3, 2-2.2.1, 2.4.2, 3, 4.2 | [[IR-L10 - Learning to Rank]] |
+| L10 | LTR from Interactions | Hager | Unbiased LTR paper | [[IR-L11 - Unbiased Learning to Rank]] |
 
 ### Week 6 — Responsible IR
 | | Topic | Lecturer | Notes |
@@ -100,4 +100,4 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 
 **Generative & RAG:** [[Generative Retrieval]] · [[Differentiable Search Index]] · [[Retrieval-Augmented Generation]]
 
-**Learning to Rank:** [[Learning to Rank]] · [[Pointwise LTR]] · [[Pairwise LTR]] · [[Listwise LTR]] · [[Click Models]]
+**Learning to Rank:** [[Learning to Rank]] · [[Pointwise LTR]] · [[Pairwise LTR]] · [[Listwise LTR]] · [[Click Models]] · [[Position Bias]] · [[Inverse Propensity Weighting]] · [[Counterfactual Learning to Rank]] · [[Examination Hypothesis]] · [[Doubly Robust Estimation]] · [[Trust Bias]] · [[Cascading Position Bias]] · [[Item Selection Bias]] · [[Outlier Bias]]
