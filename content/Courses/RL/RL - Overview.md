@@ -83,15 +83,15 @@ tags: [moc]
 ### Week 6 — Advanced Methods
 | | Topic | Literature | Notes |
 |---|-------|-----------|-------|
-| L11 | SAC, Decision Transformer, Decision Diffuser | Papers | |
-| L12 | Planning and Learning | RL:AI 8.1-8.2, 8.8, 8.10-8.11, 8.13, 16.6 | |
+| L11 | SAC, Decision Transformer, Decision Diffuser | Papers | [[RL-L11 - SAC, Decision Transformer & Diffuser]] |
+| L12 | Planning and Learning | RL:AI 8.1-8.2, 8.8, 8.10-8.11, 8.13, 16.6 | [[RL-L12 - Model-Based RL]] |
 | **Book** | | | [[RL-Book Ch8 - Planning and Learning]], [[RL-Book Ch16 - Applications and Case Studies]] |
 
 ### Week 7 — Wrap-Up
 | | Topic | Literature | Notes |
 |---|-------|-----------|-------|
-| L13 | Partial Observability | RL:AI 17.3 | |
-| L14 | Recap & Exam FAQ | | |
+| L13 | Partial Observability | RL:AI 17.3 | [[RL-L13 - Partial Observability]] |
+| L14 | Recap & Exam FAQ | | [[RL-L14 - Recap]] |
 | **Book** | | | [[RL-Book Ch17 - Frontiers]] |
 | **Exam** | March 27, 2026 | | |
 
@@ -120,4 +120,10 @@ Key concepts covered in this course (see [[Concepts/]] folder):
 
 **Off-Policy:** [[On-Policy vs Off-Policy]] · [[Deadly Triad]] · [[Gradient-TD Methods]]
 
-**Policy Gradient:** [[Policy Gradient Methods]] · [[REINFORCE]] · [[Policy Gradient Theorem]] · [[Actor-Critic]] · [[Softmax Policy]] · [[Gaussian Policy]] · [[Baseline]] · [[Deterministic Policy Gradient]] · [[Natural Policy Gradient]] · [[Advantage Function]] · [[Generalized Advantage Estimation]] · [[PPO]] · [[Soft Actor-Critic (SAC)]]
+**Policy Gradient:** [[Policy Gradient Methods]] · [[REINFORCE]] · [[Policy Gradient Theorem]] · [[Actor-Critic]] · [[Softmax Policy]] · [[Gaussian Policy]] · [[Baseline]] · [[Deterministic Policy Gradient]] · [[Natural Policy Gradient]] · [[Advantage Function]] · [[Generalized Advantage Estimation]] · [[PPO]] · [[Soft Actor-Critic (SAC)]] · [[Maximum Entropy RL]] · [[Reparameterization Trick]]
+
+**Offline & Sequence RL:** [[Decision Transformer]] · [[Decision Diffuser]]
+
+**Model-Based RL:** [[Model-Based Reinforcement Learning]] · [[Dyna]] · [[Monte Carlo Tree Search (MCTS)]] · [[AlphaGo Zero]] · [[Rollout Algorithm]]
+
+**Partial Observability:** [[Partial Observability]] · [[POMDP]] · [[Belief State]] · [[Predictive State Representation]] · [[Deep Recurrent Q-Learning]]

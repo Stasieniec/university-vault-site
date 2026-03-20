@@ -52,6 +52,5 @@ Dyna-Q combines direct Q-learning with random replay from the model:
 
 ## Appears In
 
-- [[RL-L02 - Planning and Learning with Tabular Methods]] (mentioned)
-- Future Planning Lecture
-- [[RL-Book Ch8 - Planning and Learning with Tabular Methods]]
+- [[RL-L12 - Model-Based RL]]
+- [[RL-Book Ch8 - Planning and Learning]]

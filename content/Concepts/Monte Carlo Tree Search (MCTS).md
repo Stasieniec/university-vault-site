@@ -67,5 +67,6 @@ MCTS is a form of **planning at decision time** — it plans from the current st
 
 ## Appears In
 
+- [[RL-L12 - Model-Based RL]]
 - [[RL-Book Ch8 - Planning and Learning]] (§8.11)
 - [[RL-Book Ch16 - Applications and Case Studies]] (§16.6 — AlphaGo)

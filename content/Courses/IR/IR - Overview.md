@@ -74,17 +74,18 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 | L9 | Offline LTR | Hager | LTR for IR 1.2-1.3, 2-2.2.1, 2.4.2, 3, 4.2 | [[IR-L10 - Learning to Rank]] |
 | L10 | LTR from Interactions | Hager | Unbiased LTR paper | [[IR-L11 - Unbiased Learning to Rank]] |
 
-### Week 6 — Responsible IR
+### Week 6 — Responsible IR & Society
 | | Topic | Lecturer | Notes |
 |---|-------|----------|-------|
 | L11 | Fairness & Biases in IR | Heuss | |
-| L12 | Explainable IR / IR & Society | Heuss / Mitra | |
+| L12 | IR and Society | Mitra (Guest) | [[IR-L12 - IR and Society]] |
 
-### Week 7 — Conversational & Wrap-Up
+### Week 7 — RL for Search & GPU Optimization
 | | Topic | Lecturer | Notes |
 |---|-------|----------|-------|
-| L13 | Conversational Search & Search R1 | Kanoulas | |
-| L14 | Wrap-Up, Q&A, Sample Exam | Kanoulas | |
+| L13a | RL for Reasoning & Search (DeepSeek-R1, SEARCH-R1) | Kanoulas | [[IR-L13 - RL for Reasoning and Search]] |
+| L13b | Triton & Sparton: GPU Kernels for LSR | Nguyen (Guest) | [[IR-L14 - Triton and Sparton]] |
+| L14 | Recap | Kanoulas | |
 
 ---
 
@@ -98,6 +99,12 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 
 **Neural IR:** [[Neural Reranking]] · [[Cross-Encoder]] · [[Bi-Encoder]] · [[Dense Retrieval]] · [[Learned Sparse Retrieval]] · [[BERT for IR]] · [[ColBERT]] · [[SPLADE]]
 
-**Generative & RAG:** [[Generative Retrieval]] · [[Differentiable Search Index]] · [[Retrieval-Augmented Generation]]
+**Generative & RAG:** [[Generative Retrieval]] · [[Differentiable Search Index]] · [[Retrieval-Augmented Generation]] · [[Agentic Search]] · [[SEARCH-R1]] · [[DeepSeek-R1]]
 
 **Learning to Rank:** [[Learning to Rank]] · [[Pointwise LTR]] · [[Pairwise LTR]] · [[Listwise LTR]] · [[Click Models]] · [[Position Bias]] · [[Inverse Propensity Weighting]] · [[Counterfactual Learning to Rank]] · [[Examination Hypothesis]] · [[Doubly Robust Estimation]] · [[Trust Bias]] · [[Cascading Position Bias]] · [[Item Selection Bias]] · [[Outlier Bias]]
+
+**IR & Society:** [[Algorithmic Fairness]] · [[Exposure Fairness]] · [[Misinformation]] · [[Explainability]] · [[Emancipatory IR]] · [[Critical Information Theory]]
+
+**RL for Search:** [[GRPO]] · [[PPO]]
+
+**GPU & Efficiency:** [[GPU Architecture]] · [[Triton]] · [[Kernel Fusion]] · [[Sparton]]
