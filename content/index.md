@@ -18,9 +18,14 @@ Classical and neural retrieval models. BM25, language models, evaluation metrics
 
 → [Browse IR lectures](Courses/IR/Lectures) · [Assignments](Courses/IR/Coding%20Assignments)
 
+### [[Courses/RecSys/RecSys - Overview|Recommender Systems]]
+A short UvA lecture series (no textbook). Collaborative filtering and matrix factorization, beyond-accuracy evaluation (diversity, novelty, fairness), sequential models (GRU4Rec, SASRec, BERT4Rec), and generative recommendation (semantic IDs, RQ-VAE, TIGER, LRMs).
+
+→ [Browse RecSys lectures](Courses/RecSys/Lectures)
+
 ## Concepts
 
-The **[[Concepts/|Concepts]]** folder is a flat wiki of ~130 interconnected notes spanning both courses. Each concept links to the lectures where it appears and to related concepts. Use the **graph view** or **backlinks** to explore connections.
+The **[[Concepts/|Concepts]]** folder is a flat wiki of ~270 interconnected notes spanning all three courses. Each concept links to the lectures where it appears and to related concepts. Use the **graph view** or **backlinks** to explore connections.
 
 ## How to use these notes
 
