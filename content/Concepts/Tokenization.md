@@ -35,4 +35,4 @@ After splitting, tokens often undergo further normalization:
 
 ## Appears In
 
-- [[IR-L02 - Indexing and Boolean Retrieval]]
+- [[IR-L02 - IR Fundamentals]]

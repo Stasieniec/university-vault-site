@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [GD, Steepest Descent]
+aliases: [GD, Steepest Descent, Gradient Ascent, gradient ascent]
 course: [RL, IR]
 tags: [optimization]
 status: complete
@@ -32,10 +32,10 @@ status: complete
 ## Connections
 
 - Foundation for: [[Stochastic Gradient Descent]], [[Adam]], [[RMSProp]]
-- Used in: [[Neural Networks]], [[Logistic Regression]], [[Ordinary Least Squares]] (iterative solution)
+- Used in: [[Neural Networks]], Logistic Regression, [[Ordinary Least Squares]] (iterative solution)
 - RL context: Used for [[Value Function Approximation]] and [[Policy Gradient Methods]]
 
 ## Appears In
 
-- [[RL-L06 - Value Function Approximation]]
+- [[RL-L05 - Tabular to Approximation]]
 - [[IR-L03 - Retrieval Models]]

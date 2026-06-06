@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [MRR, mean reciprocal rank, reciprocal rank]
-course: [IR]
+course: [IR, RecSys]
 tags: [evaluation, key-formula]
 status: complete
 ---
@@ -18,3 +18,5 @@ Useful when you care about how quickly the user finds **any** relevant result (e
 ## Appears In
 
 - [[IR-L04 - Evaluation]]
+- [[RS-L01 - Course Overview & Introduction]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]

@@ -29,7 +29,7 @@ To evaluate a system under this paradigm, three components are required:
 
 ## Connections
 
-- Measurement: Evaluated using metrics like [[Precision and Recall]], [[MAP]], and [[NDCG]].
+- Measurement: Evaluated using metrics like [[Precision]] and [[Recall]], [[MAP]], and [[NDCG]].
 - Methodology: Utilizes [[Pooling]] to handle large collections.
 - Contrast: Differs from **Online Evaluation** (e.g., A/B testing, click-through rates).
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [RL, reinforcement learning]
-course: [RL]
+course: [RL, RecSys]
 tags: [foundations]
 status: complete
 ---
@@ -44,3 +44,4 @@ graph TD
 
 - [[RL-L01 - Intro, MDPs & Bandits]]
 - [[RL-Book Ch1 - Introduction]]
+- [[RS-L03b - From LLMs to LRMs]]

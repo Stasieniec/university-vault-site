@@ -41,4 +41,4 @@ The most common algorithm for English. It applies a series of rules (phases) to 
 
 ## Appears In
 
-- [[IR-L02 - Indexing and Boolean Retrieval]]
+- [[IR-L02 - IR Fundamentals]]

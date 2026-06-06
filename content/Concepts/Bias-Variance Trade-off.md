@@ -20,8 +20,8 @@ status: complete
 > - $\text{Noise} = \sigma^2$ (intrinsic error in the data)
 
 > [!intuition] Underfitting vs. Overfitting
-> - **High Bias (**[[Underfitting]]**)**: The model is too simple to capture the underlying patterns (e.g., using a straight line for quadratic data). It consistently misses the mark.
-> - **High Variance (**[[Overfitting]]**)**: The model is too complex and fits the noise in the training data (e.g., using a high-degree polynomial that wiggles through every point). It changes drastically with different training samples.
+> - **High Bias (**Underfitting**)**: The model is too simple to capture the underlying patterns (e.g., using a straight line for quadratic data). It consistently misses the mark.
+> - **High Variance (**Overfitting**)**: The model is too complex and fits the noise in the training data (e.g., using a high-degree polynomial that wiggles through every point). It changes drastically with different training samples.
 > - **Trade-off**: Increasing model complexity decreases bias but increases variance.
 
 ## Relevance to AI Coursework
@@ -31,10 +31,10 @@ status: complete
 
 ## Connections
 
-- Related to: [[Overfitting]], [[Underfitting]], [[Regularization]]
-- Key concept in: [[Machine Learning]], [[Value Function Approximation]]
+- Related to: Overfitting, Underfitting, [[Regularization]]
+- Key concept in: Machine Learning, [[Value Function Approximation]]
 
 ## Appears In
 
-- [[RL-L06 - Value Function Approximation]]
+- [[RL-L05 - Tabular to Approximation]]
 - [[IR-L04 - Evaluation]]

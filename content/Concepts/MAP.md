@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [MAP, mean average precision, average precision]
-course: [IR]
+course: [IR, RecSys]
 tags: [evaluation, key-formula, exam-topic]
 status: complete
 ---
@@ -29,3 +29,4 @@ status: complete
 ## Appears In
 
 - [[IR-L04 - Evaluation]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]

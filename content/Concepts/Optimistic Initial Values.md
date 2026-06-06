@@ -32,4 +32,4 @@ status: complete
 
 ## Appears In
 
-- [[RL-L01 - Introduction and Multi-armed Bandits]]
+- [[RL-L01 - Intro, MDPs & Bandits]]

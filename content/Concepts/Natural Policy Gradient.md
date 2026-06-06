@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [NPG, Fisher Information Matrix, Natural Gradient]
+aliases: [NPG, Natural Gradient]
 course: [RL]
 tags: [policy-gradient, optimization, fisher-information, geometry]
 status: complete
@@ -256,7 +256,7 @@ The Fisher matrix (for Gaussian) has a natural block structure. The natural grad
 - **Foundation for**: [[Trust Region Policy Optimization (TRPO)]], [[PPO]]
 - **Related to**: [[Policy Gradient Methods]], [[Fisher Information]]
 - **Used in**: [[Actor-Critic]], [[Policy Gradient Theorem]]
-- **Appears in**: [[Deep Reinforcement Learning]], [[Optimization]]
+- **Appears in**: [[Deep Reinforcement Learning]], Optimization
 
 ---
 

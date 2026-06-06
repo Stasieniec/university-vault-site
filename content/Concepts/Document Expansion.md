@@ -1,30 +1,68 @@
 ---
 type: concept
-aliases: [Stop Words, Stopword Removal]
+aliases: []
 course: [IR]
-tags: [foundations]
+tags: [neural-ir, document-expansion]
 status: complete
 ---
 
-# Stop Words
+# Document Expansion
 
-> [!definition] Stop Words
-> **Stop Words** are high-frequency words that carry very little semantic weight or information for the purpose of distinguishing documents. Examples include "the", "is", "at", "which", and "on".
+## Definition
 
-## Why Remove Them?
+> [!definition] Document Expansion
+> **Document expansion** enriches a document's representation with additional terms (or term
+> weights) **at index time**, before retrieval, to reduce the **vocabulary mismatch** between
+> how authors write documents and how users phrase queries. The expanded document is then
+> indexed by a standard retriever (e.g. [[BM25]]), so the cost is paid once during indexing and
+> queries stay fast.
 
-- **Index Size**: Stop words can account for 20-30% of the postings in an [[Inverted Index]]. Removing them significantly reduces disk space and memory usage.
-- **Efficiency**: Processing queries with "the" is computationally expensive because the posting list for "the" is massive.
-- **Relevance**: In vector-based models, high-frequency words can "wash out" the signal from rarer, more meaningful terms.
+## Intuition
 
-> [!warning] The Modern Perspective
-> Modern Information Retrieval (especially Neural IR and LLM-based systems) often **keeps** stop words. They are crucial for understanding phrases ("To be or not to be"), dependency structures, and local context. For large-scale web search, storage is cheap enough that the benefits of keeping them outweigh the costs.
+> [!intuition] Meet the query halfway
+> Lexical retrieval rewards exact term overlap, but a relevant document may simply never use the
+> user's words ("heart attack" vs "myocardial infarction"). Instead of expanding the *query* at
+> search time ([[Query Expansion]]), document expansion expands the *document* ahead of time —
+> predicting the words and questions a document could answer and folding them into its index
+> entry. Because it happens offline, it adds no query-time latency.
+
+## Mathematical Formulation
+
+There is no single equation; the operation augments the term set / term frequencies used by the
+scorer. For a generative expansion that appends predicted queries $\{\hat{q}_1,\dots,\hat{q}_N\}$
+to document $d$:
+
+$$d' = d \,\Vert\, \hat{q}_1 \,\Vert\, \cdots \,\Vert\, \hat{q}_N, \qquad
+\text{score}(q,d) = \text{BM25}(q, d')$$
+
+where:
+- $d'$ — the expanded document fed to the index
+- $\hat{q}_i$ — a synthetic query generated from $d$ (raising the term frequencies of useful, possibly novel terms)
+- $\Vert$ — concatenation
+
+For reweighting-based expansion the term set is unchanged but the per-term weights $w(t,d)$ are
+learned/predicted rather than taken from raw counts.
+
+## Key Properties / Variants
+
+- **Generative (term addition):** [[DocT5Query]] / doc2query uses a seq2seq model (T5) to
+  generate likely queries per document and appends them, adding *new* vocabulary.
+- **Reweighting (no new terms):** [[DeepCT]] and [[DeepImpact]] predict context-aware term
+  weights for the terms already present — a bridge toward [[Learned Sparse Retrieval]].
+- **Index-time vs query-time:** complementary to [[Query Expansion]] (which augments the query).
+- **Backbone-agnostic:** the expanded index is still a sparse [[Inverted Index]], so it inherits
+  the efficiency and interpretability of lexical retrieval while recovering some semantic recall.
 
 ## Connections
 
-- Preprocessing pipeline: [[Tokenization]] → **Stop Word Removal** → [[Stemming]].
-- Term Weighting: [[TF-IDF]] naturally downweights stop words via the IDF component even if they aren't explicitly removed.
+- Instances: [[DocT5Query]], [[DeepCT]], [[DeepImpact]]
+- Contrast with: [[Query Expansion]] (query-side)
+- Leads toward: [[Learned Sparse Retrieval]], [[SPLADE]]
+- Improves: [[BM25]] recall by mitigating vocabulary mismatch
 
 ## Appears In
 
-- [[IR-L02 - Indexing and Boolean Retrieval]]
+- [[Query Expansion]]
+- [[Learned Sparse Retrieval]]
+- [[IR-L07 - Learned Sparse Retrieval]]
+- [[IR-PTR Ch4 - Refining Query and Document Representations]]

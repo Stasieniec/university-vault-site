@@ -39,4 +39,4 @@ status: complete
 
 ## Appears In
 
-- [[IR-L05 - Neural IR]]
+- [[IR-L05 - Neural IR Intro & Reranking]]

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Contrastive Learning]
-course: [IR, RL]
+course: [IR, RL, RecSys]
 tags: [neural-ir, training, deep-learning, representation-learning]
 status: complete
 ---
@@ -40,3 +40,4 @@ The choice of negatives is the most important factor in contrastive training:
 ## Appears In
 
 - [[IR-L06 - Dense Retrieval]]
+- [[RS-L03a - Sequential Recommendation Models]]

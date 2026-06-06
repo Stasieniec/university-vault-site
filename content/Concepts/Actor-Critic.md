@@ -51,5 +51,5 @@ The Actor update typically follows the gradient of the performance objective, of
 
 ## Appears In
 
-- [[RL-L08 - Policy Gradient and Actor-Critic]] (mentioned)
+- [[RL-L09 - Policy Gradient Methods]] (mentioned)
 - future weeks

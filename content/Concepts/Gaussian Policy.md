@@ -94,7 +94,7 @@ Common choices:
 
 ## Connections
 
-- **Related to**: [[Normal distribution]], [[Continuous control]]
+- **Related to**: Normal distribution, Continuous control
 - **Basis for**: [[Policy Gradient Methods]] for continuous actions
 - **Alternative to**: [[Softmax Policy]] (which is for discrete actions)
 - **Enables**: Smooth, differentiable action sampling

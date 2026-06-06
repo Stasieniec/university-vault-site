@@ -43,6 +43,6 @@ Increasing the diversity of the training set by applying transformations (rotati
 
 ## Appears In
 
-- [[RL-L08 - Deep Reinforcement Learning]]
-- [[IR-L05 - Neural Information Retrieval]]
+- [[RL-L08 - Deep RL Value-Based]]
+- [[IR-L05 - Neural IR Intro & Reranking]]
 - Machine Learning Foundations

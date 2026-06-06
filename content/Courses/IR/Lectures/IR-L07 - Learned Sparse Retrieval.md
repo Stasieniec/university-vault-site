@@ -138,6 +138,6 @@ Recent research (Mackenzie et al., 2021) shows that LSR weights can be counter-i
 ---
 **Related Concepts:**
 - [[BM25]]
-- [[Information Retrieval Overview]]
+- [[IR - Overview]]
 - [[Dense Retrieval and Bi-Encoders]]
 - [[Inverted Indexing]]

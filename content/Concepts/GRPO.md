@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Group Relative Policy Optimization, GRPO]
-course: [RL, IR]
+course: [RL, IR, RecSys]
 tags: [policy-gradient, deep-rl, llm-training]
 status: complete
 ---
@@ -72,3 +72,4 @@ $$\nabla_\theta J \approx \frac{1}{|B|} \sum_{x \in B} \frac{1}{G} \sum_{i=1}^G 
 - [[IR-L13 - RL for Reasoning and Search]]
 - DeepSeek-R1 paper (2025)
 - SEARCH-R1 paper (2025)
+- [[RS-L04 - Generative Recommendation]]

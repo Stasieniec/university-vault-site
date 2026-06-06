@@ -70,7 +70,7 @@ $$\pi_\theta(a|s) = \frac{\exp(f_\theta(s,a) / \tau)}{\sum_{a'} \exp(f_\theta(s,
 
 ## Connections
 
-- **Related to**: [[Boltzmann distribution]] in statistical mechanics
+- **Related to**: Boltzmann distribution in statistical mechanics
 - **Basis for**: [[REINFORCE]] algorithm for discrete actions
 - **Explores via**: [[Entropy]] of the policy distribution
 - **Contrasts with**: [[Epsilon-Greedy Policy]] (less smooth, harder to optimize)

@@ -42,5 +42,5 @@ status: complete
 
 ## Appears In
 
-- [[IR-L02 - Indexing and Basic Models]]
+- [[IR-L02 - IR Fundamentals]]
 - [[IR-L03 - Retrieval Models]]

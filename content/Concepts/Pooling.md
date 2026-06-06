@@ -30,7 +30,7 @@ status: complete
 ## Connections
 
 - Necessary for: [[Cranfield Paradigm]] in large collections like TREC.
-- Relates to: [[Precision and Recall]], [[MAP]] (which are calculated based on these judgments).
+- Relates to: [[Precision]] and [[Recall]], [[MAP]] (which are calculated based on these judgments).
 
 ## Appears In
 

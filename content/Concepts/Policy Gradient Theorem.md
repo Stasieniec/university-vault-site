@@ -159,7 +159,7 @@ Variance reduction techniques:
 ## Connections
 
 - **Foundation of**: [[Policy Gradient Methods]], [[Actor-Critic]], [[PPO]]
-- **Related to**: [[Log derivative trick]], [[Gradient ascent]]
+- **Related to**: Log derivative trick, [[Gradient ascent]]
 - **Assumes**: [[Policy]] is differentiable w.r.t. parameters
 - **Versus**: [[Bellman equation]] (basis of value-based methods)
 - **Enables**: Model-free learning (no dynamics needed)

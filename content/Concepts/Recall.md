@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [recall]
-course: [IR]
+course: [IR, RecSys]
 tags: [evaluation, key-formula]
 status: complete
 ---
@@ -18,3 +18,6 @@ High recall = few false negatives. Trade-off with [[Precision]] — improving on
 ## Appears In
 
 - [[IR-L04 - Evaluation]]
+- [[RS-L01 - Course Overview & Introduction]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]
+- [[RS-L04 - Generative Recommendation]]

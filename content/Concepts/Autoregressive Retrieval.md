@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [Autoregressive Retrieval, Generative Retrieval]
+aliases: [Autoregressive Retrieval]
 course: [IR]
 tags: [neural-ir, generative-retrieval]
 status: complete
@@ -29,4 +29,4 @@ Since the model could technically generate any sequence of tokens (many of which
 - Contrast: [[Dense Retrieval]] (nearest neighbor search in vector space).
 
 ## Appears In
-- [[IR-L08 - Advanced Neural IR]]
+- [[IR-L08 - Generative Retrieval]]

@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [reward, reward function, return]
+aliases: [reward, reward function]
 course: [RL]
 tags: [foundations]
 status: complete
@@ -49,5 +49,5 @@ The agent maximizes the **return** $G_t$:
 
 ## Appears In
 
-- [[RL-L01 - Intro & MDPs]]
-- [[RL-Book Ch3 - Finite Markov Decision Processes]]
+- [[RL-L01 - Intro, MDPs & Bandits]]
+- [[RL-Book Ch3 - Finite MDPs]]

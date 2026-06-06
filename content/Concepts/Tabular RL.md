@@ -40,9 +40,9 @@ In the tabular case, most standard RL algorithms are guaranteed to converge to t
 
 ## Appears In
 
-- [[RL-L01 - Introduction to RL]]
-- [[RL-L02 - Planning and Learning with Tabular Methods]]
-- [[RL-L03 - Dynamic Programming]]
+- [[RL-L01 - Intro, MDPs & Bandits]]
+- [[RL-L12 - Model-Based RL]]
+- [[RL-L02 - Dynamic Programming]]
 - [[RL-L04 - Temporal Difference Learning]]
-- [[RL-L05 - Monte Carlo Methods]]
-- [[RL-Book Ch1]] through [[RL-Book Ch8]]
+- [[RL-L03 - Monte Carlo Methods]]
+- [[RL-Book Ch1 - Introduction]] through [[RL-Book Ch8 - Planning and Learning]]

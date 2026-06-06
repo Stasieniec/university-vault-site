@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Transformers, Attention architecture, Transformer Model]
-course: [IR, RL]
+course: [IR, RL, RecSys]
 tags: [foundations, deep-learning, nlp, key-formula, exam-topic]
 status: complete
 ---
@@ -36,5 +36,10 @@ status: complete
 - Replaced: LSTMs and GRUs in most NLP and [[Neural Reranking]] tasks.
 
 ## Appears In
-- [[IR-L05 - Neural IR 2]], [[IR-L06 - Neural IR 3]]
-- [[RL-L08 - Advanced RL]]
+- [[IR-L05 - Neural IR Intro & Reranking]], [[IR-L06 - Dense Retrieval]]
+- [[RL-L08 - Deep RL Value-Based]]
+- [[RS-L01 - Course Overview & Introduction]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]
+- [[RS-L03a - Sequential Recommendation Models]]
+- [[RS-L03b - From LLMs to LRMs]]
+- [[RS-L04 - Generative Recommendation]]

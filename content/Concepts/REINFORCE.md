@@ -174,7 +174,7 @@ Order of importance:
 - **Foundation for**: [[Actor-Critic]], [[A2C]], [[A3C]]
 - **Related to**: [[Monte Carlo Methods]], [[Gradient Ascent]]
 - **Uses**: [[Policy]] parameterization (softmax, Gaussian, etc.)
-- **Requires**: [[Differentiable policy]]
+- **Requires**: Differentiable policy
 
 ## Modern Context
 

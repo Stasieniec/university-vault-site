@@ -34,5 +34,5 @@ Learns embeddings by factorizing a global word-word co-occurrence matrix. Combin
 - Use cases: Initializing neural networks for [[Neural Reranking]] or text classification.
 
 ## Appears In
-- [[IR-L05 - Neural IR 2]]
-- [[RL-L08 - Representations]]
+- [[IR-L05 - Neural IR Intro & Reranking]]
+- [[RL-L08 - Deep RL Value-Based]]

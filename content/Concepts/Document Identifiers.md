@@ -28,4 +28,4 @@ status: complete
 - Design inspired by: [[Product Quantization]] and clustering techniques.
 
 ## Appears In
-- [[IR-L08 - Advanced Neural IR]]
+- [[IR-L08 - Generative Retrieval]]

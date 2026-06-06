@@ -48,6 +48,6 @@ To learn off-policy, one must account for the difference in distributions:
 ## Appears In
 
 - [[RL-L04 - Temporal Difference Learning]]
-- [[RL-L05 - Monte Carlo Methods]]
-- [[RL-L07 - Eligibility Traces]]
-- [[RL-Book Ch5.5 - Off-policy Prediction via Importance Sampling]]
+- [[RL-L03 - Monte Carlo Methods]]
+- [[RL-L07 - Off-Policy RL with Approximation]]
+- [[RL-Book Ch5 - Monte Carlo Methods]]

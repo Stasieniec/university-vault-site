@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [ANN, ANN Search]
-course: [IR]
+course: [IR, RecSys]
 tags: [neural-ir, vector-search, algorithms]
 status: complete
 ---
@@ -43,3 +43,4 @@ status: complete
 ## Appears In
 
 - [[IR-L06 - Dense Retrieval]]
+- [[RS-L04 - Generative Recommendation]]

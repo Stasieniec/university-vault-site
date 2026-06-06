@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [IPW, IPS, inverse propensity scoring]
-course: [IR]
+course: [IR, RecSys]
 tags: [unbiased-estimation, causal-inference, ranking]
 status: complete
 ---
@@ -211,3 +211,4 @@ In ranking:
 - [[Counterfactual Learning to Rank]]
 - [[Doubly Robust Estimation]]
 - [[Position Bias]] estimation and correction
+- [[RS-L02 - Evaluation Beyond Accuracy]]

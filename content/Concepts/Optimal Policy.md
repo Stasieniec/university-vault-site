@@ -43,6 +43,6 @@ status: complete
 
 ## Appears In
 
-- [[RL-L01 - Intro & MDPs]]
-- [[RL-L02 - Bellman Equations]]
-- [[RL-Book Ch3 - Finite Markov Decision Processes]]
+- [[RL-L01 - Intro, MDPs & Bandits]]
+- [[RL-L02 - Dynamic Programming]]
+- [[RL-Book Ch3 - Finite MDPs]]

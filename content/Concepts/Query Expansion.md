@@ -42,4 +42,4 @@ status: complete
 
 ## Appears In
 
-- [[IR-L07 - Neural IR]]
+- [[IR-L07 - Learned Sparse Retrieval]]

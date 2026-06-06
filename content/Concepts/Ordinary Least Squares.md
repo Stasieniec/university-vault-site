@@ -34,10 +34,10 @@ status: complete
 ## Connections
 
 - Solved iteratively via: [[Gradient Descent]]
-- Compared with: [[Weighted Least Squares]], [[Recursive Least Squares]]
-- Foundational for: [[LSTD]], [[Linear Regression]]
+- Compared with: Weighted Least Squares, Recursive Least Squares
+- Foundational for: [[LSTD]], Linear Regression
 
 ## Appears In
 
-- [[RL-L07 - Eligibility Traces]]
-- [[RL-L06 - Value Function Approximation]]
+- [[RL-L07 - Off-Policy RL with Approximation]]
+- [[RL-L05 - Tabular to Approximation]]

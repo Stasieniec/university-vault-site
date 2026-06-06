@@ -31,7 +31,7 @@ This exercise set covers the mathematical foundations required for RL, an introd
 ### 0.2 Prior knowledge self-test
 
 #### 0.2.1 Linear algebra and multivariable derivatives
-**Concepts tested:** `[[Linear Algebra]]`, `[[Vector Calculus]]`.
+**Concepts tested:** `Linear Algebra`, `Vector Calculus`.
 
 Consider the following matrices and vectors:
 $$A = \begin{pmatrix} a_{11} & 0 \\ 0 & a_{22} \end{pmatrix}, \quad B = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}, \quad c = \begin{pmatrix} y - x^2 \\ \ln x \\ y \end{pmatrix}, \quad d = \begin{pmatrix} d_1 \\ d_2 \end{pmatrix}, \quad e = \begin{pmatrix} x \\ y \end{pmatrix}$$
@@ -75,7 +75,7 @@ $$\frac{\partial f}{\partial x} = (1, 2, \dots, N)$$
 ---
 
 #### 0.2.2 Probability theory
-**Concepts tested:** `[[Bias-Variance Trade-off]]`, `[[Probability Theory]]`.
+**Concepts tested:** `[[Bias-Variance Trade-off]]`, `Probability Theory`.
 
 Assume $X$ and $Y$ are two independent random variables with means $\mu, \nu$ and variances $\sigma^2, \tau^2$.
 
@@ -100,7 +100,7 @@ $$E[(y - \hat{f}(x))^2] = \text{Bias}[\hat{f}(x)]^2 + \text{Var}[\hat{f}(x)] + \
 ---
 
 #### 0.2.3 OLS, linear projection, and gradient descent
-**Concepts tested:** `[[Ordinary Least Squares|OLS]]`, `[[Gradient Descent]]`, `[[Linear Algebra]]`.
+**Concepts tested:** `[[Ordinary Least Squares|OLS]]`, `[[Gradient Descent]]`, `Linear Algebra`.
 
 Given training set $X$ ($n \times m$) and labels $y$ ($n \times 1$). Fit $f_\beta(X) = X\beta$ by minimizing $\|y - X\beta\|_2^2$.
 
@@ -151,7 +151,7 @@ $$X^T X \beta = X^T y \implies \beta = (X^T X)^{-1} X^T y$$
 ## 1. Introduction & MDPs
 
 ### 1.1 Introduction
-**Concepts tested:** `[[Course of Dimensionality]]`, `[[State Space]]`.
+**Concepts tested:** `curse of dimensionality`, `[[State Space]]`.
 
 **1. Explain the "curse of dimensionality".**
 **Solution:** Computational requirements (and the amount of data needed) grow exponentially with the number of state variables.

@@ -32,8 +32,8 @@ Reinforcement Learning is defined by several core characteristics that distingui
 2. **Delayed Reward**: Actions may affect not only the immediate reward but also future situations and all subsequent rewards.
 
 ### Comparison with Other ML Paradigms
-- **[[Supervised Learning]]**: Learning from a training set of labeled examples provided by a supervisor. Not adequate for learning from interaction because it's impractical to obtain representative examples of all situations an agent might face.
-- **[[Unsupervised Learning]]**: Typically about finding hidden structure in unlabeled data. RL differs because it is specifically trying to maximize a reward signal rather than searching for structure.
+- **Supervised Learning**: Learning from a training set of labeled examples provided by a supervisor. Not adequate for learning from interaction because it's impractical to obtain representative examples of all situations an agent might face.
+- **Unsupervised Learning**: Typically about finding hidden structure in unlabeled data. RL differs because it is specifically trying to maximize a reward signal rather than searching for structure.
 
 > [!warning] Exploration vs exploitation
 > One of the unique challenges in RL is the trade-off between **[[Exploration vs Exploitation]]**. To obtain reward, an agent must **exploit** what it already knows, but to discover better actions, it must **explore** actions it has not selected before. Neither can be pursued exclusively.

@@ -34,4 +34,4 @@ status: complete
 
 ## Appears In
 
-- [[IR-L09 - LLMs for IR (Upcoming)]]
+- [[IR-L09 - RAG]]

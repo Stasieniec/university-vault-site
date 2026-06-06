@@ -30,7 +30,7 @@ where:
 
 ## Training (Backpropagation)
 
-Neural networks are trained using **Stochastic Gradient Descent (SGD)** or variants like [[Adam]]. The gradients are calculated using **Backpropagation**, which is an application of the [[Chain Rule]] of calculus to compute the partial derivatives of a loss function $L$ with respect to every weight in the network.
+Neural networks are trained using **Stochastic Gradient Descent (SGD)** or variants like [[Adam]]. The gradients are calculated using **Backpropagation**, which is an application of the Chain Rule of calculus to compute the partial derivatives of a loss function $L$ with respect to every weight in the network.
 
 ## Key Concepts
 
@@ -47,5 +47,5 @@ Neural networks are trained using **Stochastic Gradient Descent (SGD)** or varia
 
 ## Appears In
 
-- [[RL-L08 - Deep Reinforcement Learning]]
-- [[IR-L05 - Neural Information Retrieval]]
+- [[RL-L08 - Deep RL Value-Based]]
+- [[IR-L05 - Neural IR Intro & Reranking]]

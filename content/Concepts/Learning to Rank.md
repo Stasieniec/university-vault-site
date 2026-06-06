@@ -36,4 +36,4 @@ status: complete
 
 ## Appears In
 
-- [[IR-L05 - Learning to Rank]]
+- [[IR-L10 - Learning to Rank]]

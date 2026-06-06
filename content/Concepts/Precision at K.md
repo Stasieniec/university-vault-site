@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [P@K, precision at k, P@10]
-course: [IR]
+course: [IR, RecSys]
 tags: [evaluation, key-formula]
 status: complete
 ---
@@ -16,3 +16,8 @@ Simple, intuitive: "of the top K results, how many are relevant?" Ignores docume
 ## Appears In
 
 - [[IR-L04 - Evaluation]]
+- [[RS-L01 - Course Overview & Introduction]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]
+- [[RS-L03a - Sequential Recommendation Models]]
+- [[RS-L03b - From LLMs to LRMs]]
+- [[RS-L04 - Generative Recommendation]]

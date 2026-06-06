@@ -112,7 +112,7 @@ Using $S = H$ (the full history) as the internal state:
 ### Bayesian Belief Update
 
 > [!formula]
-> **Belief State Update** (using [[Bayes' Theorem]]):
+> **Belief State Update** (using Bayes' Theorem):
 > $$b_{t+1}(x') = p(x' \mid h') = p(x' \mid o', a, h) = \frac{p(o' \mid x', a) \sum_{x} p(x' \mid x, a)\, b_t(x)}{\sum_{\tilde{x}'} p(o' \mid \tilde{x}', a) \sum_{x} p(\tilde{x}' \mid x, a)\, b_t(x)}$$
 > where:
 > - $p(o' \mid x', a)$ is the **observation model**
@@ -425,7 +425,7 @@ The following concepts are introduced but require deeper study:
 - [[Deep Recurrent Q-Learning]] - LSTM-augmented DQN for partial observability
 - [[Partial Observability]] - Settings where the agent cannot observe the full state
 - [[LSTM]] - Long Short-Term Memory networks for sequential processing
-- [[Bayes' Theorem]] - Foundation for belief state updates
+- Bayes' Theorem - Foundation for belief state updates
 - [[State Aggregation]] - Connection between partial observability and function approximation
 
 ---

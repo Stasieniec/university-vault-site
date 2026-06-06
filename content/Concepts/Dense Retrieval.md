@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [dense retrieval, dense passage retrieval, Dense Retrieval and Bi-Encoders]
-course: [IR]
+course: [IR, RecSys]
 tags: [neural-ir, exam-topic]
 status: complete
 ---
@@ -68,3 +68,4 @@ Pre-compute all document embeddings → use [[Approximate Nearest Neighbor]] (AN
 ## Appears In
 
 - [[IR-L06 - Dense Retrieval]]
+- [[RS-L04 - Generative Recommendation]]

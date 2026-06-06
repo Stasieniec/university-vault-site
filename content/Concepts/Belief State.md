@@ -66,7 +66,7 @@ After enough consistent observations, the agent becomes confident enough to open
 ## Connections
 
 - Central concept in [[POMDP]] theory
-- Updated via [[Bayes' Theorem]]
+- Updated via Bayes' Theorem
 - Alternative: [[Predictive State Representation]] (doesn't require model knowledge)
 - Planning in belief space uses [[Dynamic Programming]] or [[Value Iteration]]
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [PQ, product quantization]
-course: [IR]
+course: [IR, RecSys]
 tags: [neural-ir, efficiency]
 status: complete
 ---
@@ -44,3 +44,4 @@ Storing and comparing millions of dense vectors (e.g., from [[Bi-Encoder]] model
 ## Appears In
 
 - [[IR-L06 - Dense Retrieval]] (§5.2 — compression techniques)
+- [[RS-L04 - Generative Recommendation]]

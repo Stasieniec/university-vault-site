@@ -38,5 +38,5 @@ status: complete
 
 ## Appears In
 
-- [[IR-L05 - Learning to Rank]]
-- [[IR-L06 - Neural IR]]
+- [[IR-L10 - Learning to Rank]]
+- [[IR-L06 - Dense Retrieval]]

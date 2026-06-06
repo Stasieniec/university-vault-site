@@ -31,7 +31,7 @@ status: complete
 
 ## Connections
 
-- Used for: [[Evaluation|Learning from Implicit Feedback]], [[Offline Evaluation]]
+- Used for: Learning from Implicit Feedback, [[Offline Evaluation]]
 - Related to: [[Discounted Cumulative Gain (DCG)]] (which also uses a position-based decay).
 
 ## Appears In

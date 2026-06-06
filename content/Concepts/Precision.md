@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [precision]
-course: [IR]
+course: [IR, RecSys]
 tags: [evaluation, key-formula]
 status: complete
 ---
@@ -18,3 +18,4 @@ High precision = few false positives. See also [[Precision at K]], [[Recall]], [
 ## Appears In
 
 - [[IR-L04 - Evaluation]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [rank bias, presentation bias]
-course: [IR]
+course: [IR, RecSys]
 tags: [bias, ranking, user-behavior]
 status: complete
 ---
@@ -141,3 +141,4 @@ High-performing items in the training data tend to come from high positions (due
 - [[Unbiased Learning to Rank]]
 - [[Click Models]]
 - [[Counterfactual Learning to Rank]]
+- [[RS-L02 - Evaluation Beyond Accuracy]]

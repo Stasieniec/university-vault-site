@@ -47,4 +47,4 @@ where:
 ## Appears In
 
 - Deep Learning Optimization
-- [[RL-L08 - Deep Reinforcement Learning]] (often used in A3C)
+- [[RL-L08 - Deep RL Value-Based]] (often used in A3C)

@@ -11,7 +11,7 @@ topics:
   - "[[Conservative Q-Learning (CQL)]]"
   - "[[Offline Reinforcement Learning]]"
   - "[[Neural Network Function Approximation]]"
-  - "[[Atari Games]]"
+  - "Atari Games"
 status: complete
 ---
 

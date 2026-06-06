@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [SGD, Mini-batch Gradient Descent]
-course: [RL, IR]
+course: [RL, IR, RecSys]
 tags: [optimization]
 status: complete
 ---
@@ -36,5 +36,6 @@ status: complete
 
 ## Appears In
 
-- [[RL-L06 - Value Function Approximation]]
-- [[IR-L08 - Neural Information Retrieval]]
+- [[RL-L05 - Tabular to Approximation]]
+- [[IR-L08 - Generative Retrieval]]
+- [[RS-L03a - Sequential Recommendation Models]]

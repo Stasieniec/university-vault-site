@@ -249,4 +249,4 @@ A 4x4 grid where transitions have reward -1 until termination.
 - [[Generalized Policy Iteration]]
 - [[Optimality and Approximation]]
 
-**Book Reference:** [[Sutton & Barto]] Ch 3.4-3.8, Ch 4.
+**Book Reference:** Sutton & Barto Ch 3.4-3.8, Ch 4.

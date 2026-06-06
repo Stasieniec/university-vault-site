@@ -27,4 +27,4 @@ status: complete
 - Successors: Influenced models like [[SPLADE]] which further sparsify the representation.
 
 ## Appears In
-- [[IR-L07 - Neural IR 1]]
+- [[IR-L07 - Learned Sparse Retrieval]]

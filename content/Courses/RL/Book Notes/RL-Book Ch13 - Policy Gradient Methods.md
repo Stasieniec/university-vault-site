@@ -29,7 +29,7 @@ where $h(s, a, \theta)$ are numerical preferences (e.g., linear in features: $h(
 
 ### Advantages over Action-Value Methods
 1. **Convergence to Deterministic Policies**: Action-value methods with $\epsilon$-greedy always explore. Policy gradients can drive preferences of optimal actions infinitely higher, approaching a deterministic policy.
-2. **Stochastic Optimal Policies**: In many problems (e.g., imperfect information games like Poker, or the [[Short Corridor with Switched Actions]]), the optimal policy is stochastic. Policy gradient methods can learn these specific probabilities naturally.
+2. **Stochastic Optimal Policies**: In many problems (e.g., imperfect information games like Poker, or the Short Corridor with Switched Actions), the optimal policy is stochastic. Policy gradient methods can learn these specific probabilities naturally.
 3. **Simpler Approximation**: The policy may be a simpler function to approximate than the value function.
 4. **Injection of Prior Knowledge**: Parameterization allows specific domain knowledge about the policy's form to be encoded.
 5. **Continuous Action Spaces**: Naturally handles infinite action sets by learning distribution statistics (e.g., mean and variance).

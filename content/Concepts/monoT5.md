@@ -29,4 +29,4 @@ status: complete
 - Architecture: Uses the T5 (Text-To-Text Transfer Transformer) encoder-decoder structure.
 
 ## Appears In
-- [[IR-L05 - Neural IR 2]]
+- [[IR-L05 - Neural IR Intro & Reranking]]

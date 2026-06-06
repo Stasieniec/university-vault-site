@@ -34,4 +34,4 @@ A vanilla seq2seq model might generate a name that doesn't exist in the database
 
 ## Appears In
 
-- [[IR-L08 - Advanced Neural IR]]
+- [[IR-L08 - Generative Retrieval]]

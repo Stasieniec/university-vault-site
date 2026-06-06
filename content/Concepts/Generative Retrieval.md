@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [generative retrieval, generative IR]
-course: [IR]
+course: [IR, RecSys]
 tags: [neural-ir, exam-topic]
 status: complete
 ---
@@ -37,3 +37,4 @@ The model parameters serve as the "index" — no separate data structure needed.
 ## Appears In
 
 - [[IR-L08 - Generative Retrieval]]
+- [[RS-L04 - Generative Recommendation]]

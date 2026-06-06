@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [query likelihood, QL, query likelihood model, language model for IR]
+aliases: [query likelihood, QL, query likelihood model]
 course: [IR]
 tags: [retrieval-models, key-formula, exam-topic]
 status: complete
@@ -36,7 +36,7 @@ $$P(t|d) = \frac{f(t,d) + \mu P(t|C)}{|d| + \mu}$$
 
 - Alternative to: [[BM25]], [[TF-IDF]]
 - Uses: [[Smoothing]]
-- Foundation of: [[Language Model for IR]]
+- Instance of: [[Language Model for IR]]
 
 ## Appears In
 

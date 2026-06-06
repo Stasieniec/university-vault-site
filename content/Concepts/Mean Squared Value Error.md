@@ -43,5 +43,5 @@ status: complete
 
 ## Appears In
 
-- [[RL-L06 - Value Function Approximation]]
+- [[RL-L05 - Tabular to Approximation]]
 - [[RL-Book Ch9 - On-policy Prediction with Approximation]]

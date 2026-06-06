@@ -2,6 +2,7 @@
 type: moc
 course: IR
 tags: [moc]
+status: complete
 ---
 
 # Information Retrieval 1 — Overview
@@ -39,7 +40,7 @@ Must pass all assignments + ≥5.5 on presentation + ≥5.5 on exam.
 ### Week 1 — Foundations of IR
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
-| L1.1 | Administration & Course Intro | Kanoulas | | [[IR-L01 - Introduction]] |
+| L1.1 | Administration & Course Intro | Kanoulas | | — |
 | L1.2 | Introduction to IR | Kanoulas | Lin et al. 1, 2-2.7, 3-3.1 | [[IR-L02 - IR Fundamentals]] |
 | **Reading** | | | SEIRiP 2.3, 4.1-4.3, 5.3, 5.6-5.7, 6.2, 7, 8 | |
 | **Book** | | | | [[IR-PTR Ch1 - Introduction]], [[IR-PTR Ch2 - Setting the Stage]], [[IR-SEIRiP Ch4 - Processing Text]], [[IR-SEIRiP Ch5 - Ranking with Indexes]], [[IR-SEIRiP Ch7 - Retrieval Models]] |

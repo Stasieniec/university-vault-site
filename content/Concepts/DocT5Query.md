@@ -26,4 +26,4 @@ status: complete
 - Complementary to: [[Neural Reranking]], where DocT5Query provides a better set of initial candidates.
 
 ## Appears In
-- [[IR-L07 - Neural IR 1]]
+- [[IR-L07 - Learned Sparse Retrieval]]

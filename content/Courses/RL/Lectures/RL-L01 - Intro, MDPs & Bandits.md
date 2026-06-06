@@ -30,8 +30,8 @@ Unlike other machine learning paradigms, RL is distinguished by:
 2. **Delayed reward**: Actions may affect not only the immediate reward but also the next situation and, through that, all subsequent rewards.
 
 ### 1.2 RL vs. Other Paradigms
-- **[[Supervised Learning]]**: Learning from a training set of labeled examples provided by a supervisor. In RL, the agent must learn from its own experience in uncharted territory.
-- **[[Unsupervised Learning]]**: Finding hidden structure in unlabeled data. RL is focused on maximizing a reward signal rather than finding structure.
+- **Supervised Learning**: Learning from a training set of labeled examples provided by a supervisor. In RL, the agent must learn from its own experience in uncharted territory.
+- **Unsupervised Learning**: Finding hidden structure in unlabeled data. RL is focused on maximizing a reward signal rather than finding structure.
 
 ### 1.3 Elements of Reinforcement Learning
 Beyond the agent and environment, we identify four main sub-elements:

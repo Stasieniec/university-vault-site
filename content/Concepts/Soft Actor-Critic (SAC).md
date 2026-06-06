@@ -1,6 +1,6 @@
 ---
 type: concept
-aliases: [SAC, SAC (Soft Actor-Critic)]
+aliases: [SAC, SAC (Soft Actor-Critic), Soft Actor-Critic]
 course: [RL]
 tags: [deep-rl, exam-topic, actor-critic]
 status: complete

@@ -324,7 +324,7 @@ More robust than pure clicks.
 ## Connections
 
 - **Generalization**: Extreme case of [[Position Bias]]
-- **Related**: [[Overlap]] assumption in causal inference
+- **Related**: Overlap assumption in causal inference
 - **Solution**: [[Doubly Robust Estimation]]
 - **Related problem**: [[Cascading Position Bias]] (stops early)
 
