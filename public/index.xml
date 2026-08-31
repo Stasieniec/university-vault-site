@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Study Notes</title>
+      <link>https://notes.swasilewski.com</link>
+      <description>Last 10 notes on Study Notes</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>MNLP-L01 - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L01---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L01---Overview</guid>
+    <description><![CDATA[ MNLP-L01 — Overview Motivation This lecture introduces the landscape of natural language processing (NLP): what it is, why it matters, and where multilinguality fits. ]]></description>
+    <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>PhilSci - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</guid>
+    <description><![CDATA[ Philosophy of Science — Overview Course: Philosophy of Science (5354PHSC6Y) — Sep–Oct 2026, Period 1 Programmes: MSc Logic, MSc Physics &amp; Astronomy (+ MSc AI) Credits: 6 EC Coordinator: Sebastian De Haro (s.deharo@uva.nl) Teachers: Enrico Cinti (e.cinti@uva.nl) Tutorials: Luka Vinck (l.j.vinck@u... ]]></description>
+    <pubDate>Mon, 31 Aug 2026 18:39:05 GMT</pubDate>
+  </item><item>
+    <title>MNLP - Mini Project</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Mini-Project</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Mini-Project</guid>
+    <description><![CDATA[ MNLP Mini Project Source Based on Christof Monz’s Mini Project slides (PDF in Assets/). ]]></description>
+    <pubDate>Mon, 31 Aug 2026 18:39:04 GMT</pubDate>
+  </item><item>
+    <title>MNLP - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</guid>
+    <description><![CDATA[ Multilingual Natural Language Processing — Overview Course: Multilingual Natural Language Processing (5204MNLP6Y) — 2026/27 Sem. ]]></description>
+    <pubDate>Mon, 31 Aug 2026 18:39:04 GMT</pubDate>
+  </item><item>
+    <title>Study Notes</title>
+    <link>https://notes.swasilewski.com/</link>
+    <guid>https://notes.swasilewski.com/</guid>
+    <description><![CDATA[ 📚 Study Notes Open-source lecture notes, concept wikis, and exercises for MSc Artificial Intelligence at the University of Amsterdam. ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:41:28 GMT</pubDate>
+  </item><item>
+    <title>B Testing</title>
+    <link>https://notes.swasilewski.com/Concepts/A/B-Testing</link>
+    <guid>https://notes.swasilewski.com/Concepts/A/B-Testing</guid>
+    <description><![CDATA[ A/B Testing Definition A/B Testing A/B testing is the standard method for Online Evaluation of a recommender system: a live experiment that compares a new system (variant) against the currently deployed one (control) by randomly splitting live traffic into groups and measuring a business objective o... ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item><item>
+    <title>A3C</title>
+    <link>https://notes.swasilewski.com/Concepts/A3C</link>
+    <guid>https://notes.swasilewski.com/Concepts/A3C</guid>
+    <description><![CDATA[ A3C Definition A3C (Asynchronous Advantage Actor-Critic) A3C is an on-policy, deep Actor-Critic algorithm (Mnih et al., 2016) that runs many actor-learners in parallel, each on its own copy of the environment, asynchronously updating a shared set of global parameters. ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item><item>
+    <title>Action-Value Methods</title>
+    <link>https://notes.swasilewski.com/Concepts/Action-Value-Methods</link>
+    <guid>https://notes.swasilewski.com/Concepts/Action-Value-Methods</guid>
+    <description><![CDATA[ Action-Value Methods Definition Action-Value Methods Action-value methods estimate the value of each action — the expected reward (or return) of selecting it — and then use those estimates to drive action selection. ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item><item>
+    <title>Actor-Critic</title>
+    <link>https://notes.swasilewski.com/Concepts/Actor-Critic</link>
+    <guid>https://notes.swasilewski.com/Concepts/Actor-Critic</guid>
+    <description><![CDATA[ Actor-Critic Definition Actor-Critic Methods Actor-Critic methods are a class of Reinforcement Learning algorithms that combine both policy-based and value-based approaches. ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item><item>
+    <title>Adagrad</title>
+    <link>https://notes.swasilewski.com/Concepts/Adagrad</link>
+    <guid>https://notes.swasilewski.com/Concepts/Adagrad</guid>
+    <description><![CDATA[ Adagrad Definition Adagrad (Adaptive Gradient Algorithm) Adagrad is an adaptive learning-rate optimization method that gives each parameter its own learning rate, scaled inversely to the square root of the sum of all past squared gradients for that parameter. ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

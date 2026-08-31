@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Sync vault content to Quartz site and deploy
 set -e
 
-VAULT="$HOME/Desktop/University/university-vault"
-SITE="$HOME/Desktop/University/university-vault-site"
+VAULT="/home/ubuntu/university-vault"
+SITE="/home/ubuntu/university-vault-site"
 
 echo "🔄 Syncing vault → site..."
 rm -rf "$SITE/content/Concepts" "$SITE/content/Courses" "$SITE/content/Assets"
@@ -14,9 +13,8 @@ cp "$VAULT/VAULT-INSTRUCTIONS.md" "$SITE/content/" 2>/dev/null || true
 
 cd "$SITE"
 
-# Quick local build check
 echo "🔨 Building..."
-npx quartz build 2>&1 | tail -3
+npx quartz build 2>&1 | tail -5
 
 echo "📤 Pushing to GitHub..."
 git add -A

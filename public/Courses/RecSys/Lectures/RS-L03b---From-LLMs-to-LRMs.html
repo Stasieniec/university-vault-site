@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>RS-L03b - From LLMs to LRMs — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="RS-L03b - From LLMs to LRMs — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="RS-L03b - From LLMs to LRMs — notes.swasilewski.com"/><meta name="twitter:description" content="RS-L03b - From LLMs to LRMs Lecture in one breath This is the second half of Lecture 3, by Yuyue Zhao."/><meta property="og:description" content="RS-L03b - From LLMs to LRMs Lecture in one breath This is the second half of Lecture 3, by Yuyue Zhao."/><meta property="og:image:alt" content="RS-L03b - From LLMs to LRMs Lecture in one breath This is the second half of Lecture 3, by Yuyue Zhao."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="RS-L03b - From LLMs to LRMs Lecture in one breath This is the second half of Lecture 3, by Yuyue Zhao."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdWJ1bnR1L3VuaXZlcnNpdHktdmF1bHQtc2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-460"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-460" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/RecSys/">RecSys</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/RecSys/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>RS L03b   From LLMs to LRMs</a></div></nav><h1 class="article-title">RS-L03b - From LLMs to LRMs</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-04T00:00:00.000Z">Jun 04, 2026</time><span>22 min read</span></p></div></div><article class="popover-hint"><h1 id="rs-l03b---from-llms-to-lrms">RS-L03b - From LLMs to LRMs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rs-l03b---from-llms-to-lrms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout overview" data-callout="overview">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Lecture in one breath </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>This is the second half of Lecture 3, by <strong>Yuyue Zhao</strong>. It traces the field’s move from <strong>discriminative</strong> recommendation (learn a scoring function <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord text"><span class="mord">user</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">item</span></span><span class="mclose">)</span></span></span></span> and rank a fixed candidate pool) to <strong><a href="../../../Concepts/Generative-Recommendation" class="internal alias" data-slug="Concepts/Generative-Recommendation">Generative Recommendation</a></strong> (directly <em>produce</em> the target item, token by token). Two distinct routes to “generative” are contrasted throughout:</p>
+<ul>
+<li><strong>Part 1 — <a href="../../../LLM-based-Generative-Recommendation" class="internal alias" data-slug="LLM-based-Generative-Recommendation">LLM-based Generative Recommendation</a>:</strong> treat recommendation as a <em>language task</em>. Borrow scaling from language models by squeezing behavior data into something an LLM can read. The central problems are <strong>alignment</strong> (injecting collaborative signal the LLM never saw) and <strong><a href="../../../Concepts/Item-Tokenization" class="internal alias" data-slug="Concepts/Item-Tokenization">Item Tokenization</a></strong> (turning items into discrete tokens an LLM can generate).</li>
+<li><strong>Part 2 — <a href="../../../Concepts/Large-Recommendation-Models-(LRM)" class="internal alias" data-slug="Concepts/Large-Recommendation-Models-(LRM)">Large Recommendation Models (LRM)</a>:</strong> the opposite move. Design <em>native</em> architectures for behavior data and let a recommendation-specific <strong><a href="../../../Concepts/Scaling-Laws" class="internal alias" data-slug="Concepts/Scaling-Laws">scaling law</a></strong> emerge there.</li>
+</ul>
+<p>Primary source cited throughout: <strong>Hou et al., “A Survey on Generative Recommendation: Data, Model, and Tasks,” arXiv:2510.27157, 2025</strong> (§4.1 = LLM-based GR, §4.2 = LRMs). This course has <strong>no textbook</strong> — the slides are the only source.</p>
+</div>
+</blockquote>
+<p><strong>Lecturer:</strong> Yuyue Zhao · <strong>Course:</strong> RecSys (UvA MSc AI), Lecture 3 (Part 2) · <strong>Date:</strong> 2026-06-04</p>
+<hr/>
+<h2 id="0-the-storyline-and-learning-objectives">0. The storyline and learning objectives<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#0-the-storyline-and-learning-objectives" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The whole lecture follows a 4-stage roadmap:</p>
+<pre><code>[1] Paradigm review        [2] How LLMs are        [3] How RecSys scales      [4] Comparison
+    Discriminative   --->      used for RecSys -->     natively              -->  &amp; Conclusion
+    -> Generative              (prompt, align,         (LRM, scaling,             (when each
+                                tokenize)               long sequences)            route wins)
+</code></pre>
+<p>By the end you should be able to answer <strong>four questions</strong> (these map directly onto exam-worthy content):</p>
+<ul>
+<li><strong>Q1. Why should recommendation “generate” instead of “score”?</strong> — the shift from discriminative scoring to direct target generation.</li>
+<li><strong>Q2. How does an LLM get aligned to a recommendation task?</strong> — three alignment paradigms: text prompting, collaborative-signal injection, item tokenization.</li>
+<li><strong>Q3. How do items become tokens an LLM can generate?</strong> — <a href="../../../Concepts/Item-Tokenization" class="internal alias" data-slug="Concepts/Item-Tokenization">Item Tokenization</a>: from <a href="../../../Concepts/Atomic-Item-IDs" class="internal alias" data-slug="Concepts/Atomic-Item-IDs">atomic IDs</a> to learned codebook <strong><a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">semantic IDs</a></strong>.</li>
+<li><strong>Q4. What is the essential difference between LRM and LLM-based GR?</strong> — <em>borrowed</em> language scaling vs. <em>native</em> recommendation scaling.</li>
+</ul>
+<hr/>
+<h2 id="1-discriminative-vs-generative-recommendation">1. Discriminative vs. Generative recommendation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-discriminative-vs-generative-recommendation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The core paradigm contrast (Hou et al. 2025, §4, Fig. 1).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th><strong>Discriminative</strong></th><th><strong>Generative</strong></th></tr></thead><tbody><tr><td><strong>Mechanism</strong></td><td>Learn a scoring function <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord text"><span class="mord">user</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">item</span></span><span class="mclose">)</span></span></span></span>; score every candidate</td><td>Directly <strong>generate</strong> the target item / content, token by token</td></tr><tr><td><strong>Strengths</strong></td><td>Mature, optimized for ranking</td><td>World knowledge, semantic understanding, scaling law, creative / cross-domain transfer</td></tr><tr><td><strong>Limitations</strong></td><td>Fixed candidate pool; weak cold-start; hard to explain; stacking gives diminishing returns</td><td>Must <em>ground</em> output to real items; heavier compute</td></tr></tbody></table></div>
+<p><strong>Discriminative data flow (bottom-up):</strong></p>
+<pre><code>        Matching Score
+              ^
+       Matching Function          &lt;- trainable (the &quot;discriminative recommender&quot;)
+        ^            ^
+  Representation  Representation   &lt;- Representation Learning
+        ^            ^
+      User          Item
+</code></pre>
+<p><strong>Generative data flow (bottom-up):</strong></p>
+<pre><code>        Recommend Items
+              ^
+   Generative Model (e.g., LLM, Diffusion)   &lt;- can be trainable OR frozen
+              ^
+   User Historical Interaction Data
+</code></pre>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The one-line contrast </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Discriminative = “<strong>score</strong> every candidate against a <strong>fixed pool</strong>.” Generative = “<strong>directly produce</strong> the target.” Generation lets us escape the fixed candidate pool and lean on pre-trained world knowledge, but forces a new problem: making sure what we generate actually <em>exists</em> in the catalog.</p>
+</div>
+</blockquote>
+<hr/>
+<h1 id="part-1--llm-based-generative-recommendation">PART 1 — LLM-Based Generative Recommendation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-1--llm-based-generative-recommendation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p>Framing: <em>Recommendation as a language task — translate users, items, and histories into something a pretrained language model can read, and generate.</em></p>
+</blockquote>
+<h2 id="2-three-research-lines-for-llm-based-gr">2. Three research lines for LLM-based GR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-three-research-lines-for-llm-based-gr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(Hou et al. 2025, §4.1 taxonomy.)</p>
+<ol>
+<li><strong>LLM directly as RecSys</strong> — <em>no extra fine-tuning.</em> Drive recommendation through prompt design and <a href="../../../Concepts/In-Context-Learning" class="internal alias" data-slug="Concepts/In-Context-Learning">in-context learning</a>. Best for cold-start and cross-domain. (See §3.)</li>
+<li><strong>Align an LLM to the recommendation task</strong> — adapt the model so it carries collaborative signal and item structure. (See §4.)</li>
+<li><strong>Training objectives &amp; inference</strong> — <em>what loss · how to decode.</em> Choose among SFT / SSL / RL / DPO; ensure generated items actually exist. (See §6.)</li>
+</ol>
+<hr/>
+<h2 id="3-line-1--use-a-pretrained-llm-directly">3. Line 1 — Use a pretrained LLM directly<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-line-1--use-a-pretrained-llm-directly" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><em>Prompt design + in-context learning — strong on cold-start, cross-domain.</em> (Hou et al. 2025, §4.1.1; e.g. <strong>Chat-REC</strong>, Gao et al. 2023.)</p>
+<p>Two sub-approaches:</p>
+<ul>
+<li><strong><a href="../../../LLM-as-Enhancer" class="internal" data-slug="LLM-as-Enhancer">LLM-as-Enhancer</a>:</strong> rewrite user/item profiles and history into natural-language features; feed the enriched features into a CF / sequential / re-ranking model. The LLM augments behavior data with external knowledge.</li>
+<li><strong><a href="../../../LLM-as-Recommender" class="internal" data-slug="LLM-as-Recommender">LLM-as-Recommender</a>:</strong> use a templated prompt; the LLM directly outputs item titles or IDs. Zero-shot transfer across scenarios; extends to multimodal LLMs (e.g. poster images).</li>
+</ul>
+<p><strong>Pros:</strong> zero training cost; strong semantics and world knowledge; good cold-start / cross-domain generalization.
+<strong>Cons:</strong> sensitive to prompt phrasing; no collaborative signal; may <strong>hallucinate non-existent items</strong> → this motivates “generation grounding” (item tokenization, §5).</p>
+<h3 id="31-diagrams">3.1 Diagrams<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-diagrams" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>LLM-as-Enhancer</strong> (ref: <em>Towards Open-World Recommendation with Knowledge Augmentation from LLMs</em>):</p>
+<pre><code>   +-------------------+        +-------------+
+   | User Behavior Data| &lt;----> | RecSys Model|
+   +-------------------+        +-------------+
+            ^
+            | augments with external knowledge
+   +------------------------------------------+
+   | Reasoning Knowledge | Factual Knowledge   |
+   | (LLMs, Knowledge Graphs, Multi-domain)    |
+   +------------------------------------------+
+</code></pre>
+<p><strong>LLM-as-Recommender</strong> (<strong>Chat-REC</strong>, Gao et al. 2023) — a routing flowchart:</p>
+<pre><code> Recommendation System R ┐
+ User-Item History       │
+ User Query Q_i          ├──> Prompt Constructor C ──> ChatGPT ──> &quot;Use RecSys?&quot;
+ User profile            │                                              │
+ History of Dialogue H  ─┘                                     No ──> Output A_i
+                                                               Yes -> RecSys Candidate
+                                                                       Set Construction
+                                                                          │
+                                                       ┌──────────────────┘
+                                                       v
+                                            History of Recommendation R
+                                            + Intermediate Answer A  (looped back)
+</code></pre>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Chat-REC dialogue </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>User asks for action movies → ChatGPT recommends <em>Fargo / Heat / Die Hard</em> and <strong>explains <em>why</em></strong> Fargo was recommended, drawing on the user’s movie history and personal information. This is the “explainable + conversational” sweet spot of using a frozen LLM directly.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="4-line-2--align-an-llm-to-recommendation-the-most-important-slide-of-41">4. Line 2 — Align an LLM to recommendation (the most important slide of §4.1)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-line-2--align-an-llm-to-recommendation-the-most-important-slide-of-41" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(Hou et al. 2025, §4.1.2, Fig. 6 — the alignment taxonomy.)</p>
+<h3 id="41-why-alignment-is-necessary">4.1 Why alignment is necessary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-why-alignment-is-necessary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>LLM pre-training does <strong>NOT</strong> carry the things recommendation actually needs:</p>
+<ul>
+<li>click / interaction signal,</li>
+<li>a Top-K ranking objective,</li>
+<li>long-tail coverage incentives,</li>
+<li>exposure-bias awareness.</li>
+</ul>
+<p>→ So a vanilla LLM often <strong>loses to a specialized rec model</strong>. <strong>Solution: fine-tune on recommendation data.</strong> The taxonomy classifies alignment methods by <em>how the user/item profile is structured into the input</em>:</p>
+<pre><code>                 Three alignment paradigms
+   (1) Text Prompting     (2) Inject Collab.    (3) Item Tokenization
+   pure natural language      Signal                items as learned
+                          language + CF info        discrete tokens
+</code></pre>
+<hr/>
+<h3 id="42-paradigm---text-prompting">4.2 Paradigm ① — Text Prompting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-paradigm---text-prompting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Profile = task description + temporal interaction history, both in pure language.</em> Express the entire recommendation problem in natural language; the LLM is fine-tuned (often parameter-efficiently, via <a href="../../../Concepts/LoRA" class="internal" data-slug="Concepts/LoRA">LoRA</a>) on these text instances.</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Instruction-tuning format (worked example) </p></div>
+                  
+                </div>
+<div class="callout-content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Section</th><th>Content</th></tr></thead><tbody><tr><td><strong>Task Instruction</strong></td><td>”Given the user’s historical interactions, please determine whether the user will enjoy the target new movie by answering ‘Yes’ or ‘No’.”</td></tr><tr><td><strong>Task Input</strong></td><td>User’s liked items: <em>GodFather</em>. User’s disliked items: <em>Star Wars</em>. Target new movie: <em>Iron Man</em></td></tr><tr><td><strong>Instruction Output</strong></td><td>No.</td></tr></tbody></table></div>
+</div>
+</blockquote>
+<p><strong>Representative methods:</strong></p>
+<ul>
+<li><strong>TALLRec</strong> (Bao et al., RecSys’23) — explicit preference statements + lightweight <a href="../../../Concepts/LoRA" class="internal" data-slug="Concepts/LoRA">LoRA</a> fine-tuning.</li>
+<li><strong>LlamaRec</strong> (Yue et al., 2023) — two-stage: a sequential model first narrows candidates, then the LLM ranks them.</li>
+<li><strong>Reason4Rec</strong> — extract preferences from user reviews / reasoning chains.</li>
+</ul>
+<p><strong>Limitation:</strong> no collaborative signal; under-performs when inter-item dependencies dominate.</p>
+<hr/>
+<h3 id="43-paradigm---inject-collaborative-signal">4.3 Paradigm ② — Inject Collaborative Signal<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-paradigm---inject-collaborative-signal" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Let the LLM see semantic AND relational knowledge at the same time.</em> (e.g. <strong>iLoRA, LLaRA</strong> (SIGIR’24), <strong>CoLLM, CORONA, HyperLLM, CoRAL</strong> — Hou et al. 2025, §4.1.2.)</p>
+<p>Three sub-strategies:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Sub-strategy</th><th>Methods</th><th>What it does</th></tr></thead><tbody><tr><td><strong>Representation augmentation</strong></td><td>iLoRA, LLaRA, CoLLM</td><td>Project a learned <strong>CF embedding</strong> into the LLM’s token-embedding space; concatenate it with the language tokens</td></tr><tr><td><strong>Summary-based</strong></td><td>CORONA, HyperLLM</td><td>Distill collaborative knowledge into a <strong>short text summary</strong> (e.g. LLM reasoning over a GNN) before feeding it in</td></tr><tr><td><strong>Sentence-ization</strong></td><td>CoRAL</td><td>Translate CF signals into readable sentences such as <em>“users who liked A also liked B, C, D”</em> — directly readable by the LLM</td></tr></tbody></table></div>
+<p><strong>Item Representation Example (diagram):</strong></p>
+<pre><code>Prompt:  &quot;This user has watched [item_1], [item_2], ..., [item_n].
+          Predict the next movie this user will watch.&quot;
+                       │
+   each [item] token is slotted into the language token stream
+                       │
+              v
+   Frozen LLM (snowflake)  +  LoRA (flame)   &lt;- only LoRA params train
+                       │
+                       v
+                  Output: [item_{n+1}]
+</code></pre>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The deeper issue (why paradigm ③ exists) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Dense CF embeddings are <strong>not directly readable</strong> by an LLM. We must <em>project</em>, <em>summarize</em>, or <em>verbalize</em> them — which exposes a <strong>fundamental gap between collaborative semantics and language semantics</strong>. Closing this gap is exactly what paradigm ③ (item tokenization) attempts.</p>
+</div>
+</blockquote>
+<hr/>
+<h3 id="44-paradigm---item-tokenization">4.4 Paradigm ③ — Item Tokenization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#44-paradigm---item-tokenization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>How do we give every item an identifier that is compact, semantic, AND generable by an LLM?</em> (e.g. <strong>P5</strong> (Geng et al. RecSys’22), <strong>BIGRec/M6</strong>, <strong>TIGER</strong> (Rajput et al. NeurIPS’23), <strong>LC-Rec, LETTER, TokenRec, CCFRec, SIIT</strong> — Hou et al. 2025, §4.1.2.)</p>
+<p>Five levels (L1–L5) of item identifiers:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Level</th><th>Name</th><th>Methods</th><th>What it does</th><th>Trade-off</th></tr></thead><tbody><tr><td><strong>L1</strong></td><td>ID-based</td><td><strong>P5, CLLM4Rec</strong></td><td>one special token per item</td><td>vocabulary blows up, no semantics</td></tr><tr><td><strong>L2</strong></td><td>Text-based</td><td><strong>BIGRec, M6</strong></td><td>use item title / description</td><td>very long, no collaborative info</td></tr><tr><td><strong>L3</strong></td><td><strong>Codebook-based</strong></td><td><strong>TIGER, LC-Rec</strong></td><td>discrete <strong><a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">Semantic IDs</a></strong> from <strong><a href="../../../Concepts/RQ-VAE" class="internal" data-slug="Concepts/RQ-VAE">RQ-VAE</a></strong></td><td><strong>compact + semantic</strong></td></tr><tr><td><strong>L4</strong></td><td>Codebook + CF</td><td><strong>LETTER, TokenRec, CCFRec</strong></td><td>inject CF signal into the quantizer</td><td>language + collaboration in one ID</td></tr><tr><td><strong>L5</strong></td><td>Adaptive</td><td><strong>SIIT</strong></td><td>LLM refines the identifier during training</td><td>tokens evolve with the model</td></tr></tbody></table></div>
+<p>The highlighted row is <strong>L3 (codebook-based <a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">Semantic IDs</a>)</strong> — the modern default. It uses <a href="../../../Concepts/RQ-VAE" class="internal alias" data-slug="Concepts/RQ-VAE">residual-quantized VAE</a> to turn an item’s content embedding into a short tuple of discrete codes.</p>
+<p><strong>Two readings of “Semantic ID”:</strong></p>
+<ul>
+<li><strong>(a)</strong> Use the LLM-era representation trick <em>into</em> rec, as a seq2seq recommendation task trained <strong>from scratch</strong>. Pipeline: <code>Item content → Embedding → Quantization → SID</code>.</li>
+<li><strong>(b)</strong> An LLM is <strong>tuned over</strong> the semantic IDs — e.g. <strong>LC-Rec</strong>, Open <strong>OneRec</strong>.</li>
+</ul>
+<p><strong>Open OneRec framework (diagram):</strong> three phases — <strong>Pre-Training, Post-Training, Evaluation</strong> — all driven by a <strong>Qwen LLM decoder</strong>. Each short video is passed through a <strong>Tokenizer</strong> emitting <strong>itemic tokens</strong> of the form <code>&lt;item_a_1>&lt;item_b_1>&lt;item_c_1></code> (a hierarchical multi-codeword <a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">semantic ID</a>; three codebook levels a/b/c) interleaved with <strong>text tokens</strong>.</p>
+<pre><code>... &quot;After searching for baking tools and purchasing
+     &lt;item_a_1>&lt;item_b_1>&lt;item_c_1>  and click  &lt;item_a_2>&lt;item_b_2>&lt;item_c_2>,
+     she will next click ...&quot;   &lt;- decoder generates next itemic tokens autoregressively
+                                    in Evaluation, generated codes are MAPPED back to real videos
+</code></pre>
+<p>This demonstrates items represented as <strong>multi-level discrete codes</strong> the decoder generates <a href="../../../Concepts/Autoregressive-Generation" class="internal alias" data-slug="Concepts/Autoregressive-Generation">autoregressively</a>.</p>
+<hr/>
+<h3 id="45-three-alignment-paradigms--cross-comparison">4.5 Three alignment paradigms — cross-comparison<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#45-three-alignment-paradigms--cross-comparison" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>(Adapted from Hou et al. 2025, §4.1.2, Tables 2/3/4.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Paradigm</th><th>Profile Format</th><th>Collaborative Signals?</th><th>Typical Backbone</th><th>Representative Models</th></tr></thead><tbody><tr><td><strong>① Text Prompting</strong></td><td>Natural Language</td><td><strong>No</strong></td><td>LLaMA, ChatGLM</td><td>TALLRec, LlamaRec</td></tr><tr><td><strong>② Injecting CF</strong></td><td>Text + Dense Embeddings</td><td><strong>Yes (injected)</strong></td><td>LLaMA, Vicuna</td><td>CoLLM, CORONA, CoRAL</td></tr><tr><td><strong>③ Item Tokenization</strong></td><td><a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">Semantic IDs</a> / Tokens</td><td><strong>Yes (via codebook)</strong></td><td>T5, LLaMA</td><td>P5, TIGER, BIGRec</td></tr></tbody></table></div>
+<hr/>
+<h2 id="5-line-3--training-objectives--inference">5. Line 3 — Training objectives &amp; inference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-line-3--training-objectives--inference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-training-objectives">5.1 Training objectives<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-training-objectives" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>The task is <a href="../../../Concepts/Next-Item-Prediction" class="internal alias" data-slug="Concepts/Next-Item-Prediction">next-item prediction</a> — but you can shape the loss four ways.</em> (Hou et al. 2025, §4.1.3, Table 5.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Objective</th><th>Methods</th><th>Idea</th><th>Trade-off</th></tr></thead><tbody><tr><td><strong><a href="../../../Concepts/Supervised-Fine-Tuning-(SFT)" class="internal alias" data-slug="Concepts/Supervised-Fine-Tuning-(SFT)">SFT</a></strong></td><td>P5, LGIR</td><td>learn only positive samples</td><td>simple, but no explicit negatives → ranking margin hard to learn</td></tr><tr><td><strong>SSL (self-supervised)</strong></td><td>FELLAS, EasyRec</td><td><a href="../../../Concepts/Contrastive-Learning" class="internal alias" data-slug="Concepts/Contrastive-Learning">contrastive learning</a></td><td>reduces template dependence, improves zero-shot transfer</td></tr><tr><td><strong><a href="../../../Concepts/Reinforcement-Learning" class="internal alias" data-slug="Concepts/Reinforcement-Learning">RL</a></strong></td><td>LEA, RPP</td><td>reward-driven; can encode explicit negatives + non-differentiable metrics</td><td>needs feedback, unstable to train</td></tr><tr><td><strong><a href="../../../Concepts/Direct-Preference-Optimization-(DPO)" class="internal alias" data-slug="Concepts/Direct-Preference-Optimization-(DPO)">DPO</a> / preference</strong></td><td>LettinGo, RosePO, SPRec</td><td>optimize on (preferred vs rejected) pairs directly</td><td>no reward model needed; training is stable</td></tr></tbody></table></div>
+<h3 id="52-inference-strategies">5.2 Inference strategies<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-inference-strategies" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Once trained, how does the system actually serve recommendations?</em> (Hou et al. 2025, §4.1.3.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Strategy</th><th>What it does</th><th>Representative work</th><th>Trade-off</th></tr></thead><tbody><tr><td><strong>Direct inference</strong></td><td>send the prompt, decode an item</td><td>simplest pipeline</td><td>prompt-sensitive; no ranking signal; long histories blow up the context</td></tr><tr><td><strong>Rerank-style</strong></td><td>generate / score over a candidate set from a traditional retriever</td><td>RecRanker (two-stage, position-bias correction), LLM4Rerank, GFN4Rec</td><td>quality bounded by the upstream candidate generator</td></tr><tr><td><strong>Acceleration</strong></td><td>make LLM-based serving feasible at scale</td><td>FELLAS (LLM only for embeddings); GenRec (distill prompts); AtSpeed (<strong>speculative decoding</strong>, 2–2.5× speed-up at same Top-K)</td><td>engineering complexity grows</td></tr></tbody></table></div>
+<hr/>
+<h2 id="6-part-1-summary">6. Part 1 summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-part-1-summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>LLM-based GR in one sentence </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>LLM-based generative recommendation = translating the recommendation problem into a language task.</strong> Two challenges to remember:</p>
+<ol>
+<li><strong>Alignment</strong> — how do we inject collaborative signal the LLM never saw during pre-training?</li>
+<li><strong>Item Tokenization</strong> — how do items become discrete tokens the LLM can generate?</li>
+</ol>
+</div>
+</blockquote>
+<hr/>
+<h1 id="part-2--large-recommendation-models-lrm">PART 2 — Large Recommendation Models (LRM)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-2--large-recommendation-models-lrm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><em>Building recommendation’s own scaling law.</em> Where <strong>LLM-based GR</strong> borrows scaling from <strong>language</strong> (and must squeeze behavior data into text), <strong>LRM</strong> does the opposite: it designs <strong>native architectures for recommendation data</strong> and lets the scaling law emerge there.</p>
+</blockquote>
+<h2 id="7-industrial-bottlenecks-that-motivated-lrms">7. Industrial bottlenecks that motivated LRMs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-industrial-bottlenecks-that-motivated-lrms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Header: <em>“Over the past decade, the rapid advancements in deep learning… have largely been driven by the growth in computational scale.”</em> (Hou et al. 2025, §4.2.)</p>
+<h3 id="71-the-two-scaling-curves">7.1 The two scaling curves<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#71-the-two-scaling-curves" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>LLM parameter scale (log-scale y-axis, params in B):</strong></p>
+<pre><code>params(B) (log)
+  10^3 |                                  * GPT-4  (~1760B)
+       |                       * GPT-3.5 (175B)
+  10^0 |        * GPT-2 (1.5B)
+       | * GPT (0.12B)
+       +----------------------------------------> time
+</code></pre>
+<blockquote>
+<p>Compared to GPT-2, <strong>GPT-3.5 has ~100× more parameters</strong>.</p>
+</blockquote>
+<p><strong>RecSys efficiency vs. compute (a generalized <a href="../../../Concepts/Scaling-Laws" class="internal alias" data-slug="Concepts/Scaling-Laws">scaling law</a>):</strong></p>
+<pre><code>Accuracy
+   ^                                    .--?  (Use long-sequence modeling:
+   |                              ___,--'        DIN'18, DIEN'19, SIM'20, TWIN'23)
+   |                    Deep Learning models
+   |               ,--'  (Deep Crossing'16, DeepFM'16, Wide&amp;Deep'16, DCN'17)
+   |          Linear model (LogReg 2007, FM 2010)
+   |      Rule-based (Grundy, Mass Marketing)
+   +------------------------------------------------> FLOPS per item
+        10^5            10^7              10^10
+</code></pre>
+<blockquote>
+<p>The efficiency improvements of RSs in the past have <strong>also followed a generalized scaling law</strong> (a sigmoid in accuracy vs. compute-per-item).</p>
+</blockquote>
+<h3 id="72-the-cascaded-pipeline-and-its-three-bottlenecks">7.2 The cascaded pipeline and its three bottlenecks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#72-the-cascaded-pipeline-and-its-three-bottlenecks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>Infra &amp; Data            &quot;Heavy Comms &amp; Storage&quot;
+(User/Item Data,  ----------------------------->  CascadedRec funnel:
+ Log, Server)
+                  Retrieval        Pre-rank        Rank
+                  ~10^8 cands  -->  ~10^4      -->  ~10^3
+                  (Rule-1,2,        (Model-1         (final
+                   Model-i,j)        ...Model-j)      ranking)
+                  &lt;----------- funnel narrows ----------->
+</code></pre>
+<p>Three bottlenecks that motivated rebuilding the stack:</p>
+<ul>
+<li><strong>Fragmented Computing:</strong> overall <strong>Model FLOPs Utilization (MFU)</strong> of industrial RSs is just <strong>0.1%–1%</strong>, whereas LLM inference reaches up to <strong>~70%</strong>.</li>
+<li><strong>Inconsistent Objectives:</strong> balancing <strong>hundreds</strong> of optimization objectives degrades system consistency and efficiency.</li>
+<li><strong>Technological Gap:</strong> an <strong>architectural disconnect</strong> with technologies already validated in the LLM domain.</li>
+</ul>
+<hr/>
+<h2 id="8-choices-of-industry--three-tiers-of-scaling-strategy">8. Choices of industry — three tiers of scaling strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-choices-of-industry--three-tiers-of-scaling-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(Company in parentheses.)</p>
+<ol>
+<li><strong>Pointwise scaling of the cascaded pipeline:</strong>
+<ul>
+<li><em>More data — lifelong sequences:</em> <strong>TWIN V2</strong> (Kuaishou), <strong>LONGER</strong> (ByteDance/TikTok).</li>
+<li><em>Better architecture — ranking model:</em> <strong>Wukong</strong> (Meta), <strong>RankMixer / Zenith</strong> (ByteDance).</li>
+</ul>
+</li>
+<li><strong>Joint scaling of a unified architecture:</strong>
+<ul>
+<li><em>Joint sequential &amp; non-sequential features:</em> <strong>OneTrans, MixFormer, HyFormer</strong> (ByteDance).</li>
+<li><em>Unified scaling backbone:</em> <strong>UniMixer</strong> (Kuaishou), <strong>HSTU / KunLun</strong> (Meta), <strong>MTGR</strong> (Meituan), <strong>UniScale</strong> (Taobao/Alibaba).</li>
+</ul>
+</li>
+<li><strong>LLM-style end-to-end scaling:</strong> <code>Data ⇒ Pre-Training ⇒ (Mid-Training) ⇒ Post-Training ⇒ Test Time</code>. Examples: <strong>OneRec, OneRec-V2, OneRec-Think</strong> (Kuaishou), <strong>PLUM</strong> (Google), <strong>GPR</strong> (Tencent).</li>
+</ol>
+<h3 id="81-the-lrm-landscape-taxonomy-grid">8.1 The LRM landscape (taxonomy grid)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#81-the-lrm-landscape-taxonomy-grid" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>DATA scaling
+  ├─ Sequence length:  LONGER, TWIN-V2, SIM ...   (TikTok, Kuaishou)
+  └─ Feature dimension: Wukong ...                (Meta)
+
+MODEL scaling
+  ├─ Attention-oriented: HSTU, KunLun ...         (Meta)
+  └─ FFN-oriented:       RankMixer, UniMixer ...  (TikTok, Kuaishou)
+
+Unified Scaling (spans both): OneTrans, MixFormer, HyFormer, MTGR, UniScale ...
+   (TikTok, Kuaishou, Meituan, Taobao)
+</code></pre>
+<blockquote>
+<p>Footnote: a separate route — <strong>end-to-end generative</strong> (covered next course) — OneRec / -V2 / -Think · GPR · PLUM.</p>
+</blockquote>
+<hr/>
+<h2 id="9-the-recurring-lrm-synthesis--scale-up-stay-inside-the-latency-budget">9. The recurring LRM synthesis — “scale up, stay inside the latency budget”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-the-recurring-lrm-synthesis--scale-up-stay-inside-the-latency-budget" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>This table reappears each time a new model is introduced. The organizing axes are <strong>data</strong> (seq. length / feature dim.) × <strong>model</strong> (attention- vs FFN-oriented). The <strong>recurring trick</strong> is always the same:</p>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The universal LRM trick </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Cheaper / approximate ops · cache &amp; reuse · raise MFU → reclaim compute, then spend it on scale</strong> — all while staying inside the serving latency budget. Effectively: drag RecSys’s MFU from ~0.1–1% toward LLM-level ~70%, and pour the freed FLOPs into longer sequences, higher-order interactions, or more parameters.</p>
+</div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Paper</th><th>What it scales</th><th>How it stays inside the latency budget</th></tr></thead><tbody><tr><td><strong>LONGER</strong></td><td>Data · sequence length</td><td>KV-cache (encode user once, reuse across candidates) + token-merge. <em>Result:</em> near-linear; throughput loss −40% → −6.8%</td></tr><tr><td><strong>Wukong</strong></td><td>Data · feature dimension (interaction order)</td><td>Stacked FM blocks + embedding-wise low-rank crosses. <em>Result:</em> high-order interactions stay affordable</td></tr><tr><td><strong><a href="../../../Concepts/HSTU" class="internal" data-slug="Concepts/HSTU">HSTU</a></strong></td><td>Model · attention-oriented (+ long behavior seq.)</td><td>Pointwise (non-softmax) attention + ragged fused-GEMM kernels. <em>Result:</em> 5–15× over FlashAttention-2</td></tr><tr><td><strong>RankMixer</strong></td><td>Model · FFN-oriented (drops self-attention)</td><td>Parameter-free token-mixing + per-token FFN. <em>Result:</em> MFU 4.5% → 45%, latency flat</td></tr><tr><td><strong>OneTrans</strong></td><td>Both axes · one backbone</td><td>Causal attention + cross-request KV-cache + FlashAttention. <em>Result:</em> scales like an LLM, serves like one</td></tr></tbody></table></div>
+<p>Reference IDs: HSTU arXiv:2402.17152 · Wukong 2403.02545 · RankMixer 2507.15551 · LONGER 2505.04421 · OneTrans 2510.26104.</p>
+<hr/>
+<h2 id="10-long-sequence-scaling-line--a-brief-history--longer">10. Long-sequence scaling line — a brief history → LONGER<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10-long-sequence-scaling-line--a-brief-history--longer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(Hou et al. 2025, §4.2; TWIN-V2: Si et al., KDD’24.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Year</th><th>Model</th><th>Idea</th></tr></thead><tbody><tr><td>2018</td><td><strong>DIN</strong> (Zhou et al., KDD)</td><td>Attention over user history to localize relevant items for a candidate</td></tr><tr><td>2019</td><td><strong>DIEN</strong> (Zhou et al., AAAI)</td><td>Add an interest-evolution layer on top of DIN’s attention</td></tr><tr><td>2020</td><td><strong>SIM</strong> (Pi et al., CIKM)</td><td>Search-based retrieval over very long histories</td></tr><tr><td>2024</td><td><strong>TWIN / TWIN-V2</strong> (Kuaishou, KDD’24)</td><td>Scale ultra-long sequence modeling for CTR prediction at industrial scale</td></tr></tbody></table></div>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Common thread → the gap LONGER fills </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>All these methods retrieve a <strong>short relevant slice</strong> of a long history. <strong>None genuinely models the full ultra-long sequence end-to-end.</strong> LONGER picks up exactly that gap.</p>
+</div>
+</blockquote>
+<h3 id="101-longer--long-sequences-end-to-end-bytedance-recsys-2025">10.1 LONGER — long sequences, end to end (ByteDance, RecSys 2025)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#101-longer--long-sequences-end-to-end-bytedance-recsys-2025" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Model the ultra-long history end-to-end, efficiently, without a retrieval shortcut.</em> (Chai et al., RecSys 2025; arXiv:2505.04421.)</p>
+<p><strong>Key mechanisms:</strong></p>
+<ul>
+<li><strong>Global tokens</strong> (target item, user/CLS) with a <strong>full receptive field</strong> — an <strong>attention sink</strong> that stabilizes long-context attention.</li>
+<li><strong>Token Merge</strong> + small inner Transformers + hybrid attention.</li>
+<li><strong>KV-cache serving:</strong> encode the user sequence once, reuse it across all candidates.</li>
+</ul>
+<p><strong>Scaling &amp; impact:</strong></p>
+<ol>
+<li>End-to-end length to <strong>10,000 tokens</strong> (industry-first claim).</li>
+<li>Clean <strong>power-law scaling</strong>.</li>
+<li>KV-cache cuts online throughput loss from <strong>−40% → −6.8%</strong>.</li>
+<li>Online: e-commerce <strong>+6.5% GMV/user</strong> (live).</li>
+</ol>
+<p><strong>Architecture (diagram):</strong></p>
+<pre><code> Global Tokens                          User long sequence
+ [User Profiles, Context &amp;              (read latest -> earliest)
+  Cross Features] + [Candidate    -->   item_t, item_{t-1}, ..., item_1
+  Item Features]                              │
+        │  full receptive field over the whole long sequence
+        └────────────────> pooled outputs up
+</code></pre>
+<hr/>
+<h2 id="11-feature-interaction-scaling-line--wukong">11. Feature-interaction scaling line → Wukong<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-feature-interaction-scaling-line--wukong" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="111-wukong--scaling-feature-interaction-meta-icml-2024">11.1 Wukong — scaling feature interaction (Meta, ICML 2024)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#111-wukong--scaling-feature-interaction-meta-icml-2024" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Establish a scaling law for feature interactions, not sequences.</em> (Zhang et al., <em>Towards a Scaling Law for Large-Scale Recommendation</em>, ICML 2024; arXiv:2403.02545.)</p>
+<p><strong>Existing problem:</strong></p>
+<ul>
+<li>Recommenders scaled by growing <strong>embedding tables</strong> (sparse), not interaction power.</li>
+<li>DLRM can’t capture <strong>high-order</strong> crosses.</li>
+<li>DCNv2 / AutoInt+ hit <strong>diminishing returns &amp; instability</strong> when enlarged.</li>
+</ul>
+<p><strong>Key idea:</strong></p>
+<ol>
+<li>Stack <strong>Factorization-Machine blocks</strong> so interaction order grows exponentially with depth: layer <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> covers all orders up to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li><strong>FMB (FM + MLP):</strong> raises interaction order.</li>
+<li><strong>LCB (linear compress):</strong> preserves lower orders.</li>
+</ol>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Exponential interaction growth </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">interaction order at layer </span></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span>
+Stacking <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> FM blocks therefore reaches interaction order <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span></span></span></span></span></span></span></span></span></span></span></span> — high-order crosses become affordable through depth rather than width.</p>
+</div>
+</blockquote>
+<p><strong>Architecture (bottom-up):</strong></p>
+<pre><code>        Output Predictions
+              ^
+             MLP
+              ^
+   Interaction Stack (stacked Wukong Layers)
+              ^
+       Dense Embeddings
+
+   Each Wukong Layer:
+        ┌──────────────┐   ┌────────────────────┐
+        │ Factorization│   │ Linear Compress     │   (run in parallel)
+        │ Machine Block│   │ Block (preserve     │
+        │ (raise order)│   │  low orders)        │
+        └──────┬───────┘   └─────────┬───────────┘
+               └──── Concat ─────────┘
+                        │
+                  Add &amp; Norm   (residual connection)
+</code></pre>
+<hr/>
+<h2 id="12-attention-oriented-scaling-line--hstu">12. Attention-oriented scaling line → HSTU<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-attention-oriented-scaling-line--hstu" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="121-hstu--recommendation-gets-a-scaling-law-meta-icml-2024">12.1 HSTU — recommendation gets a scaling law (Meta, ICML 2024)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#121-hstu--recommendation-gets-a-scaling-law-meta-icml-2024" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Meta’s branching point: reframe discriminative CTR prediction as <strong>generative sequential modeling</strong>.</em> (Zhai et al., <em>Actions Speak Louder than Words</em>, ICML 2024; arXiv:2402.17152.)</p>
+<p><strong>Key reformulation:</strong></p>
+<ul>
+<li>Many pointwise samples per user → <strong>one chronological behavior sequence</strong> (items, actions, user/item features).</li>
+<li>Items &amp; actions are interleaved; predict the next action / item <strong>causally</strong>.</li>
+<li><strong>Unifies retrieval and ranking</strong> in one model.</li>
+</ul>
+<p><strong>HSTU architecture:</strong></p>
+<ol>
+<li><strong><a href="../../../Hierarchical-Sequential-Transduction-Unit" class="internal alias" data-slug="Hierarchical-Sequential-Transduction-Unit">Hierarchical Sequential Transduction Unit</a>:</strong> pointwise <em>aggregated</em> attention (<strong>SiLU</strong>, not softmax).</li>
+<li><strong>Relative position + time bias;</strong> fused, lean design.</li>
+<li><strong>Ragged fused-GEMM kernels</strong> → <strong>5–15× faster than FlashAttention-2</strong> at length 8192.</li>
+</ol>
+<p><strong>DLRM vs GR/HSTU stacks (diagram):</strong></p>
+<pre><code>        DLRM (left)                          GR / HSTU (right)
+  Top NNs: MMoE, PLE                   repeated HSTU blocks
+        ^                                       ^
+  Feature Interactions NN:             Preprocessing
+   FMs, DCN, Transformers, DHEN               ^
+        ^                              Sequentialized Unified Features
+  Embedding Operators
+        ^
+  Feature extractions (Numerical / Categorical)
+        ^
+  Raw Features
+</code></pre>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>HSTU block (read bottom-to-top inside each block) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mord"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mord"><span class="delimsizing size1">)</span></span></span></span></span>
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2279em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">⊤</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">rab</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8779em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span>
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathrm">Norm</span></span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mord"><span class="delimsizing size1">(</span></span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mord"><span class="delimsizing size1">)</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mclose">)</span></span></span></span>
+with Add &amp; Norm residual connections between stacked blocks. Where:</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> — input token representation; <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> — linear projections.</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> — gating, query, key, value streams produced by a single projection.</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> — <strong>pointwise nonlinearities (SiLU)</strong>; crucially, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> replaces the usual softmax, giving non-softmax “pointwise aggregated attention.”</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8779em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">rab</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8779em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span></span> — the <strong>relative position + time attention bias</strong> (encodes both sequence position <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> and timestamp <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>).</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">⊙</span></span></span></span> — elementwise <strong>gating</strong> by <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>.</li>
+</ul>
+<p>The three vertical bands of the figure label the stages: <strong>Feature extractions → Feature interactions → Representation transformations.</strong></p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="13-ffn-oriented-scaling-line--rankmixer">13. FFN-oriented scaling line → RankMixer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-ffn-oriented-scaling-line--rankmixer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="131-rankmixer--rethinking-self-attention-bytedance-2025">13.1 RankMixer — rethinking self-attention (ByteDance, 2025)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#131-rankmixer--rethinking-self-attention-bytedance-2025" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Is self-attention even the right primitive for industrial ranking?</em> (RankMixer, <em>Scaling Up Ranking Models in Industrial Recommenders</em>, ByteDance 2025; arXiv:2507.15551.)</p>
+<p><strong>Why not just use attention?</strong></p>
+<ul>
+<li>CPU-era handcrafted crossing is <strong>memory-bound</strong> on GPUs → MFU ≈ 4.5%.</li>
+<li>Self-attention assumes one <strong>shared space</strong>, but rec features are <strong>heterogeneous</strong> (user/item ID spaces), plus quadratic cost.</li>
+</ul>
+<p><strong>Key idea — mix, not attend:</strong></p>
+<ol>
+<li>Replace attention with a <strong>parameter-free Multi-Head Token Mixing</strong> (shuffle feature subspaces across tokens).</li>
+<li><strong>Per-Token FFN:</strong> each feature token gets its own MLP.</li>
+<li>Optional <strong>Sparse-MoE</strong>.</li>
+</ol>
+<p><strong>Architecture (diagram):</strong></p>
+<pre><code> Top (SMoE variant of Per-Token FFN):
+     tokens -> ReLU Routing (gateloss) -> Sparse-MoE of per-head experts
+               PFFN_H^1, PFFN_H^2, ..., PFFN_H^E  -> combined -> output
+
+ Bottom (Token Mixing), parameter-free reshuffle:
+     [ T tokens x D dim ]  --Split-->  transpose ( T -> H*(D/H) )
+                           --Merge-->  [ H tokens x (T*D/H) dim ]
+     (no learned attention weights — just a reshape that mixes feature
+      subspaces across tokens)
+</code></pre>
+<blockquote>
+<p><em>Result:</em> MFU lifted from <strong>4.5% → 45%</strong> with latency flat.</p>
+</blockquote>
+<hr/>
+<h2 id="14-unifying-both-axes--onetrans">14. Unifying both axes → OneTrans<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-unifying-both-axes--onetrans" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="141-onetrans--one-backbone-for-both-axes-bytedance-www-2026">14.1 OneTrans — one backbone for both axes (ByteDance, WWW 2026)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#141-onetrans--one-backbone-for-both-axes-bytedance-www-2026" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>One Transformer backbone for both feature interaction <strong>and</strong> user-behavior sequences.</em> (Zhang et al., WWW 2026; arXiv:2510.26104.)</p>
+<pre><code> Feature-interaction line (Wukong, RankMixer — scales feature crosses) ┐
+                                                                       ├─> OneTrans
+ Long-sequence line (LONGER, HSTU — scales user histories) ────────────┘   one backbone
+                                                                            for both
+</code></pre>
+<p><strong>Key design choices:</strong></p>
+<ul>
+<li><strong>Unified tokenizer:</strong> convert sequential AND non-sequential attributes into a <strong>single token stream</strong> (<code>Sequential Features</code> + <code>Non-Seq Features</code> → <code>Tokenizer</code> → OneTrans).</li>
+<li><strong>Mixed parameterization:</strong> share parameters across similar sequential tokens; token-specific parameters for non-sequential tokens.</li>
+<li><strong>Causal attention + cross-request KV cache:</strong> precompute and reuse intermediate states.</li>
+</ul>
+<blockquote>
+<p>Takeaway: <em>“One Transformer to rank them all” — recommendation now both <strong>scales like an LLM and serves like one</strong> (KV-cache, FlashAttention).</em></p>
+</blockquote>
+<hr/>
+<h1 id="part-3--comparison--conclusion">PART 3 — Comparison &amp; Conclusion<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-3--comparison--conclusion" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="15-llm-based-gr-vs-lrm--side-by-side-the-crux-of-the-lecture">15. LLM-based GR vs LRM — side by side (the crux of the lecture)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#15-llm-based-gr-vs-lrm--side-by-side-the-crux-of-the-lecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(Synthesis from Hou et al. 2025, §4.1 and §4.2.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Dimension</th><th><strong>LLM-based Rec</strong> (Part 1)</th><th><strong>LRM</strong> (Part 2)</th></tr></thead><tbody><tr><td><strong>Data form</strong></td><td>text sequence: behavior expressed as language</td><td>native action sequence: items / actions as tokens</td></tr><tr><td><strong>Source of knowledge</strong></td><td>world knowledge from web-scale pre-training</td><td>massive behavior data from the platform</td></tr><tr><td><strong>Source of scaling</strong></td><td>borrowed from language-model scaling</td><td>native to recommendation data</td></tr><tr><td><strong>Typical scenarios</strong></td><td>cold-start · cross-domain · explainable</td><td>industrial-scale main-feed ranking</td></tr><tr><td><strong>Hardest challenges</strong></td><td>aligning to collaborative signal · grounding</td><td>training infra · long-context engineering</td></tr></tbody></table></div>
+<hr/>
+<h2 id="16-when-does-generative-beat-discriminative">16. When does generative beat discriminative?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-when-does-generative-beat-discriminative" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(Hou et al. 2025, §4.) Three conditions:</p>
+<ol>
+<li><strong>Sparse data and cross-domain</strong> — discriminative models <em>starve</em> in low-signal regimes; generative models lean on world knowledge, prior text, or cross-task transfer.</li>
+<li><strong>Inherently generative tasks</strong> — dialog-based recommendation, explanation generation, content creation; discriminative scoring <strong>cannot produce these outputs at all</strong>.</li>
+<li><strong>Sufficient training compute</strong> — generative models keep gaining with more compute (the scaling law holds); discriminative models tend to <strong>saturate</strong> well before that point.</li>
+</ol>
+<h2 id="17-five-high-level-advantages-of-generative-recommendation">17. Five high-level advantages of generative recommendation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#17-five-high-level-advantages-of-generative-recommendation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><em>Hook every concept from this lecture back to one of these five</em> — they are traced through <strong>TIGER</strong> and <strong>OneRec</strong> next week (<a href="../../../Courses/RecSys/Lectures/RS-L04---Generative-Recommendation" class="internal alias" data-slug="Courses/RecSys/Lectures/RS-L04---Generative-Recommendation">RS-L04 - Generative Recommendation</a>).</p>
+<ol>
+<li><strong>World-knowledge integration</strong> — free of cold-start; understands new items / domains via pre-trained semantics.</li>
+<li><strong>Natural-language understanding</strong> — users / items / interactions expressed and reasoned about in language.</li>
+<li><strong>Reasoning ability</strong> — multi-hop preference inference and explanation become possible.</li>
+<li><strong><a href="../../../Concepts/Scaling-Laws" class="internal alias" data-slug="Concepts/Scaling-Laws">Scaling law</a></strong> — more compute = better model; both the LLM-based and LRM lines now exhibit this.</li>
+<li><strong>Creative generation</strong> — synthesize content, explanations, conversations.</li>
+</ol>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Exam focus </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Discriminative vs. generative (Q1):</strong> discriminative learns <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord text"><span class="mord">user</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">item</span></span><span class="mclose">)</span></span></span></span> and <em>scores a fixed candidate pool</em>; generative <em>produces the target token-by-token</em>, escaping the fixed pool and using world knowledge — at the cost of having to <strong>ground</strong> output to real catalog items.</li>
+<li><strong>Two routes to generative recommendation (Q4):</strong> <strong>LLM-based GR borrows scaling from language</strong> (squeeze behavior into text); <strong>LRM builds a native recommendation scaling law</strong> (design architectures for behavior data). Know the side-by-side table in §15 cold.</li>
+<li><strong>Three alignment paradigms (Q2):</strong> ① <strong>text prompting</strong> (pure NL, no CF — TALLRec, LlamaRec) → ② <strong>inject collaborative signal</strong> (project/summarize/sentence-ize CF embeddings — CoLLM, CoRAL) → ③ <strong>item tokenization</strong> (learned discrete <a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">Semantic IDs</a> — P5, TIGER). The driving tension: <strong>dense CF embeddings are not directly readable by an LLM.</strong></li>
+<li><strong>Item-tokenization ladder (Q3):</strong> L1 <a href="../../../Concepts/Atomic-Item-IDs" class="internal alias" data-slug="Concepts/Atomic-Item-IDs">atomic ID</a> → L2 text → <strong>L3 <a href="../../../Concepts/RQ-VAE" class="internal" data-slug="Concepts/RQ-VAE">RQ-VAE</a> semantic ID</strong> (the modern default: compact + semantic) → L4 semantic ID + CF → L5 adaptive.</li>
+<li><strong>Training objectives:</strong> SFT (positives only) · SSL (contrastive) · RL (rewards, can encode negatives &amp; non-diff metrics, unstable) · <a href="../../../Concepts/Direct-Preference-Optimization-(DPO)" class="internal alias" data-slug="Concepts/Direct-Preference-Optimization-(DPO)">DPO</a> (preference pairs, stable, no reward model).</li>
+<li><strong>The universal LRM trick:</strong> cheaper/approximate ops + cache &amp; reuse + raise <strong>MFU</strong> (from ~0.1–1% toward LLM-level ~70%) → reclaim compute, spend it on scale, <em>stay inside the latency budget</em>. Map each model to its axis: <strong>LONGER</strong> = sequence length, <strong>Wukong</strong> = feature-interaction order (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span> per layer), <strong><a href="../../../Concepts/HSTU" class="internal" data-slug="Concepts/HSTU">HSTU</a></strong> = attention (non-softmax SiLU, 5–15× over FlashAttention-2), <strong>RankMixer</strong> = FFN/token-mixing (MFU 4.5%→45%), <strong>OneTrans</strong> = both axes.</li>
+<li><strong>HSTU is the conceptual hinge:</strong> it reframes discriminative CTR prediction as <em>generative sequential modeling</em> and unifies retrieval + ranking — the bridge between Part 1 and Part 2.</li>
+<li><strong>When generative wins:</strong> sparse/cross-domain data, inherently generative tasks, sufficient compute. Five enduring advantages: world knowledge, NL understanding, reasoning, scaling law, creative generation.</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h2 id="key-references">Key References<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-references" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Surveys </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li>Hou et al. “A Survey on Generative Recommendation: Data, Model, and Tasks.” arXiv:2510.27157, 2025. <em>(primary source for this lecture)</em></li>
+<li>Lin et al. “How Can Recommender Systems Benefit from Large Language Models: A Survey.” arXiv:2306.05817, 2024.</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Part 1 — LLM-based Generative Recommendation:</strong></p>
+<ul>
+<li>Gao et al. <em>Chat-REC.</em> 2023.</li>
+<li>Bao et al. <em>TALLRec.</em> RecSys 2023.</li>
+<li>Yue et al. <em>LlamaRec.</em> 2023.</li>
+<li>Liao et al. <em>LLaRA.</em> SIGIR 2024.</li>
+<li>Geng et al. <em>P5.</em> RecSys 2022.</li>
+<li>Rajput et al. “Recommender Systems with Generative Retrieval” (<em>TIGER</em>). NeurIPS 2023.</li>
+<li>Zheng et al. <em>LC-Rec.</em> ICDE 2024.</li>
+</ul>
+<p><strong>Part 2 — Large Recommendation Models:</strong></p>
+<ul>
+<li>Zhai et al. “Actions Speak Louder than Words” (<em>HSTU</em>). ICML 2024 · arXiv:2402.17152.</li>
+<li>Zhang et al. <em>Wukong.</em> ICML 2024 · arXiv:2403.02545.</li>
+<li><em>RankMixer</em> (ByteDance). 2025 · arXiv:2507.15551.</li>
+<li>Chai et al. <em>LONGER.</em> RecSys 2025 · arXiv:2505.04421.</li>
+<li>Zhang et al. <em>OneTrans.</em> WWW 2026 · arXiv:2510.26104.</li>
+<li>Deng et al. <em>OneRec.</em> 2025 · arXiv:2502.18965.</li>
+</ul>
+<hr/>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Concepts:</strong></p>
+<ul>
+<li><a href="../../../Concepts/Generative-Recommendation" class="internal alias" data-slug="Concepts/Generative-Recommendation">Generative Recommendation</a> · <a href="../../../LLM-based-Generative-Recommendation" class="internal alias" data-slug="LLM-based-Generative-Recommendation">LLM-based Generative Recommendation</a> · <a href="../../../Concepts/Large-Recommendation-Models-(LRM)" class="internal alias" data-slug="Concepts/Large-Recommendation-Models-(LRM)">Large Recommendation Models (LRM)</a></li>
+<li><a href="../../../Concepts/Item-Tokenization" class="internal alias" data-slug="Concepts/Item-Tokenization">Item Tokenization</a> · <a href="../../../Concepts/Semantic-IDs" class="internal alias" data-slug="Concepts/Semantic-IDs">Semantic IDs</a> · <a href="../../../Concepts/RQ-VAE" class="internal" data-slug="Concepts/RQ-VAE">RQ-VAE</a> · <a href="../../../Concepts/Atomic-Item-IDs" class="internal alias" data-slug="Concepts/Atomic-Item-IDs">Atomic Item IDs</a></li>
+<li><a href="../../../LLM-as-Enhancer" class="internal" data-slug="LLM-as-Enhancer">LLM-as-Enhancer</a> · <a href="../../../LLM-as-Recommender" class="internal" data-slug="LLM-as-Recommender">LLM-as-Recommender</a> · <a href="../../../Concepts/In-Context-Learning" class="internal alias" data-slug="Concepts/In-Context-Learning">In-Context Learning</a></li>
+<li><a href="../../../Concepts/Collaborative-Filtering" class="internal alias" data-slug="Concepts/Collaborative-Filtering">Collaborative Filtering</a> · <a href="../../../Concepts/LoRA" class="internal" data-slug="Concepts/LoRA">LoRA</a> · <a href="../../../Concepts/Contrastive-Learning" class="internal alias" data-slug="Concepts/Contrastive-Learning">Contrastive Learning</a></li>
+<li><a href="../../../Concepts/Supervised-Fine-Tuning-(SFT)" class="internal alias" data-slug="Concepts/Supervised-Fine-Tuning-(SFT)">Supervised Fine-Tuning (SFT)</a> · <a href="../../../Concepts/Direct-Preference-Optimization-(DPO)" class="internal alias" data-slug="Concepts/Direct-Preference-Optimization-(DPO)">Direct Preference Optimization (DPO)</a> · <a href="../../../Concepts/Reinforcement-Learning" class="internal alias" data-slug="Concepts/Reinforcement-Learning">Reinforcement Learning</a></li>
+<li><a href="../../../Concepts/Next-Item-Prediction" class="internal alias" data-slug="Concepts/Next-Item-Prediction">Next-Item Prediction</a> · <a href="../../../Concepts/Autoregressive-Generation" class="internal alias" data-slug="Concepts/Autoregressive-Generation">Autoregressive Generation</a> · <a href="../../../Concepts/Scaling-Laws" class="internal alias" data-slug="Concepts/Scaling-Laws">Scaling Laws</a></li>
+<li><a href="../../../Concepts/HSTU" class="internal" data-slug="Concepts/HSTU">HSTU</a> · <a href="../../../Hierarchical-Sequential-Transduction-Unit" class="internal alias" data-slug="Hierarchical-Sequential-Transduction-Unit">Hierarchical Sequential Transduction Unit</a></li>
+</ul>
+<p><strong>Related RecSys lectures:</strong></p>
+<ul>
+<li><a href="../../../Courses/RecSys/Lectures/RS-L01---Course-Overview--and--Introduction" class="internal alias" data-slug="Courses/RecSys/Lectures/RS-L01---Course-Overview--and--Introduction">RS-L01 - Course Overview &amp; Introduction</a></li>
+<li><a href="../../../Courses/RecSys/Lectures/RS-L02---Evaluation-Beyond-Accuracy" class="internal alias" data-slug="Courses/RecSys/Lectures/RS-L02---Evaluation-Beyond-Accuracy">RS-L02 - Evaluation Beyond Accuracy</a></li>
+<li><a href="../../../Courses/RecSys/Lectures/RS-L03a---Sequential-Recommendation-Models" class="internal alias" data-slug="Courses/RecSys/Lectures/RS-L03a---Sequential-Recommendation-Models">RS-L03a - Sequential Recommendation Models</a> (preceding half of this lecture)</li>
+<li><a href="../../../Courses/RecSys/Lectures/RS-L04---Generative-Recommendation" class="internal alias" data-slug="Courses/RecSys/Lectures/RS-L04---Generative-Recommendation">RS-L04 - Generative Recommendation</a> (TIGER &amp; OneRec traced through the five advantages)</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-342" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#rs-l03b---from-llms-to-lrms" data-for="rs-l03b---from-llms-to-lrms">RS-L03b - From LLMs to LRMs</a></li><li class="depth-1"><a href="#0-the-storyline-and-learning-objectives" data-for="0-the-storyline-and-learning-objectives">0. The storyline and learning objectives</a></li><li class="depth-1"><a href="#1-discriminative-vs-generative-recommendation" data-for="1-discriminative-vs-generative-recommendation">1. Discriminative vs. Generative recommendation</a></li><li class="depth-0"><a href="#part-1--llm-based-generative-recommendation" data-for="part-1--llm-based-generative-recommendation">PART 1 — LLM-Based Generative Recommendation</a></li><li class="depth-1"><a href="#2-three-research-lines-for-llm-based-gr" data-for="2-three-research-lines-for-llm-based-gr">2. Three research lines for LLM-based GR</a></li><li class="depth-1"><a href="#3-line-1--use-a-pretrained-llm-directly" data-for="3-line-1--use-a-pretrained-llm-directly">3. Line 1 — Use a pretrained LLM directly</a></li><li class="depth-2"><a href="#31-diagrams" data-for="31-diagrams">3.1 Diagrams</a></li><li class="depth-1"><a href="#4-line-2--align-an-llm-to-recommendation-the-most-important-slide-of-41" data-for="4-line-2--align-an-llm-to-recommendation-the-most-important-slide-of-41">4. Line 2 — Align an LLM to recommendation (the most important slide of §4.1)</a></li><li class="depth-2"><a href="#41-why-alignment-is-necessary" data-for="41-why-alignment-is-necessary">4.1 Why alignment is necessary</a></li><li class="depth-2"><a href="#42-paradigm---text-prompting" data-for="42-paradigm---text-prompting">4.2 Paradigm ① — Text Prompting</a></li><li class="depth-2"><a href="#43-paradigm---inject-collaborative-signal" data-for="43-paradigm---inject-collaborative-signal">4.3 Paradigm ② — Inject Collaborative Signal</a></li><li class="depth-2"><a href="#44-paradigm---item-tokenization" data-for="44-paradigm---item-tokenization">4.4 Paradigm ③ — Item Tokenization</a></li><li class="depth-2"><a href="#45-three-alignment-paradigms--cross-comparison" data-for="45-three-alignment-paradigms--cross-comparison">4.5 Three alignment paradigms — cross-comparison</a></li><li class="depth-1"><a href="#5-line-3--training-objectives--inference" data-for="5-line-3--training-objectives--inference">5. Line 3 — Training objectives &amp; inference</a></li><li class="depth-2"><a href="#51-training-objectives" data-for="51-training-objectives">5.1 Training objectives</a></li><li class="depth-2"><a href="#52-inference-strategies" data-for="52-inference-strategies">5.2 Inference strategies</a></li><li class="depth-1"><a href="#6-part-1-summary" data-for="6-part-1-summary">6. Part 1 summary</a></li><li class="depth-0"><a href="#part-2--large-recommendation-models-lrm" data-for="part-2--large-recommendation-models-lrm">PART 2 — Large Recommendation Models (LRM)</a></li><li class="depth-1"><a href="#7-industrial-bottlenecks-that-motivated-lrms" data-for="7-industrial-bottlenecks-that-motivated-lrms">7. Industrial bottlenecks that motivated LRMs</a></li><li class="depth-2"><a href="#71-the-two-scaling-curves" data-for="71-the-two-scaling-curves">7.1 The two scaling curves</a></li><li class="depth-2"><a href="#72-the-cascaded-pipeline-and-its-three-bottlenecks" data-for="72-the-cascaded-pipeline-and-its-three-bottlenecks">7.2 The cascaded pipeline and its three bottlenecks</a></li><li class="depth-1"><a href="#8-choices-of-industry--three-tiers-of-scaling-strategy" data-for="8-choices-of-industry--three-tiers-of-scaling-strategy">8. Choices of industry — three tiers of scaling strategy</a></li><li class="depth-2"><a href="#81-the-lrm-landscape-taxonomy-grid" data-for="81-the-lrm-landscape-taxonomy-grid">8.1 The LRM landscape (taxonomy grid)</a></li><li class="depth-1"><a href="#9-the-recurring-lrm-synthesis--scale-up-stay-inside-the-latency-budget" data-for="9-the-recurring-lrm-synthesis--scale-up-stay-inside-the-latency-budget">9. The recurring LRM synthesis — “scale up, stay inside the latency budget”</a></li><li class="depth-1"><a href="#10-long-sequence-scaling-line--a-brief-history--longer" data-for="10-long-sequence-scaling-line--a-brief-history--longer">10. Long-sequence scaling line — a brief history → LONGER</a></li><li class="depth-2"><a href="#101-longer--long-sequences-end-to-end-bytedance-recsys-2025" data-for="101-longer--long-sequences-end-to-end-bytedance-recsys-2025">10.1 LONGER — long sequences, end to end (ByteDance, RecSys 2025)</a></li><li class="depth-1"><a href="#11-feature-interaction-scaling-line--wukong" data-for="11-feature-interaction-scaling-line--wukong">11. Feature-interaction scaling line → Wukong</a></li><li class="depth-2"><a href="#111-wukong--scaling-feature-interaction-meta-icml-2024" data-for="111-wukong--scaling-feature-interaction-meta-icml-2024">11.1 Wukong — scaling feature interaction (Meta, ICML 2024)</a></li><li class="depth-1"><a href="#12-attention-oriented-scaling-line--hstu" data-for="12-attention-oriented-scaling-line--hstu">12. Attention-oriented scaling line → HSTU</a></li><li class="depth-2"><a href="#121-hstu--recommendation-gets-a-scaling-law-meta-icml-2024" data-for="121-hstu--recommendation-gets-a-scaling-law-meta-icml-2024">12.1 HSTU — recommendation gets a scaling law (Meta, ICML 2024)</a></li><li class="depth-1"><a href="#13-ffn-oriented-scaling-line--rankmixer" data-for="13-ffn-oriented-scaling-line--rankmixer">13. FFN-oriented scaling line → RankMixer</a></li><li class="depth-2"><a href="#131-rankmixer--rethinking-self-attention-bytedance-2025" data-for="131-rankmixer--rethinking-self-attention-bytedance-2025">13.1 RankMixer — rethinking self-attention (ByteDance, 2025)</a></li><li class="depth-1"><a href="#14-unifying-both-axes--onetrans" data-for="14-unifying-both-axes--onetrans">14. Unifying both axes → OneTrans</a></li><li class="depth-2"><a href="#141-onetrans--one-backbone-for-both-axes-bytedance-www-2026" data-for="141-onetrans--one-backbone-for-both-axes-bytedance-www-2026">14.1 OneTrans — one backbone for both axes (ByteDance, WWW 2026)</a></li><li class="depth-0"><a href="#part-3--comparison--conclusion" data-for="part-3--comparison--conclusion">PART 3 — Comparison &amp; Conclusion</a></li><li class="depth-1"><a href="#15-llm-based-gr-vs-lrm--side-by-side-the-crux-of-the-lecture" data-for="15-llm-based-gr-vs-lrm--side-by-side-the-crux-of-the-lecture">15. LLM-based GR vs LRM — side by side (the crux of the lecture)</a></li><li class="depth-1"><a href="#16-when-does-generative-beat-discriminative" data-for="16-when-does-generative-beat-discriminative">16. When does generative beat discriminative?</a></li><li class="depth-1"><a href="#17-five-high-level-advantages-of-generative-recommendation" data-for="17-five-high-level-advantages-of-generative-recommendation">17. Five high-level advantages of generative recommendation</a></li><li class="depth-1"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-1"><a href="#key-references" data-for="key-references">Key References</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Atomic-Item-IDs" class="internal">Atomic Item IDs</a></li><li><a href="../../../Concepts/Cold-Start-Problem" class="internal">Cold Start Problem</a></li><li><a href="../../../Concepts/Collaborative-Filtering" class="internal">Collaborative Filtering</a></li><li><a href="../../../Concepts/Cross-Domain-Recommendation" class="internal">Cross-Domain Recommendation</a></li><li><a href="../../../Concepts/Diffusion-Models" class="internal">Diffusion Models</a></li><li><a href="../../../Concepts/Direct-Preference-Optimization-(DPO)" class="internal">Direct Preference Optimization (DPO)</a></li><li><a href="../../../Concepts/Generative-Recommendation" class="internal">Generative Recommendation</a></li><li><a href="../../../Concepts/HSTU" class="internal">HSTU</a></li><li><a href="../../../Concepts/In-Context-Learning" class="internal">In-Context Learning</a></li><li><a href="../../../Concepts/Item-Tokenization" class="internal">Item Tokenization</a></li><li><a href="../../../Concepts/LLM-based-Recommendation" class="internal">LLM-based Recommendation</a></li><li><a href="../../../Concepts/Large-Language-Models-(LLM)" class="internal">Large Language Models (LLM)</a></li><li><a href="../../../Concepts/Large-Recommendation-Models-(LRM)" class="internal">Large Recommendation Models (LRM)</a></li><li><a href="../../../Concepts/LoRA" class="internal">LoRA</a></li><li><a href="../../../Concepts/NDCG" class="internal">NDCG</a></li><li><a href="../../../Concepts/Next-Item-Prediction" class="internal">Next-Item Prediction</a></li><li><a href="../../../Concepts/OneRec" class="internal">OneRec</a></li><li><a href="../../../Concepts/P5" class="internal">P5</a></li><li><a href="../../../Concepts/Precision-at-K" class="internal">Precision at K</a></li><li><a href="../../../Concepts/RQ-VAE" class="internal">RQ-VAE</a></li><li><a href="../../../Concepts/Reinforcement-Learning" class="internal">Reinforcement Learning</a></li><li><a href="../../../Concepts/Scaling-Laws" class="internal">Scaling Laws</a></li><li><a href="../../../Concepts/Semantic-IDs" class="internal">Semantic IDs</a></li><li><a href="../../../Concepts/Sequential-Recommendation" class="internal">Sequential Recommendation</a></li><li><a href="../../../Concepts/Supervised-Fine-Tuning-(SFT)" class="internal">Supervised Fine-Tuning (SFT)</a></li><li><a href="../../../Concepts/TIGER" class="internal">TIGER</a></li><li><a href="../../../Concepts/Top-N-Recommendation" class="internal">Top-N Recommendation</a></li><li><a href="../../../Concepts/Transformers" class="internal">Transformers</a></li><li><a href="../../../Courses/RecSys/Lectures/RS-L01---Course-Overview--and--Introduction" class="internal">RS-L01 - Course Overview &amp; Introduction</a></li><li><a href="../../../Courses/RecSys/Lectures/RS-L02---Evaluation-Beyond-Accuracy" class="internal">RS-L02 - Evaluation Beyond Accuracy</a></li><li><a href="../../../Courses/RecSys/Lectures/RS-L03a---Sequential-Recommendation-Models" class="internal">RS-L03a - Sequential Recommendation Models</a></li><li><a href="../../../Courses/RecSys/Lectures/RS-L04---Generative-Recommendation" class="internal">RS-L04 - Generative Recommendation</a></li><li><a href="../../../Courses/RecSys/RecSys---Overview" class="internal">RecSys - Overview</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>

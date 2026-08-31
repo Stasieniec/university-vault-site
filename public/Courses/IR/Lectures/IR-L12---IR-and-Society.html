@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>IR-L12 - IR and Society — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="IR-L12 - IR and Society — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="IR-L12 - IR and Society — notes.swasilewski.com"/><meta name="twitter:description" content="IR and Society Guest Lecturer: Bhaskar Mitra, Microsoft Research Course: Information Retrieval, University of Amsterdam Overview &amp; Motivation Information Retrieval systems are no longer just tools for finding documents—they have become critical infrastructure that shapes public discourse, econom..."/><meta property="og:description" content="IR and Society Guest Lecturer: Bhaskar Mitra, Microsoft Research Course: Information Retrieval, University of Amsterdam Overview &amp; Motivation Information Retrieval systems are no longer just tools for finding documents—they have become critical infrastructure that shapes public discourse, econom..."/><meta property="og:image:alt" content="IR and Society Guest Lecturer: Bhaskar Mitra, Microsoft Research Course: Information Retrieval, University of Amsterdam Overview &amp; Motivation Information Retrieval systems are no longer just tools for finding documents—they have become critical infrastructure that shapes public discourse, econom..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/IR/Lectures/IR-L12---IR-and-Society"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/IR/Lectures/IR-L12---IR-and-Society"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="IR and Society Guest Lecturer: Bhaskar Mitra, Microsoft Research Course: Information Retrieval, University of Amsterdam Overview &amp; Motivation Information Retrieval systems are no longer just tools for finding documents—they have become critical infrastructure that shapes public discourse, econom..."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdWJ1bnR1L3VuaXZlcnNpdHktdmF1bHQtc2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/IR/Lectures/IR-L12---IR-and-Society-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/IR/Lectures/IR-L12---IR-and-Society-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/IR/Lectures/IR-L12---IR-and-Society-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/IR/Lectures/IR-L12---IR-and-Society"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-411"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-411" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/IR/">IR</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/IR/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>IR L12   IR and Society</a></div></nav><h1 class="article-title">IR-L12 - IR and Society</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-20T16:20:31.000Z">Mar 20, 2026</time><span>13 min read</span></p></div></div><article class="popover-hint"><h1 id="ir-and-society">IR and Society<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ir-and-society" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Guest Lecturer:</strong> Bhaskar Mitra, Microsoft Research
+<strong>Course:</strong> Information Retrieval, University of Amsterdam</p>
+<h2 id="overview--motivation">Overview &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Information Retrieval systems are no longer just tools for finding documents—they have become critical infrastructure that shapes public discourse, economic opportunity, and social reality. As <a href="../../../Concepts/Information-Retrieval" class="internal alias" data-slug="Concepts/Information-Retrieval">Information Retrieval</a> systems increasingly mediate access to information, jobs, news, and opportunities, researchers must grapple with their broader societal implications.</p>
+<p>This lecture introduces <strong>two distinct frames</strong> for thinking about IR’s societal impact:</p>
+<ol>
+<li><strong>Liberal Approach</strong>: Focuses on technical solutions within existing systems—algorithmic fairness, misinformation detection, and explainability</li>
+<li><strong>Critical Approach</strong>: Questions the fundamental power structures underlying IR systems and proposes emancipatory alternatives</li>
+</ol>
+<p>Both approaches acknowledge that ranking systems concentrate power and that this power must be examined. The lecture argues that a complete picture requires engaging with both perspectives.</p>
+<hr/>
+<h2 id="part-1-two-frames-for-ir--society">Part 1: Two Frames for IR &amp; Society<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-1-two-frames-for-ir--society" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="the-core-tension">The Core Tension<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-core-tension" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Intuition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Rankings concentrate power.</strong> When a system decides what information appears first, it shapes attention, opportunity, and ultimately reality. The question is not <em>whether</em> to engage with this power, but <em>how</em>.</p>
+</div>
+</blockquote>
+<p>The field of “IR &amp; Society” has emerged to address questions about:</p>
+<ul>
+<li><strong>Fairness</strong>: Who benefits and who is harmed by ranking decisions?</li>
+<li><strong>Misinformation</strong>: How do retrieval systems amplify or suppress false information?</li>
+<li><strong>Transparency</strong>: Can users and stakeholders understand how rankings are produced?</li>
+<li><strong>Power</strong>: Who controls these systems, and whose interests do they serve?</li>
+</ul>
+<h3 id="liberal-approach">Liberal Approach<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#liberal-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The <strong>liberal approach</strong> works within existing institutional frameworks to make IR systems fairer, more accurate, and more transparent. It accepts the fundamental premise of ranking systems but seeks to optimize them for better societal outcomes.</p>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li><strong>Technical focus</strong>: Develops algorithms, metrics, and evaluation frameworks</li>
+<li><strong>Reformist</strong>: Seeks incremental improvement within existing structures</li>
+<li><strong>Empirical</strong>: Emphasizes measurement, benchmarks, and quantifiable outcomes</li>
+<li><strong>Industry-aligned</strong>: Often developed in collaboration with technology companies</li>
+</ul>
+<p><strong>Core research areas:</strong></p>
+<ol>
+<li><a href="../../../Concepts/Algorithmic-Fairness" class="internal alias" data-slug="Concepts/Algorithmic-Fairness">Algorithmic Fairness</a> in ranking</li>
+<li><a href="../../../Concepts/Misinformation" class="internal" data-slug="Concepts/Misinformation">Misinformation</a> and disinformation detection</li>
+<li><a href="../../../Concepts/Explainability" class="internal" data-slug="Concepts/Explainability">Explainability</a>, interpretability, and transparency</li>
+</ol>
+<h3 id="critical-approach">Critical Approach<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#critical-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The <strong>critical approach</strong> questions the fundamental assumptions underlying IR systems and the power structures they reinforce. Drawing on critical theory, it asks who benefits from current arrangements and whether alternative configurations are possible.</p>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li><strong>Structural focus</strong>: Examines power relations, institutions, and political economy</li>
+<li><strong>Transformative</strong>: Seeks fundamental change rather than optimization</li>
+<li><strong>Normative</strong>: Explicitly engages with values and visions of a better society</li>
+<li><strong>Skeptical of industry</strong>: Questions whether corporate interests align with public good</li>
+</ul>
+<p><strong>Core research areas:</strong></p>
+<ol>
+<li><a href="../../../Concepts/Emancipatory-IR" class="internal alias" data-slug="Concepts/Emancipatory-IR">Emancipatory IR</a> frameworks</li>
+<li><a href="../../../Concepts/Critical-Information-Theory" class="internal alias" data-slug="Concepts/Critical-Information-Theory">Critical Information Theory</a></li>
+<li>Regulatory capture and Big Tech power</li>
+<li>Alternative information infrastructures</li>
+</ol>
+<hr/>
+<h2 id="part-2-algorithmic-fairness-in-ranking-liberal-approach">Part 2: Algorithmic Fairness in Ranking (Liberal Approach)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-2-algorithmic-fairness-in-ranking-liberal-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="why-fairness-matters-in-ir">Why Fairness Matters in IR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-fairness-matters-in-ir" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Algorithmic Fairness</strong>: The study of how automated decision systems can be designed to avoid systematic discrimination against individuals or groups based on protected characteristics or other morally relevant factors.</p>
+</div>
+</blockquote>
+<p>Rankings are not neutral—they allocate a scarce resource: <strong>user attention</strong>. The order in which items appear determines:</p>
+<ul>
+<li>Which job candidates get interviews</li>
+<li>Which news stories shape public opinion</li>
+<li>Which products get purchased</li>
+<li>Which voices are heard in public discourse</li>
+</ul>
+<h3 id="two-types-of-harms">Two Types of Harms<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#two-types-of-harms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Allocative Harms</strong>: Unfair distribution of resources or opportunities through ranking decisions. The system directly withholds or provides something of value.</p>
+</div>
+</blockquote>
+<p>Examples of allocative harms:</p>
+<ul>
+<li>Job candidates from certain demographics systematically ranked lower</li>
+<li>Businesses in minority neighborhoods receiving less visibility</li>
+<li>Loan applicants unfairly denied based on proxy variables</li>
+</ul>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Representational Harms</strong>: Harms to how groups are portrayed or perceived, independent of direct resource allocation. These shape stereotypes, norms, and social understanding.</p>
+</div>
+</blockquote>
+<p>Examples of representational harms:</p>
+<ul>
+<li>Image search for “CEO” returning predominantly white male faces</li>
+<li>Search results reinforcing gender stereotypes for professions</li>
+<li>Autocompletion suggesting negative associations for minority groups</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Harm Type</th><th>Nature</th><th>Example</th><th>Intervention Focus</th></tr></thead><tbody><tr><td><strong>Allocative</strong></td><td>Resource distribution</td><td>Job candidates ranked unfairly</td><td>Equal opportunity in exposure</td></tr><tr><td><strong>Representational</strong></td><td>Perception/stereotypes</td><td>Biased image search results</td><td>Diverse representation</td></tr></tbody></table></div>
+<h3 id="exposure-fairness">Exposure Fairness<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exposure-fairness" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Exposure Fairness</strong>: The principle that items (or their providers) should receive attention/visibility proportional to their relevance or merit, not distorted by position bias or systematic discrimination.</p>
+</div>
+</blockquote>
+<p>The challenge: position bias means top-ranked items receive disproportionate attention regardless of merit. Combined with any systematic bias in the ranking algorithm, this creates compounding unfairness.</p>
+<p><strong>Key insight from Biega et al. (2018)</strong>: Fairness should be measured not just at a single point in time but across repeated exposures. An item might be fairly ranked in expectation but experience high variance that harms its provider.</p>
+<h3 id="fairness-metrics">Fairness Metrics<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fairness-metrics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Several quantitative approaches have been proposed:</p>
+<p><strong>Individual Fairness</strong>: Similar items should be treated similarly. If two job candidates have equivalent qualifications, they should receive similar exposure.</p>
+<p><strong>Group Fairness</strong>: Protected groups should receive proportional representation or exposure. Subgroups defined by race, gender, or other protected attributes should not be systematically disadvantaged.</p>
+<p><strong>Meritocratic Fairness</strong>: Exposure should be proportional to relevance. An item that is twice as relevant should receive (approximately) twice the exposure.</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Warning</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>These fairness definitions can conflict with each other and with relevance optimization. There is no single “fair” ranking—fairness requires explicit value choices about what matters.</p>
+</div>
+</blockquote>
+<h3 id="tension-fairness-vs-relevance">Tension: Fairness vs. Relevance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tension-fairness-vs-relevance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A fundamental tension exists between:</p>
+<ul>
+<li><strong>User utility</strong>: Users want the most relevant results first</li>
+<li><strong>Item provider fairness</strong>: Providers want fair opportunity for exposure</li>
+<li><strong>Representational balance</strong>: Society may want diverse representation</li>
+</ul>
+<p>Research explores this trade-off through:</p>
+<ul>
+<li><strong>Fairness-constrained optimization</strong>: Maximize relevance subject to fairness constraints</li>
+<li><strong>Re-ranking approaches</strong>: Post-process rankings to improve fairness</li>
+<li><strong>Stochastic ranking</strong>: Introduce controlled randomization to balance fairness and relevance</li>
+</ul>
+<hr/>
+<h2 id="part-3-misinformation-and-disinformation-liberal-approach">Part 3: Misinformation and Disinformation (Liberal Approach)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-3-misinformation-and-disinformation-liberal-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="definitions">Definitions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#definitions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Misinformation</strong>: False or inaccurate information, regardless of intent. The spreader may genuinely believe it to be true.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Disinformation</strong>: Deliberately false information spread with intent to deceive. This includes propaganda, hoaxes, and strategic manipulation.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Malinformation</strong>: Genuine information shared with malicious intent, such as leaking private information to cause harm.</p>
+</div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Type</th><th>Intent</th><th>Truth Value</th><th>Example</th></tr></thead><tbody><tr><td><strong>Misinformation</strong></td><td>Unintentional</td><td>False</td><td>Sharing outdated medical advice</td></tr><tr><td><strong>Disinformation</strong></td><td>Deliberate deception</td><td>False</td><td>State-sponsored propaganda</td></tr><tr><td><strong>Malinformation</strong></td><td>Malicious</td><td>True</td><td>Doxxing, revenge porn</td></tr></tbody></table></div>
+<h3 id="irs-role-in-the-misinformation-ecosystem">IR’s Role in the Misinformation Ecosystem<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#irs-role-in-the-misinformation-ecosystem" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Search engines and recommendation systems play a dual role:</p>
+<p><strong>Amplification risk</strong>: Algorithms may inadvertently promote engaging but false content because:</p>
+<ul>
+<li>Sensational content generates more clicks</li>
+<li>Controversy drives engagement</li>
+<li>Filter bubbles reinforce existing beliefs</li>
+</ul>
+<p><strong>Mitigation opportunity</strong>: IR systems can potentially:</p>
+<ul>
+<li>Downrank or label unreliable sources</li>
+<li>Promote authoritative information</li>
+<li>Provide fact-checking context</li>
+</ul>
+<h3 id="technical-approaches">Technical Approaches<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#technical-approaches" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Source credibility assessment</strong>:</p>
+<ul>
+<li>Domain-level reliability scores</li>
+<li>Author expertise evaluation</li>
+<li>Citation and linking patterns</li>
+</ul>
+<p><strong>Content-based detection</strong>:</p>
+<ul>
+<li>Claim verification against knowledge bases</li>
+<li>Stylistic indicators of unreliability</li>
+<li>Contradiction detection across sources</li>
+</ul>
+<p><strong>User-facing interventions</strong>:</p>
+<ul>
+<li>Warning labels on disputed content</li>
+<li>Related articles providing context</li>
+<li>“Read before sharing” prompts</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Warning</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Challenges remain significant:</strong></p>
+<ul>
+<li>Misinformation evolves to evade detection</li>
+<li>“Ground truth” is contested for many claims</li>
+<li>Interventions may backfire (reactance, distrust)</li>
+<li>Cultural and linguistic variation in what constitutes misinformation</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h2 id="part-4-explainability-interpretability-and-transparency-liberal-approach">Part 4: Explainability, Interpretability, and Transparency (Liberal Approach)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-4-explainability-interpretability-and-transparency-liberal-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="distinguishing-the-concepts">Distinguishing the Concepts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#distinguishing-the-concepts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>These terms are often used interchangeably but have distinct meanings:</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Transparency</strong>: Openness about how a system works, what data it uses, and what decisions it makes. A system property that enables external scrutiny.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Interpretability</strong>: The degree to which a human can understand the cause of a decision. Focuses on the model’s internal logic being comprehensible.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Explainability</strong>: The ability to provide reasons for specific decisions in terms a human can understand. Often involves post-hoc explanations of black-box models.</p>
+</div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Concept</th><th>Focus</th><th>Question Answered</th><th>Example</th></tr></thead><tbody><tr><td><strong>Transparency</strong></td><td>System openness</td><td>”What does the system do?”</td><td>Publishing ranking algorithm details</td></tr><tr><td><strong>Interpretability</strong></td><td>Model comprehension</td><td>”Why does the model work this way?”</td><td>Decision tree with clear rules</td></tr><tr><td><strong>Explainability</strong></td><td>Decision justification</td><td>”Why this specific output?&quot;</td><td>&quot;This result ranked high because…”</td></tr></tbody></table></div>
+<h3 id="why-these-matter-for-ir">Why These Matter for IR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-these-matter-for-ir" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>For users</strong>:</p>
+<ul>
+<li>Understanding why results appear helps assess reliability</li>
+<li>Explanations build appropriate trust (or distrust)</li>
+<li>Users can provide better feedback if they understand the system</li>
+</ul>
+<p><strong>For item providers</strong>:</p>
+<ul>
+<li>Knowing how rankings work enables fair competition</li>
+<li>Can identify and contest unfair treatment</li>
+<li>Reduces arbitrary power of platforms</li>
+</ul>
+<p><strong>For regulators and society</strong>:</p>
+<ul>
+<li>Enables accountability for harms</li>
+<li>Allows democratic oversight of consequential systems</li>
+<li>Supports informed public debate</li>
+</ul>
+<h3 id="types-of-explanations-in-ir">Types of Explanations in IR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#types-of-explanations-in-ir" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Feature-based explanations</strong>: “This document ranked highly because it contains the query terms in the title.”</p>
+<p><strong>Example-based explanations</strong>: “Users who clicked on X also clicked on this result.”</p>
+<p><strong>Contrastive explanations</strong>: “This result ranked higher than that one because of factor Y.”</p>
+<p><strong>Counterfactual explanations</strong>: “If the document had property Z, it would have ranked lower.”</p>
+<h3 id="tensions-and-limitations">Tensions and Limitations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tensions-and-limitations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Warning</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Explanation ≠ Truth</strong>: Post-hoc explanations may not accurately reflect how the model actually made decisions. They are rationalizations, not mechanistic accounts.</p>
+</div>
+</blockquote>
+<p><strong>Gaming risk</strong>: Detailed explanations enable adversarial manipulation of rankings.</p>
+<p><strong>Complexity</strong>: Neural ranking models may be fundamentally difficult to explain faithfully.</p>
+<p><strong>Whose understanding?</strong>: Different stakeholders need different types of explanations.</p>
+<hr/>
+<h2 id="part-5-big-tech-and-regulatory-capture-critical-approach">Part 5: Big Tech and Regulatory Capture (Critical Approach)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-5-big-tech-and-regulatory-capture-critical-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="the-concentration-of-power">The Concentration of Power<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-concentration-of-power" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The critical approach begins by examining who controls IR systems and whose interests they serve:</p>
+<p><strong>Market concentration</strong>: A small number of companies dominate search, social media, and recommendation:</p>
+<ul>
+<li>Google controls ~92% of global search</li>
+<li>Meta dominates social media in many markets</li>
+<li>Amazon dominates product search and e-commerce</li>
+</ul>
+<p><strong>Information gatekeeping</strong>: These platforms determine what information billions of people see, creating unprecedented private power over public discourse.</p>
+<h3 id="regulatory-capture">Regulatory Capture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#regulatory-capture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Regulatory Capture</strong>: When regulatory agencies, created to act in the public interest, instead advance the commercial or political interests of the industries they are supposed to regulate.</p>
+</div>
+</blockquote>
+<p><strong>Mechanisms of capture in tech</strong>:</p>
+<ul>
+<li><strong>Revolving door</strong>: Personnel move between industry and regulatory positions</li>
+<li><strong>Information asymmetry</strong>: Regulators depend on industry for technical expertise</li>
+<li><strong>Lobbying</strong>: Massive spending to influence policy</li>
+<li><strong>Funding of research</strong>: Industry shapes academic agendas through grants</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>Industry-funded “fairness” research that focuses on technical fixes rather than structural change</li>
+<li>Self-regulatory frameworks that forestall stricter government regulation</li>
+<li>Standards bodies dominated by industry representatives</li>
+</ul>
+<h3 id="the-critique-of-liberal-approaches">The Critique of Liberal Approaches<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-critique-of-liberal-approaches" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The critical perspective argues that liberal approaches to fairness, misinformation, and explainability may:</p>
+<ol>
+<li><strong>Legitimate existing power structures</strong>: By proposing technical fixes, they suggest the fundamental system is sound</li>
+<li><strong>Divert attention from structural issues</strong>: Focus on algorithmic bias rather than concentrated ownership</li>
+<li><strong>Enable “ethics washing”</strong>: Companies can claim to address concerns without meaningful change</li>
+<li><strong>Reinforce technocratic control</strong>: Solutions remain in the hands of technical experts, not affected communities</li>
+</ol>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Intuition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>The critical question</strong>: Are we making a harmful system slightly less harmful, or should we be building fundamentally different systems?</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="part-6-emancipatory-ir-critical-approach">Part 6: Emancipatory IR (Critical Approach)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-6-emancipatory-ir-critical-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="the-emancipatory-framework">The Emancipatory Framework<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-emancipatory-framework" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Definition</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Emancipatory IR</strong>: An approach to information retrieval that explicitly aims to reduce domination, increase human autonomy, and serve the interests of marginalized communities rather than powerful institutions.</p>
+</div>
+</blockquote>
+<p>This framework draws on critical theory traditions including:</p>
+<ul>
+<li><strong>Frankfurt School critical theory</strong>: Questioning whose interests systems serve</li>
+<li><strong>Feminist epistemology</strong>: Centering marginalized perspectives</li>
+<li><strong>Postcolonial theory</strong>: Examining how IR systems encode Western/colonial assumptions</li>
+<li><strong>Participatory design</strong>: Involving affected communities in system design</li>
+</ul>
+<h3 id="core-principles">Core Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#core-principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1. Question the Neutral Stance</strong></p>
+<p>Traditional IR claims to neutrally retrieve “relevant” information. Emancipatory IR asks:</p>
+<ul>
+<li>Relevant to whom?</li>
+<li>Who defined relevance?</li>
+<li>Whose knowledge counts as information?</li>
+</ul>
+<p><strong>2. Center Marginalized Perspectives</strong></p>
+<p>Rather than treating “fairness” as a constraint on optimization, center the needs of those most likely to be harmed:</p>
+<ul>
+<li>Design with, not for, affected communities</li>
+<li>Prioritize reducing harm over maximizing engagement</li>
+<li>Recognize that “users” are not a homogeneous group</li>
+</ul>
+<p><strong>3. Examine Political Economy</strong></p>
+<p>Analyze how IR systems relate to:</p>
+<ul>
+<li>Labor conditions (content moderation, data labeling)</li>
+<li>Economic concentration (platform monopolies)</li>
+<li>Surveillance capitalism (data extraction)</li>
+<li>Global inequalities (whose languages, whose knowledge)</li>
+</ul>
+<p><strong>4. Prefigurative Design</strong></p>
+<p>Build systems that embody desired social relations:</p>
+<ul>
+<li>Community-controlled information infrastructure</li>
+<li>Cooperative ownership models</li>
+<li>Transparent and accountable governance</li>
+</ul>
+<h3 id="alternative-visions">Alternative Visions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#alternative-visions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Community-controlled search</strong>: Search engines governed by and accountable to user communities rather than shareholders.</p>
+<p><strong>Federated systems</strong>: Decentralized infrastructure that prevents concentration of power.</p>
+<p><strong>Solidarity-based design</strong>: Systems explicitly designed to support mutual aid and collective action.</p>
+<p><strong>Epistemic justice</strong>: IR systems that recognize and value diverse ways of knowing.</p>
+<hr/>
+<h2 id="part-7-synthesis-and-future-directions">Part 7: Synthesis and Future Directions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-7-synthesis-and-future-directions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="complementary-perspectives">Complementary Perspectives<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#complementary-perspectives" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>While liberal and critical approaches differ fundamentally, they can inform each other:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Aspect</th><th>Liberal Contribution</th><th>Critical Contribution</th></tr></thead><tbody><tr><td><strong>Fairness</strong></td><td>Quantitative metrics, algorithms</td><td>Questions whose definition of fairness</td></tr><tr><td><strong>Misinformation</strong></td><td>Detection techniques</td><td>Asks who decides what’s “true”</td></tr><tr><td><strong>Explainability</strong></td><td>Technical methods</td><td>Examines power in explanation</td></tr><tr><td><strong>Change theory</strong></td><td>Incremental improvement</td><td>Structural transformation</td></tr></tbody></table></div>
+<h3 id="research-agenda">Research Agenda<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#research-agenda" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Near-term (liberal frame)</strong>:</p>
+<ul>
+<li>Better fairness metrics that account for intersectionality</li>
+<li>More robust misinformation detection across languages and cultures</li>
+<li>Explanations that are faithful to model behavior</li>
+<li>Auditing tools for external accountability</li>
+</ul>
+<p><strong>Long-term (critical frame)</strong>:</p>
+<ul>
+<li>Alternative ownership and governance models for information infrastructure</li>
+<li>Participatory design methodologies for IR</li>
+<li>Non-Western and indigenous approaches to information organization</li>
+<li>Decentralized and community-controlled systems</li>
+</ul>
+<h3 id="responsibilities-of-ir-researchers">Responsibilities of IR Researchers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#responsibilities-of-ir-researchers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Regardless of which frame resonates, IR researchers should:</p>
+<ol>
+<li><strong>Acknowledge positionality</strong>: Recognize that technical choices embody values</li>
+<li><strong>Engage with affected communities</strong>: Research “on” people vs. research “with” people</li>
+<li><strong>Consider structural context</strong>: Individual algorithmic fixes exist within larger systems</li>
+<li><strong>Be humble about solutions</strong>: Unintended consequences are common</li>
+<li><strong>Support accountability</strong>: Enable external scrutiny of systems</li>
+</ol>
+<hr/>
+<h2 id="key-takeaways--summary">Key Takeaways &amp; Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways--summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Summary</p></div>
+                  
+                </div>
+<div class="callout-content">
+<h3 id="two-frames-for-ir--society">Two Frames for IR &amp; Society<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#two-frames-for-ir--society" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Liberal Approach:</strong></p>
+<ul>
+<li>Works within existing systems to make them fairer and more transparent</li>
+<li>Focuses on algorithmic fairness, misinformation detection, and explainability</li>
+<li>Emphasizes technical solutions, metrics, and empirical research</li>
+<li>Seeks incremental improvement through industry collaboration</li>
+</ul>
+<p><strong>Critical Approach:</strong></p>
+<ul>
+<li>Questions fundamental power structures underlying IR systems</li>
+<li>Examines regulatory capture, corporate concentration, and whose interests are served</li>
+<li>Proposes emancipatory alternatives centered on marginalized communities</li>
+<li>Seeks structural transformation rather than optimization</li>
+</ul>
+<h3 id="key-concepts">Key Concepts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-concepts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Fairness:</strong></p>
+<ul>
+<li><strong>Allocative harms</strong>: Unfair distribution of resources/opportunities</li>
+<li><strong>Representational harms</strong>: Harms to how groups are portrayed</li>
+<li><strong>Exposure fairness</strong>: Attention proportional to merit</li>
+</ul>
+<p><strong>Information Integrity:</strong></p>
+<ul>
+<li><strong>Misinformation</strong>: False information (unintentional)</li>
+<li><strong>Disinformation</strong>: Deliberately false information</li>
+<li><strong>Malinformation</strong>: True information shared maliciously</li>
+</ul>
+<p><strong>Transparency Spectrum:</strong></p>
+<ul>
+<li><strong>Transparency</strong>: System openness</li>
+<li><strong>Interpretability</strong>: Model comprehensibility</li>
+<li><strong>Explainability</strong>: Decision justification</li>
+</ul>
+<p><strong>Critical Concepts:</strong></p>
+<ul>
+<li><strong>Regulatory capture</strong>: Industry influencing its own regulation</li>
+<li><strong>Emancipatory IR</strong>: IR aimed at reducing domination and increasing autonomy</li>
+<li><strong>Prefigurative design</strong>: Building systems that embody desired social relations</li>
+</ul>
+<h3 id="core-insight">Core Insight<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#core-insight" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Rankings concentrate power. The question is not whether to engage with this power but how. Both liberal (reformist) and critical (transformative) approaches offer valuable perspectives, and a complete picture requires engaging with both.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="references">References<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#references" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="key-papers-and-researchers">Key Papers and Researchers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-papers-and-researchers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Algorithmic Fairness:</strong></p>
+<ul>
+<li>Biega, A. J., Gummadi, K. P., &amp; Weikum, G. (2018). Equity of attention: Amortizing individual fairness in rankings. <em>SIGIR</em>.</li>
+<li>Singh, A., &amp; Joachims, T. (2018). Fairness of exposure in rankings. <em>KDD</em>.</li>
+<li>Zehlike, M., Bonchi, F., Castillo, C., Hajian, S., Megahed, M., &amp; Baeza-Yates, R. (2017). FA*IR: A fair top-k ranking algorithm. <em>CIKM</em>.</li>
+</ul>
+<p><strong>Misinformation:</strong></p>
+<ul>
+<li>Lazer, D. M., et al. (2018). The science of fake news. <em>Science</em>, 359(6380), 1094-1096.</li>
+<li>Wardle, C., &amp; Derakhshan, H. (2017). Information disorder: Toward an interdisciplinary framework for research and policymaking. <em>Council of Europe Report</em>.</li>
+</ul>
+<p><strong>Explainability:</strong></p>
+<ul>
+<li>Lipton, Z. C. (2018). The mythos of model interpretability. <em>Queue</em>, 16(3), 31-57.</li>
+<li>Miller, T. (2019). Explanation in artificial intelligence: Insights from the social sciences. <em>Artificial Intelligence</em>, 267, 1-38.</li>
+</ul>
+<p><strong>Critical Perspectives:</strong></p>
+<ul>
+<li>Noble, S. U. (2018). <em>Algorithms of oppression: How search engines reinforce racism</em>. NYU Press.</li>
+<li>Zuboff, S. (2019). <em>The age of surveillance capitalism</em>. Public Affairs.</li>
+<li>Eubanks, V. (2018). <em>Automating inequality</em>. St. Martin’s Press.</li>
+</ul>
+<p><strong>Emancipatory Approaches:</strong></p>
+<ul>
+<li>Costanza-Chock, S. (2020). <em>Design justice: Community-led practices to build the worlds we need</em>. MIT Press.</li>
+<li>D’Ignazio, C., &amp; Klein, L. F. (2020). <em>Data feminism</em>. MIT Press.</li>
+</ul>
+<h3 id="lecture-source">Lecture Source<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#lecture-source" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>This lecture is based on the guest lecture by <strong>Bhaskar Mitra</strong> (Microsoft Research) on IR and Society, covering both liberal and critical approaches to understanding the societal implications of information retrieval systems.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-293" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#ir-and-society" data-for="ir-and-society">IR and Society</a></li><li class="depth-1"><a href="#overview--motivation" data-for="overview--motivation">Overview &amp; Motivation</a></li><li class="depth-1"><a href="#part-1-two-frames-for-ir--society" data-for="part-1-two-frames-for-ir--society">Part 1: Two Frames for IR &amp; Society</a></li><li class="depth-2"><a href="#the-core-tension" data-for="the-core-tension">The Core Tension</a></li><li class="depth-2"><a href="#liberal-approach" data-for="liberal-approach">Liberal Approach</a></li><li class="depth-2"><a href="#critical-approach" data-for="critical-approach">Critical Approach</a></li><li class="depth-1"><a href="#part-2-algorithmic-fairness-in-ranking-liberal-approach" data-for="part-2-algorithmic-fairness-in-ranking-liberal-approach">Part 2: Algorithmic Fairness in Ranking (Liberal Approach)</a></li><li class="depth-2"><a href="#why-fairness-matters-in-ir" data-for="why-fairness-matters-in-ir">Why Fairness Matters in IR</a></li><li class="depth-2"><a href="#two-types-of-harms" data-for="two-types-of-harms">Two Types of Harms</a></li><li class="depth-2"><a href="#exposure-fairness" data-for="exposure-fairness">Exposure Fairness</a></li><li class="depth-2"><a href="#fairness-metrics" data-for="fairness-metrics">Fairness Metrics</a></li><li class="depth-2"><a href="#tension-fairness-vs-relevance" data-for="tension-fairness-vs-relevance">Tension: Fairness vs. Relevance</a></li><li class="depth-1"><a href="#part-3-misinformation-and-disinformation-liberal-approach" data-for="part-3-misinformation-and-disinformation-liberal-approach">Part 3: Misinformation and Disinformation (Liberal Approach)</a></li><li class="depth-2"><a href="#definitions" data-for="definitions">Definitions</a></li><li class="depth-2"><a href="#irs-role-in-the-misinformation-ecosystem" data-for="irs-role-in-the-misinformation-ecosystem">IR’s Role in the Misinformation Ecosystem</a></li><li class="depth-2"><a href="#technical-approaches" data-for="technical-approaches">Technical Approaches</a></li><li class="depth-1"><a href="#part-4-explainability-interpretability-and-transparency-liberal-approach" data-for="part-4-explainability-interpretability-and-transparency-liberal-approach">Part 4: Explainability, Interpretability, and Transparency (Liberal Approach)</a></li><li class="depth-2"><a href="#distinguishing-the-concepts" data-for="distinguishing-the-concepts">Distinguishing the Concepts</a></li><li class="depth-2"><a href="#why-these-matter-for-ir" data-for="why-these-matter-for-ir">Why These Matter for IR</a></li><li class="depth-2"><a href="#types-of-explanations-in-ir" data-for="types-of-explanations-in-ir">Types of Explanations in IR</a></li><li class="depth-2"><a href="#tensions-and-limitations" data-for="tensions-and-limitations">Tensions and Limitations</a></li><li class="depth-1"><a href="#part-5-big-tech-and-regulatory-capture-critical-approach" data-for="part-5-big-tech-and-regulatory-capture-critical-approach">Part 5: Big Tech and Regulatory Capture (Critical Approach)</a></li><li class="depth-2"><a href="#the-concentration-of-power" data-for="the-concentration-of-power">The Concentration of Power</a></li><li class="depth-2"><a href="#regulatory-capture" data-for="regulatory-capture">Regulatory Capture</a></li><li class="depth-2"><a href="#the-critique-of-liberal-approaches" data-for="the-critique-of-liberal-approaches">The Critique of Liberal Approaches</a></li><li class="depth-1"><a href="#part-6-emancipatory-ir-critical-approach" data-for="part-6-emancipatory-ir-critical-approach">Part 6: Emancipatory IR (Critical Approach)</a></li><li class="depth-2"><a href="#the-emancipatory-framework" data-for="the-emancipatory-framework">The Emancipatory Framework</a></li><li class="depth-2"><a href="#core-principles" data-for="core-principles">Core Principles</a></li><li class="depth-2"><a href="#alternative-visions" data-for="alternative-visions">Alternative Visions</a></li><li class="depth-1"><a href="#part-7-synthesis-and-future-directions" data-for="part-7-synthesis-and-future-directions">Part 7: Synthesis and Future Directions</a></li><li class="depth-2"><a href="#complementary-perspectives" data-for="complementary-perspectives">Complementary Perspectives</a></li><li class="depth-2"><a href="#research-agenda" data-for="research-agenda">Research Agenda</a></li><li class="depth-2"><a href="#responsibilities-of-ir-researchers" data-for="responsibilities-of-ir-researchers">Responsibilities of IR Researchers</a></li><li class="depth-1"><a href="#key-takeaways--summary" data-for="key-takeaways--summary">Key Takeaways &amp; Summary</a></li><li class="depth-2"><a href="#two-frames-for-ir--society" data-for="two-frames-for-ir--society">Two Frames for IR &amp; Society</a></li><li class="depth-2"><a href="#key-concepts" data-for="key-concepts">Key Concepts</a></li><li class="depth-2"><a href="#core-insight" data-for="core-insight">Core Insight</a></li><li class="depth-1"><a href="#references" data-for="references">References</a></li><li class="depth-2"><a href="#key-papers-and-researchers" data-for="key-papers-and-researchers">Key Papers and Researchers</a></li><li class="depth-2"><a href="#lecture-source" data-for="lecture-source">Lecture Source</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Algorithmic-Fairness" class="internal">Algorithmic Fairness</a></li><li><a href="../../../Concepts/Critical-Information-Theory" class="internal">Critical Information Theory</a></li><li><a href="../../../Concepts/Emancipatory-IR" class="internal">Emancipatory IR</a></li><li><a href="../../../Concepts/Explainability" class="internal">Explainability</a></li><li><a href="../../../Concepts/Exposure-Fairness" class="internal">Exposure Fairness</a></li><li><a href="../../../Concepts/Misinformation" class="internal">Misinformation</a></li><li><a href="../../../Courses/IR/IR---Overview" class="internal">IR - Overview</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>
