@@ -76,7 +76,7 @@ exam_date: 2026-10-19
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Flipped-classroom lecture |
+| Lecture 3 | 3 Under-determination_online (slides) | Flipped-classroom lecture |
 
 | Reading | Pages | Source |
 |---------|-------|--------|

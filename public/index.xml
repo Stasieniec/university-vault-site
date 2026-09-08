@@ -10,19 +10,7 @@
     <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</link>
     <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</guid>
     <description><![CDATA[ Philosophy of Science — Overview Course: Philosophy of Science (5354PHSC6Y) — Sep–Oct 2026, Period 1 Programmes: MSc Logic, MSc Physics &amp; Astronomy (+ MSc AI) Credits: 6 EC Coordinator: Sebastian De Haro (s.deharo@uva.nl) Teachers: Enrico Cinti (e.cinti@uva.nl) Tutorials: Luka Vinck (l.j.vinck@u... ]]></description>
-    <pubDate>Tue, 08 Sep 2026 16:25:34 GMT</pubDate>
-  </item><item>
-    <title>PhilSci-L02 - Kuhn on Scientific Practice</title>
-    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci-L02---Kuhn-on-Scientific-Practice</link>
-    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci-L02---Kuhn-on-Scientific-Practice</guid>
-    <description><![CDATA[ PhilSci L02 - Kuhn on Scientific Practice Materials Lecture slides Topics Kuhn’s account of scientific practice and scientific revolutions . ]]></description>
-    <pubDate>Tue, 08 Sep 2026 16:25:34 GMT</pubDate>
-  </item><item>
-    <title>PhilSci-L03 - Under-determination</title>
-    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci-L03---Under-determination</link>
-    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci-L03---Under-determination</guid>
-    <description><![CDATA[ PhilSci L03 - Under-determination Materials Flipped-classroom slides Flipped classroom - Under-determination.mp4 in Canvas Modules Reading Guidance For Quine, On Empirically Equivalent Systems of the World, skip the discussion of William Craig from p. ]]></description>
-    <pubDate>Tue, 08 Sep 2026 16:25:34 GMT</pubDate>
+    <pubDate>Tue, 08 Sep 2026 16:34:21 GMT</pubDate>
   </item><item>
     <title>PhilSci-L02 - Kuhn on Scientific Practice</title>
     <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice</link>
@@ -64,6 +52,18 @@
     <link>https://notes.swasilewski.com/Concepts/A/B-Testing</link>
     <guid>https://notes.swasilewski.com/Concepts/A/B-Testing</guid>
     <description><![CDATA[ A/B Testing Definition A/B Testing A/B testing is the standard method for Online Evaluation of a recommender system: a live experiment that compares a new system (variant) against the currently deployed one (control) by randomly splitting live traffic into groups and measuring a business objective o... ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item><item>
+    <title>A3C</title>
+    <link>https://notes.swasilewski.com/Concepts/A3C</link>
+    <guid>https://notes.swasilewski.com/Concepts/A3C</guid>
+    <description><![CDATA[ A3C Definition A3C (Asynchronous Advantage Actor-Critic) A3C is an on-policy, deep Actor-Critic algorithm (Mnih et al., 2016) that runs many actor-learners in parallel, each on its own copy of the environment, asynchronously updating a shared set of global parameters. ]]></description>
+    <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
+  </item><item>
+    <title>Action-Value Methods</title>
+    <link>https://notes.swasilewski.com/Concepts/Action-Value-Methods</link>
+    <guid>https://notes.swasilewski.com/Concepts/Action-Value-Methods</guid>
+    <description><![CDATA[ Action-Value Methods Definition Action-Value Methods Action-value methods estimate the value of each action — the expected reward (or return) of selecting it — and then use those estimates to drive action selection. ]]></description>
     <pubDate>Sat, 06 Jun 2026 14:40:00 GMT</pubDate>
   </item>
     </channel>
