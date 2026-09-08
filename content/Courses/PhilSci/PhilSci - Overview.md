@@ -63,7 +63,7 @@ exam_date: 2026-10-19
 ### Week 2 (37) — Kuhn on Scientific Progress
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 2 | [[PhilSci-L02 - Kuhn on Scientific Practice]] | Kuhn on scientific practice |
+| Lecture 2 | [[Kuhn on Scientific Practice Detailed Lecture\|Kuhn on scientific practice]] | Complete lecture note |
 
 | Reading | Pages | Source |
 |---------|-------|--------|

@@ -1,6 +1,7 @@
 ---
 type: lecture
 status: active
+aliases: [Kuhn course index note]
 course: "[[PhilSci - Overview]]"
 lecture: 2
 ---

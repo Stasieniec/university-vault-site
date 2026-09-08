@@ -5,6 +5,7 @@ week: 2
 lecture: 2
 date: 2026-09-08
 status: complete
+aliases: [Kuhn on Scientific Practice Detailed Lecture]
 topics:
   - Thomas Kuhn and The Structure of Scientific Revolutions
   - Paradigms, normal science, and anomalies
@@ -196,3 +197,4 @@ Values do not thereby become evidence for the hypothesis. Rather, where false po
 ## Related course material
 
 - [[PhilSci - Overview]]
+- [[Kuhn course index note|Course index note]]
