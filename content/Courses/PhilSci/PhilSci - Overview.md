@@ -47,6 +47,10 @@ exam_date: 2026-10-19
 ## Weekly Programme
 
 ### Week 1 (Calendar 36) — What is Science? / Logical Empiricism
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 1 | [[PhilSci-L01 - Introduction and Logical Empiricism]] | Introduction and logical empiricism |
+
 | Reading | Pages | Source |
 |---------|-------|--------|
 | Carnap — The Elimination of Metaphysics | | Canvas |
@@ -57,6 +61,10 @@ exam_date: 2026-10-19
 | Richardson — Origins of Logical Empiricism | | Canvas |
 
 ### Week 2 (37) — Kuhn on Scientific Progress
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 2 | [[PhilSci-L02 - Kuhn on Scientific Practice]] | Kuhn on scientific practice |
+
 | Reading | Pages | Source |
 |---------|-------|--------|
 | Lakatos — Science and Pseudoscience | pp. 20–26 | Curd & Cover |
@@ -64,9 +72,15 @@ exam_date: 2026-10-19
 | Longino — Values and Objectivity | pp. 144–164 | Curd & Cover |
 
 ### Week 3 (38) — The Duhem-Quine Thesis
+**Flipped classroom (15 Sep):** Watch the pre-recorded lecture video, *Flipped classroom - Under-determination.mp4*, and review *3 Under-determination_online.pdf* in Canvas Modules before class.
+
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Flipped-classroom lecture |
+
 | Reading | Pages | Source |
 |---------|-------|--------|
-| Quine — On Empirically Equivalent Systems of the World | | Library |
+| Quine — On Empirically Equivalent Systems of the World | pp. 324 (last para) to 326 (first para) excluded | Library |
 | Laudan — Demystifying Underdetermination | pp. 288–320 | Curd & Cover |
 | Duhem — Physical Theory and Experiment (optional) | pp. 227–249 | Curd & Cover |
 
