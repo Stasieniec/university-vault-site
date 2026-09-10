@@ -45,38 +45,47 @@ Provides an overview of NLP problems where multilinguality plays a role:
 
 ## Weekly Schedule
 
-### Week 1 — Overview & NLP Landscape
-| | Topic | Lecturer | Readings | Notes |
-|---|-------|----------|----------|-------|
-| L1 | Introduction to NLP, Applications, Course Admin | Monz | — | [[MNLP-L01 - Overview]] |
-| **Key Dates** | Team formation & problem selection by **Sep 4** | | | |
+### Week 1: Overview and Multilinguality
+Canvas module "Week 1" holds two decks.
 
-### Week 2 — Project Kick-off
-| | Topic | Lecturer | Readings | Notes |
-|---|-------|----------|----------|-------|
-| **Project** | Literature review, data inspection, baseline model selection | | | |
+| | Topic | Lecturer | Notes |
+|---|-------|----------|-------|
+| L1 | Introduction to NLP, applications, course admin | Monz | [[MNLP-L01 - Overview]] |
+| L2 | Multilinguality and writing systems | Monz | [[MNLP-L02 - Multilinguality and Writing Systems]] |
+| **Key date** | Team formation and problem selection by **Sep 4** | | |
 
-### Week 3 — First Model
+### Week 2: Morphology and Segmentation
+Canvas module "Week 2" holds two decks plus the Zoom recording of 9 September, which was moved online because of the public transport strike.
+
+| | Topic | Lecturer | Notes |
+|---|-------|----------|-------|
+| L3 | Morphology and word formation | Monz | [[MNLP-L03 - Morphology and Word Formation]] |
+| L4 | Subword segmentation | Monz | [[MNLP-L04 - Subword Segmentation]] |
+
+> [!tip] Read L4 before choosing a mini-project
+> Subword segmentation is where the tokenizer decisions live, and every mini-project makes them whether or not it thinks about them. L4 also flags an error in the lecturer's Algorithm 2, which prunes the highest-value tokens as printed.
+
+### Week 3: First Model
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
 | **Project** | Implement first model, evaluate, debug | | | |
 
-### Week 4 — Refinement
+### Week 4: Refinement
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
 | **Project** | Refine or try alternative model; dropout, layernorm, residual connections | | | |
 
-### Week 5 — Error Analysis
+### Week 5: Error Analysis
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
 | **Project** | Second model refinement, error analysis, conclusions | | | |
 
-### Week 6 — Finalize
+### Week 6: Finalize
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
 | **Project** | Loose ends, 4-page report, presentation slides | | | |
 
-### Week 7 — Presentations
+### Week 7: Presentations
 | | Topic | Lecturer | Readings | Notes |
 |---|-------|----------|----------|-------|
 | **Project** | Team presentations (10-15 min + 5 min Q&A) | | | |
@@ -91,7 +100,7 @@ Provides an overview of NLP problems where multilinguality plays a role:
 | **2026-10-09 12:00** | Submit report (4 pp PDF), slides, code (GitHub link) |
 | Week 7 | Presentations |
 
-## Mini Project — What Makes a Good One
+## Mini Project: What Makes a Good One
 
 - Good succinct description of most relevant research papers
 - Good description of data preprocessing/settings

@@ -46,10 +46,11 @@ exam_date: 2026-10-19
 
 ## Weekly Programme
 
-### Week 1 (Calendar 36) — What is Science? / Logical Empiricism
+### Week 1 (Calendar 36): What is Science? / Logical Empiricism
 | Session | Material | Notes |
 |---------|----------|-------|
 | Lecture 1 | [[PhilSci-L01 - Introduction and Logical Empiricism]] | Introduction and logical empiricism |
+| Lecture 1b | [[PhilSci-L01b - Popper and Lakatos]] | Falsification and research programmes. **Worth 20 marks on the mock exam** |
 
 | Reading | Pages | Source |
 |---------|-------|--------|
@@ -60,7 +61,7 @@ exam_date: 2026-10-19
 | Galison — Modernism | | Canvas |
 | Richardson — Origins of Logical Empiricism | | Canvas |
 
-### Week 2 (37) — Kuhn on Scientific Progress
+### Week 2 (37): Kuhn on Scientific Progress
 | Session | Material | Notes |
 |---------|----------|-------|
 | Lecture 2 | [[Kuhn on Scientific Practice Detailed Lecture\|Kuhn on scientific practice]] | Complete lecture note |
@@ -71,12 +72,12 @@ exam_date: 2026-10-19
 | Kuhn — The Nature and Necessity of Scientific Revolutions | pp. 79–93 | Curd & Cover |
 | Longino — Values and Objectivity | pp. 144–164 | Curd & Cover |
 
-### Week 3 (38) — The Duhem-Quine Thesis
+### Week 3 (38): The Duhem-Quine Thesis
 **Flipped classroom (15 Sep):** Watch the pre-recorded lecture video, *Flipped classroom - Under-determination.mp4*, and review *3 Under-determination_online.pdf* in Canvas Modules before class.
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 3 | 3 Under-determination_online (slides) | Flipped-classroom lecture |
+| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Complete lecture note |
 
 | Reading | Pages | Source |
 |---------|-------|--------|
@@ -84,14 +85,14 @@ exam_date: 2026-10-19
 | Laudan — Demystifying Underdetermination | pp. 288–320 | Curd & Cover |
 | Duhem — Physical Theory and Experiment (optional) | pp. 227–249 | Curd & Cover |
 
-### Week 4 (39) — Explanation and Understanding
+### Week 4 (39): Explanation and Understanding
 | Reading | Pages | Source |
 |---------|-------|--------|
 | Godfrey-Smith — Explanation | | Canvas |
 | De Regt & Dieks — A Contextual Approach to Scientific Understanding | | Library |
 | De Jong & De Haro — Technological Understanding (optional) | | Library |
 
-### Week 5 (40) — Scientific Realism
+### Week 5 (40): Scientific Realism
 | Reading | Pages | Source |
 |---------|-------|--------|
 | Van Fraassen — Arguments Concerning Scientific Realism | pp. 1060–1082 | Curd & Cover |

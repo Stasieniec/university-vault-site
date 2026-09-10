@@ -897,7 +897,16 @@
     <lastmod>2026-03-20T16:20:31.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L01---Overview</loc>
-    <lastmod>2026-09-01T00:00:00.000Z</lastmod>
+    <lastmod>2026-08-31T22:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems</loc>
+    <lastmod>2026-09-10T17:39:36.873Z</lastmod>
+  </url><url>
+    <loc>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation</loc>
+    <lastmod>2026-09-10T17:39:36.873Z</lastmod>
+  </url><url>
+    <loc>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation</loc>
+    <lastmod>2026-09-10T17:39:36.873Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/MNLP/MNLP---Mini-Project</loc>
     <lastmod>2026-08-31T18:41:45.000Z</lastmod>
@@ -906,13 +915,19 @@
     <lastmod>2026-08-31T18:41:45.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism</loc>
-    <lastmod>2026-09-01T00:00:00.000Z</lastmod>
+    <lastmod>2026-08-31T22:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L01b---Popper-and-Lakatos</loc>
+    <lastmod>2026-08-31T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice</loc>
-    <lastmod>2026-09-08T00:00:00.000Z</lastmod>
+    <lastmod>2026-09-07T22:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03---Under-determination</loc>
+    <lastmod>2026-09-14T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</loc>
-    <lastmod>2026-09-08T16:34:21.000Z</lastmod>
+    <lastmod>2026-09-08T16:49:44.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RL/Book-Notes/RL-Book-Ch1---Introduction</loc>
     <lastmod>2026-06-06T14:40:00.000Z</lastmod>
@@ -1032,19 +1047,19 @@
     <lastmod>2026-06-06T14:40:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L01---Course-Overview--and--Introduction</loc>
-    <lastmod>2026-06-01T00:00:00.000Z</lastmod>
+    <lastmod>2026-05-31T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L02---Evaluation-Beyond-Accuracy</loc>
-    <lastmod>2026-06-02T00:00:00.000Z</lastmod>
+    <lastmod>2026-06-01T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03a---Sequential-Recommendation-Models</loc>
-    <lastmod>2026-06-04T00:00:00.000Z</lastmod>
+    <lastmod>2026-06-03T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L03b---From-LLMs-to-LRMs</loc>
-    <lastmod>2026-06-04T00:00:00.000Z</lastmod>
+    <lastmod>2026-06-03T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RecSys/Lectures/RS-L04---Generative-Recommendation</loc>
-    <lastmod>2026-06-05T00:00:00.000Z</lastmod>
+    <lastmod>2026-06-04T22:00:00.000Z</lastmod>
   </url><url>
     <loc>https://notes.swasilewski.com/Courses/RecSys/RecSys---Overview</loc>
     <lastmod>2026-06-06T14:40:00.000Z</lastmod>
