@@ -46,6 +46,10 @@ exam_date: 2026-10-19
 
 ## Weekly Programme
 
+> [!tip] Tutorials
+> [[PhilSci - Tutorials]] holds every tutorial discussion question with an answer, plus the full course plan from tutorial 1, which is more complete than anything else published on Canvas.
+
+
 ### Week 1 (Calendar 36): What is Science? / Logical Empiricism
 | Session | Material | Notes |
 |---------|----------|-------|
@@ -100,6 +104,26 @@ exam_date: 2026-10-19
 | Laudan — A Confutation of Convergent Realism | pp. 1108–1128 | Curd & Cover |
 
 ---
+
+### Week 6 (41): Scientific Realism 2
+
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 6 | Scientific realism, continued | Not yet given |
+
+### Week 7 (42): Laws of Nature
+
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 7 | Laws of nature | Not yet given |
+| **Presentation** | **In-class group presentation. Mandatory, no remote option, 20% of the final grade** | |
+| **Due** | First draft and presentation slides, Sunday 18 October | |
+
+### Week 8 (43): Exam
+
+| Session | Material | Notes |
+|---------|----------|-------|
+| **Exam** | Written exam, Monday 19 October 09:00. **Hard gate: minimum 5.5 regardless of other marks** | |
 
 ## Key Deadlines
 

@@ -16,25 +16,37 @@
     <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems</guid>
     <description><![CDATA[ MNLP-L02: Multilinguality and Writing Systems Overview You split on whitespace, you cap the vocabulary, you lowercase everything, and you measure string length with len(). ]]></description>
-    <pubDate>Thu, 10 Sep 2026 17:39:36 GMT</pubDate>
+    <pubDate>Thu, 10 Sep 2026 17:40:14 GMT</pubDate>
   </item><item>
     <title>MNLP-L03 - Morphology and Word Formation</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation</guid>
     <description><![CDATA[ MNLP-L03: Morphology and Word Formation Overview Your model has seen moved ten thousand times and hammered never. ]]></description>
-    <pubDate>Thu, 10 Sep 2026 17:39:36 GMT</pubDate>
+    <pubDate>Thu, 10 Sep 2026 17:40:14 GMT</pubDate>
   </item><item>
     <title>MNLP-L04 - Subword Segmentation</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation</guid>
     <description><![CDATA[ MNLP-L04: Subword Segmentation Overview Your translation system was trained with a fixed vocabulary. ]]></description>
-    <pubDate>Thu, 10 Sep 2026 17:39:36 GMT</pubDate>
+    <pubDate>Thu, 10 Sep 2026 17:40:14 GMT</pubDate>
+  </item><item>
+    <title>MNLP - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</guid>
+    <description><![CDATA[ Multilingual Natural Language Processing — Overview Course: Multilingual Natural Language Processing (5204MNLP6Y) — 2026/27 Sem. ]]></description>
+    <pubDate>Thu, 10 Sep 2026 17:40:14 GMT</pubDate>
   </item><item>
     <title>PhilSci - Overview</title>
     <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</link>
     <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</guid>
     <description><![CDATA[ Philosophy of Science — Overview Course: Philosophy of Science (5354PHSC6Y) — Sep–Oct 2026, Period 1 Programmes: MSc Logic, MSc Physics &amp; Astronomy (+ MSc AI) Credits: 6 EC Coordinator: Sebastian De Haro (s.deharo@uva.nl) Teachers: Enrico Cinti (e.cinti@uva.nl) Tutorials: Luka Vinck (l.j.vinck@u... ]]></description>
-    <pubDate>Tue, 08 Sep 2026 16:49:44 GMT</pubDate>
+    <pubDate>Thu, 10 Sep 2026 17:40:14 GMT</pubDate>
+  </item><item>
+    <title>PhilSci - Tutorials</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Tutorials</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Tutorials</guid>
+    <description><![CDATA[ PhilSci: Tutorials Overview Luka Vinck runs the tutorials and posts his slides after each one. ]]></description>
+    <pubDate>Wed, 09 Sep 2026 22:00:00 GMT</pubDate>
   </item><item>
     <title>PhilSci-L02 - Kuhn on Scientific Practice</title>
     <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice</link>
@@ -53,18 +65,6 @@
     <guid>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism</guid>
     <description><![CDATA[ Lecture 1: Introduction and Logical Empiricism Overview This lecture situates philosophy of science at the intersection of philosophy, modern logic, and modern physics. ]]></description>
     <pubDate>Mon, 31 Aug 2026 22:00:00 GMT</pubDate>
-  </item><item>
-    <title>PhilSci-L01b - Popper and Lakatos</title>
-    <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L01b---Popper-and-Lakatos</link>
-    <guid>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L01b---Popper-and-Lakatos</guid>
-    <description><![CDATA[ PhilSci-L01b: Popper and Lakatos Overview A man pushes a child into a river to drown it. Another man dies trying to pull a child out. ]]></description>
-    <pubDate>Mon, 31 Aug 2026 22:00:00 GMT</pubDate>
-  </item><item>
-    <title>MNLP - Mini Project</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Mini-Project</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Mini-Project</guid>
-    <description><![CDATA[ MNLP Mini Project Source Based on Christof Monz’s Mini Project slides (PDF in Assets/). ]]></description>
-    <pubDate>Mon, 31 Aug 2026 18:41:45 GMT</pubDate>
   </item>
     </channel>
   </rss>
