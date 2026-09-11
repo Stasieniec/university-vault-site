@@ -40,6 +40,21 @@ echo "Building..."
 cd "$SITE"
 npx quartz build 2>&1 | tail -4
 
+# public/ is the deploy artifact. Cloudflare Pages serves exactly what is committed
+# there, so any file git ignores under public/ is a page that silently never goes live.
+# Not hypothetical: public/ sat in .gitignore from 2026-09-08 to 2026-09-11. Already-tracked
+# pages kept updating, new ones were never added, and eight notes were built and published
+# to nowhere while the index pages linked to them. Fail loudly instead.
+IGNORED=$(git -C "$SITE" status --porcelain --ignored=matching -- public | grep '^!!' || true)
+if [ -n "$IGNORED" ]; then
+  echo >&2
+  echo "public/ contains git-ignored files. These pages will NOT deploy:" >&2
+  echo "$IGNORED" | head -10 >&2
+  echo "Take public/ out of .gitignore." >&2
+  exit 1
+fi
+echo "  $(find "$SITE/public" -name '*.html' | wc -l) pages built, none ignored"
+
 if [ "${1:-}" = "--push" ]; then
   echo
   echo "Publishing..."

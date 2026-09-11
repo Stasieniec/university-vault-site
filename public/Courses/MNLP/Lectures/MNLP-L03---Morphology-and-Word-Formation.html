@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>MNLP-L03 - Morphology and Word Formation — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="MNLP-L03 - Morphology and Word Formation — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="MNLP-L03 - Morphology and Word Formation — notes.swasilewski.com"/><meta name="twitter:description" content="MNLP-L03: Morphology and Word Formation Overview Your model has seen moved ten thousand times and hammered never."/><meta property="og:description" content="MNLP-L03: Morphology and Word Formation Overview Your model has seen moved ten thousand times and hammered never."/><meta property="og:image:alt" content="MNLP-L03: Morphology and Word Formation Overview Your model has seen moved ten thousand times and hammered never."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="MNLP-L03: Morphology and Word Formation Overview Your model has seen moved ten thousand times and hammered never."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci9zdGFzaWVuaWVjL3VuaXZlcnNpdHktdmF1bHQtc2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-417"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-417" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/">MNLP</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>MNLP L03   Morphology and Word Formation</a></div></nav><h1 class="article-title">MNLP-L03 - Morphology and Word Formation</h1><p show-comma="true" class="content-meta"><time datetime="2026-09-10T17:40:14.000Z">Sep 10, 2026</time><span>34 min read</span></p></div></div><article class="popover-hint"><h1 id="mnlp-l03-morphology-and-word-formation">MNLP-L03: Morphology and Word Formation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mnlp-l03-morphology-and-word-formation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Overview </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Your model has seen <em>moved</em> ten thousand times and <em>hammered</em> never. Internally <em>move</em> is index 2863 and <em>moved</em> is index 87542: two integers with nothing in common except that a lookup table happens to hold both. What is the model supposed to do when <em>hammered</em> shows up?</p>
+<p>That is the whole lecture in one question. Words are not atoms, they have internal structure, and every system that treats a word as an unanalysable index throws that structure away. For English you get away with it, mostly. For Turkish, Finnish, Russian or Inuktitut you do not, because a single lemma there surfaces as thousands of distinct forms and a fixed vocabulary sized for English blows up or silently maps most of the language to <code>&lt;unk></code>.</p>
+<p>The lecture runs in two halves that look unrelated and are not. First, where words come from at all: how you find word boundaries when the writing system does not mark them. Second, what is inside a word: morphemes, inflection, derivation, compounding, and the four-way typology of how languages package them. Both halves land on the same conclusion, which is the setup for the subword segmentation lecture that follows: word-level vocabularies are the wrong unit, and something between the character and the word has to carry the load.</p>
+</div>
+</blockquote>
+<h2 id="1-what-is-a-word-and-where-do-vocabularies-come-from">1. What is a word, and where do vocabularies come from<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-what-is-a-word-and-where-do-vocabularies-come-from" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The lecture starts by assuming the problem away, then spends the rest of the hour taking the assumption back.</p>
+<p>Assume words are either separated by white space (after punctuation splitting), or the output of an explicit word segmentation process for languages that do not mark word boundaries at all (Chinese, Thai, and others). That process is called <strong>tokenization</strong> or <strong>word segmentation</strong>, in contrast to <strong>sub-word segmentation</strong>, which is a different problem covered in the next lecture. Given tokenized text, you can collect every word that occurs and call the result your vocabulary.</p>
+<p>Three terms that get used interchangeably and should not be:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Term</th><th>What it is</th></tr></thead><tbody><tr><td><strong>Vocabulary</strong></td><td>The inventory of words in a language, or in a corpus, or known to a person</td></tr><tr><td><strong>Lexicon</strong></td><td>A store of the meanings and functions of words, not just the word forms</td></tr><tr><td><strong>Dictionary</strong></td><td>A written version of a lexicon, published or digital</td></tr></tbody></table></div>
+<p>So a vocabulary is a list. A lexicon is a list plus what the entries mean and do. Your NLP system almost always has the first and rarely has the second.</p>
+<h3 id="the-design-questions-nobody-answers-cleanly">The design questions nobody answers cleanly<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-design-questions-nobody-answers-cleanly" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Once you decide to build a vocabulary you immediately face a set of questions that the slides pose without resolving, because they genuinely do not have clean answers:</p>
+<ul>
+<li>Should it contain all words ever seen in a corpus?</li>
+<li>Should it be language-specific?</li>
+<li>Should it contain typos and misspellings?</li>
+<li>Should it contain very rare words?</li>
+<li>Should it contain all variations of a word (<em>book</em>, <em>books</em>, <em>booking</em>, <em>booked</em>), or just <em>book</em>?</li>
+<li>Should it be limited in size?</li>
+</ul>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why this list is the whole lecture in disguise </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Every one of these questions is a question about morphology. <em>book / books / booking / booked</em> is one lemma with four inflected and derived surface forms. Whether they get four vocabulary slots or one is exactly the trade-off between vocabulary size and the model’s ability to see that they are related. Typos and rare words are the same trade-off from the other side: they are forms you cannot afford a slot for, and if you refuse them a slot you need some way to still represent them.</p>
+</div>
+</blockquote>
+<h2 id="2-word-meanings-and-why-embeddings-replaced-hand-built-resources">2. Word meanings, and why embeddings replaced hand-built resources<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-word-meanings-and-why-embeddings-replaced-hand-built-resources" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>What does a word mean? The classical answer defines meaning through relations between words:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Relation</th><th>Definition</th><th>Example</th></tr></thead><tbody><tr><td><strong>Synonyms</strong></td><td>Same meaning</td><td><em>purchase</em> :: <em>acquire</em></td></tr><tr><td><strong>Hyponyms</strong></td><td>is-a</td><td><em>car</em> :: <em>vehicle</em></td></tr><tr><td><strong>Meronyms</strong></td><td>part-whole</td><td><em>wheel</em> :: <em>car</em></td></tr><tr><td><strong>Antonyms</strong></td><td>Opposites</td><td><em>small</em> :: <em>large</em></td></tr></tbody></table></div>
+<p>These are explicit, qualitative relations, and getting them requires hand-crafted resources such as WordNet. Three problems, all fatal at scale:</p>
+<ul>
+<li><strong>Expensive.</strong> Every relation is entered by a human.</li>
+<li><strong>Incomplete.</strong> No hand-built resource ever covers a real corpus.</li>
+<li><strong>Language-specific.</strong> You cannot reuse the English one for Finnish, so the cost multiplies by the number of languages, which for this course is the whole point.</li>
+</ul>
+<p>The alternative is to learn relations automatically, and to make them <strong>quantitative</strong> rather than qualitative, so that instead of asserting <em>car</em> is-a <em>vehicle</em> you can compute <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">sim</span></span><span class="mopen">(</span><span class="mord text"><span class="mord textit">car</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord textit">vehicle</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">sim</span></span><span class="mopen">(</span><span class="mord text"><span class="mord textit">car</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord textit">tree</span></span><span class="mclose">)</span></span></span></span>.</p>
+<h3 id="word-embeddings">Word embeddings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#word-embeddings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Word embeddings </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Distributed representations</strong> of words as vectors that are:</p>
+<ul>
+<li><strong>low dimensional</strong>: e.g. 512, against a vocabulary size <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span></span></span></span> that may be hundreds of thousands</li>
+<li><strong>dense</strong>: no zeros, unlike a one-hot vector or a count vector</li>
+<li><strong>continuous</strong>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span></li>
+<li><strong>learned by performing a task</strong>, specifically a prediction task, rather than being counted or hand-assigned</li>
+</ul>
+</div>
+</blockquote>
+<p>The historically important approach is <strong>Word2Vec</strong> (Mikolov et al.), which is really two approaches: <strong>Continuous Bag of Words (CBOW)</strong> and <strong>Skip-Gram</strong>. The lecture develops CBOW and only names Skip-Gram. For completeness, Skip-Gram is the mirror image: instead of predicting the centre word from its context, it predicts each context word from the centre word.</p>
+<p>See also <a href="../../../Concepts/Word-Embeddings" class="internal alias" data-slug="Concepts/Word-Embeddings">Word Embeddings</a> for the general concept note.</p>
+<h2 id="3-cbow">3. CBOW<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-cbow" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The CBOW task </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Given a position <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> in a sentence, the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> words to its left <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span> and the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> words to its right <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span>, predict the word at position <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>.</p>
+<p><code>the man X the road</code>, with <code>X = ?</code></p>
+</div>
+</blockquote>
+<p>The slide writes the right context as <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span> while calling its size <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>, which is a slip: since typically <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> it makes no difference in practice.</p>
+<p>This looks like <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>-gram language modelling with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">LM order</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, and the resemblance is the point of comparison, but it is not the same task. A language model predicts the next word from the left context only. CBOW sees both sides, which is fine because CBOW is not trying to be a language model. It is trying to produce good embeddings, and the prediction task is only a means to that end.</p>
+<p>The architecture is a feed-forward neural network with three deliberate choices:</p>
+<ul>
+<li><strong>Focus on learning the embeddings themselves</strong>, not on prediction quality</li>
+<li><strong>Simple network</strong>, because depth would spend capacity on the task instead of the representation</li>
+<li><strong>Bring the embedding/projection layer closer to the output</strong>, so the embedding does more of the work</li>
+<li>Typically <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>, with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">10</span><span class="mclose">}</span></span></span></span></li>
+</ul>
+<h3 id="architecture">Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Reproducing the slide figure: four context words go into the input layer, their vectors are summed in the projection layer, and that single summed vector predicts the centre word.</p>
+<pre><code>      Input Layer            Projection Layer       Output Layer
+
+  w_{n-2} ┌─────┐
+          │     │──────┐
+          └─────┘      │
+  w_{n-1} ┌─────┐      │        ┌───────┐
+          │     │──────┤        │  Sum  │
+          └─────┘      ├──────► │       │ ──────► ┌─────┐
+                       │        │       │         │     │  w_n
+  w_{n+1} ┌─────┐      │        └───────┘         └─────┘
+          │     │──────┤
+          └─────┘      │
+  w_{n+2} ┌─────┐      │
+          │     │──────┘
+          └─────┘
+</code></pre>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why it is called &quot;bag of words&quot; </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The projection layer <em>sums</em> the context vectors. Summation is commutative, so the order of the context words is destroyed: <code>the man X the road</code> and <code>road the X man the</code> produce the same projection. The context is a bag, not a sequence. That is a real loss of information, and it is the price paid for a very cheap model that trains on enormous corpora. See <a href="../../../Concepts/Bag-of-Words" class="internal alias" data-slug="Concepts/Bag-of-Words">Bag of Words</a> for the same idea in retrieval.</p>
+</div>
+</blockquote>
+<h2 id="4-vocabulary-short-lists-and-the-unk-problem">4. Vocabulary short-lists, and the <code>&lt;unk></code> problem<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-vocabulary-short-lists-and-the-unk-problem" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Here is where the vocabulary questions from section 1 stop being philosophical.</p>
+<p>In neural models, all weight matrices are of <strong>fixed size</strong>, and that includes input embeddings and the output layer. The output layer in particular contributes significantly to the memory footprint of the computational graph, because it is a <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> matrix plus a softmax over <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span></span></span></span> at every single position.</p>
+<p>And <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span></span></span></span> is not small. The slides give the numbers that matter for this course:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Language</th><th>Realistic vocabulary size</th></tr></thead><tbody><tr><td>English</td><td>~200K words</td></tr><tr><td>Russian</td><td>~1M words</td></tr></tbody></table></div>
+<p>That five-to-one ratio is not because Russian speakers know five times more concepts. It is because Russian marks case on every noun, so each lemma appears in many more distinct surface forms. This is the first appearance of the lecture’s central point.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Short-list </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The quick fix: <strong>ignore rare words and keep only the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> most frequent</strong>. Every rare word is mapped to a single special token, <code>&lt;unk></code>.</p>
+<p>Typical short-list sizes: 10K, 50K, 100K, sometimes 200K words.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The disadvantage </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>All rare words receive <strong>equal probability</strong> in a given context, because they are all literally the same token to the model. The model cannot prefer <em>hammered</em> over <em>doomscrolled</em> in <code>She ___ the nail</code>, since both are <code>&lt;unk></code>. Frequency-based truncation does not degrade gracefully, it collapses the entire tail into one undifferentiated symbol.</p>
+</div>
+</blockquote>
+<h2 id="5-the-pivot-contextual-information-is-not-enough">5. The pivot: contextual information is not enough<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-the-pivot-contextual-information-is-not-enough" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Distributional models do a genuinely good job on related words. Given enough sentences like</p>
+<pre><code>She moved the desk into her office.
+He moved the table into the office.
+                 ...
+They transported the table into the room.
+</code></pre>
+<p>the model learns that <em>desk</em> and <em>table</em> belong in similar contexts, and their embeddings end up close. Internally <em>desk</em> and <em>table</em> are just indices, say 11364 and 4527, and the <em>training data</em> pulls those two rows of the embedding matrix together.</p>
+<p>Now push on it:</p>
+<ul>
+<li>What about <em>move</em> (2863) and <em>moved</em> (87542)? Nothing in the indices says they are related. The model has to learn that relationship from scratch, from data, for every single inflected pair.</li>
+<li>What about <em>transports</em> (9056) and <em>transported</em> (32871)? Same problem, again from scratch.</li>
+<li>What about <strong>unseen or rare words</strong> such as <em>hammered</em>? There is no data. Context cannot help, because the word never appeared in any context.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The claim the rest of the lecture defends </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Word-internal structure (morphology) can help induce meaning for unseen words.</strong> If the model knew that <em>hammered</em> decomposes as <em>hammer</em> + <em>-ed</em>, and it already has a good embedding for <em>hammer</em> and knows what <em>-ed</em> does to a verb, it could construct a representation for a word it has never seen. Contextual information and word-internal information are complementary sources, and word-level indexing uses only the first.</p>
+</div>
+</blockquote>
+<h2 id="6-two-problems-one-preprocessing-step">6. Two problems, one preprocessing step<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-two-problems-one-preprocessing-step" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>For languages that put white space around words, tokenization is easy, with some exceptions: <code>Mr. Smith</code> should not become <code>Mr . Smith</code>, because the period is part of the abbreviation and not a sentence boundary.</p>
+<p>Beyond that, two separate problems hide under the word “segmentation”, and confusing them is a standard error:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Problem</th><th>What it is</th><th>Name</th><th>Where it is solved</th></tr></thead><tbody><tr><td><strong>First</strong></td><td>Languages without explicit word boundaries (Chinese, Japanese, Thai, Burmese). Boundaries must be established before any further processing at all</td><td><strong>Word segmentation</strong> / tokenization</td><td>This lecture, sections 7 to 9</td></tr><tr><td><strong>Second</strong></td><td>Morphologically rich languages blow up fixed vocabularies with huge inflectional possibilities</td><td><strong>Sub-word segmentation</strong></td><td>Next lecture</td></tr></tbody></table></div>
+<p>Both are about deciding where to cut a character string. They differ in what the pieces are meant to be: whole words in the first case, units below the word in the second.</p>
+<h2 id="7-finding-word-boundaries">7. Finding word boundaries<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-finding-word-boundaries" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Word segmentation must happen <strong>before</strong> POS tagging, parsing, or anything else, which makes it a hard dependency for the entire pipeline and a task in its own right, with its own benchmarks (the SIGHAN bake-offs).</p>
+<p>It is not trivial, because the same character string often segments in more than one valid way.</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The ambiguous string </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>研究生活动</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Segmentation</th><th>Reading</th></tr></thead><tbody><tr><td>研究生 | 活动</td><td>graduate-student activities</td></tr><tr><td>研究 | 生活 | 动</td><td>research on life activities</td></tr></tbody></table></div>
+<p>Both are grammatical. Nothing in the characters themselves decides between them.</p>
+</div>
+</blockquote>
+<p>The space of all possible segmentations of a string of length <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is huge, but only a few of them are actually valid.</p>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Size of the search space </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A string of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> characters has <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> internal gaps, and each gap is independently either a boundary or not:
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">#</span><span class="mord text"><span class="mord">segmentations</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>
+For a 20-character sentence that is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">19</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">524</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">288</span></span></span></span> candidate segmentations. Enumerating them is not an option, which is why every method below is either greedy or a dynamic program.</p>
+</div>
+</blockquote>
+<p>Two families of approaches: <strong>rule-based</strong>, and <strong>data-driven / statistical</strong>.</p>
+<h2 id="8-rule-based-segmentation-maximum-matching">8. Rule-based segmentation: maximum matching<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-rule-based-segmentation-maximum-matching" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Assume a pre-compiled vocabulary <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> of known words, then walk through the character string trying to <strong>match the longest known word at each position</strong>. Greedy, simple, and surprisingly strong as a baseline: still used as a preprocessing step or as a fast fallback in production pipelines.</p>
+<p>It can be applied in either direction, and the two directions often disagree on exactly the ambiguous strings you care about.</p>
+<h3 id="forward-maximum-matching-fmm">Forward Maximum Matching (FMM)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#forward-maximum-matching-fmm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="pseudo" data-theme="github-light github-dark"><code data-language="pseudo" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Algorithm: Forward Maximum Matching (FMM)</span></span>
+<span data-line><span>──────────────────────────────────────────────────────────────</span></span>
+<span data-line><span>Input:  sentence S (character string), vocabulary V,</span></span>
+<span data-line><span>        max word length L</span></span>
+<span data-line><span>Output: list of segmented words</span></span>
+<span data-line> </span>
+<span data-line><span>i ← 0</span></span>
+<span data-line><span>output ← []</span></span>
+<span data-line><span>while i &lt; length(S):</span></span>
+<span data-line><span>    for l ← min(L, length(S) − i) down to 1:</span></span>
+<span data-line><span>        w ← S[i : i+l]                 // candidate substring</span></span>
+<span data-line><span>        if w ∈ V or l == 1:</span></span>
+<span data-line><span>            append w to output</span></span>
+<span data-line><span>            i ← i + l</span></span>
+<span data-line><span>            break</span></span>
+<span data-line><span>return output</span></span></code></pre></figure>
+<p>Two details that matter. The inner loop counts <strong>down</strong> from the longest allowed length, so the first hit is by construction the longest match. The <code>or l == 1</code> clause is the escape hatch: if no substring of any length is in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>, the single character is emitted anyway so the algorithm always terminates. That escape hatch is also where out-of-vocabulary words go to die, see the limitations below.</p>
+<p>Complexity is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mclose">)</span></span></span></span> dictionary lookups for a string of length <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> and maximum word length <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>.</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>FMM on 研究生活 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> contains: 研究, 研究生, 生活, 生, 活</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Step</th><th>Position</th><th>Longest match</th><th>Remaining</th></tr></thead><tbody><tr><td>1</td><td><code>i=0</code></td><td>研究生活 → 研究生 (3 chars, ∈ V)</td><td>活</td></tr><tr><td>2</td><td><code>i=3</code></td><td>活 (1 char, ∈ V)</td><td>nil</td></tr></tbody></table></div>
+<p><strong>Return: 研究生 | 活</strong></p>
+</div>
+</blockquote>
+<h3 id="backward-maximum-matching-bmm">Backward Maximum Matching (BMM)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backward-maximum-matching-bmm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="pseudo" data-theme="github-light github-dark"><code data-language="pseudo" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Algorithm: Backward Maximum Matching (BMM)</span></span>
+<span data-line><span>──────────────────────────────────────────────────────────────</span></span>
+<span data-line><span>Input:  sentence S (character string), vocabulary V,</span></span>
+<span data-line><span>        max word length L</span></span>
+<span data-line><span>Output: list of segmented words</span></span>
+<span data-line> </span>
+<span data-line><span>i ← length(S)</span></span>
+<span data-line><span>output ← []</span></span>
+<span data-line><span>while i > 0:</span></span>
+<span data-line><span>    for l ← min(L, i) down to 1:</span></span>
+<span data-line><span>        w ← S[i−l : i]                 // candidate substring</span></span>
+<span data-line><span>        if w ∈ V or l == 1:</span></span>
+<span data-line><span>            prepend w to output</span></span>
+<span data-line><span>            i ← i − l</span></span>
+<span data-line><span>            break</span></span>
+<span data-line><span>return output</span></span></code></pre></figure>
+<p>Structurally identical to FMM with three changes: start at the end, take the substring ending at <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> rather than starting at <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>, and <strong>prepend</strong> rather than append so the output stays in reading order.</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>BMM on 研究生活 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> contains: 研究, 研究生, 生活, 生, 活</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Step</th><th>Position</th><th>Longest match</th><th>Remaining</th></tr></thead><tbody><tr><td>1</td><td><code>i=4</code></td><td>研究生活 → 生活 (2 chars, ∈ V)</td><td>研究</td></tr><tr><td>2</td><td><code>i=2</code></td><td>研究 (2 chars, ∈ V)</td><td>nil</td></tr></tbody></table></div>
+<p><strong>Return: 研究 | 生活</strong></p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Same string, same dictionary, different answer </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>FMM returns 研究生 | 活. BMM returns 研究 | 生活. Nothing changed except the direction of the scan. This is not a bug in either algorithm, it is the ambiguity of the string leaking through a greedy decision rule, and it is the entire motivation for what comes next.</p>
+</div>
+</blockquote>
+<h3 id="bidirectional-matching">Bidirectional matching<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bidirectional-matching" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Run both, then compare:</p>
+<ul>
+<li>If both segmentations <strong>agree</strong>, accept the result with high confidence. This is cheap and covers most strings.</li>
+<li>If they <strong>disagree</strong>, apply a tie-breaking heuristic. Common choices: prefer the segmentation with <strong>fewer total words</strong>, or with <strong>fewer single-character words</strong>, both of which are proxies for less fragmentation.</li>
+</ul>
+<p>On the example above, FMM gives 2 words and BMM gives 2 words, so the “fewer words” heuristic ties and the “fewer single-character words” heuristic prefers BMM’s 研究 | 生活, which has none, over FMM’s 研究生 | 活, which has one.</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why maximum matching is fundamentally limited </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>It assumes a precompiled vocabulary.</strong> Compiling a reliable, good-coverage vocabulary is labour-intensive, and it has to be done per language.</li>
+<li><strong>Genuinely new words cannot be matched at all.</strong> Names, neologisms, typos: none of them are in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>, so none of them can ever be recovered.</li>
+<li><strong>No mechanism to exploit data.</strong> The algorithm cannot get better by seeing more text. This is the direct motivation for statistical methods.</li>
+<li><strong>OOV words break silently.</strong> Anything not in the dictionary gets chopped into single characters or greedily mismatched, and nothing in the output signals that this happened.</li>
+<li><strong>Ambiguity is genuine, not a matching artifact.</strong> Some strings really do have multiple correct segmentations depending on meaning and context, so no direction-based heuristic can be right in general. You need something that weighs evidence.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="9-statistical-word-boundary-detection">9. Statistical word boundary detection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-statistical-word-boundary-detection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="reformulate-as-character-labeling">Reformulate as character labeling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reformulate-as-character-labeling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The key move: stop thinking about where to cut, and start thinking about what role each character plays. Label every character with one of four tags.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The BMES tag set </p></div>
+                  
+                </div>
+<div class="callout-content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Tag</th><th>Name</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>B</strong></td><td>Begin</td><td>First character of a multi-character word</td></tr><tr><td><strong>M</strong></td><td>Middle</td><td>Interior character of a word with 3 or more characters</td></tr><tr><td><strong>E</strong></td><td>End</td><td>Last character of a multi-character word</td></tr><tr><td><strong>S</strong></td><td>Single</td><td>A character that is itself a complete one-character word</td></tr></tbody></table></div>
+<p>Once every character has a label, the segmentation <strong>falls out automatically</strong>: insert a word boundary after every <strong>E</strong> and every <strong>S</strong>.</p>
+</div>
+</blockquote>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>BMES on 研究生活 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>研究生活 → 研/B 究/E 生/S 活/S → <strong>研究 | 生 | 活</strong></p>
+<p>Note that this is a <em>third</em> answer, different from both FMM (研究生 | 活) and BMM (研究 | 生活). Same four characters, three methods, three segmentations. The point is not that one of them is obviously right, it is that the labeling formulation lets you <em>learn</em> which is right from data instead of legislating it.</p>
+</div>
+</blockquote>
+<p>Reformulated this way, the problem is ordinary <strong>sequence labeling</strong>, and any sequence labeling method applies.</p>
+<h3 id="hmms">HMMs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hmms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>HMM for word boundaries </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>There is a <strong>hidden</strong> sequence of tags (B/M/E/S) that generated the <strong>observed</strong> sequence of characters. The model has two kinds of parameters:</p>
+<ul>
+<li><strong>Transition probabilities</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord text"><span class="mord">tag</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2175em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0525em;vertical-align:-0.3025em;"></span><span class="mord"><span class="mord text"><span class="mord">tag</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2175em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3025em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>: how likely one tag is to follow another (bigrams here). For example, B is very likely to be followed by M or E, and <strong>cannot</strong> be followed by another B.</li>
+<li><strong>Emission probabilities</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord text"><span class="mord">character</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord text"><span class="mord">tag</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2175em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>: how likely a given character is to be “produced” by a given tag. For example, 究 might have a high probability of being tagged E.</li>
+</ul>
+</div>
+</blockquote>
+<p>The joint probability of a character sequence <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and a tag sequence <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the product of the two:</p>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>HMM decoding objective </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0285em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8785em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">t</span></span><span style="top:-3.1841em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mop">ar<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∏</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>
+where:</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>-th character of the input string</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mclose">}</span></span></span></span> is the tag assigned to it</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> is a transition probability, with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> a sentence-start symbol</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> is an emission probability</li>
+</ul>
+</div>
+</blockquote>
+<p>Ideally this requires <strong>labeled data</strong>, that is a segmented corpus, so the probabilities can be estimated from counts with simple maximum likelihood estimates:</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2025em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2025em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">c</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>At inference time, given an unsegmented character string, find the most probable tag sequence given the model.</p>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What the transition matrix encodes for free </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The BMES definitions make most transitions structurally impossible, and the transition probabilities learn this from data without being told:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>From \ To</th><th>B</th><th>M</th><th>E</th><th>S</th></tr></thead><tbody><tr><td><strong>B</strong></td><td>no</td><td>yes</td><td>yes</td><td>no</td></tr><tr><td><strong>M</strong></td><td>no</td><td>yes</td><td>yes</td><td>no</td></tr><tr><td><strong>E</strong></td><td>yes</td><td>no</td><td>no</td><td>yes</td></tr><tr><td><strong>S</strong></td><td>yes</td><td>no</td><td>no</td><td>yes</td></tr></tbody></table></div>
+<p>A word must open with B, continue with zero or more M, and close with E. So B and M can only be followed by something <em>inside</em> the same word, and E and S can only be followed by something that <em>starts a new word</em>. Half the transition matrix is effectively zero, which is why even a first-order model does well here.</p>
+</div>
+</blockquote>
+<h3 id="viterbi">Viterbi<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#viterbi" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Trying and scoring all possible labelings is computationally intractable, for the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> reason from section 7 (here it is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> tag sequences, worse still). Use the <strong>Viterbi algorithm</strong>, based on <a href="../../../Concepts/Dynamic-Programming" class="internal alias" data-slug="Concepts/Dynamic-Programming">dynamic programming</a>: store intermediate results instead of recomputing them.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="pseudo" data-theme="github-light github-dark"><code data-language="pseudo" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Algorithm: Viterbi for BMES tagging</span></span>
+<span data-line><span>──────────────────────────────────────────────────────────────</span></span>
+<span data-line><span>for i = 1 to n (each character position):</span></span>
+<span data-line><span>    for each tag t in {B, M, E, S}:</span></span>
+<span data-line><span>        score[i][t] = max over previous tag t' of</span></span>
+<span data-line><span>                      ( score[i-1][t'] × P(t | t') × P(char_i | t) )</span></span>
+<span data-line><span>        keep a backpointer to whichever t' achieved that max</span></span>
+<span data-line><span>backtrace from the highest-scoring final tag to recover the full tag sequence</span></span></code></pre></figure>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The Viterbi recursion </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">score</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">t</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">score</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span>
+where:</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">score</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span> is the probability of the <strong>best possible path</strong> that ends at position <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> with tag <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> ranges over the tags at position <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></li>
+</ul>
+<p>Keeping <strong>backpointers</strong> avoids having to recompute whole paths: you store which predecessor won, then walk the pointers backwards from the best final cell.</p>
+</div>
+</blockquote>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Complexity </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> positions, and at each position every one of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord">∣</span></span></span></span> tags is compared against every one of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord">∣</span></span></span></span> predecessors. With <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> this is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span><span class="mord mathnormal">n</span></span></span></span>, which is linear in the sentence length. Compare that with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> for brute force.</p>
+</div>
+</blockquote>
+<p>The trellis, drawn out for the first three characters, with one column per position and one row per tag. Every cell keeps a single best incoming edge:</p>
+<pre><code>            研            究            生            活
+        ┌────────┐   ┌────────┐   ┌────────┐   ┌────────┐
+   B    │ score  │──►│ score  │──►│ score  │──►│ score  │
+        └────────┘╲ ╱└────────┘╲ ╱└────────┘╲ ╱└────────┘
+   M    ┌────────┐ ╳ ┌────────┐ ╳ ┌────────┐ ╳ ┌────────┐
+        │ score  │╱ ╲│ score  │╱ ╲│ score  │╱ ╲│ score  │
+        └────────┘   └────────┘   └────────┘   └────────┘
+   E    ┌────────┐   ┌────────┐   ┌────────┐   ┌────────┐
+        │ score  │   │ score  │   │ score  │   │ score  │
+        └────────┘╲ ╱└────────┘╲ ╱└────────┘╲ ╱└────────┘
+   S    ┌────────┐ ╳ ┌────────┐ ╳ ┌────────┐ ╳ ┌────────┐
+        │ score  │╱ ╲│ score  │╱ ╲│ score  │╱ ╲│ score  │
+        └────────┘   └────────┘   └────────┘   └────────┘
+
+   every cell = max over 4 incoming edges, weighted by
+   P(tag | prev_tag) × P(character | tag), plus one backpointer
+</code></pre>
+<h3 id="what-hmms-buy-and-what-they-still-cannot-do">What HMMs buy, and what they still cannot do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-hmms-buy-and-what-they-still-cannot-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Advantages of HMMs over FMM and BMM </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>No fixed dictionary of possible words is required.</strong> The model works over characters, so an unseen word is not a special case, it is just a character sequence with a plausible tag path.</li>
+<li><strong>Ambiguity is resolved with probabilistic evidence</strong> rather than direction-based tie-breaking heuristics.</li>
+<li><strong>Trainable directly from any segmented corpus</strong>, even one from a different domain.</li>
+</ul>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Shortcomings for word boundary detection </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>The first-order Markov assumption is narrow.</strong> A tag depends only on the immediately preceding tag and the current character. Higher orders are possible but more involved, and the parameter count grows as <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li><strong>No longer-range context.</strong> The model cannot directly exploit the word two positions back, or a whole surrounding phrase. This is the standard motivation for <strong>conditional random fields (CRFs)</strong>, which condition on arbitrary features of the whole input.</li>
+<li><strong>Unsupervised training degrades quality.</strong> HMMs <em>can</em> be trained fully unsupervised with Baum-Welch, an instance of EM, but quality drops.</li>
+</ul>
+<p>Any neural sequence labeling approach (LSTMs, Transformers) can be used for word boundary detection instead, and in practice is.</p>
+</div>
+</blockquote>
+<h2 id="10-types-of-morphological-change">10. Types of morphological change<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10-types-of-morphological-change" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Second half of the lecture. We now have words. What is inside them?</p>
+<p>The <strong>stem</strong>, <strong>root</strong> or <strong>lemma</strong> of a word defines its core meaning. Three processes operate on it.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Inflection </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Retains the part of speech</strong>, but changes grammatical features such as number and tense.</p>
+<ul>
+<li>tense: <em>see, saw, seen</em>; <em>bake, baked, baking</em></li>
+<li>number: <em>book, books</em>; <em>see, sees</em></li>
+</ul>
+<p><em>see</em> and <em>saw</em> are both verbs. <em>book</em> and <em>books</em> are both nouns. Inflection never gives you a new dictionary entry, it gives you another form of the same one.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Derivation </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Changes the part of speech and/or the meaning.</strong></p>
+<ul>
+<li>change in POS: <em>happy</em> (adj) → <em>happiness</em> (noun) → <em>happily</em> (adv)</li>
+<li>change in meaning: <em>function</em> → <em>disfunction</em>; <em>perfect</em> → <em>imperfect</em></li>
+</ul>
+<p>Derivation produces what a lexicographer would call a new word, with its own dictionary entry.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Compounding </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Combines several words into one word.</strong></p>
+<ul>
+<li>noun + noun: German <em>Tisch</em> + <em>Bein</em> = <em>Tischbein</em> (table leg)</li>
+<li>adjective + verb: German <em>sicher</em> + <em>gehen</em> = <em>sichergehen</em> (sure + go = “ensure”, “make sure”)</li>
+</ul>
+<p>Both examples are German, and that is not an accident: German writes compounds as single orthographic words where English writes them as phrases. <em>Tischbein</em> is one token, <em>table leg</em> is two. The morphology is the same, the tokenization consequences are not.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Productivity is the thing that hurts </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Morphological processes are <strong>very productive</strong>: they can be applied iteratively and in new combinations, and this leads to a large increase in vocabulary size.</p>
+<p><em>doomscrolling, doomscrolled, doomscrolls, doomscroller</em></p>
+<p>This word did not exist a few years ago. It is already a compound (<em>doom</em> + <em>scroll</em>) carrying inflection (<em>-ing</em>, <em>-ed</em>, <em>-s</em>) and derivation (<em>-er</em>). Four vocabulary slots, or more, for a lemma no corpus from 2015 contains. No fixed vocabulary can be closed over a productive process, which is the formal reason OOV never goes away.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Spelling on the slides </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The slides write <em>disfunction</em> and <em>disfunctional</em>. Standard English is <em>dysfunction</em> / <em>dysfunctional</em>, from Greek <em>dys-</em>, not Latin <em>dis-</em>. The morphological point (a negating prefix changing meaning without changing POS) is unaffected, but do not reproduce the spelling in a report.</p>
+</div>
+</blockquote>
+<h2 id="11-inflectional-morphology-in-detail">11. Inflectional morphology in detail<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-inflectional-morphology-in-detail" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="english-verbs">English verbs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#english-verbs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Five forms, and the same five slots for regular and irregular verbs:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Form</th><th><em>see</em></th><th><em>call</em></th><th><em>try</em></th><th><em>speak</em></th><th><em>send</em></th><th><em>change</em></th></tr></thead><tbody><tr><td>Present tense</td><td>see</td><td>call</td><td>try</td><td>speak</td><td>send</td><td>change</td></tr><tr><td>Simple past</td><td>saw</td><td>called</td><td>tried</td><td>spoke</td><td>sent</td><td>changed</td></tr><tr><td>Past participle</td><td>seen</td><td>called</td><td>tried</td><td>spoken</td><td>sent</td><td>changed</td></tr><tr><td>Present participle</td><td>seeing</td><td>calling</td><td>trying</td><td>speaking</td><td>sending</td><td>changing</td></tr><tr><td>3rd person singular</td><td>sees</td><td>calls</td><td>tries</td><td>speaks</td><td>sends</td><td>changes</td></tr></tbody></table></div>
+<p>Note how little the regular verbs distinguish: for <em>call</em>, simple past and past participle are the same string, so the paradigm has 5 slots but only 4 distinct forms. English inflection is impoverished, which is exactly why English-shaped assumptions travel badly.</p>
+<h3 id="english-nouns">English nouns<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#english-nouns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Number</strong> (singular vs plural): <em>book, books</em>; <em>house, houses</em></li>
+<li><strong>Case</strong>, on pronouns only: <em>he</em>, <em>him</em> (accusative), <em>his</em> (possessive), <em>them</em> (accusative + plural), <em>their</em> (possessive + plural)</li>
+</ul>
+<p>That “pronouns only” is the crucial limitation. English nouns do not mark case at all, so an English-trained intuition has no slot for it.</p>
+<h3 id="other-languages-are-much-richer">Other languages are much richer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#other-languages-are-much-richer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Language</th><th>Feature</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Russian</strong></td><td>More cases, and cases marked on <strong>all</strong> nouns, not just pronouns</td><td>see <em>knigami</em> in section 14</td></tr><tr><td><strong>German</strong></td><td><strong>Mood</strong>: <em>kommt</em> (indicative), <em>käme</em> (subjunctive), <em>komm</em> (imperative)</td><td>one verb, three moods, three forms</td></tr><tr><td><strong>Russian, Czech, Polish</strong></td><td><strong>Aspect</strong>: Russian <em>sdelat’</em> (perfective, completed) vs <em>delat’</em> (imperfective, ongoing)</td><td>a distinction English has no inflectional marking for at all</td></tr></tbody></table></div>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why this multiplies rather than adds </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Inflectional features are independent slots, so the number of forms of a lemma is the <strong>product</strong> of the slot sizes, not their sum. English nouns have 2 numbers and no case, so 2 forms. Add a six-way case system and you have 12. Add possessive marking with six persons and you have 72, from one lemma, before any derivation. This is the arithmetic behind English 200K versus Russian 1M from section 4.</p>
+</div>
+</blockquote>
+<h2 id="12-derivational-morphology-in-detail">12. Derivational morphology in detail<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-derivational-morphology-in-detail" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Grouped by what the affix does:</p>
+<p><strong>English nominalization</strong> (make a noun):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Pattern</th><th>Example</th></tr></thead><tbody><tr><td>verb + <em>-ation</em></td><td><em>derive</em> + <em>-ation</em> = <em>derivation</em></td></tr><tr><td>verb + <em>-er</em></td><td><em>kill</em> + <em>-er</em> = <em>killer</em>; <em>bake</em> + <em>-er</em> = <em>baker</em></td></tr><tr><td>adjective + <em>-ness</em></td><td><em>happy</em> + <em>-ness</em> = <em>happiness</em></td></tr></tbody></table></div>
+<p><strong>English adjectivization</strong> (make an adjective):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Pattern</th><th>Example</th></tr></thead><tbody><tr><td>verb + <em>-able</em></td><td><em>accountable</em>, <em>reasonable</em></td></tr><tr><td>noun + <em>-al</em></td><td><em>parental</em>; <em>colony</em> + <em>-al</em> = <em>colonial</em>; <em>office</em> + <em>-al</em> = <em>official</em></td></tr></tbody></table></div>
+<p><strong>English negation</strong> (change the meaning, keep the POS):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Prefix</th><th>Examples</th></tr></thead><tbody><tr><td><em>un-</em></td><td><em>unseen</em>, <em>unheard</em></td></tr><tr><td><em>mis-</em></td><td><em>misjudge</em>, <em>misappropriation</em></td></tr><tr><td><em>dis-</em></td><td><em>disfunctional</em> (standard spelling: <em>dysfunctional</em>)</td></tr><tr><td><em>im-</em></td><td><em>implausible</em></td></tr><tr><td><em>in-</em></td><td><em>indifferent</em></td></tr></tbody></table></div>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Two things worth noticing </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Spelling changes at the boundary.</strong> <em>colony</em> + <em>-al</em> is not <em>colonyal</em>, it is <em>colonial</em>. <em>office</em> + <em>-al</em> is <em>official</em>, not <em>officeal</em>. The morpheme is regular, the surface string is not, so a naive “strip the suffix and look up the stem” analyser fails on exactly these cases.</p>
+<p><strong>The negation prefixes are not interchangeable.</strong> <em>im-</em> before labials (<em>implausible</em>), <em>in-</em> elsewhere (<em>indifferent</em>): they are conditioned variants of the same underlying morpheme. A model that treats <em>im-</em> and <em>in-</em> as unrelated strings misses that they do the same job.</p>
+</div>
+</blockquote>
+<h2 id="13-morphemes">13. Morphemes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-morphemes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Morpheme </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The <strong>smallest meaning-carrying parts of words</strong>.</p>
+<p><em>disproportionally</em> = <em>dis</em> + <em>proportion</em> + <em>al</em> + <em>ly</em> = prefix + stem + suffix + suffix</p>
+</div>
+</blockquote>
+<p>One word, four morphemes, each contributing something: negation, the core meaning, a POS change to adjective, a POS change to adverb.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Term</th><th>Bound or free</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Root</strong></td><td>Free</td><td>The morpheme that determines the basic meaning of a word, and can stand alone</td></tr><tr><td><strong>Affix</strong></td><td>Bound</td><td>Attached to a root to change meaning or grammatical function, and cannot stand alone</td></tr></tbody></table></div>
+<p>The distinction between <strong>free</strong> morphemes (which are words on their own: <em>proportion</em>, <em>book</em>, <em>see</em>) and <strong>bound</strong> morphemes (which are not: <em>dis-</em>, <em>-al</em>, <em>-ly</em>, <em>-ed</em>) is the one that matters for segmentation, because bound morphemes are precisely the pieces that will never appear as standalone tokens in a corpus.</p>
+<h3 id="kinds-of-affix-by-position">Kinds of affix, by position<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#kinds-of-affix-by-position" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Affix</th><th>Position</th><th>Example</th></tr></thead><tbody><tr><td><strong>Prefix</strong></td><td>Attaches to the front. In English, mostly only one per word</td><td><em>dis-</em> in <em>disproportionally</em></td></tr><tr><td><strong>Suffix</strong></td><td>Attaches to the end. There can be more than one</td><td><em>-al</em> and <em>-ly</em> in <em>disproportionally</em></td></tr><tr><td><strong>Infix</strong></td><td>Inserted in the middle of a word. More common in other languages</td><td><em>passerby</em> + <em>-s-</em> = <em>passersby</em></td></tr><tr><td><strong>Circumfix</strong></td><td>Attaches to the front and back <strong>simultaneously</strong></td><td>German <em>ge</em>-seh-<em>en</em> (past participle of <em>sehen</em>)</td></tr></tbody></table></div>
+<p>The circumfix is the interesting one for NLP: <em>gesehen</em> cannot be analysed by stripping a prefix or a suffix independently, because <em>ge-</em> and <em>-en</em> are one morpheme in two pieces. Neither half means “past participle” on its own.</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The infix example is atypical </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><em>passerby → passersby</em> is really plural marking on the head noun <em>passer</em> inside a compound, not infixation in the strict sense. English has almost no true infixes. Languages with productive infixation (Tagalog, for instance) place a genuine morpheme inside the root. The slide’s own hedge, “more common in other languages”, is doing a lot of work.</p>
+</div>
+</blockquote>
+<h3 id="concatenative-versus-non-concatenative">Concatenative versus non-concatenative<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#concatenative-versus-non-concatenative" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>All the examples above are <strong>concatenative</strong>: morphemes are strung together, and the word is the concatenation of its parts. This is the case that string-splitting handles.</p>
+<p><strong>Non-concatenative</strong> morphology changes the root itself. The lecture’s example is <strong>apophony</strong>, a vowel change:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>German</th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td>book</td><td><em>Buch</em></td><td><em>Bücher</em></td></tr><tr><td>house</td><td><em>Haus</em></td><td><em>Häuser</em></td></tr></tbody></table></div>
+<p>The plural is not <em>Buch</em> + suffix. The stem vowel <em>u</em> becomes <em>ü</em>, and only then is a suffix added. English does the same in <em>foot / feet</em>, <em>sing / sang / sung</em>.</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why this is the hardest case for any segmenter </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Every method in this course, from maximum matching to byte-pair encoding, works by <strong>cutting a string into contiguous pieces</strong>. Non-concatenative morphology cannot be expressed that way, because the change is <em>inside</em> the root rather than <em>between</em> morphemes. There is no cut that separates “book” from “plural” in <em>Bücher</em>. Keep this in mind next lecture, when subword segmentation is presented as the practical solution: it is a solution to the concatenative case.</p>
+</div>
+</blockquote>
+<h2 id="14-morphological-typology">14. Morphological typology<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-morphological-typology" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Languages can be grouped by the way they realize morphological processes. Four types, and this classification is the single most likely thing on the exam from this lecture.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The four types </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Isolating</strong> (Chinese, Vietnamese)</p>
+<ul>
+<li>Words tend not to change form at all</li>
+<li>Grammatical relations come from <strong>word order</strong></li>
+<li><strong>Particles</strong> express additional modification</li>
+</ul>
+<p><strong>Agglutinative</strong> (Turkish, Finnish)</p>
+<ul>
+<li>Words are built by stringing morphemes together, potentially involving character modifications</li>
+<li><strong>Each morpheme contributes one clear piece of meaning</strong>, and boundaries are visible</li>
+</ul>
+<p><strong>Fusional</strong> (Russian, Spanish, Arabic)</p>
+<ul>
+<li>A <strong>single suffix simultaneously encodes several grammatical features</strong> that often cannot be cleanly separated</li>
+</ul>
+<p><strong>Polysynthetic</strong> (Inuktitut, Mohawk)</p>
+<ul>
+<li>Incorporate multiple grammatical roles simultaneously (verb, subject, object)</li>
+<li>Incorporate various modifiers (negation, tense, mood, instrument, location)</li>
+<li>All fused or agglutinated into a <strong>single word</strong></li>
+</ul>
+</div>
+</blockquote>
+<p>Summary, with the axis that actually distinguishes them:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Type</th><th>Morphemes per word</th><th>Are boundaries separable?</th><th>Languages</th><th>Signature</th></tr></thead><tbody><tr><td><strong>Isolating</strong></td><td>About one</td><td>Not applicable, nothing to separate</td><td>Chinese, Vietnamese</td><td>Grammar lives in word order and particles</td></tr><tr><td><strong>Agglutinative</strong></td><td>Many</td><td>Yes, cleanly</td><td>Turkish, Finnish</td><td>One morpheme, one meaning</td></tr><tr><td><strong>Fusional</strong></td><td>Few</td><td>No, features are fused</td><td>Russian, Spanish, Arabic</td><td>One morpheme, several meanings</td></tr><tr><td><strong>Polysynthetic</strong></td><td>Very many</td><td>Partly, and fused as well</td><td>Inuktitut, Mohawk</td><td>One word, one sentence</td></tr></tbody></table></div>
+<p>Isolating and polysynthetic are the two ends of a scale (how much meaning is packed into one word). Agglutinative and fusional sit in the middle and are distinguished by a different question (can you cut the packed meaning apart), not by how much is packed.</p>
+<h3 id="isolating-chinese">Isolating: Chinese<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#isolating-chinese" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>我 昨天 看 了 一 本 书 (“I read a book yesterday”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>我</th><th>昨天</th><th>看</th><th>了</th><th>一</th><th>本</th><th>书</th></tr></thead><tbody><tr><td>wǒ</td><td>zuótiān</td><td>kàn</td><td>le</td><td>yī</td><td>běn</td><td>shū</td></tr><tr><td>I</td><td>yesterday</td><td>see/read</td><td>PFV</td><td>one</td><td>CL</td><td>book</td></tr></tbody></table></div>
+<ul>
+<li>看 (<em>kàn</em>) <strong>never changes form</strong> regardless of tense or aspect. Past is not marked on the verb, it is expressed by the particle 了 (perfective aspect, glossed PFV) and by the adverb 昨天 “yesterday”.</li>
+<li>Word order is straight <strong>SVO</strong> (subject-verb-object), and that order is what carries the grammatical relations.</li>
+<li>CL is a <strong>classifier</strong>, 本 (<em>běn</em>), obligatory between a numeral and a noun of this class. English has nothing comparable except in phrases like “two <em>sheets</em> of paper”.</li>
+</ul>
+<h3 id="isolating-vietnamese">Isolating: Vietnamese<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#isolating-vietnamese" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Tôi đã đi học (“I went to study”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Tôi</th><th>đã</th><th>đi</th><th>học</th></tr></thead><tbody><tr><td>tôi</td><td>đã</td><td>đi</td><td>học</td></tr><tr><td>I</td><td>PST</td><td>go</td><td>study</td></tr></tbody></table></div>
+<ul>
+<li>Neither <em>đi</em> nor <em>học</em> changes form. Instead <em>đã</em> is a <strong>PST particle</strong> (past / completed action).</li>
+<li>Note what this means for a tokenizer: every morpheme is already its own whitespace-delimited token. Isolating languages are the easy case for word-level vocabularies, and the hard case for anything that expects tense to be recoverable from the verb.</li>
+</ul>
+<h3 id="agglutinative-turkish">Agglutinative: Turkish<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agglutinative-turkish" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>evlerinizden</em> (“from your houses”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>ev</th><th>ler</th><th>iniz</th><th>den</th></tr></thead><tbody><tr><td>house</td><td>plural</td><td>your</td><td>from</td></tr></tbody></table></div>
+<ul>
+<li>One Turkish word corresponds to a four-word English phrase.</li>
+<li>Every suffix is a separate, identifiable unit with exactly one job. You can read the word left to right like a small sentence.</li>
+</ul>
+<h3 id="agglutinative-finnish">Agglutinative: Finnish<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agglutinative-finnish" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>taloissamme</em> (“in our houses”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>talo</th><th>i</th><th>ssa</th><th>mme</th></tr></thead><tbody><tr><td>house</td><td>plural</td><td>inessive</td><td>our</td></tr></tbody></table></div>
+<ul>
+<li>The <strong>inessive</strong> is a locative case meaning “in”. Finnish has five other locative cases: <strong>elative</strong> = “out of”, <strong>illative</strong> = “into”, <strong>allative</strong> = “to”, and others.</li>
+<li>Each suffix is clearly separable and <strong>reusable across many other nouns</strong>, which is what makes the type learnable: a segmenter that discovers <em>-ssa</em> once can apply it everywhere.</li>
+<li>Some vowel and consonant changes may be required during attachment (note <em>talo</em> + <em>-i-</em> here), so the boundaries are clean at the level of morphemes but not always at the level of characters.</li>
+</ul>
+<h3 id="fusional-russian">Fusional: Russian<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fusional-russian" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>knigami</em> (“with books”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>knig</th><th>ami</th></tr></thead><tbody><tr><td>book</td><td>instrumental.plural.feminine</td></tr></tbody></table></div>
+<ul>
+<li>One suffix, <em>-ami</em>, fuses <strong>case</strong> (instrumental), <strong>number</strong> (plural) and <strong>gender</strong> (feminine) into a single unsegmentable morpheme.</li>
+<li>There is no substring of <em>-ami</em> that means “plural”. That is the definition of fusional, and it is why a purely string-based segmenter cannot recover the features even in principle.</li>
+</ul>
+<h3 id="fusional-spanish">Fusional: Spanish<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fusional-spanish" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>hablé</em> (“I spoke”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>habl</th><th>é</th></tr></thead><tbody><tr><td>speak</td><td>1pers.singular.preterite</td></tr></tbody></table></div>
+<ul>
+<li>One suffix, <em>-é</em>, fuses <strong>person</strong> (1st), <strong>number</strong> (singular), <strong>tense</strong> (preterite, that is past) and <strong>aspect</strong> (preterite, that is completed).</li>
+<li>Four features, one vowel.</li>
+</ul>
+<h3 id="fusional-arabic">Fusional: Arabic<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fusional-arabic" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>yaktubu</em> (“he writes”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Root</th><th>Pattern</th><th>Result</th></tr></thead><tbody><tr><td><em>ktb</em> (C1 C2 C3)</td><td><em>ya-</em> C1 C2 <em>-u-</em> C3 <em>-u</em></td><td><em>ya-k-t-u-b-u</em> = <em>yaktubu</em></td></tr></tbody></table></div>
+<ul>
+<li>The root is three <strong>consonants</strong>, <em>k-t-b</em>, carrying the core meaning “write”. The pattern is a template of prefixes, vowels and slots that the consonants are poured into.</li>
+<li>One pattern fuses <strong>person</strong> (3rd), <strong>gender</strong> (male) and <strong>aspect</strong> (not completed).</li>
+<li>The vowels in this pattern are <strong>not written down</strong> in regular Arabic orthography, only spoken. So the written form gives you the consonantal skeleton and the reader supplies the rest.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why Arabic is the worst case for a naive tokenizer </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>This is <strong>non-concatenative</strong> morphology at industrial scale. The morphemes are interleaved, not concatenated, so no set of cuts recovers them. On top of that, the written form omits the very vowels that carry person, gender and aspect, so the information is not merely hard to segment, it is not in the character string at all. A subword tokenizer trained on Arabic learns consonant clusters and has no way to represent the pattern as a unit.</p>
+</div>
+</blockquote>
+<h3 id="polysynthetic-inuktitut">Polysynthetic: Inuktitut<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#polysynthetic-inuktitut" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em>Qangatasuukkuvimmuuriaqalaaqtunga</em> (“I will have to go to the airport”)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Morpheme</th><th>Meaning</th></tr></thead><tbody><tr><td><em>qangata-</em></td><td>fly</td></tr><tr><td><em>-suukkuvik</em></td><td>thing that flies habitually → airport</td></tr><tr><td><em>-mut</em></td><td>to (allative case)</td></tr><tr><td><em>-uq-</em></td><td>go to</td></tr><tr><td><em>-riaqaq-</em></td><td>have to</td></tr><tr><td><em>-laaq-</em></td><td>future</td></tr><tr><td><em>-tunga</em></td><td>1st person singular</td></tr></tbody></table></div>
+<ul>
+<li><strong>One word corresponds to an entire English sentence.</strong> A verb, its subject, its object, tense and modal meaning, all fused together.</li>
+<li>The surface form is not the concatenation of the pieces listed: <em>-k-mut-uq</em> becomes <em>-mmuu-</em>. Phonological rules at the boundaries chew up the morphemes so that the written word cannot be split back into them by string matching.</li>
+<li>Note the internal derivation: <em>qangata-</em> “fly” plus <em>-suukkuvik</em> “thing that does X habitually” gives “airport”. The word contains its own etymology, productively.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What this means for vocabulary size </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>In an isolating language, the number of word types is roughly the number of morphemes. In a polysynthetic language, the number of word types is closer to the number of <em>sentences</em>, because a word is a sentence. There is no vocabulary size that covers Inuktitut. Not 200K, not 1M, not any number. This is the reductio that the whole lecture is building towards.</p>
+</div>
+</blockquote>
+<h2 id="15-morphology-and-nlp-why-english-shaped-systems-break">15. Morphology and NLP: why English-shaped systems break<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#15-morphology-and-nlp-why-english-shaped-systems-break" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The payoff slide, and the bridge to the rest of the course.</p>
+<p><strong>Morphology is a common process for most languages.</strong> Rich morphology can encode exactly the things that English, and other morphologically poor languages, encode through word order. Turkish <em>evlerinizden</em> and English “from your houses” carry the same information: one language puts it in suffixes, the other in separate words and their arrangement. Neither is more complex, but only one of them is friendly to a whitespace tokenizer.</p>
+<p><strong>Word-level vocabularies blow up or become extremely restrictive.</strong> These are the two horns, and there is no third option:</p>
+<ul>
+<li>A single lemma can surface as <strong>thousands of word forms</strong> (also called <em>surface forms</em>). Keep them all and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span></span></span></span> explodes, taking the embedding matrix and the output softmax with it.</li>
+<li>A <strong>fixed vocabulary sized for English</strong> will produce massive <strong>out-of-vocabulary (OOV)</strong> rates for other languages. Keep it small and most of the language becomes <code>&lt;unk></code>, which by section 4 means every rare form gets the same probability.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The multilingual version of the problem </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Now put both in one model, which is what this course is about. A shared vocabulary across languages has to serve English, where 50K types covers most text, and Finnish, where it does not come close. Whatever size you pick, the morphologically rich languages get fragmented into meaningless pieces while English words stay whole. That asymmetry in how many tokens a sentence costs is a bias baked into the tokenizer before a single parameter is trained.</p>
+</div>
+</blockquote>
+<p><strong>These problems are the main motivation for morphological analysers.</strong> But:</p>
+<ul>
+<li>Morphological analysis is <strong>highly language dependent</strong>, so you need one per language, and building it needs linguistic expertise per language. This is the WordNet problem from section 2 all over again.</li>
+<li>Modern approaches <strong>build on data-driven methods</strong> rather than hand-written rules.</li>
+<li>The <strong>practical compromise: subword tokenization.</strong> Do not try to find the linguistically correct morphemes. Find statistically useful pieces, in a language-agnostic way, from data.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The handoff </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Subword tokenization is a compromise and the lecture says so. It does not recover <em>knig</em> + <em>ami</em>, and it certainly does not recover <em>k-t-b</em> + pattern. What it does is guarantee a fixed vocabulary with zero OOV rate, by falling back to characters when nothing longer fits. Whether the pieces it finds line up with morphemes is an empirical question, and mostly the answer is “somewhat, in the languages that are concatenative”. That is the subject of the next lecture.</p>
+</div>
+</blockquote>
+<h2 id="16-where-the-lecture-lands">16. Where the lecture lands<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-where-the-lecture-lands" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Words are not atoms.</strong> Word-level indices throw away the relationship between <em>move</em> and <em>moved</em>, and leave you with nothing at all for <em>hammered</em>.</li>
+<li><strong>Word boundaries are not given.</strong> For Chinese, Japanese, Thai and Burmese they have to be computed, greedily (FMM/BMM, cheap but dictionary-bound and direction-dependent) or probabilistically (BMES labeling with an HMM plus Viterbi, trainable and ambiguity-aware, but limited by the Markov assumption).</li>
+<li><strong>Inside a word are morphemes</strong>, combined by inflection (same POS, different features), derivation (new POS or new meaning) and compounding (several words into one), and all three are productive, so the vocabulary is never closed.</li>
+<li><strong>Languages differ systematically</strong> in how much they pack into one word and whether the packing is separable: isolating, agglutinative, fusional, polysynthetic.</li>
+<li><strong>Therefore fixed word-level vocabularies fail</strong> outside morphologically poor languages, and the practical fix is subword segmentation.</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Exam Focus </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Five things to be able to do cold:</p>
+<ol>
+<li><strong>Run FMM and BMM by hand</strong> on a short character string given a vocabulary, and say why they disagree. The 研究生活 example is the canonical one: FMM gives 研究生 | 活, BMM gives 研究 | 生活. Know the <code>or l == 1</code> fallback and what it does to OOV words.</li>
+<li><strong>State the BMES scheme</strong> and convert a tag sequence to a segmentation (boundary after every E and S) and back. Know why B cannot follow B.</li>
+<li><strong>Write the Viterbi recursion</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">score</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">t</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">score</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span>, say what a backpointer is for, and give the complexity <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> against <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> for brute force.</li>
+<li><strong>Distinguish inflection from derivation</strong> with a one-line test: does the part of speech survive? <em>see / saw</em> is inflection, <em>happy / happiness</em> is derivation. Add compounding as the third process.</li>
+<li><strong>Name the four typological classes with one example language and one worked example each.</strong> Turkish <em>ev-ler-iniz-den</em> for agglutinative and Russian <em>knig-ami</em> for fusional are the minimal pair: both pack several features into suffixes, only one of them lets you cut the suffixes apart.</li>
+</ol>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The distinction people lose marks on </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Agglutinative is not “more morphemes”, it is “separable morphemes”.</strong> Fusional languages can be just as morphologically dense. The question is whether a single affix carries a single feature (agglutinative: Turkish <em>-ler</em> is plural and nothing else) or several fused features (fusional: Russian <em>-ami</em> is instrumental <em>and</em> plural <em>and</em> feminine, with no way to divide it). If you define the classes by density you will misclassify Spanish.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The other one </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Word segmentation and subword segmentation are different problems.</strong> The first finds word boundaries in a script that does not mark them (Chinese). The second splits words that are perfectly well delimited into smaller pieces (Finnish). They use different methods for different reasons, and this lecture only solves the first one.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/MNLP/MNLP---Overview" class="internal alias" data-slug="Courses/MNLP/MNLP---Overview">Course overview</a> · <a href="../../../Courses/MNLP/MNLP---Mini-Project" class="internal alias" data-slug="Courses/MNLP/MNLP---Mini-Project">MNLP - Mini Project</a></li>
+<li><strong>Previous:</strong> <a href="../../../Courses/MNLP/Lectures/MNLP-L01---Overview" class="internal alias" data-slug="Courses/MNLP/Lectures/MNLP-L01---Overview">MNLP-L01 - Overview</a></li>
+<li><strong>Next:</strong> Morphological analysis and subword segmentation, which takes the OOV problem from section 15 and solves it statistically</li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/Word-Embeddings" class="internal alias" data-slug="Concepts/Word-Embeddings">Word Embeddings</a> · <a href="../../../Concepts/Tokenization" class="internal" data-slug="Concepts/Tokenization">Tokenization</a> · <a href="../../../Concepts/Bag-of-Words" class="internal alias" data-slug="Concepts/Bag-of-Words">Bag of Words</a> · <a href="../../../Concepts/Dynamic-Programming" class="internal alias" data-slug="Concepts/Dynamic-Programming">Dynamic Programming</a></li>
+<li><strong>Source:</strong> <code>MNLP_morphology.pdf</code> (Christof Monz, Morphology: Word Formation, 34 slides)</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-298" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#mnlp-l03-morphology-and-word-formation" data-for="mnlp-l03-morphology-and-word-formation">MNLP-L03: Morphology and Word Formation</a></li><li class="depth-1"><a href="#1-what-is-a-word-and-where-do-vocabularies-come-from" data-for="1-what-is-a-word-and-where-do-vocabularies-come-from">1. What is a word, and where do vocabularies come from</a></li><li class="depth-2"><a href="#the-design-questions-nobody-answers-cleanly" data-for="the-design-questions-nobody-answers-cleanly">The design questions nobody answers cleanly</a></li><li class="depth-1"><a href="#2-word-meanings-and-why-embeddings-replaced-hand-built-resources" data-for="2-word-meanings-and-why-embeddings-replaced-hand-built-resources">2. Word meanings, and why embeddings replaced hand-built resources</a></li><li class="depth-2"><a href="#word-embeddings" data-for="word-embeddings">Word embeddings</a></li><li class="depth-1"><a href="#3-cbow" data-for="3-cbow">3. CBOW</a></li><li class="depth-2"><a href="#architecture" data-for="architecture">Architecture</a></li><li class="depth-1"><a href="#4-vocabulary-short-lists-and-the-unk-problem" data-for="4-vocabulary-short-lists-and-the-unk-problem">4. Vocabulary short-lists, and the &lt;unk> problem</a></li><li class="depth-1"><a href="#5-the-pivot-contextual-information-is-not-enough" data-for="5-the-pivot-contextual-information-is-not-enough">5. The pivot: contextual information is not enough</a></li><li class="depth-1"><a href="#6-two-problems-one-preprocessing-step" data-for="6-two-problems-one-preprocessing-step">6. Two problems, one preprocessing step</a></li><li class="depth-1"><a href="#7-finding-word-boundaries" data-for="7-finding-word-boundaries">7. Finding word boundaries</a></li><li class="depth-1"><a href="#8-rule-based-segmentation-maximum-matching" data-for="8-rule-based-segmentation-maximum-matching">8. Rule-based segmentation: maximum matching</a></li><li class="depth-2"><a href="#forward-maximum-matching-fmm" data-for="forward-maximum-matching-fmm">Forward Maximum Matching (FMM)</a></li><li class="depth-2"><a href="#backward-maximum-matching-bmm" data-for="backward-maximum-matching-bmm">Backward Maximum Matching (BMM)</a></li><li class="depth-2"><a href="#bidirectional-matching" data-for="bidirectional-matching">Bidirectional matching</a></li><li class="depth-1"><a href="#9-statistical-word-boundary-detection" data-for="9-statistical-word-boundary-detection">9. Statistical word boundary detection</a></li><li class="depth-2"><a href="#reformulate-as-character-labeling" data-for="reformulate-as-character-labeling">Reformulate as character labeling</a></li><li class="depth-2"><a href="#hmms" data-for="hmms">HMMs</a></li><li class="depth-2"><a href="#viterbi" data-for="viterbi">Viterbi</a></li><li class="depth-2"><a href="#what-hmms-buy-and-what-they-still-cannot-do" data-for="what-hmms-buy-and-what-they-still-cannot-do">What HMMs buy, and what they still cannot do</a></li><li class="depth-1"><a href="#10-types-of-morphological-change" data-for="10-types-of-morphological-change">10. Types of morphological change</a></li><li class="depth-1"><a href="#11-inflectional-morphology-in-detail" data-for="11-inflectional-morphology-in-detail">11. Inflectional morphology in detail</a></li><li class="depth-2"><a href="#english-verbs" data-for="english-verbs">English verbs</a></li><li class="depth-2"><a href="#english-nouns" data-for="english-nouns">English nouns</a></li><li class="depth-2"><a href="#other-languages-are-much-richer" data-for="other-languages-are-much-richer">Other languages are much richer</a></li><li class="depth-1"><a href="#12-derivational-morphology-in-detail" data-for="12-derivational-morphology-in-detail">12. Derivational morphology in detail</a></li><li class="depth-1"><a href="#13-morphemes" data-for="13-morphemes">13. Morphemes</a></li><li class="depth-2"><a href="#kinds-of-affix-by-position" data-for="kinds-of-affix-by-position">Kinds of affix, by position</a></li><li class="depth-2"><a href="#concatenative-versus-non-concatenative" data-for="concatenative-versus-non-concatenative">Concatenative versus non-concatenative</a></li><li class="depth-1"><a href="#14-morphological-typology" data-for="14-morphological-typology">14. Morphological typology</a></li><li class="depth-2"><a href="#isolating-chinese" data-for="isolating-chinese">Isolating: Chinese</a></li><li class="depth-2"><a href="#isolating-vietnamese" data-for="isolating-vietnamese">Isolating: Vietnamese</a></li><li class="depth-2"><a href="#agglutinative-turkish" data-for="agglutinative-turkish">Agglutinative: Turkish</a></li><li class="depth-2"><a href="#agglutinative-finnish" data-for="agglutinative-finnish">Agglutinative: Finnish</a></li><li class="depth-2"><a href="#fusional-russian" data-for="fusional-russian">Fusional: Russian</a></li><li class="depth-2"><a href="#fusional-spanish" data-for="fusional-spanish">Fusional: Spanish</a></li><li class="depth-2"><a href="#fusional-arabic" data-for="fusional-arabic">Fusional: Arabic</a></li><li class="depth-2"><a href="#polysynthetic-inuktitut" data-for="polysynthetic-inuktitut">Polysynthetic: Inuktitut</a></li><li class="depth-1"><a href="#15-morphology-and-nlp-why-english-shaped-systems-break" data-for="15-morphology-and-nlp-why-english-shaped-systems-break">15. Morphology and NLP: why English-shaped systems break</a></li><li class="depth-1"><a href="#16-where-the-lecture-lands" data-for="16-where-the-lecture-lands">16. Where the lecture lands</a></li><li class="depth-1"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/MNLP/MNLP---Overview" class="internal">MNLP - Overview</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>

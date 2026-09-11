@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>PhilSci-L02 - Kuhn on Scientific Practice — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="PhilSci-L02 - Kuhn on Scientific Practice — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="PhilSci-L02 - Kuhn on Scientific Practice — notes.swasilewski.com"/><meta name="twitter:description" content="Lecture 2: Kuhn on Scientific Practice Thomas Kuhn’s The Structure of Scientific Revolutions (1962, hereafter SSR) replaces the idealised picture of science with a historical and social one."/><meta property="og:description" content="Lecture 2: Kuhn on Scientific Practice Thomas Kuhn’s The Structure of Scientific Revolutions (1962, hereafter SSR) replaces the idealised picture of science with a historical and social one."/><meta property="og:image:alt" content="Lecture 2: Kuhn on Scientific Practice Thomas Kuhn’s The Structure of Scientific Revolutions (1962, hereafter SSR) replaces the idealised picture of science with a historical and social one."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="Lecture 2: Kuhn on Scientific Practice Thomas Kuhn’s The Structure of Scientific Revolutions (1962, hereafter SSR) replaces the idealised picture of science with a historical and social one."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci9zdGFzaWVuaWVjL3VuaXZlcnNpdHktdmF1bHQtc2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-423"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-423" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/PhilSci/">PhilSci</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/PhilSci/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>PhilSci L02   Kuhn on Scientific Practice</a></div></nav><h1 class="article-title">PhilSci-L02 - Kuhn on Scientific Practice</h1><p show-comma="true" class="content-meta"><time datetime="2026-09-08T00:00:00.000Z">Sep 08, 2026</time><span>11 min read</span></p></div></div><article class="popover-hint"><h1 id="lecture-2-kuhn-on-scientific-practice">Lecture 2: Kuhn on Scientific Practice<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#lecture-2-kuhn-on-scientific-practice" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Thomas Kuhn’s <em>The Structure of Scientific Revolutions</em> (1962, hereafter SSR) replaces the idealised picture of science with a historical and social one. Instead of asking only how scientific claims ought to be justified, Kuhn asks how scientific communities actually work. His central claim is that mature sciences usually develop through periods of stable, puzzle-solving “normal science”, interrupted by crises and scientific revolutions. The lecture then asks whether science can remain rational and objective when theory choice involves values, communities, and historically changing standards.</p>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Core thesis </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A scientific community works within a shared paradigm. Normal science solves the paradigm’s puzzles; persistent anomalies can create a crisis, in which competing approaches are explored; a revolution occurs when a new paradigm becomes dominant. Because paradigms partly shape observation, meaning, and standards, changing paradigms cannot always be compared by a neutral algorithm. Rationality nevertheless remains possible through shared, though imprecise and sometimes conflicting, epistemic values.</p>
+</div>
+</blockquote>
+<h2 id="1-kuhns-historical-turn">1. Kuhn’s historical turn<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-kuhns-historical-turn" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Kuhn (1922-1996) is a major opponent of logical empiricism and a key figure in the historical turn in philosophy of science. Logical empiricism concentrated on a normative ideal: the logical justification of scientific knowledge and a theory-neutral observational language. Kuhn argues that history is not merely anecdote or chronology. Studied seriously, it can transform our image of science.</p>
+<p>His position has four connected features:</p>
+<ul>
+<li><strong>History matters</strong>: philosophy should examine actual episodes of scientific change, not a sanitised reconstruction of mature science.</li>
+<li><strong>Science is dynamic</strong>: its structure changes over time rather than accumulating facts under a permanently fixed method.</li>
+<li><strong>Observation is theory-laden</strong>: scientists’ theoretical commitments affect what they notice, describe, and count as significant evidence. This rejects the idea of a fully theory-neutral observational language.</li>
+<li><strong>Science is social</strong>: paradigms, standards, training, criticism, and acceptance belong to scientific communities, not isolated individuals.</li>
+</ul>
+<p>Kuhn therefore differs both from the positivist story of steady cumulative progress and from a simple Popperian story in which scientists continuously try to falsify their theories. Popper, Lakatos, later science-and-technology studies, feminist philosophy of science, and postcolonial approaches all form part of the wider debate about this historical and social account.</p>
+<h2 id="2-paradigms-and-normal-science">2. Paradigms and normal science<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-paradigms-and-normal-science" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Paradigm </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A <strong>paradigm</strong> is the shared framework through which a particular scientific community practises its science. It holds the community together by supplying not one theory alone, but principles, methods, standards, instruments, exemplary solutions, and often metaphysical assumptions.</p>
+</div>
+</blockquote>
+<p>The components matter because a paradigm tells researchers what a legitimate problem is, how to investigate it, what a good solution looks like, and which results are worth pursuing. It is therefore both intellectual and practical.</p>
+<h3 id="newtonian-physics-as-a-paradigm">Newtonian physics as a paradigm<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#newtonian-physics-as-a-paradigm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The Newtonian paradigm illustrates the full package:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Paradigm element</th><th>Newtonian example</th></tr></thead><tbody><tr><td>Theoretical principles</td><td>Newton’s laws of motion, including <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ma</span></span></span></span></td></tr><tr><td>Methods</td><td>Newton’s <em>regulae philosophandi</em> (rules of reasoning in natural philosophy)</td></tr><tr><td>Tools</td><td>Differential equations and mathematical modelling</td></tr><tr><td>Exemplars</td><td>The Earth-Sun system and the harmonic oscillator</td></tr><tr><td>Metaphysical assumptions</td><td>Particular conceptions of absolute space and time, central to the Newton-Clarke/Leibniz debate</td></tr></tbody></table></div>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Normal science </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Normal science</strong> is research conducted within an accepted paradigm. Its main activity is not testing whether the paradigm is true, but solving the puzzles that the paradigm defines.</p>
+</div>
+</blockquote>
+<p>A <strong>puzzle</strong> is a problem whose solution is expected in principle under the accepted framework. Scientists refine measurements, extend applications, articulate theory, and resolve apparent discrepancies. This makes normal science highly productive and allows detailed progress.</p>
+<p>The price is conservatism. The paradigm is accepted largely unconditionally; criticism of it is often marginalised, and failure is initially attributed to the scientist rather than the framework: “only a poor workman blames his tools.” Kuhn calls normal science seemingly dogmatic, which contrasts with Popper’s ideal of permanent critical testing. This also complicates comparisons such as astrology: Kuhn asks whether it has a puzzle-solving tradition and stable community, whereas Popper focuses on falsifiability.</p>
+<h2 id="3-from-anomaly-to-revolution">3. From anomaly to revolution<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-from-anomaly-to-revolution" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The basic Kuhnian cycle is:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n  P[Shared paradigm] --> N[Normal science: puzzle solving]\n  N --> A[Persistent anomaly]\n  A --> C[Crisis]\n  C --> E[Extraordinary science: rival approaches and contested standards]\n  E --> R[Revolution: a new paradigm wins]\n  R --> P&quot;">flowchart LR
+  P[Shared paradigm] --> N[Normal science: puzzle solving]
+  N --> A[Persistent anomaly]
+  A --> C[Crisis]
+  C --> E[Extraordinary science: rival approaches and contested standards]
+  E --> R[Revolution: a new paradigm wins]
+  R --> P
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Anomaly </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>An <strong>anomaly</strong> is a puzzle that persistently resists solution and appears inconsistent with the paradigm’s expectations. Not every failed experiment is an anomaly: ordinary failures are normally blamed on error, poor technique, or incomplete work.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Crisis and extraordinary science </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A <strong>crisis</strong> arises when important anomalies undermine confidence in the paradigm. It has social and psychological as well as evidential dimensions. During <strong>extraordinary science</strong>, researchers entertain competing approaches and even the standards for judging theories become contested.</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Scientific revolution </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A <strong>scientific revolution</strong> is a non-cumulative change in which a new paradigm replaces an older one. It changes central concepts, problems, methods, standards, and sometimes what counts as an observation or explanation.</p>
+</div>
+</blockquote>
+<h3 id="worked-example-chemistry-and-phlogiston">Worked example: chemistry and phlogiston<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#worked-example-chemistry-and-phlogiston" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Kuhn represents the history of chemistry as a sequence:</p>
+<ol>
+<li><strong>Preparadigmatic stage</strong>: alchemy lacked one stable, community-wide framework.</li>
+<li><strong>Phlogiston paradigm</strong>: associated here with Joseph Priestley, combustion was understood through the release of phlogiston from burning bodies.</li>
+<li><strong>Oxygen paradigm</strong>: Antoine Lavoisier’s account treated combustion as combination with oxygen, reorganising chemical concepts, measurements, and classification.</li>
+</ol>
+<p>The point is not merely that Lavoisier added a new fact. The framework changed: the relevant substance, explanatory vocabulary, and interpretation of weight changes changed too. This is why Kuhn regards the shift as revolutionary rather than straightforward fact accumulation.</p>
+<h3 id="worked-example-ptolemy-and-copernicus">Worked example: Ptolemy and Copernicus<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#worked-example-ptolemy-and-copernicus" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Ptolemaic astronomy used a <strong>geocentric</strong> world-picture: Earth is stationary at the centre, and planetary motions are modelled accordingly. Copernican astronomy introduced a <strong>heliocentric</strong> world-picture: Earth is one of the planets moving around the Sun. The shift reorganised astronomical problems and the use of terms such as “planet”. It was not an instant replacement, nor did the winner erase every rival, but it is Kuhn’s paradigm case of revolutionary reorganisation.</p>
+<h2 id="4-gestalt-switches-theory-ladenness-and-incommensurability">4. Gestalt switches, theory-ladenness, and incommensurability<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-gestalt-switches-theory-ladenness-and-incommensurability" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The slide exercise used ambiguous visual figures to make a conceptual point. In a Gestalt switch, one image can suddenly be seen as a different organised whole. The drawn lines do not change, but what the observer sees changes. Scientific revolutions are analogous: scientists come to see the world through a new pattern of concepts and practices. Related examples include the playing-cards experiment and the Müller-Lyer illusion.</p>
+<p>This does <strong>not</strong> mean perception is arbitrary or that scientists literally inhabit different physical worlds. It means observation and interpretation are intertwined: what an observation is taken to show depends partly on a paradigm. Hence there is no completely theory-neutral description available to settle every revolutionary dispute from outside both paradigms.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Incommensurability </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Incommensurability</strong> is the failure of two paradigms to be fully measured against one another by a common language or fixed set of standards. Kuhn later softened the claim to <strong>local untranslatability</strong>: some terms cannot be translated into the other framework without loss of their inferential relations.</p>
+</div>
+</blockquote>
+<p>Two forms are important:</p>
+<ul>
+<li><strong>Semantic incommensurability</strong>: meanings change. “Mass” has different theoretical roles in Newtonian and Einsteinian physics; “planet” changes across the Copernican shift.</li>
+<li><strong>Methodological incommensurability</strong>: standards change. What counts as a satisfactory explanation before Newton may differ from standards after Newton.</li>
+</ul>
+<p>This creates the problem of scientific progress: if standards and meanings change, in what sense is a new paradigm objectively better? Kuhn’s critics press exactly this question.</p>
+<h2 id="5-criticisms-and-kuhns-response">5. Criticisms and Kuhn’s response<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-criticisms-and-kuhns-response" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Common criticisms are that Kuhn treats paradigm victory as irrational social victory, offers no clear demarcation criterion, uses “paradigm” too loosely (Margaret Masterman identified 21 uses in one book), and slides into relativism. Lakatos accused him of vindicating “mob psychology” by comparing science with political revolutions. Kuhn’s own <em>The Copernican Revolution</em> (1957) also stresses more continuity than SSR might lead one to expect. Moreover, a winning paradigm rarely eradicates every competitor.</p>
+<p>Kuhn rejects relativism and irrationalism. In “Objectivity, Value Judgment, and Theory Choice” (1977), he identifies five shared values for theory appraisal:</p>
+<ol>
+<li><strong>Accuracy</strong>: agreement with observation within the theory’s domain.</li>
+<li><strong>Consistency</strong>: internal coherence and coherence with other accepted theories.</li>
+<li><strong>Broad scope</strong>: consequences beyond the observations for which the theory was designed.</li>
+<li><strong>Simplicity</strong>: bringing order to phenomena.</li>
+<li><strong>Fruitfulness</strong>: opening new research and discoveries.</li>
+</ol>
+<p>These are objective in the limited but important sense that a scientific community shares them. They are <strong>values or norms, not algorithmic rules</strong>. Each is imprecise, they can conflict, and scientists can reasonably assign different weights in light of experience. Thus rational disagreement is legitimate and can be required for progress: if everyone switched at once, competing possibilities would not be developed or tested.</p>
+<h2 id="6-facts-and-values-in-science">6. Facts and values in science<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-facts-and-values-in-science" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Max Weber’s value-free ideal distinguishes:</p>
+<ul>
+<li><strong>Value relevance</strong>: values may legitimately influence which research questions, priorities, and funding problems are selected.</li>
+<li><strong>Value freedom</strong>: once a question is selected, researchers must not present their own commitments as empirical conclusions; empirical claims should be assessed by evidential and methodological standards.</li>
+</ul>
+<p>This parallels the fact-value distinction between descriptive empirical statements and normative value judgements. Logical positivists similarly held that values express subjective attitudes rather than propositions.</p>
+<p>The <strong>externality</strong> or <strong>triptych</strong> model divides science into three stages:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Stage</th><th>Traditional value-free ideal</th></tr></thead><tbody><tr><td>Research agenda: problems, priorities, funding</td><td>Values may enter</td></tr><tr><td>Scientific research</td><td>Value-free</td></tr><tr><td>Application and policy</td><td>Values may enter</td></tr></tbody></table></div>
+<p>The controversial question is the middle panel. <strong>Epistemic values</strong> serve cognitive aims of science: accuracy, consistency, explanatory power, scope, simplicity, fruitfulness, and perhaps beauty. <strong>Non-epistemic values</strong> include justice, social desirability, and political preferences. A weak value-free ideal permits non-epistemic values at agenda-setting and application, while allowing epistemic values in internal theory appraisal.</p>
+<p>Kuhn’s five values are generally understood as epistemic. They show that even internal theory choice is not mechanical: scientists sharing the same values may reasonably disagree because values are imprecise and may conflict.</p>
+<h2 id="7-helen-longino-contextual-empiricism">7. Helen Longino: contextual empiricism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-helen-longino-contextual-empiricism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Contextual empiricism </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Helen Longino’s <strong>contextual empiricism</strong> holds that data support a hypothesis only relative to background assumptions. Since these assumptions can contain non-epistemic commitments, values can affect scientific reasoning internally by affecting what is measured, modelled, compared, interpreted, or accepted as explanatory.</p>
+</div>
+</blockquote>
+<p>Longino does not conclude that science is merely subjective. Her answer is social objectivity: objectivity is achieved through <strong>transformative criticism</strong>, not by imagining an individual investigator free of all assumptions. Critical interaction can expose and revise background assumptions, including value-laden ones.</p>
+<p>For a community’s discourse to be objectively transformative, it needs four conditions:</p>
+<ol>
+<li><strong>Recognised avenues for criticism</strong>: there must be established ways to raise challenges.</li>
+<li><strong>Shared standards</strong>: critics need standards that participants can invoke in evaluating claims.</li>
+<li><strong>Responsiveness to criticism</strong>: criticism must receive uptake and be able to alter beliefs or practices.</li>
+<li><strong>Equality of intellectual authority</strong>: relevant members must be able to contribute as recognised epistemic agents.</li>
+</ol>
+<p>Example: suppose a medical study treats a symptom as irrelevant, chooses a comparison group, or measures only a narrow outcome. These choices are background assumptions determining the evidential connection between data and hypothesis. A diverse, critical community can challenge them and improve the evidence, rather than simply adding a political preference to a conclusion.</p>
+<h2 id="8-douglas-and-inductive-risk">8. Douglas and inductive risk<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-douglas-and-inductive-risk" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Heather Douglas distinguishes a <strong>direct</strong> from an <strong>indirect</strong> role for values. A direct role occurs when values determine a decision or course of action and is compatible with the externality picture. An indirect role can be legitimate inside science when evidence is uncertain and the consequences of error affect how much evidence is required to accept or reject a claim. This is <strong>inductive risk</strong>.</p>
+<p>Values do not thereby become evidence for the hypothesis. Rather, where false positives and false negatives have different costs, epistemic and non-epistemic considerations can set the evidential threshold. This matters in regulatory science, public health, environmental science, and risk assessment.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Question about values</th><th>Position it fits</th></tr></thead><tbody><tr><td>Do values select research agendas or applications?</td><td>Externality / value-free ideal can allow this</td></tr><tr><td>Do values set a decision threshold under uncertainty?</td><td>Douglas: indirect internal role through inductive risk</td></tr><tr><td>Do values enter background assumptions shaping what counts as evidence?</td><td>Longino: contextual empiricism</td></tr></tbody></table></div>
+<h2 id="exam-ready-distinctions">Exam-ready distinctions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exam-ready-distinctions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Paradigm vs theory</strong>: a paradigm is wider than a theory: it includes methods, tools, standards, exemplars, and assumptions.</li>
+<li><strong>Puzzle vs anomaly</strong>: a puzzle is expected to be solvable within the paradigm; an anomaly is a persistent, paradigm-threatening failure.</li>
+<li><strong>Normal vs extraordinary science</strong>: normal science accepts the framework and solves its puzzles; extraordinary science explores rivals in crisis.</li>
+<li><strong>Kuhn’s values vs rules</strong>: values guide theory choice but do not calculate one uniquely correct choice.</li>
+<li><strong>Kuhn vs relativism</strong>: historical and social contingency does not eliminate rational appraisal because communities share epistemic values.</li>
+<li><strong>Douglas vs Longino</strong>: Douglas concerns values’ indirect role in setting thresholds under uncertainty; Longino concerns value-laden background assumptions and social conditions for objectivity.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Exam answer structure </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>For a Kuhn question, state the cycle, define each stage, use one historical case, then explain why theory-ladenness and incommensurability challenge algorithmic comparison. Finish with Kuhn’s five values as his non-relativist response. For values questions, distinguish agenda/application values, inductive-risk thresholds, and background assumptions before comparing Weber, Kuhn, Douglas, and Longino.</p>
+</div>
+</blockquote>
+<h2 id="further-reading">Further reading<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#further-reading" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Thomas Kuhn, <em>The Structure of Scientific Revolutions</em>.</li>
+<li>Kuhn, “The Nature and Necessity of Scientific Revolutions”, pp. 79-93 in Curd &amp; Cover.</li>
+<li>Helen Longino, “Values and Objectivity”, pp. 144-164 in Curd &amp; Cover.</li>
+<li>Stanford Encyclopedia of Philosophy, “Scientific Objectivity”, section on epistemic and contextual values.</li>
+</ul>
+<h2 id="related-course-material">Related course material<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-course-material" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="../../../Courses/PhilSci/PhilSci---Overview" class="internal alias" data-slug="Courses/PhilSci/PhilSci---Overview">PhilSci - Overview</a></li>
+<li><a href="../../../Courses/PhilSci/PhilSci---Overview" class="internal alias" data-slug="Courses/PhilSci/PhilSci---Overview">Course overview</a></li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-304" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#lecture-2-kuhn-on-scientific-practice" data-for="lecture-2-kuhn-on-scientific-practice">Lecture 2: Kuhn on Scientific Practice</a></li><li class="depth-1"><a href="#1-kuhns-historical-turn" data-for="1-kuhns-historical-turn">1. Kuhn’s historical turn</a></li><li class="depth-1"><a href="#2-paradigms-and-normal-science" data-for="2-paradigms-and-normal-science">2. Paradigms and normal science</a></li><li class="depth-2"><a href="#newtonian-physics-as-a-paradigm" data-for="newtonian-physics-as-a-paradigm">Newtonian physics as a paradigm</a></li><li class="depth-1"><a href="#3-from-anomaly-to-revolution" data-for="3-from-anomaly-to-revolution">3. From anomaly to revolution</a></li><li class="depth-2"><a href="#worked-example-chemistry-and-phlogiston" data-for="worked-example-chemistry-and-phlogiston">Worked example: chemistry and phlogiston</a></li><li class="depth-2"><a href="#worked-example-ptolemy-and-copernicus" data-for="worked-example-ptolemy-and-copernicus">Worked example: Ptolemy and Copernicus</a></li><li class="depth-1"><a href="#4-gestalt-switches-theory-ladenness-and-incommensurability" data-for="4-gestalt-switches-theory-ladenness-and-incommensurability">4. Gestalt switches, theory-ladenness, and incommensurability</a></li><li class="depth-1"><a href="#5-criticisms-and-kuhns-response" data-for="5-criticisms-and-kuhns-response">5. Criticisms and Kuhn’s response</a></li><li class="depth-1"><a href="#6-facts-and-values-in-science" data-for="6-facts-and-values-in-science">6. Facts and values in science</a></li><li class="depth-1"><a href="#7-helen-longino-contextual-empiricism" data-for="7-helen-longino-contextual-empiricism">7. Helen Longino: contextual empiricism</a></li><li class="depth-1"><a href="#8-douglas-and-inductive-risk" data-for="8-douglas-and-inductive-risk">8. Douglas and inductive risk</a></li><li class="depth-1"><a href="#exam-ready-distinctions" data-for="exam-ready-distinctions">Exam-ready distinctions</a></li><li class="depth-1"><a href="#further-reading" data-for="further-reading">Further reading</a></li><li class="depth-1"><a href="#related-course-material" data-for="related-course-material">Related course material</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/PhilSci/Lectures/PhilSci-L01b---Popper-and-Lakatos" class="internal">PhilSci-L01b - Popper and Lakatos</a></li><li><a href="../../../Courses/PhilSci/Lectures/PhilSci-L03---Under-determination" class="internal">PhilSci-L03 - Under-determination</a></li><li><a href="../../../Courses/PhilSci/PhilSci---Tutorials" class="internal">PhilSci - Tutorials</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>
