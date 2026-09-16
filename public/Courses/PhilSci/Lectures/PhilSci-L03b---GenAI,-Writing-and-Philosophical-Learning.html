@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>PhilSci-L03b - GenAI, Writing and Philosophical Learning — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="PhilSci-L03b - GenAI, Writing and Philosophical Learning — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="PhilSci-L03b - GenAI, Writing and Philosophical Learning — notes.swasilewski.com"/><meta name="twitter:description" content="PhilSci-L03b: GenAI, Writing and Philosophical Learning Overview The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine."/><meta property="og:description" content="PhilSci-L03b: GenAI, Writing and Philosophical Learning Overview The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine."/><meta property="og:image:alt" content="PhilSci-L03b: GenAI, Writing and Philosophical Learning Overview The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="PhilSci-L03b: GenAI, Writing and Philosophical Learning Overview The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-425"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-425" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/PhilSci/">PhilSci</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/PhilSci/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>PhilSci L03b   GenAI, Writing and Philosophical Learning</a></div></nav><h1 class="article-title">PhilSci-L03b - GenAI, Writing and Philosophical Learning</h1><p show-comma="true" class="content-meta"><time datetime="2026-09-15T00:00:00.000Z">Sep 15, 2026</time><span>16 min read</span></p></div></div><article class="popover-hint"><h1 id="philsci-l03b-genai-writing-and-philosophical-learning">PhilSci-L03b: GenAI, Writing and Philosophical Learning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#philsci-l03b-genai-writing-and-philosophical-learning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Overview </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine.</p>
+<p>De Haro’s thesis is that the interesting question is not whether AI use is allowed. It is whether a given use <strong>strengthens or replaces your own learning</strong>, and he thinks that question has a determinate answer in most concrete cases. He supports it with one empirical study of what AI has done to a journal’s submission pipeline, one public scandal about authorship, and one long anecdote about trying to write a philosophy paper with AI himself.</p>
+<p>The slides carry their own AI use statement, which is the argument being made by demonstration.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>This is the deck that governs your paper </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Sections 7 and 8 are course policy, not commentary. The paper (30%) and the presentation (20%) are both governed by them, and the <strong>Project Description</strong> on Canvas repeats the rules in stricter language: generating or structuring your arguments or analysis is <strong>not permitted</strong>, and any use at all requires an AI use statement naming the tool, the purpose and the extent.</p>
+<p>The last slide before the conclusion also says: <strong>“Pangram detection has become very good.”</strong> Read that as a statement of intent.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="0-the-slides-declare-their-own-provenance">0. The slides declare their own provenance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#0-the-slides-declare-their-own-provenance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The title slide carries this, verbatim:</p>
+<blockquote class="callout quote" data-callout="quote">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>De Haro, title slide </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>AI was used to produce a first draft of these slides, based on an outline, detailed instructions, and texts that I supplied to AI Chat. Afterwards, I edited and adapted that draft to produce the final slides.</p>
+</div>
+</blockquote>
+<p>This is not decoration. It is the model of compliant use that sections 7 and 8 then formalise: a human supplies the outline, the instructions and the source texts; the machine drafts; the human edits and takes responsibility; the use is declared. Every restriction later in the deck is consistent with the way the deck itself was made.</p>
+<p>The session opened with a Wooclap poll asking the room two questions, “Do you use GenAI to study?” and “How do you use it?”, before any position was stated.</p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>A note on the deck's ordering </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The page order in <code>3b GenAI.pdf</code> does not match the slide numbers printed on the pages (they run 1, 2, 14, 4, 5, 7, 8, 10, 11, 12, 3, 15, 16, 17). The deck was reordered before export. This note follows the argument rather than the file, and flags nothing by it.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="1-the-framing-neither-enthusiasm-nor-prohibition">1. The framing: neither enthusiasm nor prohibition<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-the-framing-neither-enthusiasm-nor-prohibition" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>De Haro refuses both of the available slogans. The slide is a two-column contrast.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>AI <strong>can</strong> support learning</th><th>AI should <strong>not</strong> replace learning</th></tr></thead><tbody><tr><td>Ask for clarification of a difficult definition</td><td>Do not outsource the reading</td></tr><tr><td>Request alternative examples</td><td>Do not submit AI-generated answers as your own</td></tr><tr><td>Test whether you can explain an argument</td><td>Do not use generated text before you can judge its quality and accuracy</td></tr><tr><td>Use feedback to revise text <strong>that you have written</strong></td><td>Always acknowledge AI use when applicable</td></tr></tbody></table></div>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The organising question </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>“The central question is whether AI strengthens or replaces your own learning.”</strong></p>
+</div>
+</blockquote>
+<p>Notice the structure of the permitted column. Every item presupposes that you have already done the work: you have read the text and got stuck on a definition, you have understood a concept well enough to judge whether a fresh example fits, you have an argument in your head to be tested on, you have <strong>written something</strong> for the feedback to be about. The AI is downstream of your effort in every case. The forbidden column is the same list with the effort removed.</p>
+<hr/>
+<h2 id="2-beyond-writing-ai-and-mathematics">2. Beyond writing: AI and mathematics<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-beyond-writing-ai-and-mathematics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A short aside, included to show that the sceptical position is not a blanket one.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>What may become possible</th><th>What must remain visible</th></tr></thead><tbody><tr><td>Systematic comparison of Cayley graphs and state transfer; De Haro cites Krystal Guo’s work at the KdV Institute as striking</td><td>Access usually depends on a handful of commercial companies</td></tr><tr><td>AI may help discover relations across technical literatures and formulate hypotheses for verification</td><td>Advanced subscriptions cost around €100 per month</td></tr><tr><td></td><td><strong>Generation is not verification, proof, or understanding</strong></td></tr></tbody></table></div>
+<p>That last line is the one that carries across to the rest of the deck. The objection is not that machine output is worthless; it is that producing a candidate and establishing that it is correct are different acts, and only the first has got cheaper.</p>
+<p>The access point is a distinct argument and easy to skip past. If the tools that confer an epistemic advantage are gated behind a subscription, then the distribution of who can do good work changes for reasons that have nothing to do with ability.</p>
+<hr/>
+<h2 id="3-the-research-evidence-gartenberg-et-al-2026">3. The research evidence: Gartenberg et al. (2026)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-the-research-evidence-gartenberg-et-al-2026" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout info" data-callout="info">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What the study is </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Gartenberg et al. examine <strong>submissions and peer reviews at the journal <em>Organisation Science</em></strong>, over a <strong>five-year period beginning January 2021</strong>. They analyse both manuscripts and reviews.</p>
+<p>Source as given on the slides: “Gartenberg et al. (2026), summary document provided for this class.” The deck works from a summary, not the full paper.</p>
+</div>
+</blockquote>
+<p><strong>Their measures of writing quality</strong>, all six:</p>
+<ul>
+<li>Readability</li>
+<li>Jargon</li>
+<li>Nominalisation</li>
+<li>Passive voice</li>
+<li>Hedging</li>
+<li>Specificity</li>
+</ul>
+<blockquote class="callout quote" data-callout="quote">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The central claim </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Current AI tools, combined with incentives, are pushing research towards <strong>more, rather than better, writing.</strong></p>
+</div>
+</blockquote>
+<h3 id="31-the-headline-results">3.1 The headline results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-the-headline-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>+42%</strong></td><td>submission volume since late 2022</td></tr><tr><td><strong>−1.28 SD</strong></td><td>Flesch Reading Ease in January 2026 relative to January 2021</td></tr></tbody></table></div>
+<p>Submissions up by nearly half; readability down by more than a standard deviation. The deck presents these together because the claim is about the pair, not either number alone.</p>
+<p><strong>The qualifications are on the slide</strong>, and De Haro leaves them there rather than burying them:</p>
+<ul>
+<li>The finding is <strong>systems-level, not individual-level</strong></li>
+<li>It is <strong>one journal</strong></li>
+<li>It <strong>does not establish that every use of AI makes text worse</strong></li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Do not overstate this in an essay </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The qualifications are doing real work. The study licenses a claim about what happens to a publication system under a change in the cost of producing text. It licenses <strong>no</strong> claim about whether any particular author writes worse with AI. Conflating the two is the obvious error and it is pre-empted on the slide itself.</p>
+</div>
+</blockquote>
+<h3 id="32-the-figures">3.2 The figures<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-the-figures" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Four figures from the paper are reproduced on the slides. Their content, since the note must stand in for the deck:</p>
+<ul>
+<li><strong>Figure 1. Monthly Submission Volume at <em>Organization Science</em>, January 2013 to end of 2025.</strong> A histogram of monthly submission counts, roughly 50-100 per month through the 2010s, drifting upward. Two dashed vertical markers: COVID-19 (March 2020) and ChatGPT (November 2022). The bars climb steeply after the ChatGPT line, reaching roughly 150-160 per month by 2025.</li>
+<li><strong>Figure 2. Monthly Submission Volume by AI Use Categories over Time, 2021-2026.</strong> Five series: Total (black), and four AI-share bands (0-15%, 15-30%, 30-70%, 70%+) applied to first submissions’ abstracts. The 0-15% band declines steadily after the ChatGPT marker while the three higher-AI bands all rise from near zero. Total rises throughout.</li>
+<li><strong>Figure 6. Flesch Reading Ease of abstracts, 2013 to February 2026</strong>, in SD units with a confidence band. Flat and slightly positive (around +0.1 to +0.25) for a decade, holding through the COVID marker, then turning sharply downward after the ChatGPT marker and falling to roughly −1.0 by 2026. The decline is the visual centrepiece of the deck.</li>
+<li><strong>Figure 9. AI Use in Reviews Over Time, 2021-2026.</strong> Share of reviews by AI-use band. The 0-15% band sits near 1.0 until the ChatGPT marker, then declines to roughly 0.65 by 2026, with the 30-70% band rising to about 0.2 and the other two bands to about 0.1 each.</li>
+</ul>
+<h3 id="33-problems-in-peer-review">3.3 Problems in peer review<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-problems-in-peer-review" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The effect is on both sides of the process.</p>
+<p><strong>Manuscripts:</strong></p>
+<ul>
+<li>Above 30% AI use, <strong>desk-rejection rate is 30% higher</strong></li>
+<li>High-AI submissions <strong>rarely receive revise-and-resubmit decisions</strong></li>
+</ul>
+<p><strong>AI-generated reviews:</strong></p>
+<ul>
+<li><strong>More than 30% use some AI</strong></li>
+<li>More difficult to read</li>
+<li>Narrow focus</li>
+</ul>
+<blockquote class="callout quote" data-callout="quote">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The concern, stated on the slide </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Easy text generation <strong>shifts costs to editors and reviewers</strong>.</p>
+</div>
+</blockquote>
+<p>This is the sharpest point in the empirical section and it is an argument about externalities rather than about quality. Producing a submission became cheaper; evaluating one did not. The saving accrues to the author and the cost lands on people who did not make the choice.</p>
+<h3 id="34-why-more-rather-than-better-the-institutional-diagnosis">3.4 Why “more rather than better”: the institutional diagnosis<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-why-more-rather-than-better-the-institutional-diagnosis" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The authors’ causal chain, reproduced from the slide as a four-box flow:</p>
+<pre><code>  Universities              Researchers              GenAI                    Journals
+  ───────────               ───────────              ─────                    ────────
+  Reward           ──►      Pressure to      ──►     Reduces the      ──►     Increase in
+  publications in           increase                 cost of                  weak
+  top journals              output                   producing text           submissions
+</code></pre>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why the diagnosis is institutional and not moral </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Nobody in this chain is behaving badly. Universities reward publication because they need a legible measure. Researchers respond to the measure they are judged on. GenAI lowers a cost. The degradation is a property of the <strong>system</strong>, which is exactly why the slide’s qualification says “systems-level not individual-level”. If you want to argue against the finding, the place to attack is the first box, not the third.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="4-the-case-ai-and-public-communication">4. The case: AI and public communication<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-the-case-ai-and-public-communication" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The Jetten posts </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Dutch Prime Minister Rob Jetten’s social media.</strong> What NRC reported:</p>
+<ul>
+<li><strong>232 posts</strong> by the Prime Minister and his party reported to have been AI-generated</li>
+<li>The issue became especially sensitive where posts concerned <strong>apologies to the Moluccan community</strong></li>
+<li>Public debate focused on <strong>authenticity and responsibility</strong></li>
+</ul>
+<p>Source: Denise Retera, “AI-gebruik van premier Jetten op social media ligt onder de loep”, <em>NRC</em>, 11 September 2026.</p>
+</div>
+</blockquote>
+<p>The question for discussion, as posed on the slide:</p>
+<blockquote>
+<p>‘AI can make things better — but <strong>who is speaking, and who is responsible for the message?</strong>’</p>
+</blockquote>
+<p>And the moral De Haro draws:</p>
+<blockquote>
+<p><strong>Using AI is not the whole issue. Context, transparency, and authorship matter.</strong></p>
+</blockquote>
+<p>The apology is the detail that makes the case work. An apology is a <strong>speech act whose validity depends on who performs it</strong>; a generated apology is not a badly written apology but arguably not an apology at all. That is a point about the pragmatics of certain utterances rather than about text quality, and it generalises to any writing whose value depends on its being yours. A submitted essay is one of those.</p>
+<p>The slide closes with the line quoted at the top of this note: <strong>“Pangram detection has become very good.”</strong></p>
+<hr/>
+<h2 id="5-the-anecdote-writing-a-philosophical-review-paper-with-ai">5. The anecdote: writing a philosophical review paper with AI<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-the-anecdote-writing-a-philosophical-review-paper-with-ai" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>De Haro’s own attempt, offered as evidence rather than as anecdote.</p>
+<p><strong>The setup.</strong> A chapter for an Elsevier reference work on Scientific Theories, co-written with <strong>Hans Halvorson</strong>. He gave the AI the chapter outline with a target word count per section, plus the LaTeX format taken from a previous chapter he had written on Dualities, and asked it to work section by section.</p>
+<blockquote class="callout quote" data-callout="quote">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The prompt, as shown on the slide </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>I have given you the outline of the Chapter for the Elsevier reference work where I am writing a Chapter on Scientific Theories together with Hans Halvorson. Next to each section is the number of words it needs to have.</p>
+<p>Here below I give you the latex format that I will use (taken from a previous chapter on Dualities I wrote). Start by writing section 2 on the received view, in latex. Put also the outline I am giving you into the latex, so that I will already have the structure with the outline of the content (everything up to section 6, conclusion: forget the rest, although you can use the references if you have access to them). We will go section by section, and I will show you how to write. I left some references so you can see how to write references.</p>
+</div>
+</blockquote>
+<p><strong>The starting point is stated explicitly: an outline for a review paper, i.e. not new research.</strong></p>
+<h3 id="what-the-collaboration-actually-involved">What the collaboration actually involved<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-the-collaboration-actually-involved" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Human work</th><th>AI assistance</th></tr></thead><tbody><tr><td>Construct detailed outline of the paper and argumentation</td><td>Produce text according to detailed instructions</td></tr><tr><td>Give detailed instructions about style and literature</td><td>Rewrite taking detailed feedback into account</td></tr><tr><td>Endless rewriting and feedback, additional writing</td><td></td></tr></tbody></table></div>
+<p>Two conclusions on the slide:</p>
+<ul>
+<li>The project is a <strong>review paper</strong>: it does not begin by asking AI to generate original philosophical ideas.</li>
+<li><strong>Expert guidance is needed throughout</strong>: prompting, checking, selecting, writing, and rewriting.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The punchline </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>“500 pages of conversation, and the paper is still unfinished.”</strong></p>
+</div>
+</blockquote>
+<p>The rhetorical work this does is worth naming. It is a concession and a warning at once: the person telling you this is a professional philosopher who supplied the argument, the structure, the literature and the style, on a paper that by design required no original ideas, and it still cost him five hundred pages and is not done. The implied question to a student is what the same process would cost someone who does not yet have the outline in their head.</p>
+<hr/>
+<h2 id="6-writing-with-ai-requires-expertise">6. Writing with AI requires expertise<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-writing-with-ai-requires-expertise" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The general conclusion, stated as a conjunction of two necessary conditions.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The two conditions </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>You can responsibly use AI to help write <strong>only if both conditions hold</strong>:</p>
+<p><strong>(A) You are already an expert.</strong> You can check claims, detect omissions, and revise to improve the argument.</p>
+<p><strong>(B) You can already write philosophy.</strong> You recognise unnatural text and weak or incomplete arguments.</p>
+<p>“Before that stage, the priority is to <strong>develop your own philosophical voice and judgement</strong>.”</p>
+</div>
+</blockquote>
+<p>This is the load-bearing slide of the deck and it has a definite logical shape. Both conditions are about <strong>detection</strong>: (A) is detecting that a claim is false or a step is missing, (B) is detecting that prose is bad or an argument incomplete. Neither is about generation. The claim is that AI-assisted writing is only safe for someone who could have caught the errors anyway, which entails that the tool is of least use to the person who most wants it.</p>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The bootstrapping problem </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>If the conditions for safe use are expertise and the ability to write philosophy, and the way to acquire both is by writing philosophy without assistance, then the tool is unavailable precisely during the period in which you are acquiring the competence to use it. That is not a paradox, it is an ordering claim: unassisted practice first, assistance after. It is also why the course’s permitted uses are all about testing and revising rather than drafting.</p>
+</div>
+</blockquote>
+<h3 id="why-this-matters-in-philosophy-of-science-specifically">Why this matters in Philosophy of Science specifically<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-matters-in-philosophy-of-science-specifically" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p><strong>GenAI is good at surface summaries, but poor at argumentative nuance.</strong></p>
+</blockquote>
+<p>And the course is about exactly the thing the tool is worst at:</p>
+<ul>
+<li>Read and (re)construct arguments carefully</li>
+<li>Evaluate whether they succeed</li>
+<li>Produce and criticise written text by the same standards</li>
+</ul>
+<p>The mismatch is the argument. A tool that is strong at summary and weak at nuance is a tool that fails at all three of the course’s aims, and a summary that looks right is worse than one that looks wrong.</p>
+<hr/>
+<h2 id="7-course-policy-appropriate-uses">7. Course policy: appropriate uses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-course-policy-appropriate-uses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The permitted four </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>AI may be used <strong>as a study aid when it supports your own study</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>Clarify</strong></td><td>Ask for an explanation of a term <strong>after you have tried</strong> to understand the text</td></tr><tr><td><strong>Compare</strong></td><td>Request alternative examples, <strong>then assess whether they really fit</strong> the concept</td></tr><tr><td><strong>Test</strong></td><td>Ask AI to <strong>question you</strong> on an argument you have read</td></tr><tr><td><strong>Revise</strong></td><td>Request suggestions about a text <strong>you have written</strong>; <strong>decide yourself</strong> which suggestions to use</td></tr></tbody></table></div>
+<p>“In every case, use AI to deepen your understanding, rather than to replace reading and thinking.”</p>
+</div>
+</blockquote>
+<p>Each of the four has a qualifier attached, and the qualifier is the operative part. <em>After</em> you have tried. <em>Then</em> assess. Question <em>you</em>. A text <em>you have written</em>, and <em>you</em> decide. Strip the qualifiers and all four become violations.</p>
+<hr/>
+<h2 id="8-course-policy-limits-and-transparency">8. Course policy: limits and transparency<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-course-policy-limits-and-transparency" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Not appropriate </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li>Outsourcing assigned reading</li>
+<li><strong>Generating a text for submission</strong></li>
+<li>Using text that you cannot assess for accuracy, quality, and argumentation</li>
+</ul>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Transparency in written work </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>State what you did yourself</strong></li>
+<li><strong>Explain whether and how AI was used, for which purpose, and which choices were your own</strong></li>
+</ul>
+<p>“Your submitted work must make your own reasoning and responsibility visible.”</p>
+</div>
+</blockquote>
+<p>Note that the transparency requirement is not satisfied by a bare disclosure. It asks for three things: what you did, how the tool was used and for what, and <strong>which choices were yours</strong>. That last clause presupposes that the choices were in fact yours, so the statement is a claim about authorship and not a disclaimer.</p>
+<p>The <strong>Project Description</strong> on Canvas states the same policy in stricter and more legally shaped language, and it is the version that governs the paper. Permitted there: improving clarity and grammar, refining phrasing, brainstorming and contextualising ideas, locating relevant papers or concepts as with a search engine. Not permitted: <strong>generating or structuring your arguments or analysis</strong>, submitting AI-generated text as your own, fabricating references or quotations. Any use requires an <strong>AI use statement</strong> at the end of the submission specifying the tool, the purpose and the extent. Misuse is handled under the UvA <em>Regulations Governing Fraud and Plagiarism</em> (2019).</p>
+<hr/>
+<h2 id="conclusion-in-de-haros-three-lines">Conclusion, in De Haro’s three lines<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#conclusion-in-de-haros-three-lines" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Use AI to test your understanding</strong></li>
+<li><strong>Develop your own philosophical voice before relying on AI to draft text</strong></li>
+<li><strong>Be transparent about AI use and responsible for every claim you submit</strong></li>
+</ol>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Is this examined? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Almost certainly not.</strong> The mock exam has eight questions and they map onto the doctrinal lectures; none of them is about research ethics or AI use. Read this note for the policy in sections 7 and 8, which governs 50% of your course grade through the paper and presentation, not for exam revision.</p>
+<p>The one place it could surface is a tutorial discussion, where the Jetten case and the “who is speaking” question are the obvious prompts.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The three things to actually retain </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li><strong>The permitted uses all presuppose prior effort.</strong> Clarify after trying, assess the examples, be questioned, revise your own text. Remove the qualifier and it is a violation.</li>
+<li><strong>An AI use statement is mandatory if you use AI at all</strong>, and it must name the tool, the purpose, the extent, and which choices were yours.</li>
+<li><strong>Generating or structuring your arguments is the bright line.</strong> Not phrasing, not grammar, not finding papers. Arguments and structure.</li>
+</ol>
+</div>
+</blockquote>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The best line in the deck, for use elsewhere </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“Generation is not verification, proof, or understanding.” It is stated about mathematics and it generalises to the whole session, and it is a compact statement of a real epistemological point: the cost of producing a candidate answer and the cost of establishing that it is correct have come apart, and only one of them has fallen.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/PhilSci/PhilSci---Overview" class="internal alias" data-slug="Courses/PhilSci/PhilSci---Overview">Course overview</a></li>
+<li><strong>Same session:</strong> <a href="../../../Courses/PhilSci/Lectures/PhilSci-L03---Under-determination" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L03---Under-determination">PhilSci-L03 - Under-determination</a> was the first half of the 15 September flipped classroom</li>
+<li><strong>Previous:</strong> <a href="../../../Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism">PhilSci-L01 - Introduction and Logical Empiricism</a> · <a href="../../../Courses/PhilSci/Lectures/PhilSci-L01b---Popper-and-Lakatos" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L01b---Popper-and-Lakatos">PhilSci-L01b - Popper and Lakatos</a> · <a href="../../../Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L02---Kuhn-on-Scientific-Practice">PhilSci-L02 - Kuhn on Scientific Practice</a></li>
+<li><strong>Tutorials:</strong> <a href="../../../Courses/PhilSci/PhilSci---Tutorials" class="internal alias" data-slug="Courses/PhilSci/PhilSci---Tutorials">PhilSci - Tutorials</a></li>
+<li><strong>Source:</strong> <code>3b GenAI.pdf</code> on Canvas, uploaded 2026-09-15, 17 slides</li>
+<li><strong>Also governing:</strong> <code>2026 Project Description Philosophy of Science.pdf</code> on Canvas, section “About the use of AI tools”</li>
+<li><strong>Further reading:</strong> Gartenberg et al. (2026), studied via the summary document provided for the class · Denise Retera, “AI-gebruik van premier Jetten op social media ligt onder de loep”, <em>NRC</em>, 11 September 2026</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-306" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#philsci-l03b-genai-writing-and-philosophical-learning" data-for="philsci-l03b-genai-writing-and-philosophical-learning">PhilSci-L03b: GenAI, Writing and Philosophical Learning</a></li><li class="depth-1"><a href="#0-the-slides-declare-their-own-provenance" data-for="0-the-slides-declare-their-own-provenance">0. The slides declare their own provenance</a></li><li class="depth-1"><a href="#1-the-framing-neither-enthusiasm-nor-prohibition" data-for="1-the-framing-neither-enthusiasm-nor-prohibition">1. The framing: neither enthusiasm nor prohibition</a></li><li class="depth-1"><a href="#2-beyond-writing-ai-and-mathematics" data-for="2-beyond-writing-ai-and-mathematics">2. Beyond writing: AI and mathematics</a></li><li class="depth-1"><a href="#3-the-research-evidence-gartenberg-et-al-2026" data-for="3-the-research-evidence-gartenberg-et-al-2026">3. The research evidence: Gartenberg et al. (2026)</a></li><li class="depth-2"><a href="#31-the-headline-results" data-for="31-the-headline-results">3.1 The headline results</a></li><li class="depth-2"><a href="#32-the-figures" data-for="32-the-figures">3.2 The figures</a></li><li class="depth-2"><a href="#33-problems-in-peer-review" data-for="33-problems-in-peer-review">3.3 Problems in peer review</a></li><li class="depth-2"><a href="#34-why-more-rather-than-better-the-institutional-diagnosis" data-for="34-why-more-rather-than-better-the-institutional-diagnosis">3.4 Why “more rather than better”: the institutional diagnosis</a></li><li class="depth-1"><a href="#4-the-case-ai-and-public-communication" data-for="4-the-case-ai-and-public-communication">4. The case: AI and public communication</a></li><li class="depth-1"><a href="#5-the-anecdote-writing-a-philosophical-review-paper-with-ai" data-for="5-the-anecdote-writing-a-philosophical-review-paper-with-ai">5. The anecdote: writing a philosophical review paper with AI</a></li><li class="depth-2"><a href="#what-the-collaboration-actually-involved" data-for="what-the-collaboration-actually-involved">What the collaboration actually involved</a></li><li class="depth-1"><a href="#6-writing-with-ai-requires-expertise" data-for="6-writing-with-ai-requires-expertise">6. Writing with AI requires expertise</a></li><li class="depth-2"><a href="#why-this-matters-in-philosophy-of-science-specifically" data-for="why-this-matters-in-philosophy-of-science-specifically">Why this matters in Philosophy of Science specifically</a></li><li class="depth-1"><a href="#7-course-policy-appropriate-uses" data-for="7-course-policy-appropriate-uses">7. Course policy: appropriate uses</a></li><li class="depth-1"><a href="#8-course-policy-limits-and-transparency" data-for="8-course-policy-limits-and-transparency">8. Course policy: limits and transparency</a></li><li class="depth-1"><a href="#conclusion-in-de-haros-three-lines" data-for="conclusion-in-de-haros-three-lines">Conclusion, in De Haro’s three lines</a></li><li class="depth-1"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/PhilSci/Lectures/PhilSci-L03---Under-determination" class="internal">PhilSci-L03 - Under-determination</a></li><li><a href="../../../Courses/PhilSci/PhilSci---Overview" class="internal">PhilSci - Overview</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>

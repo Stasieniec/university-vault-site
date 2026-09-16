@@ -6,10 +6,28 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>MNLP - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</guid>
+    <description><![CDATA[ Multilingual Natural Language Processing — Overview Course: Multilingual Natural Language Processing (5204MNLP6Y) — 2026/27 Sem. ]]></description>
+    <pubDate>Wed, 16 Sep 2026 10:19:57 GMT</pubDate>
+  </item><item>
+    <title>PhilSci - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</guid>
+    <description><![CDATA[ Philosophy of Science — Overview Course: Philosophy of Science (5354PHSC6Y) — Sep–Oct 2026, Period 1 Programmes: MSc Logic, MSc Physics &amp; Astronomy (+ MSc AI) Credits: 6 EC Coordinator: Sebastian De Haro (s.deharo@uva.nl) Teachers: Enrico Cinti (e.cinti@uva.nl) Tutorials: Luka Vinck (l.j.vinck@u... ]]></description>
+    <pubDate>Wed, 16 Sep 2026 10:19:57 GMT</pubDate>
+  </item><item>
     <title>PhilSci-L03 - Under-determination</title>
     <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03---Under-determination</link>
     <guid>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03---Under-determination</guid>
     <description><![CDATA[ PhilSci-L03: Under-determination Overview An experiment contradicts your theory. Which belief do you give up? That question sounds trivial and is not. ]]></description>
+    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>PhilSci-L03b - GenAI, Writing and Philosophical Learning</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L03b---GenAI,-Writing-and-Philosophical-Learning</guid>
+    <description><![CDATA[ PhilSci-L03b: GenAI, Writing and Philosophical Learning Overview The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine. ]]></description>
     <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>B Testing</title>
@@ -46,24 +64,6 @@
     <link>https://notes.swasilewski.com/Concepts/Adam</link>
     <guid>https://notes.swasilewski.com/Concepts/Adam</guid>
     <description><![CDATA[ Adam Definition Adam (Adaptive Moment Estimation) Adam is an optimization algorithm for gradient-based optimization of stochastic objective functions. ]]></description>
-    <pubDate>Fri, 11 Sep 2026 15:59:51 GMT</pubDate>
-  </item><item>
-    <title>Advantage Actor-Critic (A2C)</title>
-    <link>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</link>
-    <guid>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</guid>
-    <description><![CDATA[ Advantage Actor-Critic (A2C) Definition Advantage Actor-Critic (A2C) A2C is an on-policy Actor-Critic algorithm that combines a parameterized policy (the actor, \pi_\theta) with a learned state-value function (the critic, \hat{V}_w). ]]></description>
-    <pubDate>Fri, 11 Sep 2026 15:59:51 GMT</pubDate>
-  </item><item>
-    <title>Advantage Function</title>
-    <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
-    <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
-    <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
-    <pubDate>Fri, 11 Sep 2026 15:59:51 GMT</pubDate>
-  </item><item>
-    <title>Agentic Search</title>
-    <link>https://notes.swasilewski.com/Concepts/Agentic-Search</link>
-    <guid>https://notes.swasilewski.com/Concepts/Agentic-Search</guid>
-    <description><![CDATA[ Agentic Search Agentic Search A retrieval paradigm where the language model has agency over the retrieval process, deciding when to search, what queries to issue, and how to incorporate results—in contrast to static RAG pipelines with fixed retrieve-then-read structure. ]]></description>
     <pubDate>Fri, 11 Sep 2026 15:59:51 GMT</pubDate>
   </item>
     </channel>

@@ -92,11 +92,12 @@ exam_date: 2026-10-19
 *Seminar: Thu 17 Sep 11:00–12:45, SP L0.06. No Tuesday lecture, the lecture was flipped.*
 **Flipped classroom:** the 15 Sep session was the flipped classroom. The pre-recorded lecture video, *Flipped classroom - Under-determination.mp4*, plus the slide deck stood in for the live lecture.
 
-**Canvas now carries two week-3 decks, both uploaded 2026-09-15:** a *revised* under-determination deck and a new deck on GenAI use in the assignments. Neither has been pulled into the vault, see **Source material not yet processed** below.
+**Canvas carries two week-3 decks, both uploaded 2026-09-15**, and both are now processed. The under-determination deck was revised and renamed `3 ...` to `3a ...`; the revision was purely additive, appending two slides, and both are folded into the L03 note. The second deck is new and has its own note.
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Complete lecture note, but written from the **superseded** deck. Re-check it against the revised *3a Under-determination_online.pdf* |
+| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Complete, and checked against the revised deck on 2026-09-16. The two appended slides (Laudan's two UD theses; Quine on the common core) are in sections 4 and 5 |
+| Lecture 3b | [[PhilSci-L03b - GenAI, Writing and Philosophical Learning]] | Second half of the same session. **Course policy on AI use**, which governs the paper and the presentation |
 
 | Reading | Pages | Source |
 |---------|-------|--------|
@@ -144,15 +145,22 @@ exam_date: 2026-10-19
 |---------|----------|-------|
 | **Exam** | Written exam, **Monday 2026-10-19, 09:00–11:00, SP C0.110**. **Hard gate: minimum 5.5 regardless of other marks** | |
 
-## Source material not yet processed
+## Source material
 
-> [!warning] Fetch these from Canvas on the laptop, in one pass
-> Canvas is unreachable from cloud sessions (egress-blocked), so neither file could be downloaded or read. Nothing below has been turned into a note, and no note should be written from guesswork about their contents.
+Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Checked 2026-09-16.
 
-| Canvas file | Uploaded | What it is | Action |
-|---|---|---|---|
-| `3a Under-determination_online.pdf` | 2026-09-15 | A **revised** version of the week-3 deck that [[PhilSci-L03 - Under-determination]] was written from. The vault's local copy `3 Under-determination_online.pdf` is 1,601,558 bytes, the Canvas copy is 1,586,086 bytes, so the two differ | Download, diff against the local deck, then re-check and update L03 against the revision |
-| `3b GenAI.pdf` | 2026-09-15 | **New, no note exists.** The course's official guidance on using AI in the assignments | Download and process. It governs the proposal, the draft and the paper, so read it before writing any of them |
+| Canvas file | Uploaded | Status |
+|---|---|---|
+| `1 Introduction and Logical Empiricism.pdf` | 2026-09-01 | [[PhilSci-L01 - Introduction and Logical Empiricism]] |
+| `Week 1 - Popper and Lakatos.pdf` | 2026-09-01 | [[PhilSci-L01b - Popper and Lakatos]] |
+| `2 Kuhn on Scientific Practice.pdf` | 2026-09-08 | [[PhilSci-L02 - Kuhn on Scientific Practice]] |
+| `3a Under-determination_online.pdf` | 2026-09-15 | [[PhilSci-L03 - Under-determination]], updated against the revision |
+| `3b GenAI.pdf` | 2026-09-15 | [[PhilSci-L03b - GenAI, Writing and Philosophical Learning]] |
+
+> [!tip] What the 3a revision actually changed
+> Nothing was altered or removed. Two slides were appended: **"Additional questions"** on Laudan's non-uniqueness versus egalitarian UD theses, and **"On the idea of a common core"** with two Quine quotations from pp. 323-324. Both are now in L03.
+
+Still outstanding, and not a PhilSci problem: the **week 1 and week 2 tutorial slides** (`.pptm`) are on Canvas and are not in `Assets/`. [[PhilSci - Tutorials]] was written from the tutorial content rather than the decks, so this is a completeness gap rather than a coverage gap.
 
 ## Key Deadlines
 

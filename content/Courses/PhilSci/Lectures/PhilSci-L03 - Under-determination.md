@@ -144,6 +144,23 @@ Laudan's point: rationality includes **epistemic warrant**, above all the empiri
 
 This is the same distinction Duhem was making with good sense, restated with more teeth.
 
+### Laudan's two theses, and which one is the threat
+
+> [!definition] Added to the deck on 2026-09-15, under "Additional questions"
+> Laudan distinguishes two claims that get run together:
+>
+> 1. **Non-uniqueness UD thesis.** For any theory $T$ and any body of evidence supporting $T$, there is **at least one** rival to $T$ that is as well supported as $T$.
+> 2. **Egalitarian thesis** (stronger). **Every** theory is as well supported by the evidence as any of its rivals.
+>
+> Laudan holds that **only (2), not (1), is a threat to epistemology and methodology.**
+
+The discussion questions De Haro attaches are: **why** is only the egalitarian thesis a threat, and **under which of the two** would you classify Quine's empirical under-determination?
+
+> [!intuition] Why only the stronger thesis bites
+> Non-uniqueness says a rival exists. It does not say the rival is *equally good in every respect*, and it does not say that no further evidence or methodological consideration could separate them. Methodology survives non-uniqueness because its job is exactly to choose among the survivors. The egalitarian thesis denies that there is ever anything to choose on, which is what would make theory choice arbitrary and methodology idle.
+>
+> This is the same move as the Laudan quotation above: a logical possibility of a rival is not yet a reason to think the rules of theory choice are silent.
+
 ## 5. Empirical under-determination
 
 A different and sharper thesis, from Quine's 1975 *On Empirically Equivalent Systems of the World*.
@@ -171,6 +188,24 @@ The interesting question is whether real examples exist, and the honest answer i
 - **Stanford (2006)**: critics "have been well within their rights to demand that serious, nonsceptical, and genuinely distinct empirical equivalents to a theory actually be produced" before withholding belief, rather than presuming such equivalents exist when none can be named.
 
 So the strong thesis is widely asserted and thinly evidenced. That is a usable exam point.
+
+### Where under-determination actually lurks: Quine on the common core
+
+> [!definition] Added to the deck on 2026-09-15, under "On the idea of a common core"
+> Quine's own account of when empirical equivalence does and does not generate a problem. Two quotations from *On Empirically Equivalent Systems of the World*:
+>
+> > If the implied observation conditionals (redundancies aside) are finite in number, we can simply take the conjunction of them, a single sentence, as our theory formulation. It contains its observation conditionals without remainder; they are all it is. It is implied by every empirically equivalent theory, and can conflict with none of them. (p. 323)
+>
+> > **Under-determination lurks where there are two irreconcilable formulations each of which implies exactly the desired set of observation conditionals plus extraneous theoretical matter, and where no formulation affords a tighter fit.** (p. 324)
+
+This is worth having because it tells you what the thesis actually requires, and the requirement is demanding.
+
+If you can collapse a theory into the bare conjunction of its observation conditionals, there is nothing left to be under-determined. That conjunction is implied by every empirically equivalent rival and conflicts with none of them, so it is a **common core** rather than a competitor. The problem only arises when two formulations are **irreconcilable**, each carries **extraneous theoretical matter** beyond the observation conditionals, and **neither fits more tightly** than the other.
+
+> [!tip] Why this matters for the sceptical argument
+> All three conditions have to hold at once. That is a substantial burden, and it explains the finding in the previous section: real examples are scarce because the conditions are hard to satisfy, not because nobody has looked. Anyone deploying under-determination against scientific realism owes you the three conditions, not just the slogan.
+>
+> Note also the page numbers: **pp. 324-326 are the Craig's-theorem passage De Haro told you on 2026-09-08 that you may skip.** The quotation above at p. 324 sits immediately before the skippable stretch begins.
 
 ## 6. Poincare's conventionalism
 
@@ -256,5 +291,6 @@ That last point is the lecturer's own research position, which is worth remember
 
 - **Course:** [[PhilSci - Overview|Course overview]]
 - **Previous:** [[PhilSci-L01 - Introduction and Logical Empiricism]] · [[PhilSci-L02 - Kuhn on Scientific Practice]]
-- **Source:** `3 Under-determination_online.pdf` and `Flipped classroom - Under-determination.mp4` on Canvas
+- **Source:** `3a Under-determination_online.pdf` and `Flipped classroom - Under-determination.mp4` on Canvas. The deck was **revised on 2026-09-15** and renamed from `3 ...` to `3a ...`; the revision appended two slides, both folded in above (sections 4 and 5). Nothing in the original was changed or removed.
+- **Second half of the same session:** [[PhilSci-L03b - GenAI, Writing and Philosophical Learning]]
 - **Further reading:** Curd & Cover, commentary to Chapter 3 · Quine (1975), *On Empirically Equivalent Systems of the World* · De Haro (2021), *The Empirical Under-Determination Argument against Scientific Realism for Dual Theories* · Le Bihan and Read (2018), *Duality and Ontology*
