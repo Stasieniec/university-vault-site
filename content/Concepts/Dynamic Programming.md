@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [DP, dynamic programming]
-course: [RL]
+course: [RL, MNLP]
 tags: [tabular-methods, exam-topic]
 status: complete
 ---
@@ -10,7 +10,10 @@ status: complete
 
 ## Definition
 
-> [!definition] Dynamic Programming
+> [!definition] Dynamic programming in general
+> **Dynamic programming** is a method for solving a problem by breaking it into overlapping subproblems whose optimal solutions combine into an optimal solution of the whole (**optimal substructure**). Each subproblem is solved once and its result stored, either top-down with memoization or bottom-up in a table, so exponential brute-force search becomes polynomial. Outside RL, the standard examples are shortest paths, edit distance, and Viterbi decoding, which is how [[MNLP-L03 - Morphology and Word Formation]] and [[MNLP-L04 - Subword Segmentation]] find the best segmentation of a word or sentence.
+
+> [!definition] Dynamic Programming in RL
 > **Dynamic Programming** refers to a collection of algorithms that compute optimal policies given a perfect model of the environment (i.e., the [[Markov Decision Process|MDP]] dynamics $p(s',r|s,a)$). DP uses the [[Bellman Equation]] as an update rule to iteratively improve value estimates.
 
 > [!intuition] Core Idea
@@ -81,3 +84,5 @@ Combines evaluation and improvement into a single update:
 - [[RL-Book Ch4 - Dynamic Programming]]
 - [[RL-CA01 - Dynamic Programming]]
 - [[RL-ES01 - Exercise Set Week 1]]
+- [[MNLP-L03 - Morphology and Word Formation]]
+- [[MNLP-L04 - Subword Segmentation]]

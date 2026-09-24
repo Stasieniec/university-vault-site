@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Word Embeddings, distributed representations]
-course: [IR, RL]
+course: [IR, RL, MNLP]
 tags: [foundations, nlp, embeddings]
 status: complete
 ---
@@ -36,3 +36,4 @@ Learns embeddings by factorizing a global word-word co-occurrence matrix. Combin
 ## Appears In
 - [[IR-L05 - Neural IR Intro & Reranking]]
 - [[RL-L08 - Deep RL Value-Based]]
+- [[MNLP-L03 - Morphology and Word Formation]]

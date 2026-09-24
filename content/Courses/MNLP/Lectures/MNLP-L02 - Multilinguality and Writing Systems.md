@@ -161,7 +161,7 @@ Finnish is **agglutinative**: morphemes stack, each contributing one piece of me
 > └─────────────────────────────────────── stem, "happy"
 > ```
 
-The English translation "even at my happiest" needs four words and a preposition. Finnish needs one token. Any model with a fixed word-level vocabulary will simply have never seen *onnellisimmillanikin*, and there are combinatorially many more like it, so the problem cannot be fixed by collecting more data. This is the motivation for subword modelling, which the course picks up in the next deck.
+The English translation "even at my happiest" needs four words, one of them a preposition. Finnish needs one token. Any model with a fixed word-level vocabulary will simply have never seen *onnellisimmillanikin*, and there are combinatorially many more like it, so the problem cannot be fixed by collecting more data. This is the motivation for subword modelling, which the course picks up in the next deck.
 
 ## 5. Four assumptions English lets you get away with
 
@@ -224,9 +224,9 @@ The slide shows "Amsterdam is the capital of the Netherlands" written in eleven 
 
 Things worth noticing while looking at that list:
 
-- The **Japanese line mixes three writing systems in one sentence**: アムステルダム is Katakana, 首都 is Kanji, はオランダの…です is Hiragana. A single "which script is this text in" label cannot describe it.
+- The **Japanese line mixes three writing systems in one sentence**: アムステルダム and オランダ are Katakana, 首都 is Kanji, は, の and です are Hiragana. A single "which script is this text in" label cannot describe it.
 - The **Thai line has no spaces anywhere**, not even between words, and no full stop at the end.
-- The **sentence terminator is a different character in almost every row**: `:` in Armenian, `።` in Amharic, `。` in Japanese, `।` in Bengali, `.` in the Latin-script lines. A regex looking for `[.!?]` finds the end of exactly four of these eleven sentences.
+- The **sentence terminator is a different character in almost every row**: `:` in Armenian (as reproduced here it is an ASCII colon; the proper Armenian full stop is `։`, U+0589), `።` in Amharic, `。` in Japanese, `।` in Bengali, nothing at all in Thai, and `.` in the Russian, Georgian, Pashto, Inuktitut, Somali and Vietnamese lines. A regex looking for `[.!?]` finds the end of only six of these eleven sentences.
 - **Two rows are Latin script but different languages** (Somali and Vietnamese), and Vietnamese piles diacritics on top: *thủ đô của* carries tone marks and a stroked *đ*.
 
 ### 8.2 Types of writing system
@@ -261,8 +261,8 @@ The lecture then shows the same idea concretely, one word per system:
 
 Two of these have standard typological names that the slide does not use, and it is worth attaching them because the exam-relevant taxonomy in the reading uses them:
 
-- The **Devanagari** pattern, a consonant carrying an inherent vowel that other marks override, is what typologists call an **abugida**. पानी is *pa* + *nī*, not *p* + *a* + *n* + *ī*.
-- The **Arabic** pattern, consonantal skeleton written and vowels left out, is what typologists call an **abjad**. كتب is the root k-t-b, which underlies *kataba* ("he wrote"), *kitāb* ("book"), *maktab* ("office") and many more. The written form does not tell you which.
+- The **Devanagari** pattern, a consonant carrying an inherent vowel that other marks override, is what typologists call an **abugida**. पानी is *pā* + *nī*, two akshara, not *p* + *ā* + *n* + *ī*: each is a consonant letter (प *pa*, न *na*) whose inherent *a* is overridden by a vowel sign (ा *ā*, ी *ī*).
+- The **Arabic** pattern, consonantal skeleton written and vowels left out, is what typologists call an **abjad**. كتب is the root k-t-b, which underlies *kataba* ("he wrote"), *kitāb* ("book"), *maktab* ("office") and many more. The written form كتب itself can be read *kataba* ("he wrote"), *kutiba* ("it was written") or *kutub* ("books"), and does not tell you which. (*kitāb* and *maktab* are spelled differently, كتاب and مكتب, because long vowels and the *m-* prefix are written.)
 
 > [!warning] Why the abjad case is nasty for NLP
 > The Arabic writing system is systematically **lossier than the language**. A single written form maps to several distinct words, so ambiguity that other languages resolve in the orthography has to be resolved by the model from context. This is not a tokenizer bug you can fix, it is information that was never in the input.
@@ -327,12 +327,14 @@ The two disadvantages, both fatal:
                         │
         ┌───────────────┴───────────────┐
         ▼                               ▼
-  decoded as UTF-8              decoded as Latin-1
+  decoded as UTF-8              decoded as Windows-1252
         │                               │
       Привет                        ÐŸÑ€Ð¸Ð²ÐµÑ‚
 
   Same bytes. No error raised. One of these is your training data.
 ```
+
+(Strict Latin-1 maps bytes `9F`, `80` and `82` to invisible C1 control characters, so the visible string above is what Windows-1252, the Microsoft superset of Latin-1, produces. That is also what most real mojibake looks like.)
 
 ## 10. Unicode
 
@@ -556,7 +558,7 @@ Worth doing once by hand, because the exam can ask you to.
 > Which matches the slide exactly.
 
 > [!example] 中, U+4E2D
-> $\text{0x4E2D} = \texttt{0100111000101101}_2$, 16 significant bits, so use the 3-byte form, which carries $4 + 6 + 6 = 16$ payload bits.
+> $\text{0x4E2D} = \texttt{0100111000101101}_2$, 15 significant bits (written out to 16 with a leading zero), which exceeds the 11 of the 2-byte form, so use the 3-byte form, which carries $4 + 6 + 6 = 16$ payload bits.
 >
 > Split as 4 + 6 + 6: `0100 | 111000 | 101101`
 >

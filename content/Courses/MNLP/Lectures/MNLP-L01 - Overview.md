@@ -62,6 +62,8 @@ Its goal is to algorithmically and formally model aspects of human language:
 
 **Example — NER:** *"President [Biden]PER has received the French prime minister [Macron]PER"*
 
+(Factual aside on the example sentence: Macron is the French president and has never been prime minister. The tagging point is unaffected. #needs-review: check whether the slide itself says "prime minister".)
+
 **Example — QA vs IR:** Information retrieval returns ranked documents; QA returns actual answers (e.g. "1962" for "When was the Cuba Crisis?").
 
 ### 4. Industrial Relevance

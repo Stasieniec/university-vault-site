@@ -56,8 +56,8 @@ exam_date: 2026-10-19
 > [[PhilSci - Tutorials]] holds every tutorial discussion question with an answer, plus the full course plan from tutorial 1, which is more complete than anything else published on Canvas.
 
 > [!info] Standing times and rooms, confirmed from MyTimetable, synced 2026-09-16
-> - **Lecture** (De Haro): Tuesdays **15:00–16:45**, **SP L1.08**. Remaining: 22 Sep, 29 Sep, 6 Oct, 13 Oct
-> - **Seminar / tutorial** (Luka Vinck): Thursdays **11:00–12:45**, **SP L0.06**. Remaining: 17 Sep, 24 Sep, 1 Oct, 8 Oct
+> - **Lecture**: Tuesdays **15:00–16:45**, **SP L1.08**. Remaining: 29 Sep, 6 Oct, 13 Oct. Mostly De Haro; lecture 4 on 22 Sep was given by Enrico Cinti
+> - **Seminar / tutorial**: Thursdays **11:00–12:45**, **SP L0.06**. Luka Vinck for weeks 1 to 4; week 5 is announced as Matteo (Fabbri). Remaining: 1 Oct, 8 Oct
 > - **Group presentation:** Thursday **2026-10-15, 10:00–12:45**, SP L0.06. Note the 10:00 start, an hour earlier than the usual seminar slot
 > - **Exam:** Monday **2026-10-19, 09:00–11:00**, SP C0.110
 
@@ -107,6 +107,13 @@ exam_date: 2026-10-19
 
 ### Week 4 (39, 21–25 Sep): Explanation and Understanding
 *Lecture: Tue 22 Sep 15:00–16:45, SP L1.08. Seminar: Thu 24 Sep 11:00–12:45, SP L0.06.*
+
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 4 | [[PhilSci-L04 - Scientific Explanation and Understanding]] | Hempel's D-N model and its objections, causal and unification alternatives, van Fraassen; De Regt and Dieks on understanding. **Mock exam question 7** |
+| Tutorial 4 | [[PhilSci - Tutorials]] | Godfrey-Smith on explanation, De Regt and Dieks on understanding, every question answered |
+| **Due** | Project proposal, **Fri 25 Sep 20:00** | Canvas |
+
 | Reading | Pages | Source |
 |---------|-------|--------|
 | Godfrey-Smith — Explanation | | Canvas |
@@ -147,7 +154,7 @@ exam_date: 2026-10-19
 
 ## Source material
 
-Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Checked 2026-09-16.
+Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Checked 2026-09-24. On the same date every lecture note was re-checked page by page against its deck and corrected where it had drifted (L01 and L02 were the ones with real gaps).
 
 | Canvas file | Uploaded | Status |
 |---|---|---|
@@ -156,11 +163,13 @@ Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Chec
 | `2 Kuhn on Scientific Practice.pdf` | 2026-09-08 | [[PhilSci-L02 - Kuhn on Scientific Practice]] |
 | `3a Under-determination_online.pdf` | 2026-09-15 | [[PhilSci-L03 - Under-determination]], updated against the revision |
 | `3b GenAI.pdf` | 2026-09-15 | [[PhilSci-L03b - GenAI, Writing and Philosophical Learning]] |
+| `4 Scientific Explanation and Scientific Understanding.pdf` | 2026-09-24 | [[PhilSci-L04 - Scientific Explanation and Understanding]] |
+| Tutorial slides weeks 1 to 4 (`.pptm`) | 2026-09-03 to 2026-09-24 | [[PhilSci - Tutorials]] |
 
 > [!tip] What the 3a revision actually changed
 > Nothing was altered or removed. Two slides were appended: **"Additional questions"** on Laudan's non-uniqueness versus egalitarian UD theses, and **"On the idea of a common core"** with two Quine quotations from pp. 323-324. Both are now in L03.
 
-Still outstanding, and not a PhilSci problem: the **week 1 and week 2 tutorial slides** (`.pptm`) are on Canvas and are not in `Assets/`. [[PhilSci - Tutorials]] was written from the tutorial content rather than the decks, so this is a completeness gap rather than a coverage gap.
+The four tutorial decks are now all in `Assets/` as well. The week 2 deck was checked against [[PhilSci - Tutorials]] on 2026-09-24 and matches.
 
 ## Key Deadlines
 

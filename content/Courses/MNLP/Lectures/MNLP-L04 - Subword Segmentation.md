@@ -23,7 +23,7 @@ topics:
 > [!abstract] Overview
 > Your translation system was trained with a fixed vocabulary. The test sentence is *"The president of France arrived in Kyrgyzstan."* and "Kyrgyzstan" was never in the training data. What does the model see?
 >
-> With a word-level vocabulary it sees `<UNK>`, and the sentence is now about the president of France arriving somewhere unspecified. With a character-level vocabulary it sees eleven symbols with almost no individual meaning, and a sequence long enough to make the whole sentence expensive to encode. Neither is acceptable, and the fix that the entire modern NLP stack is built on is to stop asking which of the two you want and instead learn the unit size from data.
+> With a word-level vocabulary it sees `<UNK>`, and the sentence is now about the president of France arriving somewhere unspecified. With a character-level vocabulary it sees ten symbols with almost no individual meaning, and a sequence long enough to make the whole sentence expensive to encode. Neither is acceptable, and the fix that the entire modern NLP stack is built on is to stop asking which of the two you want and instead learn the unit size from data.
 >
 > This lecture is the practical counterpart to the morphology lecture that precedes it. Morphology says *what* the meaningful pieces of a word are. Subword segmentation says how to find pieces automatically, in any language, without a linguist, using nothing but frequency counts. The pieces you get are not morphemes, and a large part of this lecture is about measuring exactly how far off they are, and why that gap matters much more in some languages than in others.
 
@@ -182,7 +182,7 @@ for i in range(num_merges):
 Line by line, the parts that are not obvious:
 
 - `vocab` maps a **space-separated symbol sequence** to a **word-type frequency**. The words are types, not tokens: `'l o w </w>' : 5` means the type `low` occurred 5 times. This is why BPE training is cheap, it runs over the type vocabulary, not the corpus.
-- `</w>` is the **end-of-word marker**. Without it, the `est` in `highest` and the `est` in `establish` would be the same symbol, and the tokenizer could merge across a word boundary. Attaching the marker also lets a piece be word-final versus word-internal.
+- `</w>` is the **end-of-word marker**. Without it, the word-final `est` in `highest` and the word-initial `est` in `establish` would be the same symbol, and after segmentation you could not tell where one word ends and the next begins. Attaching the marker lets a piece be word-final versus word-internal, and is what makes detokenization possible. (It is not what stops merges across words: each word type is a separate key in `vocab`, so no pair ever spans two words.)
 - `get_stats` counts every adjacent pair, weighted by the word's frequency. A pair inside a word that occurs 5000 times counts 5000 times.
 - `merge_vocab` rewrites `"a b"` as `"ab"` everywhere. The regex `(?<!\S)...(?!\S)` means "not preceded by a non-space and not followed by a non-space", which is how it makes sure it matches whole symbols and not a substring of a longer symbol.
 - `max(pairs, key=pairs.get)` returns the **first** key attaining the maximum, and dict iteration order is insertion order. So ties are broken by whichever pair was encountered first while scanning the vocabulary.
@@ -437,6 +437,8 @@ Reading it:
 > As written, $L_t = p_\theta(D) - p_{\theta'}(D)$ where $\theta'$ lacks token $t$. Removing a token cannot raise the likelihood, so $L_t \ge 0$, and a **large** $L_t$ means the token was **valuable**. Line 12 nonetheless says to remove the tokens with the **highest** $L_t$, which taken literally would prune the most useful pieces first.
 >
 > The intent in Kudo (2018), and what SentencePiece actually implements, is the opposite: keep the top-scoring pieces and drop the ones whose removal costs the least likelihood. Read line 12 as "remove the tokens with the smallest $L_t$", or equivalently define $L_t$ with the opposite sign as a per-token score to be maximised. I have reproduced the slide as printed, but do not implement it as printed.
+>
+> A second detail the printed algorithm leaves out: Kudo (2018) **never prunes single-character tokens**, so every string stays segmentable and pruning cannot create out-of-vocabulary items. Taken literally, lines 11 to 13 could remove a character.
 
 ### 6.4 Why you need dynamic programming: the brute-force baseline
 
@@ -558,7 +560,7 @@ Segments(i, j):
 call Segments(1, n)
 ```
 
-**Complexity.** The table has $O(n^2)$ cells and each does $O(n)$ work, so this is $O(n^3)$ time and $O(n^2)$ space in the word length $n$. That is fine for words and would not be fine for sentences, which is one reason segmentation is done per word. If you cap the maximum subword length at $L$ (real vocabularies do, since no piece is 40 characters long), the standard Viterbi lattice formulation over positions runs in $O(nL)$, which is what production implementations use.
+**Complexity.** The table has $O(n^2)$ cells and each does $O(n)$ work, so this is $O(n^3)$ time and $O(n^2)$ space in the word length $n$. That is fine for words and would not be fine for sentences, which is one reason segmentation is done per word. The span table is more than the unigram model needs: because segments are independent, it is enough to keep one best score per end position, $\text{best}[j] = \max_{i<j} \text{best}[i] \cdot p(c[i{+}1..j])$, which is $O(n^2)$. If you also cap the maximum subword length at $L$ (real vocabularies do, since no piece is 40 characters long), this Viterbi lattice formulation over positions runs in $O(nL)$, which is what production implementations use. SentencePiece runs it over whole sentences, since it does no pre-tokenization (section 6.10).
 
 > [!warning] Multiply probabilities and you will underflow
 > The line `t = m[i,k] * m[k+1,j]` multiplies probabilities, and a long word multiplies many of them. In float32 this reaches zero quickly, at which point every candidate ties at zero and the argmax is meaningless. Work in log space: replace `*` with `+`, replace `p(...)` with `log p(...)`, initialise unknown substrings to `-inf`, and keep `>` as the comparison since the log is monotone. Everything else in the algorithm is unchanged.
@@ -744,7 +746,7 @@ The readable numbers, approximated off the plot:
 | BPE | 4250 | 1280 | 2700 | 3050 | 2520 | 1950 | 1520 | 1080 | 700 | 450 | 260 | tail |
 | Unigram LM | 4250 | 1280 | 2220 | 2410 | 2110 | 1950 | 1800 | 1420 | 1030 | 700 | 380 | longer tail |
 
-They are identical at lengths 1 and 2, since both must keep the full character alphabet. BPE bulges at lengths 3 to 5 and Unigram LM bulges from 7 upward.
+They are identical at length 1, since both must keep the full character alphabet, and (as read off the plot) at length 2. BPE bulges at lengths 3 to 5 and Unigram LM bulges from 7 upward.
 
 > [!formula] Lecture conclusion (English)
 > - **The unigram LM produces longer segments on average.**
@@ -805,9 +807,9 @@ Segmentations are scored against a linguistic reference: **CELEX2** for English 
 | Uni. LM | **62.2%** | **20.1%** | **30.3%** | **82.2%** | **72.8%** | **77.2%** |
 
 > [!warning] Do not read these as "tokenizers are bad at English"
-> The English numbers are low in absolute terms for both methods, and the recall numbers especially so: BPE recovers 12.9% of CELEX2's morpheme boundaries and Unigram LM 20.1%. That is expected, because neither method is trying to find morphemes, and because most English word tokens are frequent enough to stay whole, which produces no boundaries to recall at all.
+> The English numbers are low in absolute terms for both methods, and the recall numbers especially so: BPE recovers 12.9% of CELEX2's morpheme boundaries and Unigram LM 20.1%. That is expected, because neither method is trying to find morphemes, and because most English word tokens are frequent enough to stay whole, so the tokenizer predicts no boundary at all where CELEX2 has one (*walked* as one token misses *walk|ed*).
 >
-> What is meaningful is the **ratio**. Unigram LM is roughly 1.6x BPE on English F1 and about 1.05x on Japanese F1. The gap between the two methods is far larger in English than in Japanese, which says the choice of segmenter matters more where the writing system leaves more decisions open.
+> What is meaningful is the **ratio**. Unigram LM is roughly 1.6x BPE on English F1 and about 1.05x on Japanese F1. The gap between the two methods is far larger in English than in Japanese. The two columns do not measure the same thing, though: the English reference is morpheme boundaries inside space-delimited words, the Japanese reference is word boundaries in unspaced text. And the downstream gap (section 8.5) runs the other way, about one point in English against 12.3 on Japanese TyDi QA, so a larger gold-standard F1 gap does not predict a larger task gap.
 
 ### 8.5 Does it matter downstream?
 
@@ -907,8 +909,8 @@ Four consequences, in increasing order of how annoying they are:
 ## Links
 
 - **Course:** [[MNLP - Overview|Course overview]]
-- **Previous:** [[MNLP-L01 - Overview]] (the morphology lecture directly precedes this one and supplies the notion of morpheme used throughout)
+- **Previous:** [[MNLP-L03 - Morphology and Word Formation]] (the morphology lecture directly precedes this one and supplies the notion of morpheme used throughout)
 - **Related concept:** [[Tokenization]]
 - **Project:** [[MNLP - Mini Project]]
 - **Source:** `MNLP_subword.pdf`, Christof Monz, MNLP: Subword Segmentation, slides 1 to 24
-- **Primary references:** Sennrich, Haddow and Birch (2016), *Neural Machine Translation of Rare Words with Subword Units* · Schuster and Nakajima (2012), *Japanese and Korean Voice Search* · Kudo (2018), *Subword Regularization* · Kudo and Richardson (2018), *SentencePiece* · Creutz and Lagus (2002), *Morfessor* · Bostrom and Durrett (2020), *Byte Pair Encoding is Suboptimal for Language Model Pretraining*
+- **Primary references:** Sennrich, Haddow and Birch (2016), *Neural Machine Translation of Rare Words with Subword Units* · Schuster and Nakajima (2012), *Japanese and Korean Voice Search* · Kudo (2018), *Subword Regularization* · Kudo and Richardson (2018), *SentencePiece* · Creutz and Lagus (2002), *Unsupervised Discovery of Morphemes* (the method later released as Morfessor) · Bostrom and Durrett (2020), *Byte Pair Encoding is Suboptimal for Language Model Pretraining*

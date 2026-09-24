@@ -103,6 +103,8 @@ Quine's sharpest move: **at bottom the two dogmas are identical.** Reductionism 
                     ·  ·  ·  ·  ·  ·  ·  ·  ·
 ```
 
+The slide's own figure ("Quine's web of belief") is a spider's web drawn inside a circle, with its outer rim formed by two dark, branch-like arcs, each labelled **OBSERVATIONS**. The web touches experience only at that rim; the strands run inwards to a dense centre. The ASCII sketch above adds the layering from the quotation (geography and history near the rim, logic and mathematics at the centre), which the figure itself leaves unlabelled.
+
 The centre is not immune, only expensive. Logic and mathematics sit deepest because revising them forces the largest rearrangement, not because they are a different kind of truth.
 
 **The Duhem-Quine thesis** is the web read as a claim about theory choice: a disconfirming observation only touches the edge, and auxiliary hypotheses absorb the blow. Laudan catalogues the available moves as Quine's "four stratagems".
@@ -161,6 +163,9 @@ The discussion questions De Haro attaches are: **why** is only the egalitarian t
 >
 > This is the same move as the Laudan quotation above: a logical possibility of a rival is not yet a reason to think the rules of theory choice are silent.
 
+> [!intuition] Where Quine's empirical under-determination fits
+> The slides leave the second question open. A defensible answer: Quine's empirical under-determination (section 5) is at most a **non-uniqueness** thesis. It claims that a theory has *at least one* empirically equivalent but theoretically inequivalent rival, and Quine (1975) himself calls it an open question whether any such case exists. It says nothing about *every* rival being equally well supported, so it does not reach the egalitarian thesis. It is also weaker than non-uniqueness in one respect: empirical equivalence (same observation sentences) is not yet equal evidential support, since, as Laudan and Leplin argue, evidential support can depend on more than a theory's observational consequences. Quine's holist claim in Two Dogmas ("any statement can be held true come what may") is the one that is sometimes read as egalitarian, and it is that claim Laudan's p. 293 objection targets. #needs-review (this answer is not given on the slides)
+
 ## 5. Empirical under-determination
 
 A different and sharper thesis, from Quine's 1975 *On Empirically Equivalent Systems of the World*.
@@ -205,7 +210,7 @@ If you can collapse a theory into the bare conjunction of its observation condit
 > [!tip] Why this matters for the sceptical argument
 > All three conditions have to hold at once. That is a substantial burden, and it explains the finding in the previous section: real examples are scarce because the conditions are hard to satisfy, not because nobody has looked. Anyone deploying under-determination against scientific realism owes you the three conditions, not just the slogan.
 >
-> Note also the page numbers: **pp. 324-326 are the Craig's-theorem passage De Haro told you on 2026-09-08 that you may skip.** The quotation above at p. 324 sits immediately before the skippable stretch begins.
+> Note also the page numbers: **pp. 324-326 are the Craig's-theorem passage De Haro told you on 2026-09-08 that you may skip.** The quotation above at p. 324 sits immediately before the skippable stretch begins. (Precisely, the announcement says to skip from the **last paragraph of p. 324** to the **first paragraph of p. 326**, so the p. 324 quotation is outside the skipped stretch only if it comes before that last paragraph.) #needs-review
 
 ## 6. Poincare's conventionalism
 
@@ -216,7 +221,7 @@ The best worked example in the lecture, and the one to reach for if asked to ill
 Non-Euclidean geometries were shown to be mathematically consistent in the nineteenth century by Gauss and Riemann. That creates a question Kant's picture cannot easily answer.
 
 - **Kant**: geometry and Newton's three laws are **synthetic a priori**. A priori, so independent of experience, yet synthetic, so they add something rather than being mere logical truths. Specific forces such as the inverse-square law and their parameters are empirical, that is synthetic a posteriori.
-- **Poincare** (*Science and Hypothesis*, 1902): geometry is **neither** a priori **nor** a posteriori. It is **conventional**. We choose the geometric viewpoint that describes experience most simply, but we could take alternatives.
+- **Poincare** (*Science and Hypothesis*, 1902): geometry is **neither** purely a priori **nor** a posteriori. It is **conventional**. We choose the geometric viewpoint that describes experience most simply, but we could take alternatives.
 
 ### First argument: perception does not hand us three dimensions
 
@@ -246,6 +251,13 @@ Take a world inside a sphere of radius $R$. Two descriptions of it:
 
         Same world. Two geometries. No experiment separates them.
 ```
+
+The slide itself shows two circular pictures of the **Poincare disk model** of hyperbolic (non-Euclidean) geometry:
+
+- **Left**: a disk tiled with black and white triangles. The label $T = R^2$ points at the centre and $T = 0$ at the rim. Near the centre the triangles are large; towards the rim they become smaller and smaller without end. In the hyperbolic geometry of the inhabitants every triangle is the **same size**; seen from outside with Euclidean eyes, they shrink towards the boundary, exactly as bodies shrink with falling temperature in Description 1.
+- **Right**: M. C. Escher's *Circle Limit IV* (angels and devils), the same kind of tiling drawn with interlocking figures that repeat, ever smaller, towards the edge of the disk. Every figure is congruent to every other in the hyperbolic metric.
+
+So the picture is literally one image with two readings: a finite Euclidean disk with a shrinking law, or an infinite hyperbolic plane of equal tiles.
 
 ### The conclusion
 

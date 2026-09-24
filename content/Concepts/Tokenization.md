@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Tokenization, Tokenizing]
-course: [IR]
+course: [IR, MNLP]
 tags: [foundations]
 status: complete
 ---
@@ -16,7 +16,7 @@ status: complete
 Splitting by whitespace is rarely enough. Key issues include:
 - **Punctuation**: "O'Neill" → `O'Neill`? `O` and `Neill`? 
 - **Hyphenation**: "state-of-the-art" → one token or four?
-- **Compounds**: "database" (English) vs "Datimbank" (German) vs "San Francisco" (multi-word expression).
+- **Compounds**: "database" (English) vs "Datenbank" (German) vs "San Francisco" (multi-word expression).
 - **Numbers/Dates**: Handling 2024-02-24 or $1,000.50.
 - **Case Folding**: Reducing everything to lowercase (e.g., "Apple" vs "apple").
 
@@ -36,3 +36,9 @@ After splitting, tokens often undergo further normalization:
 ## Appears In
 
 - [[IR-L02 - IR Fundamentals]]
+- [[MNLP-L02 - Multilinguality and Writing Systems]]
+- [[MNLP-L03 - Morphology and Word Formation]]
+- [[MNLP-L04 - Subword Segmentation]]
+
+> [!warning] Multilingual caveat
+> The lowercasing and accent-stripping above are English-centric IR defaults. In multilingual NLP they can destroy information: Turkish dotted and dotless I lowercase differently, and stripping diacritics merges distinct words in many languages. See [[MNLP-L02 - Multilinguality and Writing Systems]] on normalization.

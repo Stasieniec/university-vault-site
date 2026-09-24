@@ -21,17 +21,17 @@ topics:
 > [!abstract] Overview
 > A man pushes a child into a river to drown it. Another man dies trying to pull a child out. Freud explains the first as repression and the second as sublimation. Adler explains both as inferiority feelings. Neither theory can be embarrassed by anything a human being might do.
 >
-> Meanwhile Einstein said that starlight grazing the sun would be deflected by a specific angle, and that if the deflection were absent his theory was finished. Popper's whole philosophy comes out of noticing that the second attitude is the scientific one and the first is not, and that this has nothing to do with which theory has more evidence behind it.
+> Meanwhile Einstein's theory said that starlight grazing the sun would be deflected by a specific angle, so that if the deflection were absent the theory would simply be refuted. (That verdict is Popper's. Einstein himself, asked in 1953, said he would have been "very sorry for the dear Lord, for the theory is correct", which is exactly what exam question 3 is about.) Popper's whole philosophy comes out of noticing that the second kind of theory is the scientific one and the first is not, and that this has nothing to do with which theory has more evidence behind it.
 >
 > Lakatos then agrees that Popper found the right question and gave the wrong answer, because real scientists never abandon a theory just because the facts contradict it. His replacement, the **methodology of scientific research programmes**, is worth 10 marks on its own (question 2), and the Popper half is worth another 10 (question 3). This note covers Curd & Cover chapter 1, Popper pp. 3-10 and Lakatos pp. 20-26.
 
 ## 1. The problem the chapter is about
 
-Parapsychology, the study of extrasensory perception and paranormal powers, was admitted to the American Association for the Advancement of Science as an affiliate member in 1969. In 1979 the physicist John A. Wheeler wrote to the president of the AAAS demanding the parapsychologists be expelled: "We have enough charlatanism in this country today without needing a scientific organization to prostitute itself to it."
+Parapsychology is defined by its practitioners as the study of extrasensory perception (ESP: telepathy, clairvoyance, precognition) and paranormal powers such as telekinesis. Shunned for decades by the scientific establishment, it received official recognition in 1969 when the American Association for the Advancement of Science admitted the Parapsychological Association as an affiliate member. In 1979 the physicist John A. Wheeler wrote to the president of the AAAS demanding the parapsychologists be expelled: "We have enough charlatanism in this country today without needing a scientific organization to prostitute itself to it. The AAAS has to make up its mind whether it is seeking popularity or whether it is strictly a scientific organization." (The editors add that the Parapsychological Association is still a member of the AAAS.)
 
-Wheeler's letter is an accusation of **pseudoscience**, and the interesting philosophical question is not whether the accusation is popular but what would make it correct.
+Wheeler's letter is an accusation of **pseudoscience**, and the interesting philosophical question is not whether the accusation is popular but what would make it correct. In the twentieth century the accusation was levelled at Freud and psychoanalysis, astrology, believers in the paranormal, Immanuel Velikovsky and Erich von Däniken (whose best-sellers *Worlds in Collision* and *Chariots of the Gods* excited the wrath of Carl Sagan and the scientific establishment), and most recently the self-styled advocates of creation-science.
 
-If the only concern were to label people, you could just check where their work is published and how the scientific community received it. Astrology, the paranormal, psychoanalysis and creation-science all produce research, books and articles, but in popular magazines rather than refereed journals, and their practitioners are not funded by the National Science Foundation or elected to the National Academy of Sciences. That is sociology. Philosophers want the **reasons**.
+If the only concern were to label people, you could just check where their work is published and how the scientific community received it. Astrology, the paranormal, psychoanalysis and creation-science all produce research, books and articles, but in popular magazines and bookstores rather than refereed journals and science libraries, and their practitioners are seldom funded by the National Science Foundation or elected to the National Academy of Sciences. That is sociology. Philosophers want the **reasons**.
 
 > [!definition] Demarcation criterion
 > A **necessary condition** that any discipline or field of study must satisfy in order to count as genuine science. If a discipline fails one of these conditions it is judged non-scientific. The problem of finding such a condition is the **problem of demarcation**.
@@ -42,11 +42,13 @@ The chapter closes with Michael Ruse against Larry Laudan on creation-science. R
 
 ## 2. Popper: Science, Conjectures and Refutations (1963)
 
-The text is a lecture Popper gave at Peterhouse, Cambridge in 1953, published as "Philosophy of Science: A Personal Report" and later reprinted in *Conjectures and Refutations*.
+The text is a lecture Popper gave at Peterhouse, Cambridge in the summer of 1953, as part of a British Council course on developments and trends in contemporary British philosophy. It was first published as "Philosophy of Science: A Personal Report" in *British Philosophy in Mid-Century*, ed. C. A. Mace (1957), and later reprinted in *Conjectures and Refutations*.
+
+It opens with an epigraph from Anthony Trollope: "Mr. Turnbull had predicted evil consequences, ... and was now doing the best in his power to bring about the verification of his own prophecies." (A joke at the expense of verification: a prophet can always help his prophecy come true, which is the self-fulfilling mechanism Popper later calls the Oedipus effect, see 2.7.)
 
 ### 2.1 The question is demarcation, not truth
 
-Popper is explicit about what he was **not** asking in 1919.
+Popper dates his problem to the autumn of 1919, when he first began to grapple with the question "When should a theory be ranked as scientific?", or "Is there a criterion for the scientific character or status of a theory?" He is explicit about what he was **not** asking.
 
 | Question | Popper's attitude |
 |---|---|
@@ -58,7 +60,7 @@ His phrasing: "I wished to distinguish between science and pseudo-science; knowi
 
 Note both halves. Science is not defined as the set of true claims, because scientific theories are frequently wrong. Pseudoscience is not defined as the set of false claims, because a fortune-teller can get lucky. Truth and scientific status come apart, and the criterion has to be about something else.
 
-The standard answer of the day was that science is distinguished from pseudo-science, or from metaphysics, by its **empirical method**, which is essentially **inductive**, proceeding from observation or experiment. Popper found this useless, and reformulated the problem as distinguishing a genuinely empirical method from a **pseudo-empirical** one: a method which appeals to observation and experiment but does not come up to scientific standards. Astrology is his example, with its "stupendous mass of empirical evidence based on observation, on horoscopes and on biographies."
+The standard answer of the day was that science is distinguished from pseudo-science, or from metaphysics, by its **empirical method**, which is essentially **inductive**, proceeding from observation or experiment. This "did not satisfy" Popper, and he reformulated the problem as distinguishing a genuinely empirical method from a **pseudo-empirical** one: a method which appeals to observation and experiment but does not come up to scientific standards. Astrology is his example, with its "stupendous mass of empirical evidence based on observation, on horoscopes and on biographies."
 
 That is the crucial move. Astrology is not short of data. Piling up observations is exactly what it does. So whatever makes science different, it cannot be the mere presence of supporting evidence.
 
@@ -75,7 +77,9 @@ After the collapse of the Austrian Empire the air was full of new and often wild
 
 Popper knew Adler personally and worked with him in the social guidance clinics Adler ran in the working-class districts of Vienna. He was also, with his circle of student friends, "thrilled with the result of Eddington's eclipse observations which in 1919 brought the first important confirmation of Einstein's theory of gravitation."
 
-What bothered him was not that he doubted the truth of the other three, nor that physics was more exact or more measurable than sociology or psychology. It was that those three, "though posing as sciences, had in fact more in common with primitive myths than with science; that they resembled astrology rather than astronomy."
+It was during the summer of 1919 that he grew more and more dissatisfied with the other three and dubious about their claims to scientific status. His problem first took the simple form: "What is wrong with Marxism, psycho-analysis, and individual psychology? Why are they so different from physical theories, from Newton's theory, and especially from the theory of relativity?"
+
+What bothered him was not that he doubted the truth of the other three, nor that physics was more exact or more measurable than sociology or psychology. Few of his circle would have said they believed in the **truth** of Einstein's theory either, so truth cannot have been the difference. It was that those three, "though posing as sciences, had in fact more in common with primitive myths than with science; that they resembled astrology rather than astronomy."
 
 ### 2.3 Explanatory power as a symptom of weakness
 
@@ -134,7 +138,7 @@ What impressed Popper was **the risk**. If observation had shown the predicted e
 
 ### 2.5 The seven conclusions
 
-This is the centre of the text. Learn the numbered list, it is the thing most often quoted back.
+This is the centre of the text. Learn the numbered list, it is the thing most often quoted back. Popper says these considerations led him to the conclusions in the winter of 1919-20.
 
 > [!quote] Popper, Conjectures and Refutations, p. 7
 > 1. It is easy to obtain confirmations, or verifications, for nearly every theory, if we look for confirmations.
@@ -227,7 +231,12 @@ Two subtleties worth marks.
 
 Marxism and psychoanalysis fail in **different ways**, and Popper is careful about this. Marxism was once genuine science and was destroyed by its defenders. Psychoanalysis never made a risky claim to begin with. If a question asks about the Marxist case specifically, the answer is that it was falsified and then rescued.
 
-Popper does not say Freud and Adler are seeing nothing correctly. He personally does not doubt that much of what they say is of considerable importance and "may well play its part one day in a psychological science which is testable." The verdict is about the **form** of the claims, not their content.
+Popper does not say Freud and Adler are seeing nothing correctly. He personally does not doubt that much of what they say is of considerable importance and "may well play its part one day in a psychological science which is testable." But the "clinical observations" which analysts naively believe confirm their theory cannot do so any more than the daily confirmations astrologers find in their practice. These theories "describe some facts, but in the manner of myths. They contain most interesting psychological suggestions, but not in a testable form." The verdict is about the **form** of the claims, not their content.
+
+> [!note] Popper's footnotes on clinical observation and astrology
+> **Clinical observations (note 3).** Clinical observations, like all other observations, are interpretations in the light of theories, and for that reason alone they are apt to seem to support the theories in whose light they were interpreted. Real support can only come from observations undertaken as tests ("attempted refutations"), and for that **criteria of refutation have to be laid down beforehand**: it must be agreed which observable situations, if actually observed, would mean the theory is refuted. Popper asks what clinical responses would refute not just a particular diagnosis but psycho-analysis itself, and whether analysts have ever discussed or agreed on such criteria. Instead there is a family of analytic concepts, such as "ambivalence", which make agreeing on such criteria difficult if not impossible. There is also the question of how far the analyst's own expectations influence the patient's "clinical responses". Popper coined the term **Oedipus effect** for the influence of a theory, expectation or prediction upon the very event it predicts or describes: the causal chain leading to Oedipus' parricide was started by the oracle's prediction of it. Freud himself admits (*Gesammelte Schriften* III, 1925, p. 314) that most dreams used in an analysis owe their origin to the analyst's suggestion, yet says this does not detract from the reliability of the results.
+>
+> **Astrology (note 4).** Astrology, nowadays a typical pseudoscience, was attacked by Aristotelians and other rationalists down to Newton's day for the **wrong reason**: for its now accepted assertion that the planets have an "influence" on terrestrial ("sublunar") events. Newton's theory of gravity, and especially the lunar theory of the tides, was historically an offspring of astrological lore. Newton seems to have been most reluctant to adopt a theory from the same stable as the theory that "influenza" epidemics are due to an astral "influence". Galileo, no doubt for the same reason, actually rejected the lunar theory of the tides, and his misgivings about Kepler may be explained by his misgivings about astrology. The point: the pseudoscientific origin of an idea does not settle its scientific status, which ties in with 2.9 below.
 
 ### 2.8 Ad hoc rescue and the conventionalist stratagem
 
@@ -251,7 +260,9 @@ Popper is often lumped in with the logical positivists of [[PhilSci-L01 - Introd
 
 He notes that myths may be developed and become testable, that historically all or very nearly all scientific theories originate from myths, and that a myth may contain important anticipations of scientific theories. Empedocles' theory of evolution by trial and error is one example. Parmenides' myth of the unchanging block universe in which nothing ever happens is another: add a dimension and it becomes Einstein's block universe, in which nothing ever happens either, since everything is four-dimensionally determined and laid down from the beginning.
 
-So a theory found to be non-scientific or metaphysical "is not thereby found to be unimportant, or insignificant, or meaningless, or nonsensical." It just cannot claim to be backed by empirical evidence in the scientific sense.
+So a theory found to be non-scientific or metaphysical "is not thereby found to be unimportant, or insignificant, or meaningless, or nonsensical." It just cannot claim to be backed by empirical evidence in the scientific sense, "although it may easily be, in some genetic sense, the 'result of observation'."
+
+Popper adds in parentheses that there were a great many other theories of this pre-scientific or pseudo-scientific character, some of them, unfortunately, as influential as the Marxist interpretation of history: for example the **racialist interpretation of history**, another of those impressive and all-explanatory theories which act upon weak minds like revelations.
 
 > [!warning] Verifiability versus falsifiability: the distinction question 1 depends on
 > | | Carnap and the Vienna Circle | Popper |
@@ -271,7 +282,9 @@ A radio lecture broadcast by the Open University on 30 June 1973, reprinted as t
 
 ### 3.1 Why demarcation is not armchair philosophy
 
-Lakatos opens and closes on the political stakes, and it is a fair bet for a short question.
+Lakatos opens: "Man's respect for knowledge is one of his most peculiar characteristics. Knowledge in Latin is *scientia*, and science came to be the name of the most respectable kind of knowledge. But what distinguishes knowledge from superstition, ideology or pseudoscience?" The demarcation "is not merely a problem of armchair philosophy: it is of vital social and political relevance."
+
+Lakatos opens and closes on the political stakes, and it is a fair bet for a short question. In the closing paragraph he says the problem "has grave implications also for the institutionalization of criticism."
 
 - The Catholic Church excommunicated Copernicans. Copernicus's theory was banned in **1616** as pseudoscientific and taken off the Index in **1820**, because by then the Church deemed that the facts had proved it and it had therefore become scientific.
 - The Central Committee of the Soviet Communist Party declared Mendelian genetics pseudoscientific in **1949** and had its advocates, such as Academician Vavilov, killed in concentration camps. After Vavilov's murder Mendelian genetics was rehabilitated, but the Party's right to decide what is science and publishable and what is pseudoscience and punishable was upheld.
@@ -294,7 +307,7 @@ The underlying principle: belief, commitment and understanding are states of the
 
 ### 3.3 Hume's fork and the witchcraft problem
 
-> [!quote] Hume, An Enquiry Concerning Human Understanding (1748), final paragraph
+> [!quote] Hume, An Enquiry Concerning Human Understanding (first published 1748 as *Philosophical Essays Concerning Human Understanding*), final paragraph
 > If we take in our hand any volume; of divinity, or school metaphysics, for instance; let us ask, does it contain any abstract reasoning concerning quantity or number? No. Does it contain any experimental reasoning concerning matter of fact and existence? No. Commit it then to the flames. For it can contain nothing but sophistry and illusion.
 
 Lakatos accepts the spirit and rejects the confidence. What is "experimental" reasoning? The vast seventeenth-century literature on witchcraft is full of careful observations, sworn evidence and even experiments. Glanvill, the house philosopher of the early Royal Society, regarded witchcraft as **the paradigm of experimental reasoning**.
@@ -304,6 +317,8 @@ Lakatos accepts the spirit and rejects the confidence. What is "experimental" re
 This is the same point Popper made with astrology. Evidence-gathering is not the differentiator, because the pseudosciences gather evidence too.
 
 ### 3.4 Facts cannot prove theories, and Newton is the proof
+
+In scientific reasoning theories are confronted with facts, and one of the central conditions of scientific reasoning is that theories must be supported by facts. "Now how exactly can facts support theory?" Several answers have been proposed.
 
 Newton thought he had proved his laws from facts. He was proud of not uttering mere hypotheses, and claimed to have deduced his laws from the "phenomena" provided by Kepler.
 
@@ -322,7 +337,7 @@ Science was born in the seventeenth century, when the most relevant knowledge co
 
 Ampère, in the early nineteenth century, felt obliged to call his book *Mathematical Theory of Electrodynamic Phenomena Unequivocally Deduced from Experiment*, then casually confessed at the end of the volume that some of the experiments were never performed and that the necessary instruments had not even been constructed.
 
-It took the downfall of Newtonian theory in the twentieth century to make scientists realise that their standards of honesty had been utopian.
+It took the downfall of Newtonian theory in the twentieth century to make scientists realise that their standards of honesty had been utopian. Before Einstein most scientists thought that Newton had deciphered God's ultimate laws by proving them from the facts.
 
 ### 3.5 Probabilism, and why it collapses
 
@@ -343,7 +358,7 @@ Lakatos calls this "rather stunning" and draws out the consequence that a theory
 
 He then makes a sharp observation that is easy to miss: if this is the criterion, "we do not demarcate scientific theories from pseudoscientific ones, but rather **scientific method from non-scientific method**." Marxism is scientific, for a Popperian, if Marxists are prepared to specify facts which, if observed, would make them give up Marxism. If they refuse, it becomes a pseudoscience. The same proposition can petrify into pseudoscientific dogma or become genuine knowledge depending on the attitude of the people holding it.
 
-Lakatos's test question: "It is always interesting to ask a Marxist, what conceivable event would make him abandon his Marxism."
+Lakatos's test question: "It is always interesting to ask a Marxist, what conceivable event would make him abandon his Marxism." And: "If he is committed to Marxism, he is bound to find it immoral to specify a state of affairs which can falsify it."
 
 > [!warning] The objection, and it is the whole hinge of the lecture
 > "Popper's criterion ignores the **remarkable tenacity** of scientific theories. Scientists have thick skins. They do not abandon a theory merely because facts contradict it."
@@ -360,7 +375,7 @@ So Popper's test, applied honestly to real physics, fails to separate Newton fro
 
 The obvious next step is Kuhn's: if refutation does not drive theory change, maybe theory change is a conversion experience and revolutions are irrational. Lakatos names Kuhn as "a distinguished American philosopher of science" who "arrived at this conclusion after discovering the naivety of Popper's falsificationism", and refuses to follow him: if Kuhn is right there is no explicit demarcation, no distinction between scientific progress and intellectual decay, and no objective standard of honesty. See [[PhilSci-L02 - Kuhn on Scientific Practice]] for Kuhn's side of this, and for Lakatos's charge elsewhere that Kuhn reduces science to mob psychology.
 
-Lakatos wants a third option that keeps the rationality without pretending scientists behave like Popperians.
+Lakatos wants a third option that keeps the rationality without pretending scientists behave like Popperians. In his words: "In the last few years I have been advocating a methodology of scientific research programmes, which solves some of the problems which both Popper and Kuhn failed to solve."
 
 ### 3.7 The methodology of scientific research programmes
 
@@ -440,7 +455,7 @@ So the Popperian distinction cannot be that some are still unrefuted while other
 > [!warning] The editors' footnote, and you should know it
 > Curd & Cover note that Lakatos uses "refuted" loosely. For Lakatos a refutation is any apparently well-founded result that seems to be inconsistent with a theory. In both cases he cites, the "refutations" were later shown to be **spurious**: the moon's motion is not actually inconsistent with Newton's theory, and Kaufmann's results on beta rays were due to experimental error.
 >
-> This matters because it shows how bad an idea instant falsification is. If Einstein had behaved as Popper prescribes, he would have abandoned relativity in 1906 on the strength of a measurement that was simply wrong. Tenacity is not a character flaw, it is sometimes the only thing that saves a correct theory.
+> This matters because it shows how bad an idea instant falsification is. If Einstein had behaved as Popper prescribes, he would have abandoned relativity almost as soon as he published it, on the strength of a measurement that was simply wrong. Tenacity is not a character flaw, it is sometimes the only thing that saves a correct theory.
 
 ### 3.9 Progressive versus degenerating programmes
 
@@ -582,7 +597,7 @@ Four qualifications, each of which is a point Lakatos is making against somebody
 >
 > ---
 >
-> **Question 1 is also half this material.** It asks for the verifiability criterion of meaning and its significance for demarcation. Have the Carnap-versus-Popper contrast in section 2.9 ready: verifiability demarcates meaningful from meaningless, falsifiability demarcates scientific from non-scientific, and for Popper the non-scientific is still meaningful and sometimes the ancestor of later science.
+> **Question 1 belongs to [[PhilSci-L01 - Introduction and Logical Empiricism]]** (the model answer is in that note's Exam Focus), but this material supplies the contrast. It asks for the verifiability criterion of meaning and its significance for demarcation. Have the Carnap-versus-Popper contrast in section 2.9 ready: verifiability demarcates meaningful from meaningless, falsifiability demarcates scientific from non-scientific, and for Popper the non-scientific is still meaningful and sometimes the ancestor of later science.
 >
 > ---
 >

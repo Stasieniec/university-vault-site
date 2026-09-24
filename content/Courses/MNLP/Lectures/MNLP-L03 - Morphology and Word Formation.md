@@ -99,7 +99,7 @@ The slide writes the right context as $\{w_{t+1}, \dots, w_{t+n}\}$ while callin
 
 This looks like $n$-gram language modelling with $n = (\text{LM order} - 1)$ and $m = 0$, and the resemblance is the point of comparison, but it is not the same task. A language model predicts the next word from the left context only. CBOW sees both sides, which is fine because CBOW is not trying to be a language model. It is trying to produce good embeddings, and the prediction task is only a means to that end.
 
-The architecture is a feed-forward neural network with three deliberate choices:
+The architecture is a feed-forward neural network with these deliberate choices:
 
 - **Focus on learning the embeddings themselves**, not on prediction quality
 - **Simple network**, because depth would spend capacity on the task instead of the representation
@@ -204,6 +204,8 @@ It is not trivial, because the same character string often segments in more than
 > | 研究 \| 生活 \| 动 | research on life activities |
 >
 > Both are grammatical. Nothing in the characters themselves decides between them.
+>
+> #needs-review: the second segmentation leaves 动 ("move") as a stranded single character, so it is a lexically possible cut rather than a natural sentence; check the reading against the slide.
 
 The space of all possible segmentations of a string of length $n$ is huge, but only a few of them are actually valid.
 
@@ -336,7 +338,7 @@ Reformulated this way, the problem is ordinary **sequence labeling**, and any se
 > There is a **hidden** sequence of tags (B/M/E/S) that generated the **observed** sequence of characters. The model has two kinds of parameters:
 >
 > - **Transition probabilities** $P(\text{tag}_i \mid \text{tag}_{i-1})$: how likely one tag is to follow another (bigrams here). For example, B is very likely to be followed by M or E, and **cannot** be followed by another B.
-> - **Emission probabilities** $P(\text{character}_i \mid \text{tag}_i)$: how likely a given character is to be "produced" by a given tag. For example, 究 might have a high probability of being tagged E.
+> - **Emission probabilities** $P(\text{character}_i \mid \text{tag}_i)$: how likely a given character is to be "produced" by a given tag. For example, $P(\text{究} \mid E)$ might be relatively high, because 究 usually closes the word 研究. (Note the direction: the emission is the probability of the character given the tag, not of the tag given the character.)
 
 The joint probability of a character sequence $c_{1:n}$ and a tag sequence $t_{1:n}$ is the product of the two:
 
@@ -373,6 +375,7 @@ Trying and scoring all possible labelings is computationally intractable, for th
 ```pseudo
 Algorithm: Viterbi for BMES tagging
 ──────────────────────────────────────────────────────────────
+score[0][<s>] = 1                       // start symbol t_0; all other score[0][t] = 0
 for i = 1 to n (each character position):
     for each tag t in {B, M, E, S}:
         score[i][t] = max over previous tag t' of
@@ -393,7 +396,7 @@ backtrace from the highest-scoring final tag to recover the full tag sequence
 > $$O(n \times |T|^2)$$
 > $n$ positions, and at each position every one of $|T|$ tags is compared against every one of $|T|$ predecessors. With $|T| = 4$ this is $16n$, which is linear in the sentence length. Compare that with $4^n$ for brute force.
 
-The trellis, drawn out for the first three characters, with one column per position and one row per tag. Every cell keeps a single best incoming edge:
+The trellis, drawn out for the four characters of 研究生活, with one column per position and one row per tag. Every cell keeps a single best incoming edge. The drawing is schematic and shows only a few edges: in the real trellis every cell receives an edge from all four cells of the previous column, and the structurally impossible ones (B→B, B→S, M→B, M→S, E→M, E→E, S→M, S→E, see the table above) carry probability 0, so the horizontal B→B arrows drawn here never win.
 
 ```
             研            究            生            活
@@ -445,7 +448,7 @@ The **stem**, **root** or **lemma** of a word defines its core meaning. Three pr
 > [!definition] Derivation
 > **Changes the part of speech and/or the meaning.**
 >
-> - change in POS: *happy* (adj) → *happiness* (noun) → *happily* (adv)
+> - change in POS: *happy* (adj) → *happiness* (noun); *happy* (adj) → *happily* (adv). Both derive from *happy*, not *happily* from *happiness*.
 > - change in meaning: *function* → *disfunction*; *perfect* → *imperfect*
 >
 > Derivation produces what a lexicographer would call a new word, with its own dictionary entry.
@@ -661,7 +664,7 @@ Tôi đã đi học ("I went to study")
 
 - The **inessive** is a locative case meaning "in". Finnish has five other locative cases: **elative** = "out of", **illative** = "into", **allative** = "to", and others.
 - Each suffix is clearly separable and **reusable across many other nouns**, which is what makes the type learnable: a segmenter that discovers *-ssa* once can apply it everywhere.
-- Some vowel and consonant changes may be required during attachment (note *talo* + *-i-* here), so the boundaries are clean at the level of morphemes but not always at the level of characters.
+- Some vowel and consonant changes may be required during attachment. Not in this word: *talo* + *-i-* attaches without change. But *kala* ("fish") + *-i-* + *-ssa* gives *kaloissa* ("in fishes"), with the stem vowel *a* turning into *o*. So the boundaries are clean at the level of morphemes but not always at the level of characters.
 
 ### Fusional: Russian
 
@@ -671,8 +674,11 @@ Tôi đã đi học ("I went to study")
 |---|---|
 | book | instrumental.plural.feminine |
 
-- One suffix, *-ami*, fuses **case** (instrumental), **number** (plural) and **gender** (feminine) into a single unsegmentable morpheme.
+- One suffix, *-ami*, fuses **case** (instrumental) and **number** (plural) into a single unsegmentable morpheme. The gloss above (as on the slide) also lists **gender** (feminine), see the warning below.
 - There is no substring of *-ami* that means "plural". That is the definition of fusional, and it is why a purely string-based segmenter cannot recover the features even in principle.
+
+> [!warning] *-ami* does not mark gender
+> Russian neutralises gender in the plural: *-ami* is the instrumental plural for all three genders (*stolami* "with tables", masculine; *oknami* "with windows", neuter; *knigami*, feminine). A Russian ending that genuinely fuses case, number and gender is the instrumental **singular**: feminine *knig-oy* ("with the book") against masculine *stol-om* ("with the table").
 
 ### Fusional: Spanish
 
@@ -698,7 +704,7 @@ Tôi đã đi học ("I went to study")
 - The vowels in this pattern are **not written down** in regular Arabic orthography, only spoken. So the written form gives you the consonantal skeleton and the reader supplies the rest.
 
 > [!warning] Why Arabic is the worst case for a naive tokenizer
-> This is **non-concatenative** morphology at industrial scale. The morphemes are interleaved, not concatenated, so no set of cuts recovers them. On top of that, the written form omits the very vowels that carry person, gender and aspect, so the information is not merely hard to segment, it is not in the character string at all. A subword tokenizer trained on Arabic learns consonant clusters and has no way to represent the pattern as a unit.
+> This is **non-concatenative** morphology at industrial scale. The morphemes are interleaved, not concatenated, so no set of cuts recovers them. On top of that, the written form omits the short vowels of the pattern, so part of the information is not merely hard to segment, it is not in the character string at all. In يكتب the prefix ي (*y-*, 3rd person masculine, imperfective) is written, but the vowels are not, so the string cannot distinguish *yaktubu* ("he writes") from *yuktabu* ("it is written"), and the mood ending *-u* is invisible. A subword tokenizer trained on Arabic learns consonant clusters and has no way to represent the pattern as a unit.
 
 ### Polysynthetic: Inuktitut
 
@@ -707,16 +713,16 @@ Tôi đã đi học ("I went to study")
 | Morpheme | Meaning |
 |---|---|
 | *qangata-* | fly |
-| *-suukkuvik* | thing that flies habitually → airport |
+| *-suukkuvik* | *-suu-* "habitually" + *-kkuvik* "place": place where one habitually flies → airport |
 | *-mut* | to (allative case) |
 | *-uq-* | go to |
 | *-riaqaq-* | have to |
 | *-laaq-* | future |
 | *-tunga* | 1st person singular |
 
-- **One word corresponds to an entire English sentence.** A verb, its subject, its object, tense and modal meaning, all fused together.
+- **One word corresponds to an entire English sentence.** A verb, its subject, its destination, tense and modal meaning, all fused together.
 - The surface form is not the concatenation of the pieces listed: *-k-mut-uq* becomes *-mmuu-*. Phonological rules at the boundaries chew up the morphemes so that the written word cannot be split back into them by string matching.
-- Note the internal derivation: *qangata-* "fly" plus *-suukkuvik* "thing that does X habitually" gives "airport". The word contains its own etymology, productively.
+- Note the internal derivation: *qangata-* "fly" plus *-suukkuvik* "place where X happens habitually" gives "airport". The word contains its own etymology, productively.
 
 > [!tip] What this means for vocabulary size
 > In an isolating language, the number of word types is roughly the number of morphemes. In a polysynthetic language, the number of word types is closer to the number of *sentences*, because a word is a sentence. There is no vocabulary size that covers Inuktitut. Not 200K, not 1M, not any number. This is the reductio that the whole lecture is building towards.
@@ -764,7 +770,7 @@ The payoff slide, and the bridge to the rest of the course.
 > 5. **Name the four typological classes with one example language and one worked example each.** Turkish *ev-ler-iniz-den* for agglutinative and Russian *knig-ami* for fusional are the minimal pair: both pack several features into suffixes, only one of them lets you cut the suffixes apart.
 
 > [!warning] The distinction people lose marks on
-> **Agglutinative is not "more morphemes", it is "separable morphemes".** Fusional languages can be just as morphologically dense. The question is whether a single affix carries a single feature (agglutinative: Turkish *-ler* is plural and nothing else) or several fused features (fusional: Russian *-ami* is instrumental *and* plural *and* feminine, with no way to divide it). If you define the classes by density you will misclassify Spanish.
+> **Agglutinative is not "more morphemes", it is "separable morphemes".** Fusional languages can be just as morphologically dense. The question is whether a single affix carries a single feature (agglutinative: Turkish *-ler* is plural and nothing else) or several fused features (fusional: Russian *-ami* is instrumental *and* plural, with no way to divide it; the slide adds feminine, but *-ami* is used for all genders, see section 14). If you define the classes by density you will misclassify Spanish.
 
 > [!warning] The other one
 > **Word segmentation and subword segmentation are different problems.** The first finds word boundaries in a script that does not mark them (Chinese). The second splits words that are perfectly well delimited into smaller pieces (Finnish). They use different methods for different reasons, and this lecture only solves the first one.
@@ -772,7 +778,7 @@ The payoff slide, and the bridge to the rest of the course.
 ## Links
 
 - **Course:** [[MNLP - Overview|Course overview]] · [[MNLP - Mini Project]]
-- **Previous:** [[MNLP-L01 - Overview]]
-- **Next:** Morphological analysis and subword segmentation, which takes the OOV problem from section 15 and solves it statistically
+- **Previous:** [[MNLP-L02 - Multilinguality and Writing Systems]]
+- **Next:** [[MNLP-L04 - Subword Segmentation]], morphological analysis and subword segmentation, which takes the OOV problem from section 15 and solves it statistically
 - **Concepts:** [[Word Embeddings]] · [[Tokenization]] · [[Bag of Words]] · [[Dynamic Programming]]
 - **Source:** `MNLP_morphology.pdf` (Christof Monz, Morphology: Word Formation, 34 slides)

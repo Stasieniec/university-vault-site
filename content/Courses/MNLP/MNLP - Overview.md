@@ -95,8 +95,8 @@ Lectures continue alongside the project work.
 ### Week 4 (21–25 Sep): Refinement
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| L7 | Mon 21 Sep, 13:00–14:45, SP L1.02 | Monz | Not yet given |
-| L8 | Wed 23 Sep, 09:00–10:45, **SP H0.08** | Monz | Not yet given. Room differs from the usual C0.110 |
+| L7 | Mon 21 Sep, 13:00–14:45, SP L1.02 | Monz | Given. **No note yet**, see **Source material not yet processed** below |
+| L8 | Wed 23 Sep, 09:00–10:45, **SP H0.08** | Monz | Given. **No note yet**, see **Source material not yet processed** below |
 | Lab | Wed 23 Sep, 11:00–12:45, SP B0.208 (Group 4) | | |
 | **Project** | Refine or try alternative model; dropout, layernorm, residual connections | | |
 
@@ -155,15 +155,17 @@ Lectures continue alongside the project work.
 
 ## Source material not yet processed
 
-> [!warning] Fetch these from Canvas on the laptop, in one pass
-> The MNLP Canvas **Files tab returns HTTP 403**, and Canvas is unreachable from cloud sessions (egress-blocked), so these decks could not be downloaded or read. Their topics are deliberately left blank rather than guessed.
+> [!warning] Fetch these from Canvas Modules on the laptop, in one pass
+> The MNLP Canvas **Files tab returns HTTP 403** for students, so the decks cannot be listed or downloaded through the Files API from anywhere. They have to come from the **Modules** page, which needs a logged-in browser or an API token. Checked again 2026-09-24: Canvas itself was reachable, the Files tab was still 403. Topics are deliberately left blank rather than guessed.
 
 | Item | Slot | Status |
 |---|---|---|
 | **L05** | Mon 2026-09-14, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
 | **L06** | Wed 2026-09-16, 09:00–10:45, SP C0.110 | Lecture given. No slides in the vault, no note, topic unknown |
+| **L07** | Mon 2026-09-21, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
+| **L08** | Wed 2026-09-23, 09:00–10:45, SP H0.08 | Lecture given. No slides in the vault, no note, topic unknown |
 
-Both need the deck pulled from Canvas Modules (the Files tab is blocked) before any note is written.
+All four need the deck pulled from Canvas Modules (the Files tab is blocked) before any note is written.
 
 ## Resources
 

@@ -27,7 +27,7 @@ topics:
 > [!warning] This is the deck that governs your paper
 > Sections 7 and 8 are course policy, not commentary. The paper (30%) and the presentation (20%) are both governed by them, and the **Project Description** on Canvas repeats the rules in stricter language: generating or structuring your arguments or analysis is **not permitted**, and any use at all requires an AI use statement naming the tool, the purpose and the extent.
 >
-> The last slide before the conclusion also says: **"Pangram detection has become very good."** Read that as a statement of intent.
+> The Jetten case slide (printed slide 10, "AI and public communication") also says: **"Pangram detection has become very good."** Read that as a statement of intent.
 
 ---
 
@@ -43,7 +43,7 @@ This is not decoration. It is the model of compliant use that sections 7 and 8 t
 The session opened with a Wooclap poll asking the room two questions, "Do you use GenAI to study?" and "How do you use it?", before any position was stated.
 
 > [!tip] A note on the deck's ordering
-> The page order in `3b GenAI.pdf` does not match the slide numbers printed on the pages (they run 1, 2, 14, 4, 5, 7, 8, 10, 11, 12, 3, 15, 16, 17). The deck was reordered before export. This note follows the argument rather than the file, and flags nothing by it.
+> The page order in `3b GenAI.pdf` does not match the slide numbers printed on the pages (they run 1, 2, 14, 4, 5, 7, 8, 10, 11, 12, 3, 15, 16, 17; the title page, the conclusion and a figure-only page between slides 5 and 7, holding Figures 6 and 9, carry no number). The deck was reordered before export. This note follows the argument rather than the file, and flags nothing by it.
 
 ---
 
@@ -123,7 +123,7 @@ Submissions up by nearly half; readability down by more than a standard deviatio
 Four figures from the paper are reproduced on the slides. Their content, since the note must stand in for the deck:
 
 - **Figure 1. Monthly Submission Volume at *Organization Science*, January 2013 to end of 2025.** A histogram of monthly submission counts, roughly 50-100 per month through the 2010s, drifting upward. Two dashed vertical markers: COVID-19 (March 2020) and ChatGPT (November 2022). The bars climb steeply after the ChatGPT line, reaching roughly 150-160 per month by 2025.
-- **Figure 2. Monthly Submission Volume by AI Use Categories over Time, 2021-2026.** Five series: Total (black), and four AI-share bands (0-15%, 15-30%, 30-70%, 70%+) applied to first submissions' abstracts. The 0-15% band declines steadily after the ChatGPT marker while the three higher-AI bands all rise from near zero. Total rises throughout.
+- **Figure 2. Monthly Submission Volume by AI Use Categories over Time, 2021-2026.** Five series: Total (black), and four AI-share bands (0-15%, 15-30%, 30-70%, 70%+) applied to first submissions' abstracts. The 0-15% band declines steadily after the ChatGPT marker (to about 50 per month by 2026) while the three higher-AI bands all rise from near zero (to roughly 25-35 each). Total coincides with the 0-15% line until the marker and drifts down from about 100 per month in 2021 (with a spike near 130 at the start of 2022) to about 75-80 in late 2022; after the marker it climbs to roughly 140 by 2026. The y-axis is number of submissions; the figure's note says each line is the share of first submissions' abstracts classified in that AI band.
 - **Figure 6. Flesch Reading Ease of abstracts, 2013 to February 2026**, in SD units with a confidence band. Flat and slightly positive (around +0.1 to +0.25) for a decade, holding through the COVID marker, then turning sharply downward after the ChatGPT marker and falling to roughly −1.0 by 2026. The decline is the visual centrepiece of the deck.
 - **Figure 9. AI Use in Reviews Over Time, 2021-2026.** Share of reviews by AI-use band. The 0-15% band sits near 1.0 until the ChatGPT marker, then declines to roughly 0.65 by 2026, with the 30-70% band rising to about 0.2 and the other two bands to about 0.1 each.
 
@@ -174,6 +174,8 @@ The authors' causal chain, reproduced from the slide as a four-box flow:
 > - Public debate focused on **authenticity and responsibility**
 >
 > Source: Denise Retera, "AI-gebruik van premier Jetten op social media ligt onder de loep", *NRC*, 11 September 2026.
+
+The slide reproduces the top of the NRC article: the headline ("Prime Minister Jetten's AI use on social media under scrutiny"), a photo of Jetten standing in front of a wall with rough stone objects mounted on it, and the opening text. The standfirst says that Jetten is light-hearted about using AI for his "socials", but that according to experts politicians who do this risk damaging their image and authenticity. The article opens by recalling that in 2018 Jetten, then D66 parliamentary leader, repeated exactly the same sentences about abolishing the dividend tax three times in a row in front of television cameras, with an unchanged facial expression, which earned him the nickname "Robot Jetten".
 
 The question for discussion, as posed on the slide:
 
