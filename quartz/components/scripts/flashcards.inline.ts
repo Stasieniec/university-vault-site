@@ -327,28 +327,50 @@ function launcher(decks: Deck[]): HTMLElement {
     return box
   }
 
-  const label = el("div", "fc-launcher-label", `${plural(total, "flashcard")} across ${decks.length} lectures`)
+  box.classList.add("is-multi")
+  const head = el("div", "fc-launcher-head")
+  const label = el("span", "fc-launcher-label", `${plural(total, "flashcard")} in ${decks.length} sets`)
+  const all = el("button", "fc-study", `Study all ${total}`)
+  all.addEventListener("click", () => openSession(decks.flatMap((d) => d.cards), "All flashcards"))
+  head.append(label, all)
+
   const list = el("div", "fc-deck-list")
   const boxes: HTMLInputElement[] = []
   for (const d of decks) {
-    const row = el("label", "fc-deck")
+    const row = el("div", "fc-deck")
+    const pick = el("label", "fc-deck-pick")
     const cb = el("input")
     cb.type = "checkbox"
-    cb.checked = true
     boxes.push(cb)
-    row.append(cb, document.createTextNode(` ${d.label} (${d.cards.length})`))
+    const name = el("span", "fc-deck-name", d.label)
+    const n = el("span", "fc-deck-count", String(d.cards.length))
+    pick.append(cb, name)
+    const one = el("button", "fc-deck-study", "Study")
+    one.addEventListener("click", () => openSession(d.cards, d.label))
+    row.append(pick, n, one)
     list.appendChild(row)
   }
-  const go = el("button", "fc-study", "Study selected")
+
+  const foot = el("div", "fc-launcher-foot")
+  const go = el("button", "fc-study fc-study-selected", "Study ticked")
+  const refresh = () => {
+    const chosen = decks.filter((_, i) => boxes[i].checked)
+    const n = chosen.reduce((k, d) => k + d.cards.length, 0)
+    go.textContent = chosen.length ? `Study ticked (${n})` : "Tick lectures to mix them"
+    go.disabled = chosen.length === 0
+  }
+  boxes.forEach((cb) => cb.addEventListener("change", refresh))
   go.addEventListener("click", () => {
     const chosen = decks.filter((_, i) => boxes[i].checked)
     if (chosen.length === 0) return
     openSession(
       chosen.flatMap((d) => d.cards),
-      chosen.length === 1 ? chosen[0].label : "Flashcards",
+      chosen.length === 1 ? chosen[0].label : "Mixed flashcards",
     )
   })
-  box.append(label, list, go)
+  refresh()
+  foot.appendChild(go)
+  box.append(head, list, foot)
   return box
 }
 

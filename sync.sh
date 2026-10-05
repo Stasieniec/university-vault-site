@@ -16,6 +16,17 @@ VAULT="${VAULT:-$(cd "$SITE/../university-vault" && pwd)}"
 echo "Vault: $VAULT"
 echo "Site:  $SITE"
 
+# Course homes and flashcard pages are generated from the notes. Regenerate them so card
+# counts and lecture lists never go stale, and say so if that changed the vault.
+if [ -f "$VAULT/docs/superpowers/tools/course_pages.py" ]; then
+  echo
+  echo "Generating course pages..."
+  python3 "$VAULT/docs/superpowers/tools/course_pages.py" | sed 's/^/  /'
+  if [ -n "$(git -C "$VAULT" status --porcelain -- Courses)" ]; then
+    echo "  note: the vault has uncommitted changes under Courses/. Commit them so the vault matches the site."
+  fi
+fi
+
 # The vault is the source of truth. Audit before publishing anything from it.
 if [ -f "$VAULT/docs/superpowers/tools/vault_audit.py" ]; then
   echo

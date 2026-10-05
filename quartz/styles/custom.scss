@@ -1,3 +1,49 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// Course home pages (Courses/<COURSE>/index.md, generated in the vault by
+// docs/superpowers/tools/course_pages.py). The folder listing Quartz appends to a
+// folder page duplicates the generated tables, so hide it on these pages only.
+.popover-hint:has(> article.course-home) > .page-listing {
+  display: none;
+}
+
+article.course-home {
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0 0 0.6rem;
+    padding: 0.45rem 0.75rem;
+    border-left: 3px solid var(--lightgray);
+
+    &:hover {
+      border-left-color: var(--secondary);
+    }
+
+    em {
+      display: inline-block;
+      margin-top: 0.15rem;
+      color: var(--gray);
+      font-size: 0.88rem;
+      font-style: normal;
+    }
+  }
+
+  & > p:first-of-type {
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    background: var(--highlight);
+    border: 1px solid var(--lightgray);
+  }
+}
+
+// Flashcard picker checkboxes: make them visible on the grey launcher background.
+.fc-launcher input[type="checkbox"] {
+  accent-color: var(--secondary);
+  width: 1rem;
+  height: 1rem;
+}

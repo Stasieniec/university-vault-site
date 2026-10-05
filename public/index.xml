@@ -6,10 +6,46 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Reinforcement Learning</title>
+    <link>https://notes.swasilewski.com/Courses/RL/</link>
+    <guid>https://notes.swasilewski.com/Courses/RL/</guid>
+    <description><![CDATA[  Lecture notes: 14 Schedule, assessment and deadlines live in the course overview. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 17:13:18 GMT</pubDate>
+  </item><item>
+    <title>Recommender Systems</title>
+    <link>https://notes.swasilewski.com/Courses/RecSys/</link>
+    <guid>https://notes.swasilewski.com/Courses/RecSys/</guid>
+    <description><![CDATA[  Lecture notes: 5 Schedule, assessment and deadlines live in the course overview. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 17:13:18 GMT</pubDate>
+  </item><item>
+    <title>Philosophy of Science</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/</guid>
+    <description><![CDATA[  Exam: Mon 19 Oct 2026 · Lecture notes: 7 · Flashcards: 260 Schedule, assessment and deadlines live in the course overview. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 17:13:18 GMT</pubDate>
+  </item><item>
+    <title>MNLP - Flashcards</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Flashcards</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Flashcards</guid>
+    <description><![CDATA[  MNLP - Flashcards All 421 flashcards for Multilingual Natural Language Processing: 52 exam-style questions and 369 recall cards, one set per note. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 17:13:18 GMT</pubDate>
+  </item><item>
+    <title>Multilingual Natural Language Processing</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/</guid>
+    <description><![CDATA[  Exam: Thu 22 Oct 2026 · Lecture notes: 7 · Flashcards: 421 Schedule, assessment and deadlines live in the course overview. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 17:13:18 GMT</pubDate>
+  </item><item>
+    <title>Information Retrieval 1</title>
+    <link>https://notes.swasilewski.com/Courses/IR/</link>
+    <guid>https://notes.swasilewski.com/Courses/IR/</guid>
+    <description><![CDATA[  Lecture notes: 13 Schedule, assessment and deadlines live in the course overview. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 17:13:17 GMT</pubDate>
+  </item><item>
     <title>PhilSci - Flashcards</title>
     <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Flashcards</link>
     <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Flashcards</guid>
-    <description><![CDATA[ PhilSci - Flashcards Every lecture’s flashcards in one place. Tick the lectures you want and press Study, or click any question to reveal its answer. ]]></description>
+    <description><![CDATA[  PhilSci - Flashcards All 260 flashcards for Philosophy of Science: 45 exam-style questions and 215 recall cards, one set per note. ]]></description>
     <pubDate>Mon, 05 Oct 2026 15:29:06 GMT</pubDate>
   </item><item>
     <title>PhilSci - Overview</title>
@@ -28,42 +64,6 @@
     <link>https://notes.swasilewski.com/Concepts/A3C</link>
     <guid>https://notes.swasilewski.com/Concepts/A3C</guid>
     <description><![CDATA[ A3C Definition A3C (Asynchronous Advantage Actor-Critic) A3C is an on-policy, deep Actor-Critic algorithm (Mnih et al., 2016) that runs many actor-learners in parallel, each on its own copy of the environment, asynchronously updating a shared set of global parameters. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Action-Value Methods</title>
-    <link>https://notes.swasilewski.com/Concepts/Action-Value-Methods</link>
-    <guid>https://notes.swasilewski.com/Concepts/Action-Value-Methods</guid>
-    <description><![CDATA[ Action-Value Methods Definition Action-Value Methods Action-value methods estimate the value of each action — the expected reward (or return) of selecting it — and then use those estimates to drive action selection. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Actor-Critic</title>
-    <link>https://notes.swasilewski.com/Concepts/Actor-Critic</link>
-    <guid>https://notes.swasilewski.com/Concepts/Actor-Critic</guid>
-    <description><![CDATA[ Actor-Critic Definition Actor-Critic Methods Actor-Critic methods are a class of Reinforcement Learning algorithms that combine both policy-based and value-based approaches. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Adagrad</title>
-    <link>https://notes.swasilewski.com/Concepts/Adagrad</link>
-    <guid>https://notes.swasilewski.com/Concepts/Adagrad</guid>
-    <description><![CDATA[ Adagrad Definition Adagrad (Adaptive Gradient Algorithm) Adagrad is an adaptive learning-rate optimization method that gives each parameter its own learning rate, scaled inversely to the square root of the sum of all past squared gradients for that parameter. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Adam</title>
-    <link>https://notes.swasilewski.com/Concepts/Adam</link>
-    <guid>https://notes.swasilewski.com/Concepts/Adam</guid>
-    <description><![CDATA[ Adam Definition Adam (Adaptive Moment Estimation) Adam is an optimization algorithm for gradient-based optimization of stochastic objective functions. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Advantage Actor-Critic (A2C)</title>
-    <link>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</link>
-    <guid>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</guid>
-    <description><![CDATA[ Advantage Actor-Critic (A2C) Definition Advantage Actor-Critic (A2C) A2C is an on-policy Actor-Critic algorithm that combines a parameterized policy (the actor, \pi_\theta) with a learned state-value function (the critic, \hat{V}_w). ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Advantage Function</title>
-    <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
-    <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
-    <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
     <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item>
     </channel>
