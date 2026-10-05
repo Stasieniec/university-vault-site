@@ -10,7 +10,13 @@
     <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Flashcards</link>
     <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Flashcards</guid>
     <description><![CDATA[ PhilSci - Flashcards Every lecture’s flashcards in one place. Tick the lectures you want and press Study, or click any question to reveal its answer. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 13:55:33 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 13:58:41 GMT</pubDate>
+  </item><item>
+    <title>PhilSci - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</guid>
+    <description><![CDATA[ Philosophy of Science — Overview Course: Philosophy of Science (5354PHSC6Y) — Sep–Oct 2026, Period 1 Programmes: MSc Logic, MSc Physics &amp; Astronomy (+ MSc AI) Credits: 6 EC Coordinator: Sebastian De Haro (s.deharo@uva.nl) Teachers: Enrico Cinti (e.cinti@uva.nl) Tutorials: Luka Vinck (l.j.vinck@u... ]]></description>
+    <pubDate>Mon, 05 Oct 2026 13:58:41 GMT</pubDate>
   </item><item>
     <title>B Testing</title>
     <link>https://notes.swasilewski.com/Concepts/A/B-Testing</link>
@@ -58,12 +64,6 @@
     <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
     <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
     <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
-    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
-  </item><item>
-    <title>Agentic Search</title>
-    <link>https://notes.swasilewski.com/Concepts/Agentic-Search</link>
-    <guid>https://notes.swasilewski.com/Concepts/Agentic-Search</guid>
-    <description><![CDATA[ Agentic Search Agentic Search A retrieval paradigm where the language model has agency over the retrieval process, deciding when to search, what queries to issue, and how to incorporate results—in contrast to static RAG pipelines with fixed retrieve-then-read structure. ]]></description>
     <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item>
     </channel>

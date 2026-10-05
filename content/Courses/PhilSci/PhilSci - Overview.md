@@ -35,7 +35,7 @@ exam_date: 2026-10-19
 
 ## Flashcards
 
-[[PhilSci - Flashcards]] collects every lecture's flashcards for drilling before the exam. Each lecture note also ends with its own set. So far: L03.
+[[PhilSci - Flashcards]] collects every lecture's flashcards for drilling before the exam. Each lecture note also ends with its own set. So far: L01 and L03.
 
 ## Objectives
 

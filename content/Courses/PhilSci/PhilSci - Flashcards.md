@@ -11,6 +11,10 @@ Every lecture's flashcards in one place. Tick the lectures you want and press **
 
 The same cards sit at the end of each lecture note, so the usual route is: read the note, do its cards, then come back here for mixed sessions closer to the exam.
 
+## L01 Introduction and Logical Empiricism
+
+![[PhilSci-L01 - Introduction and Logical Empiricism#Flashcards]]
+
 ## L03 Under-determination
 
 ![[PhilSci-L03 - Under-determination#Flashcards]]
