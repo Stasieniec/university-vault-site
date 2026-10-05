@@ -331,7 +331,7 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - Conclusion: geometry is **conventional**, neither a priori (against Kant) nor a posteriori. We pick the description that is simplest for us, like choosing metres over yards. There is no fact of the matter.
 > - Link to Duhem: the geometry is one of the auxiliary assumptions that rides along in every test.
 
-> [!card]- What was Popper's own concession about the empirical basis, and why does it matter for this lecture?
+> [!card]- What was Popper's own concession about the empirical basis, and how does it open the door to under-determination?
 > No objective facts force the acceptance of an observation report. Science accepts its empirical basis by **intersubjective agreement**, so accepting a report that falsifies a theory is ultimately **a human decision**. That admission is the crack Duhem widens into under-determination.
 
 > [!card]- In logical terms, what exactly does a failed prediction refute according to Duhem?
@@ -384,7 +384,7 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > Only the **egalitarian** thesis is a threat. Non-uniqueness says a rival exists, not that it is equally good in every respect or that no further evidence or methodological consideration could separate them; methodology's job is precisely to choose among survivors. The egalitarian thesis says there is never anything to choose on, which would make methodology idle.
 
 > [!card]- Under which of Laudan's two theses does Quine's empirical under-determination fall?
-> The slides leave this open; the defensible answer: at most **non-uniqueness**. It claims a theory has *at least one* empirically equivalent but theoretically inequivalent rival, and Quine (1975) calls it an open question whether any such case exists. It is even weaker than non-uniqueness, since empirical equivalence is not yet equal evidential support (Laudan and Leplin). The claim sometimes read as egalitarian is Quine's holism from *Two Dogmas* ("held true come what may"), which is what Laudan's objection targets.
+> Not settled in the course material. A defensible answer: at most **non-uniqueness**. It claims a theory has *at least one* empirically equivalent but theoretically inequivalent rival, and Quine (1975) calls it an open question whether any such case exists. It is even weaker than non-uniqueness, since empirical equivalence is not yet equal evidential support (Laudan and Leplin). The claim sometimes read as egalitarian is Quine's holism from *Two Dogmas* ("held true come what may"), which is what Laudan's objection targets.
 
 > [!card]- Define empirical under-determination (Quine 1975), and say why it is a problem for scientific realism.
 > Two theory formulations that are **empirically equivalent** (they entail the same observation sentences) but **theoretically inequivalent** (they differ in their theoretical sentences). The data cannot decide between them. Realism problem: if no evidence can tell which is right, which one are you a realist *about*?
@@ -424,11 +424,11 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > [!card]- Why, for Poincare, do we call the sphere world Euclidean even though nothing forces us to?
 > Our senses are habituated to Euclidean space, so for us it is simpler to describe a Euclidean disk plus a physical law (bodies expand with temperature). Beings like us who grew up inside the sphere would call it non-Euclidean. There is **no fact of the matter**: it is a convention, like metres versus yards.
 
-> [!card]- Where does the lecture land: one line each for Duhem, Quine, empirical under-determination, and dualities?
+> [!card]- Give the bottom line on under-determination, one line each: Duhem, Quine, empirical under-determination, and dualities.
 > - **Duhem:** under-determination is real and is resolved in practice by good sense rather than logic.
 > - **Quine:** scepticism about meanings undercuts non-empirical knowledge; the web of belief defeats both dogmas and rejects the verification principle.
 > - **Empirical under-determination:** very common as the **transient** kind.
-> - **Dualities:** potential cases of **semantic** under-determination, and on De Haro's own view **not a threat to a cautious scientific realism** (the lecturer's own research, and he sets the exam).
+> - **Dualities:** potential cases of **semantic** under-determination, and on De Haro's own view **not a threat to a cautious scientific realism** (his own research, and he sets the exam).
 
 > [!card]- Keep three theses apart: Duhem's thesis, the Duhem-Quine thesis, and empirical under-determination. One sentence each.
 > - **Duhem's thesis:** a failed prediction refutes only the conjunction of hypothesis and auxiliaries, so no crucial experiment.

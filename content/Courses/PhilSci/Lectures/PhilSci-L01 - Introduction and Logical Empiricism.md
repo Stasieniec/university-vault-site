@@ -357,7 +357,7 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > 1. **The criterion.** A statement is meaningful (scientific) if it is verifiable: its truth can in principle be determined through observation or experiment. Slogan: "**the meaning of a statement is its method of verification**".
 > 2. **The other kind of meaningful statement.** Analytic statements (logic and mathematics), true in virtue of form, saying nothing about the world.
 > 3. **Demarcation.** Theories whose statements are not verifiable are made of **pseudo-statements**, so they are **pseudo-science**: they seem to say something (like metaphysics), but they are **literally meaningless**.
-> 4. **An example.** The key has none, but the model answer in this note uses two: the arthropod reduction, and Heidegger's "The Nothing itself noths" against $\neg\exists x\,P(x)$.
+> 4. **An example.** Not in the key, but have one ready: the arthropod reduction, or Heidegger's "The Nothing itself noths" against $\neg\exists x\,P(x)$.
 >
 > Contrast worth one sentence: Popper's falsifiability separates science from non-science **without** calling non-science meaningless.
 
@@ -379,15 +379,15 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - Motivations for the semantic view: (1) many theories are **not axiomatized**; (2) one theory has **several equivalent formulations**, so identifying it with one is wrong; (3) scientists actually work with **models**.
 > - Does it survive? **Halvorson** (2012, 2013) argues the semantic view, if plausible, is syntactic; replies from **Glymour** (2013) and **van Fraassen** (2014). **Lutz** (2017): the debate does not capture any significant differences. **Frigg** (2022): syntactic is too strict (science needs models and natural language), semantic also needs a language to specify structures. So they collapse into each other or are complementary.
 
-> [!card]- Rationalism versus empiricism: core claim, key method, kind of knowledge sought, and representatives on the slides.
+> [!card]- Rationalism versus empiricism: core claim, key method, kind of knowledge sought, and main representatives.
 > - **Rationalism:** reason gives substantive knowledge independently of experience; mathematics, axioms, clear and distinct ideas, deduction; seeks **certainty and necessity**. Plato, Descartes, Spinoza, Leibniz.
 > - **Empiricism:** experience is the fundamental source of substantive knowledge; **induction** is central; knowledge is **contingent and fallible**. Aristotle, Locke, Berkeley, Hume, van Fraassen.
-> - Slide labels: Plato rationalism; Aristotle empiricism and syllogistic logic; Hume empiricism; Kant the synthesis.
+> - Classic pairings: Plato rationalism; Aristotle empiricism and syllogistic logic; Hume empiricism; Kant the synthesis of the two.
 
-> [!card]- Why must epistemological and metaphysical positions be kept apart? Give the two compatibility examples from the lecture.
+> [!card]- Why must epistemological and metaphysical positions be kept apart? Give two examples of positions that combine across that divide.
 > Rationalism and empiricism are positions about **knowledge**; realism, idealism and nominalism are positions about **what exists**. They cut across each other: **empiricism is compatible with idealism** (Berkeley is both), and **nominalism is compatible with realism about physical objects**.
 
-> [!card]- State the four metaphysical positions on the slide (realism about objects, idealism, realism about ideas, nominalism) with one representative each.
+> [!card]- State four metaphysical positions (realism about objects, idealism, realism about ideas, nominalism) with one representative each.
 > - **Realism about objects:** objects exist independently of minds and our knowledge. Aristotle, Descartes, Locke.
 > - **Idealism:** objects, or objects as known, depend significantly on mind or experience. Berkeley, Hegel, Schopenhauer.
 > - **Realism about ideas:** universals correspond to mind-independent entities. Plato (and differently Aristotle).
@@ -422,7 +422,7 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - **Second half:** how science actually works, what scientists **do**, and its historical, social and institutional conditions.
 > - Currents: Popper, Quine and Duhem-Quine, Kuhn, Lakatos, explanation, science and technology studies, feminism, postcolonialism, Laudan, van Fraassen, later Cartwright and Morrison. Recently a **revival of logical empiricist views**, corrected and enriched, around models, explanation and understanding.
 
-> [!card]- Define metaphysics, ontology, epistemology, semantics and syntax as the lecture uses them.
+> [!card]- Define metaphysics, ontology, epistemology, semantics and syntax.
 > - **Metaphysics:** the nature of things or being (space and time, causation, free will, mind and body).
 > - **Ontology:** the part of metaphysics about **what entities there are**.
 > - **Epistemology:** knowledge and understanding.
@@ -479,7 +479,7 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > Pattern: postulate a micro-system, derive formally, link derived quantities to observable $P$, $V$, $T$.
 
 > [!card]- What are the two senses of "model", which one does the semantic conception mainly use, and what is isomorphism?
-> 1. **Iconic or representational:** a concrete or visual representation structurally similar to its target (the planetarium on the slide).
+> 1. **Iconic or representational:** a concrete or visual representation structurally similar to its target (a mechanical planetarium of the solar system).
 > 2. **Mathematical or logical:** a formal structure in which a theory's sentences are true. This is the **principal technical sense** for the semantic conception.
 >
 > **Isomorphism:** a structure-preserving one-to-one mapping between the relevant parts and relations of model and target.
@@ -487,7 +487,7 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > [!card]- How does the semantic conception represent kinetic theory? Give the phase space and how it connects to thermodynamics.
 > A class of models of possible gases. For $N$ molecules in a region $C \subseteq \mathbb{R}^3$ of volume $V$: $\Gamma_N = C^N \times \mathbb{R}^{3N} \subseteq \mathbb{R}^{6N}$, i.e. 3 position and 3 momentum coordinates per molecule. Laws of motion and collision evolve a point in phase space. Statistical mechanics links to thermodynamics: $V$ fixed by the container, $P$ by average momentum transfer to the walls, $T$ by the equilibrium distribution of energies. Under the idealisations, the models yield $PV = NkT$.
 
-> [!card]- What does the lecture's conclusion slide give as Carnap's advice for philosophy, and the three parts of the logical empiricist view of theories?
+> [!card]- What was Carnap's advice for philosophy, which two kinds of meaningful statement does it rest on, and which three topics make up the logical empiricist debate about scientific theories?
 > Carnap's advice: "**stay close to science**", with meaningful statements of two kinds, **empirical verification** and **logical necessity** (analyticity). The view of theories: (1) the syntactic conception as **normative**; (2) the **historical dynamics** of theories, which is Kuhn's critique; (3) the semantic conception, and whether the distinction collapses.
 
 ## Links
