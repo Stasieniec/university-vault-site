@@ -82,37 +82,38 @@ Canvas module "Week 2" holds two decks plus the Zoom recording of 9 September, w
 > [!tip] Read L4 before choosing a mini-project
 > Subword segmentation is where the tokenizer decisions live, and every mini-project makes them whether or not it thinks about them. L4 also flags an error in the lecturer's Algorithm 2, which prunes the highest-value tokens as printed.
 
-### Week 3 (14–18 Sep): First Model
-Lectures continue alongside the project work.
+> [!info] From week 3, one deck runs across two lectures
+> Canvas Modules (read 2026-10-05) shows Monz teaching one deck per week and finishing it at the start of the next: week 4 opens with "continuation of static embeddings", week 5 with "continuation of contextual embeddings", week 6 with "continuation of crosslingual NLP". So notes are numbered by deck, and the exact slide where each lecture stopped is not recorded.
 
+### Week 3 (14–18 Sep): First Model
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| L5 | **Mon 14 Sep, 13:00–14:45, SP L1.02** | Monz | Given. **No note yet**, topic not recorded, see **Source material not yet processed** below |
-| L6 | **Wed 16 Sep, 09:00–10:45, SP C0.110** | Monz | Given. **No note yet**, topic not recorded, see **Source material not yet processed** below |
+| Mon | **Mon 14 Sep, 13:00–14:45, SP L1.02** | Monz | [[MNLP-L05 - Static Embeddings]] |
+| Wed | **Wed 16 Sep, 09:00–10:45, SP C0.110** | Monz | [[MNLP-L05 - Static Embeddings]] |
 | Lab | Wed 16 Sep, 11:00–12:45, SP B0.208 (Group 4) | | |
 | **Project** | Implement first model, evaluate, debug | | |
 
 ### Week 4 (21–25 Sep): Refinement
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| L7 | Mon 21 Sep, 13:00–14:45, SP L1.02 | Monz | Given. **No note yet**, see **Source material not yet processed** below |
-| L8 | Wed 23 Sep, 09:00–10:45, **SP H0.08** | Monz | Given. **No note yet**, see **Source material not yet processed** below |
+| Mon | Mon 21 Sep, 13:00–14:45, SP L1.02 | Monz | End of [[MNLP-L05 - Static Embeddings]], then [[MNLP-L06 - Contextual Embeddings]] |
+| Wed | Wed 23 Sep, 09:00–10:45, **SP H0.08** | Monz | [[MNLP-L06 - Contextual Embeddings]] |
 | Lab | Wed 23 Sep, 11:00–12:45, SP B0.208 (Group 4) | | |
 | **Project** | Refine or try alternative model; dropout, layernorm, residual connections | | |
 
 ### Week 5 (28 Sep–2 Oct): Error Analysis
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| L9 | Mon 28 Sep, 13:00–14:45, SP L1.02 | Monz | Given. **No note yet**, see **Source material not yet processed** below |
-| L10 | Wed 30 Sep, 09:00–10:45, SP C0.110 | Monz | Given. **No note yet**, see **Source material not yet processed** below |
+| Mon | Mon 28 Sep, 13:00–14:45, SP L1.02 | Monz | End of [[MNLP-L06 - Contextual Embeddings]], then [[MNLP-L07 - Crosslingual NLP]] |
+| Wed | Wed 30 Sep, 09:00–10:45, SP C0.110 | Monz | [[MNLP-L07 - Crosslingual NLP]] |
 | Lab | Wed 30 Sep, 11:00–12:45, SP B0.208 (Group 4) | | |
 | **Project** | Second model refinement, error analysis, conclusions | | |
 
 ### Week 6 (5–9 Oct): Finalize
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| L11 | Mon 5 Oct, 13:00–14:45, SP L1.02 | Monz | Not yet given |
-| L12 | Wed 7 Oct, 09:00–10:45, SP C0.110 | Monz | Not yet given |
+| Mon | Mon 5 Oct, 13:00–14:45, SP L1.02 | Monz | Continuation of [[MNLP-L07 - Crosslingual NLP]] per the module. Note written from the deck as of 5 Oct; re-check after Wednesday in case slides are added |
+| Wed | Wed 7 Oct, 09:00–10:45, SP C0.110 | Monz | Not yet given |
 | Lab | Wed 7 Oct, 11:00–12:45, SP B0.208 (Group 4) | | |
 | **Due** | **Fri 9 Oct 12:00**: 4-page report, code, slides | | |
 
@@ -153,25 +154,23 @@ Lectures continue alongside the project work.
 - Report focusing on most relevant findings: what works and what doesn't, why
 - [[MNLP - Mini Project]] — full project description, schedule, deliverables, and evaluation criteria
 
-## Source material not yet processed
+## Source material
 
-> [!warning] Fetch these from Canvas Modules on the laptop, in one pass
-> The MNLP Canvas **Files tab returns HTTP 403** for students, so the decks cannot be listed or downloaded through the Files API from anywhere. They have to come from the **Modules** page, which needs a logged-in browser or an API token. Checked again 2026-09-24: Canvas itself was reachable, the Files tab was still 403. Topics are deliberately left blank rather than guessed.
+The Files tab returns HTTP 403 for students, so decks come from **Modules**, through the `canvas_modules` connector tool (added 2026-10-05), which returns a download URL per file. Module contents as of 2026-10-05:
 
-| Item | Slot | Status |
+| Module | Item | Note |
 |---|---|---|
-| **L05** | Mon 2026-09-14, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
-| **L06** | Wed 2026-09-16, 09:00–10:45, SP C0.110 | Lecture given. No slides in the vault, no note, topic unknown |
-| **L07** | Mon 2026-09-21, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
-| **L08** | Wed 2026-09-23, 09:00–10:45, SP H0.08 | Lecture given. No slides in the vault, no note, topic unknown |
-| **L09** | Mon 2026-09-28, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
-| **L10** | Wed 2026-09-30, 09:00–10:45, SP C0.110 | Lecture given. No slides in the vault, no note, topic unknown |
+| Mini Project | `mini-project.pdf`, Project Suggestions and Project Requirements pages, team and cluster-credit sheets | [[MNLP - Mini Project]] |
+| Week 1 | `overview.pdf`, `multilingual-nlp.pdf` | [[MNLP-L01 - Overview]], [[MNLP-L02 - Multilinguality and Writing Systems]] |
+| Week 2 | `morphology.pdf`, `subword.pdf`, Zoom recording of 9 Sep (`video1951888080.mp4`, 180 MB) | [[MNLP-L03 - Morphology and Word Formation]], [[MNLP-L04 - Subword Segmentation]] |
+| Week 3 | `embeddings_static.pdf` (71 slides, 404 pages with animation builds) | [[MNLP-L05 - Static Embeddings]] |
+| Week 4 | `embeddings_context.pdf` (50 slides, 305 pages) | [[MNLP-L06 - Contextual Embeddings]] |
+| Week 5 | `cross-lingual-nlp.pdf` (45 slides, 188 pages) | [[MNLP-L07 - Crosslingual NLP]] |
+| Week 6 | Only a "continuation of crosslingual NLP" header so far | |
 
-Checked again 2026-10-05 from a cloud session: the Files API still returns 403 for this course, and the Modules API needs a Canvas token the session does not have. No MNLP announcement since 14 Sep mentions new material.
-
-All six need the deck pulled from Canvas Modules (the Files tab is blocked) before any note is written.
+The decks are 8 to 23 MB each and are not stored in `Assets/`, matching weeks 1 and 2.
 
 ## Resources
 
 - Mini Project slides (PDF in Assets/)
-- Canvas modules: Overview, Mini Project
+- Canvas modules: Mini Project, Week 1 to Week 6 (see Source material)
