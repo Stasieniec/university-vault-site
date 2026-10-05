@@ -56,8 +56,8 @@ exam_date: 2026-10-19
 > [[PhilSci - Tutorials]] holds every tutorial discussion question with an answer, plus the full course plan from tutorial 1, which is more complete than anything else published on Canvas.
 
 > [!info] Standing times and rooms, confirmed from MyTimetable, synced 2026-09-16
-> - **Lecture**: Tuesdays **15:00–16:45**, **SP L1.08**. Remaining: 29 Sep, 6 Oct, 13 Oct. Mostly De Haro; lecture 4 on 22 Sep was given by Enrico Cinti
-> - **Seminar / tutorial**: Thursdays **11:00–12:45**, **SP L0.06**. Luka Vinck for weeks 1 to 4; week 5 is announced as Matteo (Fabbri). Remaining: 1 Oct, 8 Oct
+> - **Lecture**: Tuesdays **15:00–16:45**, **SP L1.08**. Remaining: 6 Oct, 13 Oct. Mostly De Haro; lectures 4 (22 Sep) and 5 (flipped, 29 Sep) were given by Enrico Cinti
+> - **Seminar / tutorial**: Thursdays **11:00–12:45**, **SP L0.06**. Luka Vinck for weeks 1 to 4; week 5 is announced as Matteo (Fabbri). Remaining: 8 Oct
 > - **Group presentation:** Thursday **2026-10-15, 10:00–12:45**, SP L0.06. Note the 10:00 start, an hour earlier than the usual seminar slot
 > - **Exam:** Monday **2026-10-19, 09:00–11:00**, SP C0.110
 
@@ -121,7 +121,13 @@ exam_date: 2026-10-19
 | De Jong & De Haro — Technological Understanding (optional) | | Library |
 
 ### Week 5 (40, 28 Sep–2 Oct): Scientific Realism
-*Lecture: Tue 29 Sep 15:00–16:45, SP L1.08. Seminar: Thu 1 Oct 11:00–12:45, SP L0.06.*
+*Flipped classroom: the lecture was pre-recorded (uploaded 24 Sep) and the Tue 29 Sep slot was a Zoom discussion, not held in SP L1.08. Seminar: Thu 1 Oct 11:00–12:45, SP L0.06.*
+
+| Session | Material | Notes |
+|---------|----------|-------|
+| Lecture 5 | [[PhilSci-L05 - Scientific Realism and its Critiques]] | Semantic, epistemic and metaphysical realism; no-miracles argument and IBE; van Fraassen's constructive empiricism; Laudan's pessimistic meta-induction. Written from the deck and the recording. **Mock exam question 8** is on this week's readings |
+| Tutorial 5 | Not yet on Canvas | Slides for the 1 Oct tutorial (Matteo Fabbri) had not been uploaded as of 2026-10-05 |
+
 | Reading | Pages | Source |
 |---------|-------|--------|
 | Van Fraassen — Arguments Concerning Scientific Realism | pp. 1060–1082 | Curd & Cover |
@@ -137,12 +143,21 @@ exam_date: 2026-10-19
 |---------|----------|-------|
 | Lecture 6 | Scientific realism, continued | Not yet given |
 
+| Reading | Pages | Source |
+|---------|-------|--------|
+| Psillos — Resisting the Pessimistic Induction (1999, ch. 5) | | Canvas, in `Assets/` |
+| Stanford — 'Atoms Exist' Is Probably True, And Other Facts That Should Not Comfort Scientific Realists | **the whole paper** | Library |
+| De Haro — An Extensional Scientific Realism (I): The Continuity of Extensions (optional, draft) | | Canvas, in `Assets/` |
+
+> [!note] Syllabus correction, 2 Oct
+> The syllabus first listed section numbers against the Stanford paper. Those belong to the Chen reading in week 7. Stanford is read in full. The corrected syllabus replaced the old one in `Assets/`.
+
 ### Week 7 (42, 12–16 Oct): Laws of Nature
 *Lecture: Tue 13 Oct 15:00–16:45, SP L1.08, last lecture. Presentation: Thu 15 Oct 10:00–12:45, SP L0.06.*
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 7 | Laws of nature | Not yet given |
+| Lecture 7 | Laws of nature | Not yet given. Reading: Chen, *Laws of Physics*, **only sections 1-2.4, 3.1-3.2, 4.1-4.3**; optional Carroll, *Laws of Nature* |
 | **Presentation** | **Thu 2026-10-15, 10:00–12:45, SP L0.06** | In-class group presentation. Mandatory, no remote option, 20% of the final grade. Starts at 10:00, an hour earlier than the usual seminar |
 | **Due** | Project draft and presentation slides | Sunday 2026-10-18 20:00 on Canvas |
 
@@ -154,7 +169,7 @@ exam_date: 2026-10-19
 
 ## Source material
 
-Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Checked 2026-09-24. On the same date every lecture note was re-checked page by page against its deck and corrected where it had drifted (L01 and L02 were the ones with real gaps).
+Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Checked 2026-09-24, and again 2026-10-05 when the week 5 deck was added. On the same date every lecture note was re-checked page by page against its deck and corrected where it had drifted (L01 and L02 were the ones with real gaps).
 
 | Canvas file | Uploaded | Status |
 |---|---|---|
@@ -164,6 +179,8 @@ Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Chec
 | `3a Under-determination_online.pdf` | 2026-09-15 | [[PhilSci-L03 - Under-determination]], updated against the revision |
 | `3b GenAI.pdf` | 2026-09-15 | [[PhilSci-L03b - GenAI, Writing and Philosophical Learning]] |
 | `4 Scientific Explanation and Scientific Understanding.pdf` | 2026-09-24 | [[PhilSci-L04 - Scientific Explanation and Understanding]] |
+| `5 Scientific Realism.pdf` + `FlippedClassroom - Scientific Realism.mov` (47 min, transcribed, not stored) | 2026-09-28 / 2026-09-24 | [[PhilSci-L05 - Scientific Realism and its Critiques]] |
+| `ScientificRealismFlippedClassroom.pdf` (discussion questions) | 2026-09-29 | Answered in [[PhilSci-L05 - Scientific Realism and its Critiques]] |
 | Tutorial slides weeks 1 to 4 (`.pptm`) | 2026-09-03 to 2026-09-24 | [[PhilSci - Tutorials]] |
 
 > [!tip] What the 3a revision actually changed
@@ -201,3 +218,5 @@ See the Project Description PDF and Proposal Guidelines PDF in Assets/.
 - Richardson — Origins of Logical Empiricism (PDF)
 - Godfrey-Smith — Logic Plus Empiricism (PDF)
 - Godfrey-Smith — Explanation (PDF)
+- Psillos — Resisting the Pessimistic Induction (PDF, week 6)
+- De Haro — Extensional Scientific Realism I, draft (PDF, week 6 optional)

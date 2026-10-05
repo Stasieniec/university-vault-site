@@ -103,8 +103,8 @@ Lectures continue alongside the project work.
 ### Week 5 (28 Sep–2 Oct): Error Analysis
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| L9 | Mon 28 Sep, 13:00–14:45, SP L1.02 | Monz | Not yet given |
-| L10 | Wed 30 Sep, 09:00–10:45, SP C0.110 | Monz | Not yet given |
+| L9 | Mon 28 Sep, 13:00–14:45, SP L1.02 | Monz | Given. **No note yet**, see **Source material not yet processed** below |
+| L10 | Wed 30 Sep, 09:00–10:45, SP C0.110 | Monz | Given. **No note yet**, see **Source material not yet processed** below |
 | Lab | Wed 30 Sep, 11:00–12:45, SP B0.208 (Group 4) | | |
 | **Project** | Second model refinement, error analysis, conclusions | | |
 
@@ -164,8 +164,12 @@ Lectures continue alongside the project work.
 | **L06** | Wed 2026-09-16, 09:00–10:45, SP C0.110 | Lecture given. No slides in the vault, no note, topic unknown |
 | **L07** | Mon 2026-09-21, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
 | **L08** | Wed 2026-09-23, 09:00–10:45, SP H0.08 | Lecture given. No slides in the vault, no note, topic unknown |
+| **L09** | Mon 2026-09-28, 13:00–14:45, SP L1.02 | Lecture given. No slides in the vault, no note, topic unknown |
+| **L10** | Wed 2026-09-30, 09:00–10:45, SP C0.110 | Lecture given. No slides in the vault, no note, topic unknown |
 
-All four need the deck pulled from Canvas Modules (the Files tab is blocked) before any note is written.
+Checked again 2026-10-05 from a cloud session: the Files API still returns 403 for this course, and the Modules API needs a Canvas token the session does not have. No MNLP announcement since 14 Sep mentions new material.
+
+All six need the deck pulled from Canvas Modules (the Files tab is blocked) before any note is written.
 
 ## Resources
 

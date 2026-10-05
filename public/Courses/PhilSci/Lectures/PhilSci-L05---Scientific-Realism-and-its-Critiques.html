@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>PhilSci-L05 - Scientific Realism and its Critiques — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="PhilSci-L05 - Scientific Realism and its Critiques — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="PhilSci-L05 - Scientific Realism and its Critiques — notes.swasilewski.com"/><meta name="twitter:description" content="PhilSci-L05: Scientific Realism and its Critiques Overview Physics says there is an electron. Nobody has ever seen one."/><meta property="og:description" content="PhilSci-L05: Scientific Realism and its Critiques Overview Physics says there is an electron. Nobody has ever seen one."/><meta property="og:image:alt" content="PhilSci-L05: Scientific Realism and its Critiques Overview Physics says there is an electron. Nobody has ever seen one."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="PhilSci-L05: Scientific Realism and its Critiques Overview Physics says there is an electron. Nobody has ever seen one."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-428"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-428" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/PhilSci/">PhilSci</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/PhilSci/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>PhilSci L05   Scientific Realism and its Critiques</a></div></nav><h1 class="article-title">PhilSci-L05 - Scientific Realism and its Critiques</h1><p show-comma="true" class="content-meta"><time datetime="2026-09-29T00:00:00.000Z">Sep 29, 2026</time><span>28 min read</span></p><ul class="tags"><li><a href="../../../tags/needs-review" class="internal tag-link">needs-review</a></li></ul></div></div><article class="popover-hint"><h1 id="philsci-l05-scientific-realism-and-its-critiques">PhilSci-L05: Scientific Realism and its Critiques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#philsci-l05-scientific-realism-and-its-critiques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Overview </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Physics says there is an electron. Nobody has ever seen one. Should you believe there is one anyway, or only that the theory gets every meter reading right?</p>
+<p>That is the scientific realism debate, which the lecturer calls “arguably <em>the</em> central debate in contemporary philosophy of science”: pick any recent issue of any philosophy of science journal and something in it is about realism. The course gives it two weeks. This is the first.</p>
+<p>Four parts: <strong>(1)</strong> where the word “realism” comes from, from Berkeley and Kant to the logical positivists; <strong>(2)</strong> what scientific realism claims (three separate theses) and its two main arguments, the <strong>no-miracles argument</strong> and <strong>inference to the best explanation</strong>; <strong>(3)</strong> the best developed anti-realist alternative, <strong>van Fraassen’s constructive empiricism</strong>; <strong>(4)</strong> the most influential argument against realism, <strong>Laudan’s pessimistic meta-induction</strong>.</p>
+<p>The week was a <strong>flipped classroom</strong>: the lecture was pre-recorded (47 minutes, uploaded 24 Sep) and the Tuesday 29 Sep slot was a Zoom discussion. This note follows the deck and the recording together. Mock exam question 8 sits on this week’s readings (van Fraassen against Musgrave on explanation), see the Exam Focus at the end.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="part-1-realism-historical-background">Part 1: Realism, historical background<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-1-realism-historical-background" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="11-the-ontological-question">1.1 The ontological question<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-the-ontological-question" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Questions of realism are, in their most basic form, <strong>ontological</strong>: questions about what exists.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The ontological question </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Does the external world <strong>exist independently of us</strong>, of our thoughts and perceptions? Is the table in front of me there whether or not anyone perceives it?</p>
+</div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>answer</th><th>name</th><th>who</th><th>claim</th></tr></thead><tbody><tr><td><strong>Yes</strong></td><td><strong>Metaphysical realism</strong></td><td>Most philosophers from Plato to the present</td><td>Things and objects exist independently of the mind</td></tr><tr><td><strong>No</strong></td><td><strong>Idealism</strong></td><td>Berkeley</td><td>The world is mind-dependent. <em>Esse est percipi</em>: “to be is to be perceived”. There is nothing more to a thing existing than its being perceived; what is not perceived does not exist</td></tr></tbody></table></div>
+<p>The slide illustrates this with an expressionist painting of chairs in a dim, warm-red interior, the everyday objects whose independent existence is in question.</p>
+<p><strong>Why idealism is not as silly as it sounds.</strong> The lecturer gives it its due: our <em>only</em> access to anything beyond ourselves is through perception. So we have no way of checking whether anything exists beyond perception. Idealism is “the maximally empiricist possible answer”: if you limit yourself strictly to what you can perceive and check, there is nothing beyond your perceptions. Considerations like this push people to look for a middle ground between metaphysical realism and idealism.</p>
+<h3 id="12-kants-compromise-noumena-and-phenomena">1.2 Kant’s compromise: noumena and phenomena<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-kants-compromise-noumena-and-phenomena" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Kant’s middle ground is the most sophisticated historically. It moves from the ontological question to the <strong>epistemological question</strong>:</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The epistemological question </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>What <strong>knowledge</strong> of the external world can we have?</p>
+</div>
+</blockquote>
+<p>Kant’s answer:</p>
+<ul>
+<li>There <strong>is</strong> an external reality, but we <strong>cannot have knowledge of it</strong> as it is in itself. These are the <strong>things-in-themselves</strong>, the <strong>noumena</strong>: the chair as it is independently of anyone perceiving it.</li>
+<li>We can only know the <strong>appearances</strong>, the <strong>phenomena</strong>: the chair as it appears to me.</li>
+<li>The phenomena are <strong>structured by our mind</strong>, by cognitive structures that exist prior to any input:
+<ul>
+<li><strong>Space and time</strong> are <strong>forms of intuition</strong>: necessary conditions for perceiving anything at all.</li>
+<li><strong>Categories</strong> such as <strong>causality</strong> and <strong>possibility</strong> structure the phenomena at a higher, conceptual level.</li>
+</ul>
+</li>
+<li>These structures are in us, not in the world, but they are <strong>preconditions for the possibility of experience</strong> and of knowledge. Because the input does ultimately come from the external world, learning about the phenomena is still learning about the world, not only about our perceptions. It is just always mediated and shaped by an architecture that is not itself in the world.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n  N[\&quot;Noumena&lt;br/>(things-in-themselves)&lt;br/>unknowable\&quot;] -->|input| M[\&quot;Mind's structures&lt;br/>forms of intuition: space, time&lt;br/>categories: causality, possibility\&quot;]\n  M --> P[\&quot;Phenomena&lt;br/>(appearances)&lt;br/>what we can know\&quot;]&quot;">flowchart LR
+  N[&quot;Noumena&lt;br/>(things-in-themselves)&lt;br/>unknowable&quot;] -->|input| M[&quot;Mind's structures&lt;br/>forms of intuition: space, time&lt;br/>categories: causality, possibility&quot;]
+  M --> P[&quot;Phenomena&lt;br/>(appearances)&lt;br/>what we can know&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<h3 id="13-eddingtons-two-tables-1927">1.3 Eddington’s two tables (1927)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-eddingtons-two-tables-1927" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Modern science makes the worry sharper. Sir Arthur Eddington, <em>The Nature of the Physical World</em> (1927), the introduction to his Gifford lectures. (The slide shows his <em>Time</em> magazine cover.)</p>
+<blockquote>
+<p>“I have settled down to the task of writing these lectures and have drawn up my two chairs to my two tables. […] One of them has been familiar to me from earliest years. It is a commonplace object of that environment which I call the world. How shall I describe it? It has extension; it is comparatively permanent; it is coloured; above all it is substantial.”</p>
+</blockquote>
+<blockquote>
+<p>“Table No. 2 is my scientific table. It is a more recent acquaintance and I do not feel so familiar with it. […] My scientific table is mostly emptiness. Sparsely scattered in that emptiness are numerous electric charges rushing about with great speed; but their combined bulk amounts to less than a billionth of the bulk of the table itself.”</p>
+</blockquote>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Eddington's question </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Which of the tables is <strong>real</strong>? The table we observe in daily life (solid, coloured, you can put a laptop on it, nothing passes through it)? Or the table as described by science, “almost emptiness”? Both? And how are they related?</p>
+</div>
+</blockquote>
+<p>The slide sets a photo of a wooden table beside a Bohr-style atom diagram (a nucleus of coloured balls with electrons on elliptical orbits).</p>
+<p>This is where the shape of the realism debate becomes visible: it is a question about <strong>which things we are committed to the existence of</strong>, and as structured in which way.</p>
+<h3 id="14-machs-radical-empiricism">1.4 Mach’s radical empiricism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-machs-radical-empiricism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Ernst Mach (1838-1916) takes the extreme empiricist line:</p>
+<ul>
+<li>Claims about <strong>unobservable reality are metaphysical</strong>, and <strong>cannot have a truth-value</strong>. Unless you can observe directly, with your senses, whether something is true, you cannot decide whether it is true.</li>
+<li>Theories are <strong>merely economical descriptions of our sensory experiences</strong>: good tools for ordering the experiences we have had and predicting the ones we will have.</li>
+<li>This is the <strong>instrumentalist conception of scientific theories</strong>: theories are instruments, tools, not descriptions of a hidden reality.</li>
+</ul>
+<p>The slide’s image is Mach’s famous self-portrait from <em>The Analysis of Sensations</em>: the visual field as seen from his left eye, framed by his eyebrow and nose, with his body stretched out on a chaise longue, his hand holding a pencil, and the room and window beyond. The world as it is actually given in sensation.</p>
+<h3 id="15-logical-positivism-and-logical-empiricism">1.5 Logical positivism and logical empiricism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#15-logical-positivism-and-logical-empiricism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Early logical positivists</strong>, Carnap and Neurath in particular, were strict anti-realists in Mach’s style, and in one respect more extreme: they tied not only truth but <strong>meaning</strong> to observability.</p>
+<ul>
+<li><strong>Verifiability theory of meaning:</strong> claims about the existence of unobservable entities are not verifiable, <strong>therefore meaningless</strong>. Not false: neither true nor false, they just do not mean anything. (Full treatment in <a href="../../../Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism">PhilSci-L01 - Introduction and Logical Empiricism</a>.)</li>
+<li>A <strong>sharp theory-observation distinction</strong>.</li>
+<li><strong>Theoretical sentences are introduced through observational sentences.</strong></li>
+</ul>
+<p>The slide’s diagram is the classic picture of a scientific theory from this tradition (Hempel’s and Feigl’s “net”):</p>
+<pre><code>   o───o───o───o          ← theoretical network: nodes are theoretical terms,
+    \ / \ / \ / \            lines are the laws/postulates connecting them
+     o───o───o───o
+     ┆   ┆   ┆   ┆        ← dashed vertical lines: correspondence rules /
+     ┆   ┆   ┆   ┆          interpretive links, tying some terms to observation
+  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ← the plane of observation (the &quot;soil&quot; of experience)
+</code></pre>
+<p>The theory floats above observation and is anchored to it only where the dashed lines reach down. A theoretical term gets whatever meaning it has from those anchors.</p>
+<p><strong>Why the distinction has to be sharp.</strong> If meaning stops at observability, you need a precise boundary between the theoretical and the observational, because meaning does not come in degrees: something cannot be “almost meaningful”. So the positivist is committed to a line with no vagueness in it.</p>
+<p><strong>Later logical empiricists gradually shifted to a more realist approach:</strong></p>
+<ul>
+<li><strong>Acceptance of semantics</strong>: general and theoretical sentences can be true or false.</li>
+<li><strong>Verification replaced by confirmation</strong>: instead of the stringent demand that a claim be verified to count as meaningful, a claim counts if there can be confirmation for it, which is a much broader notion.</li>
+</ul>
+<h3 id="16-the-first-realist-attack-maxwell-1962">1.6 The first realist attack: Maxwell (1962)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-the-first-realist-attack-maxwell-1962" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Maxwell's objection </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The <strong>theory-observation distinction cannot be sharply drawn.</strong> (Grover Maxwell, 1962)</p>
+</div>
+</blockquote>
+<p>The slide shows a row of images: an <strong>eye</strong>, a <strong>window</strong> looking onto a field with horses, a pair of <strong>glasses</strong>, a <strong>microscope</strong>. The argument runs along that row, and the lecturer gives it in the first person:</p>
+<ol>
+<li>I am wearing glasses. Seeing through glasses is plainly observation: it would be ridiculous to say that putting glasses on moves me into the theoretical realm and taking them off moves me back.</li>
+<li>Seeing through a window is observation too.</li>
+<li>But a pair of glasses is not different <em>in principle</em> from a microscope or a telescope. Those are just more complicated arrangements of lenses refracting an image.</li>
+<li>Yet we would not want to say that an image from a microscope counts as observation by unaided senses in the way that looking through glasses does. Glasses and microscope seem to belong on opposite sides.</li>
+<li>There is no principled place on the continuum (and there are all the intermediate instruments one could build) where observation stops.</li>
+</ol>
+<p>So the empiricist’s own position is unstable: it depends on a distinction it cannot draw. Tie that distinction to a theory of meaning (or of existence) and you cannot say when things are meaningful and when they are not. Historically this was an effective argument. Van Fraassen’s reply is in section 3.4.</p>
+<hr/>
+<h2 id="part-2-scientific-realism">Part 2: Scientific realism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-2-scientific-realism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-what-scientific-realism-claims">2.1 What scientific realism claims<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-what-scientific-realism-claims" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Scientific realism </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Scientific theories that are <strong>empirically well-confirmed</strong> are <strong>true or approximately true</strong>. Including, crucially, what they say about <strong>unobservable</strong> things (fundamental particles, viruses, the things a theory posits to explain what we do observe).</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Empirical adequacy </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A theory is <strong>empirically adequate</strong> when it represents, describes and predicts the <strong>observable phenomena</strong> well. What it says about the observable is true.</p>
+</div>
+</blockquote>
+<p>Scientific realism goes <strong>beyond</strong> empirical adequacy: the realist is committed to the unobservable parts of a well-confirmed theory being (approximately) true as well.</p>
+<p>Van Fraassen’s formal definition, on the slide:</p>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Empirical adequacy (van Fraassen 1980) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A theory is empirically adequate <strong>if and only if it has at least one model such that all appearances are isomorphic to empirical substructures of that model.</strong></p>
+</div>
+</blockquote>
+<p>Unpacking, since the slide does not:</p>
+<ul>
+<li><strong>Model</strong>: van Fraassen holds the <em>semantic view</em> of theories, on which a theory is presented as a family of mathematical structures (models), not a set of sentences.</li>
+<li><strong>Empirical substructures</strong>: the parts of a model that are candidates to represent observable phenomena (for example, the relative positions and motions of observable bodies in a model of Newtonian mechanics, leaving out absolute space and forces).</li>
+<li><strong>Appearances</strong>: the structures described in measurement and experimental reports.</li>
+<li><strong>Isomorphic</strong>: the appearances can be mapped one-to-one, structure-preservingly, onto those empirical substructures.</li>
+</ul>
+<p>So the theory “saves the phenomena”: some model of it fits every possible observation, and it does not matter, for empirical adequacy, what the rest of the model says about the unobservable.</p>
+<h3 id="22-three-kinds-levels-of-scientific-realism">2.2 Three kinds (levels) of scientific realism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-three-kinds-levels-of-scientific-realism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The contemporary definition above presupposes <strong>three separate theses</strong>. They are not alternative definitions. A scientific realist accepts <strong>the conjunction</strong> of all three; an anti-realist is anyone who rejects <strong>at least one</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>thesis</th><th>concerns</th><th>claim</th></tr></thead><tbody><tr><td><strong>Semantic realism</strong></td><td><strong>language</strong></td><td>Interpret scientific theories <strong>literally</strong>. Theories aim to tell a “literal story” about how the world works. “There are electrons” means there is a thing called an electron with the properties the theory ascribes. Contrast: the <strong>logical empiricist construal of theoretical terms</strong>, which paraphrases them away as shorthand for observational processes and outcomes</td></tr><tr><td><strong>Epistemic realism</strong></td><td><strong>knowledge</strong></td><td>One is <strong>justified</strong> in accepting scientific theories as <strong>true</strong>. The empirical success of science justifies believing what theories say, including about unobservables</td></tr><tr><td><strong>Metaphysical realism</strong></td><td><strong>what there is</strong></td><td>The theory <strong>is true</strong> or approximately true: <strong>the world is like the theory says it is</strong>. The entities it postulates actually exist; the properties it ascribes are actual properties</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Semantic versus metaphysical: a slight difference, and the lecture insists on it </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Semantic realism is about <strong>truth</strong> of sentences: the theory’s claims about electrons are true-or-false, literally. Metaphysical realism is about <strong>existence</strong>: there actually <strong>are</strong> electrons out there. “There are true claims the theory makes about electrons” and “there are electrons” are different commitments.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>&quot;Metaphysical realism&quot; is used in two senses in this lecture </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>In Part 1 it means the general thesis that <strong>an external world exists</strong> independently of the mind (against Berkeley). In Part 2 it is the third component of scientific realism: <strong>the theory is (approximately) true and its entities exist</strong>. In the realism debate proper, everyone is a metaphysical realist in the first sense (section 3.2); the argument is about the second. Say which one you mean.</p>
+</div>
+</blockquote>
+<p>Where the positions in this lecture fall:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>semantic</th><th>epistemic</th><th>metaphysical (Part 2 sense)</th></tr></thead><tbody><tr><td>Scientific realist</td><td>yes</td><td>yes</td><td>yes</td></tr><tr><td>Early logical positivists, Mach</td><td><strong>no</strong> (unobservable talk is meaningless or truth-valueless)</td><td>no</td><td>no</td></tr><tr><td>Van Fraassen</td><td><strong>yes</strong></td><td><strong>no</strong></td><td><strong>no</strong> (agnostic: belief about unobservables is “up to us”)</td></tr></tbody></table></div>
+<h3 id="23-the-no-miracles-argument-putnam">2.3 The no-miracles argument (Putnam)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-the-no-miracles-argument-putnam" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>No-miracles argument (NMA) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“Realism is the only philosophy that does not make the success of science a <strong>miracle</strong>.” (Hilary Putnam)</p>
+<p>If scientific theories were not <strong>truth-tracking</strong>, it is hard to see how they could make successful predictions of <strong>experiments never performed before</strong>.</p>
+</div>
+</blockquote>
+<p>The examples on the slide: the <strong>top quark</strong> and the <strong>Higgs boson</strong> were predicted on <strong>theoretical</strong> grounds. No experiment concerning the Higgs had ever been performed when it was predicted, so it was a completely novel prediction, and the theory got it right. Both are <strong>unobservable</strong> entities: nobody observes the Higgs directly. If the theory were false, these successful predictions would be incredible coincidences, “miracles”. And science does this repeatedly, not once.</p>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why empirical adequacy alone cannot explain novel success </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A theory built only to fit the observations made so far is empirically adequate with respect to <strong>those</strong> observations. Nothing about that explains why it should also get right things <strong>nobody has observed yet</strong>. If it keeps doing so, the natural explanation is that it is tracking something deep about the world. Being consistently right by guessing would be the miracle.</p>
+</div>
+</blockquote>
+<h3 id="24-inference-to-the-best-explanation-ibe">2.4 Inference to the best explanation (IBE)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-inference-to-the-best-explanation-ibe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The NMA is itself a case of IBE:</p>
+<ul>
+<li><strong>Explanandum:</strong> scientific theories can <strong>predict successfully</strong> the outcomes of experiments never performed before.</li>
+<li><strong>Best explanation:</strong> the <strong>approximate truth</strong> of the theory.</li>
+<li><strong>Conclusion:</strong> scientific theories that achieve a certain level of success in prediction and experimental testing are (probably) approximately true.</li>
+</ul>
+<p><strong>IBE as a form of inference.</strong> This is the third argument form of the course, after deduction and induction. IBE is also called <strong>abduction</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>deduction</th><th>induction</th><th>abduction (IBE)</th></tr></thead><tbody><tr><td><strong>Ampliative?</strong> (conclusion goes beyond what is logically contained in the premises)</td><td>no: the conclusion only takes out what is already in the premises</td><td><strong>yes</strong></td><td><strong>yes</strong></td></tr><tr><td><strong>Fallible?</strong></td><td>no, truth-preserving</td><td><strong>yes</strong></td><td><strong>yes</strong></td></tr><tr><td><strong>Appeals to</strong></td><td>logical form</td><td>observed frequencies, statistics (a pattern continues)</td><td><strong>explanatory considerations</strong>: this is the best explanation available, so it is true</td></tr></tbody></table></div>
+<blockquote class="callout formula" data-callout="formula">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The schema of IBE </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Given evidence <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> and candidate explanations <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>, infer the truth of that <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> which <strong>best explains</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>.</p>
+<p>where:</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>: the evidence (here: the empirical success of science)</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: rival hypotheses that would each explain <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: the one that explains <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> best (here: the theory is approximately true)</li>
+</ul>
+</div>
+</blockquote>
+<p>(The symbols dropped out of the PDF export of this slide; the schema above is the standard formulation, which is what the slide’s surviving text spells out word by word.)</p>
+<p><strong>The realist’s IBE:</strong> approximate truth of a theory is the best explanation of its empirical success.</p>
+<p><strong>Where the anti-realist pushes back:</strong> anti-realists often <strong>do not accept explanation as an aim of science</strong>. If explanation is not something science aims at, or not something that bears on truth, then “it is the best explanation” is not a reason to believe it. This connects directly to van Fraassen’s pragmatic theory of explanation in <a href="../../../Courses/PhilSci/Lectures/PhilSci-L04---Scientific-Explanation-and-Understanding" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L04---Scientific-Explanation-and-Understanding">PhilSci-L04 - Scientific Explanation and Understanding</a> (section 4.5): explanation is something we do <em>with</em> a theory, external to science, adding nothing to what we believe. That is exactly what makes IBE toothless for him, and mock question 8 is the reply.</p>
+<hr/>
+<h2 id="part-3-van-fraassens-constructive-empiricism">Part 3: Van Fraassen’s constructive empiricism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-3-van-fraassens-constructive-empiricism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Bas van Fraassen’s constructive empiricism is the <strong>most developed, sophisticated alternative</strong> to scientific realism, and he is the realist’s main opponent in the modern debate. (The slide’s photo: van Fraassen rock-climbing.)</p>
+<h3 id="31-the-two-definitions-side-by-side">3.1 The two definitions side by side<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-the-two-definitions-side-by-side" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Scientific realism, as van Fraassen states it </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“Science aims to give us, in its theories, a <strong>literally true</strong> story of what the world is like; and <strong>acceptance</strong> of a scientific theory involves the <strong>belief</strong> that it is true.”</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Constructive empiricism </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“Science aims to give us theories which are <strong>empirically adequate</strong>; and <strong>acceptance</strong> of a theory involves as <strong>belief</strong> only that it is empirically adequate.”</p>
+</div>
+</blockquote>
+<p>Both definitions have the same two parts, and the contrast is in each:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>aim of science</th><th>what accepting a theory commits you to believing</th></tr></thead><tbody><tr><td>Scientific realism</td><td>a literally true story</td><td>that the theory is true</td></tr><tr><td>Constructive empiricism</td><td>empirical adequacy</td><td>only that the theory is empirically adequate</td></tr></tbody></table></div>
+<p>Accepting a theory, for the constructive empiricist, carries <strong>no</strong> claim about its ultimate truth, its approximate truth, or the truth of its claims about unobservable entities.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Empirical adequacy (again) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Theory <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> is empirically adequate iff <strong>what <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> says about the observable is true</strong>.</p>
+</div>
+</blockquote>
+<h3 id="32-where-exactly-the-disagreement-lies">3.2 Where exactly the disagreement lies<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-where-exactly-the-disagreement-lies" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>The disagreement with the realist is about <strong>unobservable entities</strong>, not about observable ones.</li>
+<li>In this debate everyone is a metaphysical realist in the Part 1 sense: everyone accepts (or brackets) that there is an external world. The argument is whether that world includes the unobservables scientific theories describe, and whether we are justified in believing it does.</li>
+<li>Van Fraassen is a <strong>semantic realist</strong>: science is a story about the world. Scientific claims, including those about unobservables, are <strong>literally true or false</strong>. They have definite truth-values, so they are meaningful. He explicitly refuses the logical positivist route.</li>
+<li>He is an <strong>epistemic and metaphysical anti-realist</strong>: well-confirmed theories do not license believing they are true, only that they are empirically adequate.</li>
+<li><strong>Whether we believe what science says about unobservable entities is up to us.</strong> Note what this is not: van Fraassen does <strong>not</strong> say electrons do not exist. He says the evidence does not oblige you to believe they do. Agnosticism, not denial.</li>
+</ul>
+<h3 id="33-van-fraassens-critique-of-scientific-realism">3.3 Van Fraassen’s critique of scientific realism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-van-fraassens-critique-of-scientific-realism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>He attacks essentially every existing argument for realism (section numbers are those of his paper, “Arguments Concerning Scientific Realism”, the week’s first reading):</p>
+<ol>
+<li><strong>No theory-observation distinction</strong> (§2). Maxwell’s argument.</li>
+<li><strong>Inference to the best explanation</strong> (§3).
+<ul>
+<li>The realist’s claim is a <strong>psychological hypothesis</strong>: that we “follow” the IBE rule, believing the best explanation is true.</li>
+<li>Van Fraassen offers a <strong>rival hypothesis</strong> that fits our practice just as well: we are always willing to believe that the theory which best explains the evidence is <strong>empirically adequate</strong>.</li>
+<li>So constructive empiricism is a <strong>viable alternative</strong>: our inferential practice does not force realism.</li>
+</ul>
+</li>
+<li><strong>The demand for explanation</strong> (§4 and §6).</li>
+<li><strong>The Ultimate Argument</strong> (§7). (This is the no-miracles argument under the name Putnam gave it.)</li>
+</ol>
+<p>The lecturer: “I will only discuss the first argument.” Arguments 3 and 4 are in the reading, and mock question 8 is about argument 3.</p>
+<h3 id="34-theory-and-observation-van-fraassens-reply-to-maxwell">3.4 Theory and observation: van Fraassen’s reply to Maxwell<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-theory-and-observation-van-fraassens-reply-to-maxwell" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Recall the threat. If the anti-realist claims only observable entities exist and theoretical ones do not (or, semantically, that only claims about observables are meaningful), then a vague boundary is fatal: <strong>existence and meaning are not vague notions</strong>. Things exist or do not; claims are meaningful or not. Neither comes in degrees.</p>
+<p>Van Fraassen, arguing <strong>against the logical positivists</strong>, gets out of this in three moves:</p>
+<ol>
+<li>
+<p><strong>Take theories literally in all respects.</strong> Drop the verifiability theory of meaning entirely. Electromagnetism literally claims that electrons exist, and that claim is true or false. It is then a separate question whether we are justified in believing it.</p>
+</li>
+<li>
+<p><strong>The theory-observation distinction is a category mistake.</strong> Two different distinctions have been run together:</p>
+<ul>
+<li><strong>Language</strong>: theoretical versus non-theoretical <strong>terms</strong>.</li>
+<li><strong>Objects</strong>: observable versus unobservable <strong>entities</strong>.</li>
+</ul>
+<p>Terms are bits of language; observability is a property of things. Mixing the two is “not great if you are trying to put together an argument”.</p>
+</li>
+<li>
+<p><strong>“Observable” is a vague, but usable, predicate.</strong> Once neither meaning nor existence hangs on the observable/unobservable line, the line does not need to be sharp. It only marks where our <em>justified belief</em> stops. We all understand that wearing glasses does not change whether something counts as observed, and that using a microscope does. That we cannot locate the boundary precisely does not stop us using the predicate, any more than the vagueness of “bald” stops us using that.</p>
+</li>
+</ol>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why vagueness hurts the positivist and not van Fraassen </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The positivist made <strong>meaning</strong> depend on the line, and meaning is all-or-nothing, so the line had to be sharp. Van Fraassen makes only <strong>epistemic commitment</strong> depend on it. A vague boundary for what we are obliged to believe is harmless: there are clear cases on each side (a table; an electron), and the clear cases are all the argument needs. Maxwell’s objection refutes the positivist and misses van Fraassen.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="part-4-laudans-pessimistic-meta-induction">Part 4: Laudan’s pessimistic meta-induction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#part-4-laudans-pessimistic-meta-induction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The main anti-realist <strong>view</strong> was van Fraassen’s. The main anti-realist <strong>argument</strong> is Larry Laudan’s, from “A Confutation of Convergent Realism” (1981), the week’s third reading. It is a <strong>historical</strong> argument.</p>
+<h3 id="41-the-argument">4.1 The argument<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-the-argument" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Pessimistic meta-induction (PMI) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li><strong>History of science:</strong> many theories that we now consider <strong>false</strong> were once <strong>empirically successful</strong> (and by realist lights should have been regarded as true).</li>
+<li>These theories assumed that terms like <strong>“aether”</strong> and <strong>“phlogiston”</strong> referred to entities, just as realists today say “electron” refers to electrons.</li>
+<li>We now take those terms <strong>not to refer</strong>: there is nothing in the world that corresponds to “aether” or “phlogiston”. The theories posited entities we consider non-existent, and were strictly speaking false.</li>
+<li><strong>Induction:</strong> presently successful theories will (may well) turn out to be false too. <strong>We are not justified in believing that theories are true.</strong></li>
+<li>So there is no reason to suppose that the entities, properties and processes postulated by <strong>our best theories</strong> are real.</li>
+</ol>
+</div>
+</blockquote>
+<p>It is a <strong>meta</strong>-induction because the induction runs over <strong>theories</strong> (a higher level) rather than over observations: past successful theories were false, so current successful theories probably are too.</p>
+<blockquote class="callout intuition" data-callout="intuition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The core of it </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>We have no particular reason to think our epistemic predicament is different from that of scientists in the 1800s or 1900s, and they were wrong while being just as sure. Thinking that <strong>we</strong>, for whatever reason, are finally the ones who got it right would be a kind of arrogance.</p>
+</div>
+</blockquote>
+<p>The aether is familiar from the history of relativity; phlogiston was the substance supposedly released in combustion.</p>
+<h3 id="42-laudans-examples">4.2 Laudan’s examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-laudans-examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Laudan’s list, “the historical gambit”:</p>
+<ul>
+<li>crystalline spheres of ancient and medieval astronomy</li>
+<li>humoral theory of medicine</li>
+<li>effluvial theory of static electricity</li>
+<li>catastrophist geology, with its commitment to a universal deluge</li>
+<li>phlogiston theory of chemistry</li>
+<li>caloric theory of heat</li>
+<li>vibratory theory of heat</li>
+<li>vital force theories of physiology</li>
+<li>electromagnetic aether</li>
+<li>optical aether</li>
+<li>theory of circular inertia</li>
+<li>theories of spontaneous generation</li>
+</ul>
+<blockquote>
+<p>“This list, which could be extended <em>ad nauseam</em>, involves in every case a theory which was once successful and well confirmed, but which contained central terms which (we now believe) were non-referring.”</p>
+</blockquote>
+<p>For the course, the lecturer says, the point is the general inductive observation, not the details of each case.</p>
+<h3 id="43-laudans-target-convergent-realism">4.3 Laudan’s target: convergent realism<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-laudans-target-convergent-realism" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Convergent realism </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Theories are approximately true, and as science goes on they get <strong>closer and closer to the truth</strong>: successive theories <strong>converge</strong> on the truth.</p>
+</div>
+</blockquote>
+<p>Three elements:</p>
+<ol>
+<li><strong>Approximate truth:</strong> mature theories are closer to the truth, and the more mature, the closer.</li>
+<li><strong>Reference:</strong> mature theories <strong>refer</strong>, and <strong>preserve reference</strong> across theory change. (Otherwise successive theories would be talking about different things, and it would be unclear what they were converging on.)</li>
+<li><strong>Empirical success:</strong> new theories explain why the old theories were successful. Science builds on what came before.</li>
+</ol>
+<p>The slide’s diagram of how Laudan attacks the links between the three:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n  AT[\&quot;Approximate truth\&quot;] -->|\&quot;vague\&quot;| R[\&quot;Reference\&quot;]\n  AT &lt;-->|\&quot;no guarantee / false\&quot;| ES[\&quot;Empirical success\&quot;]\n  R &lt;-->|\&quot;false\&quot;| ES&quot;">flowchart LR
+  AT[&quot;Approximate truth&quot;] -->|&quot;vague&quot;| R[&quot;Reference&quot;]
+  AT &lt;-->|&quot;no guarantee / false&quot;| ES[&quot;Empirical success&quot;]
+  R &lt;-->|&quot;false&quot;| ES
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<ul>
+<li><strong>Approximate truth to reference: “vague”.</strong> Approximate truth is too ill-defined to deliver reference.</li>
+<li><strong>Approximate truth and empirical success: “no guarantee / false”.</strong> Success does not guarantee approximate truth (the historical cases), and the realist’s claimed link is false.</li>
+<li><strong>Reference and empirical success: “false”.</strong> Referring theories can be unsuccessful, and successful theories can fail to refer.</li>
+</ul>
+<h3 id="44-three-related-problems-laudan-1981">4.4 Three related problems (Laudan 1981)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#44-three-related-problems-laudan-1981" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>There is no good definition of “approximate truth”.</strong>
+<ul>
+<li>Laudan: “Few of the writers of whom I am aware have defined what it means for a statement or theory to be ‘approximately true’.” Logicians have tried; there is no universally accepted definition.</li>
+<li>The lecturer’s sharpening: we said earlier that meaning does not come in degrees, and <strong>truth</strong> seems to be the same. Something is true or false, not true to a degree. So approximate truth is hard to make sense of even formally.</li>
+<li>Slide example: <strong>old tectonic plate theory</strong>: “tectonic plates” referred, but the theory was unsuccessful. So reference does not bring success with it either.</li>
+</ul>
+</li>
+<li><strong>No justification for the connection between empirical success and reference that realism assumes.</strong>
+<ul>
+<li>Since approximate truth is vague, all we really have is reference.</li>
+<li>The realist’s route is <strong>success → approximate truth → reference</strong>: success is the reason for thinking a theory approximately true, and reference is what truth of its statements requires. (A claim is true roughly when its terms refer and it says true things about their referents: “my table is made of wood” is true if “table” and “wood” refer and the table really is wooden.)</li>
+<li>If the only contact point between empirical success and reference runs through approximate truth, and approximate truth is undefined (and, by the PMI, doubtful), the link between reference and success is <strong>extremely tenuous</strong>.</li>
+</ul>
+</li>
+<li><strong>Central terms of theories that were once successful do not refer, hence no approximate truth.</strong> Aether, phlogiston. A theory whose central terms do not refer cannot be approximately true, yet these theories were successful. So success does not indicate approximate truth.</li>
+</ol>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What ties the three together </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>They all stem from <strong>approximate truth</strong>. The notion is <strong>load-bearing</strong> for the realist and <strong>extremely hard to make sense of</strong>, if not outright falsified by Laudan’s historical cases.</p>
+</div>
+</blockquote>
+<h3 id="45-saatsi-2005-on-the-pmi">4.5 Saatsi (2005) on the PMI<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#45-saatsi-2005-on-the-pmi" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Juha Saatsi points out that there are <strong>two ways</strong> to read what the PMI concludes, i.e. what the induction is about:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>reading</th><th>what it says</th><th>strength</th></tr></thead><tbody><tr><td><strong>1. Induction on the past</strong></td><td>Past successful theories were false, so <strong>current theories are likely to be false too</strong></td><td>The strong, first-order reading</td></tr><tr><td><strong>2. Timeless argument that undermines the NMA</strong></td><td>An attack on the realist’s argument for <strong>optimism</strong>. The past failures show that <strong>success is not a reliable indicator of truth</strong></td><td>More modest, and harder to resist</td></tr></tbody></table></div>
+<p><strong>NMA, restated for contrast:</strong> the best explanation of the success of our current theories is that they are true.</p>
+<p>On the second reading the PMI does not need to predict that today’s theories are false. It only needs the historical record to break the inference from success to truth. The realist says: an incredible string of successes, so science is tracking truth, and better and better. Laudan replies: you have also had a lot of failures, things you posited and then found were not there. Once you see that, the “miracles” the NMA invokes look a lot less miraculous, because highly successful theories turned out false before. <strong>Empirical success, even great success, may not be enough to infer truth.</strong></p>
+<hr/>
+<h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>For</strong> scientific realism:</p>
+<ol>
+<li><strong>No-miracles argument.</strong></li>
+<li><strong>Inference to the best explanation.</strong></li>
+</ol>
+<p><strong>Against:</strong></p>
+<ul>
+<li><strong>Constructive empiricism</strong> as a viable alternative, diverging from realism on <strong>epistemic</strong> realism.</li>
+<li><strong>Pessimistic meta-induction:</strong>
+<ol>
+<li>No (good) notion of “approximate truth”.</li>
+<li>No connection between empirical success, reference and approximate truth.</li>
+</ol>
+</li>
+</ul>
+<p>“The debate continues! See next week.” Week 6 continues with Psillos, <em>Resisting the Pessimistic Induction</em>, and Stanford, <em>‘Atoms Exist’ Is Probably True</em>.</p>
+<hr/>
+<h2 id="flipped-classroom-discussion-questions">Flipped-classroom discussion questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flipped-classroom-discussion-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Posted for the 29 Sep Zoom discussion (<code>ScientificRealismFlippedClassroom.pdf</code>). They are open questions, so what follows is what the lecture gives you to answer each with, not a model answer.</p>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>1. Explain realism in your own words, and argue for or against it. </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>State scientific realism as the conjunction of semantic, epistemic and metaphysical realism (section 2.2), applied to well-confirmed theories and including their claims about unobservables. <strong>For:</strong> NMA and IBE (2.3, 2.4). <strong>Against:</strong> the PMI (Part 4), and constructive empiricism as a rival that explains the same practice (3.3).</p>
+</div>
+</blockquote>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>2. Is scientific realism a correct representation of how scientists think about science? What about the aim of science? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The clash is over the <strong>aim</strong> of science: a literally true story (realism) or empirical adequacy (constructive empiricism), section 3.1. Van Fraassen’s IBE point (3.3) is directly relevant: our practice of preferring the best explanation is equally well described by “we believe it is empirically adequate”, so scientists’ behaviour alone does not settle which aim they have.</p>
+</div>
+</blockquote>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>3. Is van Fraassen right that theories at best entitle us to believe in their empirical adequacy, or can we know more? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>For van Fraassen: Maxwell’s objection does not touch him (3.4), and the rival hypothesis neutralises IBE. Against: the NMA’s point about <strong>novel</strong> predictions (2.3): empirical adequacy relative to past observations does not explain success on observations not yet made, and the realist will ask why the theory should be empirically adequate at all if it is not true.</p>
+</div>
+</blockquote>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>4. Is Laudan right that our current epistemic predicament is analogous to the past? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>This is the hinge of the PMI (4.1). Saatsi’s distinction (4.5) lets you answer in two parts: even if today’s science is better placed than the 1800s (so reading 1 is weakened), reading 2 still stands, since the historical cases show that success alone is not a reliable indicator of truth. Week 6 (Psillos) is the realist’s attempt to resist this.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Exam Focus </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Mock exam question 8 is on this week’s readings</strong> (10 points):</p>
+<blockquote>
+<p>One of the arguments discussed by van Fraassen and Musgrave, in their debate on scientific realism, is about scientific explanation. Van Fraassen attacks the realist demand for explanation, and argues that explanation is not one of the aims of science. Musgrave then responds that van Fraassen tacitly conflates ‘realism with essentialism, … the demand for explanation with the demand for ultimate explanation’. What does Musgrave mean by this, and how is it a reply to van Fraassen?</p>
+</blockquote>
+<p>Model answer, verbatim:</p>
+<blockquote>
+<p>Ultimate scientific explanations serve to remove puzzlement. Non-ultimate scientific explanations do not serve this pragmatic function of removing puzzlement (they relocate it and enhance it), yet they are real explanations. In other words, there can always be better or deeper explanations, and scientific theories certainly do aim to give explanations, but there is no unlimited demand for explanations. (pp. 1102-1103)</p>
+</blockquote>
+<p>Spelled out (a reconstruction from the question and the model answer, see the flag below): van Fraassen argues that the realist’s demand for explanation cannot be unlimited, since not every regularity can or need be explained by something deeper, and concludes that explanation is not one of the aims of science. Musgrave says this only follows if “explanation” means <strong>ultimate</strong> explanation, one that leaves nothing further to explain (that is the <strong>essentialist</strong> ideal: explanation bottoming out in essences). A non-ultimate explanation explains, and also opens new puzzles, and it is still a genuine explanation. So science can aim at explanation, better and deeper ones, without being committed to an unlimited demand for ultimate ones. That removes van Fraassen’s reason for denying that explanation is an aim of science, and with it his reason for dismissing IBE.</p>
+<p>This is the deck’s “demand for explanation (§4 and §6)” argument, which the lecture skipped. The model answer and the explanation above are what the vault has on it: Musgrave’s paper (Curd &amp; Cover pp. 1083-1107) has not been read for this note. <a href="../../.././../../tags/needs-review" class="tag-link internal alias" data-slug="tags/needs-review">needs-review</a></p>
+</div>
+</blockquote>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What to be able to state cold </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li><strong>Scientific realism</strong> as the conjunction of <strong>semantic, epistemic and metaphysical</strong> realism, and what each is about (language, knowledge, what exists).</li>
+<li><strong>Empirical adequacy</strong>: what <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> says about the observable is true.</li>
+<li>The <strong>NMA</strong> in Putnam’s words, with the Higgs/top quark example, and why it is an <strong>IBE</strong>.</li>
+<li><strong>IBE</strong> versus induction versus deduction: ampliative, fallible, appeals to explanatory considerations.</li>
+<li><strong>Constructive empiricism</strong> and scientific realism in van Fraassen’s own two-part formulations (aim, acceptance).</li>
+<li>Van Fraassen’s reply to Maxwell: literal reading, <strong>category mistake</strong> (terms versus objects), <strong>“observable” is vague but usable</strong>.</li>
+<li>The <strong>PMI</strong>: premises, aether and phlogiston, conclusion. Laudan’s <strong>three problems</strong> with convergent realism.</li>
+<li><strong>Saatsi</strong>’s two readings, and why the second is the one that hurts the NMA.</li>
+</ol>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The distinctions people blur </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Van Fraassen is not a positivist.</strong> He is a <strong>semantic realist</strong>: theoretical claims are meaningful and true or false. His anti-realism is purely <strong>epistemic</strong>. Saying he thinks claims about electrons are meaningless loses the whole point.</li>
+<li><strong>Agnosticism is not denial.</strong> Constructive empiricism does not say unobservables do not exist. It says acceptance does not require believing they do.</li>
+<li><strong>The PMI is an induction over theories</strong>, not over observations, and it targets the link <strong>success → approximate truth → reference</strong>, not just “science has been wrong before”.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/PhilSci/PhilSci---Overview" class="internal alias" data-slug="Courses/PhilSci/PhilSci---Overview">Course overview</a> · <a href="../../../Courses/PhilSci/PhilSci---Tutorials" class="internal alias" data-slug="Courses/PhilSci/PhilSci---Tutorials">Tutorials</a></li>
+<li><strong>Previous:</strong> <a href="../../../Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L01---Introduction-and-Logical-Empiricism">PhilSci-L01 - Introduction and Logical Empiricism</a> (verifiability, the positivists’ theory-observation distinction) · <a href="../../../Courses/PhilSci/Lectures/PhilSci-L03---Under-determination" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L03---Under-determination">PhilSci-L03 - Under-determination</a> (empirical under-determination, the other classic anti-realist argument, and De Haro’s “cautious scientific realism”) · <a href="../../../Courses/PhilSci/Lectures/PhilSci-L04---Scientific-Explanation-and-Understanding" class="internal alias" data-slug="Courses/PhilSci/Lectures/PhilSci-L04---Scientific-Explanation-and-Understanding">PhilSci-L04 - Scientific Explanation and Understanding</a> (van Fraassen’s pragmatic theory of explanation, which is why IBE does not move him)</li>
+<li><strong>Source:</strong> <code>5 Scientific Realism.pdf</code> on Canvas, “Lecture 5: Scientific Realism and its Critiques”, Enrico Cinti, 27 slides, uploaded 2026-09-28; <code>FlippedClassroom - Scientific Realism.mov</code>, the pre-recorded lecture (47 min, uploaded 2026-09-24), transcribed for this note; <code>ScientificRealismFlippedClassroom.pdf</code>, the discussion questions; <code>Mock Exam_with Answers.pdf</code>, question 8.</li>
+<li><strong>Readings (Curd &amp; Cover, ch. 9, library, not read for this note):</strong> van Fraassen, “Arguments Concerning Scientific Realism”, pp. 1060-1082 · Musgrave, “Realism versus Constructive Empiricism”, pp. 1083-1107 · Laudan, “A Confutation of Convergent Realism”, pp. 1108-1128</li>
+<li><strong>Also cited in the deck:</strong> Putnam (no-miracles argument) · Maxwell (1962), “The Ontological Status of Theoretical Entities” · Saatsi (2005), “On the Pessimistic Induction and Two Fallacies”, <em>Philosophy of Science</em></li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-308" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#philsci-l05-scientific-realism-and-its-critiques" data-for="philsci-l05-scientific-realism-and-its-critiques">PhilSci-L05: Scientific Realism and its Critiques</a></li><li class="depth-1"><a href="#part-1-realism-historical-background" data-for="part-1-realism-historical-background">Part 1: Realism, historical background</a></li><li class="depth-2"><a href="#11-the-ontological-question" data-for="11-the-ontological-question">1.1 The ontological question</a></li><li class="depth-2"><a href="#12-kants-compromise-noumena-and-phenomena" data-for="12-kants-compromise-noumena-and-phenomena">1.2 Kant’s compromise: noumena and phenomena</a></li><li class="depth-2"><a href="#13-eddingtons-two-tables-1927" data-for="13-eddingtons-two-tables-1927">1.3 Eddington’s two tables (1927)</a></li><li class="depth-2"><a href="#14-machs-radical-empiricism" data-for="14-machs-radical-empiricism">1.4 Mach’s radical empiricism</a></li><li class="depth-2"><a href="#15-logical-positivism-and-logical-empiricism" data-for="15-logical-positivism-and-logical-empiricism">1.5 Logical positivism and logical empiricism</a></li><li class="depth-2"><a href="#16-the-first-realist-attack-maxwell-1962" data-for="16-the-first-realist-attack-maxwell-1962">1.6 The first realist attack: Maxwell (1962)</a></li><li class="depth-1"><a href="#part-2-scientific-realism" data-for="part-2-scientific-realism">Part 2: Scientific realism</a></li><li class="depth-2"><a href="#21-what-scientific-realism-claims" data-for="21-what-scientific-realism-claims">2.1 What scientific realism claims</a></li><li class="depth-2"><a href="#22-three-kinds-levels-of-scientific-realism" data-for="22-three-kinds-levels-of-scientific-realism">2.2 Three kinds (levels) of scientific realism</a></li><li class="depth-2"><a href="#23-the-no-miracles-argument-putnam" data-for="23-the-no-miracles-argument-putnam">2.3 The no-miracles argument (Putnam)</a></li><li class="depth-2"><a href="#24-inference-to-the-best-explanation-ibe" data-for="24-inference-to-the-best-explanation-ibe">2.4 Inference to the best explanation (IBE)</a></li><li class="depth-1"><a href="#part-3-van-fraassens-constructive-empiricism" data-for="part-3-van-fraassens-constructive-empiricism">Part 3: Van Fraassen’s constructive empiricism</a></li><li class="depth-2"><a href="#31-the-two-definitions-side-by-side" data-for="31-the-two-definitions-side-by-side">3.1 The two definitions side by side</a></li><li class="depth-2"><a href="#32-where-exactly-the-disagreement-lies" data-for="32-where-exactly-the-disagreement-lies">3.2 Where exactly the disagreement lies</a></li><li class="depth-2"><a href="#33-van-fraassens-critique-of-scientific-realism" data-for="33-van-fraassens-critique-of-scientific-realism">3.3 Van Fraassen’s critique of scientific realism</a></li><li class="depth-2"><a href="#34-theory-and-observation-van-fraassens-reply-to-maxwell" data-for="34-theory-and-observation-van-fraassens-reply-to-maxwell">3.4 Theory and observation: van Fraassen’s reply to Maxwell</a></li><li class="depth-1"><a href="#part-4-laudans-pessimistic-meta-induction" data-for="part-4-laudans-pessimistic-meta-induction">Part 4: Laudan’s pessimistic meta-induction</a></li><li class="depth-2"><a href="#41-the-argument" data-for="41-the-argument">4.1 The argument</a></li><li class="depth-2"><a href="#42-laudans-examples" data-for="42-laudans-examples">4.2 Laudan’s examples</a></li><li class="depth-2"><a href="#43-laudans-target-convergent-realism" data-for="43-laudans-target-convergent-realism">4.3 Laudan’s target: convergent realism</a></li><li class="depth-2"><a href="#44-three-related-problems-laudan-1981" data-for="44-three-related-problems-laudan-1981">4.4 Three related problems (Laudan 1981)</a></li><li class="depth-2"><a href="#45-saatsi-2005-on-the-pmi" data-for="45-saatsi-2005-on-the-pmi">4.5 Saatsi (2005) on the PMI</a></li><li class="depth-1"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-1"><a href="#flipped-classroom-discussion-questions" data-for="flipped-classroom-discussion-questions">Flipped-classroom discussion questions</a></li><li class="depth-1"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/PhilSci/PhilSci---Overview" class="internal">PhilSci - Overview</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>
