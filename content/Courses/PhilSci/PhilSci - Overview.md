@@ -33,6 +33,10 @@ exam_date: 2026-10-19
 > [!warning] The slide deadline falls after the talk
 > Canvas wants the slides on Sunday 18 October, three days *after* the presentation on Thursday 15 October. The upload is bookkeeping; the slides have to be finished for the 15th.
 
+## Flashcards
+
+[[PhilSci - Flashcards]] collects every lecture's flashcards for drilling before the exam. Each lecture note also ends with its own set. So far: L03.
+
 ## Objectives
 
 1. Acquire knowledge of central debates in contemporary philosophy of science at master's level

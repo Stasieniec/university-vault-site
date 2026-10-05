@@ -1,0 +1,232 @@
+@use "../../styles/variables.scss" as *;
+
+// The cards themselves, as they appear in a note.
+.callout.card[data-callout="card"] {
+  --color: #448aff;
+  --border: #448aff44;
+  --bg: #448aff10;
+  --callout-icon: var(--callout-icon-question);
+}
+
+.callout.exam[data-callout="exam"] {
+  --color: #e8590c;
+  --border: #e8590c44;
+  --bg: #e8590c10;
+  --callout-icon: var(--callout-icon-abstract);
+}
+
+.callout.card[data-callout="card"] + .callout,
+.callout.exam[data-callout="exam"] + .callout {
+  margin-top: 0.5rem;
+}
+
+// Launcher above a set of cards.
+.fc-launcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--highlight);
+
+  .fc-launcher-label {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .fc-deck-list {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .fc-deck {
+    cursor: pointer;
+    color: var(--darkgray);
+  }
+}
+
+.fc-study,
+.fc-actions button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  border: 1px solid var(--secondary);
+  background: var(--secondary);
+  color: var(--light);
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+// Drill view.
+.fc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.fc-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(760px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  background: var(--light);
+  color: var(--darkgray);
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fc-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.5rem;
+
+  .fc-count {
+    flex: 1;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  button {
+    font: inherit;
+    font-size: 0.9rem;
+    background: none;
+    border: 1px solid var(--lightgray);
+    border-radius: 6px;
+    padding: 0.25rem 0.7rem;
+    color: var(--darkgray);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--gray);
+    }
+  }
+}
+
+.fc-bar {
+  height: 4px;
+  margin: 0 1rem;
+  background: var(--lightgray);
+  border-radius: 2px;
+  overflow: hidden;
+
+  .fc-bar-fill {
+    height: 100%;
+    width: 0;
+    background: var(--secondary);
+    transition: width 0.2s ease;
+  }
+}
+
+.fc-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #448aff;
+  margin: 1rem 1rem 0;
+
+  &.is-exam {
+    border-left-color: #e8590c;
+  }
+
+  .fc-meta {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .fc-q {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--dark);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .fc-a {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--lightgray);
+
+    & > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  .fc-missed {
+    margin-top: 1rem;
+
+    li p {
+      display: inline;
+      margin: 0;
+    }
+
+    .fc-missed-n {
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.fc-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+
+  button {
+    flex: 1;
+    padding: 0.8rem 1rem;
+  }
+
+  .fc-miss {
+    background: transparent;
+    color: var(--dark);
+    border-color: var(--gray);
+  }
+}
+
+.fc-hint {
+  padding: 0 1rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-align: center;
+}
+
+@media all and ($mobile) {
+  .fc-overlay {
+    align-items: stretch;
+  }
+
+  .fc-modal {
+    width: 100vw;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+  }
+
+  .fc-body {
+    margin: 0.75rem 0.75rem 0;
+    padding: 0.75rem 1rem;
+  }
+
+  .fc-hint {
+    display: none;
+  }
+}

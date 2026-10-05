@@ -6,65 +6,65 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>MNLP - Overview</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</guid>
-    <description><![CDATA[ Multilingual Natural Language Processing — Overview Course: Multilingual Natural Language Processing (5204MNLP6Y) — 2026/27 Sem. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 10:21:53 GMT</pubDate>
-  </item><item>
-    <title>PhilSci - Overview</title>
-    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</link>
-    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Overview</guid>
-    <description><![CDATA[ Philosophy of Science — Overview Course: Philosophy of Science (5354PHSC6Y) — Sep–Oct 2026, Period 1 Programmes: MSc Logic, MSc Physics &amp; Astronomy (+ MSc AI) Credits: 6 EC Coordinator: Sebastian De Haro (s.deharo@uva.nl) Teachers: Enrico Cinti (e.cinti@uva.nl) Tutorials: Luka Vinck (l.j.vinck@u... ]]></description>
-    <pubDate>Mon, 05 Oct 2026 10:21:53 GMT</pubDate>
-  </item><item>
-    <title>PhilSci-L05 - Scientific Realism and its Critiques</title>
-    <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques</link>
-    <guid>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L05---Scientific-Realism-and-its-Critiques</guid>
-    <description><![CDATA[ PhilSci-L05: Scientific Realism and its Critiques Overview Physics says there is an electron. Nobody has ever seen one. ]]></description>
-    <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>MNLP-L07 - Crosslingual NLP</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L07---Crosslingual-NLP</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L07---Crosslingual-NLP</guid>
-    <description><![CDATA[ MNLP-L07: Crosslingual NLP Overview You have a sentiment classifier, an NLI model or a QA system, and annotated training data for it in English only. ]]></description>
-    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+    <title>PhilSci - Flashcards</title>
+    <link>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Flashcards</link>
+    <guid>https://notes.swasilewski.com/Courses/PhilSci/PhilSci---Flashcards</guid>
+    <description><![CDATA[ PhilSci - Flashcards Every lecture’s flashcards in one place. Tick the lectures you want and press Study, or click any question to reveal its answer. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 13:55:33 GMT</pubDate>
   </item><item>
     <title>B Testing</title>
     <link>https://notes.swasilewski.com/Concepts/A/B-Testing</link>
     <guid>https://notes.swasilewski.com/Concepts/A/B-Testing</guid>
     <description><![CDATA[ A/B Testing Definition A/B Testing A/B testing is the standard method for Online Evaluation of a recommender system: a live experiment that compares a new system (variant) against the currently deployed one (control) by randomly splitting live traffic into groups and measuring a business objective o... ]]></description>
-    <pubDate>Thu, 24 Sep 2026 17:11:24 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item><item>
     <title>A3C</title>
     <link>https://notes.swasilewski.com/Concepts/A3C</link>
     <guid>https://notes.swasilewski.com/Concepts/A3C</guid>
     <description><![CDATA[ A3C Definition A3C (Asynchronous Advantage Actor-Critic) A3C is an on-policy, deep Actor-Critic algorithm (Mnih et al., 2016) that runs many actor-learners in parallel, each on its own copy of the environment, asynchronously updating a shared set of global parameters. ]]></description>
-    <pubDate>Thu, 24 Sep 2026 17:11:24 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item><item>
     <title>Action-Value Methods</title>
     <link>https://notes.swasilewski.com/Concepts/Action-Value-Methods</link>
     <guid>https://notes.swasilewski.com/Concepts/Action-Value-Methods</guid>
     <description><![CDATA[ Action-Value Methods Definition Action-Value Methods Action-value methods estimate the value of each action — the expected reward (or return) of selecting it — and then use those estimates to drive action selection. ]]></description>
-    <pubDate>Thu, 24 Sep 2026 17:11:24 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item><item>
     <title>Actor-Critic</title>
     <link>https://notes.swasilewski.com/Concepts/Actor-Critic</link>
     <guid>https://notes.swasilewski.com/Concepts/Actor-Critic</guid>
     <description><![CDATA[ Actor-Critic Definition Actor-Critic Methods Actor-Critic methods are a class of Reinforcement Learning algorithms that combine both policy-based and value-based approaches. ]]></description>
-    <pubDate>Thu, 24 Sep 2026 17:11:24 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item><item>
     <title>Adagrad</title>
     <link>https://notes.swasilewski.com/Concepts/Adagrad</link>
     <guid>https://notes.swasilewski.com/Concepts/Adagrad</guid>
     <description><![CDATA[ Adagrad Definition Adagrad (Adaptive Gradient Algorithm) Adagrad is an adaptive learning-rate optimization method that gives each parameter its own learning rate, scaled inversely to the square root of the sum of all past squared gradients for that parameter. ]]></description>
-    <pubDate>Thu, 24 Sep 2026 17:11:24 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item><item>
     <title>Adam</title>
     <link>https://notes.swasilewski.com/Concepts/Adam</link>
     <guid>https://notes.swasilewski.com/Concepts/Adam</guid>
     <description><![CDATA[ Adam Definition Adam (Adaptive Moment Estimation) Adam is an optimization algorithm for gradient-based optimization of stochastic objective functions. ]]></description>
-    <pubDate>Thu, 24 Sep 2026 17:11:24 GMT</pubDate>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
+  </item><item>
+    <title>Advantage Actor-Critic (A2C)</title>
+    <link>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</link>
+    <guid>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</guid>
+    <description><![CDATA[ Advantage Actor-Critic (A2C) Definition Advantage Actor-Critic (A2C) A2C is an on-policy Actor-Critic algorithm that combines a parameterized policy (the actor, \pi_\theta) with a learned state-value function (the critic, \hat{V}_w). ]]></description>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
+  </item><item>
+    <title>Advantage Function</title>
+    <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
+    <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
+    <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
+  </item><item>
+    <title>Agentic Search</title>
+    <link>https://notes.swasilewski.com/Concepts/Agentic-Search</link>
+    <guid>https://notes.swasilewski.com/Concepts/Agentic-Search</guid>
+    <description><![CDATA[ Agentic Search Agentic Search A retrieval paradigm where the language model has agency over the retrieval process, deciding when to search, what queries to issue, and how to incorporate results—in contrast to static RAG pipelines with fixed retrieve-then-read structure. ]]></description>
+    <pubDate>Mon, 05 Oct 2026 11:47:51 GMT</pubDate>
   </item>
     </channel>
   </rss>

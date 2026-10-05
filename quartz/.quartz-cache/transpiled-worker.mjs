@@ -12559,6 +12559,18 @@ ReaderMode.beforeDOMLoaded = readermode_inline_default;
 ReaderMode.css = readermode_default;
 var ReaderMode_default = /* @__PURE__ */ __name((() => ReaderMode), "default");
 
+// quartz/components/scripts/flashcards.inline.ts
+var flashcards_inline_default = "";
+
+// quartz/components/styles/flashcards.scss
+var flashcards_default = "";
+
+// quartz/components/Flashcards.tsx
+var Flashcards = /* @__PURE__ */ __name(() => null, "Flashcards");
+Flashcards.afterDOMLoaded = flashcards_inline_default;
+Flashcards.css = flashcards_default;
+var Flashcards_default = /* @__PURE__ */ __name((() => Flashcards), "default");
+
 // quartz/util/theme.ts
 var DEFAULT_SANS_SERIF = 'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 var DEFAULT_MONO = "ui-monospace, SFMono-Regular, SF Mono, Menlo, monospace";
@@ -13926,7 +13938,7 @@ var ConditionalRender_default = /* @__PURE__ */ __name(((config2) => {
 var sharedPageComponents = {
   head: Head_default(),
   header: [],
-  afterBody: [],
+  afterBody: [Flashcards_default()],
   footer: Footer_default({
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",
