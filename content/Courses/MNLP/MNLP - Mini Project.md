@@ -28,8 +28,8 @@ Each team picks a problem (from the Canvas list or self-designed), implements ne
 |------|------|
 | **Fri 2026-09-04, 17:00** | Submit team + problem choice via Google Sheet (link on Canvas) |
 | Week 2-6 | Project work (see weekly breakdown below) |
-| **Fri 2026-10-09, 12:00** | Submit report, slides, and code |
-| Week 7 | Team presentations (10-15 min + 5 min Q&A) |
+| ~~Fri 2026-10-09, 12:00~~ **Sun 2026-10-11, before 22:00** | Submit report, slides, and code. Extended by Monz (Canvas announcement, 2026-10-05); submit through the assignment "Mini Project Final Report, Slides and Code" in the Mini Project module |
+| Mon 12 or Wed 14 Oct | Team presentations, **13 min + 5 min Q&A**, in the lecture slots and rooms. Slots in columns L and M of Monz's sheet. Bring your own laptop (and a spare) |
 
 ### Weekly Breakdown
 
@@ -69,6 +69,7 @@ Each team picks a problem (from the Canvas list or self-designed), implements ne
 > [!info] Week 7 — Presentations
 > - Presentation slots assigned at beginning of Week 6
 > - 10-15 minutes presentation + 5 minutes for questions
+> - As announced 2026-10-05: 13 minutes + 5 minutes Q&A, 2 minutes for handover, Mon 12 and Wed 14 Oct in the lecture slots
 
 ---
 
@@ -86,7 +87,7 @@ Each team picks a problem (from the Canvas list or self-designed), implements ne
 - Canvas course page lists example problems with links to relevant datasets
 - You can also choose your own problem (subject to approval via 1-page description)
 
-### Deliverables (due Oct 9, 12:00 noon)
+### Deliverables (due Sun Oct 11, before 22:00; the slides said Oct 9 noon)
 
 | Deliverable | Details |
 |-------------|---------|
@@ -166,7 +167,7 @@ Monz provides a detailed walkthrough using **language identification** as a case
 > [!tip] The Core Loop
 > Literature $\rightarrow$ Baseline $\rightarrow$ Refine $\rightarrow$ Evaluate $\rightarrow$ Analyze Errors $\rightarrow$ Conclude
 
-- **6 weeks** of work, culminating in a **4-page report**, **slides**, and **code** due **Oct 9 at noon**
+- **6 weeks** of work, culminating in a **4-page report**, **slides**, and **code** due **Sun Oct 11 before 22:00** (extended from Oct 9 noon)
 - **Teams of 5** — form your team and pick a problem by **Sep 4, 17:00**
 - The bar isn't just "does it work" — it's **"why does (or doesn't) it work?"** with thorough error analysis
 - Keep data manageable for laptop training

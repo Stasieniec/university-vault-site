@@ -9,7 +9,7 @@ status: complete
 
 # MNLP - Flashcards
 
-All 421 flashcards for Multilingual Natural Language Processing: 52 exam-style questions and 369 recall cards, one set per note. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it.
+All 445 flashcards for Multilingual Natural Language Processing: 53 exam-style questions and 392 recall cards, one set per note. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it.
 
 Back to the [[Courses/MNLP/index|Multilingual Natural Language Processing home]].
 

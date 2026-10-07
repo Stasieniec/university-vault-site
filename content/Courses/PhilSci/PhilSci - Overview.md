@@ -26,7 +26,7 @@ exam_date: 2026-10-19
 | Component | Weight | Deadline | Notes |
 |-----------|--------|----------|-------|
 | Project proposal | n/a | **Fri 2026-09-25 20:00** (Canvas) | Gate for the research project |
-| Presentation | 20% | Given **Thu 2026-10-15 10:00–12:45, SP L0.06**; slides uploaded by **Sun 2026-10-18 20:00** (Canvas) | Mandatory, no remote option |
+| Presentation | 20% | Given **Thu 2026-10-15, SP L0.06**, session 10:00–13:00, **Stanislaw's slot 12:00–12:15**; slides to Luka by **Wed 2026-10-14** night, Canvas upload by **Sun 2026-10-18 20:00** | Mandatory, no remote option. **10 minutes, strictly cut off, + 5 minutes Q&A** |
 | Paper | 30% | Draft **Sun 2026-10-18 20:00**; final **Sat 2026-10-31 20:00** (Canvas) | Research project paper |
 | Exam | 50% | **Mon 2026-10-19 09:00–11:00, SP C0.110** | Minimum 5.5 required |
 
@@ -145,7 +145,7 @@ exam_date: 2026-10-19
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 6 | Scientific realism, continued | Not yet given |
+| Lecture 6 | [[PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction]] | Enrico Cinti, "Replies to the PMI": scorecard of the realism arguments; mature-theories reply, Kitcher on reference, Psillos' selective confirmation, structural realism; Stanford's historicist critique; De Haro's extensional scientific realism (the aether refers). Written from the deck; no recording |
 
 | Reading | Pages | Source |
 |---------|-------|--------|
@@ -162,7 +162,7 @@ exam_date: 2026-10-19
 | Session | Material | Notes |
 |---------|----------|-------|
 | Lecture 7 | Laws of nature | Not yet given. Reading: Chen, *Laws of Physics*, **only sections 1-2.4, 3.1-3.2, 4.1-4.3**; optional Carroll, *Laws of Nature* |
-| **Presentation** | **Thu 2026-10-15, 10:00–12:45, SP L0.06** | In-class group presentation. Mandatory, no remote option, 20% of the final grade. Starts at 10:00, an hour earlier than the usual seminar |
+| **Presentation** | **Thu 2026-10-15, 10:00–13:00, SP L0.06** | Mandatory, no remote option, 20% of the final grade. Nine talks in random order, 10 min + 5 min Q&A each, strict. **Stanislaw: 12:00–12:15**, after the second break. Every group member must contribute substantially. Criteria and evaluation form under Canvas Files. Graded by De Haro and Luka Vinck |
 | **Due** | Project draft and presentation slides | Sunday 2026-10-18 20:00 on Canvas |
 
 ### Week 8 (43, 19–23 Oct): Exam
@@ -185,6 +185,7 @@ Every PhilSci deck on Canvas is now in `Assets/` and processed into a note. Chec
 | `4 Scientific Explanation and Scientific Understanding.pdf` | 2026-09-24 | [[PhilSci-L04 - Scientific Explanation and Understanding]] |
 | `5 Scientific Realism.pdf` + `FlippedClassroom - Scientific Realism.mov` (47 min, transcribed, not stored) | 2026-09-28 / 2026-09-24 | [[PhilSci-L05 - Scientific Realism and its Critiques]] |
 | `ScientificRealismFlippedClassroom.pdf` (discussion questions) | 2026-09-29 | Answered in [[PhilSci-L05 - Scientific Realism and its Critiques]] |
+| `6 Scientific Realism - Pessimistic Meta-Induction.pdf` (38 pages, in `Assets/`) | 2026-10-07 | [[PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction]] |
 | Tutorial slides weeks 1 to 4 (`.pptm`) | 2026-09-03 to 2026-09-24 | [[PhilSci - Tutorials]] |
 
 > [!tip] What the 3a revision actually changed
@@ -197,7 +198,8 @@ The four tutorial decks are now all in `Assets/` as well. The week 2 deck was ch
 | Date | What |
 |------|------|
 | **Fri 2026-09-25 20:00** | Project proposal due (Canvas) |
-| **Thu 2026-10-15 10:00–12:45** | Group presentation, SP L0.06. Mandatory, 20% |
+| **Wed 2026-10-14, night** | Presentation slides to Luka (email or Canvas) |
+| **Thu 2026-10-15, 12:00–12:15** | Presentation (session 10:00–13:00), SP L0.06. Mandatory, 20%, 10 min hard stop + 5 Q&A |
 | **Sun 2026-10-18 20:00** | Project draft due (Canvas) |
 | **Sun 2026-10-18 20:00** | Presentation slides due (Canvas) |
 | **Mon 2026-10-19 09:00–11:00** | **Exam**, SP C0.110 |

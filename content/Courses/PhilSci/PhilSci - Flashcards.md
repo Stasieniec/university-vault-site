@@ -9,7 +9,7 @@ status: complete
 
 # PhilSci - Flashcards
 
-All 260 flashcards for Philosophy of Science: 45 exam-style questions and 215 recall cards, one set per note. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it.
+All 295 flashcards for Philosophy of Science: 49 exam-style questions and 246 recall cards, one set per note. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it.
 
 Back to the [[Courses/PhilSci/index|Philosophy of Science home]].
 
@@ -40,6 +40,10 @@ Back to the [[Courses/PhilSci/index|Philosophy of Science home]].
 ## L05 Scientific Realism and its Critiques
 
 ![[PhilSci-L05 - Scientific Realism and its Critiques#Flashcards]]
+
+## L06 Scientific Realism and the Pessimistic Meta-Induction
+
+![[PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction#Flashcards]]
 
 ## Tutorials
 

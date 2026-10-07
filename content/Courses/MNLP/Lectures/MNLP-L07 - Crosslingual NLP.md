@@ -27,6 +27,12 @@ topics:
   - BART denoising pretraining
   - BART noise functions
   - BART fine-tuning for classification, span prediction and MT
+  - Multilingual NMT (Johnson et al.) and target language tags
+  - Many-to-one, one-to-many and many-to-many translation
+  - Language sampling and temperature
+  - Transfer against interference
+  - Zero-shot translation
+  - mBART multilingual denoising pretraining
 ---
 
 # MNLP-L07: Crosslingual NLP
@@ -36,11 +42,11 @@ topics:
 >
 > The previous lecture's multilingual models were trained on many languages at once, but nothing in their training objective ever told them that a German sentence and an English sentence mean the same thing. Any alignment between languages had to emerge on its own. The first half of this deck is about putting an explicit crosslingual signal back in: where parallel data comes from (OPUS, web crawls, sentence alignment with LASER embeddings), and two pretraining recipes that use it, **XLM** with its translation language modeling objective and **InfoXLM** with an added sentence-level contrastive objective. The results show the payoff, and a harsher test (premise and hypothesis, or context and question, in *different* languages) shows how much purely multilingual models were hiding.
 >
-> The second half moves to the oldest crosslingual task there is, **machine translation**: the sequence-to-sequence formulation, the encoder-decoder architecture, how much data neural MT needs, and how to get around not having it through **parent-child transfer learning**. It ends with **BART**, a pretrained encoder-decoder trained as a denoising autoencoder, which can be fine-tuned for classification, QA, summarisation and translation.
+> The second half moves to the oldest crosslingual task there is, **machine translation**: the sequence-to-sequence formulation, the encoder-decoder architecture, how much data neural MT needs, and how to get around not having it through **parent-child transfer learning**. Then **multilingual NMT**: one model for all translation directions, and the transfer against interference trade-off it creates. It ends with **BART**, a pretrained encoder-decoder trained as a denoising autoencoder, which can be fine-tuned for classification, QA, summarisation and translation, and its multilingual version **mBART**.
 >
-> As of 2026-10-05 the deck has 45 slides and is taught across week 5 (Mon 28 Sep, Wed 30 Sep) and week 6 (Mon 5 Oct, Wed 7 Oct). The lecturer may still add slides after Wednesday.
+> The deck was taught across week 5 (Mon 28 Sep, Wed 30 Sep) and week 6 (Mon 5 Oct, Wed 7 Oct). It had 45 slides on 2026-10-05; the version re-uploaded on the morning of 2026-10-07 has **56**, adding **multilingual NMT** (slides 38 to 45, section 10), **mBART** (slides 54 and 55, section 12) and a recap (slide 56). The BART slides moved from 38 to 45 to 46 to 53, and every slide reference in this note uses the new numbering.
 
-The lecture outline (slide 1) lists only the first half: **Cross-Lingual Training** (parallel data, Laser sentence embeddings), **XLM**, **InfoXLM**. The machine translation, transfer learning and BART slides (21 to 45) follow without a separate outline slide.
+The lecture outline (slide 1) lists only the first half: **Cross-Lingual Training** (parallel data, Laser sentence embeddings), **XLM**, **InfoXLM**. The machine translation, transfer learning, multilingual NMT, BART and mBART slides (21 to 55) follow without a separate outline slide; the recap on slide 56 lists them.
 
 ## 1. From multilingual to crosslingual
 
@@ -1037,9 +1043,220 @@ Child parameters are either **transferred** (Y: initialised from the parent, the
 - The lowest-resource child, Burmese, shows it most strongly: 4.0 from scratch, 17.8 with full transfer.
 - From the numbers (the slide does not comment): the En→De parent, whose *source* side is English, transfers about as well into X→English children as the De→En parent, whose *target* side is English (with full transfer, the mean over the three children is 21.8 with the De→En parent and 21.7 with the En→De parent). This sits awkwardly with slide 32's "target language of parent and child should be identical".
 
-## 10. BART: pretraining an encoder-decoder
+## 10. Multilingual NMT
 
-### 10.1 Encoder only, decoder only, or both (slide 38)
+Section 9 transferred knowledge **in stages**: train a parent, then continue on the child. This section transfers it **in parallel**: one model is trained on many translation directions at once, and every direction is supposed to benefit from the others. These slides (38 to 45) were added to the deck for the Wed 7 Oct lecture.
+
+### 10.1 Two ways to transfer knowledge (slide 38)
+
+- **Transfer knowledge in stages:** the parent-child transfer learning approach (section 9).
+- **Transfer knowledge in parallel:** **multilingual joint training**.
+  - **Johnson et al. (2017)** introduce an approach that uses **one single system for all translation directions**.
+  - It has a **simple architecture and training set up** (section 10.2).
+
+> [!definition] Multilingual NMT language combinations
+> - **Many-to-one:** many different source languages are translated into **one single target** language. Used in **training**.
+> - **One-to-many:** one single source language is translated into **many different target** languages. Used in **training**.
+> - **Many-to-many:** many different source languages are translated into many different target languages. **Testing only.**
+
+> [!definition] Zero-shot translation
+> Translating in a **language direction not encountered during training**. With English-centric training (section 10.2) the model sees German→English and English→French, so German→French at test time is zero-shot.
+
+Why many-to-many is "testing only": training data runs to and from English (section 10.2), so the model is never trained on a non-English pair. Asking it for one at test time is exactly the zero-shot scenario.
+
+**Indicators that knowledge transfer happens within multilingual NMT:**
+
+1. **Performance on zero-shot directions.** Anything above zero there can only come from transfer, because the model has no data for that pair.
+2. **Whether the multilingual model outperforms a baseline trained only on the direction-relevant training data** (a bilingual system for that one pair). If sharing a model with other languages makes a direction better than its own dedicated system, something transferred.
+
+Both indicators are measured in slides 41 to 45.
+
+### 10.2 Training a multilingual NMT system (slide 39)
+
+> [!definition] Multilingual NMT training (Johnson et al., 2017)
+> Given a collection of parallel corpora covering many languages:
+> - **Single-language-centric training**, typically **English**, because that is where the resources are.
+> - Only directions **to and from English** are used: $xx \rightarrow en$ and $en \rightarrow xx$.
+> - **Every training example is annotated with a target language tag.**
+
+The slide's figure shows the tag in action. The first row is an ordinary bilingual system; the other three are one multilingual system, where a tag prepended to the source tells the model which language to produce:
+
+| tag | source | target |
+|---|---|---|
+| (none) | How are you? | ¿Cómo estás? |
+| `<2es>` | How are you? | ¿Cómo estás? |
+| `<2ja>` | How are you? | お元気ですか？ |
+| `<2en>` | ¿Cómo estás? | How are you? |
+
+The same English sentence goes to Spanish or Japanese depending only on the tag. `<2xx>` reads as "to xx": the tag names the **target** language. Nothing names the source language; the model has to recognise it from the input.
+
+**The NMT architecture:**
+
+- **One system for all languages.** **All parameters are shared** for all language combinations.
+- **One WordPiece vocabulary for all languages** (32k, 64k, ...). Same idea as the shared subword vocabularies of [[MNLP-L04 - Subword Segmentation]] and of mBERT and XLM-R in [[MNLP-L06 - Contextual Embeddings]].
+- **Source, target and output embeddings are shared.**
+
+> [!intuition] Why this is "simple"
+> Nothing in the model changes. It is a standard encoder-decoder (section 7) with a bigger shared vocabulary; the only change is to the data, one extra token at the start of each source sentence. Every multilingual capability, zero-shot translation included, has to come out of the shared parameters.
+
+### 10.3 Mixing and balancing languages (slide 40)
+
+**Language directions are mixed during training, even within a batch.** The slide's example batch:
+
+| Source, as fed to the encoder | Target | Direction |
+|---|---|---|
+| `<2es>` How are you? | ¿Cómo estás? | En → Es |
+| `<2pt>` The train is late. | O trem está atrasado. | En → Pt |
+| `<2en>` Wo ist der Bahnhof? | Where is the station? | De → En |
+| `<2ja>` Thank you very much. | どうもありがとうございます。 | En → Ja |
+| `<2en>` 감사합니다. | Thank you. | Ko → En |
+
+The column header confirms where the tag goes: it is part of the **source, as fed to the encoder**. Every direction has English on one side.
+
+**Language balancing is important**, and is achieved through **(weighted) sampling**:
+
+| sampling | high-resource languages | low-resource languages |
+|---|---|---|
+| **Proportional** (by data size) | **dominate** | **perform poorly** |
+| **Uniform** (every language equally often) | **suffer** | **can see strong performance** |
+
+**As before, the best compromise is somewhere in between:** **over-sample low-resource** languages and **under-sample high-resource** ones.
+
+"As before" refers to the same trade-off in multilingual pretraining: [[MNLP-L06 - Contextual Embeddings]] (section 5.2) samples languages with $p_l \propto n_l^{\alpha}$, where $\alpha = 1$ is proportional, $\alpha = 0$ is uniform, and an $\alpha$ in between up-weights low-resource languages. Slide 44 expresses the same knob as a temperature.
+
+### 10.4 Many-to-one training (slide 41)
+
+Translation **into English** from several source languages. BLEU:
+
+| Model | Single | Multi | Diff |
+|---|---|---|---|
+| WMT De→En | 30.43 | 30.59 | +0.16 |
+| WMT Fr→En | 35.50 | 35.73 | +0.23 |
+| WMT De→En* | 30.43 | 30.54 | +0.11 |
+| WMT Fr→En* | 35.50 | 36.77 | +1.27 |
+| Prod Ja→En | 23.41 | 23.87 | +0.46 |
+| Prod Ko→En | 25.42 | 25.47 | +0.05 |
+| Prod Es→En | 38.00 | 38.73 | +0.73 |
+| Prod Pt→En | 44.40 | 45.19 | +0.79 |
+
+- **Single:** baseline only trained on bilingual data (one language pair).
+- **Multi:** trained on multiple source languages.
+- **WMT:** trained on WMT data.
+- **\*:** no oversampling.
+- **Prod:** trained on in-house production data, **10 to 100 times** the size of the WMT data.
+
+**Many-to-one helps in every row**, from +0.05 to +1.27 BLEU. Multi beats the direction's own bilingual system, which is the second indicator of transfer from slide 38. The gains hold even with production-scale data, where the bilingual baselines are already strong. Sharing an English decoder costs nothing here: every direction trains the same target side. It is the multilingual version of section 9's condition that parent and child should share the target language.
+
+### 10.5 One-to-many training (slide 42)
+
+Translation **from English** into several target languages. Same definitions (Single, Multi trained on multiple **target** languages, WMT, \*, Prod). BLEU:
+
+| Model | Single | Multi | Diff |
+|---|---|---|---|
+| WMT En→De | 24.67 | 24.97 | +0.30 |
+| WMT En→Fr | 38.95 | 36.84 | **−2.11** |
+| WMT En→De* | 24.67 | 22.61 | **−2.06** |
+| WMT En→Fr* | 38.95 | 38.16 | −0.79 |
+| Prod En→Ja | 23.66 | 23.73 | +0.07 |
+| Prod En→Ko | 19.75 | 19.58 | −0.17 |
+| Prod En→Es | 34.50 | 35.40 | +0.90 |
+| Prod En→Pt | 38.40 | 38.63 | +0.23 |
+
+- **One-to-many is mixed:** four of eight rows get worse, by up to 2.11 BLEU. Now the **decoder** has to produce several languages, and they compete for the same parameters.
+- **Balancing moves the loss around rather than removing it.** With oversampling, En→De gains (+0.30) and En→Fr loses 2.11. Without oversampling, En→De loses 2.06 and En→Fr loses only 0.79. Whichever direction gets less of the training signal pays.
+- The Spanish and Portuguese production systems still gain (+0.90, +0.23).
+
+> [!tip] Many-to-one against one-to-many
+> Sharing the **target** side (many-to-one, into English) helps consistently. Sharing the **source** side while the decoder produces several languages (one-to-many) helps some directions and hurts others. Slide 43 shows the same asymmetry across 103 languages.
+
+### 10.6 Transfer against interference (slide 43)
+
+**Arivazhagan et al. (2019): 103 languages grouped by resource level**: the 25 highest-resource languages, 52 medium and the 25 lowest. Average BLEU per group:
+
+| En→Any | High 25 | Med. 52 | Low 25 |
+|---|---|---|---|
+| Bilingual | **29.34** | **17.50** | 11.72 |
+| All→All | 28.03 | 16.91 | 12.75 |
+| En→Any | 28.75 | 17.32 | **12.98** |
+
+| Any→En | High 25 | Med. 52 | Low 25 |
+|---|---|---|---|
+| Bilingual | **37.61** | 31.41 | 21.63 |
+| All→All | 33.85 | 30.25 | 26.96 |
+| Any→En | 36.61 | **33.66** | **30.56** |
+
+- **Bilingual:** the baselines, one system per direction.
+- **Any→En** = many-to-one; **En→Any** = one-to-many.
+- **All→All** = one model for all directions (both into and out of English).
+
+> [!definition] Transfer and interference
+> **Transfer:** a direction gets better because it shares a model with other languages. **Interference:** a direction gets worse because the other languages compete with it for the same model capacity.
+
+What the numbers show:
+
+- **Low-resource languages gain from transfer.** Any→En low: 21.63 → **30.56** (+8.93). En→Any low: 11.72 → 12.98 (+1.26).
+- **High-resource languages lose to interference.** Any→En high: 37.61 → 36.61 (−1.00); En→Any high: 29.34 → 28.75 (−0.59). **No multilingual model beats the bilingual baselines on the high-resource group.**
+- **Into English transfers far more than out of English.** The low-resource gain is +8.93 for Any→En but only +1.26 for En→Any; medium languages gain +2.25 into English and lose 0.18 out of it. Same asymmetry as slides 41 and 42.
+- **All→All is the worst multilingual option in every column.** One model doing both directions spreads its capacity thinnest: the high-resource Any→En drop grows from −1.00 to −3.76.
+
+### 10.7 Temperature-based sampling (slide 44)
+
+The balancing of slide 40 as one parameter, the **sampling temperature** $T$:
+
+- **$T = 1$: proportional** sampling.
+- **$T = 100$: uniform** sampling (in effect).
+- $T = 5$: in between.
+
+| En→Any | High 25 | Med. 52 | Low 25 |
+|---|---|---|---|
+| Bilingual | 29.34 | 17.50 | 11.72 |
+| T=1 | **28.63** | 15.11 | 6.24 |
+| T=100 | 27.20 | 16.84 | **12.87** |
+| T=5 | 28.03 | **16.91** | 12.75 |
+
+| Any→En | High 25 | Med. 52 | Low 25 |
+|---|---|---|---|
+| Bilingual | 37.61 | 31.41 | 21.63 |
+| T=1 | **34.60** | 27.46 | 18.14 |
+| T=100 | 33.25 | 30.13 | **27.32** |
+| T=5 | 33.85 | **30.25** | 26.96 |
+
+> [!formula] Temperature sampling
+> Not on the slides, which only label the two extremes. The standard form samples language $l$ with probability
+> $$p_l \propto \left(\frac{n_l}{\sum_{l'} n_{l'}}\right)^{1/T}$$
+> where:
+> - $n_l$: amount of training data for language (pair) $l$
+> - $T$: temperature. $T = 1$ gives sampling proportional to data size; as $T \to \infty$ the exponent goes to 0 and every language is equally likely.
+>
+> This is the $\alpha$ of [[MNLP-L06 - Contextual Embeddings]] (section 5.2) with $\alpha = 1/T$: $T = 5$ is $\alpha = 0.2$.
+
+What the numbers show:
+
+- **$T = 1$ (proportional) is best for high-resource languages** among the multilingual models (28.63, 34.60) and **wrecks the low-resource ones**: En→Any low drops to **6.24**, about half of the bilingual 11.72. Any→En low falls to 18.14, below bilingual too. This is slide 40's "high-resource languages dominate".
+- **$T = 100$ (uniform) is best for low-resource languages** (12.87, 27.32) and **worst for high-resource ones** (27.20, 33.25). Slide 40's "high-resource languages suffer".
+- **$T = 5$ is the compromise:** within 0.12 and 0.36 BLEU of uniform on the low-resource group, 0.83 and 0.60 better than uniform on the high-resource group, and best on the medium group in both directions.
+- The **T=5 rows are identical to the All→All rows of slide 43**, so the All→All model there was trained with $T = 5$.
+
+### 10.8 Zero-shot translation (slide 45)
+
+**Zero-shot, i.e. no data for the given pair, has to rely entirely on transfer.** BLEU for six directions that never appear in training, from a model trained on 10 languages and one trained on 102:
+
+| | De→Fr | Be→Ru | Yi→De | Fr→Zh | Hi→Fi | Ru→Fi |
+|---|---|---|---|---|---|---|
+| 10 langs | 11.15 | 36.28 | 8.97 | **15.07** | 2.98 | 6.02 |
+| 102 langs | **14.24** | **50.26** | **20.00** | 11.83 | **8.76** | **9.06** |
+
+- **Decent improvement in most cases:** five of six directions gain from more languages (Yi→De more than doubles, 8.97 → 20.00). Fr→Zh is the exception (15.07 → 11.83).
+- **Probably also depends on the actual languages included.** Be→Ru is high even with 10 languages (36.28): Belarusian and Russian are closely related. Hi→Fi, two unrelated languages, stays below 9.
+- **Zero-shot translation is still lagging behind.** The slide gives no supervised numbers for these pairs, but single-digit BLEU on Hi→Fi and Ru→Fi is far from usable.
+
+The slide does not name the source of the table. It follows the Arivazhagan et al. slides, and "102 langs" matches their 103 languages counted without English.
+
+## 11. BART: pretraining an encoder-decoder
+
+### 11.1 Encoder only, decoder only, or both (slide 46)
+
+The slide opens with the motivation: **can we also mitigate our dependence on parallel data by utilizing monolingual data?** Everything up to here needed parallel data, which is exactly what low-resource pairs lack (section 8). Pretraining an encoder-decoder on monolingual text is the answer the rest of the deck develops.
 
 ```mermaid
 flowchart LR
@@ -1061,7 +1278,7 @@ flowchart LR
 - **What about tasks that require an encoder and a decoder?** Translation, summarisation: the input is read in full, the output is generated left to right.
 - **BART** combines them: a **bidirectional encoder** reads a **corrupted** document, and an **autoregressive decoder** reconstructs the **original** document, attending to the encoder through cross-attention (section 7.7). Not on the slides: this makes BART a **denoising autoencoder**, and its pretraining loss is the negative log-likelihood of the original document under the decoder.
 
-### 10.2 BART noise functions (slides 39 and 40)
+### 11.2 BART noise functions (slides 47 and 48)
 
 The figure shows the original two-sentence document `A B C . D E .` (sentence 1 = A B C, sentence 2 = D E) and five ways of corrupting it, all with arrows pointing to the clean original that the decoder must produce:
 
@@ -1082,11 +1299,11 @@ The slides' descriptions:
 - **Document Permutation** (labelled **Document Rotation** in the figure and in the results table): a random position of the source document is used as the first token, followed by the rest from that position on, followed by the actual beginning up to the random position. The task is to predict the actual first position, that is, to identify where the document really starts.
 
 > [!warning] Two small deck slips
-> Slide 40's text calls the last function "Document Permutation" while the figure (and slide 43's table) call it "Document Rotation"; they are the same function, and "rotation" is the accurate name, since the order is preserved cyclically. Slide 40 also spells "random" as "rondom".
+> Slide 48's text calls the last function "Document Permutation" while the figure (and slide 51's table) call it "Document Rotation"; they are the same function, and "rotation" is the accurate name, since the order is preserved cyclically. Slide 48 also spells "random" as "rondom".
 
-### 10.3 BART fine-tuning (slides 41 and 42)
+### 11.3 BART fine-tuning (slides 49 and 50)
 
-**Classification and span prediction** (slide 41):
+**Classification and span prediction** (slide 49):
 
 ```
               Pre-trained Encoder  ═════▶  Pre-trained Decoder ──▶ label
@@ -1097,7 +1314,7 @@ The slides' descriptions:
 - For **label classification tasks**, the **label is predicted from the last hidden time step** of the decoder. The same uncorrupted input goes into both encoder and decoder, and the final decoder state, which has attended to the whole input, feeds a classifier.
 - For **span prediction**, e.g. **SQuAD**, **each token is labeled**, and we **learn to predict the beginning and end labels** of the answer span.
 
-**Machine translation** (slide 42):
+**Machine translation** (slide 50):
 
 ```mermaid
 flowchart BT
@@ -1114,9 +1331,9 @@ flowchart BT
 
 This is the same parent-child idea as section 9 in a different form: a large model trained on lots of English data is kept, and a small new component is trained to connect a new source language to it. Not on the slides: in the BART paper this is done in two stages, first training mainly the new encoder with most of BART frozen, then training all parameters for a small number of iterations.
 
-### 10.4 BART results
+### 11.4 BART results
 
-**Comparison of pretraining objectives** (slide 43). SQuAD 1.1 F1 and MNLI accuracy: higher is better. ELI5, XSum, ConvAI2 and CNN/DM are generation tasks scored by perplexity (PPL): lower is better.
+**Comparison of pretraining objectives** (slide 51). SQuAD 1.1 F1 and MNLI accuracy: higher is better. ELI5, XSum, ConvAI2 and CNN/DM are generation tasks scored by perplexity (PPL): lower is better.
 
 | Model | SQuAD 1.1 F1 | MNLI Acc | ELI5 PPL | XSum PPL | ConvAI2 PPL | CNN/DM PPL |
 |---|---|---|---|---|---|---|
@@ -1140,7 +1357,7 @@ Not on the slides: all rows except BERT Base are base-size models trained under 
 - **Document rotation and sentence shuffling alone are poor** (SQuAD 77.2 and 85.4, ELI5 PPL 53.69 and 41.87). Rearranging whole sentences gives too weak a learning signal at the token level. Combined with text infilling, sentence shuffling gives the best CNN/DM perplexity (5.41).
 - **The plain left-to-right Language Model is best on ELI5** (21.40) but worst on SQuAD (76.7), because it has no bidirectional context, which extractive QA needs.
 
-**Discriminative tasks with large models** (slide 44), SQuAD exact match / F1:
+**Discriminative tasks with large models** (slide 52), SQuAD exact match / F1:
 
 | Model | SQuAD 1.1 EM/F1 | SQuAD 2.0 EM/F1 |
 |---|---|---|
@@ -1152,7 +1369,7 @@ Not on the slides: all rows except BERT Base are base-size models trained under 
 
 BART matches RoBERTa on understanding tasks to within 0.4 points: adding a decoder and a generative objective costs nothing on SQuAD.
 
-**Summarisation** (slide 45), ROUGE-1, ROUGE-2, ROUGE-L (higher is better):
+**Summarisation** (slide 53), ROUGE-1, ROUGE-2, ROUGE-L (higher is better):
 
 | Model | CNN/DM R1 | R2 | RL | XSum R1 | R2 | RL |
 |---|---|---|---|---|---|---|
@@ -1167,7 +1384,7 @@ BART matches RoBERTa on understanding tasks to within 0.4 points: adding a decod
 
 Not on the slides: Lead-3 simply copies the first three sentences of the article. It is strong on CNN/DailyMail (40.42 R1), whose summaries are largely extractive, and useless on XSum (16.30 R1, 1.60 R2), whose one-sentence summaries are highly abstractive. BART is best on every column, and its lead is largest on the abstractive XSum (+3.69 R1 and +3.48 R2 over RoBERTaShare).
 
-**Machine translation** (slide 45), Romanian→English BLEU:
+**Machine translation** (slide 53), Romanian→English BLEU:
 
 | | RO-EN |
 |---|---|
@@ -1179,7 +1396,97 @@ Not on the slides: Lead-3 simply copies the first three sentences of the article
 - **Tuned BART** (BART parameters updated too) **beats it by 1.16 BLEU**.
 - The slide does not describe the baseline; it is a standard MT system without BART.
 
-So pretraining helps translation into English by about one BLEU point here, and only when the pretrained parameters are allowed to adapt. Not on the slides: BART itself was pretrained on English text only, so the new encoder has to do all of the Romanian-specific work. The deck as it stands on 2026-10-05 ends here.
+So pretraining helps translation into English by about one BLEU point here, and only when the pretrained parameters are allowed to adapt. Not on the slides: BART itself was pretrained on English text only, so the new encoder has to do all of the Romanian-specific work.
+
+## 12. mBART: multilingual denoising pretraining
+
+### 12.1 The model (slide 54)
+
+> [!question] "BART is to mBART as BERT is to ?"
+> The slide leaves the answer open. It is **mBERT** ([[MNLP-L06 - Contextual Embeddings]]): the same pretraining recipe, run on many languages at once with one shared model.
+
+**Liu et al. (2020):**
+
+- **One model trained on a concatenation of monolingual data in multiple languages.**
+- The **BART objective** (section 11), **always applied within the same language**, i.e. **no cross-lingual signal**. Every training example is one language in, the same language out.
+
+That second point puts mBART on the multilingual side of section 1: like mBERT and XLM-R, and unlike XLM's TLM or InfoXLM's XLCo, nothing in its pretraining links one language to another. Any crosslingual ability it has must emerge from sharing one model and one vocabulary.
+
+The slide's figure has two halves.
+
+**Multilingual denoising pre-training (mBART).** Two examples, one English and one Japanese, each going through the same Transformer encoder and decoder:
+
+| | encoder input (noised) | decoder input | decoder output |
+|---|---|---|---|
+| English | `Where did __ from ? </s> Who __ I __ </s> <En>` | `<En> Who am I ? </s> Where did I come from ? </s>` | `Who am I ? </s> Where did I come from ? </s> <En>` |
+| Japanese | `__ 明日 。 </s> それ __ </s> <Ja>` | `<Ja> それ じゃ あ 、 </s> また 明日 。 </s>` | `それ じゃ あ 、 </s> また 明日 。 </s> <Ja>` |
+
+Reading the figure:
+
+- The noise is **text infilling plus sentence permutation** (the two noise functions of section 11.2). In the English example *I come* becomes a single `__`, *am* and the question mark each become a `__`, and the two sentences are swapped: the original order is *Who am I? Where did I come from?*, the encoder sees *Where did __ from?* first.
+- `</s>` separates sentences, so a training instance can be several sentences long, up to a document.
+- A **language ID token** (`<En>`, `<Ja>`) ends the encoder input and **starts the decoder input**. The decoder's first token therefore tells it which language to generate.
+- The output is the original, un-noised text in the **same** language as the input.
+
+**Fine-tuning on machine translation.** The same pretrained encoder-decoder is fine-tuned directly on parallel data, at two granularities:
+
+| | encoder input | decoder input | decoder output |
+|---|---|---|---|
+| **Sent-MT** (sentence level), En→Ja | `Who am I ? </s> <En>` | `<Ja> 私 は 誰 ？ </s>` | `私 は 誰 ？ </s> <Ja>` |
+| **Doc-MT** (document level), Ja→En | `それ じゃ あ 、 </s> また 明日 。 </s> <Ja>` | `<En> Well then . </s> See you tomorrow . </s>` | `Well then . </s> See you tomorrow . </s> <En>` |
+
+Now the input and output languages differ: the source language tag ends the encoder input, the **target** language tag starts the decoder. Since pretraining always started the decoder with a language token, the model already knows that token as "generate in this language". Doc-MT translates the same two-sentence Japanese text that the pretraining figure reconstructs (*Well then, see you tomorrow*), so one pretrained model serves both sentence and document translation.
+
+> [!tip] BART against mBART for translation
+> BART was pretrained on English, so translating with it needed a **new randomly initialised source encoder** in front of it (sections 11.3 and 11.4), and gained about one BLEU point. mBART has seen every language it translates during pretraining, so the **whole model is fine-tuned as is** on bitext, with no extra component.
+
+### 12.2 Translation quality (slide 55)
+
+BLEU after fine-tuning on each language pair's parallel data. **Random**: the same model trained from random initialisation, no pretraining. **mBART25**: initialised from mBART. Each pair has two directions, printed as ← and →; the slide does not say which arrow is into English. Sorted by size of the parallel training data:
+
+| Pair | Data source | Size | Random ← | Random → | mBART25 ← | mBART25 → |
+|---|---|---|---|---|---|---|
+| En-Gu | WMT19 | 10K | 0.0 | 0.0 | 0.3 | 0.1 |
+| En-Kk | WMT19 | 91K | 0.8 | 0.2 | 7.4 | 2.5 |
+| En-Vi | IWSLT15 | 133K | 23.6 | 24.8 | 36.1 | 35.4 |
+| En-Tr | WMT17 | 207K | 12.2 | 9.5 | 22.5 | 17.8 |
+| En-Ja | IWSLT17 | 223K | 10.4 | 12.3 | 19.1 | 19.4 |
+| En-Ko | IWSLT17 | 230K | 15.3 | 16.3 | 24.6 | 22.6 |
+| En-Nl | IWSLT17 | 237K | 34.6 | 29.3 | 43.3 | 34.8 |
+| En-Ar | IWSLT17 | 250K | 27.5 | 16.9 | 37.6 | 21.6 |
+| En-It | IWSLT17 | 250K | 31.7 | 28.0 | 39.8 | 34.0 |
+| En-My | WAT19 | 259K | 23.3 | 34.9 | 28.3 | 36.9 |
+| En-Ne | FLoRes | 564K | 7.6 | 4.3 | 14.5 | 7.4 |
+| En-Ro | WMT16 | 608K | 34.0 | 34.3 | 37.8 | 37.7 |
+| En-Si | FLoRes | 647K | 7.2 | 1.2 | 13.7 | 3.3 |
+| En-Hi | ITTB | 1.56M | 10.9 | 14.2 | 23.5 | 20.8 |
+| En-Et | WMT18 | 1.94M | 22.6 | 17.9 | 27.8 | 21.4 |
+| En-Lt | WMT19 | 2.11M | 18.1 | 12.1 | 22.4 | 15.3 |
+| En-Fi | WMT17 | 2.66M | 21.8 | 20.2 | 28.5 | 22.4 |
+| En-Lv | WMT17 | 4.50M | 15.6 | 12.9 | 19.3 | 15.9 |
+
+What the numbers show:
+
+- **mBART25 beats random initialisation for every pair in both directions.** Average gain +7.2 BLEU in the ← column and +4.4 in the → column.
+- **Largest gains in the low-to-medium range of a few hundred thousand pairs:** En-Vi +12.5/+10.6, En-Tr +10.3/+8.3, En-Ar +10.1/+4.7. En-Hi (1.56M) also gains +12.6/+6.6.
+- **Pretraining cannot rescue almost no data.** En-Gu with 10K pairs goes from 0.0 to 0.3/0.1. En-Kk (91K) is the smallest pair where it starts to work: 0.8 → 7.4.
+- **The gains shrink with more data:** En-Ro (608K) +3.8/+3.4, En-Lv (4.5M, the largest) +3.7/+3.0. Pretraining matters most when the parallel data is scarce, the same pattern as parent-child transfer in section 9.
+- The name suggests **25 pretraining languages**; the slide does not say.
+
+## 13. Recap (slide 56)
+
+- **Cross-lingual training**
+  - parallel data (section 2)
+  - LASER sentence embeddings (section 3)
+- **XLM** (section 4)
+- **InfoXLM** (section 5)
+- **Machine translation**
+  - neural machine translation (sections 7 and 8)
+  - knowledge transfer, parent-child (section 9)
+  - multilingual NMT (section 10)
+  - mBART pre-training (section 12)
+
+The recap does not list the within/across comparison (section 6) or BART on its own (section 11), but both are taught in this deck and are prerequisites for the listed items: section 6 is the evidence for why XLM and InfoXLM matter, and mBART is BART applied to many languages.
 
 ## Key Takeaways
 
@@ -1196,12 +1503,17 @@ So pretraining helps translation into English by about one BLEU point here, and 
 > 8. **NMT is data hungry.** Koehn and Knowles: neural 1.6 BLEU at ~0.4M words against 16.4 for phrase-based; it overtakes phrase-based only around $10^7$ words. 86% of language directions are of poor quality (Schwenk et al., 2019).
 > 9. **Parent-child transfer**: train on a high-resource pair, continue on the low-resource pair with the same target language. Copy everything; re-map source embeddings; **freeze the target embeddings**, train the rest (Uz→En: 15.0 with attention and below trainable, 13.7 if target embeddings are also trained). Related parents help more (Spanish child: French parent 31.0, German 29.8, none 16.4), but transfer also works with scrambled vocabulary (French' 13.3 → 20.0) and, with a shared vocabulary, with unrelated parents (Kocmi and Bojar). Transfer must go from the larger to the smaller corpus. The inner layers carry most of what transfers; embeddings alone do not help (Aji et al.).
 > 10. **BART** = bidirectional encoder + autoregressive decoder, pretrained to reconstruct documents from five noise functions. **Text infilling** (span → one `[MASK]`) is the best single one; rotation and permutation alone are poor. For MT, a new randomly initialised source encoder replaces BART's embedding layer; only tuning BART's own parameters as well beats the baseline (37.96 against 36.80 RO-EN).
+> 11. **Multilingual NMT** (Johnson et al., 2017): one system, all parameters, one WordPiece vocabulary and all embeddings shared; English-centric training ($xx \rightarrow en$, $en \rightarrow xx$); a **target language tag** (`<2es>`) prepended to the source. Many-to-one helps every direction (+0.05 to +1.27), one-to-many is mixed (down to −2.11). Across 103 languages (Arivazhagan et al.): low-resource gains up to +8.93 into English, high-resource languages lose to interference. Sampling temperature: T = 1 proportional (low-resource collapse to 6.24), T = 100 uniform (high-resource suffer), T = 5 the compromise. Zero-shot pairs improve with more languages (Be→Ru 36.28 → 50.26) but lag behind.
+> 12. **mBART** (Liu et al., 2020): BART on concatenated monolingual data in many languages, no crosslingual signal, language ID tokens end the encoder input and start the decoder. Fine-tuned as is for sentence- or document-level MT; beats random initialisation on every pair, most at a few hundred thousand pairs (En-Vi +12.5), not at all at 10K (En-Gu).
 
 > [!warning] The distinctions most likely to be tested
 > - **TLM against MLM**: the loss is the same; the input differs (a translation pair instead of monolingual text). Know the slide 10 example (*the curtains were blue* / *les rideaux étaient bleus*) and why positions restart.
 > - **Token-level against sentence-level crosslingual signal**: TLM aligns words, XLCo (and LASER) align whole-sentence representations.
 > - **The freezing rule**: slide 32 says "decoder parameters are frozen", slides 33 and 35 show only the target *embeddings* should be. Quote slide 35's numbers if asked.
 > - **Token masking, token deletion, text infilling**: masking marks the gap, deletion hides where the gap is, infilling hides how long the gap is.
+> - **Many-to-one against one-to-many**: sharing the target (into English) helps consistently; sharing the source while the decoder makes several languages helps some directions and hurts others.
+> - **Proportional against uniform sampling**: proportional favours high-resource languages, uniform favours low-resource ones. T = 1 is proportional, T = 100 uniform.
+> - **mBART against BART for MT**: BART (English only) needs a new source encoder; mBART is fine-tuned as is. Neither has a crosslingual pretraining signal.
 
 > [!note] For the mini project
 > If [[MNLP - Mini Project|the mini project]] involves transfer to a language without training data:
@@ -1662,6 +1974,113 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - **Cosine similarity, L2 distance, SemEval'17:** alignment of crosslingual word embeddings.
 > - **BLEU:** MT quality. **ROUGE-1/2/L:** summarisation. **SQuAD EM/F1, MNLI accuracy:** understanding tasks.
 
+> [!exam]- Describe multilingual NMT as in Johnson et al. (2017): training data, how the output language is chosen, what is shared, and how zero-shot translation arises.
+> Must hit:
+> 1. **One single system for all translation directions**, trained jointly: knowledge is transferred **in parallel**, as opposed to parent-child transfer **in stages**.
+> 2. **Data:** a collection of parallel corpora, **English-centric**: only $xx \rightarrow en$ and $en \rightarrow xx$ directions, because that is where the resources are. Directions are **mixed during training, even within a batch**.
+> 3. **Target language tag:** every training example gets a tag such as `<2es>` prepended to the **source** as fed to the encoder. It names the target language; the source language is never named.
+> 4. **Shared everything:** all parameters shared for all language combinations, one WordPiece vocabulary for all languages (32k, 64k), shared source, target and output embeddings. The architecture is a standard encoder-decoder.
+> 5. **Zero-shot:** training covers many-to-one and one-to-many; asking for a non-English pair (many-to-many, testing only) such as De→Fr is a direction never seen in training and relies entirely on transfer.
+> 6. **Balancing:** languages are sampled with weights, between proportional (high-resource dominate) and uniform (high-resource suffer).
+>
+> Losing marks: saying the tag names the source language, or that the model trains on non-English pairs.
+
+> [!card]- What are the two ways of transferring knowledge between language pairs in NMT?
+> - **In stages:** parent-child transfer learning. Train on a high-resource pair, then continue training on the low-resource pair.
+> - **In parallel:** multilingual joint training (Johnson et al., 2017). One single system trained on all translation directions at once.
+
+> [!card]- Define many-to-one, one-to-many and many-to-many multilingual NMT. Which are used in training?
+> - **Many-to-one:** many source languages into one single target language. Training.
+> - **One-to-many:** one source language into many target languages. Training.
+> - **Many-to-many:** many source languages into many target languages. **Testing only**: with English-centric training, non-English pairs are never trained, so testing them is zero-shot.
+
+> [!card]- What are the two indicators that knowledge transfer happens within multilingual NMT?
+> - **Performance on zero-shot directions**: any quality there can only come from transfer.
+> - **Whether the multilingual model outperforms a baseline trained only on the direction-relevant data** (a bilingual system for that pair).
+
+> [!card]- In multilingual NMT, what does a tag like `<2ja>` mean and where is it placed?
+> It names the **target** language ("to Japanese"). It is prepended to the **source sentence as fed to the encoder**. The same English sentence goes to Spanish with `<2es>` and to Japanese with `<2ja>`. No tag names the source language.
+
+> [!card]- Which parts of Johnson et al.'s multilingual NMT system are shared across languages?
+> Everything: one system with all parameters shared for all language combinations, one WordPiece vocabulary for all languages (32k, 64k, ...), and shared source, target and output embeddings.
+
+> [!card]- What happens to high- and low-resource languages under proportional and under uniform language sampling in multilingual NMT, and what is the compromise?
+> - **Proportional:** high-resource languages dominate; low-resource directions perform poorly.
+> - **Uniform:** high-resource languages suffer; low-resource languages can see strong performance.
+> - **Compromise:** in between. Over-sample low-resource languages, under-sample high-resource ones.
+
+> [!card]- What do Johnson et al.'s many-to-one results (into English) show?
+> Multi beats the bilingual Single baseline in every row, by +0.05 to +1.27 BLEU, on WMT data and on in-house production data 10 to 100 times larger (e.g. Pt→En 44.40 → 45.19). Largest gain WMT Fr→En without oversampling (+1.27). Sharing the English target side helps consistently.
+
+> [!card]- What do Johnson et al.'s one-to-many results (out of English) show, and what does oversampling do?
+> - **Mixed:** four of eight directions get worse, by up to 2.11 BLEU. The decoder has to produce several languages that compete for the same parameters.
+> - **Oversampling moves the loss around:** with it, En→De +0.30 and En→Fr −2.11; without it, En→De −2.06 and En→Fr −0.79.
+> - Production En→Es (+0.90) and En→Pt (+0.23) still gain.
+
+> [!card]- Define transfer and interference in multilingual NMT.
+> - **Transfer:** a direction improves because it shares a model with other languages.
+> - **Interference:** a direction gets worse because the other languages compete with it for the same model capacity.
+
+> [!card]- What do Arivazhagan et al.'s (2019) 103-language results show about transfer and interference?
+> Languages grouped as High 25, Medium 52, Low 25; compared with bilingual baselines:
+> - **Low-resource gains:** Any→En low 21.63 → **30.56** (+8.93); En→Any low 11.72 → 12.98 (+1.26).
+> - **High-resource losses:** no multilingual model beats bilingual on the high group (Any→En 37.61 → 36.61; En→Any 29.34 → 28.75).
+> - **Into English transfers far more than out of English** (many-to-one over one-to-many).
+> - **All→All** (one model for both directions) is the weakest multilingual option in every column: high-resource Any→En 33.85.
+
+> [!card]- In temperature-based language sampling, what do T = 1 and T = 100 mean, and how does temperature relate to the smoothing exponent alpha used for multilingual pretraining?
+> - **T = 1:** proportional to data size. **T = 100:** uniform, in effect.
+> - $p_l \propto (n_l / \sum_{l'} n_{l'})^{1/T}$, so $\alpha = 1/T$; T = 5 is $\alpha = 0.2$.
+
+> [!card]- What do Arivazhagan et al.'s temperature results show for T = 1, T = 100 and T = 5?
+> - **T = 1 (proportional):** best multilingual result on high-resource languages (28.63 En→Any, 34.60 Any→En), but En→Any low collapses to **6.24**, about half the bilingual 11.72.
+> - **T = 100 (uniform):** best on low-resource (12.87, 27.32), worst on high-resource (27.20, 33.25).
+> - **T = 5:** the compromise. Within 0.12 and 0.36 BLEU of uniform on low-resource, better than uniform on high-resource, best on medium in both directions. Its numbers equal the All→All rows, so that model used T = 5.
+
+> [!card]- What does zero-shot translation in a massively multilingual NMT model look like when going from 10 to 102 languages?
+> - Zero-shot directions have no data and rely entirely on transfer.
+> - More languages improve five of six directions: De→Fr 11.15 → 14.24, Be→Ru 36.28 → **50.26**, Yi→De 8.97 → 20.00, Hi→Fi 2.98 → 8.76, Ru→Fi 6.02 → 9.06. Fr→Zh drops (15.07 → 11.83).
+> - Results probably depend on which languages are included (closely related Be→Ru is high even with 10 languages).
+> - Zero-shot translation is still lagging behind: unrelated pairs stay in single digits.
+
+> [!card]- What is mBART, and does its pretraining contain a crosslingual signal?
+> - Liu et al. (2020): one BART model trained on a **concatenation of monolingual data in multiple languages**. BART is to mBART as BERT is to mBERT.
+> - **No crosslingual signal:** the BART denoising objective is always applied within the same language (input and output in the same language). Any crosslingual ability must emerge from the shared model and vocabulary, as with mBERT and XLM-R.
+
+> [!card]- How is mBART's pretraining input built, and what role do the language ID tokens play?
+> - Noise is **text infilling plus sentence permutation**: spans replaced by a mask, sentence order shuffled (`Where did __ from ? </s> Who __ I __ </s> <En>` for *Who am I? Where did I come from?*).
+> - `</s>` separates sentences, so instances can span several sentences.
+> - A language ID token (`<En>`, `<Ja>`) **ends the encoder input and starts the decoder input**; the decoder reconstructs the original text in the same language.
+
+> [!card]- How is mBART fine-tuned for machine translation, and what are Sent-MT and Doc-MT?
+> - The whole pretrained encoder-decoder is fine-tuned directly on parallel data. The **source** language tag ends the encoder input, the **target** language tag starts the decoder input, so the first decoder token selects the output language.
+> - **Sent-MT:** sentence-level (`Who am I ? </s> <En>` → `私 は 誰 ？ </s> <Ja>`).
+> - **Doc-MT:** document-level, several sentences at once (Japanese *Well then. See you tomorrow.* → English).
+
+> [!card]- Why does translating with mBART not need the extra source encoder that BART needs?
+> BART was pretrained on English only, so MT fine-tuning puts a new randomly initialised source encoder in front of it, and the gain was about one BLEU (Ro→En 36.80 → 37.96 tuned). mBART has seen every language it translates during pretraining, so the whole model is fine-tuned as is.
+
+> [!card]- What do the mBART25 against random-initialisation results show across language pairs and data sizes?
+> - mBART25 wins for **every pair in both directions**; average +7.2 and +4.4 BLEU for the two directions.
+> - **Largest gains at a few hundred thousand pairs:** En-Vi (133K) +12.5/+10.6, En-Tr (207K) +10.3/+8.3, En-Ar (250K) +10.1/+4.7; also En-Hi (1.56M) +12.6/+6.6.
+> - **Almost no data cannot be rescued:** En-Gu (10K) 0.0 → 0.3/0.1. En-Kk (91K) is where it starts to work: 0.8 → 7.4.
+> - **Gains shrink with more data:** En-Ro (608K) +3.8/+3.4, En-Lv (4.5M) +3.7/+3.0.
+
+> [!card]- Multiple selection. Which are true of multilingual NMT as in Johnson et al. (2017)? (A) Each language gets its own encoder. (B) A tag naming the target language is added to the source sentence. (C) Source, target and output embeddings are shared. (D) Training uses every language pair, including pairs without English.
+> **B and C.** (A) is false: all parameters are shared across all language combinations. (D) is false: training is English-centric, $xx \rightarrow en$ and $en \rightarrow xx$ only; non-English pairs are zero-shot at test time.
+
+> [!card]- Multiple selection. Which are true of language sampling in multilingual NMT? (A) Proportional sampling lets high-resource languages dominate. (B) Uniform sampling hurts low-resource languages. (C) A temperature of T = 100 approximates uniform sampling. (D) The best compromise over-samples low-resource languages.
+> **A, C and D.** (B) is false: uniform sampling hurts **high**-resource languages; low-resource ones can see strong performance (T = 100 gives the best low-resource BLEU, 12.87 and 27.32).
+
+> [!card]- Multiple selection. Which are true of Arivazhagan et al.'s results on 103 languages? (A) Low-resource languages gain most when translating into English. (B) Multilingual models beat bilingual baselines on the high-resource group. (C) All→All is weaker than the dedicated Any→En and En→Any models. (D) One-to-many gains more than many-to-one for low-resource languages.
+> **A and C.** (B) is false: every multilingual setting scores under bilingual on the High 25 group. (D) is false: low-resource gains are +8.93 BLEU into English (many-to-one) against +1.26 out of English (one-to-many).
+
+> [!card]- Multiple selection. Which are true of mBART? (A) It is pretrained on parallel data. (B) Its pretraining objective has no crosslingual signal. (C) A language ID token starts the decoder input. (D) Translation fine-tuning requires a new randomly initialised source encoder.
+> **B and C.** (A) is false: it is trained on concatenated monolingual data. (D) is false: that is how English-only BART is used for MT; mBART is fine-tuned as is.
+
+> [!card]- Multiple selection. Which are true of parent-child transfer learning for low-resource NMT? (A) The child model is initialised with the parent's parameters. (B) It works best when parent and child share the target language. (C) Unfreezing the target embeddings during child training improves Uzbek→English. (D) Transfer from a smaller parent to a larger child works as well as the reverse.
+> **A and B.** (C) is false: letting the target embeddings train too lowers Uzbek→English dev BLEU from 15.0 to 14.7 and then 13.7; they overfit on the small child data. (D) is false: Kocmi and Bojar find reversed transfer helps little or hurts; it must flow from the larger corpus to the smaller.
+
 ## Links
 
 - **Course:** [[MNLP - Overview|Course overview]]
@@ -1669,5 +2088,5 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 - **Earlier lectures used here:** [[MNLP-L05 - Static Embeddings]] (crosslingual static embeddings and MUSE, the baseline on slide 12) · [[MNLP-L04 - Subword Segmentation]] (BPE and SentencePiece vocabularies of LASER, XLM and XLM-R) · [[MNLP-L02 - Multilinguality and Writing Systems]] (why Thai, Arabic and CJK behave differently)
 - **Related concepts:** [[Transformers]] · [[Self-Attention]] · [[Contrastive Learning]] · [[Word Embeddings]] · [[Tokenization]] · [[Large Language Models (LLM)]] · [[Supervised Fine-Tuning (SFT)]]
 - **Project:** [[MNLP - Mini Project]]
-- **Primary references named on the slides:** Artetxe and Schwenk (2019), LASER · Conneau and Lample (2019), XLM · Chi et al. (2021), InfoXLM · Sutskever et al. (2014) · Zoph et al. (2016), transfer learning for low-resource NMT · Koehn and Knowles (2017), six challenges for NMT · Schwenk et al. (2019), WikiMatrix · Kocmi and Bojar (2018) · Aji et al. (2020), on what transfer actually transfers · BART (Lewis et al., 2020; the slides do not name the authors)
-- **Source:** `cross-lingual-nlp.pdf`, Christof Monz, MNLP: Cross-Lingual NLP, slides 1 to 45 (188 pages with animation builds), deck as of 2026-10-05
+- **Primary references named on the slides:** Artetxe and Schwenk (2019), LASER · Conneau and Lample (2019), XLM · Chi et al. (2021), InfoXLM · Sutskever et al. (2014) · Zoph et al. (2016), transfer learning for low-resource NMT · Koehn and Knowles (2017), six challenges for NMT · Schwenk et al. (2019), WikiMatrix · Kocmi and Bojar (2018) · Aji et al. (2020), on what transfer actually transfers · BART (Lewis et al., 2020; the slides do not name the authors) · Johnson et al. (2017), multilingual NMT with target language tags · Arivazhagan et al. (2019), 103-language NMT, transfer against interference and temperature sampling · Liu et al. (2020), mBART
+- **Source:** `cross-lingual-nlp.pdf`, Christof Monz, MNLP: Cross-Lingual NLP, slides 1 to 56 (267 pages with animation builds), deck as re-uploaded 2026-10-07

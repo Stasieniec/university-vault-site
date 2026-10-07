@@ -17,7 +17,7 @@ exam_date: 2026-10-22
 > **Time zone:** Europe/Amsterdam
 > **Lectures:** Mondays 13:00–14:45 (SP L1.02) and Wednesdays 09:00–10:45 (SP C0.110, room varies), twice weekly through 2026-10-14
 > **Seminar / lab:** Wednesdays 11:00–12:45, SP B0.208, **Group 4**
-> **Exam:** Thursday 2026-10-22, 09:00–11:00, **Roeterseiland (REC), not Science Park**
+> **Exam:** Thursday 2026-10-22, 09:00–11:00, **Roeterseiland (REC), not Science Park**. 2 hours on paper, multiple choice and multiple selection, one two-sided cheat sheet allowed (see [[MNLP - Exam Analysis]])
 
 ## Prerequisites
 
@@ -37,14 +37,23 @@ Provides an overview of NLP problems where multilinguality plays a role:
 
 | Component | Weight | Deadline | Notes |
 |-----------|--------|----------|-------|
-| Mini Project | TBD | Report, code and slides: **Fri 2026-10-09 12:00**; presentation in week 7 | Teams of ~5; picked by **2026-09-04 17:00** |
-| Exam | TBD | **Thu 2026-10-22, 09:00–11:00** | Rooms: REC B3.05-B3.06-B3.07 / REC B3.08-B3.09 |
+| Mini Project | TBD | Report, code and slides: **Sun 2026-10-11, before 22:00** (extended from Fri 9 Oct 12:00); presentation Mon 12 or Wed 14 Oct | Teams of ~5; picked by **2026-09-04 17:00** |
+| Exam | TBD | **Thu 2026-10-22, 09:00–11:00** | Rooms: REC B3.05-B3.06-B3.07 / REC B3.08-B3.09. Format below |
 
 > [!warning] The exam is at Roeterseiland, not Science Park
 > Thursday 2026-10-22, 09:00–11:00, in REC B3.05-B3.06-B3.07 / REC B3.08-B3.09. That is the **Roeterseiland** campus. Every other MNLP session this period is at Science Park, so do not run the usual commute on autopilot.
 
-> [!note] The mini-project deadline exists only in the project description
-> MNLP publishes **zero** assignments through the Canvas API, so Fri 2026-10-09 12:00 will never appear in a Canvas to-do list, calendar feed or reminder. It lives in [[MNLP - Mini Project]] and here, and nowhere else.
+> [!info] Exam format
+> - **2 hours, on paper.**
+> - **Multiple choice and multiple selection** questions only.
+> - Questions are grouped in **blocks** by topic, but **every question is independent** of the others.
+> - **One two-sided cheat sheet** is allowed, and it can be printed.
+> - Canvas has a module "Exam" with example questions from previous years of a different course: they show the question type, not this year's content. Worked through in [[MNLP - Exam Analysis]].
+>
+> How multiple-selection answers are scored (partial credit, penalties for wrong picks) is not stated anywhere yet.
+
+> [!note] Mini-project deadline moved
+> Monz extended the deadline to **Sunday 2026-10-11, before 22:00** (announcement of 2026-10-05). The submission form is the assignment "Mini Project Final Report, Slides and Code" in the Mini Project module, which is now visible on Canvas.
 
 ## Notes
 
@@ -112,10 +121,10 @@ Canvas module "Week 2" holds two decks plus the Zoom recording of 9 September, w
 ### Week 6 (5–9 Oct): Finalize
 | | Slot | Lecturer | Notes |
 |---|------|----------|-------|
-| Mon | Mon 5 Oct, 13:00–14:45, SP L1.02 | Monz | Continuation of [[MNLP-L07 - Crosslingual NLP]] per the module. Note written from the deck as of 5 Oct; re-check after Wednesday in case slides are added |
-| Wed | Wed 7 Oct, 09:00–10:45, SP C0.110 | Monz | Not yet given |
+| Mon | Mon 5 Oct, 13:00–14:45, SP L1.02 | Monz | Continuation of [[MNLP-L07 - Crosslingual NLP]] |
+| Wed | Wed 7 Oct, 09:00–10:45, SP C0.110 | Monz | End of [[MNLP-L07 - Crosslingual NLP]]: multilingual NMT, mBART, recap (slides 38 to 45 and 54 to 56, added to the deck that morning) |
 | Lab | Wed 7 Oct, 11:00–12:45, SP B0.208 (Group 4) | | |
-| **Due** | **Fri 9 Oct 12:00**: 4-page report, code, slides | | |
+| **Due** | **Sun 11 Oct, before 22:00** (extended from Fri 9 Oct 12:00): 4-page report, code, slides | | |
 
 ### Week 7 (12–16 Oct): Presentations, last teaching week
 | | Slot | Lecturer | Notes |
@@ -123,10 +132,10 @@ Canvas module "Week 2" holds two decks plus the Zoom recording of 9 September, w
 | L13 | Mon 12 Oct, 13:00–14:45, SP L1.02 | Monz | Last Monday slot |
 | L14 | Wed 14 Oct, 09:00–10:45, **SP L1.01** | Monz | **Last session of the course.** Room differs from the usual C0.110 |
 | Lab | Wed 14 Oct, 11:00–12:45, SP B0.208 (Group 4) | | |
-| **Project** | Team presentations (10–15 min + 5 min Q&A) | | See the inference below |
+| **Project** | Team presentations (13 min + 5 min Q&A) | | Mon 12 and Wed 14 Oct, in the lecture slots |
 
-> [!question] Presentation date: narrowed, not confirmed
-> Canvas says "week 7" and gives no date. MyTimetable has no MNLP session after **Wed 14 Oct** except the exam, so the team presentation has to land in one of the final teaching slots, **Mon 12 Oct** or **Wed 14 Oct**. This is an inference from the timetable, **not a confirmed date**. Ask Monz or check an announcement before booking anything around it.
+> [!info] Presentations, confirmed 2026-10-05
+> Monz's announcement: presentations run in the **Mon 12 Oct and Wed 14 Oct lecture slots and lecture rooms**. **13 minutes + 5 minutes Q&A**, 2 minutes for handover. Each team's slot is in columns L and M of his sheet. Bring your own laptop, and ideally a spare: he uses his for notes.
 
 ### Week 8 (19–23 Oct): Exam
 | | Slot | Notes |
@@ -140,8 +149,8 @@ Canvas module "Week 2" holds two decks plus the Zoom recording of 9 September, w
 | Date | What |
 |------|------|
 | **2026-09-04 17:00** | Submit team + problem choice (Google Sheet) |
-| **2026-10-09 12:00** | Submit report (4 pp PDF), slides, code (GitHub link) |
-| **12 or 14 Oct** | Team presentation (inferred from the timetable, not confirmed) |
+| **Sun 2026-10-11, before 22:00** | Submit report (4 pp PDF), slides, code (GitHub link). Extended from Fri 9 Oct 12:00 |
+| **12 or 14 Oct** | Team presentation, slot in Monz's sheet |
 | **Wed 2026-10-14** | Last teaching session |
 | **Thu 2026-10-22 09:00–11:00** | **Exam**, Roeterseiland (REC), not Science Park |
 
@@ -156,7 +165,7 @@ Canvas module "Week 2" holds two decks plus the Zoom recording of 9 September, w
 
 ## Source material
 
-The Files tab returns HTTP 403 for students, so decks come from **Modules**, through the `canvas_modules` connector tool (added 2026-10-05), which returns a download URL per file. Module contents as of 2026-10-05:
+The Files tab returns HTTP 403 for students, so decks come from **Modules**, through the `canvas_modules` connector tool (added 2026-10-05), which returns a download URL per file. Module contents as of 2026-10-07:
 
 | Module | Item | Note |
 |---|---|---|
@@ -165,10 +174,15 @@ The Files tab returns HTTP 403 for students, so decks come from **Modules**, thr
 | Week 2 | `morphology.pdf`, `subword.pdf`, Zoom recording of 9 Sep (`video1951888080.mp4`, 180 MB) | [[MNLP-L03 - Morphology and Word Formation]], [[MNLP-L04 - Subword Segmentation]] |
 | Week 3 | `embeddings_static.pdf` (71 slides, 404 pages with animation builds) | [[MNLP-L05 - Static Embeddings]] |
 | Week 4 | `embeddings_context.pdf` (50 slides, 305 pages) | [[MNLP-L06 - Contextual Embeddings]] |
-| Week 5 | `cross-lingual-nlp.pdf` (45 slides, 188 pages) | [[MNLP-L07 - Crosslingual NLP]] |
-| Week 6 | Only a "continuation of crosslingual NLP" header so far | |
+| Week 5 | `cross-lingual-nlp.pdf` (56 slides, 267 pages; re-uploaded 2026-10-07 with slides 38 to 45 and 54 to 56 added) | [[MNLP-L07 - Crosslingual NLP]] |
+| Week 6 | Only a "continuation of crosslingual NLP" header | [[MNLP-L07 - Crosslingual NLP]] |
+| Exam | `exam-examples.pdf` (2 pages, 2026-10-06): multiple-choice examples from previous years of a different course | [[MNLP - Exam Analysis]] |
 
 The decks are 8 to 23 MB each and are not stored in `Assets/`, matching weeks 1 and 2.
+
+## Exam Prep
+
+- [[MNLP - Exam Analysis]]: exam format, the example questions from Canvas, and what they mean for revising
 
 ## Resources
 
