@@ -82,7 +82,7 @@ The Vienna Circle slide shows portraits of Carnap, Schlick, Neurath and Gödel, 
 
 The Circle's programme combined empiricism with modern symbolic logic. Its regulative ideal was that legitimate knowledge should be either empirically grounded or logically/mathematically necessary, and that philosophy should clarify scientific language and reasoning rather than compete with science by making speculative factual claims.
 
-The Circle was destroyed as a local institution by political violence and fascism. Schlick was murdered by his former student Johann Nelböck in 1936. Following the Nazi annexation of Austria in 1938, its members dispersed: Carnap travelled through Prague to Chicago in 1936; Neurath travelled through The Hague to London in 1940; Popper went to Cambridge in 1937; and Gödel went to Princeton in 1938.
+The Circle was destroyed as a local institution by political violence and fascism. Schlick was murdered by his former student Johann Nelböck in 1936. With the rise of Nazism, culminating in the annexation of Austria in 1938, its members and associates dispersed: Carnap travelled through Prague to Chicago in 1936; Neurath travelled through The Hague to London in 1940; Popper, an associate of the Circle and never a member, went to Christchurch, New Zealand, in 1937 (an earlier version of this note said Cambridge); and Gödel went to Princeton in 1938.
 
 ### From justification to scientific practice
 
@@ -348,11 +348,11 @@ The lecture's own conclusion slide frames it in four parts: (A) philosophy of sc
 >
 > Contrast to have ready: Popper's falsifiability criterion demarcates science from non-science **without** declaring non-science meaningless (see [[PhilSci-L01b - Popper and Lakatos]], section 2.9).
 
-## Flashcards
-
-Click a question to reveal its answer, or press **Study** to drill the whole set. Cards marked as exam questions are meant to be answered out loud or on paper first, then checked against the points listed.
+## Exam questions
 
 > [!exam]- Mock exam Q1: "Explain briefly the verifiability criterion of meaning, and its significance for the problem of demarcation." (10 points)
+> **Key points:** Meaningful (scientific) iff verifiable in principle by observation or experiment; meaning of a statement is its method of verification; unverifiable statements are pseudo-statements; theories made of them are pseudo-science; pseudo-science (like metaphysics) seems to say something but is literally meaningless.
+>
 > Follow the official key:
 > 1. **The criterion.** A statement is meaningful (scientific) if it is verifiable: its truth can in principle be determined through observation or experiment. Slogan: "**the meaning of a statement is its method of verification**".
 > 2. **The other kind of meaningful statement.** Analytic statements (logic and mathematics), true in virtue of form, saying nothing about the world.
@@ -362,133 +362,165 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > Contrast worth one sentence: Popper's falsifiability separates science from non-science **without** calling non-science meaningless.
 
 > [!exam]- Explain Carnap's diagnosis of Heidegger's "Das Nichts selbst nichtet". What exactly is wrong with it, and what does Carnap conclude?
+> **Key points:** "Nothing" treated as a name and a verb; logically "nothing is $P$" is $\neg\exists x\,P(x)$; type confusion not translatable into logical form; meaningless pseudo-statement rather than false; philosophy exposes pseudo-statements.
+>
 > - Source: Heidegger's 1929 Freiburg inaugural lecture *What Is Metaphysics?*; Carnap's attack is in "The Elimination of Metaphysics Through Logical Analysis of Language" (**1932**).
 > - The sentence treats "nothing" as a **name** of a thing and then as a **verb**. In modern logic it is neither. "Nothing is $P$" is $\neg\exists x\,P(x)$: it is not the case that some $x$ is $P$. There is no object called Nothing that could do anything.
 > - This is a **type confusion**: grammar allows the sentence, but it cannot be translated into a logically correct form.
 > - Conclusion: the sentence is not false but **meaningless**, a pseudo-statement. Philosophy's job is to expose such pseudo-statements, not to treat them as deep discoveries.
 
 > [!exam]- Describe the syntactic conception of scientific theories (the received view) and illustrate it with kinetic theory.
+> **Key points:** Theory as sentences in a formal logical language; axioms, derived sentences, correspondence rules; theoretical vs observational terms; kinetic theory: rules for $P$ and $T$ turn the derived equation into $PV = NkT$; normative ideal.
+>
 > - A theory is a **collection of sentences in a formal logical language**: (1) **axioms**, read as basic laws; (2) **derived sentences**, obtained by formal deduction; (3) **correspondence rules** linking theoretical terms to observational terms.
 > - Essential: the split between **theoretical terms** (atom, electron: not directly observable) and **observational terms**. Theoretical terms get their meaning only through correspondence rules.
 > - Kinetic theory. Axioms: gases are molecules in motion; energy and momentum are conserved; molecules are elastic and Newtonian. Correspondence rules: pressure is the mean force of molecules on the walls; $kT = \frac{2}{3}\langle\frac{1}{2}mv^2\rangle$. Derivation: $PV = \frac{2}{3}N\langle\frac{1}{2}mv^2\rangle$, and substituting gives the ideal gas law $PV = NkT$.
 > - It is a **normative ideal**: a rigorous standard for evaluating scientific knowledge, not a description of what labs actually do.
 
 > [!exam]- Compare the syntactic and semantic conceptions of theories. Why was the semantic view proposed, and does the distinction survive?
+> **Key points:** Syntactic: sentences plus correspondence rules; semantic: class of mathematical models; motivations: no axiomatization, multiple formulations, models in practice; Halvorson, Lutz, Frigg: views collapse or are complementary.
+>
 > - **Syntactic:** theory = set of sentences (axioms, derivations, correspondence rules), tied to observation by a vocabulary distinction.
 > - **Semantic:** theory = **a class of mathematical models** representing possible systems, tied to targets by conditions of application.
 > - Motivations for the semantic view: (1) many theories are **not axiomatized**; (2) one theory has **several equivalent formulations**, so identifying it with one is wrong; (3) scientists actually work with **models**.
 > - Does it survive? **Halvorson** (2012, 2013) argues the semantic view, if plausible, is syntactic; replies from **Glymour** (2013) and **van Fraassen** (2014). **Lutz** (2017): the debate does not capture any significant differences. **Frigg** (2022): syntactic is too strict (science needs models and natural language), semantic also needs a language to specify structures. So they collapse into each other or are complementary.
 
-> [!card]- Rationalism versus empiricism: core claim, key method, kind of knowledge sought, and main representatives.
-> - **Rationalism:** reason gives substantive knowledge independently of experience; mathematics, axioms, clear and distinct ideas, deduction; seeks **certainty and necessity**. Plato, Descartes, Spinoza, Leibniz.
-> - **Empiricism:** experience is the fundamental source of substantive knowledge; **induction** is central; knowledge is **contingent and fallible**. Aristotle, Locke, Berkeley, Hume, van Fraassen.
-> - Classic pairings: Plato rationalism; Aristotle empiricism and syllogistic logic; Hume empiricism; Kant the synthesis of the two.
+## Flashcards
 
-> [!card]- Why must epistemological and metaphysical positions be kept apart? Give two examples of positions that combine across that divide.
-> Rationalism and empiricism are positions about **knowledge**; realism, idealism and nominalism are positions about **what exists**. They cut across each other: **empiricism is compatible with idealism** (Berkeley is both), and **nominalism is compatible with realism about physical objects**.
+> [!card]- What does empiricism hold is the fundamental source of substantive knowledge?
+> **Experience** and sense perception.
 
-> [!card]- State four metaphysical positions (realism about objects, idealism, realism about ideas, nominalism) with one representative each.
-> - **Realism about objects:** objects exist independently of minds and our knowledge. Aristotle, Descartes, Locke.
-> - **Idealism:** objects, or objects as known, depend significantly on mind or experience. Berkeley, Hegel, Schopenhauer.
-> - **Realism about ideas:** universals correspond to mind-independent entities. Plato (and differently Aristotle).
-> - **Nominalism:** only individual things exist; general terms are names, conventions or concepts. **Ockham**.
+> [!card]- What is the difference between the knowledge rationalism seeks and the knowledge empiricism settles for?
+> Rationalism seeks **certainty and necessity**, in at least some domains; empiricism takes knowledge to be normally **contingent and fallible**.
 
-> [!card]- What is Kant's synthesis? Define synthetic and a priori, and say what supplies the a priori structure.
+> [!card]- Why must epistemological and metaphysical positions be kept apart?
+> They cut across each other: empiricism is **compatible with idealism**, nominalism with **realism about physical objects**.
+
+> [!card]- How did Kant combine rationalism and empiricism?
 > Empiricism about the **content** of knowledge, rationalism about its **a priori conditions**.
-> - **Synthetic:** extends knowledge rather than unpacking a concept.
-> - **A priori:** justified independently of particular experiences.
-> - Some judgments are **synthetic a priori**. **Space, time and the categories** are conditions under which objects can be experienced by us, so experience has an a priori structure.
 
-> [!card]- Who supplied the modern logic logical empiricism used? Frege, Whitehead and Russell, Wittgenstein: one contribution each. What did the empiricists take logic to be?
-> - **Frege:** modern first-order logic (variables, quantifiers, predicates, inference rules); founder of philosophy of language.
-> - **Whitehead and Russell:** logicism, deriving mathematics from logic.
-> - **Wittgenstein:** the relation of language and reality; later "**meaning as use**".
-> - Logic is **tautological** (analytic): true by form and rules, adds no factual content about the world.
+> [!card]- For Kant, when is a judgment synthetic?
+> When it **extends knowledge** instead of unpacking what a concept already contains.
 
-> [!card]- What does Richardson (1996) say is the fundamental cleavage in 20th-century philosophy, and who embodies the two sides?
-> "The fundamental cleavage in 20th-century philosophy derives from just this dispute over the **priority of logic or fundamental philosophical insight** in grounding objective knowledge." **Carnap** (Jena), analytic; **Heidegger** (Freiburg), continental.
+> [!card]- For Kant, when is a judgment a priori?
+> When its justification **does not derive from particular experiences**.
 
-> [!card]- The Vienna Circle: active dates, four key members, the two labels for its programme, its manifesto, and its regulative ideal.
-> - **1924 to 1938**. Carnap, Neurath, Schlick, Gödel (Wittgenstein influenced it without being a member).
-> - Early programme: **logical positivism**; later, broader: **logical empiricism**.
-> - Manifesto (1929): *Wissenschaftliche Weltauffassung: Der Wiener Kreis*, published by the Verein Ernst Mach.
-> - Ideal: legitimate knowledge is either **empirically grounded** or **logically/mathematically necessary**, and philosophy clarifies scientific language instead of competing with science.
+> [!card]- What status did the logical empiricists give to logic?
+> **Tautological** or analytic: true by form and rules, adding no factual content about the world.
 
-> [!card]- How did the Vienna Circle end, and where did its members go?
-> Destroyed by political violence and fascism. **Schlick was murdered in 1936** by his former student Johann Nelböck. After the 1938 annexation of Austria: Carnap via Prague to Chicago (1936), Neurath via The Hague to London (1940), Popper to Cambridge (1937), Gödel to Princeton (1938).
+> [!card]- What was the Vienna Circle's regulative ideal of legitimate knowledge?
+> Knowledge is either **empirically grounded** or **logically/mathematically necessary**.
 
-> [!card]- How did the focus of philosophy of science shift between the first and second halves of the 20th century? Name the later currents.
-> - **First half:** a normative or regulative ideal: how is scientific knowledge **justified**?
-> - **Second half:** how science actually works, what scientists **do**, and its historical, social and institutional conditions.
-> - Currents: Popper, Quine and Duhem-Quine, Kuhn, Lakatos, explanation, science and technology studies, feminism, postcolonialism, Laudan, van Fraassen, later Cartwright and Morrison. Recently a **revival of logical empiricist views**, corrected and enriched, around models, explanation and understanding.
+> [!card]- How did philosophy of science's focus shift from the first to the second half of the 20th century?
+> From the **justification** of scientific knowledge (a normative ideal) to **how science actually works** and what scientists do.
 
-> [!card]- Define metaphysics, ontology, epistemology, semantics and syntax.
-> - **Metaphysics:** the nature of things or being (space and time, causation, free will, mind and body).
-> - **Ontology:** the part of metaphysics about **what entities there are**.
-> - **Epistemology:** knowledge and understanding.
-> - **Semantics:** meaning, including in formal languages.
-> - **Syntax:** formal rules for building and transforming expressions, deduction included, **abstracting from meaning**.
+> [!card]- What is the difference between syntax and semantics?
+> Syntax: formal rules for building and transforming expressions, **abstracting from meaning**. Semantics: the study of **meaning**.
 
-> [!card]- For early Carnap, which two kinds of statement are meaningful, and what is philosophy's task as a result?
-> 1. **Analytic** (logically necessary) statements: logic and mathematics, true by rules or form, no factual content.
-> 2. **Empirically verifiable** statements.
->
-> A factual statement with no possible observational bearing states no fact at all. So philosophy is **logical or linguistic analysis**: identify valid reasoning and separate meaningful discourse from grammatical but meaningless pseudo-discourse.
+> [!card]- Which two kinds of statement are meaningful for early Carnap?
+> **Analytic** statements (logic, mathematics) and **empirically verifiable** statements.
 
-> [!card]- Carnap characterises the meaning of a word through an elementary sentence $S$ containing it. By appeal to which four things, and what is the critical question?
-> 1. what is deducible from, or entails, $S$;
-> 2. the conditions under which $S$ is **true**;
-> 3. the conditions under which $S$ can be **verified**;
-> 4. the meaning of $S$ itself.
->
-> Critical question: are **deduction, truth, verification and meaning** really the same thing? They are not obviously: consequence, satisfaction by the world, evidential procedure and content are different notions, and the programme needs strong assumptions to connect them.
+> [!card]- What does the verifiability criterion of meaning say?
+> A factual statement is meaningful only if it is **empirically verifiable**, in principle, by observation or experiment.
 
-> [!card]- Why did early Carnap work syntactically, and when did formal semantics arrive?
-> He studied forms of expression, deduction and rule-following, and treated meanings as a matter for psychology or empirical science. Fully formal semantics only arrived in the **late 1930s and 1940s**, mainly through **Tarski**.
+> [!card]- Which principle is summed up as "the meaning of a statement is its method of verification"?
+> The **verifiability criterion of meaning** (verificationism).
 
-> [!card]- Give Carnap's arthropod example and say what it is meant to show.
-> "$x$ is an arthropod" means the observation sentences "$x$ is an animal", "$x$ has a segmented body", "$x$ has jointed legs" (a fuller list adds "$x$ has an exoskeleton"). It shows the **reductionist aspiration**: a term is meaningful when sentences containing it reduce to observation sentences, which observation verifies.
+> [!card]- How does the verifiability criterion solve the demarcation problem?
+> Unverifiable statements are **pseudo-statements**, so theories built from them are **pseudo-science**.
 
-> [!card]- What is a "type confusion" for Carnap, and whose writings does he say are full of them?
-> Ordinary grammar lets through expressions that cannot be translated into a logically correct form, e.g. "predicates which should be applied to objects of a certain sort are instead applied to **predicates of these objects** or to '**being**' or to '**existence**'." Pseudo-statements of this kind are found "in especially large quantity" in **Hegel and Heidegger** (*Elimination*, p. 6).
+> [!card]- Does verificationism call metaphysical statements false or meaningless?
+> **Literally meaningless**: they seem to say something but express no truth-evaluable proposition.
 
-> [!card]- How does Carnap analyse Descartes's "I think, therefore I am"?
-> "I think" becomes "there is something that thinks": $\exists x\,P(x)$ with a thinking predicate $P$. Existence is expressed by the existential quantifier, not as an activity or property of an individual, so no substantial metaphysical **ego** is needed beyond the existence claim.
+> [!card]- What is philosophy's task for early Carnap?
+> **Logical or linguistic analysis**: separating meaningful discourse from grammatical but meaningless pseudo-discourse.
 
-> [!card]- When and why did Carnap moderate his view, and what changed? Give the 1966 quote's key phrase.
-> - **In the 1930s**, after meeting **Gödel and Tarski**: he dropped strict verificationism (meaning is not just verification), accepted interpretation of theoretical terms through a **full semantics**, and weakened correspondence rules to allow **partial interpretation**.
-> - 1966: his early publications were a reaction to **German idealism** and "filled with prohibitory statements", to be understood relative to the "historical situation".
+> [!card]- Why did early Carnap work syntactically?
+> He treated meanings as a matter for **psychology or empirical science**; formal semantics (Tarski) came only later.
 
-> [!card]- After his moderation, did Carnap keep his rejection of metaphysics? What weakened it, and what does Richardson say?
-> He **upheld** the rejection, but it lost force because a full semantics **cannot avoid ontology**. Partial interpretation is much closer to a **realist** view of science. Richardson (1996): "**The move to semantics blunts the force of Carnap's diagnosis of metaphysics as confusion.**" He kept the demand that philosophy be logical, rigorous and close to science.
+> [!card]- What is the problem with Carnap defining word meaning via a sentence's entailments, truth conditions and verification conditions?
+> It runs together **deduction, truth, verification and meaning**, which are not obviously the same; connecting them needs strong assumptions.
 
-> [!card]- Who gave the received view its name, and what does Feigl's diagram of it show, layer by layer?
-> Label associated with **Putnam**; diagram from **Feigl**, "The 'Orthodox' View of Theories" (1970).
-> - Top: **primitive concepts** (nodes) joined by **postulates** (axioms).
-> - **Defined concepts**, defined from the primitives (dashed lines = definitions).
-> - **Empirical concepts**, reached by **correspondence rules**.
-> - Bottom: the "**soil**" of observation, in which only the empirical concepts are rooted.
->
-> The network is meaningful only in so far as it is tied down to observation this way.
+> [!card]- In Carnap's arthropod example, what does "x is an arthropod" mean?
+> **x is an animal, x has a segmented body, x has jointed legs**: a set of observation sentences.
 
-> [!card]- State the two correspondence rules of kinetic theory and walk through the derivation of the ideal gas law.
-> - Pressure $P$ = mean force with which molecules strike the walls.
-> - $kT = \frac{2}{3}\left\langle\frac{1}{2}mv^2\right\rangle$: temperature is proportional to the **mean** molecular kinetic energy ($\frac{3}{2}kT$ per molecule).
-> - From the axioms: $PV = \frac{2}{3}N\left\langle\frac{1}{2}mv^2\right\rangle$. Substitute the temperature rule: $PV = NkT$ (Boyle-Charles).
->
-> Pattern: postulate a micro-system, derive formally, link derived quantities to observable $P$, $V$, $T$.
+> [!card]- What does Carnap's arthropod example show?
+> The **reductionist aspiration**: a term is meaningful when sentences containing it reduce to observation sentences.
 
-> [!card]- What are the two senses of "model", which one does the semantic conception mainly use, and what is isomorphism?
-> 1. **Iconic or representational:** a concrete or visual representation structurally similar to its target (a mechanical planetarium of the solar system).
-> 2. **Mathematical or logical:** a formal structure in which a theory's sentences are true. This is the **principal technical sense** for the semantic conception.
->
-> **Isomorphism:** a structure-preserving one-to-one mapping between the relevant parts and relations of model and target.
+> [!card]- What is a "type confusion" for Carnap?
+> A grammatical expression that **cannot be translated into logically correct form**, e.g. predicates applied to "being" or "existence".
 
-> [!card]- How does the semantic conception represent kinetic theory? Give the phase space and how it connects to thermodynamics.
-> A class of models of possible gases. For $N$ molecules in a region $C \subseteq \mathbb{R}^3$ of volume $V$: $\Gamma_N = C^N \times \mathbb{R}^{3N} \subseteq \mathbb{R}^{6N}$, i.e. 3 position and 3 momentum coordinates per molecule. Laws of motion and collision evolve a point in phase space. Statistical mechanics links to thermodynamics: $V$ fixed by the container, $P$ by average momentum transfer to the walls, $T$ by the equilibrium distribution of energies. Under the idealisations, the models yield $PV = NkT$.
+> [!card]- Why is Heidegger's "The Nothing itself noths" a pseudo-statement for Carnap?
+> It treats "nothing" as a **name** and as a **verb**; in modern logic it is neither.
 
-> [!card]- What was Carnap's advice for philosophy, which two kinds of meaningful statement does it rest on, and which three topics make up the logical empiricist debate about scientific theories?
-> Carnap's advice: "**stay close to science**", with meaningful statements of two kinds, **empirical verification** and **logical necessity** (analyticity). The view of theories: (1) the syntactic conception as **normative**; (2) the **historical dynamics** of theories, which is Kuhn's critique; (3) the semantic conception, and whether the distinction collapses.
+> [!card]- How does modern logic express "nothing is P"?
+> $\neg\exists x\,P(x)$: no object called Nothing is posited.
+
+> [!card]- How does Carnap analyse Descartes's "I think"?
+> As "there is something that thinks", $\exists x\,P(x)$, so **no substantial ego** is needed.
+
+> [!card]- What did Carnap give up after meeting Gödel and Tarski in the 1930s?
+> **Strict verificationism**: he accepted a full semantics for theoretical terms.
+
+> [!card]- What did Carnap's partial interpretation of theoretical terms replace?
+> The demand for **complete reduction to observations**, moving him closer to a **realist** view of science.
+
+> [!card]- Why did Carnap's rejection of metaphysics lose force after his move to semantics?
+> A full semantics **cannot avoid ontology**, so the line between theory and metaphysics blurs.
+
+> [!card]- What is a scientific theory on the syntactic conception?
+> A **collection of sentences in a formal logical language**.
+
+> [!card]- What are the three components of a theory on the syntactic conception?
+> **Axioms**, **derived sentences**, **correspondence rules**.
+
+> [!card]- How do theoretical terms like "electron" get meaning on the syntactic conception?
+> Only through **correspondence rules** tying them to observational vocabulary.
+
+> [!card]- What is the syntactic conception of theories also called?
+> The **Received View** of theories.
+
+> [!card]- Is the syntactic conception a description of laboratory practice?
+> No, a **normative ideal**: a rigorous standard for evaluating scientific knowledge.
+
+> [!card]- In kinetic theory, what is the correspondence rule for pressure?
+> Pressure is the **mean force** with which molecules strike the container walls.
+
+> [!card]- In kinetic theory, what is the correspondence rule for temperature?
+> Absolute temperature is proportional to the **mean molecular kinetic energy**.
+
+> [!card]- How does kinetic theory reach the ideal gas law $PV = NkT$?
+> Derive pressure times volume from the molecular axioms in terms of mean kinetic energy, then **substitute the temperature correspondence rule**.
+
+> [!card]- What is a scientific theory on the semantic conception?
+> **A class of mathematical models** representing possible systems.
+
+> [!card]- What three criticisms motivate the semantic conception?
+> Many theories are **not axiomatized**; one theory has **several equivalent formulations**; scientists actually work with **models**.
+
+> [!card]- Why does language dependence count against the syntactic conception?
+> One theory has several equivalent formulations, so identifying it with **one formulation** is wrong.
+
+> [!card]- What is the difference between an iconic and a mathematical model?
+> Iconic: a **concrete representation** similar to its target. Mathematical: a **formal structure in which a theory's sentences are true**.
+
+> [!card]- Which sense of "model" does the semantic conception mainly use?
+> The **mathematical or logical** sense.
+
+> [!card]- How does the semantic conception represent the microstate of a gas of N molecules?
+> As a point in **phase space** with $6N$ coordinates: three position and three momentum per molecule.
+
+> [!card]- What is the difference between how syntactic and semantic conceptions connect theory to the world?
+> Syntactic: a **vocabulary distinction and correspondence rules**. Semantic: models linked to **target systems by conditions of application**.
+
+> [!card]- What does Halvorson argue about the semantic view?
+> The semantic view, **if plausible, is syntactic**.
+
+> [!card]- Why does Frigg think neither conception of theories wins outright?
+> Syntactic is **too strict** if it allows only formal sentences (science needs models, natural language); semantic **also needs a language** to specify structures.
+
+> [!card]- Does the syntactic/semantic distinction survive, on the recent debate?
+> Arguably not: the two **collapse into each other** or are **complementary**; Lutz finds no significant difference.
 
 ## Links
 

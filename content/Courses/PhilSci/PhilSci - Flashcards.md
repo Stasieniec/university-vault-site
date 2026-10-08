@@ -9,7 +9,7 @@ status: complete
 
 # PhilSci - Flashcards
 
-All 295 flashcards for Philosophy of Science: 49 exam-style questions and 246 recall cards, one set per note. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it.
+All 521 flashcards for Philosophy of Science, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[PhilSci - Exam Questions|exam questions]] page.
 
 Back to the [[Courses/PhilSci/index|Philosophy of Science home]].
 

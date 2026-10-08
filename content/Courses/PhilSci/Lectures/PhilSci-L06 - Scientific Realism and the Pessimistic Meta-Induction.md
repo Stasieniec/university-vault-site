@@ -534,11 +534,11 @@ Read against Laudan's three problems ([[PhilSci-L05 - Scientific Realism and its
 > - **"Aether does refer" is not "Maxwell's medium exists exactly as he described it".** The intensions differ; the claim is only about the extension, in a domain ($v \ll c$, fixed frame).
 > - **Kitcher saves reference token by token; De Haro saves it homogeneously** for every term scientists had good reason to introduce.
 
-## Flashcards
-
-Click a question to reveal its answer, or press **Study** to drill the whole set. Cards marked as exam questions are meant to be answered out loud or on paper first, then checked against the points listed.
+## Exam questions
 
 > [!exam]- Practice question (not from the mock): Psillos responds to Laudan's pessimistic meta-induction with a divide et impera strategy. Explain it with Maxwell's theory and the aether, and explain why Stanford thinks it gives realism only a "Pyrrhic victory".
+> **Key points:** Causal core versus idle constituents, core retained; aether idle in Maxwell's theory; anachronism: Maxwell held the aether essential; convergence guaranteed, no prospective criterion; dilemma: past beliefs or repeated misidentification.
+>
 > - **PMI:** once-successful theories posited entities (the aether) now thought not to exist, so success does not warrant approximate truth.
 > - **Divide et impera:** theories have parts. The **causal core** explains the phenomena and generates success, and is typically **retained**; **idle constituents** play no role in success and typically **disappear**. Success confirms only the core.
 > - **Example:** in Maxwell's theory the equations and mechanisms of explanation are the core and do not require the aether; the aether is idle, so its loss leaves the successful part intact.
@@ -547,6 +547,8 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - Evaluation point: De Haro replies that convergence is not guaranteed, since none of the original terms need survive.
 
 > [!exam]- Explain De Haro's extensional scientific realism and how it answers the pessimistic meta-induction, using the aether as the example.
+> **Key points:** PMI assumes a single kind of meaning; intension versus extension (Venus); extension fixed by intension plus domain circumstances; extensional equivalence via predictive, material, conceptual correspondence; aether is extensionally the field plus fixed frame, so it refers.
+>
 > - **Diagnosis:** the PMI, and the literature from Putnam to Stanford, assumes **a single kind of meaning**; that is why "aether" seems both to refer and not to refer.
 > - **Two kinds of meaning** (Frege, Carnap): **intension/sense** (linguistic meaning) and **extension/reference** (the object). "Morning star" and "evening star" differ in sense and both refer to Venus.
 > - **Extensions are determined by the intension plus the circumstances** in which a phenomenon is studied (model, parameter values, extra-theoretical facts, approximations), i.e. relative to a **domain of application**.
@@ -556,6 +558,8 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - **Versus Stanford:** no theory parts are distinguished, so no Pyrrhic victory; Stanford's "repeated, profound" changes miss restricted domains where extensions are continuous.
 
 > [!exam]- Present Kitcher's reply to Laudan about the reference of terms like "aether", and Stanford's objection to it.
+> **Key points:** Terms do not automatically refer, reference fixed by context; aether as field, empty space or nothing; Stanford: the theories were radically misguided; realism needs approximate truth, reference is only a precondition.
+>
 > - **Kitcher (1993):** terms do **not automatically refer**; look at the specific context. Reference is **fixed differently in different cases**: "aether" could refer to the electromagnetic field in some cases, to empty space in others, and to nothing in others. So Laudan is wrong that such terms are simply non-referring.
 > - The mechanism: reference is assigned to individual uses (tokens) of a term, guided by the speaker's intentions, so some of Priestley's uses of "dephlogisticated air" can refer and others not.
 > - **Stanford (2006):** grants the distinction may make sense, but it misses the point of the meta-induction. Even if central terms refer, they sit in **theories that repeatedly turn out radically misguided**, which cannot be approximately true.
@@ -563,139 +567,219 @@ Click a question to reveal its answer, or press **Study** to drill the whole set
 > - Point: realism needs approximate truth; reference is only a precondition.
 
 > [!exam]- How does extensional scientific realism avoid Stanford's "Pyrrhic victory" objection, and how is it parallel to and different from van Fraassen's constructive empiricism?
+> **Key points:** Dilemma comes from sorting theory parts; extensional realism sorts no parts, all claimed terms refer; parallel: literal reading, restricted belief; difference: extensions include unobservables.
+>
 > - **Stanford's objection** targets selective confirmation: sorting theories into parts requires knowing past scientists' intentions or saying they misidentified what made their theories succeed.
 > - **Extensional realism distinguishes no theory parts.** It is a linguistic/philosophical theory of how to interpret scientific statements: assuming empirically adequate theories and sound arguments, **all terms scientists claim refer, do refer**.
 > - So it never overrules the scientists: it can agree with Maxwell that the aether was essential and real.
 > - **Parallel:** van Fraassen reads theories literally but believes only what they say about the observable; De Haro takes literally what the scientist says but believes it only in its **extensional**, not intensional, meaning.
 > - **Difference:** extensions include unobservables (fields, electrons), so extensional realism is a realism; the observable/unobservable line plays no role.
 
-> [!card]- Why is scientific realism one of the central debates in philosophy of science, and what are contemporary realism debates partly reactions to?
-> It deals with what is widely taken to be a central aim of science: **to provide knowledge**. Contemporary debates are in part reactions to the problems of **induction and under-determination**, though there are also lively debates about specific forms of realism. It also touches explanation.
+## Flashcards
 
-> [!card]- Give Enrico Cinti's verdict on each of the four arguments for scientific realism.
-> All four have **some force**:
-> - **Inference to the best explanation**: but van Fraassen says there is no such rule, and empirical adequacy is a competing hypothesis.
-> - **No-miracles argument**: prediction of novel facts and regularities.
-> - **The demand for explanations**: explanation versus ultimate explanation.
-> - **No theory-observation distinction**.
+> [!card]- What verdict does Cinti's realism scorecard give the four arguments for scientific realism (IBE, no-miracles, demand for explanation, no theory-observation distinction)?
+> All four: **some force**.
 
-> [!card]- Give Enrico Cinti's verdict on the three main anti-realist arguments: empirical under-determination, constructive empiricism, the pessimistic meta-induction.
-> - **Empirical under-determination:** stalemate, not much force? (Answered by virtues such as simplicity, pragmatics, metaphysics.)
-> - **Constructive empiricism:** the **main contender**. It lacks many problems of logical empiricism and has some virtues of realism, but "observable" remains a problem.
-> - **Pessimistic meta-induction (Laudan):** some force. No good notion of approximate truth; no connection between empirical success and approximate truth; reference is required for truth, but old theories contain "obviously" non-referring terms.
+> [!card]- What verdict does Cinti's realism scorecard give empirical under-determination as an argument against realism?
+> **Stalemate**, not much force (with a question mark).
 
-> [!card]- Distinguish transient from permanent under-determination, say why realistic examples are hard to find, and give the realist reply.
-> - **Transient:** new evidence may later break the under-determination. **Permanent:** no evidence can.
-> - Realistic examples are hard: logically inequivalent rival theories are easy to build but are toy models; real physics examples are exceedingly rare and controversial.
-> - **Realist reply:** **theoretical virtues** (simplicity, beauty, fruitfulness) are non-empirical but truth-conducive, and empirically equivalent theories can differ on them, so the under-determination is broken.
+> [!card]- Why is the empirical under-determination argument against realism a stalemate?
+> Anti-realists lack real, non-toy cases of equivalent rivals; realists cannot show theoretical virtues are **truth-conducive**.
 
-> [!card]- What do Kitcher (1993) and Psillos (1999) say is wrong with van Fraassen's characterisation of scientific realism, and what positive claim about theories do they make?
-> Van Fraassen's definition says science aims at a **literally true** story and acceptance involves belief that the theory is true. Kitcher and Psillos say realists do not believe in literal truth but in **approximate or probable truth**. Theories are **not monolithic**: they have parts of unequal importance, and their accounts use these parts to **make approximate truth precise**.
+> [!card]- Which anti-realist position does Cinti's realism scorecard call the "main contender"?
+> **Constructive empiricism** (van Fraassen).
 
-> [!card]- What is the "mature theories only" reply to the pessimistic meta-induction, who gave it, and what is Stanford's counter-reply?
-> - **Reply (Boyd 1981; Hardin and Rosenberg 1981):** be a realist only about **empirically well-confirmed, mature** theories, which removes the early theories from Laudan's list.
-> - **Stanford (2006):** the maturity requirement is **arbitrary** and post hoc; and some theories on Laudan's list surely were well confirmed: the **phlogiston theory of combustion** and the **caloric theory of heat**.
-> - Psillos himself concedes that caloric and the optical aether theories were mature and successful, so maturity alone does not defeat the argument.
+> [!card]- Which three problems for realism does Cinti's scorecard list under Laudan's pessimistic meta-induction?
+> No good notion of **approximate truth**; no link from success to approximate truth; truth needs **reference**, yet old theories have obviously non-referring terms.
 
-> [!card]- What is structural realism as a reply to the pessimistic meta-induction, and what is the objection to it?
-> Continuity across theory change is given by **preserved mathematical structure**: the equations survive even when the posited entities do not. Objection: preserved structure may **not be enough to specify a (scientific) ontology**, i.e. to say what kinds of things the world contains.
+> [!card]- How does the realist claim to break empirical under-determination?
+> With **theoretical virtues** (simplicity, beauty, fruitfulness): non-empirical but truth-conducive, so empirically equivalent theories can still differ on them.
 
-> [!card]- State Psillos' divide et impera move: the two kinds of theory parts and their fate.
-> - **Causal core:** has a role in explaining the phenomena and is **responsible for the theory's success**; typically **retained** by later theories.
-> - **Idle constituents:** not causally involved in explaining the phenomena, not responsible for success; typically **disappear** in later theories.
-> - Success confirms only the core, so abandoning idle posits does not show the successful parts were false.
-> - Compare Lakatos' hard core and protective belt.
+> [!card]- What do Kitcher and Psillos say realists believe about successful theories, against van Fraassen's definition of realism?
+> Their **approximate or probable truth**, not their literal truth.
 
-> [!card]- Apply Psillos' selective confirmation to Maxwell's theory and the aether.
-> The **causal core** is the theory's actual **equations and mechanisms of explanation**, which **do not require the aether**. The **aether is an idle constituent**, not retained in modern electromagnetic theory. So Maxwell's success confirms the equations, and the loss of the aether is no evidence against them.
+> [!card]- How does treating theories as having "parts" help Kitcher and Psillos with Laudan's approximate-truth problem?
+> "Approximately true" can mean the **important parts are true** even if others are false, checkable part by part.
 
-> [!card]- What is a mixed theory of reference (Papineau, Lewis, Psillos), and why is it preferred to purely descriptive or purely causal theories?
-> It combines **causal** and **descriptive** accounts. On a descriptive theory a term refers to whatever fits the theory's description, so when descriptions change reference fails (Laudan's cases all fail to refer). On a causal theory a term refers to whatever caused the phenomena it was introduced for, which makes reference too easy. On Psillos' mixed version a term refers to an entity that both **causes the phenomena** and **satisfies a causal description** of how it does so: the causal contact anchors the description, and the description stops reference coming too cheaply.
+> [!card]- What is the "mature theories only" reply to the pessimistic meta-induction (Boyd, Hardin and Rosenberg)?
+> Be a realist only about **empirically well-confirmed, mature** theories; the immature ones on Laudan's list do not count.
 
-> [!card]- What is Stanford's anachronism objection to selective confirmation?
-> The distinction between causal core and idle terms **would have been denied by the scientists who developed those theories**. **Maxwell regarded the aether as an essential part** of electromagnetic theory, so saying Maxwell's theory "was really not about the aether" overrules him with hindsight.
+> [!card]- What is Stanford's objection to the "mature theories only" reply to the pessimistic meta-induction?
+> The maturity requirement is **arbitrary** and post hoc, and some listed theories were well confirmed: **phlogiston** (combustion) and **caloric** (heat).
 
-> [!card]- Why does Stanford say convergence towards the causal core is "virtually guaranteed", and why does that hurt selective realism?
-> Almost by definition, whatever entities current theories retain count as part of what we now call the causal core, and the core need not be what past scientists thought important. So the "discovery" that the core was retained is built into the method and confirms nothing.
+> [!card]- Why does Psillos himself think restricting realism to mature theories does not defeat the pessimistic meta-induction?
+> **Caloric** theory and nineteenth-century **optical aether** theories were mature and successful yet are considered false.
 
-> [!card]- What does Stanford mean by demanding "prospectively applicable criteria" of idleness, and what is Whig history?
-> Whig history judges the past by what we now believe. If idleness is identified by looking back at what survived, the method only works on past theories. **Scientists of the future will make the same verdicts about our current theories**, so we cannot now tell which parts of our best theories to believe. Without non-anachronistic criteria usable in advance, we are not entitled to be realists about our best theories.
+> [!card]- According to structural realism, what is preserved across theory change?
+> **Mathematical structure** (the equations), even when the posited entities are dropped.
 
-> [!card]- State Stanford's dilemma for selective confirmation and why he calls the result a "Pyrrhic victory".
-> Selective confirmation requires **either** knowing facts about the **beliefs and intentions of past scientists**, **or** saying that past scientists **repeatedly misidentified the parts** of their theories that contributed to success. Either way realism wins at a cost that makes the win worthless: it saves approximate truth only by overruling the very scientists whose success it set out to trust.
+> [!card]- What is the main objection to structural realism as a reply to the pessimistic meta-induction?
+> Preserved structure may not be enough to specify a (scientific) **ontology**: what kinds of things the world contains.
 
-> [!card]- Which two points of Stanford's critique of selective confirmation does De Haro accept?
-> 1. One must **explain the connection between reference and approximate truth**, and explicate both.
-> 2. One must **avoid projecting current insights into the past** (what now seems true, what theories "are really about") onto past scientists' intentions and beliefs, which gives incorrect readings of history. Methodological principle: read past scientists' arguments **in their historical context**.
+> [!card]- How does Kitcher reply to Laudan's claim that terms like "aether" were non-referring?
+> Terms do not automatically refer: **reference is fixed differently in different contexts**, so Laudan's conclusion is wrong.
 
-> [!card]- What are De Haro's two criticisms of Stanford's critique of selective realism?
-> 1. Convergence on a causal core is **not virtually guaranteed**: if the core is found by eliminating idle terms and keeping those that cause the phenomena, **none of the original terms might remain**. Any causal core that does remain is highly remarkable.
-> 2. Stanford **reads into Maxwell's text** when he concludes Maxwell thought transmission other than through an aether "incoherent" and "unintelligible".
-> Conclusion: Stanford's critique of continuity in selective realism is not strong.
+> [!card]- On Kitcher's account, what three things could "aether" refer to in different cases?
+> The **electromagnetic field**, **empty space**, or **nothing at all**.
 
-> [!card]- What is "Laudan's perplexity about reference", and what does De Haro diagnose as its source?
-> The puzzle that terms of old theories ("aether", "phlogiston") seem to "fail to refer", while there are plausible arguments both that "aether" refers and that it does not. Source: the literature from Putnam (1978) to Stanford (2006) assumes **a single kind of meaning of words**. The conflict signals the need for a further linguistic distinction: intension versus extension. Hence the claim that it is **not at all obvious** that the terms on Laudan's list fail to refer.
+> [!card]- What is Stanford's objection to Kitcher's account of the reference of old theoretical terms?
+> Even if the terms refer, the theories were **radically misguided**, so cannot be approximately true.
 
-> [!card]- In what sense is De Haro's extensional scientific realism a "cautious realism", and what is its first aim?
-> Against van Fraassen's characterisation, belief in the **literal truth** of theories is often naive; the claim is **approximate truth**, in place of "truth of theories, period". First aim: a cogent answer to the **pessimistic meta-induction**, as the main argument still open against realism, by rejecting its assumption of a single notion of meaning.
+> [!card]- Why does saving reference not save scientific realism, according to Stanford's reply to Kitcher?
+> Realism needs **approximate truth**, and reference is only a **precondition** for it.
 
-> [!card]- Explain the distinction between sense and reference (intension and extension) with the Venus example.
-> Venus, seen in the morning and the evening, is called both "morning star" and "evening star". The names have different **senses** (brightest star in the morning; brightest star in the evening) but in our world the same **reference**: the planet Venus.
-> - **Sense = intension:** the linguistic meaning of the words.
-> - **Reference = extension:** the actual object the words refer to.
-> "Sense/reference" is Frege's pair; "intension/extension" is Carnap's jargon.
+> [!card]- In Psillos' divide et impera, what is the causal core of a theory?
+> The part that **explains the phenomena** and is **responsible for the theory's success**; typically retained by later theories.
 
-> [!card]- Give the three notions of "temperature" in De Haro's example, and say what the intension/extension distinction says about them.
-> - **Lay person:** "the expansion of mercury that I measure with a thermometer".
-> - **Thermodynamics:** "a measure of the tendency of an object to give energy to its surroundings" (hot/cold).
-> - **Statistical mechanics:** "the mean kinetic energy of the molecules in a substance" (fast/slow).
-> The two physicists give "temperature" **different intensions** (different definitions) but the **same extension** (the same physical quantity): the concepts are extensionally equivalent. This is one way to understand Kuhn's claim that scientists "live in different worlds": the senses change, the referent need not.
+> [!card]- What does Psillos call the parts of a theory that are not causally involved in its success and typically disappear later?
+> **Idle constituents**.
 
-> [!card]- What are the two steps of De Haro's answer to the pessimistic meta-induction, and what is the slogan?
-> Goal: continuity of **reference** and **approximate truth** between discarded and new theories.
-> - **Step 1:** continuity in the **extensions** of successive theories: **extensional equivalence**, reference to the same items in the **domain of application** (e.g. all extensional results of classical mechanics derive from quantum mechanics).
-> - **Step 2:** define **approximate truth** in terms of extensions.
-> Slogan: *we are justified in being scientific realists about extensions but not necessarily about intensions.*
+> [!card]- How does Psillos apply divide et impera to Maxwell's electromagnetic theory?
+> The equations and mechanisms of explanation are the **causal core** and do not require the aether; the **aether is idle**.
+
+> [!card]- What is the difference between Psillos' causal core and Lakatos' hard core?
+> Lakatos' hard core is what scientists **decide to protect**; Psillos' causal core is defined by its **role in producing success**.
+
+> [!card]- Why does a purely descriptive theory of reference favour Laudan's pessimistic meta-induction?
+> A term refers to whatever fits the description, so when **descriptions change, reference changes** and Laudan's cases all fail to refer.
+
+> [!card]- On Psillos' mixed theory of reference, when does a term refer to an entity?
+> When the entity both **causes the phenomena** and **satisfies a causal description** of how it causes them.
+
+> [!card]- What is Stanford's anachronism objection to Psillos' selective confirmation?
+> The core/idle split would have been **denied by the scientists themselves**: Maxwell regarded the aether as **essential**.
+
+> [!card]- Why does Stanford say convergence on the causal core is "virtually guaranteed" in selective realism?
+> **Almost by definition**, whatever current theories retain counts as the causal core, so convergence is **built in**.
+
+> [!card]- Why does Stanford demand "prospectively applicable" criteria of idleness?
+> Hindsight sorting works only on past theories; it cannot tell which parts of **our current theories** to believe.
+
+> [!card]- What is Stanford's dilemma for selective confirmation?
+> Either know the **beliefs and intentions of past scientists**, or say they **repeatedly misidentified** the parts of their theories that produced success.
+
+> [!card]- Why does Stanford call selective realism's win over the pessimistic meta-induction a "Pyrrhic victory"?
+> Either horn costs too much: it must **overrule the scientists** whose success realism set out to trust, or claim access to their **beliefs** we lack.
+
+> [!card]- How does Psillos answer the objection that the core/idle line is drawn only with hindsight?
+> Scientists drew it **at the time**: Lavoisier, Laplace and Carnot believed the caloric laws but treated heat-as-fluid as speculative.
+
+> [!card]- Which two lessons does De Haro accept from Stanford's critique of selective confirmation?
+> Explicate **reference and approximate truth** together, and **do not project current insights into the past**.
+
+> [!card]- Why does De Haro deny that convergence on a causal core is "virtually guaranteed"?
+> Eliminating idle terms could leave **none of the original terms**, so a surviving causal core is highly remarkable.
+
+> [!card]- What is De Haro's second criticism of Stanford's critique of selective realism?
+> Stanford **reads into Maxwell's text** that transmission without an aether was "incoherent" and "unintelligible".
+
+> [!card]- What weakness does De Haro find in the realism literature from Putnam to Stanford?
+> It assumes **a single kind of meaning** of words, which produces Laudan's perplexity about reference.
+
+> [!card]- Which premise of the pessimistic meta-induction does De Haro's claim about Laudan's list attack?
+> That old theories contain **obviously non-referring** terms. De Haro: not at all obvious.
+
+> [!card]- What is the intension (Frege's sense) of a word?
+> Its **linguistic meaning**.
+
+> [!card]- What is the extension (Frege's reference) of a word?
+> The **actual object or entity** the word refers to.
+
+> [!card]- What does the "morning star" / "evening star" example illustrate?
+> **Two different senses, one reference**: both names pick out Venus.
+
+> [!card]- How do the thermodynamic and statistical-mechanical definitions of temperature differ?
+> Thermodynamics: tendency of an object to **give energy to its surroundings**. Statistical mechanics: **mean kinetic energy of the molecules**.
+
+> [!card]- On De Haro's account, what do the thermodynamic and statistical-mechanical uses of "temperature" share?
+> The same **extension** (one physical quantity), despite different **intensions**.
+
+> [!card]- How does the intension/extension distinction reinterpret Kuhn's claim that scientists in different paradigms "live in different worlds"?
+> The **intension** changes between theories, the **extension** need not: both still refer to and measure the same thing.
+
+> [!card]- What are the two steps of De Haro's answer to the pessimistic meta-induction?
+> 1. Continuity of **extensions** of successive theories (extensional equivalence). 2. Define **approximate truth** in terms of extensions.
+
+> [!card]- What is extensional equivalence between two theories, for De Haro?
+> Reference to the **same items in the domain of application**.
+
+> [!card]- What is De Haro's standard example of two extensionally equivalent theories?
+> **Quantum and classical mechanics**: all extensional results of classical mechanics derive from quantum mechanics.
 
 > [!card]- How does De Haro's extensional equivalence secure continuity differently from Psillos' selective confirmation?
-> Psillos secures continuity through **theory parts**: the causal core is retained, idle parts dropped. De Haro secures it by **delimiting a theory's extension to a domain of application**: the whole theory, taken extensionally on that domain, is continuous with its successor, whatever happens outside it.
+> Psillos: via **theory parts** (retained core). De Haro: by **delimiting the extension to a domain of application**.
 
-> [!card]- What determines the extension of a term in a scientific theory, according to De Haro? Give the four aspects.
-> The extension is determined by the **intension** plus the **specific circumstances or context** in which the phenomenon is studied (as "morning star" and "evening star" coincide in our world, under our conditions of observation). Four aspects:
-> 1. **Specification of a model**: initial and boundary conditions, population assumptions, environmental conditions.
-> 2. **Values of free parameters**: mass, coupling strength, chemical concentration.
-> 3. **Extra-theoretical facts**: experimental errors, other influences, material realisation, weather.
-> 4. **Approximations and idealisations**: limits such as $v \ll c$, $\hbar \to 0$, $G \to 0$.
+> [!card]- What is the slogan of De Haro's extensional scientific realism?
+> We are justified in being realists about **extensions** but not necessarily about **intensions**.
 
-> [!card]- What is "effective realism" in high-energy physics?
-> **Realism about a theory in a specified range of parameters**: the theory is believed only within the range where it applies (effective field theories come with a cut-off beyond which they need modification). It is a view related to De Haro's restriction of realism to a domain of application.
+> [!card]- Why should a realist commit only to a theory's extension in its domain of application, according to De Haro?
+> The intension covers **untested situations** where the theory may be false; evidence supports only the extension where it was tested.
 
-> [!card]- Name and define De Haro's three kinds of correspondence that establish extensional equivalence.
-> 1. **Predictive-theoretical (numerical and formal) correspondence:** the two theories make the **same predictions** under the relevant approximations.
-> 2. **Material correspondence** (experimental, instrumental, replicability): **the system studied is the same**, studied from different points of view.
-> 3. **Conceptual correspondence:** the concepts are **not identical** but **match**, playing the **same roles** in the given extension.
+> [!card]- What determines the extension of a term in a scientific theory, according to De Haro?
+> The **intension** plus the **specific circumstances or context** in which the phenomenon is studied.
 
-> [!card]- Give one example of each of De Haro's three kinds of correspondence.
-> - **Predictive:** quantum mechanics reproduces classical results under specific conditions (large systems): the equation for expectation values, $\langle dp/dt \rangle = -\langle \nabla V \rangle$, goes over into Newton's $F = -\nabla V$.
-> - **Material:** the **atom** studied by the quantum theorist and by the inorganic chemist is the same entity, despite different experiments (particle accelerator, electron microscope, chemical reaction).
-> - **Conceptual:** quantum and classical mechanics both have the notion of **"position of a particle"**, playing the same role on a given extension.
+> [!card]- What four aspects determine extensions in natural science, according to De Haro?
+> Model specification, **free parameter values**, extra-theoretical facts, **approximations and idealisations**.
 
-> [!card]- In De Haro's "aether revisited", which kinds of correspondence hold between old and new electromagnetic theory, and what is his answer to the pessimistic meta-inductivist?
-> The meta-inductivist: the aether does not exist, so how can old electromagnetic theory be even approximately true, with an ontology Stanford calls "radically misguided"? Old and new theories are in **predictive and material** correspondence, but **no conceptual** correspondence. De Haro's answer: **"aether" does refer**, the aether does exist.
+> [!card]- What three kinds of correspondence establish extensional equivalence, for De Haro?
+> **Predictive** (numerical and formal), **material**, **conceptual**.
 
-> [!card]- What is Maxwell's "aether" extensionally equivalent to, according to De Haro, and why was Maxwell's argument for it good?
-> To **the electromagnetic field together with a fixed frame of reference**, $v \ll c$. Maxwell's argument was very good: by **conservation of energy**, electromagnetic energy does not disappear from the sender and pop up at the receiver elsewhere in space, so a medium must carry it. That medium is extensionally the field (plus fixed frame), though "aether" and "electromagnetic field" are **intensionally distinct**.
+> [!card]- What is conceptual correspondence between two theories, for De Haro?
+> The concepts are **not identical** but **match**: they play the same roles in the given extension.
 
-> [!card]- State De Haro's sketch of approximate truth and the worry about vagueness.
-> Using **Laudan's idea of progress** (measured by the relative number and significance of the problems a theory solves): $T$ is **closer to the truth** than $T'$ **iff** $T$ is **extensionally true in a larger, and more significant, domain of application**. Worry: theories might become vaguer as they become more general. Standard answer: $T$ must also be **as good as $T'$ as a theory**, e.g. in predictive power and explanation.
+> [!card]- Quantum mechanics' expectation values obey the form of Newton's $F = -\nabla V$. Which kind of De Haro correspondence is this?
+> **Predictive** (numerical and formal) correspondence.
 
-> [!card]- Describe De Haro's figure comparing two theories T and T' and say which is closer to the truth.
-> Lines from each theory land on the domains where it is extensionally true. $T$ is true on $D_1$ and $D_2$; $T'$ on $D_1'$, $D_2'$ (which contain $D_1$ and $D_2$) and on a further domain $D_3$; neither is true on $D_4$. $T$'s intension is drawn as a region $I_T$ around $D_1, D_2$, and $T'$'s as a larger region $I_{T'}$. Since $D_1 \cup D_2 \subset D_1' \cup D_2'$ and $T'$ also covers $D_3$, $T'$ is true on a larger domain, so $T'$ is closer to the truth, while $T$ stays extensionally true on its own domain.
+> [!card]- The quantum theorist and the inorganic chemist study the same atom with different experiments. Which kind of De Haro correspondence is this?
+> **Material** correspondence.
 
-> [!card]- What are the main conclusions of De Haro's extensional scientific realism?
-> - The perplexity about reference comes from **too simple, naive readings of the history of science** that gloss over the **intension/extension** distinction.
-> - Stanford is partly right, but his "broad pattern(s) of repeated, profound, and unpredictable changes in fundamental theoretical orthodoxy" misses **restricted domains of application** where there is **extensional equivalence**.
-> - Supported by: continuity of reference (the aether, quantum mechanics), conceptual, material and predictive correspondence, and the beginning of a notion of approximate truth.
+> [!card]- "Position of a particle" plays the same role in quantum and classical mechanics. Which kind of De Haro correspondence is this?
+> **Conceptual** correspondence.
+
+> [!card]- In the pessimistic meta-inductivist's case as De Haro presents it, which kind of correspondence is missing between aether-based and modern electromagnetic theory?
+> **Conceptual**; predictive and material correspondence hold.
+
+> [!card]- According to De Haro, what is Maxwell's "aether" extensionally equivalent to?
+> The **electromagnetic field together with a fixed frame of reference**, $v \ll c$.
+
+> [!card]- What was Maxwell's argument for the existence of the aether, which De Haro calls very good?
+> **Conservation of energy**: energy cannot vanish at the sender and reappear at the receiver, so something carries it.
+
+> [!card]- According to De Haro, are "aether" and "electromagnetic field" the same in intension?
+> **No**: intensionally distinct, extensionally equivalent in the domain.
+
+> [!card]- How does De Haro's extensional realism escape Stanford's "Pyrrhic victory" dilemma?
+> It **distinguishes no theory parts**: assuming sound arguments, all terms scientists claim refer do refer.
+
+> [!card]- How does De Haro's extensional realism answer Stanford's anachronism objection about Maxwell?
+> It **agrees with Maxwell** that the aether was essential and real; what his argument established is, extensionally, the field.
+
+> [!card]- What do De Haro's extensional realism and van Fraassen's constructive empiricism have in common?
+> Both **read theories literally** but **restrict belief**: van Fraassen to the observable, De Haro to extensions.
+
+> [!card]- Why is De Haro's extensional realism still a realism, unlike constructive empiricism?
+> Extensions include **unobservables** (fields, electrons); the observable/unobservable line plays no role.
+
+> [!card]- What is the difference between Psillos' selective realism and De Haro's extensional realism?
+> Psillos believes **some parts** of a theory; De Haro believes the **whole theory, but only extensionally** in its domain.
+
+> [!card]- What is the difference between how Kitcher and De Haro save the reference of old terms like "aether"?
+> Kitcher saves it **token by token**; De Haro saves it **homogeneously** for every well-motivated term.
+
+> [!card]- In De Haro's sketch, when is theory $T$ closer to the truth than $T'$?
+> Iff $T$ is **extensionally true in a larger, and more significant, domain of application**.
+
+> [!card]- Whose idea of scientific progress does De Haro use to define approximate truth?
+> **Laudan's**: progress measured by the relative number and significance of the problems a theory solves.
+
+> [!card]- In De Haro's account, what stops a theory counting as closer to the truth merely by becoming more general and vaguer?
+> It must also be **as good as a theory** as its rival, e.g. in **predictive power and explanation**.
+
+> [!card]- On De Haro's account, is an old theory refuted when a successor is extensionally true on a larger domain?
+> **No**: it remains extensionally true, so approximately true, on its own domain.
+
+> [!card]- What does De Haro say Stanford's "repeated, profound, and unpredictable changes" in theory miss?
+> **Restricted domains of application** where successive theories are **extensionally equivalent**.
 
 ## Links
 
