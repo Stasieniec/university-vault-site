@@ -56,7 +56,8 @@ function forget(key: string) {
 }
 
 // On a course page the cards arrive through transclusions, one per lecture, each under its own
-// heading. On a lecture page there is no transclusion and the deck is the note itself.
+// heading. On a lecture page there is no transclusion: the note's short cards are one deck and
+// its long-form exam questions another, so a spare-moment session never hits a model answer.
 function deckLabel(el: Element): string {
   const tr = el.closest(".transclude")
   if (tr) {
@@ -64,7 +65,7 @@ function deckLabel(el: Element): string {
     while (prev && !/^H[1-6]$/.test(prev.tagName)) prev = prev.previousElementSibling
     if (prev?.textContent) return prev.textContent.trim()
   }
-  return document.querySelector(".article-title")?.textContent?.trim() ?? "Flashcards"
+  return el.getAttribute("data-callout") === "exam" ? "Exam questions" : "Flashcards"
 }
 
 function collectDecks(root: Element): Deck[] {
@@ -94,7 +95,10 @@ function collectDecks(root: Element): Deck[] {
     if (!decks.has(label)) decks.set(label, { label, cards: [], anchor })
     decks.get(label)!.cards.push(card)
   }
-  return Array.from(decks.values())
+  // Short cards first: on a lecture page the exam questions section comes before the flashcards,
+  // but the flashcards are the default thing to study.
+  const all = Array.from(decks.values())
+  return [...all.filter((d) => !d.cards.every((c) => c.exam)), ...all.filter((d) => d.cards.every((c) => c.exam))]
 }
 
 function el<K extends keyof HTMLElementTagNameMap>(
@@ -249,8 +253,14 @@ function openSession(cards: Card[], title: string) {
     const q = el("div", "fc-q")
     q.innerHTML = card.q
     inner.append(meta, q)
-    if (card.exam && !revealed) {
-      inner.appendChild(el("div", "fc-prompt", "Answer it out loud or on paper first."))
+    if (!revealed) {
+      inner.appendChild(
+        el(
+          "div",
+          "fc-prompt",
+          card.exam ? "Answer it out loud or on paper first." : "Say the answer before you reveal it.",
+        ),
+      )
     }
     body.append(strip, inner)
     body.classList.toggle("is-exam", card.exam)
