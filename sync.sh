@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Sync the vault into this Quartz site and build it.
 #
-# Publishing is deliberately NOT the default. Run with --push only when Stas has
-# looked at the preview and said go.
+# Publishes by default: Stas does not want a preview step (2026-10-08, "pls just publish,
+# i dont care"). Pass --no-push to build without publishing. The vault audit below still
+# blocks the build on dangling links.
 #
 # Paths are derived from this script's location. The previous version hardcoded
 # /home/ubuntu paths from the OpenClaw VPS, which no longer exists.
@@ -15,6 +16,11 @@ VAULT="${VAULT:-$(cd "$SITE/../university-vault" && pwd)}"
 
 echo "Vault: $VAULT"
 echo "Site:  $SITE"
+
+# Other machines push here too. Start from the latest site so the push at the end lands.
+if [ "${1:-}" != "--no-push" ]; then
+  git -C "$SITE" pull --rebase --autostash -q
+fi
 
 # Course homes and flashcard pages are generated from the notes. Regenerate them so card
 # counts and lecture lists never go stale, and say so if that changed the vault.
@@ -66,7 +72,7 @@ if [ -n "$IGNORED" ]; then
 fi
 echo "  $(find "$SITE/public" -name '*.html' | wc -l) pages built, none ignored"
 
-if [ "${1:-}" = "--push" ]; then
+if [ "${1:-}" != "--no-push" ]; then
   echo
   echo "Publishing..."
   git add -A
@@ -75,7 +81,6 @@ if [ "${1:-}" = "--push" ]; then
   echo "Pushed. Cloudflare Pages will deploy."
 else
   echo
-  echo "Built, not published. Preview it with:"
+  echo "Built, not published (--no-push). Preview it with:"
   echo "    cd $SITE && npx quartz build --serve"
-  echo "Then re-run with --push to publish."
 fi
