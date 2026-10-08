@@ -11778,19 +11778,21 @@ import { visit as visit6 } from "unist-util-visit";
 import { styleText as styleText2 } from "util";
 import { jsx as jsx4, jsxs } from "preact/jsx-runtime";
 var headerRegex = new RegExp(/h[1-6]/);
+var BUILD_VERSION = Date.now().toString(36);
+var versioned = /* @__PURE__ */ __name((path12) => `${path12}?v=${BUILD_VERSION}`, "versioned");
 function pageResources(baseDir, staticResources) {
   const contentIndexPath = joinSegments(baseDir, "static/contentIndex.json");
-  const contentIndexScript = `const fetchData = fetch("${contentIndexPath}").then(data => data.json())`;
+  const contentIndexScript = `const fetchData = fetch("${versioned(contentIndexPath)}").then(data => data.json())`;
   const resources = {
     css: [
       {
-        content: joinSegments(baseDir, "index.css")
+        content: versioned(joinSegments(baseDir, "index.css"))
       },
       ...staticResources.css
     ],
     js: [
       {
-        src: joinSegments(baseDir, "prescript.js"),
+        src: versioned(joinSegments(baseDir, "prescript.js")),
         loadTime: "beforeDOMReady",
         contentType: "external"
       },
@@ -11805,7 +11807,7 @@ function pageResources(baseDir, staticResources) {
     additionalHead: staticResources.additionalHead
   };
   resources.js.push({
-    src: joinSegments(baseDir, "postscript.js"),
+    src: versioned(joinSegments(baseDir, "postscript.js")),
     loadTime: "afterDOMReady",
     moduleType: "module",
     contentType: "external"

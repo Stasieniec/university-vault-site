@@ -23,23 +23,30 @@ interface RenderComponents {
 }
 
 const headerRegex = new RegExp(/h[1-6]/)
+
+// The swasilewski.com zone sets a 4 hour browser cache on everything that is not HTML, and
+// these files keep the same name every build. Without a version in the URL, a visitor kept the
+// old stylesheet for hours after a deploy (2026-10-08, the theme change). HTML is revalidated
+// on every load, so a new query string per build is enough to make browsers fetch the new files.
+const BUILD_VERSION = Date.now().toString(36)
+const versioned = (path: string) => `${path}?v=${BUILD_VERSION}`
 export function pageResources(
   baseDir: FullSlug | RelativeURL,
   staticResources: StaticResources,
 ): StaticResources {
   const contentIndexPath = joinSegments(baseDir, "static/contentIndex.json")
-  const contentIndexScript = `const fetchData = fetch("${contentIndexPath}").then(data => data.json())`
+  const contentIndexScript = `const fetchData = fetch("${versioned(contentIndexPath)}").then(data => data.json())`
 
   const resources: StaticResources = {
     css: [
       {
-        content: joinSegments(baseDir, "index.css"),
+        content: versioned(joinSegments(baseDir, "index.css")),
       },
       ...staticResources.css,
     ],
     js: [
       {
-        src: joinSegments(baseDir, "prescript.js"),
+        src: versioned(joinSegments(baseDir, "prescript.js")),
         loadTime: "beforeDOMReady",
         contentType: "external",
       },
@@ -55,7 +62,7 @@ export function pageResources(
   }
 
   resources.js.push({
-    src: joinSegments(baseDir, "postscript.js"),
+    src: versioned(joinSegments(baseDir, "postscript.js")),
     loadTime: "afterDOMReady",
     moduleType: "module",
     contentType: "external",
