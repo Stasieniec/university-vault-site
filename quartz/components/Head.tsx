@@ -45,6 +45,10 @@ export default (() => {
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link rel="stylesheet" href={googleFontHref(cfg.theme)} />
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&display=swap"
+            />
             {cfg.theme.typography.title && (
               <link rel="stylesheet" href={googleFontSubsetHref(cfg.theme, cfg.pageTitle)} />
             )}

@@ -6,65 +6,65 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>MNLP - Exam Analysis</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP---Exam-Analysis</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP---Exam-Analysis</guid>
-    <description><![CDATA[ MNLP - Exam Analysis What the exam looks like Two hours on paper, multiple choice and multiple selection only, questions grouped in blocks by topic with every question independent of the others, and one two-sided cheat sheet that can be printed. ]]></description>
-    <pubDate>Wed, 07 Oct 2026 20:34:03 GMT</pubDate>
-  </item><item>
-    <title>PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction</title>
-    <link>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L06---Scientific-Realism-and-the-Pessimistic-Meta-Induction</link>
-    <guid>https://notes.swasilewski.com/Courses/PhilSci/Lectures/PhilSci-L06---Scientific-Realism-and-the-Pessimistic-Meta-Induction</guid>
-    <description><![CDATA[ PhilSci-L06: Scientific Realism and the Pessimistic Meta-Induction Overview Laudan’s list says the aether, phlogiston and caloric do not exist, so the successful theories built on them were false, so ours probably are too. ]]></description>
-    <pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
-  </item><item>
     <title>B Testing</title>
     <link>https://notes.swasilewski.com/Concepts/A/B-Testing</link>
     <guid>https://notes.swasilewski.com/Concepts/A/B-Testing</guid>
     <description><![CDATA[ A/B Testing Definition A/B Testing A/B testing is the standard method for Online Evaluation of a recommender system: a live experiment that compares a new system (variant) against the currently deployed one (control) by randomly splitting live traffic into groups and measuring a business objective o... ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>A3C</title>
     <link>https://notes.swasilewski.com/Concepts/A3C</link>
     <guid>https://notes.swasilewski.com/Concepts/A3C</guid>
     <description><![CDATA[ A3C Definition A3C (Asynchronous Advantage Actor-Critic) A3C is an on-policy, deep Actor-Critic algorithm (Mnih et al., 2016) that runs many actor-learners in parallel, each on its own copy of the environment, asynchronously updating a shared set of global parameters. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>Action-Value Methods</title>
     <link>https://notes.swasilewski.com/Concepts/Action-Value-Methods</link>
     <guid>https://notes.swasilewski.com/Concepts/Action-Value-Methods</guid>
     <description><![CDATA[ Action-Value Methods Definition Action-Value Methods Action-value methods estimate the value of each action — the expected reward (or return) of selecting it — and then use those estimates to drive action selection. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>Actor-Critic</title>
     <link>https://notes.swasilewski.com/Concepts/Actor-Critic</link>
     <guid>https://notes.swasilewski.com/Concepts/Actor-Critic</guid>
     <description><![CDATA[ Actor-Critic Definition Actor-Critic Methods Actor-Critic methods are a class of Reinforcement Learning algorithms that combine both policy-based and value-based approaches. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>Adagrad</title>
     <link>https://notes.swasilewski.com/Concepts/Adagrad</link>
     <guid>https://notes.swasilewski.com/Concepts/Adagrad</guid>
     <description><![CDATA[ Adagrad Definition Adagrad (Adaptive Gradient Algorithm) Adagrad is an adaptive learning-rate optimization method that gives each parameter its own learning rate, scaled inversely to the square root of the sum of all past squared gradients for that parameter. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>Adam</title>
     <link>https://notes.swasilewski.com/Concepts/Adam</link>
     <guid>https://notes.swasilewski.com/Concepts/Adam</guid>
     <description><![CDATA[ Adam Definition Adam (Adaptive Moment Estimation) Adam is an optimization algorithm for gradient-based optimization of stochastic objective functions. ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>Advantage Actor-Critic (A2C)</title>
     <link>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</link>
     <guid>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</guid>
     <description><![CDATA[ Advantage Actor-Critic (A2C) Definition Advantage Actor-Critic (A2C) A2C is an on-policy Actor-Critic algorithm that combines a parameterized policy (the actor, \pi_\theta) with a learned state-value function (the critic, \hat{V}_w). ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item><item>
     <title>Advantage Function</title>
     <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
     <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
     <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
-    <pubDate>Mon, 05 Oct 2026 17:14:50 GMT</pubDate>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
+  </item><item>
+    <title>Agentic Search</title>
+    <link>https://notes.swasilewski.com/Concepts/Agentic-Search</link>
+    <guid>https://notes.swasilewski.com/Concepts/Agentic-Search</guid>
+    <description><![CDATA[ Agentic Search Agentic Search A retrieval paradigm where the language model has agency over the retrieval process, deciding when to search, what queries to issue, and how to incorporate results—in contrast to static RAG pipelines with fixed retrieve-then-read structure. ]]></description>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
+  </item><item>
+    <title>Algorithmic Fairness</title>
+    <link>https://notes.swasilewski.com/Concepts/Algorithmic-Fairness</link>
+    <guid>https://notes.swasilewski.com/Concepts/Algorithmic-Fairness</guid>
+    <description><![CDATA[ Algorithmic Fairness Algorithmic Fairness Algorithmic fairness is the study of how automated decision systems can be designed to avoid systematic discrimination against individuals or groups based on protected characteristics or other morally relevant factors. ]]></description>
+    <pubDate>Wed, 07 Oct 2026 20:35:50 GMT</pubDate>
   </item>
     </channel>
   </rss>

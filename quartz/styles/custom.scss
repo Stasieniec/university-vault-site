@@ -1,6 +1,242 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+// Teenage Engineering panel look, picked by Stas on 2026-10-08 from the redesign canvas.
+// Warm grey ground, bone panels, ink, one hi-vis orange. Labels are monospace and upper case,
+// reading text is Archivo, headings are Archivo run condensed. The flashcard study view lives in
+// quartz/components/styles/flashcards.scss and uses the tokens below.
+
+:root {
+  --panel: #f4f3ef;
+  --panel-edge: #c9c7c0;
+  --key-shadow: #b9b7af;
+  --ink: #141414;
+  --orange: #ff5a1f;
+  --orange-ink: #b33a0c;
+  --orange-shadow: #b33a0c;
+  --lcd: #161614;
+  --lcd-text: #f4f3ef;
+  --lcd-dim: #a9a79f;
+}
+
+:root[saved-theme="dark"] {
+  --panel: #1f1e1b;
+  --panel-edge: #3a3934;
+  --key-shadow: #000000;
+  --ink: #f4f3ef;
+  --orange-ink: #ff7a45;
+  --orange-shadow: #8a2c08;
+  --lcd: #0a0a09;
+  --lcd-text: #f4f3ef;
+  --lcd-dim: #9a988f;
+}
+
+// Type.
+body {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-stretch: 82%;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+h1.article-title {
+  font-stretch: 70%;
+  font-size: clamp(2.3rem, 6vw, 3.7rem);
+  line-height: 0.95;
+  margin: 0.75rem 0 0.75rem;
+}
+
+article h2 {
+  font-size: 1.65rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--panel-edge);
+}
+
+article h3 {
+  font-size: 1.25rem;
+}
+
+// Section numbers on a note's top-level headings, like the labels on a device.
+article {
+  counter-reset: tesection;
+}
+
+article > h2 {
+  counter-increment: tesection;
+
+  &::before {
+    content: counter(tesection, decimal-leading-zero);
+    display: inline-block;
+    min-width: 2.4rem;
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-stretch: normal;
+    letter-spacing: 0.04em;
+    color: var(--orange-ink);
+    vertical-align: 0.3em;
+  }
+}
+
+code {
+  font-size: 0.88em;
+}
+
+// Labels.
+.breadcrumb-container,
+.content-meta,
+.sidebar h3,
+.toc-header h3,
+.explorer .folder-title {
+  font-family: var(--codeFont);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.breadcrumb-container {
+  font-size: 0.72rem;
+  gap: 0.3rem;
+
+  .breadcrumb-element a {
+    font-weight: 500;
+    color: var(--gray);
+  }
+}
+
+.content-meta {
+  font-size: 0.72rem;
+  color: var(--gray);
+}
+
+.sidebar h3,
+.toc-header h3 {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+// Site title as a device badge.
+.page-title {
+  font-family: var(--codeFont);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--dark);
+
+    &::before {
+      content: "";
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Links: ink, with an orange underline.
+a.internal {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: var(--dark);
+  text-decoration: underline;
+  text-decoration-color: var(--orange);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--orange-ink);
+  }
+}
+
+.breadcrumb-container a.internal,
+.explorer a,
+.toc a,
+.page-title a,
+a.internal.tag-link {
+  text-decoration: none;
+}
+
+a.internal.tag-link {
+  font-family: var(--codeFont);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--panel-edge);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  background: var(--panel);
+}
+
+// Controls as hardware keys.
+.search > .search-button,
+.darkmode,
+.readermode,
+button.mobile-explorer {
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  box-shadow: 0 2px 0 var(--key-shadow);
+  border-radius: 6px;
+}
+
+.search > .search-button {
+  font-family: var(--codeFont);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.explorer .explorer-content ul li > a {
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.explorer .folder-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+// Callouts as bone panels.
+.callout {
+  border-radius: 8px;
+  border: 1px solid var(--panel-edge);
+  background: var(--panel);
+}
+
+blockquote:not(.callout) {
+  border-left: 0;
+  margin-left: 0;
+  padding: 0.75rem 1rem;
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-radius: 8px;
+}
+
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+th {
+  font-family: var(--codeFont);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
 // Course home pages (Courses/<COURSE>/index.md, generated in the vault by
 // docs/superpowers/tools/course_pages.py). The folder listing Quartz appends to a
@@ -13,37 +249,80 @@ article.course-home {
   ul {
     padding-left: 0;
     list-style: none;
+    border-bottom: 1px solid var(--panel-edge);
   }
 
   li {
-    margin: 0 0 0.6rem;
-    padding: 0.45rem 0.75rem;
-    border-left: 3px solid var(--lightgray);
+    margin: 0;
+    padding: 0.7rem 0.25rem;
+    border-top: 1px solid var(--panel-edge);
 
     &:hover {
-      border-left-color: var(--secondary);
+      background: var(--highlight);
     }
 
     em {
-      display: inline-block;
-      margin-top: 0.15rem;
+      display: block;
+      margin-top: 0.2rem;
       color: var(--gray);
       font-size: 0.88rem;
       font-style: normal;
     }
   }
 
+  // The exam date and counts line, shown as the device's screen.
   & > p:first-of-type {
-    padding: 0.6rem 0.9rem;
+    font-family: var(--codeFont);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    padding: 0.8rem 1rem;
     border-radius: 8px;
-    background: var(--highlight);
-    border: 1px solid var(--lightgray);
+    background: var(--lcd);
+    color: var(--lcd-text);
+    border: 0;
+
+    * {
+      color: var(--lcd-text);
+    }
   }
 }
 
-// Flashcard picker checkboxes: make them visible on the grey launcher background.
-.fc-launcher input[type="checkbox"] {
-  accent-color: var(--secondary);
-  width: 1rem;
-  height: 1rem;
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.12;
+}
+
+// Course flashcard pages head each lecture with "L01 ..." already, so no section numbers there.
+article:has(.transclude) > h2::before {
+  content: none;
+}
+
+// Quartz parks the collapsed mobile explorer at -100vw from a sidebar that starts 1rem in,
+// so its last 1rem stayed on screen and showed slivers of text at the left edge.
+@media all and ($mobile) {
+  .explorer .explorer-content,
+  .explorer.collapsed > .explorer-content {
+    transform: translateX(calc(-100vw - 2rem));
+  }
+
+  .explorer:not(.collapsed) > .explorer-content {
+    transform: translateX(0);
+  }
+}
+
+.explorer .folder-title,
+.explorer .folder-button,
+.explorer .folder-icon {
+  color: var(--dark);
+}
+
+// Stock callouts in ink. Warnings keep their colour, exam cards keep the orange.
+.callout[data-callout]:not([data-callout="warning"]):not([data-callout="danger"]):not(
+    [data-callout="failure"]
+  ):not([data-callout="bug"]):not([data-callout="exam"]) {
+  --color: var(--dark);
+  --border: var(--panel-edge);
+  --bg: var(--panel);
 }

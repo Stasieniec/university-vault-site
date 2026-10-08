@@ -112,9 +112,43 @@ function plural(n: number, word: string) {
   return `${n} ${word}${n === 1 ? "" : "s"}`
 }
 
+function pad3(n: number) {
+  return String(n).padStart(3, "0")
+}
+
+// Small stroke icons, inline so they take the text colour.
+const ICONS = {
+  close: '<path d="M6 6l12 12M18 6L6 18"/>',
+  restart: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/>',
+  play: '<path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/>',
+}
+
+function icon(name: keyof typeof ICONS): string {
+  return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">${ICONS[name]}</svg>`
+}
+
+function iconButton(cls: string, name: keyof typeof ICONS, label: string) {
+  const b = el("button", cls)
+  b.innerHTML = icon(name)
+  b.setAttribute("aria-label", label)
+  b.title = label
+  return b
+}
+
+// "L01b Popper and Lakatos" -> ["01b", "Popper and Lakatos"]. Anything else keeps its full name.
+function splitDeckLabel(label: string, index: number): [string, string] {
+  const m = label.match(/^L(\d+[a-z]?)\s+(.+)$/i)
+  if (m) return [m[1], m[2]]
+  return [String(index + 1).padStart(2, "0"), label]
+}
+
+// Cards the drill view can show one segment each for. Past this the bar is a plain fill.
+const MAX_SEGMENTS = 60
+
 function openSession(cards: Card[], title: string) {
   const byId = new Map(cards.map((c) => [c.id, c]))
   const ids = cards.map((c) => c.id)
+  const mixed = new Set(cards.map((c) => c.deck)).size > 1
   const key = `flashcards:${location.pathname}:${hash(ids.slice().sort().join(","))}`
 
   let state = load(key)
@@ -135,19 +169,23 @@ function openSession(cards: Card[], title: string) {
   overlay.appendChild(modal)
 
   const top = el("div", "fc-top")
-  const count = el("span", "fc-count")
-  const restart = el("button", "fc-restart", "Restart")
-  const close = el("button", "fc-close", "Close")
-  top.append(count, restart, close)
-
+  const close = iconButton("fc-key fc-close", "close", "Close")
   const bar = el("div", "fc-bar")
-  const fill = el("div", "fc-bar-fill")
-  bar.appendChild(fill)
+  const count = el("span", "fc-count")
+  const restart = iconButton("fc-key fc-restart", "restart", "Restart")
+  top.append(close, bar, count, restart)
+
+  const sub = el("div", "fc-sub")
+  const subTitle = el("span", "fc-sub-title", title)
+  const tally = el("span", "fc-tally")
+  sub.append(subTitle, tally)
 
   const body = el("div", "fc-body")
   const actions = el("div", "fc-actions")
-  const hint = el("div", "fc-hint", "Space: show answer. 1: missed it. 2: got it. Esc: close.")
-  modal.append(top, bar, body, actions, hint)
+  const hint = el("div", "fc-hint")
+  hint.innerHTML =
+    "<kbd>space</kbd> reveal <kbd>1</kbd> missed <kbd>2</kbd> got it <kbd>esc</kbd> close"
+  modal.append(top, sub, body, actions, hint)
 
   const prevOverflow = document.body.style.overflow
   document.body.style.overflow = "hidden"
@@ -159,12 +197,31 @@ function openSession(cards: Card[], title: string) {
 
   function progress() {
     const total = s.ids.length
-    count.textContent = `${s.done.length} of ${total} done`
-    fill.style.width = `${(100 * s.done.length) / total}%`
+    count.textContent = `${pad3(s.done.length)}/${pad3(total)}`
+    const missTotal = Object.values(s.misses).reduce((a, b) => a + b, 0)
+    tally.innerHTML = `got <b>${s.done.length}</b> · miss <b class="fc-tally-miss">${missTotal}</b>`
+
+    bar.replaceChildren()
+    if (total <= MAX_SEGMENTS) {
+      bar.classList.add("is-segmented")
+      // Answered cards first, in the order they were got, black if first try and orange if
+      // they needed another go. Then the rest, with the current card outlined.
+      for (const id of s.done) {
+        bar.appendChild(el("span", (s.misses[id] ?? 0) > 0 ? "fc-seg is-missed" : "fc-seg is-got"))
+      }
+      for (let i = 0; i < s.queue.length; i++) {
+        bar.appendChild(el("span", i === 0 ? "fc-seg is-current" : "fc-seg"))
+      }
+    } else {
+      bar.classList.remove("is-segmented")
+      const fill = el("span", "fc-bar-fill")
+      fill.style.width = `${(100 * s.done.length) / total}%`
+      bar.appendChild(fill)
+    }
   }
 
-  function button(cls: string, label: string, onClick: () => void) {
-    const b = el("button", cls, label)
+  function keyButton(cls: string, label: string, onClick: () => void) {
+    const b = el("button", `fc-key ${cls}`, label)
     b.addEventListener("click", onClick)
     return b
   }
@@ -175,31 +232,41 @@ function openSession(cards: Card[], title: string) {
     actions.replaceChildren()
     const card = byId.get(s.queue[0])!
 
+    const strip = el("div", "fc-strip")
+    const kind = el("span", "fc-kind", card.exam ? "exam" : "recall")
+    const side = el("span", revealed ? "fc-side is-back" : "fc-side", revealed ? "back" : "front")
+    strip.append(kind, side)
+
+    const inner = el("div", "fc-inner")
     const meta = el("div", "fc-meta")
-    const parts = [card.deck]
-    if (card.exam) parts.push("Exam question: answer it out loud or on paper first")
+    // The deck name is already in the header unless this session mixes several decks.
+    const parts = mixed ? [card.deck] : []
     const misses = s.misses[card.id] ?? 0
-    if (misses > 0) parts.push(`missed ${misses}x this session`)
+    if (misses > 0) parts.push(`missed ${misses}x`)
     meta.textContent = parts.join(" · ")
+    meta.hidden = parts.length === 0
 
     const q = el("div", "fc-q")
     q.innerHTML = card.q
-    body.append(meta, q)
-    if (card.exam) body.classList.add("is-exam")
-    else body.classList.remove("is-exam")
+    inner.append(meta, q)
+    if (card.exam && !revealed) {
+      inner.appendChild(el("div", "fc-prompt", "Answer it out loud or on paper first."))
+    }
+    body.append(strip, inner)
+    body.classList.toggle("is-exam", card.exam)
 
     if (revealed) {
       const a = el("div", "fc-a")
       a.innerHTML = card.a
-      body.appendChild(a)
+      inner.appendChild(a)
       actions.append(
-        button("fc-miss", "Missed it", () => answer(false)),
-        button("fc-got", "Got it", () => answer(true)),
+        keyButton("fc-miss", "Missed", () => answer(false)),
+        keyButton("fc-got fc-key-or", "Got it", () => answer(true)),
       )
     } else {
-      actions.append(button("fc-reveal", "Show answer", reveal))
+      actions.append(keyButton("fc-reveal fc-key-ink", "Reveal", reveal))
     }
-    body.scrollTop = 0
+    inner.scrollTop = 0
     ;(actions.lastElementChild as HTMLElement | null)?.focus({ preventScroll: true })
   }
 
@@ -211,12 +278,27 @@ function openSession(cards: Card[], title: string) {
     forget(key)
 
     const missedIds = s.ids.filter((id) => (s.misses[id] ?? 0) > 0)
-    const head = el("div", "fc-q")
-    head.textContent =
+    const screen = el("div", "fc-done")
+    const label = el("span", "fc-done-label", "session complete")
+    const grid = el("div", "fc-done-grid")
+    const cell = (k: string, v: number, cls = "") => {
+      const c = el("div", "fc-done-cell")
+      c.append(el("span", "fc-done-k", k), el("span", `fc-done-v ${cls}`, String(v)))
+      return c
+    }
+    grid.append(
+      cell("first try", s.ids.length - missedIds.length),
+      cell("needed another go", missedIds.length, "is-missed"),
+    )
+    const line = el(
+      "p",
+      "fc-done-line",
       missedIds.length === 0
         ? `All ${s.ids.length} right on the first try.`
-        : `Done. ${plural(missedIds.length, "card")} of ${s.ids.length} needed another go.`
-    body.appendChild(head)
+        : `Done. ${plural(missedIds.length, "card")} of ${s.ids.length} needed another go.`,
+    )
+    screen.append(label, grid, line)
+    body.appendChild(screen)
 
     if (missedIds.length > 0) {
       const list = el("ul", "fc-missed")
@@ -225,7 +307,7 @@ function openSession(cards: Card[], title: string) {
         .forEach((id) => {
           const li = el("li")
           li.innerHTML = byId.get(id)!.q
-          const n = el("span", "fc-missed-n", ` (missed ${s.misses[id]}x)`)
+          const n = el("span", "fc-missed-n", ` missed ${s.misses[id]}x`)
           li.appendChild(n)
           list.appendChild(li)
         })
@@ -234,7 +316,7 @@ function openSession(cards: Card[], title: string) {
 
     if (missedIds.length > 0) {
       actions.append(
-        button("fc-miss", "Only the missed ones", () => {
+        keyButton("fc-miss", "Only the missed", () => {
           teardown()
           openSession(
             missedIds.map((id) => byId.get(id)!),
@@ -243,7 +325,7 @@ function openSession(cards: Card[], title: string) {
         }),
       )
     }
-    actions.append(button("fc-got", "All again", startOver))
+    actions.append(keyButton("fc-got fc-key-or", "All again", startOver))
   }
 
   function render() {
@@ -303,6 +385,12 @@ function openSession(cards: Card[], title: string) {
     overlay.remove()
   }
 
+  // Tapping the card face reveals it, so a thumb never has to travel to the button.
+  body.addEventListener("click", (e) => {
+    if (revealed || s.queue.length === 0) return
+    if ((e.target as Element).closest("a")) return
+    reveal()
+  })
   restart.addEventListener("click", startOver)
   close.addEventListener("click", teardown)
   overlay.addEventListener("click", (e) => {
@@ -315,53 +403,83 @@ function openSession(cards: Card[], title: string) {
   render()
 }
 
+function screenCell(k: string, v: string, accent = false) {
+  const c = el("div", "fc-screen-cell")
+  c.append(el("span", "fc-screen-k", k), el("span", accent ? "fc-screen-v is-accent" : "fc-screen-v", v))
+  return c
+}
+
 function launcher(decks: Deck[]): HTMLElement {
   const box = el("div", "fc-launcher")
-  const total = decks.reduce((n, d) => n + d.cards.length, 0)
+  const all = decks.flatMap((d) => d.cards)
+  const total = all.length
+  const exams = all.filter((c) => c.exam).length
+
+  const screen = el("div", "fc-screen")
+  screen.append(screenCell("cards", pad3(total), true))
+  if (decks.length > 1) screen.append(screenCell("sets", String(decks.length).padStart(2, "0")))
+  screen.append(screenCell("exam-style", pad3(exams)))
 
   if (decks.length === 1) {
-    const label = el("span", "fc-launcher-label", plural(total, "flashcard"))
-    const go = el("button", "fc-study", "Study")
+    const go = el("button", "fc-key fc-key-or fc-study")
+    go.innerHTML = `${icon("play")}<span>Study</span><span class="fc-key-n">${pad3(total)}</span>`
     go.addEventListener("click", () => openSession(decks[0].cards, decks[0].label))
-    box.append(label, go)
+    const row = el("div", "fc-launcher-row")
+    row.append(screen, go)
+    box.appendChild(row)
     return box
   }
 
   box.classList.add("is-multi")
-  const head = el("div", "fc-launcher-head")
-  const label = el("span", "fc-launcher-label", `${plural(total, "flashcard")} in ${decks.length} sets`)
-  const all = el("button", "fc-study", `Study all ${total}`)
-  all.addEventListener("click", () => openSession(decks.flatMap((d) => d.cards), "All flashcards"))
-  head.append(label, all)
+  const pads = el("div", "fc-pads")
 
-  const list = el("div", "fc-deck-list")
-  const boxes: HTMLInputElement[] = []
-  for (const d of decks) {
-    const row = el("div", "fc-deck")
-    const pick = el("label", "fc-deck-pick")
-    const cb = el("input")
-    cb.type = "checkbox"
-    boxes.push(cb)
-    const name = el("span", "fc-deck-name", d.label)
-    const n = el("span", "fc-deck-count", String(d.cards.length))
-    pick.append(cb, name)
-    const one = el("button", "fc-deck-study", "Study")
-    one.addEventListener("click", () => openSession(d.cards, d.label))
-    row.append(pick, n, one)
-    list.appendChild(row)
-  }
+  const allPad = el("button", "fc-pad fc-pad-all")
+  allPad.innerHTML = `<span class="fc-pad-top"><span>00</span><span>${pad3(total)}</span></span><span class="fc-pad-name">All</span>`
+  allPad.setAttribute("aria-label", `Study all ${total} cards`)
+  allPad.addEventListener("click", () => openSession(all, "All flashcards"))
+  pads.appendChild(allPad)
+
+  const picked = decks.map(() => false)
+  const toggles: HTMLButtonElement[] = []
+  decks.forEach((d, i) => {
+    const [code, name] = splitDeckLabel(d.label, i)
+    const padEl = el("div", "fc-pad")
+    const toggle = el("button", "fc-pad-toggle")
+    toggle.setAttribute("aria-pressed", "false")
+    toggle.setAttribute("aria-label", `Add ${d.label} to the mix`)
+    const topRow = el("span", "fc-pad-top")
+    const id = el("span", "fc-pad-id")
+    id.append(el("span", "fc-led"), document.createTextNode(code))
+    topRow.append(id, el("span", "fc-pad-count", pad3(d.cards.length)))
+    toggle.append(topRow, el("span", "fc-pad-name", name))
+    toggle.addEventListener("click", () => {
+      picked[i] = !picked[i]
+      refresh()
+    })
+    toggles.push(toggle)
+
+    const play = iconButton("fc-pad-play", "play", `Study ${d.label}`)
+    play.addEventListener("click", () => openSession(d.cards, d.label))
+    padEl.append(toggle, play)
+    pads.appendChild(padEl)
+  })
 
   const foot = el("div", "fc-launcher-foot")
-  const go = el("button", "fc-study fc-study-selected", "Study ticked")
+  const go = el("button", "fc-key fc-key-or fc-study fc-study-selected")
   const refresh = () => {
-    const chosen = decks.filter((_, i) => boxes[i].checked)
+    toggles.forEach((t, i) => {
+      t.setAttribute("aria-pressed", String(picked[i]))
+      t.parentElement?.classList.toggle("is-on", picked[i])
+    })
+    const chosen = decks.filter((_, i) => picked[i])
     const n = chosen.reduce((k, d) => k + d.cards.length, 0)
-    go.textContent = chosen.length ? `Study ticked (${n})` : "Tick lectures to mix them"
+    go.innerHTML = chosen.length
+      ? `${icon("play")}<span>Study mix</span><span class="fc-key-n">${pad3(n)}</span>`
+      : `<span>Tap pads to mix sets</span>`
     go.disabled = chosen.length === 0
   }
-  boxes.forEach((cb) => cb.addEventListener("change", refresh))
   go.addEventListener("click", () => {
-    const chosen = decks.filter((_, i) => boxes[i].checked)
+    const chosen = decks.filter((_, i) => picked[i])
     if (chosen.length === 0) return
     openSession(
       chosen.flatMap((d) => d.cards),
@@ -370,7 +488,7 @@ function launcher(decks: Deck[]): HTMLElement {
   })
   refresh()
   foot.appendChild(go)
-  box.append(head, list, foot)
+  box.append(screen, pads, foot)
   return box
 }
 

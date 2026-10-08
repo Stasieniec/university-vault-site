@@ -13192,6 +13192,13 @@ var Head_default = /* @__PURE__ */ __name((() => {
         /* @__PURE__ */ jsx18("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }),
         /* @__PURE__ */ jsx18("link", { rel: "preconnect", href: "https://fonts.gstatic.com" }),
         /* @__PURE__ */ jsx18("link", { rel: "stylesheet", href: googleFontHref(cfg.theme) }),
+        /* @__PURE__ */ jsx18(
+          "link",
+          {
+            rel: "stylesheet",
+            href: "https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&display=swap"
+          }
+        ),
         cfg.theme.typography.title && /* @__PURE__ */ jsx18("link", { rel: "stylesheet", href: googleFontSubsetHref(cfg.theme, cfg.pageTitle) })
       ] }),
       /* @__PURE__ */ jsx18("link", { rel: "preconnect", href: "https://cdnjs.cloudflare.com", crossOrigin: "anonymous" }),
@@ -15000,32 +15007,34 @@ var config = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono"
+        // Archivo is also loaded with its width axis in Head.tsx, so headings can run condensed.
+        header: { name: "Archivo", weights: [400, 600, 700] },
+        body: { name: "Archivo", weights: [400, 500, 600], includeItalic: true },
+        code: { name: "IBM Plex Mono", weights: [400, 500, 600] }
       },
+      // Teenage Engineering panel look (picked 2026-10-08): warm grey ground, ink, one orange.
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688"
+          light: "#e4e3de",
+          lightgray: "#c9c7c0",
+          gray: "#6b6a65",
+          darkgray: "#2a2a28",
+          dark: "#141414",
+          secondary: "#b33a0c",
+          tertiary: "#ff5a1f",
+          highlight: "rgba(20, 20, 20, 0.05)",
+          textHighlight: "#ff5a1f40"
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288"
+          light: "#141413",
+          lightgray: "#33322e",
+          gray: "#9a988f",
+          darkgray: "#d6d4cd",
+          dark: "#f4f3ef",
+          secondary: "#ff7a45",
+          tertiary: "#ff5a1f",
+          highlight: "rgba(255, 255, 255, 0.05)",
+          textHighlight: "#ff5a1f55"
         }
       }
     }
