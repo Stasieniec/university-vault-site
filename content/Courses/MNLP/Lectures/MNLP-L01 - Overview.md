@@ -165,9 +165,6 @@ Model answers are in the exam questions below.
 > [!card]- How does document retrieval treat a well-formed question?
 > It chops it into **keywords** (after stop-word removal).
 
-> [!card]- What does a document retrieval system return?
-> A **ranked list of documents**.
-
 > [!card]- How does question answering differ from document retrieval?
 > QA takes a **well-formed question** and returns the **actual answer**, not ranked documents.
 
@@ -192,12 +189,6 @@ Model answers are in the exam questions below.
 > [!card]- Which two abilities does machine translation require?
 > **Understanding** the source sentence and **generating** sentences in the target language.
 
-> [!card]- In pre-deep-learning NLP, what was machine learning used for?
-> To **weigh the importance** of hand-built features (POS tags, parse trees, named entities) for prediction.
-
-> [!card]- How does deep-learning NLP differ from pre-deep-learning NLP in feature engineering?
-> Pre-deep-learning NLP relied on hand-built features; deep learning needs **very little or none**.
-
 > [!card]- What are the disadvantages of deep learning for NLP?
 > Needs **large amounts of training data**, errors are **hard to trace**, can **fail spectacularly**.
 
@@ -216,9 +207,6 @@ Model answers are in the exam questions below.
 > [!card]- How do dedicated multilingual models such as Aya-Expanse compare with large general LLMs?
 > They tend to **lag behind** (read as behind the general models; not spelled out).
 
-> [!card]- What went wrong when Mistral Small 3.2 translated an Amharic sentence into English (language identified from the script)?
-> It produced a **fluent translation of a different event** (embassy in Khartoum, closed).
-
 > [!card]- What is the difference between multilingual and crosslingual NLP?
 > Multilingual: one system works for **many languages**. Crosslingual: information or knowledge **crosses between** languages.
 
@@ -233,9 +221,6 @@ Model answers are in the exam questions below.
 
 > [!card]- Which crosslingual scenario asks how to combine information across languages?
 > **Crosslingual reasoning**.
-
-> [!card]- Which crosslingual scenario extracts information from resources in other languages?
-> **Crosslingual question answering**.
 
 > [!card]- Which end-user tasks does NLP address?
 > Text categorization, summarization, machine translation, question answering.

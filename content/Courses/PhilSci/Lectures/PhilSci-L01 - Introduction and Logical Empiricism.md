@@ -304,18 +304,6 @@ The full model answer for mock Q1 is the first exam question below.
 > [!card]- What is the difference between syntax and semantics?
 > Syntax: formal rules for building and transforming expressions, **leaving meaning out**. Semantics: the study of **meaning**.
 
-> [!card]- What does empiricism hold is the fundamental source of knowledge about the world?
-> **Experience**.
-
-> [!card]- What is the difference between the knowledge rationalism seeks and the knowledge empiricism settles for?
-> Rationalism seeks **certainty and necessity**; empiricism takes knowledge to be **contingent and fallible**.
-
-> [!card]- Why must epistemological and metaphysical positions be kept apart?
-> They cut across each other: empiricism is **compatible with idealism**, nominalism with **realism about physical objects**.
-
-> [!card]- How did Kant combine rationalism and empiricism?
-> Empiricism about the **content** of knowledge, rationalism about its **a priori conditions**.
-
 > [!card]- For Kant, when is a judgement synthetic?
 > When it **extends knowledge** instead of unpacking what a concept already contains.
 
@@ -394,9 +382,6 @@ The full model answer for mock Q1 is the first exam question below.
 > [!card]- How does modern logic express "nothing is P"?
 > $\neg\exists x\,P(x)$: no object called Nothing is posited.
 
-> [!card]- How does Carnap analyse Descartes's "I think"?
-> As "there is something that thinks", $\exists x\,\text{Thinks}(x)$, so **no metaphysical ego** is needed.
-
 > [!card]- What does metaphysics express, according to Carnap?
 > An **attitude towards life**, which art expresses better: metaphysicians are "musicians without musical ability".
 
@@ -468,9 +453,6 @@ The full model answer for mock Q1 is the first exam question below.
 
 > [!card]- Which sense of "model" does the semantic conception mainly use?
 > The **mathematical or logical** sense.
-
-> [!card]- How does the semantic conception represent the microstate of a gas of N molecules?
-> As a point in **phase space** with $6N$ coordinates: three position and three momentum per molecule.
 
 > [!card]- What does Halvorson argue about the semantic view?
 > The semantic view, **if plausible, is syntactic**.

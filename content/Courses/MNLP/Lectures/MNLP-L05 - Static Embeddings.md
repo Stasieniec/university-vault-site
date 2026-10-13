@@ -581,9 +581,6 @@ Model answers are in the exam questions below.
 > [!card]- Which tends to perform better: count-based or prediction-based word representations?
 > **Prediction-based.** Count-based methods use global information directly but tend to perform worse.
 
-> [!card]- Which method counts co-occurrences once over the whole corpus and then fits vectors to the log counts?
-> **GloVe.**
-
 > [!card]- In GloVe's weighted least-squares objective, what is $w_i \cdot \tilde{w}_j + b_i + \tilde{b}_j$ fitted to?
 > The **log co-occurrence count** $\log X_{ij}$.
 
@@ -683,9 +680,6 @@ Model answers are in the exam questions below.
 > [!card]- How is the orthogonal Procrustes mapping solved?
 > **Exactly by SVD**: $U \Sigma V^\top = \operatorname{SVD}(Y X^\top)$, $W = U V^\top$.
 
-> [!card]- Why might the unconstrained mapping get worse as the embedding dimension grows?
-> Likely overfitting: **$d^2$ free parameters** for the same dictionary (a reason not given by Monz).
-
 > [!card]- How does the orthogonal mapping compare with the unconstrained one across embedding dimensions?
 > **Better at every dimension**, and it **improves slightly** as dimension grows.
 
@@ -745,9 +739,6 @@ Model answers are in the exam questions below.
 
 > [!card]- What is the difference between head-marking and dependent-marking?
 > Head-marking puts the grammatical marker **on the head**. Dependent-marking puts it **on the dependent**.
-
-> [!card]- What is mixed marking?
-> Some constructions mark the **head**, others the **dependent**.
 
 > [!card]- In a clause, which word is the head and which are the dependents?
 > Head: the **verb**. Dependents: **subject and object**.
@@ -815,9 +806,6 @@ Model answers are in the exam questions below.
 > [!card]- True or false: fastText can produce a vector for a word that never occurred in training.
 > **True.** It sums the word's character n-gram vectors.
 
-> [!card]- True or false: fastText improves over Word2Vec on both semantic and syntactic analogies.
-> **False.** Gains are syntactic; semantic analogies barely change.
-
 > [!card]- True or false: The shared space hypothesis says the two embedding spaces differ only by a rotation.
 > **False.** It says a general linear map aligns them; orthogonality is Xing et al.'s added constraint.
 
@@ -833,9 +821,6 @@ Model answers are in the exam questions below.
 > [!card]- True or false: The unconstrained least-squares mapping continuously improves as the embedding dimension grows.
 > **False.** It gets worse as the dimension grows.
 
-> [!card]- True or false: CSLS penalises target words that are close to many mapped source vectors.
-> **True.** That is the $r_S(y)$ term.
-
 > [!card]- True or false: MUSE's generator is a deep non-linear network, as in a standard GAN.
 > **False.** It is a single linear $d \times d$ matrix, deliberately.
 
@@ -844,9 +829,6 @@ Model answers are in the exam questions below.
 
 > [!card]- True or false: Fully unsupervised MUSE can match supervised alignment for English-Spanish.
 > **True.** It matches or slightly beats supervised Procrustes with CSLS on close pairs.
-
-> [!card]- True or false: Adversarial unsupervised alignment does not suffer from a domain mismatch between the two monolingual corpora.
-> **False.** Across domains it collapses to about zero, even for English-Spanish.
 
 > [!card]- True or false: English-Finnish unsupervised alignment fails because the Finnish corpus is too small.
 > **False.** It stays at zero with a much larger Finnish corpus.

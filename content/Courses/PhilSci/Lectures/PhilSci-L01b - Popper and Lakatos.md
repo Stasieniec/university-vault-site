@@ -357,9 +357,6 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- What is the point of Popper's example of one man drowning a child and another dying to save one?
 > Freud (repression, sublimation) and Adler (inferiority feelings) each explain **both opposite behaviours**, so neither theory takes any risk.
 
-> [!card]- What did Einstein's theory predict for stars seen near the sun during the 1919 eclipse?
-> They appear **shifted away from the sun** by a precisely predicted angle, because light is attracted by heavy bodies.
-
 > [!card]- Why did Popper find Eddington's eclipse test of Einstein impressive?
 > The **risk**: had the predicted shift been absent, the theory would simply have been refuted.
 
@@ -492,14 +489,8 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- What novel fact did the Einsteinian programme predict, according to Lakatos?
 > Two stars' separation measured **during an eclipse** would **differ** from their separation measured at night.
 
-> [!card]- Which predictions of Marxism failed, according to Lakatos?
-> Absolute impoverishment of workers; first revolution in the most industrial society; no revolutions under socialism; no conflict between socialist countries.
-
 > [!card]- How did Marxists explain rising working-class living standards, according to Lakatos?
 > With a **theory of imperialism**, cooked up **after the event**.
-
-> [!card]- Why are refutations not the hallmark of empirical failure, for Lakatos?
-> All programmes grow in a **permanent ocean of anomalies**.
 
 > [!card]- What counts as the hallmark of empirical progress, for Lakatos?
 > **Dramatic, unexpected, stunning predictions**; a few are enough to tilt the balance. Trivial verifications count for nothing.

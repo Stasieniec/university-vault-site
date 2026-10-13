@@ -330,20 +330,11 @@ The PMI assumes our situation is like that of past scientists.
 
 ## Flashcards
 
-> [!card]- On Cinti's assessment, how much force do the main arguments for realism (best explanation, no-miracles, demand for explanation, no sharp theory-observation distinction) each have?
-> **Some force** each.
-
-> [!card]- On Cinti's assessment, how strong is empirical under-determination as an argument against realism?
-> Probably a **stalemate**, with not much force.
-
 > [!card]- Why is the empirical under-determination argument against realism a stalemate?
 > Equivalent rivals are **rare** outside toy models; whether theoretical virtues are **truth-conducive** neither side can prove.
 
 > [!card]- How does the realist claim to break empirical under-determination?
 > With **theoretical virtues** (simplicity, beauty, fruitfulness): non-empirical but truth-conducive.
-
-> [!card]- Which anti-realist position is the main contender against scientific realism?
-> **Constructive empiricism** (van Fraassen), though "observable" remains a problem for it.
 
 > [!card]- What was the aether supposed to be?
 > A **medium filling all space** that carried light and electromagnetic waves, as air carries sound.
@@ -447,9 +438,6 @@ The PMI assumes our situation is like that of past scientists.
 > [!card]- According to Stanford's "'Atoms exist' is probably true", what is the real trouble with an abandoned term?
 > Not failed reference: it is no longer part of the **most pragmatically powerful conceptual apparatus** for its phenomena.
 
-> [!card]- What is Stanford's problem of unconceived alternatives?
-> Past scientists kept missing equally good rivals later adopted, so our theories probably have **unconceived rivals** too.
-
 > [!card]- Which two lessons does De Haro accept from Stanford's critique of selective confirmation?
 > Explain **reference and approximate truth** together, and **do not project current insights into the past**.
 
@@ -552,14 +540,8 @@ The PMI assumes our situation is like that of past scientists.
 > [!card]- Psillos and De Haro both let "aether" refer to the electromagnetic field. What is the difference?
 > The route: Psillos **sorts core from idle parts**; De Haro **sorts nothing**, treating all terms alike within a domain.
 
-> [!card]- Which example does De Haro cite (from John Norton) for "caloric"?
-> "Caloric" refers to thermodynamic **heat**, within situations with **no interchange of heat and work**.
-
 > [!card]- How does De Haro's extensional realism escape Stanford's "Pyrrhic victory" dilemma?
 > It **distinguishes no theory parts**: for all we know, all terms scientists claim refer do refer.
-
-> [!card]- How does De Haro's extensional realism avoid declaring Maxwell's aether idle?
-> It takes Maxwell's **argument at face value**: the aether is real, and what it established is, extensionally, the field.
 
 > [!card]- What do De Haro's extensional realism and van Fraassen's constructive empiricism have in common?
 > Both **read theories literally** but **restrict belief**: van Fraassen to the observable, De Haro to extensions.

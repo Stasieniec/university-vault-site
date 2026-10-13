@@ -466,10 +466,7 @@ Each has a practice question below except SentencePiece.
 > [!card]- Why is a character-level vocabulary a poor fix for OOV words, even though its OOV rate is near zero?
 > Each symbol carries almost **no meaning**, and sequences become **long and slow**.
 
-> [!card]- How many merge operations is BPE typically trained with?
-> About **30K to 128K** merge operations.
-
-> [!card]- Why do multilingual models sit at the 128K end of the BPE range?
+> [!card]- Why do multilingual models sit at the top of BPE's usual merge range?
 > A vocabulary shared by **many scripts** needs more room.
 
 > [!card]- What are the three weaknesses of hand-built FST morphological analyzers?
@@ -508,20 +505,8 @@ Each has a practice question below except SentencePiece.
 > [!card]- What does BPE's end-of-word marker `</w>` let it distinguish?
 > **Word-final** pieces from word-internal ones, so pieces can be turned back into words.
 
-> [!card]- What does a trained BPE model consist of?
-> An **ordered list of merge operations**.
-
 > [!card]- How is a trained BPE model applied to a new word?
 > Split it into characters and apply the merges **in the order they were learned**.
-
-> [!card]- When counting BPE pairs in `the tall man is taller than the tallest man`, does `than` count towards `t+a`?
-> **No.** In `than` the `t` is followed by `h`.
-
-> [!card]- Which pair does BPE merge first on `the tall man is taller than the tallest man`, breaking ties by first occurrence?
-> **`t+h`**: one of six pairs at count 3, and met first.
-
-> [!card]- Why does BPE trained on `the tall man is taller than the tallest man` end with `talle + r` where morphology says `tall + er`?
-> The greedy `tall + e` merge was locally most frequent and **buried the boundary**; BPE never undoes a merge.
 
 > [!card]- What three major advantages does BPE bring to NMT?
 > Smaller **vocabulary**, better **translation quality**, far fewer **OOV items**.
@@ -534,24 +519,6 @@ Each has a practice question below except SentencePiece.
 
 > [!card]- In Sennrich et al.'s experiments, did any single neural model beat the syntax-based statistical system?
 > **No.** Only ensembles of 8 subword models beat it.
-
-> [!card]- Why, according to Sennrich et al., does joint BPE help translation?
-> A name is **segmented identically on both sides**, so the pieces map one to one.
-
-> [!card]- Which segmentation method merges the pair maximising $\frac{\text{count}(ab)}{\text{count}(a)\,\text{count}(b)}$?
-> **WordPiece**.
-
-> [!card]- What is the difference between BPE's and WordPiece's choice of which pair to merge?
-> BPE takes the highest **raw count**; WordPiece divides by the parts' counts, preferring parts that **rarely occur apart**.
-
-> [!card]- How does WordPiece segment a new word at inference?
-> By repeatedly taking the **longest vocabulary entry** matching from the left.
-
-> [!card]- Which well-known encoder model uses WordPiece as its tokenizer?
-> **BERT**.
-
-> [!card]- Which marker does BPE use during training, and which does WordPiece's vocabulary use?
-> BPE: `</w>` for **word end**. WordPiece: `##` for **continuation** (`##ing` attaches left).
 
 > [!card]- What does `@@` mark in BPE output such as `K@@ yrg@@ yz@@ stan`?
 > A piece that **continues** into the next; only a display convention, the merges use `</w>`.
@@ -586,17 +553,11 @@ Each has a practice question below except SentencePiece.
 > [!card]- What does the token loss $L_t$ measure in Unigram LM vocabulary construction?
 > How much **corpus likelihood drops** if token $t$ is removed and its strings are re-segmented.
 
-> [!card]- Which tokens does the Unigram LM algorithm as given in Monz's lecture remove each round?
+> [!card]- Which tokens does the Unigram LM algorithm as given in MNLP remove each round?
 > Those with the **highest** $L_t$: the ones whose removal loses most likelihood.
-
-> [!card]- Outside MNLP, which tokens do Kudo's paper and SentencePiece's code actually remove each round?
-> Those with the **smallest** $L_t$, the reverse of the MNLP algorithm.
 
 > [!card]- Why does Unigram LM prune at most a fraction $\alpha$ of the vocabulary per round?
 > Each $L_t$ assumes all other tokens stay, so the model is **refitted** between rounds.
-
-> [!card]- In Kudo's paper, why are single-character tokens never pruned?
-> So every string stays **segmentable** and pruning cannot create **OOVs**.
 
 > [!card]- How many segmentations does a string of $n$ characters have?
 > $2^{n-1}$: each of the $n-1$ gaps is either a **cut or not**.
@@ -607,8 +568,8 @@ Each has a practice question below except SentencePiece.
 > [!card]- Why can dynamic programming find the best Unigram LM segmentation?
 > Segments are **independent**, so the best cut of the left part does not depend on the right part.
 
-> [!card]- What does the sequence-cutting example show about finding the best segmentation?
-> Neither extreme wins: the optimum is an **interior split**, found only by comparing **whole cuttings**.
+> [!card]- When cutting a sequence into scored pieces, why must complete cuttings be compared?
+> Neither extreme (whole, or all single units) need win; the optimum can be an **interior split**.
 
 > [!card]- What are the two principles of dynamic programming?
 > Solve each sub-problem **only once** and **store** its solution: a time-memory trade-off.
@@ -661,9 +622,6 @@ Each has a practice question below except SentencePiece.
 > [!card]- Which of BPE and Unigram LM finds real morpheme boundaries in words like `corrupted` and `tricycles`?
 > **Unigram LM** (`corrupt|ed`, `cycle|s`); BPE produces **frequency artefacts**.
 
-> [!card]- How does BPE segment `nanotechnology`, compared with Unigram LM?
-> Into **generic letter clusters** with no `nano`; Unigram LM gives `nano` + `technology`.
-
 > [!card]- What goes wrong when BPE segments numbers such as years?
 > It splits them like `184` + `8`, a **meaningless prefix** plus a digit.
 
@@ -703,9 +661,6 @@ Each has a practice question below except SentencePiece.
 > [!card]- Why does byte-level BPE give non-Latin scripts shorter subsegments?
 > They take **more bytes per character**, so merges are spent getting **back to characters**.
 
-> [!card]- What is the cause of byte-level BPE's shorter subsegments for scripts like Devanagari?
-> **UTF-8 encoding length**, nothing about the language itself.
-
 > [!card]- What is the formula for fertility?
 > $\text{fertility} = \frac{\text{number of subword tokens}}{\text{number of words}}$; 1 means one token per word.
 
@@ -724,11 +679,8 @@ Each has a practice question below except SentencePiece.
 > [!card]- Why do high-fertility languages pay more on commercial LLM APIs?
 > APIs **price by token**, and the same content takes **more tokens**.
 
-> [!card]- True or false: Unigram LM builds its vocabulary top-down, shrinking a large vocabulary to the desired size.
-> **True.** It prunes a large seed vocabulary to size $k$.
-
-> [!card]- True or false: WordPiece merges the most frequent adjacent pair at each step.
-> **False.** It divides the pair count by its parts' counts; BPE takes the most frequent pair.
+> [!card]- True or false: Unigram LM builds its vocabulary bottom-up, merging pairs until it reaches the desired size.
+> **False.** It works top-down, pruning a large seed vocabulary to size $k$.
 
 > [!card]- True or false: Applying a trained BPE model replays the learned merges in the order they were learned.
 > **True.** The model is an ordered merge list.
@@ -745,17 +697,14 @@ Each has a practice question below except SentencePiece.
 > [!card]- True or false: In Unigram LM vocabulary construction, the tokens with the highest loss $L_t$ are removed each round.
 > **True.** As the algorithm is given for MNLP (labelled Kudo 2018); Kudo's paper and SentencePiece's code remove the smallest.
 
-> [!card]- True or false: In Kudo's paper, Unigram LM can prune single-character tokens.
-> **False.** Single characters are never pruned, so every string stays segmentable.
-
 > [!card]- True or false: DP segmentation under a unigram model is valid because segments are treated as independent.
 > **True.** The best cut of one half does not depend on the other.
 
 > [!card]- True or false: In DP segmentation, each cell is initialised with the probability of the unsplit span.
 > **True.** Split points then replace it only if they score higher.
 
-> [!card]- True or false: Top-down DP with memoization and bottom-up DP have the same asymptotic run time.
-> **True.**
+> [!card]- True or false: Bottom-up DP has a better asymptotic run time than top-down DP with memoization.
+> **False.** Both have the same asymptotic run time.
 
 > [!card]- True or false: The `</w>` end-of-word marker is what prevents BPE from merging pairs across two words.
 > **False.** Words are counted separately, so no pair spans two words; `</w>` marks word-final pieces.
@@ -763,23 +712,14 @@ Each has a practice question below except SentencePiece.
 > [!card]- True or false: SentencePiece treats its input as a raw stream of Unicode characters, including spaces.
 > **True.** The space is escaped as `▁`.
 
-> [!card]- True or false: Byte-level BPE guarantees a zero OOV rate.
-> **True.** Its base alphabet is all 256 bytes.
-
 > [!card]- True or false: Byte-level BPE gives non-Latin scripts shorter subsegments because those languages are morphologically richer.
 > **False.** Because their characters take more UTF-8 bytes.
 
 > [!card]- True or false: At the same vocabulary size, Unigram LM produces longer segments on average than BPE.
 > **True.** In both English and Japanese.
 
-> [!card]- True or false: In Bostrom and Durrett's comparison, Unigram LM gained about a point on every English task.
-> **False.** About a point on SQuAD and MNLI matched; only a few tenths on MNLI mismatched and CoNLL NER.
-
 > [!card]- Multiple selection: which are true of BPE? (A) It is greedy: a merge is never undone. (B) It can sample alternative segmentations of a word. (C) Its only hyperparameter is the number of merges. (D) It starts from a large vocabulary and prunes it.
 > **A and C.** B: BPE is deterministic. D: that is Unigram LM; BPE merges up from characters.
-
-> [!card]- Multiple selection: which are true of WordPiece? (A) It builds its vocabulary bottom-up by merging pairs. (B) It merges the pair with the highest raw count. (C) It prefers pairs whose parts rarely occur apart. (D) It prunes a large seed vocabulary.
-> **A and C.** B is BPE's criterion. D is Unigram LM.
 
 > [!card]- Multiple selection: which are true of Unigram LM? (A) It scores a segmentation as a product of subword probabilities. (B) It is deterministic, like BPE. (C) It fits its model by EM. (D) It merges the most frequent adjacent pair.
 > **A and C.** B: it supports n-best and sampled segmentations. D: that is BPE.

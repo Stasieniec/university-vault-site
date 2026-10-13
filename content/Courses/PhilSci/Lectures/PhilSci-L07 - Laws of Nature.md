@@ -299,9 +299,6 @@ Model answers for these are in the practice questions below.
 > [!card]- What is Hume's slogan against the reality of laws?
 > "**No necessary connections between distinct entities.**"
 
-> [!card]- Why is "a law is a true universal generalisation" not enough?
-> Some true universal generalisations are **accidental**.
-
 > [!card]- What is an accidental generalisation?
 > A true universal generalisation whose truth is **completely accidental**: nothing forces it.
 
@@ -337,9 +334,6 @@ Model answers for these are in the practice questions below.
 
 > [!card]- What is the counterfactual account of causation?
 > Two events are causally related if there is **counterfactual dependence** between them.
-
-> [!card]- Who used counterfactuals to analyse causation?
-> **Hume**, and later **Lewis**.
 
 > [!card]- What two things does a scientific theory specify, on a realist reading?
 > An **ontology** (entities matching its variables) and **dynamics** for them: the **laws**.
@@ -482,8 +476,8 @@ Model answers for these are in the practice questions below.
 > [!card]- Why are dispositions intrinsically modal?
 > A disposition is present **before** anything happens: it is about what **would** happen.
 
-> [!card]- What would reducing glass's fragility look like, and what do dispositionalists say?
-> Explaining it by a **non-dispositional** property like **molecular arrangement**; impossible at the fundamental level.
+> [!card]- In what sense are dispositions irreducible, for dispositionalists?
+> At the fundamental level they are **not explained** by any **non-dispositional** property.
 
 > [!card]- True or false: on dispositionalism, the laws themselves govern the world.
 > **False.** The necessity lives in the **dispositions**; laws are derived from them (Chen).
@@ -502,9 +496,6 @@ Model answers for these are in the practice questions below.
 
 > [!card]- Why does Lewis restrict best systems to natural properties?
 > Otherwise "**everything is F**", with F true of all actual things, would win.
-
-> [!card]- Do only the axioms of the best system count as laws, for Lewis?
-> No: its **theorems** count too; the axioms are the **fundamental** laws.
 
 > [!card]- What is the hallmark of the Humean account of laws?
 > The relation is **reversed**: the **world determines the laws**.

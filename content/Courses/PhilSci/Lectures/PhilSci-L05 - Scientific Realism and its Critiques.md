@@ -339,17 +339,11 @@ The full model answer for mock Q8 is the first exam question below.
 > [!card]- How does Berkeley's idealism answer the ontological question of realism?
 > **No**: the world is mind-dependent. *Esse est percipi*, to be is to be perceived.
 
-> [!card]- Why is Berkeley's idealism called "the maximally empiricist possible answer"?
-> Our only access to anything beyond ourselves is **perception**, so nothing beyond perception can ever be checked.
-
 > [!card]- Which question does Kant move to, away from the ontological question of realism?
 > The **epistemological** question: what knowledge of the external world can we have?
 
 > [!card]- What is the difference between Kant's noumena and phenomena?
 > Noumena are things-in-themselves, real but **unknowable**. Phenomena are appearances, **structured by our mind**, and knowable.
-
-> [!card]- What question do Eddington's two tables raise for the realism debate?
-> Which table is **real**: the solid everyday table or the mostly empty scientific one, or both, and how they relate.
 
 > [!card]- What status does Mach give to claims about unobservable reality?
 > They are **metaphysical** and **cannot have a truth-value**, since they cannot be checked by direct observation.

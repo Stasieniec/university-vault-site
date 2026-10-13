@@ -933,14 +933,8 @@ Full model answers are in the exam questions below.
 > [!card]- In which direction of corpus size must NMT transfer flow to pay off?
 > From the **larger** corpus (parent) to the **smaller** (child).
 
-> [!card]- What is catastrophic forgetting in fine-tuning?
-> Training only on new data **overwrites** what the model knew, so quality on the original domain drops.
-
 > [!card]- Which sampling temperature is effectively uniform?
 > $T = 100$.
-
-> [!card]- How does the sampling temperature $T$ relate to the exponent $\alpha$ in $p_l \propto n_l^{\alpha}$?
-> $\alpha = 1/T$.
 
 > [!card]- Which sampling temperature is best for high-resource languages and worst for low-resource ones?
 > $T = 1$ (proportional).
@@ -975,9 +969,6 @@ Full model answers are in the exam questions below.
 > [!card]- True or false: Transferring only a parent's embeddings, without its inner layers, beats training the NMT child from scratch.
 > **False.** Embeddings alone are worse than scratch on average; the inner layers carry the benefit (Aji et al.).
 
-> [!card]- True or false: In BART's text infilling, every removed token is replaced by its own `[MASK]`.
-> **False.** A whole span is replaced by a single `[MASK]`; that is what separates it from token masking.
-
 > [!card]- True or false: mBART pretraining makes translation work even with almost no parallel data (around 10K pairs).
 > **False.** With 10K pairs (English-Gujarati) BLEU stays near zero; pretraining cannot rescue almost no data.
 
@@ -987,20 +978,8 @@ Full model answers are in the exam questions below.
 > [!card]- True or false: LASER's sentence embedding is obtained by max pooling over the BiLSTM states.
 > **True.** Max pooling gives one fixed-size vector, whatever the sentence length.
 
-> [!card]- True or false: In parent-child NMT transfer, the source embeddings should stay frozen.
-> **False.** The **target** embeddings stay frozen; the source embeddings must be retrained.
-
-> [!card]- True or false: Fine-tuning a general-domain NMT model on a small in-domain set continuously improves with the number of in-domain updates.
-> **False.** Gains stop and then reverse as the model overfits the small data.
-
-> [!card]- True or false: In Johnson et al.'s multilingual NMT, the tag added to each example names the source language.
-> **False.** It names the **target** language; the source is never named.
-
 > [!card]- True or false: Many-to-one multilingual NMT beat the bilingual baselines in every direction in Johnson et al. (2017).
 > **True.** By small margins; one-to-many was mixed.
-
-> [!card]- True or false: A sampling temperature of T = 100 approximates uniform sampling, which favours low-resource languages.
-> **True.** $1/T$ is near 0, so all languages are sampled about equally.
 
 > [!card]- True or false: XLM-R is better than mBERT across languages on mixed-language QA.
 > **False.** It is better within languages but, on average, **worse** across them on QA.
@@ -1017,14 +996,8 @@ Full model answers are in the exam questions below.
 > [!card]- True or false: InfoXLM's MMLM uses negative sampling.
 > **True.** That is Monz's description; the InfoXLM paper reads the vocabulary softmax as contrastive.
 
-> [!card]- True or false: On average over the 15 XNLI languages, zero-shot XLM (MLM+TLM) beats translate-test.
-> **True.** Slightly, although it never saw non-English NLI data.
-
 > [!card]- True or false: Zero-shot XLM (MLM+TLM) beats translate-test on XNLI for every language.
 > **False.** Only on average; translate-test wins for the other European languages, Turkish and Arabic.
-
-> [!card]- True or false: mBART is fine-tuned for translation as a whole, with no new source encoder.
-> **True.** It saw every language in pretraining; English-only BART needs the new encoder.
 
 > [!card]- True or false: In multilingual NMT, many-to-many translation is used for testing only.
 > **True.** Training is English-centric, so non-English pairs are zero-shot.
@@ -1052,6 +1025,7 @@ Full model answers are in the exam questions below.
 
 > [!card]- Multiple selection: which are true of BART's noise functions? (A) Text infilling replaces a span with a single `[MASK]`. (B) Token deletion marks each deleted position with `[MASK]`. (C) Sentence permutation alone performs poorly. (D) Text infilling is the best single noise function.
 > **A, C and D.** (B) false: deletion leaves no mark, so the model must find where tokens are missing.
+
 ## Links
 
 - **Course:** [[MNLP - Overview|Course overview]] · [[MNLP - Exam Analysis|Exam analysis]] (example question 3.1 is parent-child transfer)

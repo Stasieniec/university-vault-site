@@ -437,8 +437,8 @@ Model answers are in the exam questions below.
 > [!card]- How does the CBOW task differ from n-gram language modelling?
 > A language model sees only the **left** context; CBOW sees **both sides**, because its goal is embeddings and prediction is only the means.
 
-> [!card]- Why is the CBOW network deliberately kept simple?
-> So that capacity goes into the **embeddings** themselves instead of into prediction quality.
+> [!card]- Why does CBOW have no non-linear hidden layer?
+> So the embedding layer sits right next to the output and the **embeddings** do most of the work.
 
 > [!card]- Why is CBOW called "bag of words"?
 > Its projection layer **sums** the context vectors, and summation is commutative, so the **order** of the context words is lost.
@@ -461,16 +461,13 @@ Model answers are in the exam questions below.
 > [!card]- How could morphology give a representation for an unseen word like *hammered*?
 > Compose it from known parts: an embedding for **hammer** plus what **-ed** does to a verb. Context cannot help, since the word was never seen.
 
-> [!card]- Why is Chinese word segmentation hard even with a good dictionary?
-> The same character string often has **several valid segmentations**, and the characters alone do not decide between them.
-
 > [!card]- How many possible segmentations does a string of $n$ characters have?
 > $2^{n-1}$: each of the $n-1$ internal gaps is a boundary or not. Too many to enumerate.
 
 > [!card]- What does maximum matching do at each position of a character string?
 > It greedily takes the **longest word** found in a precompiled vocabulary.
 
-> [!card]- What does the `or l == 1` clause in maximum matching do?
+> [!card]- What does maximum matching do when no vocabulary word starts at a position?
 > Emits a **single character** even if it is not in the vocabulary, so the algorithm always terminates.
 
 > [!card]- What happens to an out-of-vocabulary word under maximum matching?
@@ -632,9 +629,6 @@ Model answers are in the exam questions below.
 > [!card]- What does falling back to single characters give subword tokenization?
 > **Very low OOV rates** with a fixed-size vocabulary; unseen characters can still be OOV unless it works on bytes.
 
-> [!card]- Do subword tokens line up with morphemes?
-> **Only sometimes**; as contiguous cuts they cannot capture *Bücher* or Arabic root-and-pattern words.
-
 > [!card]- True or false: CBOW's projection layer loses the order of the context words.
 > **True.** It sums the vectors, and summation is commutative.
 
@@ -683,11 +677,8 @@ Model answers are in the exam questions below.
 > [!card]- True or false: In CBOW the summed context vectors go from the projection layer straight to the output layer.
 > **True.** There is no non-linear hidden layer in between.
 
-> [!card]- True or false: Subword tokenization with BPE guarantees a zero OOV rate.
+> [!card]- True or false: Subword tokenization that falls back to single characters guarantees a zero OOV rate.
 > **False.** OOV becomes very rare, but unseen characters stay unknown; only byte-level vocabularies guarantee zero.
-
-> [!card]- True or false: In a BMES HMM, B can only be followed by M or E.
-> **True.** The word B opens must continue (M) or close (E).
 
 > [!card]- Multiple selection: which are true of Forward Maximum Matching? (A) It takes the longest vocabulary word at each position (B) It improves as it sees more text (C) It always terminates because a single character is emitted as fallback (D) It needs no precompiled vocabulary
 > **A and C.** B: it has no mechanism to exploit data. D: it depends entirely on a precompiled vocabulary.

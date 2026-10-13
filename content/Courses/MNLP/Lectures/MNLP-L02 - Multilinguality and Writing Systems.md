@@ -474,9 +474,6 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- According to Monz, what determines how well a language is covered by NLP resources?
 > **Commercial interest** and **military relevance**.
 
-> [!card]- Is speaker count a good predictor of how well a language is resourced for NLP?
-> **No.** Coverage follows commercial and military interest; on Monz's tiers most languages with over ten million speakers are low resource.
-
 > [!card]- Which languages make up Monz's high-resource tier?
 > English and Mandarin, then after a **big gap** French, Spanish, Arabic, Russian.
 
@@ -549,9 +546,6 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- What happens to a model trained on Cyrillic Serbian and tested on Latin Serbian?
 > It shares **almost no letters** with the test data, although the language is the same.
 
-> [!card]- How many codes did ASCII define?
-> **128**: enough for English letters, digits and punctuation.
-
 > [!card]- How did code pages extend ASCII?
 > By **reinterpretation**: the same 128 or 256 byte codes, read differently per language or script.
 
@@ -567,14 +561,8 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- Does Unicode define how characters are stored as bytes?
 > **No.** Unicode defines codepoints; storing them as bytes is a separate **encoding** question (UTF-8, UTF-16, UTF-32).
 
-> [!card]- Which two code-page problems does Unicode remove?
-> No **table to guess** when decoding, and one document can **mix any scripts**.
-
 > [!card]- How does Unicode relate to ASCII?
 > Unicode is a **superset**: `U+0000` to `U+007F` are identical to ASCII.
-
-> [!card]- How many codepoints does each Unicode plane contain?
-> **65,536** ($2^{16}$), in 17 planes.
 
 > [!card]- What follows from a codepoint lying outside plane 0, the Basic Multilingual Plane?
 > It needs **more than 16 bits**, so it takes four bytes in UTF-8 and UTF-16, as emoji do.
@@ -695,9 +683,6 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 
 > [!card]- True or false: How well a language is covered by NLP resources depends mainly on its number of speakers.
 > **False.** It depends on commercial interest and military relevance.
-
-> [!card]- True or false: UTF-8 is ASCII compatible.
-> **True.** `U+0000` to `U+007F` are encoded as single bytes identical to ASCII.
 
 > [!card]- True or false: UTF-32 is ASCII compatible.
 > **False.** It uses exactly 4 bytes for every codepoint, ASCII included.

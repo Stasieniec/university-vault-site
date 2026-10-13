@@ -593,8 +593,11 @@ Model answers are in the exam questions below.
 > [!card]- What is the difference between using a pre-trained encoder as a feature extractor and full fine-tuning?
 > Feature extractor: encoder **frozen**, only the task head trained. Full fine-tuning: head **and** encoder updated (BERT's default).
 
-> [!card]- Which Transformer family is BERT, and which family are current LLMs?
-> BERT is **encoder-only**; all current LLMs are **decoder-only**.
+> [!card]- Which Transformer family is BERT?
+> **Encoder-only**: it predicts its own input after masking noise.
+
+> [!card]- Which Transformer family are all current LLMs?
+> **Decoder-only**: classical next-word prediction.
 
 > [!card]- What makes BERT "bidirectional"?
 > Every position attends to positions on **both** its left and its right.
@@ -631,9 +634,6 @@ Model answers are in the exam questions below.
 
 > [!card]- Which new parameters does BERT learn when fine-tuned for SQuAD?
 > Only a **start vector S** and an **end vector E**, scored against each token output by inner product.
-
-> [!card]- Which segmentation method merges the pair maximising count(a,b) / (count(a) · count(b))?
-> **WordPiece**.
 
 > [!card]- What is the difference between BPE's and WordPiece's merge criterion?
 > BPE merges the **most frequent** pair; WordPiece the pair with the highest **count(a,b) / (count(a) · count(b))**.
@@ -833,17 +833,11 @@ Model answers are in the exam questions below.
 > [!card]- On which task is XLM-R worse than mBERT across languages, on average?
 > **Cross-lingual QA**; on XNLI it is better across too.
 
-> [!card]- Which segmentation method builds XLM-R's 250k vocabulary?
-> **Unigram LM** via SentencePiece.
-
 > [!card]- What structure does XLM-R's cross-lingual QA (context by question language) matrix show?
 > "**Own language, or English question**": both work, little in between.
 
 > [!card]- What is the bottom line on what drives mBERT's cross-lingual transfer?
 > **No single factor**: vocabulary overlap plays a minor role, structure and depth matter.
-
-> [!card]- Which training signal, absent from mBERT, could improve its cross-lingual transfer?
-> One candidate: parallel data with an **alignment loss** pulling translation equivalents together. The question is left open.
 
 > [!card]- True or false: BERT's MLM loss is computed only at positions that show the `[MASK]` token.
 > **False.** It covers all selected positions, including those given a random or unchanged word.
@@ -857,17 +851,11 @@ Model answers are in the exam questions below.
 > [!card]- True or false: mBERT was trained with a small amount of parallel data to align its languages.
 > **False.** mBERT uses no parallel data and no alignment loss.
 
-> [!card]- True or false: Language sampling with α = 0.7 down-weights high-resource languages.
-> **True.** It up-weights low-resource and down-weights high-resource languages.
-
 > [!card]- True or false: Raising the sampling temperature T moves language sampling closer to proportional sampling.
 > **False.** A higher temperature moves it closer to uniform.
 
 > [!card]- True or false: English BERT's zero-shot NER F1 is roughly flat in entity-wordpiece overlap.
 > **False.** That is mBERT; English BERT's F1 rises with overlap.
-
-> [!card]- True or false: Removing all subword overlap between the two languages (fake English) destroys most of B-BERT's cross-lingual transfer.
-> **False.** Transfer survives almost intact.
 
 > [!card]- True or false: Permuting words during pre-training hurts cross-lingual transfer significantly but does not eliminate it.
 > **True.** Accuracy drops, but stays well over chance.
@@ -877,15 +865,6 @@ Model answers are in the exam questions below.
 
 > [!card]- True or false: Freezing mBERT's lower layers during English fine-tuning helps or is neutral for zero-shot transfer.
 > **True.** Frozen lower layers keep their multilingual representation.
-
-> [!card]- True or false: In Wu and Dredze, mBERT's zero-shot XNLI score shows no type-level correlation with wordpiece overlap with English.
-> **True.** Sentence-level inference does not depend on shared wordpieces.
-
-> [!card]- True or false: Deeper B-BERT models at roughly constant parameter count narrow the gap between in-language and zero-shot accuracy.
-> **True.** Zero-shot keeps improving with depth while in-language saturates.
-
-> [!card]- True or false: XLM-R outperforms mBERT across languages on every task.
-> **False.** It is better across on XNLI but, on average, worse across on cross-lingual QA.
 
 > [!card]- Multiple selection: which are true of mBERT's training? (A) It uses the same loss as BERT, MLM plus NSP (B) NSP pairs may mix two languages (C) It has a language-ID embedding (D) All languages share one subword vocabulary
 > **A and D.** B: NSP pairs are always in one language. C: there is no language-ID embedding.

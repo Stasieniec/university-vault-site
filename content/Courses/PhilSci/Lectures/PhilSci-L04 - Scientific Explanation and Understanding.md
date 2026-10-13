@@ -423,9 +423,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- How would Hempel treat "the window broke because the ball hit it"?
 > As **elliptical**: a law about balls and glass left unstated.
 
-> [!card]- What is the rejoinder to reading the window case as an elliptical D-N explanation?
-> We understand it fully **without any such law**, and every candidate law is false or empty.
-
 > [!card]- What do the flagpole, hexed-salt and barometer counterexamples to Hempel have in common?
 > All lack the right **causation**: the shadow does not cause the pole, the hex causes nothing, barometer and storm share a cause.
 
@@ -468,14 +465,11 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- Why did Darwin's evolution convince scientists early, despite few specific new predictions, for Kitcher?
 > **Explanatory promise**: it unified a great range of phenomena with a few principles.
 
-> [!card]- What is Kitcher's argument pattern, by example?
-> One derivation scheme reused widely: Newton's "forces, $F = ma$, solve" yields falling stones, orbits and tides.
-
 > [!card]- What is the main challenge for the unificationist theory of explanation?
 > Recovering the **flagpole asymmetry** without appealing to causes.
 
 > [!card]- How does Kitcher answer the flagpole asymmetry?
-> Heights already follow from how objects were made; deriving them from shadows **adds a pattern**, so shadows-from-poles unifies better.
+> Causal talk is a loose **summary of deeper asymmetries in unification**; the best-unified system derives shadows from poles.
 
 > [!card]- What is Godfrey-Smith's contextualism about explanation?
 > Standards of good explanation **partially depend on the scientific context**: each field and period sets its own.
@@ -555,9 +549,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- What is De Regt and Dieks's basic form ("grammar") of a claim of understanding?
 > Scientist $S$ (in context $C$) understands phenomenon $P$ on the basis of theory $T$.
 
-> [!card]- How many places does De Regt and Dieks's understanding relation have, compared with Hempel's explanation?
-> Understanding has at least **four** ($S$, $C$, $P$, $T$); Hempel's explanation has **two** ($T$, $P$).
-
 > [!card]- In De Regt and Dieks's $T \sim M \sim P$, what does the model $M$ do?
 > It **represents $P$ so that $T$ can be applied** to it.
 
@@ -585,9 +576,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- Is De Regt and Dieks's CIT a necessary or a sufficient condition for intelligibility?
 > **Sufficient**: it says "if", not "iff"; failing it does not prove a theory unintelligible.
 
-> [!card]- How does the kinetic theory of gases illustrate passing De Regt and Dieks's CIT?
-> Without calculating, a physicist sees heating a closed gas **raises pressure**: molecules move faster and hit walls harder.
-
 > [!card]- Why does CIT not make understanding subjective?
 > Context means the **meso-level community**; recognising consequences without calculating is a **public, testable** competence.
 
@@ -614,9 +602,6 @@ The model answer for mock Q7 is the first exam question below.
 
 > [!card]- Which German term for visualizability was at stake in the 1926 dispute between Schrödinger and Heisenberg and Pauli?
 > ***Anschaulichkeit***.
-
-> [!card]- Why had atoms become non-visualizable by 1925?
-> **Wave-particle duality** left no particle trajectories, and Pauli's **fourth quantum number** had no picture in the Bohr model.
 
 > [!card]- What was Pauli's reply to the demand for visualizability?
 > Once new conceptual systems are settled, **they too become *anschaulich***: visualizability is not a fixed standard.

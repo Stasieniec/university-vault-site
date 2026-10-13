@@ -379,9 +379,6 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- Why does Quine's scepticism about meanings undercut non-empirical knowledge?
 > If nothing is **true by meaning alone**, even logic and mathematics belong to the web that faces experience.
 
-> [!card]- Where does Quine's web of belief touch experience?
-> **Only along the edges**. A conflict at the periphery forces readjustments in the interior.
-
 > [!card]- Why do logic and mathematics sit at the centre of Quine's web of belief?
 > Revising them forces the **largest rearrangement**. They are revisable, just expensive.
 
@@ -497,9 +494,6 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 
 > [!card]- What was Kant's view of the status of geometry and Newton's three laws?
 > **Synthetic a priori**: known independently of experience, yet saying something beyond what their terms mean.
-
-> [!card]- Which nineteenth-century result put pressure on Kant's view of geometry?
-> **Non-Euclidean geometries** were shown to be mathematically consistent (Gauss, Riemann).
 
 > [!card]- What is Poincaré's view of the status of geometry?
 > **Conventional**: neither a priori nor a posteriori. We choose the geometry that describes experience most simply.

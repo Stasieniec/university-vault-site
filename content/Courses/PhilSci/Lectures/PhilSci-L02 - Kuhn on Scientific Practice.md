@@ -343,9 +343,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- What question does Kuhn put in place of logical empiricism's focus on the justification of scientific knowledge?
 > **How does science actually work**: what do scientists actually do, in real historical context?
 
-> [!card]- What does Kuhn mean by saying observation is theory-laden?
-> Observation is partly **shaped by theoretical commitments**, so there is no fully theory-neutral observational language.
-
 > [!card]- What is a Kuhnian paradigm?
 > The **shared framework** through which a scientific community practises its science, and which holds that community together.
 
@@ -357,9 +354,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 
 > [!card]- Name an exemplar of the Newtonian paradigm.
 > The **harmonic oscillator** (mass on a spring), or the **Earth-Sun system**.
-
-> [!card]- What is the difference between a Kuhnian paradigm and a theory?
-> A paradigm is **wider**: besides theory it includes methods, tools, standards, exemplars and metaphysical assumptions.
 
 > [!card]- What is Kuhn's normal science?
 > Research within an accepted paradigm that **solves the paradigm's puzzles** instead of testing whether the paradigm is true.
@@ -393,9 +387,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 
 > [!card]- What happens during Kuhn's extraordinary science?
 > Researchers explore **competing approaches**, and even the **standards** for judging theories become contested.
-
-> [!card]- Must a Kuhnian crisis end in a revolution?
-> No: normal science may solve the anomaly after all, or the problem may be set aside.
 
 > [!card]- What is a scientific revolution for Kuhn?
 > A **non-cumulative** change in which a new paradigm replaces the old one.
@@ -442,9 +433,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- Which view of observation does Kuhn's Gestalt-switch comparison express?
 > Observation is **theory-laden**: what scientists see depends on the paradigm they bring to it.
 
-> [!card]- Is a Kuhnian paradigm change sudden for the whole community?
-> No: each scientist switches **all at once**, but the community converts **gradually**, a few at a time.
-
 > [!card]- Where does Kuhn's Gestalt-switch analogy break down?
 > The viewer knows the lines stayed the same, but a scientist has **no external standpoint** to check the world stayed the same.
 
@@ -457,9 +445,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- What does Kuhn take the playing-cards experiment to show about discovery?
 > Anomaly is **at first not perceived**: it is recognised only against the background of expectation, and only with effort.
 
-> [!card]- How can the Müller-Lyer illusion be used against strong theory-ladenness?
-> It **persists even when you know** the lines are equal, so perception is partly **insulated from belief** (Fodor).
-
 > [!card]- Does Kuhn's theory-ladenness mean scientists in different paradigms live in different physical worlds?
 > **No.** The world does not change; what an observation is taken to show depends partly on the paradigm.
 
@@ -468,9 +453,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 
 > [!card]- How does theory-laden observation feed incommensurability?
 > There is **no theory-neutral observation language** in which to compare two paradigms.
-
-> [!card]- Why are the side and diagonal of a unit square incommensurable?
-> $\sqrt{2}$ is **irrational**, so no common unit measures both exactly.
 
 > [!card]- What does the side-and-diagonal analogy imply about comparing incommensurable paradigms?
 > They lack a **common measure** but can still be **related and compared**.
