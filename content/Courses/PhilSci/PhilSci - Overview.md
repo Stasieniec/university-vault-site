@@ -163,7 +163,7 @@ All lecture notes were rewritten on 2026-10-12 and 13 to be read once instead of
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 7 | Laws of nature | Not yet given. Reading: Chen, *Laws of Physics*, **only sections 1-2.4, 3.1-3.2, 4.1-4.3**; optional Carroll, *Laws of Nature* |
+| Lecture 7 | [[PhilSci-L07 - Laws of Nature]] | Enrico Cinti, 13 Oct: laws vs accidental generalisations, counterfactuals, nomological necessity, determinism, Maudlin, Humean (Lewis's best systems) vs non-Humean (Armstrong, primitivism, dispositions). Reading: Chen, *Laws of Physics*, sections 1-2.4, 3.1-3.2, 4.1-4.3; optional Carroll, *Laws of Nature* |
 | **Presentation** | **Thu 2026-10-15, 10:00–13:00, SP L0.06** | Mandatory, no remote option, 20% of the final grade. Nine talks in random order, 10 min + 5 min Q&A each, strict. **Stanislaw: 12:00–12:15**, after the second break. Every group member must contribute substantially. Criteria and evaluation form under Canvas Files. Graded by De Haro and Luka Vinck |
 | **Due** | Project draft and presentation slides | Sunday 2026-10-18 20:00 on Canvas |
 

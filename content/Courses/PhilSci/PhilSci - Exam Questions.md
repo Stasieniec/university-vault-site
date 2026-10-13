@@ -9,7 +9,7 @@ status: complete
 
 # PhilSci - Exam Questions
 
-All 49 exam-style questions for Philosophy of Science, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[PhilSci - Flashcards|flashcards]] page.
+All 54 exam-style questions for Philosophy of Science, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[PhilSci - Flashcards|flashcards]] page.
 
 Back to the [[Courses/PhilSci/index|Philosophy of Science home]].
 
@@ -40,6 +40,10 @@ Back to the [[Courses/PhilSci/index|Philosophy of Science home]].
 ## L06 Scientific Realism and the Pessimistic Meta-Induction
 
 ![[PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction#Exam questions]]
+
+## L07 Laws of Nature
+
+![[PhilSci-L07 - Laws of Nature#Exam questions]]
 
 ## Tutorials
 
