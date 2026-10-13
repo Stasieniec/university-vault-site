@@ -352,9 +352,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- What does Kuhn call a concrete, standard problem-solution that students learn to imitate?
 > An **exemplar**.
 
-> [!card]- Name an exemplar of the Newtonian paradigm.
-> The **harmonic oscillator** (mass on a spring), or the **Earth-Sun system**.
-
 > [!card]- What is Kuhn's normal science?
 > Research within an accepted paradigm that **solves the paradigm's puzzles** instead of testing whether the paradigm is true.
 
@@ -373,14 +370,8 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- What is the difference between Popper's and Kuhn's reasons for denying astrology is a science?
 > Popper: astrologers **escape falsification**. Kuhn: astrology lacks a **puzzle-solving tradition**, so it never had normal science.
 
-> [!card]- What is Kuhn's own criterion of demarcation?
-> A **puzzle-solving tradition**: a community doing normal science.
-
 > [!card]- What is a Kuhnian anomaly?
 > A puzzle that **persistently resists solution** and appears inconsistent with the paradigm's expectations.
-
-> [!card]- What distinguishes a Kuhnian anomaly from an ordinary failed experiment?
-> An ordinary failure is blamed on **error or poor technique**. An anomaly **persists** and threatens the paradigm itself.
 
 > [!card]- What is a crisis in Kuhn's model?
 > Important anomalies **undermine confidence in the paradigm**, which itself becomes a topic of discussion.
@@ -394,9 +385,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- Give Kuhn's cycle of scientific development in order.
 > Paradigm and normal science, anomaly, crisis, extraordinary science, revolution (then new normal science).
 
-> [!card]- What are Kuhn's three stages in the history of chemistry?
-> **Alchemy** (preparadigmatic), **phlogiston** paradigm (Priestley), **oxygen** paradigm (Lavoisier).
-
 > [!card]- Why does Kuhn count the shift from phlogiston to oxygen as a revolution?
 > The **framework changed**: the key substance, the explanatory vocabulary and the reading of weight gain. It was more than a new fact.
 
@@ -405,9 +393,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 
 > [!card]- Why does Kuhn hold that cumulative acquisition of novelty is improbable in principle?
 > Normal science does not aim at novelty, so novelty arrives only as an **anomaly** that the paradigm cannot absorb.
-
-> [!card]- Of Kuhn's three kinds of phenomena, which one gives rise to new theories?
-> **Recognised anomalies** that refuse to be assimilated to the existing paradigm.
 
 > [!card]- Why must a new theory displace the old one, according to Kuhn?
 > It must **predict differently** somewhere, or it would not be needed, so the two are **incompatible**.
@@ -424,9 +409,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- Does circularity make arguments between paradigms worthless, for Kuhn?
 > No: they can be effective **persuasion**, but cannot be logically compelling to someone outside the circle.
 
-> [!card]- What, for Kuhn, is the highest standard in paradigm choice?
-> The **assent of the relevant community**.
-
 > [!card]- Why does Kuhn compare a revolution to a Gestalt switch, as regards how the change happens?
 > Each scientist's switch is **sudden and holistic**, like a conversion, not a piecemeal accumulation of new facts.
 
@@ -438,9 +420,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 
 > [!card]- What does the "My Wife and My Mother-in-Law" priming experiment show about paradigms?
 > The prior image acts like a **paradigm**: the same stimulus is seen as a different whole depending on what the viewer brings.
-
-> [!card]- In Bruner and Postman's playing-cards experiment, what did subjects do with anomalous cards at short exposures?
-> They **identified them as normal cards**, without any sense of trouble.
 
 > [!card]- What does Kuhn take the playing-cards experiment to show about discovery?
 > Anomaly is **at first not perceived**: it is recognised only against the background of expectation, and only with effort.
@@ -454,17 +433,11 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- How does theory-laden observation feed incommensurability?
 > There is **no theory-neutral observation language** in which to compare two paradigms.
 
-> [!card]- What does the side-and-diagonal analogy imply about comparing incommensurable paradigms?
-> They lack a **common measure** but can still be **related and compared**.
-
 > [!card]- What is semantic incommensurability?
 > **Meanings change** across paradigms: "mass" in Newtonian and Einsteinian physics, "planet" across the Copernican shift.
 
 > [!card]- What is methodological incommensurability?
 > **Standards change**: what counts as a satisfactory explanation before Newton may differ after Newton.
-
-> [!card]- Why did Newton's critics reject his gravity as an occult quality?
-> It was **attraction at a distance with no mechanism**, which failed their standard of explanation.
 
 > [!card]- What problem about progress does incommensurability create?
 > If meanings and standards change, in what sense is a new paradigm **objectively better**?
@@ -487,12 +460,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 > [!card]- What are Kuhn's five values of theory choice?
 > Accuracy, consistency, broad scope, simplicity, fruitfulness.
 
-> [!card]- Which of Kuhn's values requires consequences beyond the observations a theory was designed for?
-> **Broad scope**.
-
-> [!card]- Which of Kuhn's values asks that a theory lead to new research findings?
-> **Fruitfulness**.
-
 > [!card]- In what sense are Kuhn's five values objective?
 > They are **shared by the scientific community**.
 
@@ -513,9 +480,6 @@ Full model answers for Q4 and Q5 are the first two exam questions below.
 
 > [!card]- In the triptych model of science, which panel must be value-free?
 > The middle one, **scientific research**. Research agenda and application may involve values.
-
-> [!card]- What does Heather Douglas call the triptych model of values in science?
-> The **externality model**, because values are kept outside the middle panel, scientific research.
 
 > [!card]- What does the weak value-free ideal allow inside scientific research?
 > **Epistemic values** only. Non-epistemic values stay in agenda setting and application.

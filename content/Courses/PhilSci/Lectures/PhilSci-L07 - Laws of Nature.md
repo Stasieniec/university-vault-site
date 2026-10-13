@@ -305,20 +305,11 @@ Model answers for these are in the practice questions below.
 > [!card]- Give the standard example of an accidental generalisation.
 > "All **gold spheres** are less than one mile in diameter."
 
-> [!card]- What distinguishes "all uranium spheres are under a mile" from the gold version?
-> It is plausibly a **law**: critical mass prevents such spheres; nothing prevents a big gold sphere.
-
 > [!card]- What must an account of laws capture, beyond universal truth?
 > The sense in which laws **force** something to be true, where accidents just happen to be true.
 
 > [!card]- What is a counterfactual?
 > A statement "**if A were to happen, B would happen**".
-
-> [!card]- Why are counterfactuals claims about possible worlds?
-> They say what would happen in situations that **did not occur**.
-
-> [!card]- Why is "all worlds where A holds also have B" too strong for counterfactuals?
-> Some distant A-worlds lack B (wet match, no oxygen), yet the counterfactual is still true.
 
 > [!card]- When is "if A were to happen, B would happen" true, for Lewis and Stalnaker?
 > When **A-and-B worlds** are **more similar to ours** than A-without-B worlds.
@@ -328,9 +319,6 @@ Model answers for these are in the practice questions below.
 
 > [!card]- Why is "if this copper coin were in my pocket, it would be silver" false, even if every coin in my pocket is silver?
 > "All coins in my pocket are silver" is **accidental**: in the closest worlds the coin stays copper.
-
-> [!card]- What makes "if this match had been struck, it would have lit" true?
-> It is an **instance of a law**.
 
 > [!card]- What is the counterfactual account of causation?
 > Two events are causally related if there is **counterfactual dependence** between them.
@@ -356,12 +344,6 @@ Model answers for these are in the practice questions below.
 > [!card]- What is determinism, roughly?
 > Knowing the **state at one time** and **the laws**, you know the state at **any other time**.
 
-> [!card]- How is determinism stated in possible-worlds language?
-> Given a segment of a nomologically possible world, **only one** full nomologically possible world contains it.
-
-> [!card]- Which models of general relativity are deterministic?
-> Only **globally hyperbolic** ones: state at one time plus the Einstein equations fix all times.
-
 > [!card]- Why is it open whether general relativity is deterministic?
 > It depends on whether **non-globally hyperbolic models** count as **physically significant**.
 
@@ -371,17 +353,11 @@ Model answers for these are in the practice questions below.
 > [!card]- Must an indeterministic theory posit chances, according to Chen?
 > **No**: it **may** posit chances, but need not.
 
-> [!card]- Can chance coexist with deterministic laws, according to Chen?
-> **Yes**: statistical mechanics puts probabilities over a deterministic world's initial states.
-
 > [!card]- What is strong determinism (Chen, after Penrose)?
 > **Only one world** is compatible with the laws: a single physically possible world.
 
 > [!card]- How is strong determinism stronger than ordinary determinism?
 > Determinism needs a segment as input; strong determinism fixes the world with **no input**.
-
-> [!card]- Is there a real example of a strongly deterministic theory?
-> **No.** String theory was hoped to be, but is not on any reasonable reading.
 
 > [!card]- What does Maudlin take laws of nature to be?
 > **FLOTEs**: laws that **produce later states from earlier ones**, with a direction of time.
@@ -391,9 +367,6 @@ Model answers for these are in the practice questions below.
 
 > [!card]- Why do the Einstein field equations count against Maudlin's view of laws?
 > They are **constraints** on whole spacetimes, not laws of evolution.
-
-> [!card]- What is the Past Hypothesis?
-> A law that the universe was in a **low-entropy state** at one end of time.
 
 > [!card]- What do non-Humeans hold about laws?
 > There is **irreducible nomological modality**; most add that **laws govern** (dispositionalists: dispositions carry it).
@@ -431,23 +404,11 @@ Model answers for these are in the practice questions below.
 > [!card]- How does Chen answer "who imposes the laws?"
 > Like axioms: **2 + 3 = 5** constrains every world, and no agent imposes it.
 
-> [!card]- Does Chen claim the axiom analogy removes all mystery from governing?
-> **No**: it only answers the worry that governing needs a governor.
-
-> [!card]- What role does simplicity play for laws on minimal primitivism?
-> A **clue** for finding laws; it does not make something a law.
-
 > [!card]- What is a universal?
 > The **abstract entity** encoding a property **in full generality**, e.g. redness.
 
-> [!card]- What does it mean that universals are multilocated?
-> One universal, e.g. redness, is **wholly present in every instance** at once.
-
 > [!card]- Which account makes laws relations of necessitation between universals?
 > The **Dretske-Tooley-Armstrong** (DTA) account.
-
-> [!card]- What does Chen call the DTA account?
-> **Platonic reductionism.**
 
 > [!card]- Why is the DTA account more explanatory than primitivism?
 > It is **reductive**: it analyses laws in terms of **universals**, so says what laws are.
@@ -460,12 +421,6 @@ Model answers for these are in the practice questions below.
 
 > [!card]- What is a disposition?
 > A property that shows itself only under a **stimulus**, e.g. **fragility**.
-
-> [!card]- What is the difference between a disposition's stimulus and its manifestation?
-> Stimulus: the **triggering condition** (being dropped). Manifestation: **what then happens** (breaking).
-
-> [!card]- What does Chen call dispositionalism?
-> **Aristotelian reductionism.**
 
 > [!card]- How does dispositionalism explain why a stone broke a window?
 > **Windows have a disposition to break when hit by stones.**
@@ -508,9 +463,6 @@ Model answers for these are in the practice questions below.
 
 > [!card]- What is the empty-spacetime argument against the Best Systems Account?
 > An empty spacetime under the **Einstein equations** is possible, but its best summary is only **special relativity**.
-
-> [!card]- Why does Chen say the Best Systems Account leaves something unexplained?
-> Laws only **summarise** the mosaic's patterns, so the patterns themselves are unexplained.
 
 ## Links
 

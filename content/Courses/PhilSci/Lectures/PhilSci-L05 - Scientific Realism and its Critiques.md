@@ -333,14 +333,8 @@ The full model answer for mock Q8 is the first exam question below.
 
 ## Flashcards
 
-> [!card]- What does the ontological question of realism ask?
-> Whether the external world **exists independently** of us, of our thoughts and perceptions.
-
 > [!card]- How does Berkeley's idealism answer the ontological question of realism?
 > **No**: the world is mind-dependent. *Esse est percipi*, to be is to be perceived.
-
-> [!card]- Which question does Kant move to, away from the ontological question of realism?
-> The **epistemological** question: what knowledge of the external world can we have?
 
 > [!card]- What is the difference between Kant's noumena and phenomena?
 > Noumena are things-in-themselves, real but **unknowable**. Phenomena are appearances, **structured by our mind**, and knowable.
@@ -359,9 +353,6 @@ The full model answer for mock Q8 is the first exam question below.
 
 > [!card]- Why did the logical positivists need the theory-observation distinction to be sharp?
 > They tied meaning to observability, and **meaning does not come in degrees**: nothing is "almost meaningful".
-
-> [!card]- Which two changes moved the later logical empiricists towards realism?
-> **Acceptance of semantics** (theoretical sentences can be true or false), and verification replaced by **confirmation**.
 
 > [!card]- How does Grover Maxwell's argument use glasses and microscopes against the theory-observation distinction?
 > Glasses count as observation, a microscope is the same in principle (more lenses), and there is **no principled cut-off** on the continuum.
@@ -387,12 +378,6 @@ The full model answer for mock Q8 is the first exam question below.
 > [!card]- What does metaphysical realism claim as a component of scientific realism?
 > The theory is (approximately) true: the world is as it says, and its posited entities **exist**.
 
-> [!card]- What is the difference between semantic and metaphysical realism about electrons?
-> Semantic: claims about electrons are literally **true or false**. Metaphysical: electrons actually **exist**.
-
-> [!card]- What are the two senses of "metaphysical realism" in the realism debate?
-> An external world exists independently of the mind (against Berkeley). A theory is approximately true and its entities exist (the contested one).
-
 > [!card]- Which theses of scientific realism does van Fraassen accept?
 > Only **semantic** realism. He rejects epistemic and metaphysical realism about unobservables, and is **agnostic** about electrons.
 
@@ -408,9 +393,6 @@ The full model answer for mock Q8 is the first exam question below.
 > [!card]- What question does the realist put to van Fraassen about empirical adequacy?
 > Why would a theory be empirically adequate, future observations included, **unless it were true**?
 
-> [!card]- Does empirical adequacy cover only the observations made so far?
-> No: **all** observable phenomena, including ones nobody has observed yet.
-
 > [!card]- In the no-miracles argument read as an IBE, what is the best explanation of what?
 > **Approximate truth** of theories best explains their success predicting experiments never performed before.
 
@@ -419,9 +401,6 @@ The full model answer for mock Q8 is the first exam question below.
 
 > [!card]- How is IBE an argument for realism in its own right?
 > If believing the best explanation is a good rule, believe the theories that best explain the phenomena, **unobservables included**.
-
-> [!card]- What is inference to the best explanation also called?
-> **Abduction**.
 
 > [!card]- How does IBE differ from deduction?
 > IBE is **ampliative** and **fallible**. Deduction is neither: it is **truth-preserving**, true premises guaranteeing a true conclusion.
@@ -441,17 +420,8 @@ The full model answer for mock Q8 is the first exam question below.
 > [!card]- In which two respects do van Fraassen's formulations of realism and constructive empiricism differ?
 > The **aim of science** (literal truth or empirical adequacy) and **what acceptance commits you to believing** (truth or only empirical adequacy).
 
-> [!card]- What is the disagreement between van Fraassen and the scientific realist about?
-> **Unobservable** entities only. They agree about observables.
-
-> [!card]- Does van Fraassen say electrons do not exist?
-> No. He is **agnostic**: the evidence does not oblige belief, and believing in unobservables is "up to us".
-
 > [!card]- What rival hypothesis does van Fraassen offer to the realist's account of IBE?
 > We believe the theory that best explains the evidence is **empirically adequate**, which fits our practice equally well.
-
-> [!card]- What does van Fraassen call the no-miracles argument?
-> The **Ultimate Argument**.
 
 > [!card]- How does van Fraassen explain the success of science without appeal to truth?
 > **Darwinian selection**: theories compete, and only the successful ones survive.
@@ -498,9 +468,6 @@ The full model answer for mock Q8 is the first exam question below.
 > [!card]- Which terms are the standard examples of non-referring central terms in Laudan's pessimistic meta-induction?
 > **"Aether"** and **"phlogiston"**.
 
-> [!card]- What does every theory on Laudan's list have in common?
-> It was once **successful and well confirmed**, but its central terms (we now believe) **do not refer**.
-
 > [!card]- What does Laudan's pessimistic meta-induction conclude?
 > We are **not justified** in believing our best theories true, or that their posited entities are real.
 
@@ -512,9 +479,6 @@ The full model answer for mock Q8 is the first exam question below.
 
 > [!card]- What is convergent realism?
 > Theories are approximately true, and successive theories get **closer and closer** to the truth.
-
-> [!card]- Roughly, when is a theory approximately true, on Psillos's informal gloss?
-> When it gets the world's **most central features** right while being wrong in details.
 
 > [!card]- What are the three elements of convergent realism that Laudan attacks?
 > **Approximate truth**, **reference** preserved across theory change, **empirical success** of old theories explained by new ones.

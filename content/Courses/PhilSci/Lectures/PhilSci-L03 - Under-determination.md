@@ -328,14 +328,8 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- For Popper, how does science come to accept its empirical basis?
 > By **intersubjective agreement** among investigators: no objective facts force it.
 
-> [!card]- For Popper, what is accepting an observation report that falsifies a theory, in the end?
-> A **human decision**.
-
 > [!card]- Duhem's thesis: if premises $P_1, \dots, P_n$ entail $O$ and experiment establishes $O'$ incompatible with $O$, what follows?
 > The **conjunction** of the premises is false. It does **not** follow that any particular premise is false.
-
-> [!card]- Which thesis is summed up as "falsification is ambiguous"?
-> **Duhem's under-determination thesis**: modus tollens refutes the conjunction, never a named premise.
 
 > [!card]- What is a crucial experiment (*experimentum crucis*)?
 > "An irrefutable procedure for transforming one of the two hypotheses before us into a **demonstrated truth**."
@@ -355,9 +349,6 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- What is the difference between Duhem's conclusion and saying theory choice is arbitrary?
 > Duhem says choice is **not formal**: logic does not decide, but good sense still does.
 
-> [!card]- What questions does Duhem's appeal to good sense leave open?
-> What good sense actually **is**, and how a scientist can be "an **impartial and faithful judge**".
-
 > [!card]- What are Quine's two dogmas of empiricism?
 > **Reductionism** and the **analytic-synthetic distinction**.
 
@@ -370,14 +361,8 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- What is Quine's objection to the analytic-synthetic distinction?
 > The difference between conceptual schemes and facts is "**of degree only**".
 
-> [!card]- What would an analytic statement be, if reductionism were true?
-> The **limiting case**: a statement confirmed by every possible experience. Quine denies there are any.
-
 > [!card]- Why does Quine say the two dogmas are "at bottom identical"?
 > Both assume statements can be assessed **one at a time** against experience. Deny that and both fall together.
-
-> [!card]- Why does Quine's scepticism about meanings undercut non-empirical knowledge?
-> If nothing is **true by meaning alone**, even logic and mathematics belong to the web that faces experience.
 
 > [!card]- Why do logic and mathematics sit at the centre of Quine's web of belief?
 > Revising them forces the **largest rearrangement**. They are revisable, just expensive.
@@ -409,9 +394,6 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- What is the difference between sense and reference (Frege, Carnap)?
 > **Sense** (intension) is the linguistic meaning of the words. **Reference** (extension) is the object they pick out.
 
-> [!card]- In possible-world semantics, what is the intension of a sentence?
-> The **set of all possible worlds** where it is true.
-
 > [!card]- What does Laudan say discussions of under-determination have proceeded in?
 > An "**evaluative vacuum**": assuming that if a move is logically possible, its rationality need not be asked about.
 
@@ -433,20 +415,11 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- Why does the non-uniqueness thesis of under-determination not threaten methodology?
 > It is **compatible with the rules rejecting most rivals**; it only denies that a unique winner is guaranteed.
 
-> [!card]- Why would the egalitarian thesis make methodology idle?
-> Every theory is as well supported as every rival, so the rules could **never reject anything**.
-
 > [!card]- What two conditions define Quine's empirical under-determination (1975)?
 > Two theory formulations that are **empirically equivalent** but **theoretically inequivalent**.
 
 > [!card]- When do two theory formulations express the same theory, for Quine?
 > When they are empirically equivalent and one becomes the other by **reconstrual of predicates**.
-
-> [!card]- What is an observation conditional?
-> A sentence of the form "if these conditions hold, you will **observe** so-and-so".
-
-> [!card]- Which way does implication run between a theory and the data, for Quine?
-> The **theory as a whole implies** observation conditionals; the data never imply the theory.
 
 > [!card]- Why is empirical under-determination a problem for scientific realism?
 > If the data cannot decide between rivals, which one are you a **realist about**?
@@ -457,17 +430,8 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- What is the difference between transient and permanent under-determination?
 > **Transient**: current evidence does not decide, later evidence might. **Permanent**: no possible evidence decides.
 
-> [!card]- Which kind of under-determination is very common in scientific practice?
-> **Transient** under-determination.
-
 > [!card]- Is Quine's empirical under-determination transient or permanent?
 > **Permanent**: it concerns all possible observations.
-
-> [!card]- Why does Quine's denial of "extra-theoretic" truth matter for under-determination?
-> With no standpoint outside all theories, "which rival is **really true**?" has no outside answer.
-
-> [!card]- Dualities are potential cases of which kind of under-determination?
-> **Semantic** under-determination.
 
 > [!card]- On De Haro's view, do dualities threaten scientific realism?
 > No, not a **cautious scientific realism**.
@@ -475,17 +439,8 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- According to Laudan and Leplin, what do contrived examples of empirical equivalence always involve?
 > The **relativity of motion**: the impossibility of distinguishing apparent from absolute motion.
 
-> [!card]- What are the leading historical cases of empirical equivalence, according to Laudan and Leplin?
-> **Ptolemy vs Copernicus** and **Einstein vs Lorentz**.
-
 > [!card]- What does Quine (1975) say about whether real cases of empirical under-determination exist?
 > It is an "**open question**".
-
-> [!card]- What does Stanford say critics of under-determination may demand before they withhold belief in a theory?
-> That serious, genuinely distinct empirical equivalents **actually be produced**, not presumed.
-
-> [!card]- Why does the conjunction of a theory's finitely many observation conditionals not create under-determination, for Quine?
-> It is implied by every empirically equivalent rival and conflicts with none: a **common core**.
 
 > [!card]- What three conditions must hold at once for under-determination to "lurk", according to Quine?
 > - Two **irreconcilable** formulations
@@ -498,23 +453,14 @@ Full model answers for mock Q6 and Q3 are the first two exam questions below.
 > [!card]- What is Poincaré's view of the status of geometry?
 > **Conventional**: neither a priori nor a posteriori. We choose the geometry that describes experience most simply.
 
-> [!card]- What is Poincaré's perceptual argument that space is not given as three-dimensional?
-> The visual field is at first sight **two-dimensional**, and tactile space could be multi-dimensional.
-
 > [!card]- In Poincaré's sphere, what is the outside (Euclidean) description?
-> A Euclidean disk with temperature $T = R^2 - r^2$; every body's size is proportional to $T$, so everything **shrinks towards the edge**.
+> A finite Euclidean disk whose temperature falls towards the edge, so every body **shrinks towards the edge**.
 
 > [!card]- In Poincaré's sphere, what geometry do the inhabitants find?
 > **Infinite, curved, non-Euclidean** space: their rulers shrink with what they measure, so they never reach the boundary.
 
 > [!card]- Why can no experiment decide between the two descriptions of Poincaré's sphere?
 > **Every experimental set-up** can itself be interpreted in either picture.
-
-> [!card]- Why do we find it easier to call Poincaré's sphere world Euclidean?
-> Our senses are **used to Euclidean space**, so a Euclidean disk plus a temperature law is simpler for us.
-
-> [!card]- What analogy does Poincaré use for the choice of geometry?
-> Measuring distance in **metres or yards**: a convention, with no fact of the matter.
 
 > [!card]- How does Poincaré's conventionalism connect to Duhem's thesis?
 > Laws are tested only indirectly: **geometry faces experience together with physics**.

@@ -301,26 +301,14 @@ The full model answer for mock Q1 is the first exam question below.
 
 ## Flashcards
 
-> [!card]- What is the difference between syntax and semantics?
-> Syntax: formal rules for building and transforming expressions, **leaving meaning out**. Semantics: the study of **meaning**.
-
-> [!card]- For Kant, when is a judgement synthetic?
-> When it **extends knowledge** instead of unpacking what a concept already contains.
-
-> [!card]- For Kant, when is a judgement a priori?
-> When its justification **does not derive from particular experiences**.
+> [!card]- What did Kant claim about synthetic a priori judgements?
+> That they exist: they **extend knowledge** yet are justified **independently of experience**, e.g. Euclidean geometry.
 
 > [!card]- Why did the logical positivists deny that there is synthetic a priori knowledge?
 > Everything knowable a priori, including logic and mathematics, is **analytic** and empty of factual content.
 
 > [!card]- How did relativity count against Kant's view of geometry, for the logical positivists?
 > A **non-Euclidean** geometry is true of our world, so Euclid was not synthetic a priori.
-
-> [!card]- What status did the logical positivists give to logic?
-> **Tautological** or analytic: true by form, adding no factual content about the world.
-
-> [!card]- What was the Vienna Circle's ideal of legitimate knowledge?
-> Knowledge is either **empirically grounded** or **logically/mathematically necessary**.
 
 > [!card]- What is the difference between logical positivism and logical empiricism?
 > Logical positivism: the early, aggressive phase. Logical empiricism: the later, **moderate** phase.
@@ -349,38 +337,17 @@ The full model answer for mock Q1 is the first exam question below.
 > [!card]- What is the difference between what a lack of possible evidence means for the positivists and for Popper?
 > Positivists: the statement is **meaningless**. Popper: it may be meaningful, just **not scientific**.
 
-> [!card]- Why is "meaningless" a stronger charge than "false" for Carnap?
-> Only **meaningful** sentences can be true or false; a pseudo-statement never gets that far.
-
-> [!card]- What is the elementary sentence of a word, for Carnap?
-> The **simplest sentence form** the word can occur in, e.g. "x is a stone".
-
-> [!card]- In Carnap's arthropod example, what does "x is an arthropod" reduce to?
-> **x is an animal, x has a segmented body, x has jointed legs**: observation sentences.
-
 > [!card]- When is a word meaningful, for early Carnap?
 > When the sentences it can occur in are **reducible to observation sentences**.
-
-> [!card]- Why did early Carnap explain meaning through logical relations between sentences?
-> He worked **syntactically** and left meanings to **psychology**; formal semantics (Tarski) came only later.
 
 > [!card]- What does Carnap's made-up word "teavy" show?
 > A word with **no empirical criterion of application** is meaningless, whatever images its user associates with it.
 
-> [!card]- What is the problem with Carnap equating a sentence's entailments, truth conditions, verification and meaning?
-> **Deduction, truth, verification and meaning** are not obviously the same; equating them needs strong assumptions.
-
 > [!card]- What are the two ways a pseudo-statement arises, for Carnap?
 > Words with **no criterion of application**, or meaningful words combined against **logical syntax**.
 
-> [!card]- What is a "type confusion" for Carnap?
-> A grammatical expression that **cannot be translated into logically correct form**, e.g. predicates applied to "being".
-
 > [!card]- Why is Heidegger's "The Nothing itself noths" a pseudo-statement for Carnap?
 > It treats "nothing" as a **name** and as a **verb**; in modern logic it is neither.
-
-> [!card]- How does modern logic express "nothing is P"?
-> $\neg\exists x\,P(x)$: no object called Nothing is posited.
 
 > [!card]- What does metaphysics express, according to Carnap?
 > An **attitude towards life**, which art expresses better: metaphysicians are "musicians without musical ability".
@@ -412,9 +379,6 @@ The full model answer for mock Q1 is the first exam question below.
 > [!card]- Why did Carnap's rejection of metaphysics lose force after his move to semantics?
 > A full semantics **cannot avoid ontology**, so the line between theory and metaphysics blurs.
 
-> [!card]- In later logical empiricism, where does a theoretical term get its meaning?
-> From its **place in the whole theoretical structure**, connected to observation as a whole.
-
 > [!card]- What is a scientific theory on the syntactic conception?
 > A **collection of sentences in a formal logical language**.
 
@@ -430,14 +394,8 @@ The full model answer for mock Q1 is the first exam question below.
 > [!card]- Is the syntactic conception a description of laboratory practice?
 > No, a **normative ideal**: a rigorous standard for evaluating scientific knowledge.
 
-> [!card]- In kinetic theory, what is the correspondence rule for pressure?
-> Pressure is the **mean force** (per unit area) with which molecules strike the container walls.
-
-> [!card]- In kinetic theory, what is the correspondence rule for temperature?
-> Absolute temperature is proportional to the **mean molecular kinetic energy**.
-
-> [!card]- How does kinetic theory reach the ideal gas law $PV = NkT$?
-> Derive $PV$ from the axioms and the **pressure rule**, then **substitute the temperature correspondence rule**.
+> [!card]- How does kinetic theory illustrate the syntactic conception?
+> **Correspondence rules** link theoretical terms (mean molecular kinetic energy) to observables (temperature), so unobservable molecules yield the testable **ideal gas law**.
 
 > [!card]- What is a scientific theory on the semantic conception?
 > **A class of mathematical models** representing possible systems.
@@ -445,14 +403,8 @@ The full model answer for mock Q1 is the first exam question below.
 > [!card]- What three criticisms motivate the semantic conception?
 > Many theories are **not axiomatized**; one theory has **several equivalent formulations**; scientists work with **models**.
 
-> [!card]- Why does language dependence count against the syntactic conception?
-> One theory has several equivalent formulations, so identifying it with **one formulation** is wrong.
-
 > [!card]- What is the difference between an iconic and a mathematical model?
 > Iconic: a **concrete representation** similar to its target. Mathematical: a **structure that makes a theory's sentences true**.
-
-> [!card]- Which sense of "model" does the semantic conception mainly use?
-> The **mathematical or logical** sense.
 
 > [!card]- What does Halvorson argue about the semantic view?
 > The semantic view, **if plausible, is syntactic**.
@@ -462,9 +414,6 @@ The full model answer for mock Q1 is the first exam question below.
 
 > [!card]- Does the syntactic/semantic distinction survive, on the recent debate?
 > Arguably not: the two **collapse into each other** or are complementary.
-
-> [!card]- What does Lutz conclude about the syntactic-semantic debate?
-> It does **not capture any significant differences**.
 
 ## Links
 

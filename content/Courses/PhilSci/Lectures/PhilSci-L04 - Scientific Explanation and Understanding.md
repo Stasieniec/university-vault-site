@@ -366,9 +366,6 @@ The model answer for mock Q7 is the first exam question below.
 
 ## Flashcards
 
-> [!card]- What is explanatory inference?
-> Inference from data to a hypothesis about a **hidden structure or process** that would explain the data.
-
 > [!card]- Why did empiricists distrust the idea that science explains?
 > Explaining seemed to claim **metaphysical insight** into hidden causes and essences behind appearances.
 
@@ -393,23 +390,14 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- Syphilis explains a late symptom that few syphilis patients develop. What does this show against inductive-statistical explanation?
 > **High probability** of the explanandum is not necessary for explanation.
 
-> [!card]- Must the laws in a Hempelian D-N explanation be causal?
-> No. **Functional laws** count: $PV = nRT$ explains without saying which quantity causes which.
-
-> [!card]- Is Hempel's D-N model meant to describe how scientists actually explain?
-> No, it is **normative**: the ideal of a good explanation, like the logician's concept of **proof**.
-
 > [!card]- What does the asymmetry objection to Hempel's D-N model say?
 > Deductions can run **both ways**, explanations cannot, so the D-N model admits backwards explanations.
 
 > [!card]- In the flagpole case against Hempel, which direction of deduction explains?
 > Pole height to shadow length **explains**; shadow length to pole height only **predicts**.
 
-> [!card]- Why does the flagpole case show the D-N conditions are not sufficient for explanation?
-> The shadow-to-pole deduction meets **all four conditions** of adequacy yet explains nothing.
-
 > [!card]- How did Hempel reply to the asymmetry objection?
-> He **bit the bullet**: if his theory allows both directions, both are fine. Hopeless for the flagpole.
+> He **bit the bullet**: if his theory lets an explanation run both ways, both directions are fine.
 
 > [!card]- What does the hexed-salt example show against Hempel's D-N model?
 > **Irrelevance**: a true premise the deduction needs (the hex) can still explain nothing.
@@ -435,15 +423,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- What price does a causal theory of explanation pay?
 > It must say **what causality is**, which empiricists since Hume have regarded as suspect.
 
-> [!card]- What is causation on the regularity theory?
-> **Constant conjunction**: $C$ regularly followed by $E$, producing an **expectation** in us, not a necessary connection.
-
-> [!card]- What is causation on the counterfactual theory?
-> If cause $C$ **hadn't occurred**, effect $E$ wouldn't have occurred (Woodward).
-
-> [!card]- Which theory of causation, held by Salmon, says we can identify causal processes and interactions in nature?
-> The **process** theory (picture a chain of falling dominoes).
-
 > [!card]- Why does the regularity theory of causation bring back the barometer problem?
 > Barometer drops are **constantly conjoined** with storms, so they would count as causes.
 
@@ -461,9 +440,6 @@ The model answer for mock Q7 is the first exam question below.
 
 > [!card]- What is the main advantage of unification over causal theories of explanation?
 > It accounts for **non-causal explanations**, such as those in quantum theory.
-
-> [!card]- Why did Darwin's evolution convince scientists early, despite few specific new predictions, for Kitcher?
-> **Explanatory promise**: it unified a great range of phenomena with a few principles.
 
 > [!card]- What is the main challenge for the unificationist theory of explanation?
 > Recovering the **flagpole asymmetry** without appealing to causes.
@@ -516,9 +492,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- Why does Trout think the feeling of understanding is no epistemic guide?
 > The *Eureka!* feeling results from **cognitive biases** such as overconfidence and hindsight.
 
-> [!card]- What are Carnap's three senses of "understanding"?
-> **Pragmatic** (capability of use), **subjective** (intuitive feeling), **epistemic** (knowing semantic rules).
-
 > [!card]- What two meanings of "pragmatic" do Friedman and Woodward and Ross distinguish?
 > **Subjective** (varies with individual psychology) versus **useable for certain aims** (compatible with objectivity).
 
@@ -534,9 +507,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- What is the useability requirement for understanding about, if not knowledge?
 > An **ability to act**: it involves **skills and judgement**.
 
-> [!card]- How does understanding relate to explanation, for De Regt and Dieks?
-> Understanding needs an explanation **plus the skill** to construct and use explanations.
-
 > [!card]- Why can understanding unify a pluralist view of explanation, for De Regt and Dieks?
 > Causal, unificatory and law-based explanations are all **routes to understanding** for a skilled scientist.
 
@@ -549,17 +519,11 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- What is De Regt and Dieks's basic form ("grammar") of a claim of understanding?
 > Scientist $S$ (in context $C$) understands phenomenon $P$ on the basis of theory $T$.
 
-> [!card]- In De Regt and Dieks's $T \sim M \sim P$, what does the model $M$ do?
-> It **represents $P$ so that $T$ can be applied** to it.
-
 > [!card]- Why does model-based explanation require skills, according to De Regt and Dieks?
 > There are **no algorithms or strict rules** for building models: approximation, idealisation, pragmatic decisions.
 
 > [!card]- What is understanding, according to De Regt and Dieks?
 > The **skill to use a theory for building models** to explain phenomena.
-
-> [!card]- What do De Regt and Dieks call the value scientists attribute to qualities of a theory that facilitate its use?
-> **Intelligibility**.
 
 > [!card]- What is intelligibility, according to De Regt and Dieks?
 > The **value** scientists attribute to qualities of a theory that **facilitate its use**.
@@ -579,9 +543,6 @@ The model answer for mock Q7 is the first exam question below.
 > [!card]- Why does CIT not make understanding subjective?
 > Context means the **meso-level community**; recognising consequences without calculating is a **public, testable** competence.
 
-> [!card]- At which of De Regt and Dieks's levels do tools for qualitative reasoning (diagrams, analogies, toy models) operate?
-> The **meso-level**: taught and shared within a discipline.
-
 > [!card]- What is the main objection to understanding as an additional epistemic aim of science?
 > A skill may be only a **means** to the real epistemic aims, truth or empirical adequacy.
 
@@ -599,9 +560,6 @@ The model answer for mock Q7 is the first exam question below.
 
 > [!card]- In the 1926 quantum debate, which theory was the visualizable one?
 > **Wave mechanics** (Schrödinger); matrix mechanics (Heisenberg, Pauli) was abstract.
-
-> [!card]- Which German term for visualizability was at stake in the 1926 dispute between Schrödinger and Heisenberg and Pauli?
-> ***Anschaulichkeit***.
 
 > [!card]- What was Pauli's reply to the demand for visualizability?
 > Once new conceptual systems are settled, **they too become *anschaulich***: visualizability is not a fixed standard.

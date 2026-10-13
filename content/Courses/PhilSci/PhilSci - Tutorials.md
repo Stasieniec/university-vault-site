@@ -417,9 +417,6 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 > [!card]- Why does Kuhn hold that cumulative acquisition of novelty is improbable in principle?
 > Novelty is what the paradigm does **not anticipate**, so it can only appear as an **anomaly**, which counts as a failure rather than a contribution.
 
-> [!card]- For Kuhn, how does genuine novelty enter science?
-> By **rupture** (revolution) rather than by accumulation.
-
 > [!card]- Why are scientific revolutions necessary for Kuhn?
 > Normal science **cannot correct its own foundations**; only a paradigm change restores exhausted puzzle-solving capacity.
 
@@ -459,17 +456,8 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 > [!card]- For Longino, what produces scientific knowledge?
 > The **community** subjecting individual work to criticism. Knowledge is what survives **transformative interrogation**.
 
-> [!card]- Does objectivity differ in kind for non-empirical sciences, on Longino's view?
-> **No**, against the logical empiricists.
-
 > [!card]- Is Longino's contextual empiricism an ethical theory?
 > **No.** It is a theory of **scientific objectivity and epistemic methodology**; it does not say whether research is permissible.
-
-> [!card]- Which theories decide whether a piece of research is ethically permissible?
-> Consequentialism, deontology, virtue ethics, care ethics, theories of justice.
-
-> [!card]- How is Longino indirectly relevant to research ethics?
-> She encourages scrutiny of the **assumptions** built into research and of **whose perspectives** are included in criticism.
 
 > [!card]- What is the difference between Laudan's non-uniqueness and egalitarian theses?
 > Non-uniqueness: **some** rival is as well supported as a theory. Egalitarian: **every** theory is as well supported as any rival.
@@ -482,9 +470,6 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 
 > [!card]- For Quine, when do two theory formulations express the same theory?
 > When they are **empirically equivalent** and one converts into the other by **reconstrual of predicates**.
-
-> [!card]- What is Quine's example of two formulations that count as the same theory?
-> Two physical theories that differ only by exchanging the words "**molecule**" and "**electron**".
 
 > [!card]- Which empirically equivalent formulations does Quine's underdetermination need?
 > Ones that **no reconstrual of predicates** can bring into agreement, so they are **different theories**.
@@ -507,17 +492,11 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 > [!card]- According to Laudan, what would Quine need to show to get from holism to the egalitarian thesis?
 > That the **ampliative rules** of theory choice are too weak to prefer one repair over another.
 
-> [!card]- What is Laudan's phrase for Quine arguing without ever examining the rules of theory choice?
-> Arguing in an "**evaluative vacuum**".
-
 > [!card]- According to Laudan, which underdetermination thesis does holism support at most?
 > **Non-uniqueness**: some rival exists.
 
 > [!card]- Why is the non-uniqueness thesis harmless, according to Laudan?
 > Choosing among rivals is exactly what **methodology** is for.
-
-> [!card]- What is inference from data to a hypothesis about the hidden structure that would explain it called?
-> **Explanatory inference**.
 
 > [!card]- How does the causal account of explanation handle the flagpole case?
 > Sunlight and pole **cause** the shadow, so the pole's height explains the shadow and the reverse derivation does not.
@@ -531,9 +510,6 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 
 > [!card]- How does Kitcher try to recover the flagpole asymmetry?
 > He argues causal talk is a **loose summary** of deeper **unification asymmetries**.
-
-> [!card]- Which concessions between causal and unification theorists support pluralism about explanation?
-> **Salmon** accepted unification and **Kitcher** accepted causation.
 
 > [!card]- How does Godfrey-Smith's contextualism about explanation go beyond pluralism?
 > There is **no fixed list** of explanatory relations: each **field sets its own standards**.
@@ -556,14 +532,8 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 > [!card]- What is the relation between explanation and understanding for De Regt and Dieks?
 > Understanding requires an explanation plus the **skill** to construct and use explanations.
 
-> [!card]- Why can understanding, as a skill, unify causal, unificatory and law-based explanation?
-> Each is a way a **skilled scientist** can come to understand a phenomenon.
-
 > [!card]- Which two senses of "pragmatic" do De Regt and Dieks separate?
-> **Subjective**, and **useable for certain aims**.
-
-> [!card]- In which sense is understanding pragmatic for De Regt and Dieks?
-> **Useable for certain aims**, which is compatible with epistemic relevance.
+> **Subjective**, and **useable for certain aims**; understanding is pragmatic only in the second sense.
 
 > [!card]- Why does Hempel count understanding as epistemically irrelevant?
 > He treats "pragmatic" as "**subjective**".
@@ -597,9 +567,6 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 
 > [!card]- What is the case against understanding as an additional epistemic aim of science?
 > The skill may be a **means** to the real epistemic aims (truth, empirical adequacy) rather than an aim itself.
-
-> [!card]- How could a reductivist like Khalifa reply to understanding as an additional epistemic aim of science?
-> Call the skill **knowledge plus competence**, so nothing needs adding to the list of aims.
 
 ## Links
 

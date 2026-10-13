@@ -345,12 +345,6 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- What is a demarcation criterion?
 > A **necessary condition** a discipline must satisfy to count as genuine science; failing it makes the discipline non-scientific.
 
-> [!card]- Why can truth not be Popper's criterion of scientific status?
-> **Science often errs**, and pseudoscience may **stumble on the truth**, so truth and scientific status come apart.
-
-> [!card]- Why does astrology show, for Popper, that empirical evidence cannot be what marks science?
-> Astrology has a stupendous mass of **observational evidence**: its method is **pseudo-empirical**, appealing to observation without meeting scientific standards.
-
 > [!card]- Why did Popper see the explanatory power of Marxism, Freud and Adler as a weakness?
 > They seemed to explain **practically everything** in their fields, so confirmations were everywhere and therefore **worthless**.
 
@@ -366,17 +360,11 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- Why is it true for Popper that "the more a theory forbids, the better it is"?
 > Forbidding more gives it **more ways to be wrong**, so it is riskier and **more testable**.
 
-> [!card]- Is irrefutability a virtue of a theory, for Popper?
-> No, **a vice**: a theory not refutable by any conceivable event is non-scientific.
-
 > [!card]- What is Popper's criterion of demarcation?
 > The criterion of the scientific status of a theory is its **falsifiability**, or refutability, or testability.
 
 > [!card]- What does Popper call evidence from a serious but unsuccessful attempt to falsify a theory?
 > **Corroborating evidence**.
-
-> [!card]- Why is "well corroborated, therefore probably true" a mistake on Popper's view?
-> Corroboration only reports **past survival** of refutation attempts; Popper holds every theory's probability is **zero**, and the inference is the inductive step he denies.
 
 > [!card]- Why can no number of observed white swans verify "all swans are white"?
 > No finite conjunction of instances **deductively entails** a universal statement (Hume's problem of induction).
@@ -393,14 +381,8 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- How did Marxists rescue their theory of history from refutation, according to Popper?
 > They **re-interpreted** both theory and evidence to agree, a **conventionalist twist** that made it irrefutable.
 
-> [!card]- Is Popper's verdict on Freud and Adler about the content or the form of their claims?
-> The **form**: they may contain real psychological insight, but not in a **testable** form.
-
 > [!card]- What does "ad hoc" mean for a modification that saves a theory from refutation?
 > **For this purpose only**: its only motive is to **absorb the refuting evidence**, adding **no new testable consequences**.
-
-> [!card]- What does Popper call rescuing a refuted theory with an ad hoc auxiliary assumption or re-interpretation?
-> A **conventionalist twist**, or **conventionalist stratagem**.
 
 > [!card]- What does an ad hoc rescue cost a theory, according to Popper?
 > It escapes refutation only by **destroying, or at least lowering, its scientific status**. The move itself is always available.
@@ -417,14 +399,8 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- Does Popper think non-scientific theories are meaningless?
 > No: they can be **meaningful and important**, and myths can develop into testable science.
 
-> [!card]- Why does Lakatos say demarcation is not armchair philosophy?
-> It has **grave ethical and political implications**: the Church banned Copernicus and the Soviet Party condemned Mendelian genetics as pseudoscience.
-
 > [!card]- How does Lakatos formulate Popper's criterion of demarcation?
 > Scientific if one will specify **in advance** a **potential falsifier**; pseudoscientific if one refuses.
-
-> [!card]- What does Popper's criterion really demarcate, according to Lakatos?
-> **Scientific method from non-scientific method**, rather than theories: status depends on the holders' attitude.
 
 > [!card]- What is Lakatos's main objection to Popper's falsificationism?
 > It ignores the **remarkable tenacity** of theories: scientists have **thick skins** and do not drop a theory because facts contradict it.
@@ -441,9 +417,6 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- What is Lakatos's unit of appraisal?
 > The **research programme**: a series of theories over time sharing a common structure.
 
-> [!card]- Why do "progressive" and "degenerating" apply to a Lakatosian research programme and not to a single hypothesis?
-> Those words describe a **direction of travel** over time, and a single snapshot has none.
-
 > [!card]- What are the four components of a Lakatosian research programme?
 > **Hard core**, **protective belt** of auxiliary hypotheses, **positive heuristic**, **negative heuristic**.
 
@@ -455,9 +428,6 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 
 > [!card]- What does Lakatos call the part of a research programme that absorbs anomalies?
 > The **protective belt** of auxiliary hypotheses.
-
-> [!card]- What does Lakatos's protective belt contain?
-> Auxiliary hypotheses, initial conditions, theories of the instruments, models of the system.
 
 > [!card]- What does Lakatos call the rule never to direct modus tollens at the hard core?
 > The **negative heuristic**.
@@ -480,20 +450,11 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 > [!card]- When is a research programme degenerating, for Lakatos?
 > When its theories are fabricated **only to accommodate known facts**: theory **lags behind** the facts.
 
-> [!card]- What kind of question does Lakatos's criterion make of scientific status?
-> A **historical** question about track record, which can change: programmes can recover or run out.
-
 > [!card]- Which comet prediction does Lakatos give as a novel fact of the Newtonian programme?
 > Halley's comet: from a short stretch of its path, Halley predicted its **return in seventy-two years**, and it returned.
 
-> [!card]- What novel fact did the Einsteinian programme predict, according to Lakatos?
-> Two stars' separation measured **during an eclipse** would **differ** from their separation measured at night.
-
 > [!card]- How did Marxists explain rising working-class living standards, according to Lakatos?
 > With a **theory of imperialism**, cooked up **after the event**.
-
-> [!card]- What counts as the hallmark of empirical progress, for Lakatos?
-> **Dramatic, unexpected, stunning predictions**; a few are enough to tilt the balance. Trivial verifications count for nothing.
 
 > [!card]- What is the difference between how Popper and Lakatos judge a modification that saves a theory?
 > Popper judges it **when it is made**: independent support or a new test? Lakatos judges the **record**: did novel predictions follow?
@@ -509,12 +470,6 @@ Full model answers for mock Q2 and Q3 are in the first two exam questions below.
 
 > [!card]- What does Lakatos mean by saying his methodology offers no instant rationality?
 > Budding programmes deserve **leniency**, may take decades to progress, and no rule says when to give up.
-
-> [!card]- Is it dishonest to stick with a degenerating research programme, for Lakatos?
-> No, provided the **record is kept public**.
-
-> [!card]- What does Lakatos mean by "there is no refutation without a better theory"?
-> A programme is removed by a **better rival**, not by a Popperian quick kill.
 
 > [!card]- What does Lakatos say Popperian crucial experiments and Kuhnian revolutions turn out to be?
 > **Myths**: what normally happens is that progressive programmes replace degenerating ones.
