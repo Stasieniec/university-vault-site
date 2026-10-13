@@ -59,10 +59,10 @@ Quoted from the file, typos included. There is **no official answer key**. Quest
 
 ### Question 3.1, worked
 
-The note on "different language pairs" makes this the parent-child transfer learning of [[MNLP-L07 - Crosslingual NLP]] (section 9): the general domain is the parent, the in-domain data is the child.
+The note on "different language pairs" makes this the parent-child transfer learning of [[MNLP-L07 - Crosslingual NLP]] ("Transfer learning: start the child from a parent"): the general domain is the parent, the in-domain data is the child.
 
 - **[A] true.** Transfer learning is "basically the same as fine-tuning": train on the large pair, then **continue training** the same model on the small one. The child starts from the parent's parameters.
-- **[B] false.** The tell is "continuously". L07 section 9.4 shows that letting more parameters adapt to the small child data stops helping and then hurts: unfreezing the target embeddings lowers Uzbek→English from 15.0 to 14.7 and 13.7, because parameters learned from 300M tokens overfit on 1.8M. The same holds for the number of updates (outside the MNLP material, but the standard result): with little in-domain data, quality peaks after a number of updates and then degrades as the model overfits.
+- **[B] false.** The tell is "continuously". L07 ("What to freeze") shows that letting more parameters adapt to the small child data stops helping and then hurts: unfreezing the target embeddings lowers Uzbek→English from 15.0 to 14.7 and 13.7, because parameters learned from 300M tokens overfit on 1.8M. The same holds for the number of updates (outside the MNLP material, but the standard result): with little in-domain data, quality peaks after a number of updates and then degrades as the model overfits.
 - **[C] false.** Outside the MNLP material, but standard: continuing to train only on in-domain data overwrites what the model knew about the general domain, so general-domain quality drops. That loss is what "catastrophic forgetting" names.
 
 Answer: **A**.

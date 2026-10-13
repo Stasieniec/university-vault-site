@@ -9,7 +9,7 @@ status: complete
 
 # MNLP - Exam Questions
 
-All 53 exam-style questions for Multilingual Natural Language Processing, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[MNLP - Flashcards|flashcards]] page.
+All 55 exam-style questions for Multilingual Natural Language Processing, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[MNLP - Flashcards|flashcards]] page.
 
 Back to the [[Courses/MNLP/index|Multilingual Natural Language Processing home]].
 

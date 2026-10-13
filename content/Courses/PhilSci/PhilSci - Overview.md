@@ -35,7 +35,9 @@ exam_date: 2026-10-19
 
 ## Flashcards
 
-[[PhilSci - Flashcards]] collects every lecture's flashcards for drilling before the exam. Each lecture note also ends with its own set. So far: L01 and L03.
+[[PhilSci - Flashcards]] collects every lecture's flashcards for drilling before the exam. Each lecture note also ends with its own set (every lecture except L03b, which is not examinable).
+
+All lecture notes were rewritten on 2026-10-12 and 13 to be read once instead of attending the lecture, and each was reviewed by independent reviewers. The official mock exam with answers is in `Assets/Mock Exam_with Answers.pdf`; every note's mock questions match it.
 
 ## Objectives
 
@@ -100,7 +102,7 @@ exam_date: 2026-10-19
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Complete, and checked against the revised deck on 2026-09-16. The two appended slides (Laudan's two UD theses; Quine on the common core) are in sections 4 and 5 |
+| Lecture 3 | [[PhilSci-L03 - Under-determination]] | Rewritten for reading 2026-10-13 and reviewed. Covers Laudan's two theses and Quine on the common core |
 | Lecture 3b | [[PhilSci-L03b - GenAI, Writing and Philosophical Learning]] | Second half of the same session. **Course policy on AI use**, which governs the paper and the presentation |
 
 | Reading | Pages | Source |
@@ -129,7 +131,7 @@ exam_date: 2026-10-19
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 5 | [[PhilSci-L05 - Scientific Realism and its Critiques]] | Semantic, epistemic and metaphysical realism; no-miracles argument and IBE; van Fraassen's constructive empiricism; Laudan's pessimistic meta-induction. Written from the deck and the recording. **Mock exam question 8** is on this week's readings |
+| Lecture 5 | [[PhilSci-L05 - Scientific Realism and its Critiques]] | Semantic, epistemic and metaphysical realism; no-miracles argument and IBE; van Fraassen's constructive empiricism; Laudan's pessimistic meta-induction. **Mock exam question 8** is on this week's readings |
 | Tutorial 5 | Not yet on Canvas | Slides for the 1 Oct tutorial (Matteo Fabbri) had not been uploaded as of 2026-10-05 |
 
 | Reading | Pages | Source |
@@ -145,7 +147,7 @@ exam_date: 2026-10-19
 
 | Session | Material | Notes |
 |---------|----------|-------|
-| Lecture 6 | [[PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction]] | Enrico Cinti, "Replies to the PMI": scorecard of the realism arguments; mature-theories reply, Kitcher on reference, Psillos' selective confirmation, structural realism; Stanford's historicist critique; De Haro's extensional scientific realism (the aether refers). Written from the deck; no recording |
+| Lecture 6 | [[PhilSci-L06 - Scientific Realism and the Pessimistic Meta-Induction]] | Enrico Cinti, "Replies to the PMI": scorecard of the realism arguments; mature-theories reply, Kitcher on reference, Psillos' selective confirmation, structural realism; Stanford's historicist critique; De Haro's extensional scientific realism (the aether refers); Worrall's structural realism |
 
 | Reading | Pages | Source |
 |---------|-------|--------|

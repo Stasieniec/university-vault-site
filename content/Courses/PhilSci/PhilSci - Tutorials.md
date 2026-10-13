@@ -71,7 +71,7 @@ Internally by the difficulty of stating the verification criterion precisely, th
 
 > **How did later logical empiricism differ from early logical positivism?**
 
-It softened. Verification gave way to weaker confirmation, the demand that theoretical terms reduce to observation was relaxed, and the syntactic conception of theories gave way to the semantic one, on which a theory is a class of models rather than an axiomatised language.
+It softened. Verification gave way to weaker confirmation, and the demand that theoretical terms reduce to observation was relaxed: after meeting Tarski, Carnap accepted a full semantics, with theoretical terms only partially interpreted through correspondence rules. The semantic conception of theories (a theory as a class of models rather than an axiomatised language) came afterwards as a criticism of this syntactic picture, and was not logical empiricism's own next step.
 
 > **Popper: what makes a theory scientific? How does falsifiability relate to verificationism? Which is more accurate?**
 
@@ -161,7 +161,7 @@ That second exercise is also, not by accident, most of what a project proposal i
 
 > **What is the problem of underdetermination according to Quine, in short? And according to Laudan?**
 
-For **Quine**, our theory of the world is underdetermined by all possible observations: there can be theory formulations that are **empirically equivalent** (they imply the same observation sentences) but **theoretically inequivalent**, so no possible evidence decides between them. For **Laudan**, the problem is a family of theses that get run together, and he separates them. The **non-uniqueness** thesis says that for any theory there is at least one rival as well supported by the evidence. The **egalitarian** thesis says every theory is as well supported as any rival. Only the egalitarian thesis would make theory choice arbitrary, and Laudan argues nothing in Quine establishes it. Detail in [[PhilSci-L03 - Under-determination]], sections 4 and 5.
+For **Quine**, our theory of the world is underdetermined by all possible observations: there can be theory formulations that are **empirically equivalent** (they imply the same observation sentences) but **theoretically inequivalent**, so no possible evidence decides between them. For **Laudan**, the problem is a family of theses that get run together, and he separates them. The **non-uniqueness** thesis says that for any theory there is at least one rival as well supported by the evidence. The **egalitarian** thesis says every theory is as well supported as any rival. Only the egalitarian thesis would make theory choice arbitrary, and Laudan argues nothing in Quine establishes it. Detail in [[PhilSci-L03 - Under-determination]], under "Objections to Quine" and "Empirical under-determination".
 
 > **Why does Quine say that underdetermination is a thesis about the world?**
 
@@ -203,7 +203,7 @@ Important because science seems to tell us not just *what* happens but *why*, an
 
 > **What is the logical empiricists' theory of explanation (the "covering law" or D-N model)? What is its main challenge?**
 
-To explain something is to derive it in a logical argument whose premises include at least one law of nature, used essentially, plus particular conditions. Explaining is showing that the phenomenon was **to be expected**, so explanation and prediction have the same structure. The main challenge is the **asymmetry problem**: the flagpole's height explains the shadow's length, and the same laws let you deduce the height from the shadow, which explains nothing. Godfrey-Smith calls it close to a knockdown argument. Full treatment in [[PhilSci-L04 - Scientific Explanation and Understanding]], sections 2 and 3.
+To explain something is to derive it in a logical argument whose premises include at least one law of nature, used essentially, plus particular conditions. Explaining is showing that the phenomenon was **to be expected**, so explanation and prediction have the same structure. The main challenge is the **asymmetry problem**: the flagpole's height explains the shadow's length, and the same laws let you deduce the height from the shadow, which explains nothing. Godfrey-Smith calls it close to a knockdown argument. Full treatment in [[PhilSci-L04 - Scientific Explanation and Understanding]], under "Hempel" and "What goes wrong".
 
 > **What are the two main alternative ideas on explanation, and their challenges?**
 
@@ -231,7 +231,7 @@ Hempel treats "pragmatic" as "subjective" and so as epistemically irrelevant; va
 
 > **CUP: a phenomenon is understood scientifically iff there is an explanation of it based on an intelligible theory that conforms to empirical adequacy and internal consistency. CIT: a theory T is intelligible for a scientist in a context if they can recognise qualitatively characteristic consequences of T without performing exact calculations. Does this reduce understanding to a subjective affair?**
 
-No. The criterion is relative to scientists in a context, but the context is a scientific community with shared, trained standards of intelligibility, the meso-level in De Regt and Dieks's three-level picture. Whether a physicist can recognise qualitative consequences without calculating is a public, testable fact about her skills, not a feeling. What it does make understanding is **contextual**: relative to a community and its level of progress. The pressure point is cases like Schrödinger against Heisenberg in 1926, where two groups in the same discipline disagreed about what was intelligible. There, contextual starts to look a lot like subjective, and the defence is that the disagreement was settled by the community over time, in the way Pauli predicted. Full version in [[PhilSci-L04 - Scientific Explanation and Understanding]], section 7.
+No. The criterion is relative to scientists in a context, but the context is a scientific community with shared, trained standards of intelligibility, the meso-level in De Regt and Dieks's three-level picture. Whether a physicist can recognise qualitative consequences without calculating is a public, testable fact about her skills, not a feeling. What it does make understanding is **contextual**: relative to a community and its level of progress. The pressure point is cases like Schrödinger against Heisenberg in 1926, where two groups in the same discipline disagreed about what was intelligible. There, contextual starts to look a lot like subjective, and the defence is that the disagreement was settled by the community over time, in the way Pauli predicted. Full version in [[PhilSci-L04 - Scientific Explanation and Understanding]], under "Does this make understanding subjective?".
 
 > **What kinds of conceptual toolkit help scientists with qualitative reasoning? At what level do these operate?**
 
@@ -412,7 +412,7 @@ For: it explains the historical variation (Newton, Huygens, Maxwell; Schrödinge
 > [!card]- How did later logical empiricism soften early logical positivism?
 > - Verification gave way to weaker **confirmation**
 > - Reduction of theoretical terms to observation **relaxed**
-> - **Syntactic** conception of theories gave way to the **semantic** one
+> - Carnap accepted a full **semantics** and **partial interpretation** of theoretical terms
 
 > [!card]- Why does Kuhn hold that cumulative acquisition of novelty is improbable in principle?
 > Novelty is what the paradigm does **not anticipate**, so it can only appear as an **anomaly**, which counts as a failure rather than a contribution.

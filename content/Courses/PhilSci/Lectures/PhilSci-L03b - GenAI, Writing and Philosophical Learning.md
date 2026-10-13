@@ -4,420 +4,191 @@ course: 5354PHSC6Y
 week: 3
 lecture: 3b
 date: 2026-09-15
-format: flipped classroom, second half (slides on Canvas as `3b GenAI.pdf`)
+format: flipped classroom, second half
 status: complete
 topics:
-  - GenAI as a study aid versus a substitute for learning
+  - The course policy on GenAI use
+  - Strengthening versus replacing your own learning
+  - The AI use statement for the paper
+  - Requirements and writing advice for the paper
   - Gartenberg et al. (2026) on AI in journal submissions and peer review
-  - The institutional incentive diagnosis
-  - Authorship, authenticity and responsibility
-  - What writing with AI actually requires
-  - The course's own AI policy
+  - Why writing with AI requires expertise
 ---
 
 # PhilSci-L03b: GenAI, Writing and Philosophical Learning
 
-> [!abstract] Overview
-> The second half of the 15 September flipped classroom, and the only session in this course that is about how you are permitted to work rather than about a philosophical doctrine.
+> [!abstract] In short
+> How may you use generative AI (GenAI: ChatGPT, Claude and the like) in this course, and why does Sebastian De Haro (the course coordinator) draw the line where he does?
 >
-> De Haro's thesis is that the interesting question is not whether AI use is allowed. It is whether a given use **strengthens or replaces your own learning**, and he thinks that question has a determinate answer in most concrete cases. He supports it with one empirical study of what AI has done to a journal's submission pipeline, one public scandal about authorship, and one long anecdote about trying to write a philosophy paper with AI himself.
+> His answer: AI is fine when it **strengthens** your own learning (explaining a term after you have tried, quizzing you, commenting on text you wrote) and not when it **replaces** it (doing the reading, writing what you submit). Writing with AI is only responsible for someone who is already an expert and can already write philosophy, because only they can catch its mistakes.
 >
-> The slides carry their own AI use statement, which is the argument being made by demonstration.
+> **Not on the exam.** No mock exam question touches this session and the syllabus does not list it as course content. Read it for the rules that govern your paper and presentation. The rules and the paper requirements come first; the reasoning behind the rules follows.
 
-> [!warning] This is the deck that governs your paper
-> Sections 7 and 8 are course policy, not commentary. The paper (30%) and the presentation (20%) are both governed by them, and the **Project Description** on Canvas repeats the rules in stricter language: generating or structuring your arguments or analysis is **not permitted**, and any use at all requires an AI use statement naming the tool, the purpose and the extent.
->
-> The Jetten case slide (printed slide 10, "AI and public communication") also says: **"Pangram detection has become very good."** Read that as a statement of intent.
+## The line: does AI strengthen or replace your learning?
 
----
+De Haro takes neither side of the usual debate. He does not cheer AI on and he does not ban it. His test is a single question.
 
-## 0. The slides declare their own provenance
+> [!definition] The central question
+> "The central question is whether AI strengthens or replaces your own learning."
 
-The title slide carries this, verbatim:
+Uses that **support** learning: asking for clarification of a difficult definition, requesting alternative examples, testing whether you can explain an argument, and using feedback to revise text **you have written**. Uses that **replace** it: outsourcing the reading, submitting AI-generated answers as your own, using generated text before you can judge its quality and accuracy, and not acknowledging AI use.
 
-> [!quote] De Haro, title slide
-> AI was used to produce a first draft of these slides, based on an outline, detailed instructions, and texts that I supplied to AI Chat. Afterwards, I edited and adapted that draft to produce the final slides.
+What the supporting uses have in common (my reading; De Haro does not spell it out) is that you have already done the work. You read the text and got stuck on a definition. You understand a concept well enough to judge whether a new example fits it. You have an argument in your head to be tested on. You wrote the text being commented on. In each case the AI comes after your own effort. The replacing uses are the same activities with your effort taken out.
 
-This is not decoration. It is the model of compliant use that sections 7 and 8 then formalise: a human supplies the outline, the instructions and the source texts; the machine drafts; the human edits and takes responsibility; the use is declared. Every restriction later in the deck is consistent with the way the deck itself was made.
+## The rules for your paper
 
-The session opened with a Wooclap poll asking the room two questions, "Do you use GenAI to study?" and "How do you use it?", before any position was stated.
+The policy appears twice: in De Haro's course policy, and in the section "About the use of AI tools" of the **Project Description**, which is written for the paper and is more detailed and formal. The two are consistent.
 
-> [!tip] A note on the deck's ordering
-> The page order in `3b GenAI.pdf` does not match the slide numbers printed on the pages (they run 1, 2, 14, 4, 5, 7, 8, 10, 11, 12, 3, 15, 16, 17; the title page, the conclusion and a figure-only page between slides 5 and 7, holding Figures 6 and 9, carry no number). The deck was reordered before export. This note follows the argument rather than the file, and flags nothing by it.
+AI use is **permitted but not encouraged**. All conceptual analysis, interpretation and philosophical argument must be yours.
 
----
+**Allowed:**
 
-## 1. The framing: neither enthusiasm nor prohibition
+- explaining a term **after** you have tried to understand the text (clarify)
+- asking for alternative examples, **then** judging whether they fit (compare)
+- having AI question you on an argument you have read (test)
+- suggestions on a text **you wrote**, where **you** decide which to take (revise)
+- improving clarity and grammar, refining phrasing
+- brainstorming and putting ideas in context
+- finding relevant papers or concepts, as you would with a search engine
 
-De Haro refuses both of the available slogans. The slide is a two-column contrast.
+**Not allowed:**
 
-| AI **can** support learning | AI should **not** replace learning |
-|---|---|
-| Ask for clarification of a difficult definition | Do not outsource the reading |
-| Request alternative examples | Do not submit AI-generated answers as your own |
-| Test whether you can explain an argument | Do not use generated text before you can judge its quality and accuracy |
-| Use feedback to revise text **that you have written** | Always acknowledge AI use when applicable |
+- outsourcing the assigned reading
+- generating a text for submission, or submitting AI-generated text as your own
+- **generating or structuring your arguments or analysis**
+- using text you cannot assess for accuracy, quality and argumentation
+- fabricating references or quotations
 
-> [!definition] The organising question
-> **"The central question is whether AI strengthens or replaces your own learning."**
+Each of the first four carries a qualifier (after you tried, then judge, a text you wrote, you decide), and the qualifier is what makes it allowed: without it, the same use lands in the second list. Brainstorming is allowed but structuring your argument is not, so the practical line is: AI may help you find a topic and the literature, but the argument and its outline have to come from you.
 
-Notice the structure of the permitted column. Every item presupposes that you have already done the work: you have read the text and got stuck on a definition, you have understood a concept well enough to judge whether a fresh example fits, you have an argument in your head to be tested on, you have **written something** for the feedback to be about. The AI is downstream of your effort in every case. The forbidden column is the same list with the effort removed.
+> [!warning] The AI use statement, and the rest of the small print
+> - If you used AI: add an **AI use statement** at the end of the paper naming the **tool(s)**, the **purpose(s)** and the **extent** of the help.
+> - De Haro's policy asks written work to **state what you did yourself**, explain **whether** and how AI was used and for which purpose, and say **which choices were your own**. "Your submitted work must make your own reasoning and responsibility visible." My reading: if you used no AI, one line saying so meets this.
+> - You are responsible for checking every claim and **every citation**. An AI-suggested paper that does not exist, or does not say what the AI claims, ends up in your paper as a fabricated reference.
+> - The vault's lecture notes are AI-written too. For the paper, read the texts you discuss in the original, and take every quotation and page number from the original text, never from a note.
+> - Put no personal or confidential data in prompts.
+> - Misuse is academic misconduct under the UvA Regulations Governing Fraud and Plagiarism (2019).
+> - De Haro, on the Jetten case: "Pangram detection has become very good." (Pangram is a commercial AI-text detector.) Whether it is run on papers is not stated; do not count on undeclared AI text going unnoticed.
 
----
+De Haro's own slides carry an AI use statement, which is one example of the form: "AI was used to produce a first draft of these slides, based on an outline, detailed instructions, and texts that I supplied to AI Chat. Afterwards, I edited and adapted that draft to produce the final slides." Copy the form only. The use it describes, drafting text, is not allowed in your paper.
 
-## 2. Beyond writing: AI and mathematics
+The Project Description's AI section speaks of "your submission", meaning the paper. The course policy covers all submitted work, and the presentation slides are submitted on Canvas, so the safe reading (mine; no source says it outright) is that the same rules apply to the slides, with a one-line AI use statement on the last slide if you used AI for them.
 
-A short aside, included to show that the sceptical position is not a blanket one.
+## Requirements and writing advice for the paper
 
-| What may become possible | What must remain visible |
-|---|---|
-| Systematic comparison of Cayley graphs and state transfer; De Haro cites Krystal Guo's work at the KdV Institute as striking | Access usually depends on a handful of commercial companies |
-| AI may help discover relations across technical literatures and formulate hypotheses for verification | Advanced subscriptions cost around €100 per month |
-| | **Generation is not verification, proof, or understanding** |
+The paper is marked on five criteria (from the Project Description):
 
-That last line is the one that carries across to the rest of the deck. The objection is not that machine output is worthless; it is that producing a candidate and establishing that it is correct are different acts, and only the first has got cheaper.
+1. Understanding and explanation of the ideas and arguments in the original texts.
+2. Structure: the structure of the paper reflects the structure of your argument.
+3. Development of the thesis: argumentation without logical gaps.
+4. Clarity and precision of the thesis and the argumentation.
+5. Difficulty and originality.
 
-The access point is a distinct argument and easy to skip past. If the tools that confer an epistemic advantage are gated behind a subscription, then the distribution of who can do good work changes for reasons that have nothing to do with ability.
+What else the Project Description and the proposal guidelines set:
 
----
+- **Length.** Around 4,000 to 7,000 words per student (8 to 15 pages), everything included. This is only a guide.
+- **Minimum requirements.** On time, correct spelling and grammar, no plagiarism.
+- **Formative part.** 10% of the paper mark comes from the project idea discussion, the proposal, how you use the feedback, and the first draft. The Project Description also calls the draft "not graded". My reading: the draft gets no grade of its own, but it counts towards that 10%. Hand it in.
+- **The draft** may be partial, but should have a title, abstract, table of contents with a short description and references under each item, a reference list, and substantial text.
+- **Stay near the proposal.** Small changes are allowed, but stay as close to the approved proposal as you can.
+- **Submission.** On Canvas, one submission per group, for both the draft and the final version.
+- **One question.** The paper should pursue a single, unified question in depth. A paper whose scope is too wide, with too many claims not properly justified, cannot get above a 7.
+- **Originality.** Explaining an existing question, debate or line of reasoning in your own words, clearly and insightfully, can earn an 8. Higher needs a contribution of your own, even a small one, made by engaging the key arguments in the literature: explicate a difficult problem one of the authors raised, or apply their view to a new case and draw a surprising conclusion. Doing things your own way without engaging the literature does not count.
+- **Audience.** Write for fellow students who did not take this course or do the readings, but are generally engaged in philosophy of science.
+- **Starting point.** An existing discussion in the philosophical literature. The Project Description recommends the Stanford Encyclopedia of Philosophy page on your topic and journals such as *Synthese* or *Philosophy of Science*. Popular science, articles for a broadly interested philosophical audience, and scientists writing about philosophy may be used and cited, but should not be your main topic.
+- **Citations.** APA or similar, with **page numbers in the text**: "Jones (1985: pp. 175-176)", never just "Jones (1985)".
+- **Scope.** State the limits of your argument explicitly.
+- **Argument reconstruction.** Premises and conclusion (P1, P2, C) can help, e.g. "I accept P1 but argue against P2". If you use one, state it in a valid form, for example modus ponens or modus tollens.
 
-## 3. The research evidence: Gartenberg et al. (2026)
+Luka Vinck's writing workshop (tutorial 3) covers how to build the paper section by section: thesis, argumentation scheme as the outline, what goes in the introduction and at the start and end of each argument, and plain language without overstatement. It is written up in [[PhilSci - Tutorials]].
 
-> [!info] What the study is
-> Gartenberg et al. examine **submissions and peer reviews at the journal *Organization Science***, over a **five-year period beginning January 2021**. They analyse both manuscripts and reviews.
->
-> Source as given on the slides: "Gartenberg et al. (2026), summary document provided for this class." The deck works from a summary, not the full paper.
+For the presentation, the obvious move (my suggestion; no source says it) is the same skeleton: thesis first, then the argumentation scheme. The presentation's criteria and evaluation form are under Canvas Files (per the course overview) and are not in the vault.
 
-**Their measures of writing quality**, all six:
+## Why he draws the line there
 
-- Readability
-- Jargon
-- Nominalisation
-- Passive voice
-- Hedging
-- Specificity
+### Generating an answer is the cheap part
 
-> [!quote] The central claim
-> Current AI tools, combined with incentives, are pushing research towards **more, rather than better, writing.**
+De Haro is not sceptical across the board. In mathematics, he grants, AI may help find relations across technical literatures and suggest hypotheses for someone to check. He adds two caveats: access depends on a few commercial companies, and
 
-### 3.1 The headline results
+> [!quote] De Haro
+> Generation is not verification, proof, or understanding.
 
-| | |
-|---|---|
-| **+42%** | submission volume since late 2022 |
-| **−1.28 SD** | Flesch Reading Ease in January 2026 relative to January 2021 |
+Producing a candidate answer and establishing that it is correct are different jobs. AI has made the first cheap; the second still takes someone who understands the material.
 
-Submissions up by nearly half; readability down by more than a standard deviation. The deck presents these together because the claim is about the pair, not either number alone.
+### The evidence: more writing, worse writing
 
-**The qualifications are on the slide**, and De Haro leaves them there rather than burying them:
+A 2026 study by Gartenberg and colleagues looked at five years (from January 2021) of submissions and peer reviews at *Organization Science*, a management journal. They measured writing quality by readability, jargon, passive voice, hedging and similar markers.
 
-- The finding is **systems-level, not individual-level**
-- It is **one journal**
-- It **does not establish that every use of AI makes text worse**
+Their central claim: **current AI tools, combined with incentives, are pushing research towards more, rather than better, writing.**
 
-> [!warning] Do not overstate this in an essay
-> The qualifications are doing real work. The study licenses a claim about what happens to a publication system under a change in the cost of producing text. It licenses **no** claim about whether any particular author writes worse with AI. Conflating the two is the obvious error and it is pre-empted on the slide itself.
+- **More.** Submissions rose by **42%** after ChatGPT appeared in late 2022.
+- **Worse.** Flesch Reading Ease (a standard readability score: longer sentences and longer words give a lower score) fell by **1.28 standard deviations** between January 2021 and January 2026. It had been flat for a decade and dropped sharply only after ChatGPT.
+- **Manuscripts** with more than 30% AI use were desk-rejected (turned down by the editor without going to reviewers) 30% more often, and rarely got a revise-and-resubmit decision (the usual route to acceptance).
+- **Reviews** were affected too: more than 30% used some AI, and those were harder to read and narrower in focus.
 
-### 3.2 The figures
+The concern De Haro draws out: **easy text generation shifts costs to editors and reviewers.** Writing a submission got cheaper; reading and judging one did not.
 
-Four figures from the paper are reproduced on the slides. Their content, since the note must stand in for the deck:
-
-- **Figure 1. Monthly Submission Volume at *Organization Science*, January 2013 to end of 2025.** A histogram of monthly submission counts, roughly 50-100 per month through the 2010s, drifting upward. Two dashed vertical markers: COVID-19 (March 2020) and ChatGPT (November 2022). The bars climb steeply after the ChatGPT line, reaching roughly 150-160 per month by 2025.
-- **Figure 2. Monthly Submission Volume by AI Use Categories over Time, 2021-2026.** Five series: Total (black), and four AI-share bands (0-15%, 15-30%, 30-70%, 70%+) applied to first submissions' abstracts. The 0-15% band declines steadily after the ChatGPT marker (to about 50 per month by 2026) while the three higher-AI bands all rise from near zero (to roughly 25-35 each). Total coincides with the 0-15% line until the marker and drifts down from about 100 per month in 2021 (with a spike near 130 at the start of 2022) to about 75-80 in late 2022; after the marker it climbs to roughly 140 by 2026. The y-axis is number of submissions; the figure's note says each line is the share of first submissions' abstracts classified in that AI band.
-- **Figure 6. Flesch Reading Ease of abstracts, 2013 to February 2026**, in SD units with a confidence band. Flat and slightly positive (around +0.1 to +0.25) for a decade, holding through the COVID marker, then turning sharply downward after the ChatGPT marker and falling to roughly −1.0 by 2026. The decline is the visual centrepiece of the deck.
-- **Figure 9. AI Use in Reviews Over Time, 2021-2026.** Share of reviews by AI-use band. The 0-15% band sits near 1.0 until the ChatGPT marker, then declines to roughly 0.65 by 2026, with the 30-70% band rising to about 0.2 and the other two bands to about 0.1 each.
-
-### 3.3 Problems in peer review
-
-The effect is on both sides of the process.
-
-**Manuscripts:**
-
-- Above 30% AI use, **desk-rejection rate is 30% higher**
-- High-AI submissions **rarely receive revise-and-resubmit decisions**
-
-**AI-generated reviews:**
-
-- **More than 30% use some AI**
-- More difficult to read
-- Narrow focus
-
-> [!quote] The concern, stated on the slide
-> Easy text generation **shifts costs to editors and reviewers**.
-
-This is the sharpest point in the empirical section and it is an argument about externalities rather than about quality. Producing a submission became cheaper; evaluating one did not. The saving accrues to the author and the cost lands on people who did not make the choice.
-
-### 3.4 Why "more rather than better": the institutional diagnosis
-
-The authors' causal chain, reproduced from the slide as a four-box flow:
+Why "more rather than better"? The authors' diagnosis is institutional:
 
 ```
-  Universities              Researchers              GenAI                    Journals
-  ───────────               ───────────              ─────                    ────────
-  Reward           ──►      Pressure to      ──►     Reduces the      ──►     Increase in
-  publications in           increase                 cost of                  weak
-  top journals              output                   producing text           submissions
+Universities reward publications in top journals
+  -> researchers are under pressure to increase output
+  -> GenAI reduces the cost of producing text
+  -> journals receive more weak submissions
 ```
 
-> [!intuition] Why the diagnosis is institutional and not moral
-> Nobody in this chain is behaving badly. Universities reward publication because they need a legible measure. Researchers respond to the measure they are judged on. GenAI lowers a cost. The degradation is a property of the **system**, which is exactly why the slide's qualification says "systems-level not individual-level". If you want to argue against the finding, the place to attack is the first box, not the third.
+The study has limits. The finding is about the system as a whole, and says nothing about whether a particular author writes worse with AI. It comes from one journal. And it does not show that every use of AI makes text worse.
 
----
+### The authorship problem
 
-## 4. The case: AI and public communication
+The second example is public communication. The Dutch newspaper *NRC* reported that 232 social media posts by Prime Minister Rob Jetten and his party had been AI-generated. It was most sensitive where the posts were apologies to the Moluccan community, and public debate turned on authenticity and responsibility.
 
-> [!example] The Jetten posts
-> **Dutch Prime Minister Rob Jetten's social media.** What NRC reported:
->
-> - **232 posts** by the Prime Minister and his party reported to have been AI-generated
-> - The issue became especially sensitive where posts concerned **apologies to the Moluccan community**
-> - Public debate focused on **authenticity and responsibility**
->
-> Source: Denise Retera, "AI-gebruik van premier Jetten op social media ligt onder de loep", *NRC*, 11 September 2026.
+De Haro's question: AI can make things better, but **who is speaking, and who is responsible for the message?** His moral: using AI is not the whole issue; **context, transparency and authorship matter.**
 
-The slide reproduces the top of the NRC article: the headline ("Prime Minister Jetten's AI use on social media under scrutiny"), a photo of Jetten standing in front of a wall with rough stone objects mounted on it, and the opening text. The standfirst says that Jetten is light-hearted about using AI for his "socials", but that according to experts politicians who do this risk damaging their image and authenticity. The article opens by recalling that in 2018 Jetten, then D66 parliamentary leader, repeated exactly the same sentences about abolishing the dividend tax three times in a row in front of television cameras, with an unchanged facial expression, which earned him the nickname "Robot Jetten".
+The link to your paper is my reading, and no source states it: an apology only counts if the person apologising made it, and a submitted paper is the same kind of text.
 
-The question for discussion, as posed on the slide:
+### His own experiment: 500 pages and still unfinished
 
-> 'AI can make things better — but **who is speaking, and who is responsible for the message?**'
+De Haro tried writing a review chapter on scientific theories with AI, for an Elsevier reference work. A review paper surveys an existing debate rather than proposing new research. So he did not start by asking AI for original philosophical ideas, only for text around an argument he supplied. He gave it a detailed outline with a word count per section and the LaTeX format of an earlier chapter, and worked through it section by section.
 
-And the moral De Haro draws:
+The division of labour:
 
-> **Using AI is not the whole issue. Context, transparency, and authorship matter.**
+- **He did:** the detailed outline and the argumentation, detailed instructions on style and literature, and endless rewriting, feedback and writing of his own.
+- **The AI did:** produce text to his instructions, and rewrite it after his feedback.
 
-The apology is the detail that makes the case work. An apology is a **speech act whose validity depends on who performs it**; a generated apology is not a badly written apology but arguably not an apology at all. That is a point about the pragmatics of certain utterances rather than about text quality, and it generalises to any writing whose value depends on its being yours. A submitted essay is one of those.
+Expert guidance was needed throughout: prompting, checking, selecting, writing and rewriting. Result: **500 pages of conversation, and the paper is still unfinished.** The obvious lesson for a student, though De Haro leaves it unstated: if it cost an expert who supplied the whole argument this much, it will cost more for someone who does not yet have the argument worked out.
 
-The slide closes with the line quoted at the top of this note: **"Pangram detection has become very good."**
+### Writing with AI requires expertise
 
----
+The general conclusion is a pair of conditions, and both have to hold.
 
-## 5. The anecdote: writing a philosophical review paper with AI
-
-De Haro's own attempt, offered as evidence rather than as anecdote.
-
-**The setup.** A chapter for an Elsevier reference work on Scientific Theories, co-written with **Hans Halvorson**. He gave the AI the chapter outline with a target word count per section, plus the LaTeX format taken from a previous chapter he had written on Dualities, and asked it to work section by section.
-
-> [!quote] The prompt, as shown on the slide
-> I have given you the outline of the Chapter for the Elsevier reference work where I am writing a Chapter on Scientific Theories together with Hans Halvorson. Next to each section is the number of words it needs to have.
->
-> Here below I give you the latex format that I will use (taken from a previous chapter on Dualities I wrote). Start by writing section 2 on the received view, in latex. Put also the outline I am giving you into the latex, so that I will already have the structure with the outline of the content (everything up to section 6, conclusion: forget the rest, although you can use the references if you have access to them). We will go section by section, and I will show you how to write. I left some references so you can see how to write references.
-
-**The starting point is stated explicitly: an outline for a review paper, i.e. not new research.**
-
-### What the collaboration actually involved
-
-| Human work | AI assistance |
-|---|---|
-| Construct detailed outline of the paper and argumentation | Produce text according to detailed instructions |
-| Give detailed instructions about style and literature | Rewrite taking detailed feedback into account |
-| Endless rewriting and feedback, additional writing | |
-
-Two conclusions on the slide:
-
-- The project is a **review paper**: it does not begin by asking AI to generate original philosophical ideas.
-- **Expert guidance is needed throughout**: prompting, checking, selecting, writing, and rewriting.
-
-> [!warning] The punchline
-> **"500 pages of conversation, and the paper is still unfinished."**
-
-The rhetorical work this does is worth naming. It is a concession and a warning at once: the person telling you this is a professional philosopher who supplied the argument, the structure, the literature and the style, on a paper that by design required no original ideas, and it still cost him five hundred pages and is not done. The implied question to a student is what the same process would cost someone who does not yet have the outline in their head.
-
----
-
-## 6. Writing with AI requires expertise
-
-The general conclusion, stated as a conjunction of two necessary conditions.
-
-> [!definition] The two conditions
+> [!definition] When you can responsibly use AI to help write
 > You can responsibly use AI to help write **only if both conditions hold**:
 >
 > **(A) You are already an expert.** You can check claims, detect omissions, and revise to improve the argument.
 >
 > **(B) You can already write philosophy.** You recognise unnatural text and weak or incomplete arguments.
 >
-> "Before that stage, the priority is to **develop your own philosophical voice and judgement**."
+> "Before that stage, the priority is to develop your own philosophical voice and judgement."
 
-This is the load-bearing slide of the deck and it has a definite logical shape. Both conditions are about **detection**: (A) is detecting that a claim is false or a step is missing, (B) is detecting that prose is bad or an argument incomplete. Neither is about generation. The claim is that AI-assisted writing is only safe for someone who could have caught the errors anyway, which entails that the tool is of least use to the person who most wants it.
+Both conditions are mainly about judging what the AI produced: checking claims, spotting gaps, recognising weak arguments. So AI-assisted writing is safe only for someone who could have spotted the problems anyway. Until you meet the conditions, your own practice comes first.
 
-> [!intuition] The bootstrapping problem
-> If the conditions for safe use are expertise and the ability to write philosophy, and the way to acquire both is by writing philosophy without assistance, then the tool is unavailable precisely during the period in which you are acquiring the competence to use it. That is not a paradox, it is an ordering claim: unassisted practice first, assistance after. It is also why the course's permitted uses are all about testing and revising rather than drafting.
+The mismatch is sharpest in this subject. De Haro's assessment is that **GenAI is good at surface summaries but poor at argumentative nuance**, and the course is about exactly the nuance: reading and reconstructing arguments carefully, judging whether they succeed, and writing and criticising text by the same standards.
 
-### Why this matters in Philosophy of Science specifically
+## What to remember
 
-> **GenAI is good at surface summaries, but poor at argumentative nuance.**
-
-And the course is about exactly the thing the tool is worst at:
-
-- Read and (re)construct arguments carefully
-- Evaluate whether they succeed
-- Produce and criticise written text by the same standards
-
-The mismatch is the argument. A tool that is strong at summary and weak at nuance is a tool that fails at all three of the course's aims, and a summary that looks right is worse than one that looks wrong.
-
----
-
-## 7. Course policy: appropriate uses
-
-> [!definition] The permitted four
-> AI may be used **as a study aid when it supports your own study**.
->
-> | | |
-> |---|---|
-> | **Clarify** | Ask for an explanation of a term **after you have tried** to understand the text |
-> | **Compare** | Request alternative examples, **then assess whether they really fit** the concept |
-> | **Test** | Ask AI to **question you** on an argument you have read |
-> | **Revise** | Request suggestions about a text **you have written**; **decide yourself** which suggestions to use |
->
-> "In every case, use AI to deepen your understanding, rather than to replace reading and thinking."
-
-Each of the four has a qualifier attached, and the qualifier is the operative part. *After* you have tried. *Then* assess. Question *you*. A text *you have written*, and *you* decide. Strip the qualifiers and all four become violations.
-
----
-
-## 8. Course policy: limits and transparency
-
-> [!warning] Not appropriate
-> - Outsourcing assigned reading
-> - **Generating a text for submission**
-> - Using text that you cannot assess for accuracy, quality, and argumentation
-
-> [!definition] Transparency in written work
-> - **State what you did yourself**
-> - **Explain whether and how AI was used, for which purpose, and which choices were your own**
->
-> "Your submitted work must make your own reasoning and responsibility visible."
-
-Note that the transparency requirement is not satisfied by a bare disclosure. It asks for three things: what you did, how the tool was used and for what, and **which choices were yours**. That last clause presupposes that the choices were in fact yours, so the statement is a claim about authorship and not a disclaimer.
-
-The **Project Description** on Canvas states the same policy in stricter and more legally shaped language, and it is the version that governs the paper. Permitted there: improving clarity and grammar, refining phrasing, brainstorming and contextualising ideas, locating relevant papers or concepts as with a search engine. Not permitted: **generating or structuring your arguments or analysis**, submitting AI-generated text as your own, fabricating references or quotations. Any use requires an **AI use statement** at the end of the submission specifying the tool, the purpose and the extent. Misuse is handled under the UvA *Regulations Governing Fraud and Plagiarism* (2019).
-
----
-
-## Conclusion, in De Haro's three lines
-
-1. **Use AI to test your understanding**
-2. **Develop your own philosophical voice before relying on AI to draft text**
-3. **Be transparent about AI use and responsible for every claim you submit**
-
----
-
-## Key Takeaways
-
-> [!tip] Is this examined?
-> **Almost certainly not.** The mock exam has eight questions and they map onto the doctrinal lectures; none of them is about research ethics or AI use. Read this note for the policy in sections 7 and 8, which governs 50% of your course grade through the paper and presentation, not for exam revision.
->
-> The one place it could surface is a tutorial discussion, where the Jetten case and the "who is speaking" question are the obvious prompts.
-
-> [!warning] The three things to actually retain
-> 1. **The permitted uses all presuppose prior effort.** Clarify after trying, assess the examples, be questioned, revise your own text. Remove the qualifier and it is a violation.
-> 2. **An AI use statement is mandatory if you use AI at all**, and it must name the tool, the purpose, the extent, and which choices were yours.
-> 3. **Generating or structuring your arguments is the bright line.** Not phrasing, not grammar, not finding papers. Arguments and structure.
-
-> [!intuition] The best line in the deck, for use elsewhere
-> "Generation is not verification, proof, or understanding." It is stated about mathematics and it generalises to the whole session, and it is a compact statement of a real epistemological point: the cost of producing a candidate answer and the cost of establishing that it is correct have come apart, and only one of them has fallen.
-
-## Exam questions
-
-> [!exam]- De Haro says the central question about GenAI in study is "whether AI strengthens or replaces your own learning". Explain the distinction with examples, and say why the permitted uses are permitted.
-> **Key points:** rejects both enthusiasm and prohibition; supporting uses (clarify, examples, test, feedback on own text); replacing uses (outsource reading, submit AI answers, unjudged text, no acknowledgement); permitted uses presuppose prior effort; test understanding, own voice first, transparency.
->
-> Must hit:
-> 1. **The refusal of both slogans.** De Haro rejects both enthusiasm and prohibition: whether AI use is allowed matters less than what a given use does to your learning, and he thinks this has a determinate answer in most concrete cases.
-> 2. **Supports learning:** clarifying a difficult definition, requesting alternative examples, testing whether you can explain an argument, getting feedback on text **you have written**.
-> 3. **Replaces learning:** outsourcing the reading, submitting AI-generated answers as your own, using generated text before you can judge its quality and accuracy, failing to acknowledge AI use.
-> 4. **Why:** every permitted use presupposes prior effort (you read and got stuck, you can judge whether an example fits, you have an argument to be tested on, you wrote the text). The AI is downstream of your own work. The forbidden list is the same list with the effort removed.
-> 5. **De Haro's conclusion:** use AI to test your understanding; develop your own philosophical voice before relying on AI to draft text; be transparent about AI use and responsible for every claim you submit.
->
-> Losing marks: listing permitted and forbidden uses without the principle that connects them (prior effort, AI downstream of your work).
-
-> [!exam]- What does Gartenberg et al. (2026) show about GenAI and academic publishing, what explains it, and what does it not show?
-> **Key points:** more rather than better writing; submissions up, readability down; costs shifted to editors and reviewers; institutional incentive chain; systems-level, one journal, not every AI use.
->
-> - **Study:** submissions and peer reviews at *Organization Science*, five years from January 2021, manuscripts and reviews both analysed. Central claim: AI tools combined with incentives push research towards **more, rather than better, writing**.
-> - **Results:** submissions **+42%** since late 2022; Flesch Reading Ease **−1.28 SD** in January 2026 relative to January 2021. The claim is about the pair of numbers together.
-> - **Peer review:** over 30% AI use, desk-rejection rate is 30% higher and revise-and-resubmit decisions are rare; more than 30% of reviews use some AI, and these are harder to read and narrower. Easy text generation **shifts costs to editors and reviewers** (an externality: the author saves, evaluators pay).
-> - **Explanation (institutional):** universities reward publications in top journals, so researchers face pressure to increase output; GenAI reduces the cost of producing text; journals get more weak submissions. Nobody in the chain behaves badly, so the place to attack the diagnosis is the incentive structure (the first link).
-> - **Limits:** systems-level rather than individual-level, one journal, and it does not establish that every use of AI makes text worse.
->
-> Losing marks: claiming the study shows that any individual author writes worse with AI.
-
-> [!exam]- According to De Haro, under what conditions can someone responsibly use AI to help write philosophy, and what follows for a student?
-> **Key points:** already an expert; can already write philosophy; both conditions are about detection; 500-page unfinished review chapter; unassisted practice first.
->
-> - **Two conditions, both necessary:** (A) you are already an **expert**: you can check claims, detect omissions and revise to improve the argument; (B) you can already **write philosophy**: you recognise unnatural text and weak or incomplete arguments.
-> - Both conditions are about **detecting** errors; neither is about generating text. So AI-assisted writing is safe only for someone who could have caught the errors anyway, and the tool is least useful to the person who most wants it.
-> - **Evidence:** De Haro's own review chapter with Hans Halvorson. He supplied outline, argumentation, style and literature on a paper requiring no original ideas, and after **500 pages of conversation** it was still unfinished. Expert guidance was needed throughout.
-> - **Ordering claim (the bootstrapping problem):** the competence needed to use the tool is acquired by writing without it, so unassisted practice comes first and assistance after. Before that stage, the priority is to develop your own philosophical voice and judgement.
-> - **Philosophy of science specifically:** GenAI is good at surface summaries and poor at argumentative nuance, which is what the discipline's aims (reconstruct arguments, evaluate them, write and criticise by the same standards) require.
-
-## Flashcards
-
-> [!card]- What is De Haro's organising question about students using GenAI?
-> Whether AI **strengthens or replaces** your own learning.
-
-> [!card]- What do all the permitted AI uses in De Haro's course policy presuppose?
-> **Prior effort** of your own: the AI is downstream of your work. Remove the effort and each becomes a forbidden use.
-
-> [!card]- What are the four appropriate uses of AI in De Haro's Philosophy of Science course policy?
-> **Clarify, compare, test, revise.**
-
-> [!card]- In De Haro's AI policy, how does a permitted use (e.g. clarifying a term) become a violation?
-> By stripping its **qualifier**: after you have tried, then assess, question you, a text you wrote and you decide.
-
-> [!card]- What is the point of the line "Generation is not verification, proof, or understanding" (De Haro, on AI and mathematics)?
-> Producing a candidate and **establishing it is correct** are different acts; only the first has got cheaper.
-
-> [!card]- Which study claims that AI tools combined with incentives push research towards "more, rather than better, writing"?
-> **Gartenberg et al. (2026)**, on submissions and peer reviews at *Organization Science*.
-
-> [!card]- What does Gartenberg et al. (2026) not show about AI and writing?
-> That any **individual** author writes worse with AI. The finding is **systems-level**, from one journal.
-
-> [!card]- According to Gartenberg et al., who bears the cost of easy text generation?
-> **Editors and reviewers**. An externality: producing a submission got cheaper, evaluating one did not.
-
-> [!card]- What is the causal chain in Gartenberg et al.'s diagnosis of "more rather than better" writing?
-> Universities reward top-journal publications, researchers face output pressure, GenAI cuts the cost of text, journals get more **weak submissions**.
-
-> [!card]- Why is the Gartenberg et al. diagnosis institutional rather than moral?
-> Nobody behaves badly: each actor responds reasonably to incentives. The degradation is a property of the **system**.
-
-> [!card]- Where should an objection to Gartenberg et al.'s "more rather than better" diagnosis aim?
-> At the first link: the **incentive structure** of universities rewarding publications in top journals.
-
-> [!card]- What question does De Haro pose about Rob Jetten's AI-generated social media posts?
-> **Who is speaking, and who is responsible** for the message?
-
-> [!card]- Why is an AI-generated apology (the Jetten case) arguably not an apology at all?
-> An apology is a **speech act** whose validity depends on **who performs it**: a point about pragmatics, not text quality.
-
-> [!card]- Why does De Haro stress that his AI-assisted chapter with Hans Halvorson was a review paper?
-> It needed **no original ideas**, yet still required expert guidance throughout and is still unfinished after 500 pages of conversation.
-
-> [!card]- What are De Haro's two conditions for responsibly using AI to help write philosophy?
-> You are **already an expert**, and you can **already write philosophy**. Both are necessary.
-
-> [!card]- What do De Haro's two conditions for writing with AI have in common?
-> Both are about **detecting** errors (false claims, weak arguments, unnatural text), neither about generating text.
-
-> [!card]- What is the bootstrapping problem for writing philosophy with AI?
-> Safe use needs competence acquired by writing **without** AI, so unassisted practice must come first. An ordering claim, not a paradox.
-
-> [!card]- Why is GenAI a poor fit for learning philosophy of science, according to De Haro?
-> It is good at **surface summaries** but poor at **argumentative nuance**, which is what the discipline trains.
-
-> [!card]- What AI use is the bright line in the Philosophy of Science paper's Project Description?
-> **Generating or structuring your arguments or analysis**. Grammar, phrasing and finding papers are allowed.
-
-> [!card]- What must the AI use statement for the Philosophy of Science paper specify?
-> The **tool**, the **purpose** and the **extent** of use.
+- The test is whether a use **strengthens or replaces** your learning. The four study uses De Haro allows (clarify, compare, test, revise) all come after your own effort.
+- **Bright line for the paper:** AI must not generate or structure your arguments or analysis, or write text you submit.
+- **AI use statement** if you used AI: tool, purpose, extent, what you did yourself and which choices were yours. If you used none, one line saying so (my reading of De Haro's transparency rule).
+- Take every quotation and page number from the original text. A hallucinated reference in your paper is a fabricated reference.
+- The draft feeds the 10% formative part of the paper mark: hand it in.
+- Writing with AI needs both expertise and the ability to write philosophy already, because both are mainly about judging the output.
+- De Haro's closing advice: use AI to test your understanding; develop your own philosophical voice before relying on AI to draft text; be transparent about AI use and responsible for every claim you submit.
 
 ## Links
 
 - **Course:** [[PhilSci - Overview|Course overview]]
 - **Same session:** [[PhilSci-L03 - Under-determination]] was the first half of the 15 September flipped classroom
-- **Previous:** [[PhilSci-L01 - Introduction and Logical Empiricism]] · [[PhilSci-L01b - Popper and Lakatos]] · [[PhilSci-L02 - Kuhn on Scientific Practice]]
-- **Tutorials:** [[PhilSci - Tutorials]]
-- **Source:** `3b GenAI.pdf` on Canvas, uploaded 2026-09-15, 17 slides
-- **Also governing:** `2026 Project Description Philosophy of Science.pdf` on Canvas, section "About the use of AI tools"
-- **Further reading:** Gartenberg et al. (2026), studied via the summary document provided for the class · Denise Retera, "AI-gebruik van premier Jetten op social media ligt onder de loep", *NRC*, 11 September 2026
+- **Writing workshop:** [[PhilSci - Tutorials]], tutorial 3
+- **Sources:** `3b GenAI.pdf` (lecture slides, 15 September 2026) · `2026 Project Description Philosophy of Science.pdf`, sections "Project timeline", "The Paper", "Further comments" and "About the use of AI tools" · `2026 Guidelines Project Proposal Philosophy of Science.pdf`
+- **Further reading:** Gartenberg et al. (2026), via the summary document provided for the class · Denise Retera, "AI-gebruik van premier Jetten op social media ligt onder de loep", *NRC*, 11 September 2026

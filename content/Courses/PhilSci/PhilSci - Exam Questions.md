@@ -29,10 +29,6 @@ Back to the [[Courses/PhilSci/index|Philosophy of Science home]].
 
 ![[PhilSci-L03 - Under-determination#Exam questions]]
 
-## L03b GenAI, Writing and Philosophical Learning
-
-![[PhilSci-L03b - GenAI, Writing and Philosophical Learning#Exam questions]]
-
 ## L04 Scientific Explanation and Understanding
 
 ![[PhilSci-L04 - Scientific Explanation and Understanding#Exam questions]]

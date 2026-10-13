@@ -180,6 +180,12 @@ The Files tab returns HTTP 403 for students, so decks come from **Modules**, thr
 
 The decks are 8 to 23 MB each and are not stored in `Assets/`, matching weeks 1 and 2.
 
+## How the lecture notes are written
+
+The lecture notes were rewritten on 2026-10-13 to be read once instead of attending the lectures (vault rules in `CLAUDE.md` section 2.3). The exam is multiple choice with one-word traps and a cheat sheet, so each note explains how every method works, the exact conditions that matter, and how it differs from the methods it gets confused with. Results are stated as directions and comparisons; the exact figures are in `docs/mnlp-cheat-sheet-numbers/`, so no number has left the vault.
+
+Length target: about 3,000 words of body per teaching session the lecture took. L01 is a short overview; L02 to L04 took about one session each (2,500 to 4,000 words); L05 about two and a half sessions (6,000 to 7,000); L06 about two (5,000 to 6,000); L07 about three and a half (7,000 to 8,000).
+
 ## Exam Prep
 
 - [[MNLP - Exam Analysis]]: exam format, the example questions from Canvas, and what they mean for revising
