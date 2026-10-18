@@ -33,6 +33,11 @@ exam_date: 2026-10-19
 > [!warning] The slide deadline falls after the talk
 > Canvas wants the slides on Sunday 18 October, three days *after* the presentation on Thursday 15 October. The upload is bookkeeping; the slides have to be finished for the 15th.
 
+## Exam prep
+
+- [[PhilSci - Philosophers]]: everyone worth knowing, in course order, with what each one claims.
+- [[PhilSci - Topics and Stances]]: the big question of each lecture and the main positions on it.
+
 ## Flashcards
 
 [[PhilSci - Flashcards]] collects every lecture's flashcards for drilling before the exam. Each lecture note also ends with its own set (every lecture except L03b, which is not examinable).

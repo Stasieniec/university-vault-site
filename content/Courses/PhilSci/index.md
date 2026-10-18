@@ -44,3 +44,8 @@ Schedule, assessment and deadlines live in the [[PhilSci - Overview|course overv
 
 - [[PhilSci - Overview|Overview]]: schedule, assessment, deadlines
 - [[PhilSci - Tutorials|Tutorials]] (58 flashcards)
+
+## Exam Prep
+
+- [[PhilSci - Philosophers|PhilSci: Philosophers]]
+- [[PhilSci - Topics and Stances|PhilSci: Topics and Stances]]
