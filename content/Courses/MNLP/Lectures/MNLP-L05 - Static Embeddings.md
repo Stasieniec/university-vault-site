@@ -373,7 +373,7 @@ Isomorphism is a strict true/false criterion. To measure degrees of it, Søgaard
 > $$\Delta = \sum_{i} \left( \lambda^{(1)}_i - \lambda^{(2)}_i \right)^2$$
 > with $\lambda^{(1)}_i, \lambda^{(2)}_i$ the $i$-th largest kept eigenvalues of each graph.
 
-(If you meet the Laplacian written as $A - D$: every eigenvalue flips sign, and "keep the largest" would pick the wrong end. The standard form is $D - A$, with eigenvalues $\geq 0$.)
+(The lecture words this step the other way round: "subtracting diagonal matrix $D$ ... from $A$", which is $A - D$. A statement that the Laplacian is obtained by subtracting $D$ from $A$ follows the lecture. $A - D$ only flips the sign of every eigenvalue; the standard form is $D - A$, with eigenvalues $\geq 0$.)
 
 Laplacian eigenvalues indicate **how connected the nodes are**: bigger values, denser connectivity. **The bigger $\Delta$, the more structurally different** the graphs, the further from isomorphism. It **does not require knowing the alignment**, since eigenvalues do not change when nodes are relabelled: if dense parts are similarly dense and sparse parts similarly sparse, $\Delta$ is small.
 
@@ -518,17 +518,11 @@ Model answers are in the exam questions below.
 > [!card]- What is the distributional hypothesis behind both count-based and prediction-based word vectors?
 > A word is characterised by **the contexts it occurs in** (Firth: "the company it keeps").
 
-> [!card]- Why is word similarity measured with cosine rather than the raw dot product?
-> Cosine **ignores vector length**, so a frequent word's large counts do not dominate; only proportions matter.
-
 > [!card]- What are the three properties of count-based context vectors?
 > **High-dimensional**, **discrete** (counts), **sparse** (mostly zeros).
 
 > [!card]- What is the main weakness of count-based context vectors besides sparsity?
 > **No explicit criterion to separate signal from noise**: chance co-occurrences, and words like `the` that discriminate nothing.
-
-> [!card]- How does idf weighting, $\log(N/n_w)$, help count-based context vectors?
-> A context word found in nearly every context gets **idf close to 0**, so it is effectively removed.
 
 > [!card]- What four properties distinguish prediction-based word embeddings from count-based context vectors?
 > **Low-dimensional, dense, continuous**, and **learned by performing a prediction task**.
@@ -539,12 +533,6 @@ Model answers are in the exam questions below.
 > [!card]- What is the difference between the CBOW and Skip-gram tasks?
 > CBOW predicts **the centre word from its context**. Skip-gram predicts **each context word from the centre word**.
 
-> [!card]- Why is CBOW useless as a language model?
-> It also uses words **to the right** of the target; a language model uses left context only.
-
-> [!card]- How is the CBOW hidden layer $h$ computed from the context words?
-> As the **average** of the $2n$ context embeddings, $h = \frac{1}{2n} W w_C$, with no non-linearity.
-
 > [!card]- Are Word2Vec's input matrix $W$ and output matrix $W'$ tied together?
 > **No, not necessarily**: $W' \neq W^\top$.
 
@@ -554,44 +542,14 @@ Model answers are in the exam questions below.
 > [!card]- What independence assumption does Skip-gram make?
 > The context words are **independent given the input (centre) word**.
 
-> [!card]- Do Skip-gram's $2n$ output layers produce different distributions?
-> **No.** They share $W'$ and $h$; only the target each is scored against differs.
-
-> [!card]- What task replaces full-vocabulary prediction in negative sampling?
-> **Binary classification**: is this (word, context) pair from the data or from a noise distribution?
-
-> [!card]- How does negative sampling change the per-example cost of Word2Vec training?
-> From **$|V|$ dot products to $k+1$**.
-
 > [!card]- In negative sampling, what is the probability that a (word, context) pair is real?
 > $\sigma(v_c \cdot v_w)$: the **sigmoid of the dot product** of the context and word vectors.
-
-> [!card]- Which vectors does one step of Skip-gram with negative sampling update?
-> The input word's $v_w$ and the **$k+1$ output vectors** of the true context and the negatives.
-
-> [!card]- How many negative samples does Skip-gram add per observed pair?
-> **5 to 20.**
-
-> [!card]- Why are Word2Vec negatives drawn from $P(w)^{0.75}$ rather than the raw unigram distribution?
-> To **bias sampling towards rarer words**; otherwise nearly every negative would be `the`, `of` or `and`.
-
-> [!card]- What weakness of prediction-based methods like Word2Vec does GloVe address?
-> They treat **each context window as an independent event**, repeatedly rediscovering the same association.
 
 > [!card]- Which tends to perform better: count-based or prediction-based word representations?
 > **Prediction-based.** Count-based methods use global information directly but tend to perform worse.
 
-> [!card]- In GloVe's weighted least-squares objective, what is $w_i \cdot \tilde{w}_j + b_i + \tilde{b}_j$ fitted to?
-> The **log co-occurrence count** $\log X_{ij}$.
-
 > [!card]- What is the purpose of GloVe's weighting function $f(X_{ij})$?
 > To **de-emphasise very rare (noisy) and very frequent (uninformative)** co-occurrences.
-
-> [!card]- What are the typical parameters of GloVe's weighting function?
-> **$x_\text{max} = 100$, $\alpha = 0.75$**.
-
-> [!card]- What is GloVe's final embedding for word $i$?
-> **$w_i + \tilde{w}_i$**: the word and context vectors summed.
 
 > [!card]- What is the difference between Word2Vec and GloVe in what they train on?
 > Word2Vec: **individual local context windows**. GloVe: the **global co-occurrence matrix**.
@@ -611,41 +569,17 @@ Model answers are in the exam questions below.
 > [!card]- How is the answer to "a is to b as c is to X" computed with word embeddings?
 > The word nearest by cosine to **$v_b - v_a + v_c$**, excluding the input words. Scored by accuracy.
 
-> [!card]- What is the difference between PCA and t-SNE for visualising embeddings?
-> PCA: **linear**, top-variance directions. t-SNE: **non-linear**, keeps local neighbours, gives up global distances.
-
 > [!card]- Why should 2D t-SNE plots of embeddings not be taken at face value?
 > Non-linear projections **distort distances**, and t-SNE **hyperparameters substantially change** the picture.
 
 > [!card]- Why do morphologically rich languages suffer most from one vector per word type?
 > Each lemma has **many inflected forms**, each a separate, rarer word with a worse-estimated vector.
 
-> [!card]- How does fastText compute a word's vector?
-> As the **sum of its character n-gram vectors**, plus the whole word.
-
-> [!card]- What character n-gram lengths does fastText use by default?
-> **3 to 6**.
-
-> [!card]- Why does fastText wrap each word in `<` and `>`?
-> So **prefixes and suffixes are distinct n-grams**: `<ru` only starts a word, `ns>` only ends one.
-
-> [!card]- How do the n-grams of a word share the gradient in fastText?
-> **Every n-gram gets the same gradient**, since the word vector is their sum.
-
 > [!card]- Where does fastText gain most on word similarity over Word2Vec?
 > In **morphologically rich languages**; it also helps **rare words**.
 
-> [!card]- How do fastText's gains on semantic analogies compare with its gains on syntactic ones?
-> Syntactic analogies gain; **semantic ones barely change**, and for German get worse.
-
-> [!card]- What is building a bilingual dictionary by nearest-neighbour search in a crosslingual embedding space called?
-> **Bilingual lexicon induction** (BLI).
-
 > [!card]- What are the three basic set-ups for training crosslingual embeddings?
 > **Separately, then align spaces**; **together, then align regions**; on **word- or sentence-aligned data**.
-
-> [!card]- What does the shared space hypothesis claim?
-> Separately trained spaces are **approximately isomorphic**, so **a general linear map** can align them.
 
 > [!card]- Why is the crosslingual mapping assumed to be linear?
 > Analogies are **already linear regularities** within one space, assumed to hold across spaces.
@@ -655,9 +589,6 @@ Model answers are in the exam questions below.
 
 > [!card]- Why can seed dictionaries contain only single words?
 > There are **no embeddings for multi-word expressions**, so phrases cannot be anchors.
-
-> [!card]- What is the closed-form solution of the unconstrained least-squares mapping $\min_W \sum_i \lVert W x_i - y_i \rVert^2$?
-> $W^* = Y X^\top (X X^\top)^{-1}$.
 
 > [!card]- What is the difference between solving the least-squares mapping in closed form and with SGD?
 > Closed form is **exact**. SGD is **approximate** but scales better and saves memory; Mikolov et al. used SGD.
@@ -686,15 +617,6 @@ Model answers are in the exam questions below.
 > [!card]- What is a hub in a high-dimensional embedding space?
 > A vector that is **the nearest neighbour of many points regardless of actual similarity**.
 
-> [!card]- What is the CSLS score between a mapped source vector $x$ and a target vector $y$?
-> $\text{CSLS}(x, y) = 2\cos(x, y) - r_T(x) - r_S(y)$.
-
-> [!card]- Which CSLS term penalises hubs?
-> **$r_S(y)$**: the candidate's average cosine to its $K$ nearest mapped source vectors.
-
-> [!card]- Why does $r_T(x)$ not change which translation CSLS picks for a given source word?
-> It is **the same for every candidate** $y$.
-
 > [!card]- How does CSLS retrieval compare with plain nearest neighbour on the same supervised mapping?
 > **CSLS is better on every language pair**, with no tuning beyond $K$.
 
@@ -707,32 +629,11 @@ Model answers are in the exam questions below.
 > [!card]- Why is MUSE's generator a single linear matrix rather than a deep network?
 > A deep generator could **match the target distribution while scrambling which word maps where**.
 
-> [!card]- Why does MUSE use label smoothing ($s = 0.2$) on the discriminator?
-> To stop it becoming **pathologically overconfident**.
-
-> [!card]- Why does MUSE feed the discriminator only the 50k most frequent words?
-> **Rare words have poorly estimated embeddings**; frequent ones give a cleaner signal.
-
-> [!card]- What does re-orthogonalisation do in MUSE's adversarial training?
-> After each step it **pulls $W$ back towards an orthogonal matrix** ($\beta = 0.01$).
-
 > [!card]- What unsupervised criterion does MUSE use to select a checkpoint?
 > The **average cosine** between the 10k most frequent source words and their **CSLS nearest** targets.
 
-> [!card]- What can MUSE's unsupervised validation criterion not guarantee?
-> That the induced pairs are **correct translations**; it only shows mapped words land near real ones.
-
-> [!card]- How does MUSE build its synthetic dictionary for refinement?
-> From **mutual CSLS nearest neighbours** among frequent words, keeping only high-confidence pairs.
-
-> [!card]- Why does MUSE's synthetic dictionary keep only mutual nearest neighbours?
-> A pair is trusted only if each word picks the other, which **filters out hub matches**.
-
 > [!card]- Is MUSE a supervised, semi-supervised or unsupervised method?
 > **Unsupervised** as a whole; its refinement step is called semi-supervised.
-
-> [!card]- Why is MUSE's refinement step called semi-supervised?
-> It runs **supervised orthogonal Procrustes (SVD) on a dictionary the system built itself**.
 
 > [!card]- How does fully unsupervised MUSE compare with supervised alignment for distant pairs (English with Russian, Chinese)?
 > It **falls well short**.
@@ -740,23 +641,11 @@ Model answers are in the exam questions below.
 > [!card]- What is the difference between head-marking and dependent-marking?
 > Head-marking puts the grammatical marker **on the head**. Dependent-marking puts it **on the dependent**.
 
-> [!card]- In a clause, which word is the head and which are the dependents?
-> Head: the **verb**. Dependents: **subject and object**.
-
-> [!card]- Which language pairs did adversarial alignment fail on completely in Søgaard et al. (2018)?
-> **English with Estonian, Finnish and Greek**: the mixed- and double-marking languages.
-
-> [!card]- Why does marking type alone not explain where unsupervised alignment fails?
-> **French is mixed-marking** yet aligns well with English; Estonian and Finnish are also agglutinative with 10+ cases.
-
 > [!card]- What is identical-word supervision for crosslingual alignment?
 > A seed dictionary of **words spelled identically in both languages**. No human dictionary needed.
 
 > [!card]- Why does unsupervised alignment fail for mixed- and double-marking languages, according to Søgaard et al.?
 > Each lemma has **many distinct surface forms**, each its own lower-frequency embedding, so the spaces are non-isomorphic.
-
-> [!card]- For English-Hungarian unsupervised alignment, which parts of speech do worst?
-> **Nouns and verbs**, the most inflected.
 
 > [!card]- How does a domain mismatch between the two corpora affect identical-word supervision and adversarial alignment?
 > Identical-word supervision **degrades but survives**. Adversarial alignment **collapses to about zero**.
@@ -770,14 +659,8 @@ Model answers are in the exam questions below.
 > [!card]- What does a larger eigenvector similarity $\Delta$ mean?
 > The graphs are **more structurally different**: further from isomorphism.
 
-> [!card]- Why does eigenvector similarity not need a bilingual dictionary?
-> Laplacian eigenvalues **do not change when nodes are relabelled**.
-
 > [!card]- Why does Finnish give a high eigenvector similarity $\Delta$ against English?
 > One lemma's inflected forms **cluster tightly**; English gives a **flatter, more evenly connected** graph.
-
-> [!card]- How does eigenvector similarity $\Delta$ relate to adversarial alignment success?
-> It **tracks it**: the lowest-$\Delta$ pair aligns best, the highest-$\Delta$ pairs fail.
 
 > [!card]- True or false: In Skip-gram, the hidden layer is the average of the context word embeddings.
 > **False.** That is CBOW. Skip-gram's hidden layer is the centre word's embedding.
@@ -865,9 +748,6 @@ Model answers are in the exam questions below.
 
 > [!card]- Multiple selection: which are true of MUSE? (A) The discriminator and the mapping are trained in alternation, each with the other frozen (B) The mapping is kept near-orthogonal after each step (C) The adversarial loss is used to pick the final checkpoint (D) Refinement re-solves the mapping by SVD on mutual nearest neighbours
 > **A, B and D.** C: the checkpoint is picked by average CSLS-neighbour cosine.
-
-> [!card]- Multiple selection: which are true of unsupervised (adversarial) alignment, according to Søgaard et al. (2018)? (A) English-Finnish fails even with far more Finnish data (B) It survives a domain mismatch if the languages are close (C) It works when one language uses Skip-gram and the other CBOW (D) Estonian-Finnish aligns adversarially
-> **A and D.** B: cross-domain English-Spanish collapses to about zero. C: mixing Skip-gram and CBOW fails.
 
 ## Links
 

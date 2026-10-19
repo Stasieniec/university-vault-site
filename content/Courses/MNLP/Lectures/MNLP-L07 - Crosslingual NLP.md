@@ -690,14 +690,8 @@ Full model answers are in the exam questions below.
 
 ## Flashcards
 
-> [!card]- Which of the four senses in which mBERT and XLM-R are "multilingual" leaves languages unlinked?
-> Their predictions are based on context **within the same language** (MLM).
-
 > [!card]- What is crosslingual knowledge transfer?
 > Fine-tuning on task data in **language A**, then testing on the same task in **language B**.
-
-> [!card]- What is crosslingual transfer called when no task data in the test language was seen at all?
-> **Zero-shot** crosslingual transfer.
 
 > [!card]- Why does training on many languages not by itself link them?
 > Predicting word $W$ in language $L$ gains nothing from unrelated $L'$ context: languages share **parameters**, never **context**.
@@ -707,15 +701,6 @@ Full model answers are in the exam questions below.
 
 > [!card]- What are the two steps of crawling your own parallel corpus?
 > **Document alignment**, then **sentence alignment** inside the aligned documents.
-
-> [!card]- Why is sentence alignment a separate step after document alignment?
-> Parallel segments **do not follow paragraph boundaries**, so links other than paragraph-to-paragraph are needed.
-
-> [!card]- How does the LASER encoder turn a sentence into one vector?
-> BPE embeddings, a **stack of BiLSTMs**, then **max pooling** over time into a fixed-size sentence embedding.
-
-> [!card]- Why are LASER sentence embeddings language-independent?
-> The decoder sees the source only through the sentence vector and gets the output language from a **language ID embedding**, so the encoder need encode only **meaning**.
 
 > [!card]- What data is LASER trained on?
 > **Parallel** data: it is an encoder-decoder trained to translate.
@@ -729,32 +714,11 @@ Full model answers are in the exam questions below.
 > [!card]- What are XLM's three pretraining objectives?
 > **CLM**, **MLM**, **TLM**.
 
-> [!card]- Which XLM objective masks words in a sentence concatenated with its translation?
-> **TLM**, translation language modelling.
-
-> [!card]- How does TLM differ from MLM?
-> The loss is the **same**; only the **input** differs: a translation pair instead of monolingual text.
-
 > [!card]- Why does TLM force crosslingual alignment?
 > A masked word can be predicted from its **unmasked translation** in the other language, so the model learns to attend across languages.
 
-> [!card]- What is the difference between translate-train and translate-test on XNLI?
-> Translate-train machine-translates the **English training set** into each language; translate-test translates each **test set into English**.
-
-> [!card]- Does zero-shot XLM (MLM+TLM) beat translate-test on XNLI?
-> **On average, slightly**, without ever seeing non-English NLI data; not in every language.
-
-> [!card]- Which languages gain most on XNLI when TLM is added to MLM?
-> Those **distant from English** in script or structure (e.g. Vietnamese, Turkish, Arabic, Chinese). English itself gains least.
-
-> [!card]- For XLM language modelling of Nepali, does adding Hindi or English data help more?
-> **Hindi**, the related language, by far. Adding both is best.
-
 > [!card]- What are InfoXLM's three objectives?
 > **MMLM**, **TLM**, **XLCo**.
-
-> [!card]- What does InfoXLM's XLCo objective classify?
-> Whether a sentence pair is **parallel**, from the two `[CLS]` representations, with **random sentences** as negatives.
 
 > [!card]- What is the difference between the crosslingual signal of TLM and of XLCo?
 > TLM aligns at the **token level**; XLCo aligns **whole-sentence** representations.
@@ -762,17 +726,8 @@ Full model answers are in the exam questions below.
 > [!card]- What is the difference between the within and across scores in mixed-language XNLI and QA?
 > Within: both input parts in language $\ell$. Across: mean over **mixed-language** combinations with $\ell$ in **either** part.
 
-> [!card]- What is paradoxical about XLM-R against mBERT in mixed-language evaluation?
-> XLM-R is much better **within** languages but **worse across** languages on QA, on average.
-
-> [!card]- How does InfoXLM compare with XLM-R on within and across scores?
-> Only **slightly better within**, **much better across**: the within-across gap shrinks sharply.
-
-> [!card]- Why does crosslingual QA expose purely multilingual models more than XNLI?
-> Extractive QA needs **word-level matching** of question to context across languages; XNLI can rely on a coarse sentence gist.
-
 > [!card]- What do mixed-language evaluations show about crosslingual ability without a crosslingual training signal?
-> It largely **does not emerge**: standard zero-shot benchmarks make multilingual models look more crosslingual than they are.
+> They **cast doubt** on it: zero-shot results seemed to show it, but mixed-language tasks show large drops.
 
 > [!card]- What two assumptions of sequence labelling does sequence-to-sequence modelling drop?
 > That $x_t$ **corresponds to** $y_t$, and that $|X| = |Y|$.
@@ -783,17 +738,11 @@ Full model answers are in the exam questions below.
 > [!card]- Which four complex mappings make machine translation hard?
 > **Different lengths**, **word order differences**, **one-to-many**, **many-to-one**.
 
-> [!card]- How did Sutskever et al. (2014) connect the LSTM encoder and decoder?
-> By **initialising the decoder LSTM with the encoder's last state**.
-
 > [!card]- What problem does $\mathbf{h}^{dec}_0 = \mathbf{h}^{enc}_n$ cause in an RNN encoder-decoder?
 > An **information bottleneck**: the whole source sentence must pass through one fixed-size vector.
 
 > [!card]- How do the NMT decoder input $\mathbf{x}$ and the target $\mathbf{y}$ differ?
 > $\mathbf{x}$ = `<s>` + sentence, $\mathbf{y}$ = sentence + `</s>`: the same sentence **shifted by one**.
-
-> [!card]- Which Transformer decoder component replaces the RNN encoder-decoder bottleneck?
-> The **source-target context layer** (cross-attention) over **all** top-layer encoder outputs, in every decoder layer.
 
 > [!card]- With small parallel corpora, which wins: NMT or statistical MT?
 > **Statistical** MT. NMT is data hungry: it starts far lower and only overtakes with much more data.
@@ -804,35 +753,11 @@ Full model answers are in the exam questions below.
 > [!card]- Which conditions make parent-child NMT transfer work best?
 > Same **target language**, **related** source languages, frozen **decoder** (in the experiments only the **target embeddings**), **shared vocabulary**.
 
-> [!card]- In Zoph et al.'s freezing experiment, which parameters should stay frozen in the child?
-> Only the **target-language embeddings**. Training the decoder RNN and attention still helps.
-
-> [!card]- Why does unfreezing the target embeddings hurt a low-resource NMT child?
-> The parent learned them from far more target-language data; retraining them on the small child data **overfits**.
-
-> [!card]- Which child language gains most from parent-child transfer in Zoph et al. (2016)?
-> The one with the **smallest corpus** (Urdu).
-
 > [!card]- Does a related parent help NMT transfer more than an unrelated one in Zoph et al. (2016)?
 > **Yes**: a Spanish child gains more from a French parent than from a German one.
 
-> [!card]- What does NMT transfer to French' (French with randomly reshuffled vocabulary) show?
-> Transfer is **not only about shared words**: structure such as word order and syntax transfers too.
-
-> [!card]- With a shared parent-child vocabulary, do unrelated parents help NMT transfer (Kocmi and Bojar, 2018)?
-> **Yes**, about as much as related ones. Having a large parent matters most.
-
-> [!card]- According to Aji et al. (2020), which part of a parent NMT model carries most of the transfer benefit?
-> The **inner** (non-embedding) layers.
-
-> [!card]- According to Aji et al. (2020), how do parent embeddings transferred alone compare with training the child from scratch?
-> **Worse** on average: without the parent's inner layers they are a bad initialisation.
-
 > [!card]- What is the difference between parent-child transfer and multilingual NMT?
 > Parent-child transfers knowledge **in stages**; multilingual NMT transfers it **in parallel** through joint training.
-
-> [!card]- Which multilingual NMT language combination is used for testing only?
-> **Many-to-many**. Many-to-one and one-to-many are used in training.
 
 > [!card]- What is translating in a language direction never seen during training called?
 > **Zero-shot translation**.
@@ -840,26 +765,11 @@ Full model answers are in the exam questions below.
 > [!card]- What are the two indicators that knowledge transfer happens in multilingual NMT?
 > Performance on **zero-shot directions**, and beating a **bilingual baseline** trained only on that direction's data.
 
-> [!card]- What does a tag like `<2es>` name in Johnson et al.'s multilingual NMT?
-> The **target** language. Nothing names the source language.
-
-> [!card]- Why does many-to-one multilingual NMT help more consistently than one-to-many?
-> Many-to-one shares one **target** side; in one-to-many the decoder produces several languages that **compete** for parameters.
-
 > [!card]- What is it called when a direction gets worse because other languages compete for the same model capacity?
 > **Interference**.
 
-> [!card]- Do low-resource languages gain more from multilingual NMT when translating into English or out of it?
-> **Into English** (many-to-one).
-
 > [!card]- Which sampling temperature gives proportional sampling?
 > $T = 1$.
-
-> [!card]- Which sampling temperature is the compromise between proportional and uniform in Arivazhagan et al. (2019)?
-> $T = 5$.
-
-> [!card]- What does training on more languages (10 against 102) do to zero-shot translation?
-> Improves **most** directions, but not all.
 
 > [!card]- How does zero-shot translation compare with supervised directions?
 > It still **lags behind**.
@@ -867,26 +777,14 @@ Full model answers are in the exam questions below.
 > [!card]- Besides the number of training languages, what does zero-shot translation quality depend on?
 > **Which languages** are included: related pairs (Belarusian→Russian) do far better.
 
-> [!card]- What is BART's architecture?
-> A **bidirectional encoder** (as BERT) plus an **autoregressive decoder** (as GPT).
-
 > [!card]- What is BART's pretraining task?
 > Reconstruct the **original** document from a **corrupted** one: a denoising autoencoder.
 
 > [!card]- What are BART's five noise functions?
 > Token masking, token deletion, text infilling, sentence permutation, document rotation.
 
-> [!card]- What is the difference between BART's token masking and token deletion?
-> Masking **marks** the gap with `[MASK]`; deletion leaves no mark, so the model must find **where** tokens are missing.
-
 > [!card]- What extra thing must BART work out under text infilling?
 > **How many** tokens the single `[MASK]` stands for.
-
-> [!card]- Which single BART noise function works best?
-> **Text infilling**.
-
-> [!card]- How do sentence permutation and document rotation perform as BART's only noise function?
-> **Poorly**: rearranging whole sentences gives too weak a token-level learning signal.
 
 > [!card]- How is BART fine-tuned for classification?
 > The same input goes to encoder and decoder; the label is predicted from the **last decoder hidden state**.
@@ -900,53 +798,14 @@ Full model answers are in the exam questions below.
 > [!card]- Which noise functions does mBART's pretraining use?
 > **Text infilling** plus **sentence permutation**.
 
-> [!card]- What is the difference between translating with BART and with mBART?
-> BART (English-only) needs a **new source encoder**; mBART is **fine-tuned as is** on parallel data.
-
 > [!card]- At what amount of parallel data does mBART pretraining help translation most?
 > **Low to medium** (a few hundred thousand pairs). Almost no data cannot be rescued, and gains shrink with more data.
-
-> [!card]- In Monz's description of InfoXLM's MMLM, what is used instead of directly optimising the ground-truth loss?
-> **Negative sampling.**
-
-> [!card]- What model is InfoXLM initialised from?
-> **XLM-R**, then pretrained further with MMLM, TLM and XLCo.
 
 > [!card]- Why does InfoXLM have no language embeddings, unlike XLM?
 > It keeps **XLM-R's architecture** so it can keep XLM-R's weights.
 
-> [!card]- How are InfoXLM's three losses combined?
-> **Equally weighted**: a plain sum.
-
 > [!card]- On mixed-language XNLI, is XLM-R better or worse than mBERT across languages?
 > **Better.** Only on mixed-language QA does XLM-R fall below mBERT.
-
-> [!card]- In mixed-language QA, when does XLM-R work across languages?
-> **Mainly when the question is in English.**
-
-> [!card]- In parent-child NMT transfer, what does the Uzbek child score with every parameter frozen?
-> **Zero BLEU**: the source embeddings must be retrained first.
-
-> [!card]- In parent-child NMT transfer, which parameter group gives the biggest single gain when unfrozen?
-> The **source embeddings**.
-
-> [!card]- In which direction of corpus size must NMT transfer flow to pay off?
-> From the **larger** corpus (parent) to the **smaller** (child).
-
-> [!card]- Which sampling temperature is effectively uniform?
-> $T = 100$.
-
-> [!card]- Which sampling temperature is best for high-resource languages and worst for low-resource ones?
-> $T = 1$ (proportional).
-
-> [!card]- Which multilingual model was weakest in every resource group in Arivazhagan et al. (2019)?
-> **All→All**, one model for both directions.
-
-> [!card]- Do multilingual NMT models beat bilingual baselines for high-resource languages in Arivazhagan et al. (2019)?
-> **No.** High-resource languages lose to interference.
-
-> [!card]- Where does mBART put the language ID token?
-> At the **end of the encoder input** and the **start of the decoder input**.
 
 > [!card]- True or false: TLM uses a different loss function from MLM.
 > **False.** The loss is the same; only the input (a sentence plus its translation) differs.
@@ -987,17 +846,11 @@ Full model answers are in the exam questions below.
 > [!card]- True or false: BART's decoder is bidirectional.
 > **False.** The encoder is bidirectional; the decoder is **autoregressive**.
 
-> [!card]- True or false: mBART's pretraining objective uses a crosslingual signal.
-> **False.** Denoising is always within the **same** language.
-
 > [!card]- True or false: Transfer learning for NMT works best if decoder parameters are frozen.
 > **True.** It is in Monz's list of conditions; the freezing experiment narrows it to the target embeddings.
 
 > [!card]- True or false: InfoXLM's MMLM uses negative sampling.
-> **True.** That is Monz's description; the InfoXLM paper reads the vocabulary softmax as contrastive.
-
-> [!card]- True or false: Zero-shot XLM (MLM+TLM) beats translate-test on XNLI for every language.
-> **False.** Only on average; translate-test wins for the other European languages, Turkish and Arabic.
+> **True.** Instead of directly optimising the loss of the ground truth.
 
 > [!card]- True or false: In multilingual NMT, many-to-many translation is used for testing only.
 > **True.** Training is English-centric, so non-English pairs are zero-shot.

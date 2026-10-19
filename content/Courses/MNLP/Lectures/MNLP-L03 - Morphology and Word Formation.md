@@ -431,17 +431,8 @@ Model answers are in the exam questions below.
 > [!card]- What four properties define word embeddings?
 > **Low dimensional**, **dense**, **continuous**, and **learned by performing a prediction task**.
 
-> [!card]- What is the difference between CBOW and Skip-Gram?
-> CBOW predicts the **centre word from its context**; Skip-Gram predicts **each context word from the centre word**.
-
 > [!card]- How does the CBOW task differ from n-gram language modelling?
 > A language model sees only the **left** context; CBOW sees **both sides**, because its goal is embeddings and prediction is only the means.
-
-> [!card]- Why does CBOW have no non-linear hidden layer?
-> So the embedding layer sits right next to the output and the **embeddings** do most of the work.
-
-> [!card]- Why is CBOW called "bag of words"?
-> Its projection layer **sums** the context vectors, and summation is commutative, so the **order** of the context words is lost.
 
 > [!card]- Why does vocabulary size $|V|$ drive the memory footprint of a neural model?
 > Weight matrices are **fixed size**, and the output layer has one row per vocabulary word plus a **softmax over $|V|$** at every position.
@@ -449,29 +440,11 @@ Model answers are in the exam questions below.
 > [!card]- What is a vocabulary short-list?
 > Keeping only the **most frequent** words and mapping every rare word to a single `<unk>` token.
 
-> [!card]- What is the main disadvantage of a short-list with `<unk>`?
-> All rare words get **equal probability** in a given context, because they are literally the same token.
-
-> [!card]- Why is a realistic Russian word vocabulary much larger than an English one?
-> Russian **inflects far more** (for example case on every noun), so each lemma has many more surface forms.
-
 > [!card]- Why can a word-level model not see that *move* and *moved* are related?
 > They are **unrelated indices**, so the relation must be learned from data separately for every inflected pair.
 
 > [!card]- How could morphology give a representation for an unseen word like *hammered*?
 > Compose it from known parts: an embedding for **hammer** plus what **-ed** does to a verb. Context cannot help, since the word was never seen.
-
-> [!card]- How many possible segmentations does a string of $n$ characters have?
-> $2^{n-1}$: each of the $n-1$ internal gaps is a boundary or not. Too many to enumerate.
-
-> [!card]- What does maximum matching do at each position of a character string?
-> It greedily takes the **longest word** found in a precompiled vocabulary.
-
-> [!card]- What does maximum matching do when no vocabulary word starts at a position?
-> Emits a **single character** even if it is not in the vocabulary, so the algorithm always terminates.
-
-> [!card]- What happens to an out-of-vocabulary word under maximum matching?
-> It is **silently** chopped into single characters or greedily mismatched; nothing in the output signals it.
 
 > [!card]- How does Backward Maximum Matching differ from Forward Maximum Matching?
 > It starts at the **end**, takes the substring **ending** at position $i$, and **prepends** each word so output stays in reading order.
@@ -481,9 +454,6 @@ Model answers are in the exam questions below.
 
 > [!card]- With vocabulary {研究, 研究生, 生活, 生, 活}, what does Backward Maximum Matching return for 研究生活?
 > **研究 | 生活**
-
-> [!card]- Why can Forward and Backward Maximum Matching give different segmentations of the same string?
-> The string is **genuinely ambiguous**, and the greedy rule lets that leak through; only the scan direction differs. Neither algorithm is buggy.
 
 > [!card]- How does bidirectional maximum matching decide when FMM and BMM disagree?
 > A tie-breaking heuristic: prefer **fewer total words** or **fewer single-character words**. If they agree, accept with high confidence.
@@ -500,65 +470,14 @@ Model answers are in the exam questions below.
 > [!card]- Which BMES tag only occurs in words of three or more characters?
 > **M** (Middle), for an interior character.
 
-> [!card]- After which BMES tags is a word boundary inserted?
-> After every **E** and every **S**.
-
-> [!card]- What segmentation does the tagging 研/B 究/E 生/S 活/S give?
-> **研究 | 生 | 活**
-
 > [!card]- In an HMM word segmenter, which sequence is hidden?
 > The **BMES tag sequence**, which generates the observed characters.
-
-> [!card]- What is the direction of the emission probability in a BMES HMM?
-> $P(\text{character} \mid \text{tag})$: the character given the tag.
-
-> [!card]- Why can the BMES tag B never be followed by another B?
-> A word opened by B must continue with M or **close with E** before a new word can begin.
-
-> [!card]- Which tags can follow E or S in BMES tagging?
-> Only **B or S**: a word has just ended, so the next one must start.
-
-> [!card]- How many of the 16 BMES tag transitions are structurally impossible?
-> **Half**; a model trained on segmented text learns these zeros from the counts.
 
 > [!card]- How are BMES HMM parameters estimated from a segmented corpus?
 > **Maximum likelihood** from counts: e.g. a transition is the tag-bigram count divided by the count of the previous tag.
 
-> [!card]- What is the Viterbi recursion for BMES tagging?
-> $\text{score}[i][t] = \max_{t'} \text{score}[i-1][t'] \cdot P(t \mid t') \cdot P(c_i \mid t)$
-
-> [!card]- What are backpointers for in Viterbi?
-> They store each cell's **winning predecessor**, so the best path is recovered by backtracing instead of recomputing paths.
-
-> [!card]- How does the cost of Viterbi compare with scoring every tag sequence?
-> Viterbi is $O(n|T|^2)$, **linear** in sentence length; brute force is **exponential**, $|T|^n$.
-
-> [!card]- Why does an HMM handle unseen words better than maximum matching?
-> It needs **no fixed dictionary**: it works over characters, so an unseen word is just a plausible tag path.
-
-> [!card]- How does an HMM resolve segmentation ambiguity, compared with bidirectional matching?
-> With **probabilistic evidence** learned from data, instead of direction-based tie-breaking heuristics.
-
-> [!card]- What does the first-order Markov assumption restrict in an HMM segmenter?
-> Each tag is generated from the **previous tag** alone (equivalently: a tag depends only on the previous tag and the current character), so no longer-range context is used.
-
-> [!card]- Which model is motivated by the HMM's lack of longer-range context in word segmentation?
-> **Conditional random fields (CRFs)**, which can condition on features of the whole input.
-
-> [!card]- What is the difference between inflection and derivation?
-> Inflection **keeps the part of speech** and changes grammatical features; derivation changes the **part of speech and/or the meaning**.
-
-> [!card]- *perfect* → *imperfect* keeps the part of speech. Is it inflection or derivation?
-> **Derivation**: it changes the meaning and yields a new dictionary entry.
-
-> [!card]- What is compounding?
-> Combining **several words into one word**, e.g. German *Tisch* + *Bein* = *Tischbein* (table leg).
-
 > [!card]- Why can no fixed vocabulary be closed over morphology?
 > Morphological processes are **productive**: they apply iteratively and to new combinations (*doomscrolled*), so new forms keep appearing.
-
-> [!card]- Why do inflectional features multiply the number of word forms instead of adding to it?
-> Features are **independent slots**, so forms per lemma are the **product** of the slot sizes.
 
 > [!card]- What is a morpheme?
 > The **smallest meaning-carrying** part of a word.
@@ -569,23 +488,8 @@ Model answers are in the exam questions below.
 > [!card]- Why can a circumfix like German *ge-seh-en* not be analysed by stripping a prefix or a suffix?
 > *ge-* and *-en* are **one morpheme in two pieces**, attached front and back simultaneously, so neither half can be stripped alone.
 
-> [!card]- What is non-concatenative morphology?
-> Morphology that changes the **root itself**, instead of stringing morphemes together.
-
-> [!card]- What is the name for a vowel change inside the root, as in German *Buch* → *Bücher*?
-> **Apophony**, a kind of non-concatenative morphology.
-
-> [!card]- Why can no string-cutting segmenter fully handle non-concatenative morphology?
-> Segmenters cut **contiguous pieces**, but the change is **inside the root**: no cut in *Bücher* separates "book" from "plural".
-
 > [!card]- In an isolating language, what carries the grammatical relations?
 > **Word order**, with **particles** for additional modification.
-
-> [!card]- Which morphological type has words that tend not to change form at all?
-> **Isolating** (Chinese, Vietnamese).
-
-> [!card]- Which morphological type has each morpheme contribute one clear meaning, with visible boundaries?
-> **Agglutinative** (Turkish, Finnish).
 
 > [!card]- Which morphological type has a single suffix encode several grammatical features that cannot be separated?
 > **Fusional** (Russian, Spanish, Arabic).
@@ -593,41 +497,11 @@ Model answers are in the exam questions below.
 > [!card]- Which morphological type packs verb, subject, object and modifiers into a single word?
 > **Polysynthetic** (Inuktitut, Mohawk).
 
-> [!card]- What distinguishes agglutinative from fusional morphology?
-> **Separability**: an agglutinative affix carries one feature; a fusional affix carries several fused features.
-
-> [!card]- What are the morphemes of Turkish *evlerinizden* ("from your houses")?
-> *ev-ler-iniz-den*: **house + plural + your + from**.
-
-> [!card]- Why are agglutinative suffixes easy to reuse across words?
-> Each suffix is **separable** and carries one meaning, so it attaches to many other nouns.
-
 > [!card]- Are agglutinative morpheme boundaries always clean at the character level?
 > **No**: a suffix may change spelling to fit the stem; the meanings still split cleanly.
 
-> [!card]- In the course's gloss, which features does the Russian suffix *-ami* in *knigami* ("with books") fuse?
-> **Case** (instrumental), **number** (plural) and **gender** (feminine), fused and unsegmentable.
-
-> [!card]- How does Arabic root-and-pattern morphology form *yaktubu* ("he writes")?
-> The consonantal root **k-t-b** ("write") is poured into a **pattern** template of prefixes and vowels, *ya-* C1 C2 *-u-* C3 *-u*.
-
-> [!card]- Why is written Arabic hard for a tokenizer beyond its interleaved morphemes?
-> The pattern's **vowels are not written**, so part of the grammar is absent from the string.
-
-> [!card]- Why can Inuktitut words not be split back into morphemes by string matching?
-> The morphemes **change where they meet** (*-k-mut-uq* surfaces as *-mmuu-*).
-
-> [!card]- What are the two ways a word-level vocabulary fails for morphologically rich languages?
-> Keep all forms and **$|V|$ explodes**; keep an English-sized vocabulary and get massive **OOV** rates.
-
-> [!card]- With a subword vocabulary shared across languages, how are morphologically rich languages treated compared with English?
-> They get split into **many more pieces per word** than English.
-
 > [!card]- Why are morphological analysers not the general fix for vocabulary blow-up?
 > They are **highly language dependent**: one per language, each built with linguistic expertise.
-
-> [!card]- What does falling back to single characters give subword tokenization?
-> **Very low OOV rates** with a fixed-size vocabulary; unseen characters can still be OOV unless it works on bytes.
 
 > [!card]- True or false: CBOW's projection layer loses the order of the context words.
 > **True.** It sums the vectors, and summation is commutative.
@@ -643,12 +517,6 @@ Model answers are in the exam questions below.
 
 > [!card]- True or false: In a BMES HMM, the emission probability is the probability of the character given the tag.
 > **True.** Emission is $P(c_i \mid t_i)$, not the tag given the character.
-
-> [!card]- True or false: An HMM word segmenter can be trained without a segmented corpus, at a cost in quality.
-> **True.** Unsupervised Baum-Welch (EM) training is possible, but quality drops.
-
-> [!card]- True or false: Derivation always changes a word's part of speech.
-> **False.** It changes POS **and/or** meaning: *perfect* → *imperfect* keeps the adjective.
 
 > [!card]- True or false: A fixed word vocabulary sized for English produces massive OOV rates for morphologically rich languages.
 > **True.** Each lemma has many surface forms, so most forms fall outside the vocabulary.

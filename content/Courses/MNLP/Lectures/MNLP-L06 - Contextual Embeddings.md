@@ -581,9 +581,6 @@ Model answers are in the exam questions below.
 > [!card]- What is the shared flaw of static word embeddings, however they are trained?
 > One vector per **word type**: *train* (vehicle), *train* (to practise) and *train of thought* all get the **same** vector.
 
-> [!card]- Why do embeddings taken from a trained task model's input layer (e.g. a translation system's) still lack context?
-> The network saw the whole sentence, but only the **input embedding layer** is kept, so the context computed in deeper layers is **thrown away**.
-
 > [!card]- What trade-off must a contextual word representation strike?
 > Enough context to **separate occurrences** of the same word, but not so much that the word's **own contribution** becomes unclear.
 
@@ -599,23 +596,11 @@ Model answers are in the exam questions below.
 > [!card]- Which Transformer family are all current LLMs?
 > **Decoder-only**: classical next-word prediction.
 
-> [!card]- What makes BERT "bidirectional"?
-> Every position attends to positions on **both** its left and its right.
-
-> [!card]- What three embeddings are summed to form BERT's input vector at each position?
-> **Token**, **segment** (A or B) and **position** embeddings.
-
 > [!card]- What fraction of tokens does BERT select for masked language modelling?
 > **15%**.
 
 > [!card]- In BERT pre-training, what happens to a token selected for masking?
 > **80%** replaced by `[MASK]`, **10%** by a random word, the rest left **unchanged**.
-
-> [!card]- At which positions is BERT's MLM loss computed?
-> Only at the **selected** positions, whether they show `[MASK]`, a random word or the original word.
-
-> [!card]- Why does BERT not replace every selected token with `[MASK]`?
-> `[MASK]` never appears at fine-tuning time; random and unchanged tokens force good representations of **every** input token.
 
 > [!card]- How are BERT's next sentence prediction pairs built?
 > **50%** B truly follows A (IsNext), **50%** B is a random segment (NotNext).
@@ -623,23 +608,14 @@ Model answers are in the exam questions below.
 > [!card]- Which BERT special token is never masked and has a final output representing the whole input sequence?
 > **`[CLS]`**.
 
-> [!card]- From which output does BERT predict next sentence prediction?
-> **C**, the final-layer output at the **`[CLS]`** position.
-
 > [!card]- When fine-tuning BERT, where does the task head attach for classification versus tagging?
 > Classification: the **`[CLS]` output C**. Tagging and span extraction: the **token outputs $T_i$**.
-
-> [!card]- What does BERT output for SQuAD question answering?
-> A **start/end span** in the paragraph; nothing is generated.
 
 > [!card]- Which new parameters does BERT learn when fine-tuned for SQuAD?
 > Only a **start vector S** and an **end vector E**, scored against each token output by inner product.
 
 > [!card]- What is the difference between BPE's and WordPiece's merge criterion?
 > BPE merges the **most frequent** pair; WordPiece the pair with the highest **count(a,b) / (count(a) · count(b))**.
-
-> [!card]- Why can WordPiece merge a rare pair before a frequent one?
-> The score is high when the pair occurs together **more often than its parts' frequencies suggest**; pairs containing a very common symbol score low.
 
 > [!card]- What does WordPiece do with a word containing a character missing from its vocabulary?
 > The **whole word** becomes `[UNK]`, where BPE and Unigram LM fall back to characters.
@@ -653,26 +629,8 @@ Model answers are in the exam questions below.
 > [!card]- Which cross-lingual signals does mBERT's training lack?
 > **Parallel data**, **language-ID embedding**, language-specific parameters, **alignment loss**.
 
-> [!card]- Since mBERT's training objective is not cross-lingual, what do its languages share?
-> Only the **parameters** and the **subword vocabulary**.
-
-> [!card]- Can an mBERT next sentence prediction pair contain two languages?
-> **No**: NSP pairs are always within the **same language**.
-
-> [!card]- Why does mBERT sample languages with a smoothed distribution?
-> Wikipedia sizes are **extremely skewed**: English alone is larger than dozens of small languages combined.
-
 > [!card]- What goes wrong with language sampling at α = 0?
 > Sampling becomes **uniform**: tiny languages are oversampled so much that the model **memorises** them.
-
-> [!card]- What does language sampling with α = 0.7 do relative to raw data sizes?
-> **Up-weights low-resource** and down-weights high-resource languages: a compromise between proportional and uniform.
-
-> [!card]- Why does an exponent α < 1 in $p_l \propto n_l^\alpha$ shrink the gap between languages?
-> $x^\alpha$ is **concave** and compresses large values more: the ratio $n_1/n_2$ becomes $(n_1/n_2)^\alpha$.
-
-> [!card]- How does a language-sampling temperature T relate to α, and what does raising T do?
-> $\alpha = 1/T$; raising T makes sampling **flatter**, closer to uniform.
 
 > [!card]- Why does mBERT have more parameters than BERT-base?
 > Entirely the **bigger vocabulary** (embedding matrix); the architecture is identical.
@@ -686,32 +644,17 @@ Model answers are in the exam questions below.
 > [!card]- Why is uncased mBERT bad for some languages?
 > It lowercases and **strips accents**, damaging languages that depend on **diacritics**.
 
-> [!card]- In natural language inference, what relations can a premise have to a hypothesis?
-> **Entailment**, **contradiction** or **neutral**: a 3-way classification.
-
 > [!card]- What is zero-shot cross-lingual transfer?
 > Fine-tune on task data in language A only, evaluate on language B with **no task data in B**.
 
 > [!card]- Does mBERT transfer between languages with different scripts, such as Hindi and Urdu?
 > **Yes, well**, despite almost no shared wordpieces.
 
-> [!card]- Why does mBERT's zero-shot POS transfer drop for pairs involving Japanese?
-> Possibly **larger typological differences** (Japanese is verb-final, with postpositions).
-
-> [!card]- In Pires et al.'s overlap measure, which wordpieces are compared?
-> Those in **labelled named entities** of the fine-tuning and evaluation data (Jaccard similarity).
-
-> [!card]- How does zero-shot NER F1 depend on entity-wordpiece overlap for mBERT versus English BERT?
-> mBERT: roughly **flat**, decent even near zero overlap. English BERT: near zero at low overlap, **rising** with overlap.
-
 > [!card]- What does mBERT's flat zero-shot F1 against wordpiece overlap imply?
 > Its transfer is **not surface string matching**: representations are shared below the level of surface wordpieces.
 
 > [!card]- From an SVO fine-tuning language, how does mBERT's zero-shot POS transfer to SVO targets compare with SOV targets?
 > SVO targets are **far better** than SOV (verb-final) targets.
-
-> [!card]- From an SOV fine-tuning language, does mBERT's zero-shot POS transfer favour SOV targets over SVO targets?
-> **Barely**: the two are almost equal.
 
 > [!card]- Which typological database records structural features of languages and is used in NLP to measure structural similarity?
 > **WALS** (World Atlas of Language Structures).
@@ -722,42 +665,6 @@ Model answers are in the exam questions below.
 > [!card]- In mBERT translation retrieval, how is an English sentence "translated" before the nearest-neighbour search?
 > Shifted by **one average EN-to-DE difference vector**, then matched by **$\ell_2$ distance**.
 
-> [!card]- In which mBERT layers is translation retrieval most accurate?
-> The **middle-upper** layers (about 6 to 8 of 12).
-
-> [!card]- Why does mBERT translation retrieval get worse in the top layers?
-> Top layers are shaped by **predicting words in a specific language**, so they become language-specific again.
-
-> [!card]- For mBERT on XNLI, which is better: machine-translated training data (translate-train) or zero-shot transfer?
-> **Translate-train** beats zero-shot.
-
-> [!card]- On zero-shot XNLI, how does mBERT compare with systems pre-trained with cross-lingual signal?
-> It narrowly **beats** the older X-LSTM but **loses** to the stronger ones (Artetxe and Schwenk; XLM with MLM+TLM).
-
-> [!card]- Which XLM variant beats zero-shot mBERT on XNLI although, like mBERT, it uses no parallel data?
-> **XLM with MLM** alone (its model was chosen on target-language dev data).
-
-> [!card]- What distinguishes XLM from XLM-R?
-> XLM's full version adds **TLM on parallel sentences**; XLM-R is a later RoBERTa-style mBERT with **no** parallel data.
-
-> [!card]- On zero-shot MLDoc, how does mBERT compare with the best system trained with parallel text?
-> **Nearly matches** it, within a fraction of a point, without seeing translations.
-
-> [!card]- On zero-shot NER, how does mBERT compare with Xie et al.'s dedicated cross-lingual system?
-> mBERT is **better** on average.
-
-> [!card]- Does zero-shot mBERT beat Kim et al.'s cross-lingual POS tagger that also uses a few hundred target-language sentences?
-> **No**, not on average: adding a little target-language data wins.
-
-> [!card]- In Wu and Dredze's experiment, how does Feat (mBERT not fine-tuned, only the task head trained) compare with fine-tuning?
-> **Worse** on average on every task than the best fine-tuned setting: fine-tuning is necessary.
-
-> [!card]- In Wu and Dredze's freezing experiment, what does "frozen up to layer 0" mean?
-> Only the **embedding layer** is frozen; all Transformer layers are fine-tuned.
-
-> [!card]- Why does freezing mBERT's lower layers during English fine-tuning help zero-shot transfer?
-> English-only fine-tuning would pull them **toward English**; frozen, they keep their **multilingual** pre-trained representation.
-
 > [!card]- What happens to mBERT zero-shot transfer if layers up to 9 are frozen during fine-tuning?
 > It **hurts** NER (most), POS and XNLI, though not MLDoc: the upper layers must **adapt to the task**.
 
@@ -767,41 +674,17 @@ Model answers are in the exam questions below.
 > [!card]- For which task does wordpiece overlap with English show no correlation with mBERT's zero-shot score?
 > **XNLI** (sentence-level inference).
 
-> [!card]- Why does a correlation between wordpiece overlap and transfer not show that overlap causes transfer?
-> High-overlap languages are also **typologically closer** to English, so the two are confounded.
-
 > [!card]- What is fake English (K et al. 2020)?
 > English with every Unicode codepoint **shifted by a large constant**, so it shares **no characters** with the other language.
-
-> [!card]- Why does fake English isolate the effect of subword overlap?
-> Words, grammar, **word order** and frequencies stay identical; only the **characters** change, so shared vocabulary is zero.
-
-> [!card]- How much XNLI transfer does B-BERT lose when fake English removes all subword overlap?
-> **Very little**: transfer survives almost intact.
-
-> [!card]- How did K et al. test whether word order matters for cross-lingual transfer?
-> **Randomly permuting words during pre-training**, with no permutation during fine-tuning.
-
-> [!card]- Of Spanish, Hindi and Russian, which loses most transfer when B-BERT is pre-trained with permuted words?
-> **Hindi**.
 
 > [!card]- Which model-architecture factor has the largest impact on B-BERT's cross-lingual transfer?
 > **Depth**.
 
-> [!card]- As B-BERT gets deeper at roughly constant size, which improves more: in-language or zero-shot accuracy?
-> **Zero-shot** keeps improving; in-language **saturates** early, so the gap shrinks.
-
 > [!card]- What does the mixed-language XNLI drop (premise and hypothesis in different languages) show about mBERT-style models?
 > The space is **not truly language-neutral**: good at a task in another language, poor at **relating two languages** in one input.
 
-> [!card]- In K et al.'s mixed-language XNLI test, why does Hindi have the lowest mixed scores?
-> Its **monolingual baseline is lowest** too, so the low mixed scores do not show that mixing hurts Hindi most.
-
 > [!card]- What is the difference between "within" and "across" in Rajaee and Monz's XNLI evaluation?
 > Within: premise and hypothesis in the **same** language. Across: in **different** languages.
-
-> [!card]- For mBERT on XNLI, which works better: a foreign premise with an English hypothesis, or an English premise with a foreign hypothesis?
-> A foreign premise with an **English hypothesis**.
 
 > [!card]- What is the heuristics hypothesis (Rajaee and Monz)?
 > **Transfer of heuristics** can contribute to cross-lingual generalisation.
@@ -809,35 +692,17 @@ Model answers are in the exam questions below.
 > [!card]- Which shortcut does SNLI training data offer an NLI model?
 > **Full** premise-hypothesis **word overlap** almost always means **entailment**; low overlap mostly non-entailment.
 
-> [!card]- Why would an NLI word-overlap shortcut fail when premise and hypothesis are in different languages?
-> Lexical overlap is **near zero by construction**, so the shortcut predicts non-entailment. (An interpretation, not an established result.)
-
 > [!card]- Why does XLM-R drop next sentence prediction and train with MLM only?
 > NSP **contributes little** and sometimes **hurts** performance.
 
 > [!card]- What is the difference between static and dynamic masking?
 > Static: masked **once in preprocessing**, reused every epoch. Dynamic: a **fresh mask** each time a sequence is fed.
 
-> [!card]- Why is dynamic masking better than static masking?
-> Under static masking unselected tokens are **never targets**; dynamic masking gives **new training signal** each pass at no data cost.
-
 > [!card]- What data is XLM-R trained on?
 > **CC-100**: filtered CommonCrawl in 100 languages, two orders of magnitude more than mBERT's Wikipedia.
 
 > [!card]- What vocabulary does XLM-R use?
 > **250k** entries, **Unigram LM** via SentencePiece: better fertility, bigger embedding matrix.
-
-> [!card]- Is XLM-R better than mBERT within a language, on XNLI and on QA?
-> **Yes**, on both, on average.
-
-> [!card]- On which task is XLM-R worse than mBERT across languages, on average?
-> **Cross-lingual QA**; on XNLI it is better across too.
-
-> [!card]- What structure does XLM-R's cross-lingual QA (context by question language) matrix show?
-> "**Own language, or English question**": both work, little in between.
-
-> [!card]- What is the bottom line on what drives mBERT's cross-lingual transfer?
-> **No single factor**: vocabulary overlap plays a minor role, structure and depth matter.
 
 > [!card]- True or false: BERT's MLM loss is computed only at positions that show the `[MASK]` token.
 > **False.** It covers all selected positions, including those given a random or unchanged word.
@@ -874,9 +739,6 @@ Model answers are in the exam questions below.
 
 > [!card]- Multiple selection: which are true of what drives mBERT-style transfer? (A) Removing all subword overlap eliminates most transfer (B) Permuting words in pre-training reduces transfer without eliminating it (C) Deeper models narrow the in-language to zero-shot gap (D) A single factor explains transfer
 > **B and C.** A: removing all overlap barely changes transfer. D: no single factor explains it.
-
-> [!card]- Multiple selection: which are true of zero-shot mBERT in Wu and Dredze? (A) Translate-train beats zero-shot on XNLI (B) It beats Kim et al.'s POS tagger, which also uses 320 target-language sentences (C) It beats Xie et al.'s cross-lingual NER system (D) Its XNLI score correlates strongly with wordpiece overlap
-> **A and C.** B: Kim et al.'s tagger is better on average. D: XNLI shows no correlation with overlap.
 
 > [!card]- Multiple selection: which are true of XLM-R compared with mBERT? (A) It drops next sentence prediction (B) It uses static masking (C) It has a larger vocabulary (D) Its average within-language score beats mBERT's on both XNLI and QA
 > **A, C and D.** B: XLM-R uses dynamic masking.

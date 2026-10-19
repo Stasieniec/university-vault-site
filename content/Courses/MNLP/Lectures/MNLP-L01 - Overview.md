@@ -153,20 +153,11 @@ Model answers are in the exam questions below.
 > [!card]- Which three fields does NLP sit at the intersection of?
 > **Computer science**, **artificial intelligence**, **linguistics**.
 
-> [!card]- Which four aspects of human language does NLP aim to model algorithmically and formally?
-> Word formation, sentence structure (grammar), sentence meaning, document or discourse structure.
-
 > [!card]- What distinguishes spoken from written language as a signal?
 > Spoken language is **continuous**; written language is **discrete**.
 
 > [!card]- What distinguishes structured from unstructured information?
 > Structured: tables, databases. Unstructured: **language**, images, video.
-
-> [!card]- How does document retrieval treat a well-formed question?
-> It chops it into **keywords** (after stop-word removal).
-
-> [!card]- How does question answering differ from document retrieval?
-> QA takes a **well-formed question** and returns the **actual answer**, not ranked documents.
 
 > [!card]- Which types of entity does named entity recognition usually identify?
 > **Persons**, **organisations**, **dates**, **locations**.
@@ -177,23 +168,8 @@ Model answers are in the exam questions below.
 > [!card]- What did summarization systems traditionally use to decide what is important?
 > **Frequency-based term weights** from information retrieval.
 
-> [!card]- Why does sentiment analysis require named entity recognition?
-> Fine-grained sentiment ("X likes Y about Z") has to identify who X is and what Z is.
-
-> [!card]- At which levels does sentiment analysis operate?
-> **Sentence** and **document** level.
-
-> [!card]- What unit does machine translation typically translate?
-> **Individual sentences**.
-
 > [!card]- Which two abilities does machine translation require?
 > **Understanding** the source sentence and **generating** sentences in the target language.
-
-> [!card]- What are the disadvantages of deep learning for NLP?
-> Needs **large amounts of training data**, errors are **hard to trace**, can **fail spectacularly**.
-
-> [!card]- Why do deep-learning insights transfer between NLP, vision, speech and other fields?
-> Network types are **uniform** and there are few **application-specific features**.
 
 > [!card]- In which roles can LLMs substitute or supplement humans?
 > Data **annotation**, evaluation (**LLM as a judge**), **dialog**.
@@ -204,65 +180,20 @@ Model answers are in the exam questions below.
 > [!card]- How does the performance of general multilingual LLMs such as Llama 3.1 and DeepSeek vary across languages?
 > They do better on **high-resource** languages.
 
-> [!card]- How do dedicated multilingual models such as Aya-Expanse compare with large general LLMs?
-> They tend to **lag behind** (read as behind the general models; not spelled out).
-
 > [!card]- What is the difference between multilingual and crosslingual NLP?
 > Multilingual: one system works for **many languages**. Crosslingual: information or knowledge **crosses between** languages.
-
-> [!card]- What is the guiding question of crosslinguality?
-> **How does knowledge transfer across languages?**
-
-> [!card]- Is sentence or document classification across languages a multilingual or crosslingual scenario?
-> **Multilingual**: one classifier trained without being language-specific.
-
-> [!card]- Which crosslingual scenario asks how to manipulate information across languages?
-> **Crosslingual unlearning**.
-
-> [!card]- Which crosslingual scenario asks how to combine information across languages?
-> **Crosslingual reasoning**.
-
-> [!card]- Which end-user tasks does NLP address?
-> Text categorization, summarization, machine translation, question answering.
 
 > [!card]- Which traditional NLP tasks do LLMs carry out end to end?
 > Question answering, document summarization, machine translation.
 
-> [!card]- Why does a five-star review still need sentence-level sentiment analysis?
-> It can be uninformative, or hide a real complaint in one sentence.
-
-> [!card]- What made pre-deep-learning NLP costly to extend to a new task?
-> Each task needed its own approach and hand-built features.
-
-> [!card]- What distinguishes how pre-deep-learning NLP and neural networks get their features?
-> Before: people hand-built features and ML weighed them. Neural networks learn their own.
-
-> [!card]- How is a task like parsing made multilingual?
-> By finding language-independent, or universal, features.
-
 > [!card]- What distinguishes crosslingual QA from ordinary QA?
 > The answer must be extracted from resources in another language.
-
-> [!card]- Why did Mistral Small 3.2's translation in the four-LLM comparison show that fluency is no evidence of correctness?
-> It was fluent English describing a different event from the source.
-
-> [!card]- True or false: Deep-learning NLP still requires hand-engineered features such as POS tags and parse trees.
-> **False.** Deep learning needs very little or no feature engineering; those features belong to pre-deep-learning NLP.
 
 > [!card]- True or false: In pre-deep-learning NLP, each application required a different approach.
 > **True.** Each application combined its own ML method and features.
 
-> [!card]- True or false: Neural networks require large amounts of training data.
-> **True.** Data hunger is one of their disadvantages, with hard-to-trace errors and spectacular failures.
-
 > [!card]- True or false: Sentiment analysis operates only at the document level.
 > **False.** It operates at both the sentence and the document level.
-
-> [!card]- True or false: Language-independent parsing is a crosslingual scenario.
-> **False.** It is multilingual: it looks for universal features of sentence structure.
-
-> [!card]- True or false: Sentence or document classification across languages is a multilingual scenario.
-> **True.** Its question is how to train one classifier without being language-specific; "across" does not make it crosslingual.
 
 > [!card]- True or false: Crosslingual unlearning asks how to combine information across languages.
 > **False.** Unlearning asks how to manipulate information across languages; reasoning combines it.

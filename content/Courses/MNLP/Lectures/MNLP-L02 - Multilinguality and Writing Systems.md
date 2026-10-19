@@ -471,35 +471,17 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 
 ## Flashcards
 
-> [!card]- According to Monz, what determines how well a language is covered by NLP resources?
-> **Commercial interest** and **military relevance**.
-
-> [!card]- Which languages make up Monz's high-resource tier?
-> English and Mandarin, then after a **big gap** French, Spanish, Arabic, Russian.
-
 > [!card]- How do most non-English NLP resources come about?
 > As **by-products** (translations, reviews) or **translations of English resources**; less often as dedicated efforts.
 
 > [!card]- Why do claims that an NLP method is "language independent" deserve suspicion?
 > They are usually **untested** outside English or a very small set of languages.
 
-> [!card]- How does Chinese mark past tense in 我不知道她去哪儿了 ("I don't know where she went")?
-> With the **sentence-final particle** 了; the verb 去 itself is unchanged.
-
-> [!card]- What does Russian *knígi* (of the book, the books, books as object) show for NLP?
-> One surface form fills several cells, so the **case cannot be read off the string**.
-
 > [!card]- What does it mean for a language such as Finnish to be agglutinative?
 > Morphemes are **glued on in sequence**, each adding one piece of meaning.
 
-> [!card]- Why can more training data not fix a fixed word-level vocabulary for Finnish?
-> Agglutination yields **combinatorially many** word forms, so unseen ones always remain. This motivates **subword segmentation**.
-
 > [!card]- Which four English-first assumptions are built into standard NLP pipelines?
 > Words separated by **whitespace**; grammar encoded by **word order**; **one word = one meaning**; text flows **left to right**.
-
-> [!card]- Which languages break the assumption that words are separated by whitespace?
-> Chinese, Japanese, Thai, Lao, Khmer, Burmese.
 
 > [!card]- Why do word-position features carry little information in Russian, Finnish or Korean?
 > Grammatical relations are marked by **case on the noun**, so word order is flexible.
@@ -519,77 +501,17 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- What does each symbol represent in a logographic writing system such as Chinese Hanzi?
 > A **word or morpheme** directly, with little sound information.
 
-> [!card]- How does writing-system type affect a character-level vocabulary?
-> Alphabets need **tens** of symbols; logographic scripts need **thousands**, which the vocabulary must budget for.
-
-> [!card]- What is Devanagari called, where each consonant letter carries an inherent vowel?
-> **Alphasyllabic**.
-
-> [!card]- What does Arabic script leave out of a word such as كتب (ktb)?
-> The **vowels**: only the consonant root is written.
-
-> [!card]- Why is Arabic's vowel-less writing a problem no tokenizer can fix?
-> The vowels were **never written**, so one written form can stand for several words; context must disambiguate.
-
-> [!card]- What do the letter shapes of Korean Hangul encode, beyond the sound itself?
-> **Articulatory features**: how the sound is produced.
-
-> [!card]- Why can a single "script of this text" label fail for a Japanese sentence?
-> One Japanese sentence mixes **Katakana, Kanji and Hiragana**.
-
-> [!card]- Does detecting the script of a text identify its language?
-> **No.** Latin serves many languages; Arabic script covers Arabic, Persian, Urdu, Pashto, Sorani.
-
-> [!card]- Does knowing a text's language tell you its script?
-> **No.** Serbian is written in Cyrillic and Latin, sometimes in the same document.
-
-> [!card]- What happens to a model trained on Cyrillic Serbian and tested on Latin Serbian?
-> It shares **almost no letters** with the test data, although the language is the same.
-
 > [!card]- How did code pages extend ASCII?
 > By **reinterpretation**: the same 128 or 256 byte codes, read differently per language or script.
-
-> [!card]- What are the two disadvantages of code pages?
-> Gibberish when decoded with the **wrong table**; **one script per document**.
-
-> [!card]- Why does decoding text with the wrong code page usually raise no error?
-> The bytes are often **legal in both tables**, so you silently get wrong characters (mojibake).
 
 > [!card]- What is Unicode?
 > A **single universal character set** giving every character it encodes, in every supported script, one unique number, its **codepoint** (`U+number`).
 
-> [!card]- Does Unicode define how characters are stored as bytes?
-> **No.** Unicode defines codepoints; storing them as bytes is a separate **encoding** question (UTF-8, UTF-16, UTF-32).
-
 > [!card]- How does Unicode relate to ASCII?
 > Unicode is a **superset**: `U+0000` to `U+007F` are identical to ASCII.
 
-> [!card]- What follows from a codepoint lying outside plane 0, the Basic Multilingual Plane?
-> It needs **more than 16 bits**, so it takes four bytes in UTF-8 and UTF-16, as emoji do.
-
-> [!card]- Is every CJK character in the Basic Multilingual Plane (plane 0)?
-> **No.** Planes 2 and 3 hold more CJK ideographs, mostly rare or historical.
-
 > [!card]- What is the difference between a codepoint, a character and a glyph?
 > Codepoint: abstract **number**. Character: what a reader **perceives**, possibly several codepoints. Glyph: a stylistic **rendering**.
-
-> [!card]- Why does a naive comparison fail on two identical-looking "café" strings?
-> One is NFC (é **one precomposed codepoint**), the other NFD (e **plus combining accent**): different sequences, lengths, hashes.
-
-> [!card]- How does the Unicode stack run from what a reader sees down to what a byte-level tokenizer eats?
-> A **grapheme**; one or more **codepoints**; 1 to 4 **bytes** per codepoint.
-
-> [!card]- Which Unicode normalization forms are lossy?
-> The **compatibility** forms NFKC and NFKD; the canonical forms NFC and NFD are lossless.
-
-> [!card]- What does the K in NFKC and NFKD stand for?
-> **Compatibility**: these forms also merge stylistic variants such as ligatures.
-
-> [!card]- What does NFKD do that NFD does not?
-> Breaks characters into their **most basic parts**, e.g. splitting ligatures, normalizing visual styling away.
-
-> [!card]- Which normalization form should you use to compare rendered text?
-> **NFD** (non-lossy, preserves semantic and visual equivalence).
 
 > [!card]- Which form do you end in after canonical decomposition followed by composition?
 > **NFC** (compatibility decomposition then composition gives NFKC).
@@ -597,41 +519,17 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- Which normalization form should you use for search indexing or NLP analysis?
 > **NFKD**.
 
-> [!card]- Why is NFKD's lossiness useful for search indexing?
-> It unifies variants: the ligature **ﬁ matches fi**, ① becomes 1.
-
-> [!card]- Why is NFKD not necessarily suitable for generation targets?
-> A model trained on them **never sees, so cannot produce**, the characters NFKD folded away.
-
-> [!card]- What happens to the long s ſ under NFD, and under NFKD?
-> NFD **keeps** ſ; NFKD replaces it with plain **s**, irreversibly.
-
-> [!card]- How many bytes per codepoint does UTF-8 use?
-> **1 to 4**, variable.
-
 > [!card]- Which Unicode encoding uses exactly 4 bytes for every codepoint?
 > **UTF-32**: simple for indexing, memory-hungry, rare in practice.
 
 > [!card]- Which of UTF-8, UTF-16 and UTF-32 is ASCII compatible?
 > Only **UTF-8**; the other two use at least two bytes per character.
 
-> [!card]- How many UTF-8 bytes does a common CJK character such as 中 take?
-> **3**.
-
 > [!card]- In UTF-8, what does a byte starting with `0` signal?
 > A complete **single-byte** character (ASCII).
 
-> [!card]- In UTF-8, what does a byte starting with `11` signal?
-> The **first byte** of a multi-byte sequence; its number of leading 1s gives the **whole sequence's** length.
-
 > [!card]- What is a UTF-8 byte of the form `10xxxxxx`?
 > A **continuation byte** inside a multi-byte sequence.
-
-> [!card]- Why does 中 (U+4E2D, 15 significant bits) need the 3-byte UTF-8 form?
-> Its bits exceed the **11 payload bits** of the two-byte form; the three-byte form carries sixteen.
-
-> [!card]- Why can a reader find character boundaries from any offset in a UTF-8 stream?
-> No byte is ambiguous about its role: skip `10xxxxxx` continuation bytes to reach a character start.
 
 > [!card]- How is byte inflation defined for byte-level tokenizers?
 > **UTF-8 bytes** of a string divided by its number of **perceived characters**.
@@ -639,29 +537,11 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- Which has the highest byte inflation: "hello", "café" or "中文"?
 > **中文**: 3 bytes per character, against 1 per character for "hello".
 
-> [!card]- How does higher byte inflation affect byte-level tokenization?
-> Text tends to be split **more aggressively**: more pieces per character.
-
-> [!card]- Which preprocessing steps silently go wrong when crawled text mixes NFC and NFD?
+> [!card]- Which preprocessing steps go wrong when crawled text mixes NFC and NFD?
 > **Deduplication**, **search**, string equality and prefix matching: all assume identical codepoint sequences.
 
 > [!card]- What is the fix for crawled data that mixes normalization forms?
 > **Consistent normalization** in the pipeline, e.g. first decompose, then compose.
-
-> [!card]- What does `iconv -f GB2312 -t UTF-8` do if the source encoding is not correct?
-> It **fails**, which beats silent mojibake.
-
-> [!card]- What goes wrong when breaking a string at the byte level?
-> Multi-byte codepoints get split into fragments that are **not characters** at all.
-
-> [!card]- What goes wrong when breaking a string at the codepoint level?
-> A base letter can be **separated from its combining diacritic** (e + ◌́).
-
-> [!card]- Why is grapheme-level breaking hard?
-> Grapheme boundaries are **very language-specific**.
-
-> [!card]- Where does mixing string-breaking strategies cause misalignment bugs?
-> **Span annotation** (SQuAD-style offsets shift) and **counting across corpora**.
 
 > [!card]- Why does lowercasing the letter I go wrong for Turkish?
 > Turkish lowercase I is dotless **ı**; dotted İ pairs with i. English rules change the word.
@@ -675,20 +555,11 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- Why is punctuation normalization (“...” against «...» against 「...」) hard?
 > There is **no simple solution**: the mappings between traditions must be **encoded by hand**.
 
-> [!card]- How should a multilingual tokenizer match punctuation?
-> By **Unicode general category P** (`\p{P}`), not a hand-written class like `[.!?]`, which misses 。 and ।.
-
 > [!card]- True or false: Unicode defines both each character's codepoint and how it is stored as bytes.
 > **False.** Unicode defines codepoints only; bytes are the job of an encoding such as UTF-8.
 
 > [!card]- True or false: How well a language is covered by NLP resources depends mainly on its number of speakers.
 > **False.** It depends on commercial interest and military relevance.
-
-> [!card]- True or false: UTF-32 is ASCII compatible.
-> **False.** It uses exactly 4 bytes for every codepoint, ASCII included.
-
-> [!card]- True or false: UTF-16 encodes codepoints outside plane 0 in 4 bytes.
-> **True.** They need more than 16 bits; plane-0 codepoints take 2 bytes.
 
 > [!card]- True or false: NFKD normalization is lossless.
 > **False.** Compatibility forms are lossy (ſ becomes s); only the canonical forms NFC and NFD are lossless.
@@ -702,23 +573,11 @@ Unicode gives every character a **general category** (letter, number, punctuatio
 > [!card]- True or false: Code pages allow only one script per document.
 > **True.** A document is read with one table, so scripts cannot be mixed.
 
-> [!card]- True or false: Detecting a text's script is enough to identify its language.
-> **False.** Arabic script alone covers Arabic, Persian, Urdu, Pashto and Sorani.
-
 > [!card]- True or false: NFC and NFD versions of "café" render identically but are unequal as strings.
 > **True.** Same appearance, different codepoint sequences (4 against 5 codepoints).
 
-> [!card]- True or false: Deduplicating a crawled corpus that mixes NFC and NFD raises an error on the mismatched copies.
-> **False.** It fails silently: both copies are kept and the numbers are just wrong.
-
-> [!card]- True or false: Grapheme boundaries are language-specific.
-> **True.** They are very language-specific, which makes the ideal grapheme-level breaking hard.
-
 > [!card]- True or false: Byte-level tokenizers tend to split text more aggressively in scripts that need more UTF-8 bytes per character.
 > **True.** More bytes per character means more pieces per character.
-
-> [!card]- True or false: In UTF-8, the number of leading 1s in the first byte gives the length of the whole sequence.
-> **True.** The first byte is included: `1110xxxx` starts a 3-byte sequence, so two bytes follow.
 
 > [!card]- True or false: In Unicode, every character a reader perceives has exactly one codepoint.
 > **False.** A perceived character (grapheme) can be several codepoints, such as e plus a combining accent.

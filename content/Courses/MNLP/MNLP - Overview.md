@@ -189,6 +189,7 @@ Length target: about 3,000 words of body per teaching session the lecture took. 
 ## Exam Prep
 
 - [[MNLP - Exam Analysis]]: exam format, the example questions from Canvas, and what they mean for revising
+- [[MNLP - Cheat Sheet]]: the two-sided sheet for the exam; print version `Assets/MNLP-Cheat-Sheet.pdf` (two A4 pages)
 
 ## Resources
 
