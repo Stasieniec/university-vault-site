@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>MNLP-L04 Exam Prep - Subword Segmentation — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="MNLP-L04 Exam Prep - Subword Segmentation — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="MNLP-L04 Exam Prep - Subword Segmentation — notes.swasilewski.com"/><meta name="twitter:description" content="MNLP-L04 Exam Prep - Subword Segmentation What the exam can ask here A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett c..."/><meta property="og:description" content="MNLP-L04 Exam Prep - Subword Segmentation What the exam can ask here A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett c..."/><meta property="og:image:alt" content="MNLP-L04 Exam Prep - Subword Segmentation What the exam can ask here A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett c..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="MNLP-L04 Exam Prep - Subword Segmentation What the exam can ask here A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett c..."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mvfjo0im" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mvfjo0im" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mvfjo0im").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-426"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-426" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/">Multilingual Natural Language Processing</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/Exam-Prep/">Exam Prep</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>MNLP L04 Exam Prep   Subword Segmentation</a></div></nav><h1 class="article-title">MNLP-L04 Exam Prep - Subword Segmentation</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-19T17:44:44.410Z">Oct 19, 2026</time><span>14 min read</span></p></div></div><article class="popover-hint"><h1 id="mnlp-l04-exam-prep---subword-segmentation">MNLP-L04 Exam Prep - Subword Segmentation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mnlp-l04-exam-prep---subword-segmentation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What the exam can ask here </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett comparison and fertility go. The traps: which tokens Unigram LM prunes, OOV “very low” against “zero”, which language shows the bigger Unigram LM advantage (English against gold segmentations, Japanese downstream), whether SentencePiece is an algorithm, and how BPE is applied at inference time.
+Lecture: <a href="../../../Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation" class="internal alias" data-slug="Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation">lecture note</a>. Numbers: <a href="../../../Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet" class="internal alias" data-slug="Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet">cheat sheet</a>.</p>
+</div>
+</blockquote>
+<h2 id="why-subwords">Why subwords<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-subwords" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>The vocabulary is <strong>one of the main bottlenecks</strong> of training an NMT system.</li>
+<li>How well a word is represented depends on its <strong>frequency</strong> and on the <strong>number of different contexts</strong> it occurs in.</li>
+<li>Many word occurrences come from word formation: <strong>inflections</strong> and <strong>compounding</strong>.</li>
+<li>A subword is a <strong>character n-gram</strong> or a <strong>morphologically meaningful unit</strong> (language dependent).</li>
+<li>Handling low-frequency words (including zero-frequency, OOV) is <strong>one of the main motivations</strong> for subword segmentation.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“How well a word is represented depends only on its frequency.”</em> False: also on the number of different contexts it occurs in.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="rule-based-analysers-and-morfessor">Rule-based analysers and Morfessor<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rule-based-analysers-and-morfessor" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Morphological analysers were <strong>historically</strong> often <strong>finite-state transducers</strong> (FSTs): states, and transitions that digest a string and output a string (<code>a:x</code>).</li>
+<li>FST input is a <strong>morpheme</strong>; output is an <strong>analysis</strong> (1st person, noun, singular).</li>
+<li>FSTs are very powerful, <strong>efficient</strong>, and handle cases and exceptions with <strong>great accuracy</strong>.</li>
+<li>FSTs are <strong>extremely laborious</strong> to produce and <strong>totally language dependent</strong>.</li>
+<li>With ambiguities an FST gives <strong>no preference</strong>; <strong>probabilistic</strong> FSTs do exist.</li>
+<li>Data-driven analysers <strong>learn</strong> morphological regularities from data instead of hand-writing rules.</li>
+<li>The <strong>first</strong> data-driven approach: <strong>Morfessor</strong> (Creutz and Lagus, 2002), based on <strong>Minimum Description Length</strong>: what it costs the model to <strong>generate the data</strong>, plus what the <strong>model itself</strong> costs.</li>
+<li>Current approaches follow similar principles but <strong>do not label</strong> the data (no actual analysis), <strong>do not account for</strong> character substitutions or deletions, and are <strong>strictly concatenative</strong>.</li>
+<li>They need <strong>no</strong> data annotation or linguistic knowledge.</li>
+<li>They can be <strong>fitted to a desired vocabulary size</strong>.</li>
+<li>BPE (Sennrich et al., 2016), WordPiece (Schuster et al., 2012) and Unigram LM (Kudo, 2018) split words <strong>based on frequencies</strong>, with <strong>no linguistic knowledge</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“FSTs handle exceptions poorly.”</em> False: they handle cases and exceptions with great accuracy; their problems are effort and language dependence.</li>
+<li><em>“FSTs rank the analyses of an ambiguous word.”</em> False: no preference, though probabilistic FSTs exist.</li>
+<li><em>“Current data-driven segmenters label each segment with its grammatical function.”</em> False: they do not label the data.</li>
+<li><em>“Data-driven segmenters account for character substitutions and deletions.”</em> False: they do not; they are strictly concatenative.</li>
+<li><em>“MDL minimises only the size of the model.”</em> False: model cost plus the cost of generating the data.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="bpe-training-and-inference">BPE: training and inference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bpe-training-and-inference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Training: (1) split words into characters, <strong>keeping word boundaries</strong> (<code>&lt;/w></code>), and collect frequencies; (2) count <strong>all neighbouring</strong> symbol pairs; (3) merge the <strong>most frequent</strong> pair and repeat from (2).</li>
+<li>Training stops when a <strong>maximum number of merge operations</strong> is reached.</li>
+<li>Pairs are counted <strong>within words</strong>, weighted by each word’s frequency.</li>
+<li>On <em>the tall man is taller than the tallest man</em>, the first merge is <code>t+h</code>, the second <code>t+a</code>.</li>
+<li>Inference: split the input into characters and apply the merges <strong>in the same order they were learned</strong>.</li>
+<li>BPE is <strong>greedy</strong>: once a sequence has been merged, <strong>it stays that way</strong>.</li>
+<li>BPE is <strong>deterministic</strong>: a word is <strong>always</strong> segmented the same way.</li>
+<li>Typically <strong>30K to 128K</strong> merge operations, the high end for <strong>multilingual</strong> models.</li>
+<li>Pieces need not be morphemes: <em>The preside@@ nt of France arr@@ ived in K@@ yrg@@ yz@@ stan .</em></li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“At inference time, BPE merges the most frequent pair of the input sentence.”</em> False: it replays the learned merges in the learned order.</li>
+<li><em>“BPE training stops when no pair occurs more than once.”</em> False: at a maximum number of merges.</li>
+<li><em>“BPE can return several segmentations of the same word.”</em> False: it is deterministic.</li>
+<li><em>“BPE uses linguistic knowledge to place splits at morpheme boundaries.”</em> False: frequencies only.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="bpe-in-translation">BPE in translation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bpe-in-translation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Three advantages: <strong>significantly reduces</strong> the vocabulary size (less memory, better speed), <strong>better translation quality</strong>, <strong>significantly reduces</strong> the number of OOV items.</li>
+<li>These benefits apply to <strong>both</strong> high- and low-resource language pairs.</li>
+<li>In the BPE translation results, the subword and character-bigram systems use <strong>far smaller</strong> vocabularies than the word-level ones.</li>
+<li><strong>Joint</strong> BPE (one merge set for both languages) beats <strong>separate</strong> BPE.</li>
+<li>Separate BPE as a single model scores <strong>below</strong> the best word-level single model.</li>
+<li><strong>Character bigrams</strong> tie joint BPE for the best single model and give the <strong>best ensemble</strong>.</li>
+<li>The syntax-based system beats <strong>every single</strong> neural model; only <strong>ensembles</strong> of subword or character-bigram models beat it.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“BPE’s benefits apply only to low-resource language pairs.”</em> False: both high- and low-resource.</li>
+<li><em>“Every BPE system beats every word-level system.”</em> False: separate BPE is below the best word-level single model.</li>
+<li><em>“A single joint-BPE model beats the syntax-based system.”</em> False: only ensembles do.</li>
+<li><em>“Joint BPE gives the best ensemble.”</em> False: character bigrams do.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="unigram-lm-against-bpe">Unigram LM against BPE<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#unigram-lm-against-bpe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>BPE</th><th>Unigram LM</th></tr></thead><tbody><tr><td>builds the vocabulary</td><td><strong>bottom-up</strong>, merging</td><td><strong>top-down</strong>, shrinking</td></tr><tr><td>decisions</td><td><strong>greedy</strong></td><td>best <strong>global</strong> segmentation</td></tr><tr><td>segmentations of a word</td><td><strong>one</strong>, deterministic</td><td><strong>several</strong>: sampling, n-best</td></tr><tr><td>in SentencePiece</td><td>yes</td><td>yes</td></tr></tbody></table></div>
+<ul>
+<li>Unigram LM is by <strong>Kudo (2018)</strong>, part of Google’s <strong>SentencePiece</strong>; the <strong>other</strong> part of SentencePiece is <strong>BPE</strong>.</li>
+<li>Unigram LM <strong>considers all possible</strong> segmentations of a word.</li>
+<li>It optimises for the best <strong>global</strong> segmentation.</li>
+<li>It supports <strong>multiple</strong> segmentations, allowing <strong>sampling</strong> and <strong>n-best</strong> lists.</li>
+<li>It is <strong>top-down</strong>: it starts from an <strong>existing large</strong> vocabulary and <strong>shrinks</strong> it to the desired size.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Unigram LM builds its vocabulary bottom-up by merging frequent pairs.”</em> False: top-down, pruning a large vocabulary.</li>
+<li><em>“Like BPE, Unigram LM always segments a word the same way.”</em> False: it supports sampling and n-best lists.</li>
+<li><em>“SentencePiece contains only the Unigram LM.”</em> False: it contains BPE too.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="unigram-lm-vocabulary-pruning">Unigram LM vocabulary pruning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#unigram-lm-vocabulary-pruning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Start: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> = <strong>all substrings occurring more than once</strong> in the data <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>, <strong>not crossing words</strong>.</li>
+<li>While <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>: fit a unigram LM <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span> to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>.</li>
+<li>For each token <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>: loss <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span>, with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> the LM <strong>without</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>.</li>
+<li>Remove <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">⌊</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span><span class="mclose">⌋)</span></span></span></span> tokens with the <strong>highest</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> is a <strong>hyperparameter</strong>.</li>
+<li>So <strong>at most</strong> a fraction <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> goes per round, and the LM is <strong>refit</strong> each round.</li>
+<li>Finally fit the final unigram LM and return <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span>.</li>
+<li>The slide removes the <strong>highest</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; Kudo’s paper removes the <strong>lowest</strong>. Answer with the slide.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Unigram LM starts from the single characters of the corpus.”</em> False: from all substrings occurring more than once.</li>
+<li><em>“The initial candidates include substrings that cross word boundaries.”</em> False: not crossing words.</li>
+<li><em>“All surplus tokens are removed in a single step.”</em> False: at most <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">∣</span><span class="mclose">⌋</span></span></span></span> per round, with a refit in between.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="finding-the-best-segmentation-brute-force-and-dynamic-programming">Finding the best segmentation: brute force and dynamic programming<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#finding-the-best-segmentation-brute-force-and-dynamic-programming" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>A string of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> characters has <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> possible segmentations.</li>
+<li>Brute force: generate <strong>all</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>, score each, select the best.</li>
+<li>Scoring needs <strong>scores for segments</strong> (units not split further) and a way to <strong>combine</strong> the scores of sub-segmentations.</li>
+<li>Sequence cutting: with values 1, 5, 8, 9 for lengths 1 to 4, the best cut of length 4 is <strong>2 + 2</strong> (10), better than keeping it whole (9).</li>
+<li><a href="../../../Concepts/Dynamic-Programming" class="internal alias" data-slug="Concepts/Dynamic-Programming">Dynamic Programming</a>: solve each sub-problem <strong>only once</strong> and <strong>store</strong> its solution.</li>
+<li>DP uses <strong>additional memory</strong> to save computation time: a <strong>time-memory trade-off</strong>.</li>
+<li>Two strategies, <strong>top-down with memoization</strong> and <strong>bottom-up</strong>, with the <strong>same asymptotic</strong> run time.</li>
+<li>The segmentation algorithm fills spans by <strong>increasing length</strong>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> starts at <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">])</span></span></span></span> (span kept whole), and a split at <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> replaces it if <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> is <strong>larger</strong>; <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> records the split.</li>
+<li>The Viterbi segmentation returns <strong>only the most probable</strong> segmentation.</li>
+<li>For n-best: <strong>Yen’s and Eppstein’s</strong> algorithms, or <strong>disallow certain sub-solutions</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Bottom-up DP has a better asymptotic run time than top-down memoization.”</em> False: the same.</li>
+<li><em>“DP saves both time and memory.”</em> False: it spends memory to save time.</li>
+<li><em>“The Viterbi segmentation returns an n-best list.”</em> False: only the best; n-best needs Yen’s or Eppstein’s algorithm.</li>
+<li><em>“A string of n characters has <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> possible segmentations.”</em> False: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li><em>“In the DP segmentation algorithm, the probabilities of two sub-segments are added.”</em> False: they are multiplied. (In the sequence-cutting example, segment values are added.)</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="sentencepiece-and-lossless-segmentation">SentencePiece and lossless segmentation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sentencepiece-and-lossless-segmentation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Standard BPE implementations assume word boundary detection.</strong></li>
+<li>SentencePiece treats the input as a <strong>raw stream of Unicode characters, including spaces</strong>.</li>
+<li>The space character is <strong>escaped as a visible symbol</strong> (▁).</li>
+<li>Without it, <code>[Hello] [world] [.]</code> cannot be desegmented unambiguously (<em>Hello world .</em>, <em>Helloworld.</em>, <em>Hello world.</em>).</li>
+<li>The same question arises for languages <strong>without clear word boundaries</strong> (Japanese).</li>
+<li>With the space symbol, <code>Hello▁world.</code> becomes <code>[Hello] [▁wor] [ld] [.]</code> and desegments <strong>losslessly</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“SentencePiece requires text that is already split into words.”</em> False: that is standard BPE; SentencePiece takes a raw stream.</li>
+<li><em>“SentencePiece discards spaces and restores them with language-specific rules.”</em> False: the space is kept as a visible symbol.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="bostrom-and-durrett-bpe-against-unigram-lm">Bostrom and Durrett: BPE against Unigram LM<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bostrom-and-durrett-bpe-against-unigram-lm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Unigram LM pieces sit closer to <strong>morphemes</strong>: <code>▁tri cycle s</code> against BPE <code>▁t ric y cles</code>; <code>▁corrupt ed</code> against <code>▁cor rupted</code>; <code>▁nano technology</code>; <code>▁1848</code> against <code>▁184 8</code>.</li>
+<li>In Japanese, BPE <strong>attaches particles</strong> (は, に) to neighbouring words; Unigram LM keeps them <strong>separate</strong>.</li>
+<li>Unigram LM produces <strong>longer</strong> segments on average, in <strong>English and Japanese</strong>.</li>
+<li>In English, Unigram LM uses its vocabulary space <strong>more effectively</strong>, with <strong>more tokens of moderate frequency</strong>.</li>
+<li>In English, BPE has more <strong>word-initial single capitals</strong> (▁H, ▁K, …); Unigram LM more <strong>suffixes and punctuation</strong> (s, ing, ed, ly, commas, full stops).</li>
+<li>Unigram LM needs <strong>fewer</strong> tokens per word and per word type (English).</li>
+<li>Against gold segmentations (CELEX2 English, MeCab Japanese), Unigram LM has higher precision, recall <strong>and</strong> F1 in <strong>both</strong> languages; the gap is <strong>much larger in English</strong>.</li>
+<li>English recall is <strong>low</strong> for both tokenizers.</li>
+<li>Downstream, Unigram LM is ahead on <strong>every</strong> task: <strong>slightly</strong> in English (SQuAD, MNLI, CoNLL NER), by <strong>a large margin</strong> on Japanese TyDi QA.</li>
+<li>So the direction flips: the gold-segmentation gap is larger in <strong>English</strong>, the downstream gap larger in <strong>Japanese</strong>.</li>
+<li>Neither of the authors’ models beats BERT-base everywhere: <strong>both</strong> are below it on MNLI and CoNLL NER.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“BPE produces longer segments on average than Unigram LM.”</em> False: Unigram LM does, in both languages.</li>
+<li><em>“Unigram LM’s longer segments appear in English only.”</em> False: in Japanese too.</li>
+<li><em>“BPE has higher precision against CELEX2 than Unigram LM.”</em> False: Unigram LM wins precision, recall and F1.</li>
+<li><em>“Unigram LM’s downstream gain is large in English and small in Japanese.”</em> False: the reverse.</li>
+<li><em>“Against gold segmentations, Unigram LM’s advantage is larger in Japanese than in English.”</em> False: much larger in English.</li>
+<li><em>“The Unigram LM model outperforms BERT-base on every English task.”</em> False: below it on MNLI and CoNLL NER.</li>
+<li><em>“Word-initial capitals are more frequent in Unigram LM output.”</em> False: in BPE output; suffixes and punctuation are more frequent in Unigram LM output.</li>
+<li><em>“Unigram LM uses more tokens per word than BPE.”</em> False: fewer.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="oov-and-byte-level-bpe">OOV and byte-level BPE<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#oov-and-byte-level-bpe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>BPE and Unigram have <strong>very low</strong> OOV rates, <strong>not zero</strong>.</li>
+<li><strong>Typos</strong> can <strong>sometimes</strong> still cause OOVs; <strong>unknown characters will</strong> result in OOVs.</li>
+<li>Byte-level BPE <strong>guarantees zero</strong> OOV.</li>
+<li>It operates on <strong>raw UTF-8 bytes</strong> instead of Unicode characters.</li>
+<li>The base alphabet is <strong>fixed at 256</strong> symbols, so any input in <strong>any script</strong> can be represented.</li>
+<li><strong>Even unseen scripts</strong> can be encoded byte by byte, then merged where patterns emerge.</li>
+<li>Non-Latin, non-ASCII scripts cost <strong>more bytes per character</strong>: extra merges are needed to get from bytes to characters, giving <strong>shorter</strong> subsegments.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“BPE and Unigram LM guarantee a zero OOV rate.”</em> False: very low; only byte-level BPE guarantees zero.</li>
+<li><em>“Byte-level BPE operates on Unicode characters.”</em> False: on raw UTF-8 bytes.</li>
+<li><em>“Byte-level BPE cannot encode a script it never saw in training.”</em> False: any script, byte by byte.</li>
+<li><em>“Under byte-level BPE, non-ASCII scripts get longer subsegments.”</em> False: shorter, because they cost more bytes per character.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="fertility">Fertility<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fertility" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Fertility = the <strong>average number of segments</strong> a word is split into.</li>
+<li>It is influenced by the <strong>maximum number of merges</strong> (BPE) or <strong>target vocabulary size</strong> (Unigram LM), the <strong>average length</strong> of the surface words, and <strong>morphological richness</strong>.</li>
+<li><strong>Isolating, Latin-script</strong> languages typically have fertility <strong>close to 1</strong> for common vocabulary words.</li>
+<li>When a word is chopped into many small, less meaningful parts, the model has to <strong>work harder</strong> to reassemble its meaning.</li>
+<li><strong>No single</strong> tokenization scheme dominates across <strong>all</strong> languages and scripts.</li>
+<li>Commercial LLM APIs price <strong>by token count</strong>: high-fertility languages <strong>pay more</strong> for the same content.</li>
+<li>Fixed context windows fill up <strong>faster</strong> for high-fertility languages.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Fertility depends only on the vocabulary size.”</em> False: also word length and morphological richness.</li>
+<li><em>“Isolating, Latin-script languages typically have high fertility.”</em> False: close to 1 for common words.</li>
+<li><em>“A well-chosen tokenization scheme dominates across all languages and scripts.”</em> False: none does.</li>
+<li><em>“High-fertility languages fill fixed context windows more slowly.”</em> False: faster.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="practice-questions">Practice questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#practice-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>1.</strong> Which of the following statements about Byte Pair Encoding (BPE) are true? (multiple answers possible)</p>
+<ul>
+<li>[A] At inference time, BPE applies the learned merge operations in the order they were learned.</li>
+<li>[B] BPE training stops when a maximum number of merge operations has been reached.</li>
+<li>[C] BPE can return an n-best list of segmentations for a word.</li>
+<li>[D] The benefits of BPE for translation are restricted to low-resource language pairs.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and B.</strong> C: BPE is deterministic, one segmentation per word. D: the benefits apply to both high- and low-resource pairs.</p>
+</div>
+</blockquote>
+<p><strong>2.</strong> Which of the following statements about the translation results comparing word-level, character-bigram and BPE systems are true? (multiple answers possible)</p>
+<ul>
+<li>[A] The character-bigram model ties joint BPE for the best single-model score.</li>
+<li>[B] Joint BPE gives the best ensemble score.</li>
+<li>[C] A single model with separate BPE scores below the best word-level single model.</li>
+<li>[D] A single joint-BPE model outperforms the syntax-based system.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: the character-bigram ensemble is best. D: no single neural model beats the syntax-based system; only ensembles of subword or character-bigram models do.</p>
+</div>
+</blockquote>
+<p><strong>3.</strong> Which of the following statements about the SentencePiece Unigram LM are true? (multiple answers possible)</p>
+<ul>
+<li>[A] It starts from a large vocabulary and shrinks it to the desired size.</li>
+<li>[B] Its initial vocabulary contains all substrings occurring more than once, including ones that cross word boundaries.</li>
+<li>[C] In the algorithm as presented, each round removes the tokens with the highest loss <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+<li>[D] Like BPE, it is greedy: once a sequence is merged, it stays merged.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: the substrings do not cross words. C follows the slide (Kudo’s paper removes the lowest). D: Unigram LM optimises the best global segmentation; greediness is BPE’s limitation.</p>
+</div>
+</blockquote>
+<p><strong>4.</strong> Which of the following statements about finding the best segmentation are true? (multiple answers possible)</p>
+<ul>
+<li>[A] A string of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> characters has <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> possible segmentations.</li>
+<li>[B] Bottom-up dynamic programming has a better asymptotic run time than top-down dynamic programming with memoization.</li>
+<li>[C] Dynamic programming spends extra memory to save computation time.</li>
+<li>[D] The Viterbi segmentation directly returns the n best segmentations.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: both strategies have the same asymptotic run time. D: Viterbi returns only the most probable segmentation; Yen’s or Eppstein’s algorithms give n-best.</p>
+</div>
+</blockquote>
+<p><strong>5.</strong> Which of the following statements about SentencePiece are true? (multiple answers possible)</p>
+<ul>
+<li>[A] Standard BPE implementations assume that word boundaries have already been detected.</li>
+<li>[B] SentencePiece treats its input as a raw stream of Unicode characters, including spaces.</li>
+<li>[C] SentencePiece removes spaces and restores them with language-specific rules.</li>
+<li>[D] SentencePiece implements only the Unigram LM.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and B.</strong> C: the space is escaped as a visible symbol, so desegmentation is lossless. D: BPE is the other part of SentencePiece.</p>
+</div>
+</blockquote>
+<p><strong>6.</strong> Bostrom and Durrett (2020) compare BPE and Unigram LM. Which of the following statements are true? (multiple answers possible)</p>
+<ul>
+<li>[A] Unigram LM produces longer segments on average in both English and Japanese.</li>
+<li>[B] Against gold-standard segmentations, BPE has the higher precision in English.</li>
+<li>[C] The downstream advantage of Unigram LM is larger on Japanese than on English tasks.</li>
+<li>[D] In English, BPE produces more suffix tokens such as <em>ing</em> and <em>ed</em>.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: Unigram LM wins precision, recall and F1 in both languages. D: suffixes and punctuation are more frequent in Unigram LM; BPE over-produces word-initial capitals.</p>
+</div>
+</blockquote>
+<p><strong>7.</strong> Which of the following statements about out-of-vocabulary items and fertility are true? (multiple answers possible)</p>
+<ul>
+<li>[A] BPE and Unigram LM guarantee a zero OOV rate.</li>
+<li>[B] Byte-level BPE has a base alphabet fixed at 256 symbols.</li>
+<li>[C] Under byte-level BPE, non-ASCII scripts end up with shorter subsegments.</li>
+<li>[D] Fixed context windows fill up more slowly for high-fertility languages.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>B and C.</strong> A: their OOV rates are very low, but typos and unknown characters can still cause OOVs. D: they fill up faster.</p>
+</div>
+</blockquote></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-301" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#mnlp-l04-exam-prep---subword-segmentation" data-for="mnlp-l04-exam-prep---subword-segmentation">MNLP-L04 Exam Prep - Subword Segmentation</a></li><li class="depth-1"><a href="#why-subwords" data-for="why-subwords">Why subwords</a></li><li class="depth-1"><a href="#rule-based-analysers-and-morfessor" data-for="rule-based-analysers-and-morfessor">Rule-based analysers and Morfessor</a></li><li class="depth-1"><a href="#bpe-training-and-inference" data-for="bpe-training-and-inference">BPE: training and inference</a></li><li class="depth-1"><a href="#bpe-in-translation" data-for="bpe-in-translation">BPE in translation</a></li><li class="depth-1"><a href="#unigram-lm-against-bpe" data-for="unigram-lm-against-bpe">Unigram LM against BPE</a></li><li class="depth-1"><a href="#unigram-lm-vocabulary-pruning" data-for="unigram-lm-vocabulary-pruning">Unigram LM vocabulary pruning</a></li><li class="depth-1"><a href="#finding-the-best-segmentation-brute-force-and-dynamic-programming" data-for="finding-the-best-segmentation-brute-force-and-dynamic-programming">Finding the best segmentation: brute force and dynamic programming</a></li><li class="depth-1"><a href="#sentencepiece-and-lossless-segmentation" data-for="sentencepiece-and-lossless-segmentation">SentencePiece and lossless segmentation</a></li><li class="depth-1"><a href="#bostrom-and-durrett-bpe-against-unigram-lm" data-for="bostrom-and-durrett-bpe-against-unigram-lm">Bostrom and Durrett: BPE against Unigram LM</a></li><li class="depth-1"><a href="#oov-and-byte-level-bpe" data-for="oov-and-byte-level-bpe">OOV and byte-level BPE</a></li><li class="depth-1"><a href="#fertility" data-for="fertility">Fertility</a></li><li class="depth-1"><a href="#practice-questions" data-for="practice-questions">Practice questions</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/MNLP/MNLP---Overview" class="internal">MNLP - Overview</a></li><li><a href="../../../Courses/MNLP/" class="internal">Multilingual Natural Language Processing</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mvfjo0im" type="module" data-persist="true"></script></html>

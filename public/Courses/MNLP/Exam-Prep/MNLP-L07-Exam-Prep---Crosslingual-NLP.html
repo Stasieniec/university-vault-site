@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>MNLP-L07 Exam Prep - Crosslingual NLP — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="MNLP-L07 Exam Prep - Crosslingual NLP — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="MNLP-L07 Exam Prep - Crosslingual NLP — notes.swasilewski.com"/><meta name="twitter:description" content="MNLP-L07 Exam Prep - Crosslingual NLP What the exam can ask here Expect two kinds of block: crosslingual pretraining (which model sees parallel data, and what each objective does) and low-resource MT (parent-child transfer, multilingual NMT, sampling, BART and mBART)."/><meta property="og:description" content="MNLP-L07 Exam Prep - Crosslingual NLP What the exam can ask here Expect two kinds of block: crosslingual pretraining (which model sees parallel data, and what each objective does) and low-resource MT (parent-child transfer, multilingual NMT, sampling, BART and mBART)."/><meta property="og:image:alt" content="MNLP-L07 Exam Prep - Crosslingual NLP What the exam can ask here Expect two kinds of block: crosslingual pretraining (which model sees parallel data, and what each objective does) and low-resource MT (parent-child transfer, multilingual NMT, sampling, BART and mBART)."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="MNLP-L07 Exam Prep - Crosslingual NLP What the exam can ask here Expect two kinds of block: crosslingual pretraining (which model sees parallel data, and what each objective does) and low-resource MT (parent-child transfer, multilingual NMT, sampling, BART and mBART)."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mvfjo0im" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mvfjo0im" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mvfjo0im").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-429"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-429" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/">Multilingual Natural Language Processing</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/Exam-Prep/">Exam Prep</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>MNLP L07 Exam Prep   Crosslingual NLP</a></div></nav><h1 class="article-title">MNLP-L07 Exam Prep - Crosslingual NLP</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-19T17:44:44.409Z">Oct 19, 2026</time><span>19 min read</span></p></div></div><article class="popover-hint"><h1 id="mnlp-l07-exam-prep---crosslingual-nlp">MNLP-L07 Exam Prep - Crosslingual NLP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mnlp-l07-exam-prep---crosslingual-nlp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What the exam can ask here </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Expect two kinds of block: crosslingual pretraining (which model sees parallel data, and what each objective does) and low-resource MT (parent-child transfer, multilingual NMT, sampling, BART and mBART). The sample exam’s question 3.1 comes from this lecture. Statements turn on the data a model sees (monolingual or parallel), what is shared or frozen, which side gains (into or out of English, high- or low-resource) and quantifiers like “every”, “always” and “only”. Two places need care: the slide’s “decoder parameters are frozen” against its own freezing experiment, and MMLM, where the slide and the InfoXLM paper differ. Answer with the slide’s wording.
+<a href="../../../Courses/MNLP/Lectures/MNLP-L07---Crosslingual-NLP" class="internal alias" data-slug="Courses/MNLP/Lectures/MNLP-L07---Crosslingual-NLP">lecture note</a> · <a href="../../../Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet" class="internal alias" data-slug="Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet">cheat sheet</a> for numbers.</p>
+</div>
+</blockquote>
+<h2 id="multilingual-models-get-no-crosslingual-signal">Multilingual models get no crosslingual signal<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multilingual-models-get-no-crosslingual-signal" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>mBERT and XLM-R are <strong>multilingual</strong>: joint training, <strong>one</strong> model and <strong>one</strong> subword vocabulary for all languages, predictions from context <strong>within the same language</strong> (MLM).</li>
+<li><strong>Nothing</strong> explicitly links information across languages: predicting word <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span> in language <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> gains <strong>nothing</strong> from unrelated context in language <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li>mBERT <strong>never</strong> sees a translation pair in pretraining. Any crosslingual alignment it has is an <strong>emergent side effect</strong>: no objective is designed to produce it.</li>
+<li>Crosslingual knowledge transfer: fine-tune on task X in language <strong>A</strong>, test on task X in language <strong>B</strong>. It matters because annotated fine-tuning data is <strong>scarce</strong> outside high-resource languages.</li>
+<li>Zero-shot results <strong>seem to support</strong> crosslingual ability without a crosslingual signal. Crosslingual tasks (two languages in one input) <strong>cast doubt</strong> on it.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>model</th><th>parallel data in pretraining</th></tr></thead><tbody><tr><td>mBERT, XLM-R</td><td>no</td></tr><tr><td>XLM</td><td>yes (TLM)</td></tr><tr><td>InfoXLM</td><td>yes (TLM, XLCo)</td></tr><tr><td>BART</td><td>no</td></tr><tr><td>mBART</td><td>no</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Training jointly on many languages gives the model an explicit crosslingual signal.”</em> False: masked language modelling stays inside one language. The signal needs parallel or comparable data.</li>
+<li><em>“mBERT’s crosslingual alignment comes from a dedicated pretraining objective.”</em> False: it is an emergent side effect.</li>
+<li><em>“mBART is trained with a crosslingual objective.”</em> False: the BART objective is applied within the same language.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="parallel-data-comparable-data-and-laser">Parallel data, comparable data and LASER<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#parallel-data-comparable-data-and-laser" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Parallel</strong> data: sentence pairs in different languages that are <strong>meaning equivalent</strong>. Data-driven MT has used it for decades.</li>
+<li><strong>Comparable</strong> data: sentence or document pairs on the <strong>same topic</strong>, <strong>not fully</strong> parallel. The degree of parallelism is a <strong>sliding scale</strong> (news on the same event, Wikipedia).</li>
+<li>Parallel data is sometimes a <strong>natural by-product</strong>: multilingual news, the UN and EU, countries with two or more official languages. <strong>OPUS</strong> collects parallel corpora for research.</li>
+<li>Or crawl your own: find parallel <strong>documents</strong> (document alignment) and parallel <strong>sentences</strong> (sentence alignment), or align sentences <strong>directly</strong> from raw web crawls such as Common Crawl.</li>
+<li>Measuring meaning equivalence: old-fashioned <strong>dictionary overlap</strong> and <strong>relative length</strong> distribution; more recent <strong>sentence embeddings</strong> (LASER, Artetxe and Schwenk 2019).</li>
+<li>LASER encoder: BPE embeddings, a stack of <strong>BiLSTMs</strong>, <strong>max pooling</strong> into one sentence embedding. The LSTM decoder gets the sentence embedding plus a <strong>language ID</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> for the output. The encoder gets <strong>no</strong> language ID.</li>
+<li><strong>vecalign</strong>: sentence alignment that <strong>uses LASER</strong> to match sentences, with an efficient search that <strong>scales to massive</strong> data sets.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Comparable data consists of sentence pairs that translate each other.”</em> False: that is parallel data. Comparable data shares a topic and is only partly parallel.</li>
+<li><em>“LASER’s encoder receives a language ID for the input sentence.”</em> False: the language ID goes into the decoder.</li>
+<li><em>“LASER builds the sentence embedding from a <code>[CLS]</code> token.”</em> False: it max-pools the BiLSTM states. <code>[CLS]</code> vectors belong to InfoXLM’s XLCo.</li>
+<li><em>“vecalign matches sentences by dictionary overlap.”</em> False: by LASER embedding similarity.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="xlm-and-translation-language-modelling">XLM and translation language modelling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#xlm-and-translation-language-modelling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>XLM (Conneau and Lample) uses parallel data for an <strong>explicit</strong> crosslingual loss.</li>
+<li><strong>CLM</strong>: given a prefix, predict the next word. <strong>MLM</strong>: predict a masked word from its context, as BERT. <strong>TLM</strong>: predict masked words in a context made of <strong>two languages</strong> (a sentence and its translation).</li>
+<li><strong>TLM is the crosslingual objective</strong>, used in two settings: <strong>MLM + TLM</strong> or <strong>CLM + TLM</strong>.</li>
+<li><strong>Next sentence prediction is dropped.</strong></li>
+<li>TLM input: the pair concatenated, with words masked in <strong>both</strong> halves. <strong>Position embeddings restart at 0</strong> in the second sentence; <strong>language embeddings</strong> (en, fr) mark each half.</li>
+<li>A masked English word can be read off its unmasked French translation, so the model learns to attend across languages.</li>
+<li>Parallel data comes from <strong>OPUS</strong>.</li>
+<li>XNLI settings: translate-train, translate-test and zero-shot. The slide only names them. Per the lecture note, translate-train machine-translates the English <strong>training</strong> set into each language; translate-test translates each <strong>test</strong> set into English.</li>
+<li>XNLI: MLM + TLM beats MLM alone in <strong>every</strong> language. Zero-shot MLM + TLM beats translate-test <strong>on average</strong>, but translate-test still wins most European languages. Translate-train is best <strong>on average</strong>. Zero-shot XLM (MLM + TLM) beats LASER in <strong>every</strong> language.</li>
+<li>Nepali language model: adding a second language lowers perplexity. <strong>Hindi</strong> (related) helps <strong>more</strong> than English; both together is best.</li>
+<li>Word alignment: XLM’s embeddings beat the fastText baselines MUSE and Concat (Concat = joint fastText training over all languages).</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“XLM keeps BERT’s next sentence prediction.”</em> False: dropped.</li>
+<li><em>“TLM is used as XLM’s only pretraining objective.”</em> False: always paired with MLM or CLM.</li>
+<li><em>“In TLM, positions keep counting from the end of the first sentence.”</em> False: they restart at 0.</li>
+<li><em>“In TLM, words are masked only in the source-language sentence.”</em> False: masks appear in both halves.</li>
+<li><em>“Zero-shot XLM beats translate-test in every XNLI language.”</em> False: only on average.</li>
+<li><em>“English data helps a Nepali language model more than Hindi data.”</em> False: Hindi helps more.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="infoxlm-against-xlm">InfoXLM against XLM<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#infoxlm-against-xlm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>InfoXLM (Chi et al. 2021) <strong>builds on XLM-R</strong> and adds XLM’s parallel-data ideas.</li>
+<li><strong>MMLM</strong>: like MLM, but instead of directly optimising the loss of the ground truth it uses <strong>negative sampling</strong>. This is the slide’s description; the InfoXLM paper describes MMLM as the ordinary masked-LM loss. Answer with the slide.</li>
+<li><strong>TLM</strong> as in XLM.</li>
+<li><strong>XLCo</strong>: takes the <strong><code>[CLS]</code></strong> representations of a <strong>parallel sentence pair</strong> and <strong>classifies whether the pair is parallel</strong>, with <strong>negative sampling</strong> using <strong>random sentences</strong> as negatives (<a href="../../../Concepts/Contrastive-Learning" class="internal alias" data-slug="Concepts/Contrastive-Learning">Contrastive Learning</a>).</li>
+<li>The three losses are <strong>equally weighted</strong>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>XLM</th><th>InfoXLM</th></tr></thead><tbody><tr><td>start</td><td>from scratch</td><td>initialised from XLM-R</td></tr><tr><td>mono data</td><td>Wikipedia</td><td>CC-100 (94 languages)</td></tr><tr><td>parallel data</td><td>15 XNLI languages</td><td>14 English-centric pairs</td></tr><tr><td>vocabulary</td><td>shared BPE</td><td>XLM-R’s SentencePiece</td></tr><tr><td>language emb.</td><td>yes</td><td>no</td></tr><tr><td>objectives</td><td>MLM (or CLM) + TLM</td><td>MMLM + TLM + XLCo</td></tr><tr><td>signal</td><td>token level only</td><td>token and sentence level</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“InfoXLM is trained from scratch.”</em> False: initialised from XLM-R, then pretrained further.</li>
+<li><em>“InfoXLM uses language embeddings, like XLM.”</em> False: it has none, because it keeps XLM-R’s architecture.</li>
+<li><em>“XLCo predicts masked words from the translation.”</em> False: that is TLM. XLCo classifies whether a pair is parallel.</li>
+<li><em>“XLCo’s negatives are translations of other sentences in the batch.”</em> False: random sentences.</li>
+<li><em>“XLM aligns languages at the sentence level.”</em> False: token level only. Sentence level comes with InfoXLM’s XLCo.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="within-a-language-against-across-languages">Within a language against across languages<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#within-a-language-against-across-languages" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>The test: fine-tune on English, then evaluate with the two parts of an input in <strong>different</strong> languages. XNLI: premise and hypothesis. XSQuAD (QA): context and question.</li>
+<li><strong>within</strong>: both parts in the same language. <strong>across</strong>: the two parts in different languages.</li>
+<li><strong>Every</strong> model (mBERT, XLM-R, InfoXLM) scores <strong>lower across</strong> than within, on both tasks.</li>
+<li>XLM-R beats mBERT <strong>within</strong> on both tasks (on average). <strong>Across</strong>, XLM-R is better on <strong>XNLI</strong> but <strong>worse</strong> than mBERT on <strong>QA</strong>.</li>
+<li>InfoXLM is <strong>slightly</strong> better than XLM-R within and <strong>much</strong> better across, with the <strong>smallest</strong> within-across gap on both tasks. Its biggest gain is on <strong>QA</strong>.</li>
+<li>The grids are <strong>not symmetric</strong>: swapping which language takes which part changes the score.</li>
+<li>XLM-R on cross-lingual QA works mainly when the <strong>question</strong> is in English.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“XLM-R outperforms mBERT across languages on both XNLI and QA.”</em> False: on QA it is worse across languages on average.</li>
+<li><em>“InfoXLM’s gain over XLM-R comes mainly within a single language.”</em> False: small within, large across.</li>
+<li><em>“Better within-language performance guarantees better across-language performance.”</em> False: XLM-R against mBERT on QA.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="machine-translation-as-sequence-to-sequence-modelling">Machine translation as sequence-to-sequence modelling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#machine-translation-as-sequence-to-sequence-modelling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Seq2seq differs from sequence labelling: <strong>no</strong> isomorphic relation between <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord">∣</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span></span></span></span> <strong>can differ</strong>.</li>
+<li>Conditional language modelling: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span>, with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> the <strong>encoder</strong> output and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8607em;vertical-align:-0.1774em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span></span></span></span> the <strong>decoder</strong> output before <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> (the prefix).</li>
+<li>MT mappings: different lengths, word order differences, <strong>one-to-many</strong> (<em>Hiermit</em> → <em>with this</em>), <strong>many-to-one</strong> (<em>hörte … auf</em> → <em>stop</em>).</li>
+<li>Data: source as one vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>; target as <strong>two</strong> vectors: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> = <code>&lt;s></code> + sentence (what the decoder reads), <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> = sentence + <code>&lt;/s></code> (what it predicts), so <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+<li>Sutskever et al. (2014): encoder <strong>and</strong> decoder are LSTMs. The decoder is initialised with the encoder’s <strong>last</strong> state, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0972em;vertical-align:-0.2481em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">ec</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9414em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span>: an <strong>information bottleneck</strong>.</li>
+<li>Transformer decoder layer: <strong>target context</strong> layer, <strong>source-target context</strong> layer (attends to the encoder output), <strong>feed-forward</strong> layer, each with a residual connection.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Seq2seq models assume input and output sequences have equal length.”</em> False.</li>
+<li><em>“In Sutskever et al. (2014) the decoder attends to every encoder state.”</em> False: it starts from the last encoder state only, hence the bottleneck.</li>
+<li><em>“The decoder input <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> ends with <code>&lt;/s></code>.”</em> False: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> starts with <code>&lt;s></code>; <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> ends with <code>&lt;/s></code>.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="how-much-data-nmt-needs">How much data NMT needs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-much-data-nmt-needs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>NMT quality depends on the <strong>amount</strong> of data, the <strong>variation</strong> in it, and its <strong>relevance</strong> to the task. Typical low-resource problems: <strong>domain adaptation</strong> and <strong>low-resource language pairs</strong>.</li>
+<li>Schwenk et al. (2019): <strong>most</strong> language directions are of poor quality. Core problem: <strong>limited parallel data</strong> for most directions. Models do not generalise <strong>very well</strong> beyond the training data, and <strong>not at all</strong> beyond specific language directions.</li>
+<li>Zoph et al. (2016): NMT trained on small child data alone is <strong>below</strong> syntax-based SMT for all four languages.</li>
+<li>Koehn and Knowles (2017): with little data NMT is <strong>far below</strong> phrase-based MT, improves <strong>faster</strong> as data grows, and overtakes it only at <strong>large</strong> sizes (later still against phrase-based MT with a big language model).</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“NMT outperforms phrase-based MT regardless of training data size.”</em> False: it loses on small data.</li>
+<li><em>“Current MT models generalise well to language directions unseen in training.”</em> False: not at all.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="parent-child-transfer-learning">Parent-child transfer learning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#parent-child-transfer-learning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Transfer learning is <strong>basically the same as fine-tuning</strong>: train on a high-resource pair (<strong>parent</strong>), then <strong>continue training</strong> the same model on the low-resource pair (<strong>child</strong>). Reason: learning tens of millions of parameters from small data is hard.</li>
+<li>The slides list when it works best: <strong>identical target</strong> language; <strong>related source</strong> languages; <strong>decoder parameters frozen</strong>; parent and child <strong>share the same vocabulary</strong>.</li>
+<li>Zoph et al. setup: <strong>not shared</strong>: source vocabulary and source embeddings. <strong>Shared</strong>: target language and all other parameters (target embeddings, attention). <strong>Freeze target-specific</strong> parameters.</li>
+<li>The flow: copy every parent parameter; the child’s (Uzbek) words take over the parent’s (French) <strong>source-embedding rows</strong>; freeze the <strong>English (target) embeddings</strong>; continue training on the child.</li>
+<li>Freezing experiment (Uzbek→English): everything frozen gives <strong>zero</strong> BLEU; unfreezing the <strong>source embeddings</strong> gives the <strong>biggest</strong> jump; unfreezing the source RNN, the <strong>target RNN</strong> and <strong>attention</strong> keeps helping; then unfreezing the <strong>target embeddings lowers</strong> BLEU.</li>
+<li>The list says “decoder parameters are frozen”, but the experiment only needs the <strong>target embeddings</strong> frozen (training the target RNN helps). A statement in the list’s wording is most likely true; one about the experiment is about the target embeddings.</li>
+<li>Transfer helps <strong>all four</strong> children (Hausa, Turkish, Uzbek, Urdu); Urdu, with the <strong>least</strong> data, gains most. Syntax-based SMT stays <strong>ahead</strong> of the transfer model in all four; the final system beats it only for Hausa.</li>
+<li>Relatedness (Zoph): a Spanish child gains more from a <strong>French</strong> parent than from a German one. <strong>French’</strong> (French with its vocabulary randomly reshuffled) still gains a lot from a French parent, so the gain does not come only from shared words.</li>
+<li>Kocmi and Bojar (2018), <strong>shared</strong> vocabulary: <strong>unrelated</strong> parents (English→Czech, English→Russian for an English→Estonian child) help as much as the related English→Finnish one, even with a different target language.</li>
+<li>Aji et al. (2020): transferring embeddings <strong>and</strong> inner layers is best; inner layers alone carry <strong>most</strong> of the gain; embeddings alone are <strong>worse</strong> than random initialisation on average. An English→German parent transfers about as well into X→English as a German→English parent.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Parent and child share the source vocabulary and source embeddings.”</em> False: those are the parts not shared.</li>
+<li><em>“Letting the target embeddings train on the child data gives the best child.”</em> False: it lowers BLEU.</li>
+<li><em>“The source embeddings should stay frozen during child training.”</em> False: retraining them gives the biggest jump.</li>
+<li><em>“Transferring only the parent’s embeddings beats training the child from scratch.”</em> False: worse on average.</li>
+<li><em>“With a shared vocabulary, only a related parent helps.”</em> False: unrelated parents help as much.</li>
+<li><em>“With transfer learning, NMT beats syntax-based SMT for every child language.”</em> False: the transfer model stays below it for all four.</li>
+<li>Sample exam 3.1 (see <a href="../../../Courses/MNLP/Exam-Prep/MNLP---Exam-Analysis" class="internal alias" data-slug="Courses/MNLP/Exam-Prep/MNLP---Exam-Analysis">exam analysis</a>), where fine-tuning means parent-child transfer: <em>“Fine-tuning continuously improves with the number of in-domain updates.”</em> False. The slides show the parameter version (letting more parameters adapt to the small child data helps, then hurts); that quality also peaks and then drops with more updates is standard knowledge beyond the slides.</li>
+<li>Sample exam 3.1: <em>“Fine-tuning does not suffer from catastrophic forgetting.”</em> False, by standard knowledge beyond the slides (the Canvas sample question asks it): training only on in-domain data overwrites what the model knew about the general domain.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="multilingual-nmt">Multilingual NMT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multilingual-nmt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Parent-child transfers knowledge <strong>in stages</strong>; multilingual joint training transfers it <strong>in parallel</strong>.</li>
+<li>Johnson et al. (2017): <strong>one single system</strong> for all translation directions, with a <strong>simple</strong> architecture and training setup.</li>
+<li><strong>Many-to-one</strong> and <strong>one-to-many</strong>: used in <strong>training</strong>. <strong>Many-to-many</strong>: <strong>testing only</strong>.</li>
+<li><strong>Zero-shot</strong>: a direction <strong>not encountered</strong> during training.</li>
+<li>Signs of knowledge transfer: <strong>zero-shot</strong> performance, and the multilingual model <strong>beating a baseline</strong> trained only on that direction’s data.</li>
+<li>Training is <strong>single-language-centric</strong> (typically English): only <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">xx</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">xx</span></span></span></span>.</li>
+<li><strong>Every</strong> training example carries a <strong>target</strong> language tag (<code>&lt;2es></code>), part of the source fed to the <strong>encoder</strong>.</li>
+<li><strong>All</strong> parameters shared; <strong>one WordPiece</strong> vocabulary for all languages (32k, 64k); source, target and output embeddings <strong>shared</strong>.</li>
+<li>Directions are mixed during training, <strong>even within a batch</strong>. Language balancing through <strong>(weighted) sampling</strong>.</li>
+<li><strong>Many-to-one</strong>: multilingual beats the bilingual baseline in <strong>every</strong> direction shown, by small margins. <strong>One-to-many</strong>: <strong>mixed</strong>, some directions lose.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“The language tag tells the model the source language.”</em> False: it names the target.</li>
+<li><em>“Each target language gets its own decoder.”</em> False: all parameters are shared.</li>
+<li><em>“Many-to-many translation is a training configuration.”</em> False: testing only.</li>
+<li><em>“Training data includes pairs without English.”</em> False: English-centric.</li>
+<li><em>“One-to-many training beats the bilingual baseline in every direction.”</em> False: that holds for many-to-one; one-to-many is mixed.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="transfer-against-interference-and-sampling">Transfer against interference, and sampling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#transfer-against-interference-and-sampling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Arivazhagan et al. (2019): 103 languages, grouped into high-, medium- and low-resource.</li>
+<li><strong>Low-resource</strong>: multilingual beats bilingual (with balanced sampling), <strong>far more into English</strong> than out of English (transfer).</li>
+<li><strong>High-resource</strong>: <strong>every</strong> multilingual model is <strong>below</strong> the bilingual baseline (interference).</li>
+<li>All→All (one model for both directions) is below the dedicated Any→En or En→Any model in every group.</li>
+<li>Sample <strong>proportionally</strong>: high-resource languages <strong>dominate</strong>, low-resource ones perform <strong>poorly</strong>. Sample <strong>uniformly</strong>: high-resource languages <strong>suffer</strong>, low-resource ones can do <strong>well</strong>. Best compromise: <strong>over-sample</strong> low-resource, <strong>under-sample</strong> high-resource.</li>
+<li>Temperature: <strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> proportional</strong>, <strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span> uniform</strong>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span> in between.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>sampling</th><th>high-resource</th><th>low-resource</th><th>medium</th></tr></thead><tbody><tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td><td>best</td><td>worst, below bilingual</td><td>worst</td></tr><tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span></td><td>worst</td><td>best</td><td>middle</td></tr><tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span></td><td>middle</td><td>close to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span></td><td>best</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Uniform sampling hurts low-resource languages.”</em> False: it hurts high-resource languages.</li>
+<li><em>“Raising the temperature moves sampling towards proportional.”</em> False: towards uniform; <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> is proportional.</li>
+<li><em>“Multilingual training improves high-resource languages over bilingual baselines.”</em> False: they lose to interference.</li>
+<li><em>“Low-resource languages gain about equally into and out of English.”</em> False: far more into English.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="zero-shot-translation">Zero-shot translation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#zero-shot-translation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>With no data for the pair, translation relies <strong>entirely</strong> on transfer.</li>
+<li>From 10 to 102 training languages: <strong>decent improvement in most</strong> cases, <strong>not all</strong> (French→Chinese gets worse).</li>
+<li>Probably also depends on the <strong>actual languages</strong> included; scores vary widely by pair (Belarusian→Russian high, Hindi→Finnish low).</li>
+<li>Zero-shot translation is <strong>still lagging behind</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Adding training languages always improves zero-shot translation.”</em> False: most directions improve, but French→Chinese gets worse.</li>
+<li><em>“Zero-shot translation matches supervised directions.”</em> False: it lags behind.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="bart">BART<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bart" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Goal: reduce dependence on parallel data by using <strong>monolingual</strong> data.</li>
+<li>BERT: <strong>encoder only</strong> (bidirectional). GPT: <strong>decoder only</strong> (autoregressive). BART: <strong>bidirectional encoder</strong> plus <strong>autoregressive decoder</strong>, for tasks that need both.</li>
+<li>The source is corrupted by a noise function; the decoder generates the original.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>noise</th><th>source</th><th>decoder must</th></tr></thead><tbody><tr><td>token masking</td><td>tokens → <code>[MASK]</code></td><td>predict masked tokens</td></tr><tr><td>token deletion</td><td>tokens removed, no mark</td><td>predict deleted tokens</td></tr><tr><td>text infilling</td><td>a span → one <code>[MASK]</code></td><td>predict the whole span</td></tr><tr><td>sentence permutation</td><td>sentences shuffled</td><td>restore the order</td></tr><tr><td>document rotation</td><td>starts at a random token</td><td>find the real start</td></tr></tbody></table></div>
+<ul>
+<li>Document rotation is called “document permutation” in the slide text.</li>
+<li>Comparison: <strong>text infilling</strong> is the best single noise function on almost every task; <strong>token deletion</strong> beats token masking on the generation tasks; <strong>document rotation</strong> and <strong>sentence shuffling</strong> alone are poor; infilling plus sentence shuffling gives the best CNN/DM perplexity; a left-to-right language model is <strong>worst</strong> on SQuAD.</li>
+<li>BART <strong>matches RoBERTa</strong> on SQuAD 1.1 F1 and is <strong>best</strong> on summarisation (CNN/DailyMail and XSum).</li>
+<li>Fine-tuning for classification: the label comes from the <strong>last hidden time step</strong>. Span prediction (SQuAD): each token is labelled; the model predicts <strong>begin and end</strong>.</li>
+<li>Fine-tuning for MT: a <strong>randomly initialised source-language encoder</strong> replaces the <strong>embedding layer</strong> of BART’s encoder. BART’s encoder parameters can be <strong>frozen or updated</strong>. The source vocabulary <strong>can differ</strong> from BART’s.</li>
+<li>Romanian→English: <strong>Fixed</strong> BART is slightly <strong>below</strong> the baseline; <strong>Tuned</strong> BART is <strong>above</strong> it.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Text infilling replaces each removed token with its own <code>[MASK]</code>.”</em> False: one <code>[MASK]</code> per span.</li>
+<li><em>“Token deletion marks the deleted positions.”</em> False: nothing marks them.</li>
+<li><em>“BART’s decoder is bidirectional.”</em> False: the encoder is; the decoder is autoregressive.</li>
+<li><em>“For MT, the new encoder replaces BART’s whole pretrained encoder.”</em> False: it replaces the embedding layer and feeds the pretrained encoder.</li>
+<li><em>“Keeping BART frozen during MT fine-tuning beats the baseline.”</em> False: only Tuned BART does.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="mbart">mBART<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mbart" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>BART is to mBART as BERT is to <strong>mBERT</strong>.</li>
+<li>Liu et al. (2020): <strong>one</strong> model trained on a <strong>concatenation of monolingual</strong> data in multiple languages. The BART objective is <strong>always applied within the same language</strong>: <strong>no</strong> crosslingual signal.</li>
+<li>A <strong>language ID</strong> token (<code>&lt;En></code>, <code>&lt;Ja></code>) <strong>ends the encoder input</strong> and <strong>starts the decoder input</strong>. The pretraining example masks spans and swaps sentence order (text infilling plus sentence permutation).</li>
+<li>Fine-tuning on MT at <strong>sentence</strong> or <strong>document</strong> level: the <strong>target</strong> language token starts the decoder. No extra encoder is added.</li>
+<li>mBART25 against random initialisation: <strong>better</strong> on <strong>every</strong> pair in <strong>both</strong> directions. With almost no data (English-Gujarati, 10K pairs) BLEU stays <strong>near zero</strong>. Gains are biggest in the low-to-medium range and mostly smaller at millions of pairs.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“mBART is pretrained on parallel data.”</em> False: concatenated monolingual data.</li>
+<li><em>“mBART needs a new randomly initialised encoder for translation.”</em> False: that is BART’s MT recipe; mBART is fine-tuned directly.</li>
+<li><em>“mBART pretraining makes translation work with almost no parallel data.”</em> False: at 10K pairs it stays near zero.</li>
+</ul>
+</div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>BART</th><th>mBART</th></tr></thead><tbody><tr><td>pretraining data</td><td>monolingual</td><td>multilingual monolingual</td></tr><tr><td>crosslingual signal</td><td>none</td><td>none</td></tr><tr><td>MT fine-tuning</td><td>new source encoder</td><td>whole model, as is</td></tr></tbody></table></div>
+<h2 id="practice-questions">Practice questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#practice-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>1.</strong> Which of the following models receive an explicit crosslingual training signal from parallel data during pretraining? (multiple answers possible)</p>
+<ul>
+<li>[A] mBERT</li>
+<li>[B] XLM trained with MLM + TLM</li>
+<li>[C] InfoXLM</li>
+<li>[D] mBART</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>B and C.</strong> A: mBERT never sees a translation pair; its alignment is emergent. D: mBART applies the BART objective within the same language, on monolingual data.</p>
+</div>
+</blockquote>
+<p><strong>2.</strong> Which of the following statements about XLM are true? (multiple answers possible)</p>
+<ul>
+<li>[A] In TLM, a masked English word can be predicted using the unmasked French translation in the same input.</li>
+<li>[B] Zero-shot XLM (MLM + TLM) outperforms the translate-test setting in every XNLI language.</li>
+<li>[C] Adding TLM to MLM improves zero-shot XNLI accuracy in every language.</li>
+<li>[D] For a Nepali language model, adding English data lowers perplexity more than adding Hindi data.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: zero-shot wins only on average; translate-test still wins most European languages. D: Hindi, the related language, helps more.</p>
+</div>
+</blockquote>
+<p><strong>3.</strong> Models fine-tuned on English are tested on XNLI and XSQuAD with the two parts of each input in different languages. Which of the following statements are true? (multiple answers possible)</p>
+<ul>
+<li>[A] mBERT, XLM-R and InfoXLM all score lower across languages than within a language.</li>
+<li>[B] InfoXLM improves over XLM-R more across languages than within a language.</li>
+<li>[C] On question answering, XLM-R scores higher than mBERT across languages on average.</li>
+<li>[D] For XLM-R on question answering, mixed-language pairs work best when the question is in English.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A, B and D.</strong> C: XLM-R is better within languages, but across languages on QA it falls below mBERT.</p>
+</div>
+</blockquote>
+<p><strong>4.</strong> A French→English NMT model is used as the parent for an Uzbek→English child. Which of the following statements are true? (multiple answers possible)</p>
+<ul>
+<li>[A] The child does not share the parent’s source vocabulary and source embeddings.</li>
+<li>[B] The best child model also lets the target embeddings train on the child data.</li>
+<li>[C] Once parent and child share a vocabulary, transfer requires a related parent language.</li>
+<li>[D] Initialising only the embeddings from the parent, with randomly initialised inner layers, beats random initialisation of everything on average.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A only.</strong> B: unfreezing the target embeddings lowers BLEU. C: with a shared vocabulary, unrelated parents help as much (Kocmi and Bojar). D: embeddings alone are worse than training from scratch on average (Aji et al.).</p>
+</div>
+</blockquote>
+<p><strong>5.</strong> Which of the following statements about multilingual NMT are true? (multiple answers possible)</p>
+<ul>
+<li>[A] In Johnson et al. (2017), the tag added to the source sentence tells the model which language to translate into.</li>
+<li>[B] Sampling with temperature <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> gives each language the same probability.</li>
+<li>[C] Low-resource languages gain more from multilingual training into English than out of English.</li>
+<li>[D] With <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span>, the multilingual model beats the bilingual baselines for high-resource languages.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> is proportional sampling; <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span> is uniform. D: under <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span> high-resource languages do worst, and no multilingual model beats their bilingual baselines.</p>
+</div>
+</blockquote>
+<p><strong>6.</strong> Which of the following statements about encoder-decoder models are true? (multiple answers possible)</p>
+<ul>
+<li>[A] Sequence-to-sequence modelling does not assume that input and output have the same length.</li>
+<li>[B] In Sutskever et al. (2014), the decoder LSTM is initialised with the last state of the encoder LSTM.</li>
+<li>[C] To use BART for MT, a randomly initialised source encoder replaces BART’s entire pretrained encoder.</li>
+<li>[D] On Romanian→English, BART with frozen parameters outperforms the baseline without BART.</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and B.</strong> C: the new encoder replaces only the embedding layer of BART’s encoder. D: Fixed BART is slightly below the baseline; only Tuned BART beats it.</p>
+</div>
+</blockquote></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-304" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#mnlp-l07-exam-prep---crosslingual-nlp" data-for="mnlp-l07-exam-prep---crosslingual-nlp">MNLP-L07 Exam Prep - Crosslingual NLP</a></li><li class="depth-1"><a href="#multilingual-models-get-no-crosslingual-signal" data-for="multilingual-models-get-no-crosslingual-signal">Multilingual models get no crosslingual signal</a></li><li class="depth-1"><a href="#parallel-data-comparable-data-and-laser" data-for="parallel-data-comparable-data-and-laser">Parallel data, comparable data and LASER</a></li><li class="depth-1"><a href="#xlm-and-translation-language-modelling" data-for="xlm-and-translation-language-modelling">XLM and translation language modelling</a></li><li class="depth-1"><a href="#infoxlm-against-xlm" data-for="infoxlm-against-xlm">InfoXLM against XLM</a></li><li class="depth-1"><a href="#within-a-language-against-across-languages" data-for="within-a-language-against-across-languages">Within a language against across languages</a></li><li class="depth-1"><a href="#machine-translation-as-sequence-to-sequence-modelling" data-for="machine-translation-as-sequence-to-sequence-modelling">Machine translation as sequence-to-sequence modelling</a></li><li class="depth-1"><a href="#how-much-data-nmt-needs" data-for="how-much-data-nmt-needs">How much data NMT needs</a></li><li class="depth-1"><a href="#parent-child-transfer-learning" data-for="parent-child-transfer-learning">Parent-child transfer learning</a></li><li class="depth-1"><a href="#multilingual-nmt" data-for="multilingual-nmt">Multilingual NMT</a></li><li class="depth-1"><a href="#transfer-against-interference-and-sampling" data-for="transfer-against-interference-and-sampling">Transfer against interference, and sampling</a></li><li class="depth-1"><a href="#zero-shot-translation" data-for="zero-shot-translation">Zero-shot translation</a></li><li class="depth-1"><a href="#bart" data-for="bart">BART</a></li><li class="depth-1"><a href="#mbart" data-for="mbart">mBART</a></li><li class="depth-1"><a href="#practice-questions" data-for="practice-questions">Practice questions</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/MNLP/MNLP---Overview" class="internal">MNLP - Overview</a></li><li><a href="../../../Courses/MNLP/" class="internal">Multilingual Natural Language Processing</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mvfjo0im" type="module" data-persist="true"></script></html>

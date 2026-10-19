@@ -190,6 +190,14 @@ Length target: about 3,000 words of body per teaching session the lecture took. 
 
 - [[MNLP - Exam Analysis]]: exam format, the example questions from Canvas, and what they mean for revising
 - [[MNLP - Cheat Sheet]]: the two-sided sheet for the exam; print version `Assets/MNLP-Cheat-Sheet.pdf` (two A4 pages)
+- Exam prep per lecture: what the exam can ask on each topic, the traps, and practice questions in the exam's format. Every claim checked against the slides.
+  - [[MNLP-L01 Exam Prep - Overview|L01 Overview]]
+  - [[MNLP-L02 Exam Prep - Multilinguality and Writing Systems|L02 Multilinguality and Writing Systems]]
+  - [[MNLP-L03 Exam Prep - Morphology and Word Formation|L03 Morphology and Word Formation]]
+  - [[MNLP-L04 Exam Prep - Subword Segmentation|L04 Subword Segmentation]]
+  - [[MNLP-L05 Exam Prep - Static Embeddings|L05 Static Embeddings]]
+  - [[MNLP-L06 Exam Prep - Contextual Embeddings|L06 Contextual Embeddings]]
+  - [[MNLP-L07 Exam Prep - Crosslingual NLP|L07 Crosslingual NLP]]
 
 ## Resources
 

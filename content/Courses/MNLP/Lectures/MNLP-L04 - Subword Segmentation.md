@@ -120,7 +120,7 @@ the</w>  talle s t </w>  man</w>
 
 BPE has three major advantages: a much smaller **vocabulary** (less memory, better speed), better **translation quality**, and far fewer **out-of-vocabulary (OOV)** items. These benefits apply to **both** high- and low-resource language pairs.
 
-In Sennrich et al.'s English to German experiments, the best neural systems used subwords (60K to 90K entries) and beat word-level systems (300K source, 500K target entries). Not every subword system won: **separate BPE** (merges per language) fell below the best word-level single model, and **joint BPE** (one set of merges for both languages) beat separate BPE; Sennrich et al.'s reason (outside the course material): a name is then split the same way on both sides, so its pieces map one to one. A **syntax-based statistical system** still beat every single neural model; only ensembles of 8 subword models beat it.
+In Sennrich et al.'s English to German experiments, the best neural systems used subwords (60K to 90K entries) and beat word-level systems (300K source, 500K target entries). Not every subword system won: **separate BPE** (merges per language) fell below the best word-level single model, and **joint BPE** (one set of merges for both languages) beat separate BPE; Sennrich et al.'s reason (outside the course material): a name is then split the same way on both sides, so its pieces map one to one. Character bigrams (a 50K vocabulary) did as well: they **tied joint BPE** as the best single model and gave the **best ensemble**. A **syntax-based statistical system** still beat every single neural model; only ensembles of 8 subword models beat it (the word-level ensemble did not).
 
 ## WordPiece: the same merges, a different score
 
@@ -311,7 +311,7 @@ How the two vocabularies differ at the same size:
 
 **Against gold-standard segmentations** (CELEX2 for English morpheme boundaries, MeCab for Japanese word boundaries), Unigram LM beats BPE on precision, recall and F1 in both languages, by far more in English. English recall is low for both, probably because frequent words stay whole (`walked` misses `walk|ed`).
 
-**Downstream**, with only the tokenizer changed, Unigram LM is ahead on every task, but on English only slightly: a bit over a point (1.2 to 1.4) on SQuAD (question answering) and MNLI matched (inference), and only a few tenths of a point on MNLI mismatched and CoNLL named-entity recognition. On **Japanese TyDi QA** (question answering) it is ahead by more than ten points. So the larger gold-standard gap (English) did not predict the larger downstream gap (Japanese).
+**Downstream**, with only the tokenizer changed, Unigram LM is ahead on every task, but on English only slightly: a bit over a point (1.1 to 1.4) on SQuAD (question answering) and MNLI matched (inference), and only a few tenths of a point on MNLI mismatched and CoNLL named-entity recognition. On **Japanese TyDi QA** (question answering) it is ahead by more than ten points. So the larger gold-standard gap (English) did not predict the larger downstream gap (Japanese).
 
 ## The unknown words that remain: byte-level BPE
 

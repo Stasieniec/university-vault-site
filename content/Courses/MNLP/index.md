@@ -45,3 +45,10 @@ Schedule, assessment and deadlines live in the [[MNLP - Overview|course overview
 
 - [[MNLP - Cheat Sheet|MNLP: Cheat Sheet]]
 - [[MNLP - Exam Analysis|MNLP: Exam Analysis]]
+- [[MNLP-L01 Exam Prep - Overview|L01 Exam Prep: Overview]]
+- [[MNLP-L02 Exam Prep - Multilinguality and Writing Systems|L02 Exam Prep: Multilinguality and Writing Systems]]
+- [[MNLP-L03 Exam Prep - Morphology and Word Formation|L03 Exam Prep: Morphology and Word Formation]]
+- [[MNLP-L04 Exam Prep - Subword Segmentation|L04 Exam Prep: Subword Segmentation]]
+- [[MNLP-L05 Exam Prep - Static Embeddings|L05 Exam Prep: Static Embeddings]]
+- [[MNLP-L06 Exam Prep - Contextual Embeddings|L06 Exam Prep: Contextual Embeddings]]
+- [[MNLP-L07 Exam Prep - Crosslingual NLP|L07 Exam Prep: Crosslingual NLP]]

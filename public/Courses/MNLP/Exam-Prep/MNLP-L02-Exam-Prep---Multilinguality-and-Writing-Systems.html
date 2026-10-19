@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>MNLP-L02 Exam Prep - Multilinguality and Writing Systems — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="MNLP-L02 Exam Prep - Multilinguality and Writing Systems — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="MNLP-L02 Exam Prep - Multilinguality and Writing Systems — notes.swasilewski.com"/><meta name="twitter:description" content="MNLP-L02 Exam Prep - Multilinguality and Writing Systems What the exam can ask here Two kinds of statement: which languages break which English-first assumption (and which tier or script a language belongs to), and how Unicode works underneath (normalization forms, UTF encodings, bytes against codep..."/><meta property="og:description" content="MNLP-L02 Exam Prep - Multilinguality and Writing Systems What the exam can ask here Two kinds of statement: which languages break which English-first assumption (and which tier or script a language belongs to), and how Unicode works underneath (normalization forms, UTF encodings, bytes against codep..."/><meta property="og:image:alt" content="MNLP-L02 Exam Prep - Multilinguality and Writing Systems What the exam can ask here Two kinds of statement: which languages break which English-first assumption (and which tier or script a language belongs to), and how Unicode works underneath (normalization forms, UTF encodings, bytes against codep..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="MNLP-L02 Exam Prep - Multilinguality and Writing Systems What the exam can ask here Two kinds of statement: which languages break which English-first assumption (and which tier or script a language belongs to), and how Unicode works underneath (normalization forms, UTF encodings, bytes against codep..."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mvfjo0im" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mvfjo0im" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mvfjo0im").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-424"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-424" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/">Multilingual Natural Language Processing</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/MNLP/Exam-Prep/">Exam Prep</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>MNLP L02 Exam Prep   Multilinguality and Writing Systems</a></div></nav><h1 class="article-title">MNLP-L02 Exam Prep - Multilinguality and Writing Systems</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-19T17:44:44.409Z">Oct 19, 2026</time><span>15 min read</span></p></div></div><article class="popover-hint"><h1 id="mnlp-l02-exam-prep---multilinguality-and-writing-systems">MNLP-L02 Exam Prep - Multilinguality and Writing Systems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mnlp-l02-exam-prep---multilinguality-and-writing-systems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What the exam can ask here </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Two kinds of statement: which languages break which English-first assumption (and which tier or script a language belongs to), and how Unicode works underneath (normalization forms, UTF encodings, bytes against codepoints against graphemes). The Unicode half is where the one-word flips live: lossy against non-lossy, NFD against NFKD, “ASCII compatible”, “exactly”, “continuation byte”, “language-specific”.
+<a href="../../../Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems" class="internal alias" data-slug="Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems">Lecture note</a>; Unicode counts and byte examples are on the <a href="../../../Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet" class="internal alias" data-slug="Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet">cheat sheet</a>.</p>
+</div>
+</blockquote>
+<h2 id="english-centric-resources-and-the-resource-tiers">English-centric resources and the resource tiers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#english-centric-resources-and-the-resource-tiers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Most</strong> NLP resources are in English: labelled data, unlabelled data, toolkit coverage, benchmarks; most publications focus on English.</li>
+<li>Non-English resources arise as a <strong>naturally occurring by-product</strong> (translations, reviews) or as <strong>translations of English resources</strong>, <strong>less so</strong> as a dedicated effort.</li>
+<li>Coverage by NLP resources depends on <strong>commercial interest</strong> and <strong>military relevance</strong>.</li>
+<li>There are over 7,000 spoken languages: a <strong>long tail</strong>, with more than 100 languages over 10M speakers.</li>
+<li><strong>High resource</strong> (large labelled and unlabelled data, many tools): English, Chinese (Mandarin), then a <strong>big gap</strong>, then French, Spanish, Arabic, Russian.</li>
+<li><strong>Medium resource</strong> (limited labelled, reasonable unlabelled, some tools): German, Italian, <strong>Dutch</strong>, Korean, <strong>Japanese</strong>.</li>
+<li><strong>Low resource</strong> (<strong>no</strong> labelled data, limited unlabelled, <strong>no</strong> tools): all remaining languages.</li>
+<li>Standard pipelines encode <strong>properties of English</strong>: whitespace tokenization, fixed word order, <strong>closed vocabularies</strong>.</li>
+<li>Language independence claims are <strong>usually untested</strong> outside English (or a very small subset).</li>
+<li>This is <strong>understandable</strong>: resource generation costs time and money.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Coverage by NLP resources depends mainly on the number of speakers.”</em> False: commercial interest and military relevance.</li>
+<li><em>“Non-English resources are mostly created by dedicated efforts.”</em> False: by-products and translations; less so dedicated efforts.</li>
+<li><em>“Japanese and German are high-resource languages.”</em> False: medium.</li>
+<li><em>“Arabic is a medium-resource language.”</em> False: high, after the big gap.</li>
+<li><em>“Low-resource languages have limited labelled data and some tools.”</em> False: no labelled data and no tools.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="where-languages-differ-from-english">Where languages differ from English<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#where-languages-differ-from-english" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Analysis runs from small to large: <strong>characters</strong> (character set size, writing systems), <strong>words</strong> (morphology, lexical semantics), <strong>clauses and sentences</strong> (syntax, sentence semantics), <strong>paragraphs</strong> (discourse structure, <strong>anaphora</strong>, <strong>ellipsis</strong>).</li>
+<li>Chinese has <strong>(almost) no spaces</strong> between words.</li>
+<li>In 我不知道她去哪儿了, the verb 去 carries <strong>no tense marking</strong>; past tense comes from the <strong>sentence-final particle</strong> 了.</li>
+<li>Both the main clause (I NEG know) and the embedded clause (she go where) are <strong>SVO</strong>.</li>
+<li>A <strong>morpheme</strong> is the smallest unit of meaning <strong>or grammatical function</strong>: <em>dogs</em> has two (dog, -s).</li>
+<li>The <strong>root</strong> (base) carries the primary meaning (<em>friend</em> in <em>unfriendly</em>).</li>
+<li><strong>Affixes</strong> are prefixes <strong>and</strong> suffixes that modify a root’s meaning or grammatical role (<em>un-</em>, <em>-ly</em>).</li>
+<li>English has <strong>limited</strong> morphological complexity; Russian <strong>more complex</strong> (case and number on <em>kniga</em>); Finnish <strong>very complex</strong> (<em>onnellisimmillanikin</em>, “even at my happiest”).</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Chinese marks past tense on the verb.”</em> False: through the sentence-final particle 了.</li>
+<li><em>“The embedded clause in the Chinese example is SOV.”</em> False: both clauses are SVO.</li>
+<li><em>“Affixes are suffixes added to the end of a root.”</em> False: prefixes and suffixes.</li>
+<li><em>“A morpheme is the smallest unit of meaning, so grammatical endings such as -s are not morphemes.”</em> False: meaning or grammatical function.</li>
+<li><em>“Anaphora and ellipsis are sentence-level phenomena.”</em> False: the slides place them at paragraph (discourse) level.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="the-english-first-assumptions">The English-first assumptions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-english-first-assumptions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Words are separated by whitespace</strong>: not true for Chinese, Japanese, <strong>Thai</strong>, Lao, Khmer, Burmese.</li>
+<li>Thai uses spaces to <strong>end clauses or sentences</strong>; it has <strong>no dedicated full stop</strong>.</li>
+<li><strong>Grammatical relations are encoded by word order</strong>: not true for languages with rich morphology, <strong>especially case marking</strong>: Russian, Finnish, <strong>Korean</strong>.</li>
+<li><strong>One word = one unit of meaning</strong>: not true for <strong>agglutinative</strong> languages (Finnish, Turkish, Hungarian) and <strong>compounding</strong> languages (German, Dutch, Swedish).</li>
+<li><strong>Text flows left to right</strong>: not true for Semitic languages and languages in Arabic script: Arabic, Hebrew, Urdu, Persian.</li>
+<li>In Unicode such text is <strong>written left to right but rendered right to left</strong>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>assumption</th><th>broken by</th></tr></thead><tbody><tr><td>whitespace</td><td>Chinese, Japanese, Thai, Lao, Khmer, Burmese</td></tr><tr><td>word order</td><td>case marking: Russian, Finnish, Korean</td></tr><tr><td>one word, one meaning</td><td>agglutinative: Finnish, Turkish, Hungarian; compounding: German, Dutch, Swedish</td></tr><tr><td>left to right</td><td>Arabic, Hebrew, Urdu, Persian</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Thai uses spaces to separate words.”</em> False: to end clauses or sentences.</li>
+<li><em>“German breaks the whitespace assumption.”</em> False: compounding breaks one word = one meaning.</li>
+<li><em>“Korean encodes grammatical relations mainly by word order.”</em> False: case marking.</li>
+<li><em>“Turkish breaks the assumption through compounding.”</em> False: Turkish is listed as agglutinative.</li>
+<li><em>“Unicode stores Arabic text right to left.”</em> False: written left to right, rendered right to left.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="types-of-writing-system">Types of writing system<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#types-of-writing-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Alphabetic</strong>: each symbol is a <strong>consonant or vowel sound</strong>; typically a <strong>small inventory</strong>. Latin, Cyrillic, <strong>Hangul</strong>.</li>
+<li><strong>Syllabic</strong>: each symbol is a <strong>whole syllable</strong> (vowel and consonant combined). Japanese <strong>Hiragana and Katakana</strong>.</li>
+<li><strong>Logographic</strong>: each symbol represents <strong>words or morphemes directly</strong>, with <strong>little sound information</strong>. Chinese Hanzi, Japanese <strong>Kanji</strong>.</li>
+<li>Han: <strong>one symbol, one morpheme</strong>.</li>
+<li>Devanagari is <strong>alphasyllabic</strong>: consonant <strong>plus inherent vowel</strong>.</li>
+<li>Arabic writes the <strong>root only</strong>; <strong>vowels are omitted</strong>.</li>
+<li>Korean letter shapes <strong>encode articulatory features</strong>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>system</th><th>symbol stands for</th><th>examples</th></tr></thead><tbody><tr><td>alphabetic</td><td>one sound</td><td>Latin, Cyrillic, Hangul</td></tr><tr><td>syllabic</td><td>a syllable</td><td>Hiragana, Katakana</td></tr><tr><td>logographic</td><td>word or morpheme</td><td>Hanzi, Kanji</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Japanese Kanji is a syllabic writing system.”</em> False: logographic; Hiragana and Katakana are syllabic.</li>
+<li><em>“Hangul is syllabic.”</em> False: the slides list it as alphabetic.</li>
+<li><em>“Logographic symbols carry a lot of sound information.”</em> False: typically little.</li>
+<li><em>“Alphabetic systems typically have a large inventory of symbols.”</em> False: small.</li>
+<li><em>“Arabic script writes vowels explicitly.”</em> False: vowels are omitted.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="script-and-language">Script and language<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#script-and-language" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>One writing system serves <strong>many languages</strong>: Latin (most European languages, also several African, Turkic and Asian ones), Arabic (Arabic, <strong>Persian, Urdu, Pashto, Sorani</strong>), Cyrillic (Russian, Belarusian, <strong>Serbian</strong>), Devanagari (Hindi, Marathi, Nepali), <strong>Ethiopic (Ge’ez)</strong> (Amharic, Tigrinya).</li>
+<li><strong>Language-specific</strong> writing systems: Armenian, Georgian, <strong>Greek</strong>, Sinhala, Khmer.</li>
+<li>Languages with <strong>more than one</strong> writing system: Serbian (Cyrillic and Latin), Kurdish (Latin and Arabic), Uzbek (Latin and Cyrillic), Punjabi (<strong>Gurmukhi</strong> and Arabic).</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Arabic script is used only for the Arabic language.”</em> False: also Persian, Urdu, Pashto, Sorani.</li>
+<li><em>“Amharic is written in Arabic script.”</em> False: Ethiopic (Ge’ez).</li>
+<li><em>“Serbian is written only in Cyrillic.”</em> False: Cyrillic and Latin.</li>
+<li><em>“Greek script is shared by several languages.”</em> False: listed as language-specific.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="ascii-and-code-pages">ASCII and code pages<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ascii-and-code-pages" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>ASCII (1963) assigned <strong>128 codes</strong>: enough for English letters, digits, punctuation.</li>
+<li>Code pages use the <strong>same 128 (or 256) codes</strong> in a byte as ASCII and <strong>interpret them differently</strong> depending on language or script (Latin-1, Shift-JIS, GBK, KOI8-R).</li>
+<li>Disadvantage: text encoded in one script and decoded in another <strong>leads to gibberish</strong>.</li>
+<li>Disadvantage: <strong>cannot use multiple scripts</strong> in the same document.</li>
+<li>Unicode removes the need for writing-system-specific code pages.</li>
+<li>Converting a code page to UTF-8 with <code>iconv -f GB2312 -t UTF-8</code> <strong>fails if the source encoding is not correct</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Code pages extend ASCII by using more than 256 codes per byte.”</em> False: same 128 or 256 codes, interpreted differently.</li>
+<li><em>“Code pages allow several scripts in one document.”</em> False: one document cannot use multiple scripts.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="unicode-and-codepoints">Unicode and codepoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#unicode-and-codepoints" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Unicode is a <strong>single, universal character set</strong>, maintained by the Unicode Consortium.</li>
+<li>Every character in every supported script gets <strong>exactly one unique number</strong>: its <strong>codepoint</strong>, written U+number (U+0041 for “A”).</li>
+<li>Unicode <strong>defines meaning, not bytes</strong>: a codepoint is an <strong>abstract identifier</strong>; storing it as bytes is an <strong>encoding</strong> issue.</li>
+<li>Unicode is a <strong>superset of ASCII</strong>: U+0000 to U+007F are identical to ASCII.</li>
+<li>That is why <strong>English-only</strong> Latin-1 documents are Unicode compatible.</li>
+<li>The code space runs U+0000 to U+10FFFF, organised into <strong>17 planes</strong>. The slide’s “65,356 codepoints per plane” is a typo for 65,536.</li>
+<li>Plane 0, the <strong>Basic Multilingual Plane</strong>: most modern languages, including the most common CJK ideographs; symbols such as currency; <strong>a Private Use Area</strong>.</li>
+<li>Plane 1 (Supplementary Multilingual Plane): <strong>non-CJK</strong> historic scripts, modern scripts, symbols such as musical notation, <strong>emoji</strong>.</li>
+<li>Planes 2 and 3: more CJK ideographs, mostly historical, uncommon or variants. Planes 4 to 13: <strong>unassigned</strong>. Plane 14: tags and variation selectors. Planes 15 and 16: private use.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Unicode specifies how each codepoint is stored as bytes.”</em> False: that is the encoding’s job (UTF-8, UTF-16, UTF-32).</li>
+<li><em>“Unicode and ASCII assign different codes to English letters.”</em> False: U+0000 to U+007F are identical.</li>
+<li><em>“All CJK ideographs are in the Basic Multilingual Plane.”</em> False: the most common are; more sit in planes 2 and 3.</li>
+<li><em>“Emoji are in the Basic Multilingual Plane.”</em> False: plane 1.</li>
+<li><em>“Private use codepoints exist only in planes 15 and 16.”</em> False: the Basic Multilingual Plane also has a Private Use Area.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="codepoint-character-glyph">Codepoint, character, glyph<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#codepoint-character-glyph" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Codepoint</strong>: an abstract number (U+00E9), Unicode’s <strong>unit of identity</strong>.</li>
+<li><strong>Character</strong>: what a reader <strong>perceives</strong> as one unit; may be built from <strong>several codepoints</strong>.</li>
+<li><strong>Glyph</strong>: a <strong>stylistic rendering</strong> of a character.</li>
+<li>The same rendered word can have <strong>different codepoint sequences</strong>: café as U+0063 U+0061 U+0066 U+00E9 (<strong>NFC</strong>), or with U+0065 U+0301 (<strong>NFD</strong>).</li>
+<li>A <strong>naive string similarity check will not match</strong> both sequences.</li>
+<li>Same for ã: NFC is one codepoint (U+00E3), NFD is a + combining tilde (U+0061 U+0303). In JavaScript the two compare <strong>unequal</strong> (<code>===</code> gives false) and have <strong>length 1 against 2</strong>.</li>
+<li>A reader sees a <strong>grapheme</strong>, represented by <strong>one or more</strong> codepoints, each encoded in <strong>1 to 4 bytes</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Every character a reader perceives corresponds to exactly one codepoint.”</em> False: it may be several.</li>
+<li><em>“A glyph is Unicode’s unit of identity.”</em> False: the codepoint is; a glyph is a rendering.</li>
+<li><em>“The NFC and NFD forms of café are equal under a naive string comparison.”</em> False: different codepoint sequences.</li>
+<li><em>“The NFC and NFD forms of ã have the same string length.”</em> False: 1 codepoint against 2.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="normalization-forms">Normalization forms<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#normalization-forms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>NFC</strong>: canonical <strong>composition</strong> (é as one codepoint). <strong>NFD</strong>: canonical <strong>decomposition</strong> (e + combining accent).</li>
+<li>NFD splits characters into <strong>base characters and combining marks</strong> and <strong>preserves semantic and visual equivalence</strong>.</li>
+<li>NFKD (compatibility decomposition) breaks characters into their <strong>most basic parts</strong>, <strong>including splitting ligatures</strong>.</li>
+<li>NFD is <strong>non-lossy</strong>: decompose and compose again without losing styling or formatting details.</li>
+<li>NFKD is <strong>lossy</strong>: it normalizes visual styling to the base form, which <strong>cannot be reconstructed</strong> during composition.</li>
+<li>Example: the long s ſ with a dot above and below keeps its ſ under NFC and NFD; NFKC and NFKD turn it into a <strong>plain s</strong> with the dots.</li>
+<li>Use <strong>NFD</strong> to <strong>compare rendered text</strong>.</li>
+<li>Use <strong>NFKD</strong> for <strong>search indexing or NLP analysis</strong>, <strong>but not necessarily generation</strong>.</li>
+<li>Crawled resources can <strong>mix forms even when all in Unicode</strong> (some NFC, some NFD).</li>
+<li><strong>Deduplication, search, string equality and prefix matching</strong> assume identical codepoint sequences, so they become <strong>inaccurate</strong> without proper normalization.</li>
+<li>Fix: <strong>always</strong> perform <strong>consistent</strong> normalization in the pipeline, e.g. first decompose, then compose.</li>
+<li>Python’s <code>unicodedata</code> can <strong>normalize</strong> a string into a given form <strong>and test</strong> whether it is in one.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>composed</th><th>decomposed</th></tr></thead><tbody><tr><td>canonical, non-lossy</td><td>NFC</td><td>NFD</td></tr><tr><td>compatibility, lossy</td><td>NFKC</td><td>NFKD</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“NFD is lossy.”</em> False: non-lossy; NFKD is lossy.</li>
+<li><em>“NFKD can be recomposed into the original characters.”</em> False: the styling cannot be reconstructed.</li>
+<li><em>“Use NFKD to compare rendered text.”</em> False: NFD.</li>
+<li><em>“NFKD is the recommended form for generation.”</em> False: for search indexing and analysis, not necessarily generation.</li>
+<li><em>“NFC splits characters into base characters and combining marks.”</em> False: NFD does; NFC composes.</li>
+<li><em>“NFKD leaves ligatures intact.”</em> False: it splits them.</li>
+<li><em>“Text crawled in Unicode is already consistently normalized.”</em> False: it can mix NFC and NFD.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="utf-8-utf-16-utf-32">UTF-8, UTF-16, UTF-32<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#utf-8-utf-16-utf-32" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>UTF-8</strong>: <strong>1 to 4</strong> bytes per codepoint; <strong>ASCII compatible</strong>; used by the web, Linux, most file formats, virtually all modern NLP tooling.</li>
+<li><strong>UTF-16</strong>: <strong>2 or 4</strong> bytes; <strong>not</strong> ASCII compatible (at least 2 bytes per character); Java, JavaScript strings, Windows internals, .NET.</li>
+<li><strong>UTF-32</strong>: <strong>exactly 4</strong> bytes; <strong>not</strong> ASCII compatible; <strong>rare</strong> in practice; simple for indexing but <strong>memory-hungry</strong>.</li>
+<li>UTF-8 is <strong>by far the most common</strong> form and what people usually mean by “Unicode”.</li>
+<li>A byte starting with <strong>0</strong> is a <strong>single byte</strong> (the 128 ASCII characters).</li>
+<li>A byte starting with <strong>11</strong> is the <strong>first byte</strong> of a multi-byte sequence; the <strong>number of 1s</strong> gives its length.</li>
+<li>A byte starting with <strong>10</strong> is a <strong>continuation byte</strong>.</li>
+<li>In UTF-8, “A” takes 1 byte, é 2, most CJK 3, an emoji 4.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>encoding</th><th>bytes</th><th>ASCII compatible</th></tr></thead><tbody><tr><td>UTF-8</td><td>1 to 4</td><td>yes</td></tr><tr><td>UTF-16</td><td>2 or 4</td><td>no</td></tr><tr><td>UTF-32</td><td>exactly 4</td><td>no</td></tr></tbody></table></div>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“UTF-16 is ASCII compatible.”</em> False: at least 2 bytes per character.</li>
+<li><em>“UTF-16 uses exactly 2 bytes per codepoint.”</em> False: 2 or 4.</li>
+<li><em>“UTF-32 uses 1 to 4 bytes per codepoint.”</em> False: exactly 4.</li>
+<li><em>“UTF-32 is the most common form because it is simple to index.”</em> False: rare, memory-hungry; UTF-8 is most common.</li>
+<li><em>“A UTF-8 byte starting with 10 begins a multi-byte sequence.”</em> False: it is a continuation byte; 11 begins one.</li>
+<li><em>“Most Chinese characters take 2 bytes in UTF-8.”</em> False: most CJK takes 3.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="bytes-and-tokenizers">Bytes and tokenizers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bytes-and-tokenizers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Byte-level tokenizers are affected by how characters are represented <strong>at the byte level</strong>, <strong>not as codepoints</strong>.</li>
+<li>Byte inflation <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">characters</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">UTF-8 bytes</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>: “hello” lowest, “café” higher, “中文” highest (factors on the cheat sheet).</li>
+<li><strong>The more bytes</strong> are needed, <strong>the more aggressively</strong> tokens tend to be split.</li>
+<li>Byte-level splitting can result in <strong>non-existing characters</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Byte-level tokenizers are independent of how characters are encoded in bytes.”</em> False: they are affected by it.</li>
+<li><em>“The more bytes a script needs, the less its tokens are split.”</em> False: the more aggressively they are split.</li>
+<li><em>“Byte-level splitting always yields valid characters.”</em> False: it can produce non-existing characters.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="where-to-break-a-string">Where to break a string<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#where-to-break-a-string" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Byte-level</strong> breaking can <strong>mess up codepoints</strong>, which can consist of multiple bytes.</li>
+<li><strong>Codepoint</strong> breaking is also not ideal: it can break a character into segments (<strong>base and diacritic</strong>).</li>
+<li><strong>Ideally</strong> break at the <strong>grapheme</strong> level (what the reader perceives as a character), but this is <strong>very language-specific</strong>.</li>
+<li><strong>Mixing</strong> breaking strategies causes misalignments: <strong>span annotation</strong> (SQuAD-style QA) and <strong>counting across corpora</strong>.</li>
+<li>Any string breaking or length computation must be <strong>consistent across documents</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Codepoint-level breaking is ideal because a codepoint is what the reader perceives as a character.”</em> False: the grapheme is; codepoint breaking can split base and diacritic.</li>
+<li><em>“Grapheme breaking is language-independent.”</em> False: very language-specific.</li>
+<li><em>“Mixing breaking strategies only matters for byte-level tokenizers.”</em> False: it misaligns span annotation and counts across corpora.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="case-sorting-and-punctuation">Case, sorting and punctuation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#case-sorting-and-punctuation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Lowercasing: English lowercase(I) = i; <strong>Turkish</strong> lowercase(I) = <strong>ı</strong> (Turkish has İ / i).</li>
+<li><strong>Codepoint order</strong> does <strong>not necessarily</strong> match alphabetical order: accented letters’ codepoints are not necessarily close to their base letter.</li>
+<li>Languages use <strong>different alphabetical orders</strong>: Swedish puts å, ä, ö <strong>after z</strong>; German treats ä as ae, ö as oe, ü as ue.</li>
+<li>Punctuation <strong>adjacent to words</strong> is not part of them, so it is split off.</li>
+<li>Punctuation is often covered as a <strong>general category</strong> (<code>\p{P}</code>).</li>
+<li>Punctuation normalization (“…” against «…» against 「…」) has <strong>no simple solution</strong>: mappings must be <strong>encoded manually</strong>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Traps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><em>“Lowercasing works the same in every language that uses Latin script.”</em> False: Turkish lowercase(I) is ı.</li>
+<li><em>“Sorting by codepoint gives alphabetical order.”</em> False: accented letters can be far from their base letter.</li>
+<li><em>“Punctuation normalization can be solved by a simple universal mapping.”</em> False: mappings must be encoded by hand.</li>
+</ul>
+</div>
+</blockquote>
+<h2 id="practice-questions">Practice questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#practice-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>1.</strong> Which of the following statements about Unicode normalization are true? (multiple answers possible)</p>
+<ul>
+<li>[A] NFD splits characters into base characters and combining marks</li>
+<li>[B] NFKD is non-lossy, since decomposed characters can always be composed again</li>
+<li>[C] NFKD is suitable for search indexing</li>
+<li>[D] NFD should be used for generation targets because it is lossy</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: NFKD is lossy; the styling cannot be reconstructed. D: NFD is non-lossy, and the slides recommend it for comparing rendered text.</p>
+</div>
+</blockquote>
+<p><strong>2.</strong> Which of the following statements about Unicode encodings are true? (multiple answers possible)</p>
+<ul>
+<li>[A] UTF-8 is ASCII compatible</li>
+<li>[B] UTF-16 uses exactly 2 bytes per codepoint</li>
+<li>[C] UTF-32 is simple for indexing but memory-hungry</li>
+<li>[D] In UTF-8, a byte starting with 10 is the first byte of a multi-byte sequence</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> B: 2 or 4 bytes. D: a byte starting with 10 is a continuation byte; 11 starts a sequence.</p>
+</div>
+</blockquote>
+<p><strong>3.</strong> Which languages break the assumption that grammatical relations are encoded by word order? (multiple answers possible)</p>
+<ul>
+<li>[A] Korean</li>
+<li>[B] Thai</li>
+<li>[C] Russian</li>
+<li>[D] Dutch</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and C.</strong> Both have rich morphology with case marking. B breaks the whitespace assumption. D breaks one word = one meaning through compounding.</p>
+</div>
+</blockquote>
+<p><strong>4.</strong> Which of the following statements about writing systems are true? (multiple answers possible)</p>
+<ul>
+<li>[A] Japanese Kanji is a syllabic writing system</li>
+<li>[B] Logographic symbols typically carry little sound information</li>
+<li>[C] Devanagari is alphasyllabic: a consonant carries an inherent vowel</li>
+<li>[D] Serbian is written in both Cyrillic and Latin</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>B, C and D.</strong> A: Kanji is logographic; Hiragana and Katakana are syllabic.</p>
+</div>
+</blockquote>
+<p><strong>5.</strong> Which of the following statements about bytes, codepoints and breaking are true? (multiple answers possible)</p>
+<ul>
+<li>[A] Byte-level tokenizers tend to split text more aggressively the more bytes a character needs</li>
+<li>[B] Codepoint-level breaking keeps a base letter and its diacritic together</li>
+<li>[C] Grapheme-level breaking is ideal but very language-specific</li>
+<li>[D] Mixing breaking strategies can misalign span annotations in SQuAD-style QA</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A, C and D.</strong> B: codepoint breaking can split a character into base and diacritic.</p>
+</div>
+</blockquote>
+<p><strong>6.</strong> Which of the following statements about NLP resources are true? (multiple answers possible)</p>
+<ul>
+<li>[A] Resource coverage depends on commercial interest and military relevance</li>
+<li>[B] Dutch is a high-resource language</li>
+<li>[C] Non-English resources mostly come from dedicated efforts</li>
+<li>[D] Claims of language independence are usually untested outside English</li>
+</ul>
+<blockquote class="callout example is-collapsible is-collapsed" data-callout="example" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Answer </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>A and D.</strong> B: Dutch is medium resource. C: they come mostly as by-products or translations of English resources, less so dedicated efforts.</p>
+</div>
+</blockquote></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-299" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#mnlp-l02-exam-prep---multilinguality-and-writing-systems" data-for="mnlp-l02-exam-prep---multilinguality-and-writing-systems">MNLP-L02 Exam Prep - Multilinguality and Writing Systems</a></li><li class="depth-1"><a href="#english-centric-resources-and-the-resource-tiers" data-for="english-centric-resources-and-the-resource-tiers">English-centric resources and the resource tiers</a></li><li class="depth-1"><a href="#where-languages-differ-from-english" data-for="where-languages-differ-from-english">Where languages differ from English</a></li><li class="depth-1"><a href="#the-english-first-assumptions" data-for="the-english-first-assumptions">The English-first assumptions</a></li><li class="depth-1"><a href="#types-of-writing-system" data-for="types-of-writing-system">Types of writing system</a></li><li class="depth-1"><a href="#script-and-language" data-for="script-and-language">Script and language</a></li><li class="depth-1"><a href="#ascii-and-code-pages" data-for="ascii-and-code-pages">ASCII and code pages</a></li><li class="depth-1"><a href="#unicode-and-codepoints" data-for="unicode-and-codepoints">Unicode and codepoints</a></li><li class="depth-1"><a href="#codepoint-character-glyph" data-for="codepoint-character-glyph">Codepoint, character, glyph</a></li><li class="depth-1"><a href="#normalization-forms" data-for="normalization-forms">Normalization forms</a></li><li class="depth-1"><a href="#utf-8-utf-16-utf-32" data-for="utf-8-utf-16-utf-32">UTF-8, UTF-16, UTF-32</a></li><li class="depth-1"><a href="#bytes-and-tokenizers" data-for="bytes-and-tokenizers">Bytes and tokenizers</a></li><li class="depth-1"><a href="#where-to-break-a-string" data-for="where-to-break-a-string">Where to break a string</a></li><li class="depth-1"><a href="#case-sorting-and-punctuation" data-for="case-sorting-and-punctuation">Case, sorting and punctuation</a></li><li class="depth-1"><a href="#practice-questions" data-for="practice-questions">Practice questions</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/MNLP/MNLP---Overview" class="internal">MNLP - Overview</a></li><li><a href="../../../Courses/MNLP/" class="internal">Multilingual Natural Language Processing</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mvfjo0im" type="module" data-persist="true"></script></html>
