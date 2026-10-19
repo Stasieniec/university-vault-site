@@ -142,7 +142,7 @@ $$\arg\max_\theta \sum_{(w,c)\in\mathcal D}\log\sigma(v_c\cdot v_w) + \sum_{(w,c
 | ET-FI | **29.62** | 24.35 | 3.98 |
 
 - Identical-word supervision beats adversarial on **every pair with English**; ET-FI is the one pair where adversarial wins. **Marking type alone does not decide** (French is mixed-marking and aligns well); failing languages combine it with rich morphology. Cause: grammar spread over more, rarer word forms, so **non-isomorphic** spaces.
-- **Eigenvector similarity**: nearest-neighbour graph adjacency $A$, Laplacian $L=D-A$ (lecture: $A-D$), keep the largest $n\%$ eigenvalues, $\Delta=\sum_i(\lambda^{(1)}_i-\lambda^{(2)}_i)^2$. Bigger $\Delta$ = less isomorphic; needs no alignment; tracks adversarial success. **One way only: a low $\Delta$ does not prove isomorphism.**
+- **Eigenvector similarity**: nearest-neighbour graph adjacency $A$, Laplacian $L=D-A$ (lecture: $A-D$), keep the largest $n\%$ eigenvalues, $\Delta=\sum_i(\lambda^{(1)}_i-\lambda^{(2)}_i)^2$. Bigger $\Delta$ = less isomorphic; needs no alignment; highest for the three failing pairs (en-et, en-fi, en-el). **One way only: a low $\Delta$ does not prove isomorphism.**
 - Not data size: Finnish WaC (1.7B words) still EN-FI 0.0 (Wikipedia fi 12M vs es 363M). en-hu: nouns 26.87, verbs 25.44 worst. **Domain** (EuroParl, Wikipedia, EMEA): same domain both work; cross-domain identical degrades (4.84 to 25.48), **adversarial collapses (0.0 to 0.13), even en-es**. **Algorithm**: es skip-gram variants 81.89 to 80.15 (barely matters); **es CBOW vs en skip-gram 0.00 to 0.13**.
 
 ## L06 Contextual embeddings

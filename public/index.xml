@@ -6,65 +6,65 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>MNLP-L04 Exam Prep - Subword Segmentation</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation</guid>
-    <description><![CDATA[ MNLP-L04 Exam Prep - Subword Segmentation What the exam can ask here A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett c... ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
-  </item><item>
-    <title>MNLP-L05 Exam Prep - Static Embeddings</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L05-Exam-Prep---Static-Embeddings</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L05-Exam-Prep---Static-Embeddings</guid>
-    <description><![CDATA[ MNLP-L05 Exam Prep - Static Embeddings What the exam can ask here Statements turn on what each method predicts or fits, what is shared or constrained, and which way a result goes. ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
-  </item><item>
     <title>MNLP-L01 Exam Prep - Overview</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L01-Exam-Prep---Overview</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L01-Exam-Prep---Overview</guid>
     <description><![CDATA[ MNLP-L01 Exam Prep - Overview What the exam can ask here A block on this lecture would be small: sorting scenarios into multilingual or crosslingual, what an NLP task takes in and gives back, and what deep learning and LLMs do and do not do. ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
     <title>MNLP-L02 Exam Prep - Multilinguality and Writing Systems</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L02-Exam-Prep---Multilinguality-and-Writing-Systems</guid>
     <description><![CDATA[ MNLP-L02 Exam Prep - Multilinguality and Writing Systems What the exam can ask here Two kinds of statement: which languages break which English-first assumption (and which tier or script a language belongs to), and how Unicode works underneath (normalization forms, UTF encodings, bytes against codep... ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
     <title>MNLP-L03 Exam Prep - Morphology and Word Formation</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L03-Exam-Prep---Morphology-and-Word-Formation</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L03-Exam-Prep---Morphology-and-Word-Formation</guid>
     <description><![CDATA[ MNLP-L03 Exam Prep - Morphology and Word Formation What the exam can ask here A block on this lecture most likely tests word segmentation (forward and backward maximum matching, bidirectional matching, BMES tagging with an HMM and Viterbi), the line between inflection, derivation and compounding, af... ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
+  </item><item>
+    <title>MNLP-L04 Exam Prep - Subword Segmentation</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L04-Exam-Prep---Subword-Segmentation</guid>
+    <description><![CDATA[ MNLP-L04 Exam Prep - Subword Segmentation What the exam can ask here A block on this lecture most likely contrasts BPE with Unigram LM (bottom-up or top-down, greedy or global, one segmentation or several), tests what SentencePiece and byte-level BPE add, and asks which way the Bostrom and Durrett c... ]]></description>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
+  </item><item>
+    <title>MNLP-L05 Exam Prep - Static Embeddings</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L05-Exam-Prep---Static-Embeddings</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L05-Exam-Prep---Static-Embeddings</guid>
+    <description><![CDATA[ MNLP-L05 Exam Prep - Static Embeddings What the exam can ask here Statements turn on what each method predicts or fits, what is shared or constrained, and which way a result goes. ]]></description>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
     <title>MNLP-L06 Exam Prep - Contextual Embeddings</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L06-Exam-Prep---Contextual-Embeddings</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L06-Exam-Prep---Contextual-Embeddings</guid>
     <description><![CDATA[ MNLP-L06 Exam Prep - Contextual Embeddings What the exam can ask here Expect a BERT block (the masking rule, which positions carry the loss, [CLS] and NSP, how fine-tuning attaches a head) and an mBERT block (what its training lacks, the sampling exponent, the shared vocabulary’s biases, and which e... ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
     <title>MNLP-L07 Exam Prep - Crosslingual NLP</title>
     <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP</link>
     <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP-L07-Exam-Prep---Crosslingual-NLP</guid>
     <description><![CDATA[ MNLP-L07 Exam Prep - Crosslingual NLP What the exam can ask here Expect two kinds of block: crosslingual pretraining (which model sees parallel data, and what each objective does) and low-resource MT (parent-child transfer, multilingual NMT, sampling, BART and mBART). ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:44:44 GMT</pubDate>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
-    <title>MNLP - Cheat Sheet</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Exam-Prep/MNLP---Cheat-Sheet</guid>
-    <description><![CDATA[ MNLP - Cheat Sheet The two-sided sheet for the exam (Thu 2026-10-22, 09:00, see MNLP - Exam Analysis). ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:22:02 GMT</pubDate>
+    <title>MNLP-L04 - Subword Segmentation</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L04---Subword-Segmentation</guid>
+    <description><![CDATA[ MNLP-L04: Subword Segmentation In short How can a model with a fixed vocabulary handle words it has never seen? Whole words turn every unseen word into &lt;UNK&gt;. ]]></description>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
-    <title>MNLP-L02 - Multilinguality and Writing Systems</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L02---Multilinguality-and-Writing-Systems</guid>
-    <description><![CDATA[ MNLP-L02: Multilinguality and Writing Systems In short Standard NLP pipelines split on whitespace, rely on word order, treat a word as one unit of meaning and assume text runs left to right. ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:22:02 GMT</pubDate>
+    <title>MNLP - Overview</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/MNLP---Overview</guid>
+    <description><![CDATA[ Multilingual Natural Language Processing — Overview Course: Multilingual Natural Language Processing (5204MNLP6Y) — 2026/27 Sem. ]]></description>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item><item>
-    <title>MNLP-L03 - Morphology and Word Formation</title>
-    <link>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation</link>
-    <guid>https://notes.swasilewski.com/Courses/MNLP/Lectures/MNLP-L03---Morphology-and-Word-Formation</guid>
-    <description><![CDATA[ MNLP-L03: Morphology and Word Formation In short Word-level models learn meaning from context (embeddings, CBOW), but store move and moved as unrelated row numbers and have nothing for an unseen word such as hammered. ]]></description>
-    <pubDate>Mon, 19 Oct 2026 17:22:02 GMT</pubDate>
+    <title>Multilingual Natural Language Processing</title>
+    <link>https://notes.swasilewski.com/Courses/MNLP/</link>
+    <guid>https://notes.swasilewski.com/Courses/MNLP/</guid>
+    <description><![CDATA[  Exam: Thu 22 Oct 2026 · Lecture notes: 7 · Flashcards: 354 · Exam questions: 55 Schedule, assessment and deadlines live in the course overview. ]]></description>
+    <pubDate>Mon, 19 Oct 2026 17:46:26 GMT</pubDate>
   </item>
     </channel>
   </rss>
