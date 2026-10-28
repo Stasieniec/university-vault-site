@@ -87,3 +87,4 @@ where the next item $i_{n+1}$ is emitted as one or more discrete tokens $c_k$ (a
 ## Appears In
 
 - [[RS-L03b - From LLMs to LRMs]]
+- [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]] (LLM agents)

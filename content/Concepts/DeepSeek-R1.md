@@ -55,3 +55,4 @@ This contrasts with "System 1" (fast, pattern-matching) typical of standard LLM 
 
 - [[IR-L13 - RL for Reasoning and Search]]
 - DeepSeek-AI, "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" (2025)
+- [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]] (reasoning LLMs)

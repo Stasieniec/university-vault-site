@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>EPRM-Book Ch21 - Interdisciplinary Teams — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="EPRM-Book Ch21 - Interdisciplinary Teams — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EPRM-Book Ch21 - Interdisciplinary Teams — notes.swasilewski.com"/><meta name="twitter:description" content="EPRM-Book Ch21: Interdisciplinary Teams In short Christian Kästner’s chapter asks why building ML products needs teams of people with different expertise, why those teams so often clash, and what helps."/><meta property="og:description" content="EPRM-Book Ch21: Interdisciplinary Teams In short Christian Kästner’s chapter asks why building ML products needs teams of people with different expertise, why those teams so often clash, and what helps."/><meta property="og:image:alt" content="EPRM-Book Ch21: Interdisciplinary Teams In short Christian Kästner’s chapter asks why building ML products needs teams of people with different expertise, why those teams so often clash, and what helps."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="EPRM-Book Ch21: Interdisciplinary Teams In short Christian Kästner’s chapter asks why building ML products needs teams of people with different expertise, why those teams so often clash, and what helps."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mvs7pwjt" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mvs7pwjt" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mvs7pwjt").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-437"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-437" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/">Engineering Production Ready ML/AI Systems</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/Book-Notes/">Book Notes</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>EPRM Book Ch21   Interdisciplinary Teams</a></div></nav><h1 class="article-title">EPRM-Book Ch21 - Interdisciplinary Teams</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-28T14:31:17.706Z">Oct 28, 2026</time><span>14 min read</span></p></div></div><article class="popover-hint"><h1 id="eprm-book-ch21-interdisciplinary-teams">EPRM-Book Ch21: Interdisciplinary Teams<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#eprm-book-ch21-interdisciplinary-teams" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Christian Kästner’s chapter asks why building ML products needs teams of people with different expertise, why those teams so often clash, and what helps. No single person (the “unicorn”) has all the skills, so teams are unavoidable, and they bring coordination costs, conflicting goals and groupthink. ML makes these harder, because ML projects need more diverse expertise and model interfaces are unstable and hard to document. The remedies: deliberate team structure, T-shaped people who understand each other’s concerns, a culture of constructive conflict, and the DevOps and MLOps model of joint goals supported by joint tools.</p>
+<p>It is the chapter the course assigns under Kästner’s book part “Process and Teams”, and it backs the week 1 argument in <a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</a> that handovers between siloed roles kill ML projects.</p>
+</div>
+</blockquote>
+<p>The chapter runs one scenario throughout: a large short-video platform wants to predict whether a user is developing signs of depression from their behaviour and posts, then intervene (filtering harmful content, showing information, even informing parents of young users). The project needs software engineers, data scientists, clinical experts, social scientists, designers, operators, security and legal experts: dozens of people, some outside the company.</p>
+<h2 id="why-a-unicorn-is-not-enough">Why a unicorn is not enough<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-a-unicorn-is-not-enough" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A <strong>unicorn</strong> is the mythical developer who combines statistics, engineering skills and domain expertise (and, depending on who is asking, business sense, people skills and data collection too). Such people are rare, expensive, or do not exist. Even with one you would still need a team, for two reasons:</p>
+<ul>
+<li><strong>Division of labour:</strong> most products are too big for one person to build.</li>
+<li><strong>Division of expertise:</strong> nobody, a unicorn included, has the capacity to be a deep expert in everything relevant.</li>
+</ul>
+<p>So teams are inevitable, and they have to be interdisciplinary.</p>
+<h2 id="where-conflicts-come-from">Where conflicts come from<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#where-conflicts-come-from" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Conflicts arise <strong>within teams</strong> (members with conflicting goals tied to their roles, or who simply do not understand each other) and, more easily, <strong>between teams</strong>: when responsibilities are unclear, when teams are siloed by role (a software team using models thrown over the wall by a separate data science team), when incentives conflict, or when one team sets priorities without listening. A common frustration: experts in security, UI, privacy, safety, fairness and law, but also data scientists and software engineers, want to shape the project early and are only consulted at the end.</p>
+<p>Two anonymised real organisations illustrate it:</p>
+<ul>
+<li><strong>Organisation A:</strong> four data scientists build a model for an external customer, whose own engineers (with little ML experience) integrate it. The data scientists cannot shape data collection or requirements, spend their time educating the customer about data quality and fighting unrealistic expectations, struggle to reach the customer’s domain experts, and run complex infrastructure themselves when they would rather do less engineering. Nobody gave them latency, fairness or robustness requirements, so they did not feel responsible for those qualities.</li>
+<li><strong>Organisation B:</strong> one team of eight, mostly software engineers plus a single data scientist. The team splits into cliques; the data scientist feels isolated and does not know how the model fits the system; the engineers struggle to deploy ML code and feel they must teach others about code quality; everyone focuses on their own part, with little integration testing or joint evaluation of the product; the data scientist is absent when the team lead talks to the client, so unrealistic requests are not pushed back early. The client ends up happy with the functionality and unhappy with the neglected user interface.</li>
+</ul>
+<h2 id="coordination-costs">Coordination costs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#coordination-costs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Communication grows faster than team size. A group of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> people has</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>possible communication links. Seven people in one group have 21. Split them into teams of 3 and 4 that talk to each other through one representative each, and the count drops to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>. Larger projects therefore need internal structure with smaller teams.</p>
+<p><strong>Information hiding</strong> is the traditional technical way to need less communication: a component is represented by its interface, and others call the interface without knowing the implementation. Teams then only coordinate when they agree on the interface and when they change it. For the depression project, a stable interface for the prediction model and its explanations would let the UI team design interventions without constantly talking to the model team.</p>
+<p><strong>Conway’s law</strong> (also called socio-technical congruence) says system structure and team structure tend to align, mostly because people design components to fit the existing teams: give a compiler to three groups and you get a three-pass compiler. Studies associate a mismatch, one component maintained by people from different teams, with slower development and more defects. So assign each component to one team.</p>
+<h3 id="why-divide-and-conquer-is-harder-with-ml">Why divide and conquer is harder with ML<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-divide-and-conquer-is-harder-with-ml" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Interfaces are rarely stable.</strong> Data science is exploratory. In the depression project the team may spend months testing whether detection is feasible at all before anyone can write a model interface, and may only late on discover what explanations it can offer, which affects the UI designers.</li>
+<li><strong>Interface descriptions are incomplete.</strong> Delegating “data collection and cleaning” to a separate team sounds clean, but specifying it well needs knowledge of social media, depression, the modellers’ needs, data protection law and what telemetry the UI can collect. A poorly defined task gives the illusion of progress in isolation. And we lack good ways to document what a model can do and where it fails.</li>
+<li><strong>Many system qualities cannot be localised in a component.</strong> Safety, security, usability, fairness and operating cost emerge from how components interact in their environment. Each team may assume someone else handles them (diffusion of responsibility). A fairness audit of the model alone misses how teen girls’ usage patterns combine with telemetry and reporting choices.</li>
+<li><strong>Expertise does not line up with modules.</strong> The model team needs a software engineer; the UI team benefits from ML and operations knowledge to anticipate mistakes. So build an interdisciplinary team per component instead of sorting people into teams by specialty (siloing).</li>
+</ul>
+<h3 id="awareness">Awareness<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#awareness" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The complementary strategy to hiding information is <strong>broadcasting it</strong> to everyone who may be affected: cross-team meetings, mailing lists, chat announcements, following another team’s repository activity or issue tracker. Broadcasting everything causes information overload, so it works best targeted: warning affected teams about an upcoming change in data quality, automated notifications for model updates, a data scientist telling every team using the model that a new architecture will change latency. Personal contacts break when people leave, so formalise them (a documented list of whom to ask about how user interactions are logged, for instance). Awareness works worse across company boundaries, where formal documentation and channels do better.</p>
+<p>Kästner’s judgement: information hiding seems less effective in ML projects than in traditional ones, so ML teams should invest either in stabilising and documenting interfaces or in deliberate awareness mechanisms, usually some of both.</p>
+<h2 id="conflicting-goals-and-t-shaped-people">Conflicting goals and T-shaped people<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#conflicting-goals-and-t-shaped-people" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Team members optimise for different things. In the depression project, data scientists and lawyers disagree about which data may be analysed; operators want small, low-latency models; UX designers value reliable confidence estimates and explanations over a higher average accuracy, because those let them design mitigations for wrong predictions. Performance reviews reinforce the split: engineers measured by features shipped, operators by downtime, data scientists by accuracy gains, while lawyers and fairness advocates struggle to show their value because it shows up as problems that never happened.</p>
+<p>Resolving this starts with <strong>making goals visible</strong>: say what you are trying to achieve and how you measure success, and try to understand why others’ goals matter to them. That needs some grasp of their field.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>T-shaped person </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Deep expertise in one area combined with broad general knowledge of the others the project involves, enough to understand and talk to their specialists. (Recruiters also speak of π-shaped people, deep in two areas.)</p>
+</div>
+</blockquote>
+<p>A T-shaped data scientist in the depression project might be an expert in multi-modal sentiment analysis, learn about clinical depression, have basic software engineering skills, know the challenges of running distributed systems, and know how to talk to a privacy lawyer. With such people a team can agree project-level goals: which privacy rules are hard constraints, when an explainability request outweighs accuracy, which latency targets are realistic. Contributions should then be judged against the project’s goals, so a data scientist who trades some accuracy for explainability gets credit for it. Conflict, made explicit, is a useful part of deciding.</p>
+<h2 id="groupthink">Groupthink<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#groupthink" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Groupthink</strong> is a group’s tendency to minimise conflict by not exploring alternatives, suppressing dissent and isolating itself from outside views. The group goes with the first suggestion or the most senior person’s. Symptoms: overconfidence, closed minds, pressure to conform, self-censorship.</p>
+<p>In software it shows up in hype-driven technology choices: the depression team prompts a well-known commercial LLM to analyse video text, without considering other techniques, because a manager suggested it and it seems modern, while members who think a cheaper, more explainable, equally accurate technique would do better stay quiet. It also shows up in dismissed risks: fairness or safety concerns are not raised because the leads always brush them off. Causes include homogeneous teams (data scientists often share educational backgrounds), cultures that isolate decision makers, and pressure from competitors, recent failures or public scrutiny.</p>
+<p>Interventions: hire more diverse teams, involve outside experts, ask everyone for their opinion, let high-status members speak last, moderate meetings actively, always explore a second solution, and use a devil’s advocate (someone who argues the contrary view for the sake of debate).</p>
+<h2 id="team-structure-and-scarce-experts">Team structure and scarce experts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#team-structure-and-scarce-experts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Matrix organisation:</strong> experts belong to departments (engineering, data science, operations, legal) and are lent to projects, sometimes several at once. It is flexible, spreads knowledge and builds deep expertise within departments, but people answer to department and project at once, which clashes near deadlines.</li>
+<li><strong>Project organisation:</strong> people belong to one project only. They can focus, but learn less from peers in their field, may rebuild what exists elsewhere, and a project cannot justify a full-time specialist (a privacy lawyer) for a small share of work.</li>
+<li><strong>Hybrids</strong> are common: mostly project teams, with rare experts (privacy, security) in departments and cross-team communities for exchange (Spotify’s “chapters” and “guilds”).</li>
+</ul>
+<p><strong>The security lesson.</strong> Software engineering went through this with security about two decades earlier. Teaching every developer to be a security expert failed: training felt like a compliance chore. What worked was light security literacy, enough to recognise when security matters and whom to call, plus tools and process checkpoints (secure libraries, automated checks, expert sign-off on designs). Kästner proposes the same for fairness, privacy, UX and operations in ML teams: T-shaped people who know when to bring in the expert.</p>
+<h2 id="what-devops-and-mlops-teach-about-collaboration">What DevOps and MLOps teach about collaboration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-devops-and-mlops-teach-about-collaboration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Developers historically wanted new features fast; operators wanted fewer outages and lower server costs. Operators complained about code that lacked dependencies or was too slow for production; developers complained that operators were slow and conservative.</p>
+<p><strong>DevOps</strong> replaced “us versus them” with a <strong>culture of collaboration</strong>: a joint goal (deliver value frequently and learn from rapid feedback), shared vocabulary, and joint tools where the two roles’ work meets: containers, test automation, versioning, A/B testing infrastructure, telemetry and monitoring. Both sides gain:</p>
+<ul>
+<li><strong>Developers</strong> take on extra work (automated tests, telemetry, containerising their code) and in return see their code live within minutes, make their own deployment decisions and get real user feedback.</li>
+<li><strong>Operators</strong> stop installing dependencies by hand and rolling back failed updates from backups at 3 a.m., and invest in automated orchestration, canary releases and experiment infrastructure.</li>
+</ul>
+<p><strong>MLOps</strong> applies the same deal between data scientists and operators: data scientists learn to package models in a production-ready format (with a library such as BentoML) and gain the ability to experiment in production. Shared tools for pipelines, model versioning and packaging force each side to learn a bit of the other’s role, which is exactly what makes people T-shaped. See <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a>.</p>
+<p>Changing culture is hard: inertia (“this is how we always did it”), the learning cost of the tooling, managers afraid of losing importance, people afraid of automating away their jobs. Partial adoption can make things worse: release automation without automated tests, or orchestration without monitoring, adds risk. What helps: supportive management, education, experienced hires, and a small pilot team that shows the benefits on one component, starting from current pain points such as automated model deployment.</p>
+<p><strong>Beyond MLOps.</strong> Kästner speculates about a “DevML” culture between software engineers and data scientists, built around the whole product: negotiating model requirements together, planning for mistakes, documenting and testing data and model quality, integration testing ML and non-ML components, versioning them together. Shared documentation such as model cards would act as the joint tool: asked to fill in a full template, data scientists consider qualities engineers care about.</p>
+<h2 id="what-to-be-able-to-do">What to be able to do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Explain why teams are unavoidable even if a unicorn exists, and use the communication-links formula to argue for team structure.</li>
+<li>Apply information hiding and Conway’s law to your own project: which component belongs to whom, and what each interface promises.</li>
+<li>Name the reasons ML makes divide and conquer harder, with an example of each.</li>
+<li>Explain T-shaped people, groupthink and its interventions, and matrix versus project organisation.</li>
+<li>Explain how DevOps and MLOps turn conflicting roles into collaboration through joint goals and joint tools, and what each side gains.</li>
+</ul>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a &quot;unicorn&quot; in discussions of ML teams? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A rare developer combining statistics, engineering and domain expertise in one person.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give the two reasons Kästner says teams are needed even if you hire a unicorn. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Division of labour (systems are too big for one person) and division of expertise.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How many communication links does a group of n people have? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>n(n-1)/2.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Seven people split into teams of 3 and 4, linked by one representative each: how many communication links? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>10 (3 + 6 + 1), down from 21 in one group.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is information hiding? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Others use a component only through its interface, without knowing its implementation, so teams coordinate only on the interface.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does Conway's law (socio-technical congruence) say? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>System structure tends to mirror team structure, so components should align with team boundaries.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why are ML component interfaces rarely stable? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Data science is exploratory: what the model can do is only discovered as the project evolves.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can't fairness be assigned to the model team alone? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Fairness emerges from how all components interact in their environment, so no single component can assess it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does Kästner recommend an interdisciplinary team per component over teams sorted by specialty? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Expertise does not line up with modules: a model team needs engineering skills, a UI team ML knowledge.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is awareness as a coordination strategy? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Actively broadcasting changes and decisions to everyone who might be affected.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must awareness mechanisms be targeted? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Broadcasting everything causes information overload, and important news gets lost in the noise.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a T-shaped person? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Deep expertise in one area plus broad basic knowledge of the others, enough to talk to their specialists.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do performance reviews deepen goal conflicts in ML teams? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Each role is measured on its own metric (features, downtime, accuracy) instead of the project’s goals.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is groupthink? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Minimising conflict by not exploring alternatives, suppressing dissent and isolating the group from outside views.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name five interventions against groupthink. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Diverse teams, outside experts, high-status members speaking last, devil’s advocate, exploring a second solution.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between a matrix and a project organisation? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Matrix: experts belong to departments and are lent to projects. Project: people belong to one project only.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What did software security teach about spreading rare expertise across teams? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Light literacy, so developers recognise when to call an expert, works better than making everyone an expert.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does DevOps turn developers and operators from rivals into collaborators? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Joint goal of frequent delivery with rapid feedback, shared vocabulary, and joint tools such as containers and monitoring.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What do data scientists gain from MLOps in exchange for learning model packaging? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The ability to experiment rapidly in production.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/EPRM/EPRM---Overview" class="internal alias" data-slug="Courses/EPRM/EPRM---Overview">Course overview</a></li>
+<li><strong>Lecture:</strong> <a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</a> (data roles, handovers and the full-stack ML engineer)</li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a></li>
+<li><strong>Source:</strong> Christian Kästner, <em>Machine Learning in Production: From Models to Products</em> (MIT Press), Chapter 21 “Interdisciplinary Teams”, online edition last updated 2024-06-17, <a href="https://mlip-cmu.github.io/book/21-interdisciplinary-teams.html" class="external">https://mlip-cmu.github.io/book/21-interdisciplinary-teams.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (CC BY-NC-ND 4.0).</li>
+<li><strong>Same book part “Process and Teams”:</strong> <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch20---Data-Science-and-Software-Engineering-Process-Models" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch20---Data-Science-and-Software-Engineering-Process-Models">EPRM-Book Ch20 - Data Science and Software Engineering Process Models</a> (exploratory data science versus planned software processes, model-first versus system-first development) · <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt">EPRM-Book Ch22 - Technical Debt</a></li>
+<li><strong>Further (cited in the chapter):</strong> Nahar, Zhou, Lewis and Kästner, “Collaboration Challenges in Building ML-Enabled Systems” (ICSE 2022). Conway, “How Do Committees Invent?” (1968). Parnas, “On the Criteria to Be Used in Decomposing Systems into Modules” (1972). Kniberg and Ivarsson, “Scaling Agile @ Spotify” (2012).</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-297" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#eprm-book-ch21-interdisciplinary-teams" data-for="eprm-book-ch21-interdisciplinary-teams">EPRM-Book Ch21: Interdisciplinary Teams</a></li><li class="depth-1"><a href="#why-a-unicorn-is-not-enough" data-for="why-a-unicorn-is-not-enough">Why a unicorn is not enough</a></li><li class="depth-1"><a href="#where-conflicts-come-from" data-for="where-conflicts-come-from">Where conflicts come from</a></li><li class="depth-1"><a href="#coordination-costs" data-for="coordination-costs">Coordination costs</a></li><li class="depth-2"><a href="#why-divide-and-conquer-is-harder-with-ml" data-for="why-divide-and-conquer-is-harder-with-ml">Why divide and conquer is harder with ML</a></li><li class="depth-2"><a href="#awareness" data-for="awareness">Awareness</a></li><li class="depth-1"><a href="#conflicting-goals-and-t-shaped-people" data-for="conflicting-goals-and-t-shaped-people">Conflicting goals and T-shaped people</a></li><li class="depth-1"><a href="#groupthink" data-for="groupthink">Groupthink</a></li><li class="depth-1"><a href="#team-structure-and-scarce-experts" data-for="team-structure-and-scarce-experts">Team structure and scarce experts</a></li><li class="depth-1"><a href="#what-devops-and-mlops-teach-about-collaboration" data-for="what-devops-and-mlops-teach-about-collaboration">What DevOps and MLOps teach about collaboration</a></li><li class="depth-1"><a href="#what-to-be-able-to-do" data-for="what-to-be-able-to-do">What to be able to do</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch20---Data-Science-and-Software-Engineering-Process-Models" class="internal">EPRM-Book Ch20 - Data Science and Software Engineering Process Models</a></li><li><a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt" class="internal">EPRM-Book Ch22 - Technical Debt</a></li><li><a href="../../../Courses/EPRM/EPRM---Flashcards" class="internal">EPRM - Flashcards</a></li><li><a href="../../../Courses/EPRM/EPRM---Overview" class="internal">EPRM - Overview</a></li><li><a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</a></li><li><a href="../../../Courses/EPRM/" class="internal">Engineering Production-Ready ML/AI Systems</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mvs7pwjt" type="module" data-persist="true"></script></html>

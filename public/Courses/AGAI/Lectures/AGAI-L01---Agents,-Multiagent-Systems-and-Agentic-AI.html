@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>AGAI-L01 - Agents, Multiagent Systems and Agentic AI — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="AGAI-L01 - Agents, Multiagent Systems and Agentic AI — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="AGAI-L01 - Agents, Multiagent Systems and Agentic AI — notes.swasilewski.com"/><meta name="twitter:description" content="AGAI-L01: Agents, Multiagent Systems and Agentic AI In short What is an agent, what changes when there are many, and how do LLM agents fit a field decades older than LLMs? An agent perceives its environment and acts on it; the interesting part is the program mapping observations to actions, from ref..."/><meta property="og:description" content="AGAI-L01: Agents, Multiagent Systems and Agentic AI In short What is an agent, what changes when there are many, and how do LLM agents fit a field decades older than LLMs? An agent perceives its environment and acts on it; the interesting part is the program mapping observations to actions, from ref..."/><meta property="og:image:alt" content="AGAI-L01: Agents, Multiagent Systems and Agentic AI In short What is an agent, what changes when there are many, and how do LLM agents fit a field decades older than LLMs? An agent perceives its environment and acts on it; the interesting part is the program mapping observations to actions, from ref..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="AGAI-L01: Agents, Multiagent Systems and Agentic AI In short What is an agent, what changes when there are many, and how do LLM agents fit a field decades older than LLMs? An agent perceives its environment and acts on it; the interesting part is the program mapping observations to actions, from ref..."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mvs7pwjt" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mvs7pwjt" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mvs7pwjt").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-435"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-435" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/AGAI/">Agentic Artificial Intelligence</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/AGAI/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>AGAI L01   Agents, Multiagent Systems and Agentic AI</a></div></nav><h1 class="article-title">AGAI-L01 - Agents, Multiagent Systems and Agentic AI</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-27T00:00:00.000Z">Oct 27, 2026</time><span>30 min read</span></p></div></div><article class="popover-hint"><h1 id="agai-l01-agents-multiagent-systems-and-agentic-ai">AGAI-L01: Agents, Multiagent Systems and Agentic AI<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agai-l01-agents-multiagent-systems-and-agentic-ai" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>What is an agent, what changes when there are many, and how do LLM agents fit a field decades older than LLMs? An agent perceives its environment and acts on it; the interesting part is the program mapping observations to actions, from reflex rules up to learning. Several agents in one environment make a multi-agent system, where agents communicate, cooperate, conflict and deceive, studied with tools from game theory and social choice.</p>
+<p>An LLM agent runs the same loop in natural language: a model wrapped in a role, memory, tools and planning, cycling through thought, action and observation (ReAct). Such agents can be improved, must be evaluated, and raise new risks when many interact. Even the simplest agents face dilemmas of cooperation, coordination, population change, deception and badly chosen rewards.</p>
+<p>Exam format is not yet known; expect the agent definitions and types, the LLM agent loop and its components, and the dilemmas.</p>
+</div>
+</blockquote>
+<h2 id="what-makes-something-an-agent">What makes something an agent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-makes-something-an-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Two classic definitions frame the course.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Agent (Russell and Norvig, <em>AIMA</em>, 4th ed.)</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“An agent is anything that can be viewed as <strong>perceiving</strong> its <strong>environment</strong> through <strong>sensors</strong> and <strong>acting</strong> upon that environment through <strong>actuators</strong>.”</p>
+</div>
+</blockquote>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Agent (Wooldridge 2001, <em>An Introduction to Multiagent Systems</em>)</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“An agent is a computer system that is situated in some <strong>environment</strong>, and that is capable of <strong>autonomous action</strong> in this environment to meet its design <strong>objectives</strong>.”</p>
+</div>
+</blockquote>
+<p>Both put the agent in a loop with an environment: it observes, acts, and observes the result. Russell and Norvig stress the <strong>perception-action interface</strong> (sensors in, actuators out) and say “can be <strong>viewed as</strong>”: being an agent is a way of describing a system. Wooldridge stresses <strong>autonomy</strong> (the system decides for itself, without a human choosing each action) and <strong>objectives</strong> (it acts to meet goals its designer gave it). A robot vacuum cleaner fits both: it senses dirt, moves and sucks, decides alone, and is built to keep the floor clean. A <a href="../../../Concepts/Rational-Agent" class="internal alias" data-slug="Concepts/Rational-Agent">rational agent</a> picks the action expected to maximise its <strong>performance measure</strong> (the criterion, set by the designer, that scores how well the agent’s behaviour achieves what is wanted), given what it has perceived and knows; the full treatment is in <a href="../../../Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents" class="internal alias" data-slug="Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents">AGAI-Book Ch2 - Intelligent Agents</a>.</p>
+<h3 id="the-agent-idea-is-a-lens">The agent idea is a lens<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-agent-idea-is-a-lens" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Russell and Norvig add a caveat:</p>
+<blockquote>
+<p>“The notion of an agent is meant to be a tool for analyzing systems, not an absolute characterization that divides the world into agents and non-agents. One could view a hand-held calculator as an agent that chooses the action of displaying “4” when given the percept sequence “2 + 2 =,” but such an analysis would hardly aid our understanding of the calculator.”</p>
+</blockquote>
+<p>The useful question is whether describing a system as an agent helps. For a calculator it does not: there is no choice worth explaining. For a vacuum robot or an LLM that searches the web until it can answer, it does, because they choose among actions in pursuit of an objective. The definitions came long before LLMs, and they turn out to cover them.</p>
+<h2 id="from-reflexes-to-learning-the-agent-program">From reflexes to learning: the agent program<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#from-reflexes-to-learning-the-agent-program" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>“Observations in, action out” is simple; the program doing the mapping can be very simple or very complex. Russell and Norvig order agent programs by how much they represent (see <a href="../../../Concepts/Agent-Program" class="internal alias" data-slug="Concepts/Agent-Program">Agent Program</a>):</p>
+<ul>
+<li><strong>Simple reflex agent:</strong> acts on the current percept only, through condition-action rules. The vacuum agent “if the square is dirty, suck; otherwise move to the other square” is one.</li>
+<li><strong>Model-based reflex agent:</strong> keeps an internal state, a model of the parts of the world it cannot see right now, updated from what it perceives and what its actions do.</li>
+<li><strong>Goal-based agent:</strong> adds goal information and asks “what will happen if I do this, and does it get me to the goal?” This is where search and planning come in.</li>
+<li><strong>Utility-based agent:</strong> replaces the yes/no goal with a utility function, an internal version of the performance measure, so it can trade off conflicting goals (speed against safety) and weigh uncertain outcomes.</li>
+<li><strong>Learning agent:</strong> any of the above, plus a way to improve itself from feedback.</li>
+</ul>
+<h3 id="what-learning-adds-and-why-it-is-hard">What learning adds, and why it is hard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-learning-adds-and-why-it-is-hard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Learning (Russell and Norvig) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The “process of modification of each component of the agent to bring the components into closer agreement with the available feedback information, thereby improving the overall performance of the agent.”</p>
+</div>
+</blockquote>
+<p>A learning agent learns its <strong><a href="../../../Concepts/Policy" class="internal alias" data-slug="Concepts/Policy">policy</a></strong> (the rule that picks an action in each situation) from experience, which weeks 2 and 3 treat as <a href="../../../Concepts/Reinforcement-Learning" class="internal alias" data-slug="Concepts/Reinforcement-Learning">reinforcement learning</a>. Three difficulties:</p>
+<ul>
+<li><strong>Estimating the value of actions is hard.</strong> Feedback is noisy and often delayed, so it is unclear which action earned a reward.</li>
+<li><strong><a href="../../../Concepts/Exploration-vs-Exploitation" class="internal alias" data-slug="Concepts/Exploration-vs-Exploitation">Exploration versus exploitation</a>.</strong> To find the best action the agent must try actions that look worse now; to score well it must use what it knows.</li>
+<li><strong>Non-stationary environments, above all with other agents.</strong> Single-agent RL assumes fixed environment rules (a <a href="../../../Concepts/Markov-Decision-Process" class="internal alias" data-slug="Concepts/Markov-Decision-Process">Markov Decision Process</a>). If other agents learn too, their behaviour shifts, so from each agent’s point of view the environment keeps changing and what it learned yesterday may be wrong today.</li>
+</ul>
+<h2 id="many-agents-in-one-environment">Many agents in one environment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#many-agents-in-one-environment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Multi-agent system (MAS) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A system in which <strong>more than one agent inhabits the environment</strong>.</p>
+</div>
+</blockquote>
+<p>Each agent still observes and acts, but now the other agents are part of what it observes and its actions change their situation. Agents in a <a href="../../../Concepts/Multi-Agent-System" class="internal alias" data-slug="Concepts/Multi-Agent-System">MAS</a> <strong>communicate</strong>, <strong>cooperate</strong>, <strong>conflict</strong> and <strong>deceive</strong>, among other things. Examples: RoboCup (robot football teams), robotic vacuum cleaners sharing a building, social media bots, autonomous vehicles on the same road, and stock trading bots in the same market.</p>
+<h3 id="where-the-field-comes-from">Where the field comes from<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#where-the-field-comes-from" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Multi-agent systems are an old part of AI with roots outside it. Mathematics, economics and philosophy gave rise to <strong>game theory</strong> (the mathematics of strategic interaction, where each party’s outcome depends on what the others do) and <strong>social choice</strong> (aggregating individual preferences into a group decision, as in voting). Multi-agent research in AI builds on both. Milestones:</p>
+<ul>
+<li>1980 to 1988: the Contract Net Protocol (1980), Minsky’s <em>The Society of Mind</em> (1986), distributed AI (1988).</li>
+<li>1993 to 1995: agent-oriented programming and BDI (belief-desire-intention) agents; automated negotiation in <em>Rules of Encounter</em> (1994); learning in games, with multi-agent RL and non-stationarity (1994).</li>
+<li>Around 2000: computational social choice, algorithmic game theory, affective computing; the AAMAS conference (2002).</li>
+<li>2010s: multi-agent RL and norms; from 2015 deep multi-agent RL, AlphaGo and Libratus (outside the course material: a poker program).</li>
+<li>2022: agentic AI.</li>
+</ul>
+<p>The course draws mainly on game theory and multi-agent reinforcement learning.</p>
+<h3 id="why-the-course-runs-from-simple-agents-to-llm-agents">Why the course runs from simple agents to LLM agents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-the-course-runs-from-simple-agents-to-llm-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The course has three parts, and the order is deliberate.</p>
+<ol>
+<li><strong>Simple agents and game theory.</strong> Even reflex agents with tiny action sets produce complex dynamics when they interact: populations shift and dilemmas appear.</li>
+<li><strong>Learning agents and multi-agent RL.</strong> Learning agents already show problems that LLM agents have, such as <a href="../../../Concepts/Reward-Hacking" class="internal alias" data-slug="Concepts/Reward-Hacking">reward hacking</a>. RL is also used to train LLM agents, and some RL algorithms (AlphaZero) inspired similar techniques for LLM reasoning.</li>
+<li><strong>LLM-based agentic systems.</strong> How LLM agent architectures and systems are built, so you can understand and design them beyond using agentic tools, with a focus on modern multi-agent dynamics.</li>
+</ol>
+<h2 id="llm-agents-reasoning-and-acting-in-language">LLM agents: reasoning and acting in language<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#llm-agents-reasoning-and-acting-in-language" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>An <strong><a href="../../../Concepts/LLM-Agent" class="internal alias" data-slug="Concepts/LLM-Agent">LLM Agent</a></strong> runs the same loop, but it acts, observes, reasons and plans <strong>through natural language</strong>: its objectives arrive as text, its reasoning is generated text, and its actions are text that another program executes.</p>
+<p>One language model can do this because <strong>token completion is multi-task</strong>. Next-token prediction covers world knowledge (“The capital of The Netherlands is …”), history (“The French Revolution happened in …”), planning (“If I want to bake a cake the first action to do is …”) and mathematical reasoning (“2 + 2 = …”) with one mechanism.</p>
+<p>A bare model only maps a prompt to a completion. Four additions turn it into an agent: a <strong>role</strong> (who it is and what it is for), <strong>memory</strong>, <strong>tools</strong> and <strong>planning</strong>.</p>
+<h3 id="the-thought-action-observation-loop-and-react">The thought-action-observation loop and ReAct<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-thought-action-observation-loop-and-react" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>An LLM agent works in a loop: (1) <strong>reason and plan</strong> in text, (2) <strong>act</strong>, (3) <strong>observe</strong> the result, then reason again.</p>
+<p><strong><a href="../../../Concepts/ReAct" class="internal" data-slug="Concepts/ReAct">ReAct</a></strong> (Yao et al., ICLR 2023) is a prompting technique for this loop. It makes a language model generate both verbal reasoning (text) and actions (text), interleaved and repeated: <strong>Thought, Action, Observation</strong>. Each step brings in one of the agent’s components:</p>
+<ul>
+<li><strong>Thought</strong> forces the model to think in several steps, as in chain-of-thought: <strong>reasoning</strong>.</li>
+<li><strong>Action</strong> is text that interacts with external tools: <strong>tools</strong>.</li>
+<li><strong>Observation</strong> puts the tool’s output back into the model’s context: <strong>memory</strong>.</li>
+</ul>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>A ReAct trace (illustration, not from the course material) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Thought:</strong> The user asks whether to take an umbrella in Amsterdam. I need the current weather.
+<strong>Action:</strong> <code>weather(&quot;Amsterdam&quot;)</code>
+<strong>Observation:</strong> light rain, 12 °C
+<strong>Thought:</strong> It is raining, so the answer is yes.
+<strong>Action:</strong> <code>finish(&quot;Yes, it is raining in Amsterdam right now.&quot;)</code></p>
+</div>
+</blockquote>
+<h3 id="reasoning-models-thinking-with-tokens">Reasoning models: thinking with tokens<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reasoning-models-thinking-with-tokens" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A <strong>reasoning LLM</strong> generates thoughts as tokens before its final answer. The shift is from <strong>train-time compute</strong> (a better model through more training) to <strong>test-time compute</strong> (a better answer through thinking longer when asked): more tokens, more computation.</p>
+<ul>
+<li><strong>Prompt engineering</strong> elicits reasoning from models never tuned for it: <a href="../../../Concepts/Chain-of-Thought-Prompting" class="internal alias" data-slug="Concepts/Chain-of-Thought-Prompting">chain-of-thought (CoT) prompting</a> (Wei et al., NeurIPS 2022), zero-shot (no examples in the prompt) or few-shot (a few worked examples with their reasoning).</li>
+<li><strong>Improving the model’s reasoning:</strong> <strong>search and verify</strong> samples many reasoning traces and rewards the best; <strong>fine-tuning</strong> optimises token probabilities for reasoning, for example with RL, as in <a href="../../../Concepts/DeepSeek-R1" class="internal" data-slug="Concepts/DeepSeek-R1">DeepSeek-R1</a> (Guo et al., <em>Nature</em> 2025).</li>
+</ul>
+<h3 id="memory">Memory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#memory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Memory means remembering facts, previous interactions and context. It is key to going from an LLM to an agent: without it, every step starts from nothing.</p>
+<ul>
+<li><strong>Short-term memory</strong> is the limited context window. Choosing what goes into it is <strong>context engineering</strong>; long histories are <strong>trimmed</strong> (old parts dropped) or <strong>summarised</strong>.</li>
+<li><strong>Long-term memory</strong> is <strong>external</strong>, a database the agent queries (as in <a href="../../../Concepts/Retrieval-Augmented-Generation" class="internal alias" data-slug="Concepts/Retrieval-Augmented-Generation">retrieval-augmented generation</a>), or <strong>in the parameters</strong>, knowledge stored in the weights during training.</li>
+</ul>
+<h3 id="agent-centric-information-access">Agent-centric information access<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agent-centric-information-access" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Agents benefit from information retrieval</strong>, their long-term memory (see also <a href="../../../Concepts/Agentic-Search" class="internal alias" data-slug="Concepts/Agentic-Search">Agentic Search</a>), and <strong>information retrieval benefits from agents</strong>. Kanoulas et al. propose <strong>agent-centric information access</strong>: a future ecosystem of millions of expert LLMs, each with unique, domain-specific capabilities. Answering a query there means <strong>dynamically estimating expertise, retrieving the most relevant agents, querying them efficiently, and synthesising their responses</strong>. What gets retrieved are agents instead of documents.</p>
+<h3 id="tools-how-an-agent-acts">Tools: how an agent acts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tools-how-an-agent-acts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Reasoning lets an agent think and plan; <strong>tools let it act</strong>. A <strong>tool</strong> is an external function the model can use to perform a task, such as a search or running code. Tool use raises five problems:</p>
+<ul>
+<li><strong>Tool creation:</strong> how to implement and document a tool so an LLM can use it.</li>
+<li><strong>Tool definition:</strong> how to make the agent aware of which tools exist.</li>
+<li><strong>Tool selection and learning:</strong> how the agent reasons about which tool to use.</li>
+<li><strong>Tool calling:</strong> parsing the model’s output into a call, and executing it.</li>
+<li><strong>Tool output processing:</strong> feeding the result back into the LLM as a message.</li>
+</ul>
+<p><strong>Toolformer</strong> (Schick et al., NeurIPS 2023) showed that language models can teach themselves to use tools. The <strong>Model Context Protocol (MCP)</strong>, from Anthropic, standardises how LLMs connect to tools, so a tool written once works with any model that speaks the protocol.</p>
+<h3 id="planning-and-reflection">Planning and reflection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#planning-and-reflection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Reasoning enables a basic skill: identifying the steps that reach a goal. <strong>Planning</strong> decomposes a task into sub-tasks and generates a sequence of actions. The first methods were prompting techniques: <strong>chain-of-thought</strong>, <strong>Least-to-Most</strong> and <strong>Plan-and-Solve</strong> (outside the course material: Least-to-Most splits a problem into simpler sub-problems solved in order; Plan-and-Solve writes a plan first, then carries it out). Models can also be <strong>fine-tuned</strong>, with supervised fine-tuning or reinforcement learning, to plan and to run the ReAct cycle better. <strong>Reflexion</strong> (Shinn et al., NeurIPS 2023) gives language agents “verbal reinforcement learning” (outside the course material: after a failed attempt the agent writes down in words what went wrong and uses that reflection on the next attempt, with no change to its weights).</p>
+<h3 id="classical-and-llm-agents-side-by-side">Classical and LLM agents side by side<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#classical-and-llm-agents-side-by-side" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Classical agent</th><th>LLM agent</th></tr></thead><tbody><tr><td>Objective</td><td>performance measure, goal or utility</td><td>objectives and role in the prompt</td></tr><tr><td>Decides by</td><td>rules, model, search, utility</td><td>reasoning in text</td></tr><tr><td>Acts by</td><td>actuators</td><td>text turned into tool calls</td></tr><tr><td>Remembers in</td><td>internal state</td><td>context window, external stores, weights</td></tr><tr><td>Learns by</td><td>updating its policy (e.g. RL)</td><td>fine-tuning, RL on token probabilities</td></tr></tbody></table></div>
+<h2 id="showing-that-an-agent-works">Showing that an agent works<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#showing-that-an-agent-works" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Evaluation means providing evidence that an agent, or a system of agents, works. The main instrument is <strong>public benchmarks and leaderboards</strong>: coding, tool use, reasoning, open-ended knowledge, exam-style questions, and harm (AgentHarm). Leaderboards can mislead: <em>The leaderboard illusion</em> (Singh et al.) argues that a ranking can look like evidence of capability while partly reflecting how the leaderboard is used (outside the course material: the paper studies Chatbot Arena, where some providers test many private model variants and publish only the best score). The other choice is <strong>human versus automated evaluation</strong>, where automated usually means an <strong>LLM-as-judge</strong> (a model grading another model’s outputs). Outside the course material: human judges are the usual reference but slow and costly, while an LLM judge is cheap and scales but is only as good as the judging model.</p>
+<h2 id="many-llm-agents-together">Many LLM agents together<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#many-llm-agents-together" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Put several LLM agents in one environment and the multi-agent questions return, in natural language. Part III covers:</p>
+<ul>
+<li><strong>Patterns to orchestrate agents</strong> (how work is divided and routed, for example one coordinator handing sub-tasks to workers) and <strong>collaborative task-solving patterns</strong> (how outputs combine into one solution).</li>
+<li><strong>Communication protocols</strong> such as <strong>A2A</strong> (agent-to-agent): standard ways for agents to message each other.</li>
+<li><strong>Agent societies</strong> and <strong>simulacra of human behaviour</strong>: <strong>generative agents</strong> (Park et al., UIST 2023) are LLM agents that simulate believable people (outside the course material: 25 of them lived in a sandbox town, with memories, reflection and daily plans).</li>
+<li><strong>Emergent behaviours and risks:</strong> group behaviour no single agent was programmed to produce.</li>
+</ul>
+<p><strong>AutoGen</strong> (Wu et al., 2024) is a framework for building LLM applications as conversations between multiple agents.</p>
+<h2 id="what-can-go-wrong-between-agents">What can go wrong between agents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-can-go-wrong-between-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Hammond et al. (“Multi-agent risks from advanced AI”, 2025) name three under-explored risks of LLM-based multi-agent systems: <strong>miscoordination</strong>, <strong>conflict</strong> and <strong>collusion</strong>. Outside the course material, the paper defines them by the agents’ goals: miscoordination is failing to cooperate despite shared goals, conflict is failing to cooperate because goals differ, and collusion is cooperation that is undesirable, for example agents that are meant to compete teaming up.</p>
+<p>A real case comes back in week 7: the OpenAI-Hugging Face incident of July 2026, which Hugging Face’s technical timeline calls a “Frontier Lab Agent Intrusion” and which a technical report on the incident describes. The excerpts discussed:</p>
+<ul>
+<li>Agents used Artifactory (outside the course material: a repository service for software build files) in unexpected ways to communicate with one another in May, before the Hugging Face incident.</li>
+<li>OpenAI’s frontier models are trained to communicate with one another when given a specific multi-agent collaboration tool, to work quickly and in a distributed way. Such communication is not inherently problematic, but can create risk.</li>
+<li>To trick the evaluator into thinking they had not got the answer flag by cheating, the models sometimes tried to erase or tamper with their outputs or message logs: abusing context compaction (the summarising of short-term memory), injecting malicious code into the evaluator’s container, printing adversarial outputs. They were highly explicit about these attempts in their chain-of-thought.</li>
+</ul>
+<p>Communication, memory management and tool access, the components that make an agent useful, are also channels for deception.</p>
+<h2 id="dilemmas-that-even-simple-agents-face">Dilemmas that even simple agents face<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dilemmas-that-even-simple-agents-face" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>These problems need nothing more than reflex agents; <a href="../../../Courses/AGAI/Exercises/AGAI-Lab01---Simple-Agents,-Complex-Dynamics" class="internal alias" data-slug="Courses/AGAI/Exercises/AGAI-Lab01---Simple-Agents,-Complex-Dynamics">Lab 1</a> works through them. In the games, two agents each pick C (cooperate) or D (defect) at the same time; each cell gives (row player’s payoff, column player’s payoff).</p>
+<h3 id="cooperation-the-prisoners-dilemma">Cooperation: the Prisoner’s Dilemma<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cooperation-the-prisoners-dilemma" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Will agents cooperate or cheat?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>C</th><th>D</th></tr></thead><tbody><tr><td><strong>C</strong></td><td>3, 3</td><td>0, 5</td></tr><tr><td><strong>D</strong></td><td>5, 0</td><td>1, 1</td></tr></tbody></table></div>
+<p>Whatever the other agent does, D pays more: 5 against 3 if the other cooperates, 1 against 0 if it defects. D <strong>dominates</strong> C, so rational agents both defect and get (1, 1), the only <a href="../../../Concepts/Nash-Equilibrium" class="internal alias" data-slug="Concepts/Nash-Equilibrium">Nash Equilibrium</a> (an outcome where neither agent can gain by changing its own action alone). Yet both prefer (3, 3), the desirable outcome: individual rationality and the group’s interest come apart. See <a href="../../../Concepts/Prisoner's-Dilemma" class="internal alias" data-slug="Concepts/Prisoner's-Dilemma">Prisoner’s Dilemma</a>.</p>
+<h3 id="coordination-the-stag-hunt">Coordination: the Stag Hunt<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#coordination-the-stag-hunt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>C</th><th>D</th></tr></thead><tbody><tr><td><strong>C</strong></td><td>4, 4</td><td>0, 3</td></tr><tr><td><strong>D</strong></td><td>3, 0</td><td>2, 2</td></tr></tbody></table></div>
+<p>Now the best reply copies the other agent: C if it plays C (4 against 3), D if it plays D (2 against 0). Both <strong>(C, C) and (D, D) are equilibria</strong>. (C, C) is better for both, but C is risky: cooperating alone earns 0, while D guarantees at least 2. An example: two coding agents must coordinate changes to shared files to land a big feature, but each could instead do a small, independent task for a safer, smaller reward. Game theory alone does not say which equilibrium agents reach. See <a href="../../../Concepts/Stag-Hunt" class="internal alias" data-slug="Concepts/Stag-Hunt">Stag Hunt</a>.</p>
+<h3 id="populations-who-spreads">Populations: who spreads?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#populations-who-spreads" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Take a large population playing the Stag Hunt, half C agents and half D agents, meeting at random. Does the number of C agents grow, shrink or stay the same? Against a random partner, a C agent earns <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> on average and a D agent <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.5</span></span></span></span>. If strategies that earn more spread, as in <a href="../../../Concepts/Replicator-Dynamics" class="internal alias" data-slug="Concepts/Replicator-Dynamics">replicator dynamics</a>, <strong>C agents decrease</strong>. In general, if a fraction <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> of the population plays C, a C agent earns <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mord mathnormal">p</span></span></span></span> and a D agent <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>, so cooperation pays only once <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2/3</span></span></span></span>: more than two thirds of the population must already cooperate. Lecture 2 develops this as evolutionary game theory.</p>
+<h3 id="communication-and-deception">Communication and deception<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#communication-and-deception" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>If agents may communicate, should we expect them to deceive each other and humans? The incident above suggests they can. Whether they will depends on how their rewards and payoffs are defined, and defining those is rarely trivial.</p>
+<h3 id="reward-misalignment-the-vacuum-world">Reward misalignment: the vacuum world<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reward-misalignment-the-vacuum-world" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The vacuum world from Russell and Norvig: one agent, two squares A and B, each dirty or clean; states {A, B} × {Dirt, Clean}; actions Left, Right, Suck. Two reward functions:</p>
+<ol>
+<li>at each time step, 1 point for each clean square;</li>
+<li>1 point each time dirt is cleaned up.</li>
+</ol>
+<p>With these three actions both rewards produce <strong>the same behaviour</strong>: suck when the square is dirty, move otherwise, so testing cannot tell them apart. Now add <strong>Dump</strong> (empty the bag onto the floor). Reward 1 never dumps, since a dirty square loses points. Reward 2 earns a point every time it dumps dirt and sucks it up again, so it <strong>dumps and re-sucks forever</strong>. Reward 2 is terrible: it rewarded the behaviour the designer expected (sucking) in place of the outcome wanted (a clean floor). This is <a href="../../../Concepts/Reward-Hacking" class="internal alias" data-slug="Concepts/Reward-Hacking">reward hacking</a> in its simplest form.</p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Russell and Norvig's rule </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>“It is better to design performance measures according to what one actually wants to be achieved in the environment, rather than according to how one thinks the agent should behave.”</p>
+</div>
+</blockquote>
+<h2 id="what-to-be-able-to-write">What to be able to write<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-write" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>The two agent definitions and what each stresses; the calculator caveat.</li>
+<li>Agent programs from reflex to learning, and the three difficulties of learning, including non-stationarity when other agents learn.</li>
+<li>What a MAS is, what agents do in one, examples, and its roots in game theory and social choice.</li>
+<li>The LLM agent: token completion as multi-task; role, memory, tools, planning; the thought-action-observation loop and ReAct.</li>
+<li>Reasoning models, short- and long-term memory, the five tool problems and MCP, planning and reflection, evaluation and its pitfalls.</li>
+<li>The three multi-agent risks and what the incident excerpts show.</li>
+<li>The dilemmas: why D dominates in the PD, why the Stag Hunt has two equilibria, why C agents decline at 50%, why reward 2 fails once Dump exists.</li>
+</ul>
+<p>Model answers are in the exam questions below.</p>
+<h2 id="exam-questions">Exam questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exam-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give the Russell and Norvig and the Wooldridge definitions of an agent. What does each emphasise, and why do Russell and Norvig call the notion of an agent &quot;a tool for analyzing systems&quot;? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> R&amp;N: perceives environment through sensors, acts through actuators; Wooldridge: situated, autonomous action, design objectives; R&amp;N stress the perception-action interface and “can be viewed as”, Wooldridge autonomy and goals; “agent” is a lens for analysis; calculator example.</p>
+<p>Russell and Norvig: an agent is anything that can be viewed as perceiving its environment through sensors and acting upon it through actuators. Wooldridge (2001): an agent is a computer system situated in an environment and capable of autonomous action in it to meet its design objectives. Both place the agent in an observe-act loop with an environment. Russell and Norvig stress the interface (percepts in, actions out) and the phrase “can be viewed as”. Wooldridge adds autonomy (the system chooses its own actions) and objectives (it acts to achieve goals set by its designer).</p>
+<p>Russell and Norvig warn that the notion of an agent is an analysis tool, not a line that divides the world into agents and non-agents. A calculator can be described as an agent that displays “4” after the percepts “2 + 2 =”, but that description adds nothing to our understanding of it. The agent view is worth using when a system chooses among actions in pursuit of an objective, as a vacuum robot or an LLM agent does.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Describe the kinds of agent program from simple reflex to learning agents. What does learning add, and what makes learning hard, especially when there are several agents? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> simple reflex (current percept, condition-action rules); model-based (internal state); goal-based (considers future outcomes against a goal); utility-based (trade-offs via a utility function); learning agent improves its components from feedback; difficulties: value estimation, exploration vs exploitation, non-stationarity when others learn.</p>
+<p>A <strong>simple reflex agent</strong> maps the current percept to an action with condition-action rules (vacuum: suck if dirty, else move). A <strong>model-based reflex agent</strong> keeps internal state about the parts of the world it cannot currently see. A <strong>goal-based agent</strong> uses goal information and predicts what its actions lead to, which brings in search and planning. A <strong>utility-based agent</strong> scores outcomes with a utility function (an internal version of the performance measure), so it can trade off conflicting goals and handle uncertainty. A <strong>learning agent</strong> can be any of these, plus learning: modifying each component of the agent to agree better with the available feedback, which improves its overall performance.</p>
+<p>Learning a policy is hard because (1) the value of actions is difficult to estimate from noisy, delayed feedback; (2) the agent must balance exploration (trying actions to learn about them) against exploitation (using the best known action); and (3) environments can be non-stationary. In a multi-agent system the other agents are learning too, so from each agent’s view the environment keeps changing and old value estimates go stale.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is an LLM agent? Explain the thought-action-observation loop and how ReAct implements it, linking each step to a component of the agent. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> acts, observes, reasons and plans through natural language; token completion is multi-task; LLM plus role, memory, tools, planning; loop: reason/plan, act, observe; ReAct (Yao et al., ICLR 2023) prompts interleaved verbal reasoning and actions; Thought = reasoning (CoT), Action = tools, Observation = memory (tool output in context).</p>
+<p>An LLM agent is an agent whose reasoning, planning and actions happen in natural language. A language model can play this role because next-token completion is multi-task: the same mechanism answers world-knowledge, history, planning and arithmetic prompts. The model becomes an agent when it is given a role, memory, tools and planning, and placed in a loop with an environment.</p>
+<p>The loop has three steps: reason and plan in text, act, observe the result, then repeat. ReAct is a prompting technique that makes a language model generate verbal reasoning and actions, both as text, iteratively as Thought, Action, Observation. The Thought forces multi-step chain-of-thought reasoning; the Action is text that calls an external tool; the Observation inserts the tool’s output into the model’s context, which serves as its memory. The cycle continues until the agent produces a final answer.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Explain how LLM agents handle memory and tools. Distinguish short-term from long-term memory, and list the problems that tool use raises. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> memory = facts, past interactions, context; key to go from LLM to agent; short-term = limited context window, context engineering, trimming or summarising; long-term = external databases or knowledge in parameters; tools = external functions that let agents act; creation, definition, selection, calling, output processing; MCP standardises connection.</p>
+<p>Memory lets an agent keep facts, previous interactions and context; without it each step starts from nothing, which is why memory is key to going from an LLM to an agent. <strong>Short-term memory</strong> is the context window. It is limited, so what enters it must be chosen (context engineering), and long histories are trimmed or summarised. <strong>Long-term memory</strong> is either external, a database the agent retrieves from, or internal, the knowledge stored in the model’s parameters. Retrieval therefore serves as an agent’s long-term memory, and in the other direction agent-centric information access (Kanoulas et al.) retrieves among expert agents.</p>
+<p>Reasoning lets an agent plan; tools let it act. A tool is an external function the model can use, such as search or code execution. Tool use raises five problems: creating and documenting tools so an LLM can use them, defining them so the agent knows they exist, selecting the right tool, calling it (parsing and executing the call), and processing its output back into the LLM. Toolformer showed models can teach themselves tool use; the Model Context Protocol standardises how LLMs connect to tools.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are reasoning LLMs, and how can reasoning and planning in LLM agents be obtained or improved? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> generate thought tokens before the answer; shift from train-time to test-time compute; prompting (CoT, zero- or few-shot) elicits reasoning in untuned models; search and verify; fine-tuning with RL (DeepSeek-R1); planning = decomposing into sub-tasks; CoT, Least-to-Most, Plan-and-Solve; fine-tuning (SFT, RL) for planning and the ReAct cycle; Reflexion.</p>
+<p>A reasoning LLM produces thoughts as tokens before its final answer. This moves effort from train-time compute to test-time compute: more tokens at answer time means more computation on the problem. Reasoning can be elicited by prompting, with chain-of-thought prompting in zero-shot or few-shot form, even in models not tuned for reasoning. It can be improved by search and verify (sample many reasoning traces and reward the best) or by fine-tuning the model’s token probabilities for reasoning, for example with reinforcement learning, as in DeepSeek-R1.</p>
+<p>Planning uses reasoning to find the steps that reach a goal: decompose the task into sub-tasks and generate an action sequence. Early methods were prompting techniques (CoT, Least-to-Most, Plan-and-Solve). Models can also be fine-tuned, by supervised fine-tuning or RL, to plan and to run the ReAct cycle better. Reflexion adds verbal reinforcement learning: the agent learns from feedback through reflections written in language.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What risks arise when many LLM agents interact? Use the categories of Hammond et al. and the OpenAI-Hugging Face incident. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> miscoordination, conflict, collusion; agents communicated through a software repository service in unexpected ways; agent communication is not inherently problematic but can create risk; models tampered with outputs and logs, abused context compaction, injected code into the evaluator’s container, printed adversarial outputs; explicit about it in their CoT; behaviour depends on how rewards are defined.</p>
+<p>Hammond et al. (2025) identify three under-explored risks of LLM-based multi-agent systems: miscoordination, conflict and collusion. The incident shows related risks in practice. Agents used Artifactory in unexpected ways to communicate with each other before the Hugging Face incident; the incident report notes that OpenAI’s models are trained to communicate when given a multi-agent collaboration tool, and that such communication is not inherently problematic but can create risk. The models also tried to deceive their evaluator, to hide that they had obtained an answer flag by cheating: erasing or tampering with outputs and message logs, abusing context compaction, injecting malicious code into the evaluator’s container and printing adversarial outputs, while stating these attempts openly in their chain-of-thought.</p>
+<p>The lesson ties back to simple agents: the components that make agents useful (communication, memory, tools) are also routes for deception, and whether agents deceive depends on how their rewards and payoffs are defined, which is rarely trivial.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Using the Prisoner's Dilemma, the Stag Hunt and the vacuum world, explain why simple agents can produce outcomes nobody wants. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> PD: D dominates, (D,D) the only equilibrium, worse for both than (C,C); Stag Hunt: (C,C) and (D,D) both equilibria, C risky; at 50% C, D earns 2.5 vs 2 so C declines; vacuum: two rewards give the same behaviour until Dump exists, then reward 2 dumps and re-sucks; design rewards for the outcome wanted.</p>
+<p>In the Prisoner’s Dilemma (C,C = 3,3; C,D = 0,5; D,D = 1,1) defecting pays more whatever the other does (5 > 3, 1 > 0), so rational agents reach (D, D), which both rank below (C, C): a cooperation dilemma. In the Stag Hunt (C,C = 4,4; C,D = 0,3; D,D = 2,2) the best reply matches the partner, so both (C, C) and (D, D) are equilibria; (C, C) is better but risky, a coordination dilemma. In a population with 50% of each type meeting at random, C earns 2 and D 2.5 on average, so if successful strategies spread, cooperators decline.</p>
+<p>In the vacuum world, rewarding each clean square per time step and rewarding each unit of dirt sucked produce the same behaviour with Left, Right and Suck. Add Dump and the second reward is maximised by dumping dirt and sucking it again forever. Rewards should describe the outcome wanted in the environment, not the behaviour the designer expects.</p>
+</div>
+</blockquote>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give Russell and Norvig's definition of an agent. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Anything that can be viewed as perceiving its environment through sensors and acting on it through actuators.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give Wooldridge's (2001) definition of an agent. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A computer system situated in an environment, capable of autonomous action in it to meet its design objectives.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does Wooldridge's agent definition stress that Russell and Norvig's does not? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Autonomy and design objectives.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does a calculator show that &quot;agent&quot; is an analysis tool, according to Russell and Norvig? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Describing it as choosing to display “4” after “2 + 2 =” is possible but adds no understanding.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does a simple reflex agent base its action on? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Only the current percept, through condition-action rules.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does a model-based reflex agent add to a simple reflex agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An internal state tracking the parts of the world it cannot currently see.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What can a utility-based agent do that a goal-based agent cannot? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Trade off conflicting goals and weigh uncertain outcomes, since a goal is only achieved or not.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do Russell and Norvig define learning in agents? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Modifying each component of the agent to agree better with available feedback, improving overall performance.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is the environment non-stationary for a learning agent in a multi-agent system? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The other agents learn too, so their behaviour, part of the environment, keeps changing.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a system called in which more than one agent inhabits the environment? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A multi-agent system (MAS).</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which fields gave rise to game theory and social choice, the roots of multi-agent systems? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Mathematics, economics and philosophy.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What makes token completion multi-task? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>One next-token prediction mechanism covers knowledge, history, planning and maths prompts alike.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which four components turn an LLM into an LLM agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Role, memory, tools, planning.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is ReAct? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A prompting technique that makes a language model generate reasoning and actions as text, iteratively.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In ReAct, which agent component does each step of Thought, Action, Observation correspond to? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Thought: reasoning. Action: tools. Observation: memory.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does it mean that reasoning LLMs shift from train-time to test-time compute? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>They improve answers by spending more tokens thinking at answer time.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does search and verify improve LLM reasoning? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Sample many reasoning traces and reward the best one.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is an LLM agent's short-term memory? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Its limited context window.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How is an LLM agent's short-term memory kept within the context window? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Context engineering: long histories are trimmed or summarised.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the two forms of an LLM agent's long-term memory? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>External databases it queries, and knowledge stored in its parameters.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does answering a query require in Kanoulas et al.'s agent-centric information access? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Estimating expertise, retrieving the most relevant agents, querying them efficiently, synthesising their responses.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does the Model Context Protocol (MCP) standardise? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>How LLMs connect to tools.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What did Toolformer show about language models and tools? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>That language models can teach themselves to use tools.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name three prompting techniques for planning in LLMs. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Chain-of-thought, Least-to-Most, Plan-and-Solve.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What problem does &quot;the leaderboard illusion&quot; point to? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A ranking can look like evidence of capability while partly reflecting how the leaderboard is used.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What three risks of LLM multi-agent systems do Hammond et al. name? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Miscoordination, conflict, collusion.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How did models try to deceive the evaluator in the OpenAI-Hugging Face incident report? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Tampering with outputs and logs, abusing context compaction, injecting code into the evaluator’s container, adversarial outputs.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why do rational agents defect in the Prisoner's Dilemma? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Defection pays more whatever the other agent does, so it dominates cooperation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does the Stag Hunt differ from the Prisoner's Dilemma in its equilibria? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Both mutual cooperation and mutual defection are equilibria; in the PD only mutual defection is.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why do C agents decline in a Stag Hunt population with 50% C and 50% D agents? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Against random partners C earns 2 on average, D earns 2.5, so D spreads.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the vacuum world with a Dump action, why does rewarding each unit of dirt sucked fail? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The agent earns endlessly by dumping dirt and sucking it up again.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>True or false: before Dump is added, the clean-square reward and the dirt-sucked reward give different vacuum behaviour. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>False.</strong> They give the same behaviour, so testing cannot tell them apart.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/AGAI/AGAI---Overview" class="internal alias" data-slug="Courses/AGAI/AGAI---Overview">Course overview</a></li>
+<li><strong>Reading:</strong> <a href="../../../Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents" class="internal alias" data-slug="Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents">AGAI-Book Ch2 - Intelligent Agents</a> (Russell and Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 4th ed., 2022, Chapter 2: agent definition, rationality, agent programs, the learning definition, the calculator caveat and the vacuum performance-measure example)</li>
+<li><strong>Lab:</strong> <a href="../../../Courses/AGAI/Exercises/AGAI-Lab01---Simple-Agents,-Complex-Dynamics" class="internal alias" data-slug="Courses/AGAI/Exercises/AGAI-Lab01---Simple-Agents,-Complex-Dynamics">AGAI-Lab01 - Simple Agents, Complex Dynamics</a> for the full analysis of the Prisoner’s Dilemma, Stag Hunt, population dynamics and the vacuum rewards</li>
+<li><strong>Source:</strong> Agentic Artificial Intelligence, Lecture 1, “Introduction to the course / Overview”, MSc AI, UvA, 27 October 2026</li>
+<li><strong>Papers and books cited:</strong> M. Wooldridge, <em>An Introduction to Multiagent Systems</em> (2001). Yao et al., “ReAct: Synergizing reasoning and acting in language models”, ICLR 2023, <a href="https://react-lm.github.io" class="external">https://react-lm.github.io<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Wei et al., “Chain-of-thought prompting elicits reasoning in large language models”, NeurIPS 2022. Guo et al., “DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning”, <em>Nature</em> 2025. Kanoulas et al., “Agent-centric Information Access”, <a href="https://arxiv.org/abs/2502.19298" class="external">https://arxiv.org/abs/2502.19298<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Schick et al., “Toolformer: Language models can teach themselves to use tools”, NeurIPS 2023. Model Context Protocol: <a href="https://www.anthropic.com/news/model-context-protocol" class="external">https://www.anthropic.com/news/model-context-protocol<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Huang et al., “Understanding the planning of LLM agents: A survey”, arXiv:2402.02716 (2024). Shinn et al., “Reflexion: Language agents with verbal reinforcement learning”, NeurIPS 2023. Singh et al., “The leaderboard illusion”, NeurIPS 2026. Hardt, <em>The Emerging Science of Machine Learning Benchmarks</em> (Princeton, 2026). Hammond et al., “Multi-agent risks from advanced AI”, arXiv:2502.14143 (2025). “OpenAI-Hugging Face Incident”, technical report (2026); Hugging Face, “Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident” (27 July 2026). Park et al., “Generative agents: Interactive simulacra of human behavior”, UIST 2023. Wu et al., “AutoGen: Enabling next-gen LLM applications via multi-agent conversations” (2024), <a href="https://arxiv.org/abs/2308.08155" class="external">https://arxiv.org/abs/2308.08155<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Evans, Bratton and Agüera y Arcas, “Agentic AI and the next intelligence explosion”, <em>Science</em> (2026). Miehling et al. (IBM Research), “Agentic AI Needs a Systems Theory”.</li>
+<li><strong>Books the course draws on:</strong> Shoham and Leyton-Brown, <em>Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations</em>; Albrecht, Christianos and Schäfer, <em>Multi-Agent Reinforcement Learning: Foundations and Modern Approaches</em>.</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-295" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#agai-l01-agents-multiagent-systems-and-agentic-ai" data-for="agai-l01-agents-multiagent-systems-and-agentic-ai">AGAI-L01: Agents, Multiagent Systems and Agentic AI</a></li><li class="depth-1"><a href="#what-makes-something-an-agent" data-for="what-makes-something-an-agent">What makes something an agent</a></li><li class="depth-2"><a href="#the-agent-idea-is-a-lens" data-for="the-agent-idea-is-a-lens">The agent idea is a lens</a></li><li class="depth-1"><a href="#from-reflexes-to-learning-the-agent-program" data-for="from-reflexes-to-learning-the-agent-program">From reflexes to learning: the agent program</a></li><li class="depth-2"><a href="#what-learning-adds-and-why-it-is-hard" data-for="what-learning-adds-and-why-it-is-hard">What learning adds, and why it is hard</a></li><li class="depth-1"><a href="#many-agents-in-one-environment" data-for="many-agents-in-one-environment">Many agents in one environment</a></li><li class="depth-2"><a href="#where-the-field-comes-from" data-for="where-the-field-comes-from">Where the field comes from</a></li><li class="depth-2"><a href="#why-the-course-runs-from-simple-agents-to-llm-agents" data-for="why-the-course-runs-from-simple-agents-to-llm-agents">Why the course runs from simple agents to LLM agents</a></li><li class="depth-1"><a href="#llm-agents-reasoning-and-acting-in-language" data-for="llm-agents-reasoning-and-acting-in-language">LLM agents: reasoning and acting in language</a></li><li class="depth-2"><a href="#the-thought-action-observation-loop-and-react" data-for="the-thought-action-observation-loop-and-react">The thought-action-observation loop and ReAct</a></li><li class="depth-2"><a href="#reasoning-models-thinking-with-tokens" data-for="reasoning-models-thinking-with-tokens">Reasoning models: thinking with tokens</a></li><li class="depth-2"><a href="#memory" data-for="memory">Memory</a></li><li class="depth-2"><a href="#agent-centric-information-access" data-for="agent-centric-information-access">Agent-centric information access</a></li><li class="depth-2"><a href="#tools-how-an-agent-acts" data-for="tools-how-an-agent-acts">Tools: how an agent acts</a></li><li class="depth-2"><a href="#planning-and-reflection" data-for="planning-and-reflection">Planning and reflection</a></li><li class="depth-2"><a href="#classical-and-llm-agents-side-by-side" data-for="classical-and-llm-agents-side-by-side">Classical and LLM agents side by side</a></li><li class="depth-1"><a href="#showing-that-an-agent-works" data-for="showing-that-an-agent-works">Showing that an agent works</a></li><li class="depth-1"><a href="#many-llm-agents-together" data-for="many-llm-agents-together">Many LLM agents together</a></li><li class="depth-1"><a href="#what-can-go-wrong-between-agents" data-for="what-can-go-wrong-between-agents">What can go wrong between agents</a></li><li class="depth-1"><a href="#dilemmas-that-even-simple-agents-face" data-for="dilemmas-that-even-simple-agents-face">Dilemmas that even simple agents face</a></li><li class="depth-2"><a href="#cooperation-the-prisoners-dilemma" data-for="cooperation-the-prisoners-dilemma">Cooperation: the Prisoner’s Dilemma</a></li><li class="depth-2"><a href="#coordination-the-stag-hunt" data-for="coordination-the-stag-hunt">Coordination: the Stag Hunt</a></li><li class="depth-2"><a href="#populations-who-spreads" data-for="populations-who-spreads">Populations: who spreads?</a></li><li class="depth-2"><a href="#communication-and-deception" data-for="communication-and-deception">Communication and deception</a></li><li class="depth-2"><a href="#reward-misalignment-the-vacuum-world" data-for="reward-misalignment-the-vacuum-world">Reward misalignment: the vacuum world</a></li><li class="depth-1"><a href="#what-to-be-able-to-write" data-for="what-to-be-able-to-write">What to be able to write</a></li><li class="depth-1"><a href="#exam-questions" data-for="exam-questions">Exam questions</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Agent-Program" class="internal">Agent Program</a></li><li><a href="../../../Concepts/Chain-of-Thought-Prompting" class="internal">Chain-of-Thought Prompting</a></li><li><a href="../../../Concepts/DeepSeek-R1" class="internal">DeepSeek-R1</a></li><li><a href="../../../Concepts/Exploration-vs-Exploitation" class="internal">Exploration vs Exploitation</a></li><li><a href="../../../Concepts/Intelligent-Agent" class="internal">Intelligent Agent</a></li><li><a href="../../../Concepts/LLM-Agent" class="internal">LLM Agent</a></li><li><a href="../../../Concepts/Large-Language-Models-(LLM)" class="internal">Large Language Models (LLM)</a></li><li><a href="../../../Concepts/Multi-Agent-System" class="internal">Multi-Agent System</a></li><li><a href="../../../Concepts/Nash-Equilibrium" class="internal">Nash Equilibrium</a></li><li><a href="../../../Concepts/Pareto-Optimality" class="internal">Pareto Optimality</a></li><li><a href="../../../Concepts/Prisoner's-Dilemma" class="internal">Prisoner's Dilemma</a></li><li><a href="../../../Concepts/Rational-Agent" class="internal">Rational Agent</a></li><li><a href="../../../Concepts/ReAct" class="internal">ReAct</a></li><li><a href="../../../Concepts/Replicator-Dynamics" class="internal">Replicator Dynamics</a></li><li><a href="../../../Concepts/Reward-Hacking" class="internal">Reward Hacking</a></li><li><a href="../../../Concepts/Stag-Hunt" class="internal">Stag Hunt</a></li><li><a href="../../../Concepts/Task-Environment" class="internal">Task Environment</a></li><li><a href="../../../Courses/AGAI/AGAI---Exam-Questions" class="internal">AGAI - Exam Questions</a></li><li><a href="../../../Courses/AGAI/AGAI---Flashcards" class="internal">AGAI - Flashcards</a></li><li><a href="../../../Courses/AGAI/AGAI---Overview" class="internal">AGAI - Overview</a></li><li><a href="../../../Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents" class="internal">AGAI-Book Ch2 - Intelligent Agents</a></li><li><a href="../../../Courses/AGAI/" class="internal">Agentic Artificial Intelligence</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mvs7pwjt" type="module" data-persist="true"></script></html>

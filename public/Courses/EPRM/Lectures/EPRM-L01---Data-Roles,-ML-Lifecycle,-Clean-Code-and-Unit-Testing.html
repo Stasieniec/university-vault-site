@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing — notes.swasilewski.com"/><meta name="twitter:description" content="EPRM-L01: Data Roles, ML Lifecycle, Clean Code and Unit Testing In short Most ML projects never deliver value, and the usual reasons are people and deployment rather than model quality: the roles involved do not work together, and the model never reaches production."/><meta property="og:description" content="EPRM-L01: Data Roles, ML Lifecycle, Clean Code and Unit Testing In short Most ML projects never deliver value, and the usual reasons are people and deployment rather than model quality: the roles involved do not work together, and the model never reaches production."/><meta property="og:image:alt" content="EPRM-L01: Data Roles, ML Lifecycle, Clean Code and Unit Testing In short Most ML projects never deliver value, and the usual reasons are people and deployment rather than model quality: the roles involved do not work together, and the model never reaches production."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="EPRM-L01: Data Roles, ML Lifecycle, Clean Code and Unit Testing In short Most ML projects never deliver value, and the usual reasons are people and deployment rather than model quality: the roles involved do not work together, and the model never reaches production."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mvs7pwjt" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mvs7pwjt" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mvs7pwjt").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-441"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-441" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/">Engineering Production Ready ML/AI Systems</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>EPRM L01   Data Roles, ML Lifecycle, Clean Code and Unit Testing</a></div></nav><h1 class="article-title">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-28T00:00:00.000Z">Oct 28, 2026</time><span>26 min read</span></p></div></div><article class="popover-hint"><h1 id="eprm-l01-data-roles-ml-lifecycle-clean-code-and-unit-testing">EPRM-L01: Data Roles, ML Lifecycle, Clean Code and Unit Testing<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#eprm-l01-data-roles-ml-lifecycle-clean-code-and-unit-testing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Most ML projects never deliver value, and the usual reasons are people and deployment rather than model quality: the roles involved do not work together, and the model never reaches production. This lecture answers three questions that follow from that.</p>
+<p><strong>Who builds an ML product?</strong> A chain of data roles: data engineers make raw data usable, analysts turn it into information, data scientists build models, ML engineers put models into production and keep them running, with backend and platform teams around them. Handovers along this chain are where projects die, so the lecturer argues for a full-stack ML engineer who owns the problem end to end.</p>
+<p><strong>How does work move to production?</strong> Through layered environments (development, acceptance, production) and the MLOps lifecycle, which joins the data-and-model loop to the DevOps loop.</p>
+<p><strong>What does production-ready code look like?</strong> Clean code that a colleague can read, change and test, plus unit tests that prove each piece does what you think. A z-score with a missing bracket, which runs without error and silently feeds wrong numbers to the model, shows why both matter.</p>
+<p>There is no written exam: this feeds Assignment 1, the course project and the TA questioning about your code.</p>
+</div>
+</blockquote>
+<h2 id="why-most-ml-projects-never-deliver-value">Why most ML projects never deliver value<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-most-ml-projects-never-deliver-value" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The headline number: <strong>87% of ML/AI projects failed</strong> (the course’s framing, for 2021). Two causes stand behind it:</p>
+<ul>
+<li><strong>Roles, individuals and teams could not collaborate</strong>, with each other or with stakeholders.</li>
+<li><strong>The models could not be deployed.</strong></li>
+</ul>
+<p>The MIT Sloan reading (Davenport and Zhang, 2021) is more precise about the figure. It comes from a VentureBeat analysis suggesting that “87% of AI models are never put into production”, so it counts models that never reached production. The article’s point is blunt: “If there is no production deployment, there is no economic value.” Its advice for data science groups includes partnering with business units that are open to AI, choosing projects with clear value and a clear path to production, getting key stakeholders on board before development starts, and using proofs of concept selectively.</p>
+<p>The lecturer, Kemal Yesilbek, adds a slogan from Joshua Seiden’s <em>Outcomes Over Output</em>: a <strong>brilliant model</strong> is not the goal, a <strong>brilliant outcome</strong> is. The book’s subtitle says customer behaviour is the key metric for business success. A model with excellent offline accuracy that sits on a laptop is output; a deployed system that changes what users or the business actually do is an outcome.</p>
+<p>Hence this course: ML/AI engineering, which assumes you can build models and teaches you to turn them into live, reliable systems.</p>
+<h2 id="who-does-what-between-raw-data-and-a-product">Who does what between raw data and a product<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#who-does-what-between-raw-data-and-a-product" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Nobody masters everything (“jack of all trades, master of none”), and the lecturer warns against thinking GenAI can stand in for your own expertise. But once you have enough competence in one field, combining it with a second one pays off, which is where the argument ends up: the full-stack ML engineer.</p>
+<p>Every ML role is a <strong>data role</strong>: without data in a usable state there is no ML, and a big part of any data scientist’s or ML engineer’s job is understanding, cleaning and transforming data. So all data roles have to collaborate for an ML initiative to succeed.</p>
+<p>Job titles are a mess (ML engineer, AI engineer, MLOps engineer, ML scientist, prompt engineer and more), with no consensus on what each one does. What stays stable is the skill set, so the course follows the journey from raw data to product and adds one role at each stage.</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    RAW[Raw data] --> DE[Data engineering]\n    DE --> CUR[(Curated data)]\n    CUR --> DA[Data analysis]\n    CUR --> DS[Data science]\n    DS --> MOD[Model]\n    MOD --> MLE[ML engineer]\n    MLE --> PROD[ML/AI product]\n    BE[Backend engineer] --- MLE\n    PLAT[Infra / platform engineering] -.- DE\n    PLAT -.- MLE&quot;">flowchart LR
+    RAW[Raw data] --> DE[Data engineering]
+    DE --> CUR[(Curated data)]
+    CUR --> DA[Data analysis]
+    CUR --> DS[Data science]
+    DS --> MOD[Model]
+    MOD --> MLE[ML engineer]
+    MLE --> PROD[ML/AI product]
+    BE[Backend engineer] --- MLE
+    PLAT[Infra / platform engineering] -.- DE
+    PLAT -.- MLE
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Raw data</strong> is data as the backend system saved it, to serve the app’s core operations.</p>
+<h3 id="data-engineers-data-others-can-consume">Data engineers: data others can consume<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data-engineers-data-others-can-consume" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Data engineers build systems so that everyone else can consume data that is:</p>
+<ol>
+<li><strong>High quality:</strong> accurate, complete, reliable.</li>
+<li><strong>In the right format:</strong> the format serves the purpose.</li>
+<li><strong>Available:</strong> it arrives on time, without failures.</li>
+<li><strong>Useful:</strong> fit for the purpose it is consumed for.</li>
+</ol>
+<p><strong>The ride-hailing example.</strong> You want the average ride duration per month at a ride-hailing company with no analytics yet. The data was never “collected”: it was generated by user interactions and stored by and for the backend. It is low-level events, far from high-level information:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Event</th><th>User</th><th>Timestamp</th></tr></thead><tbody><tr><td>0</td><td>U123</td><td>68323635</td></tr><tr><td>0</td><td>U345</td><td>6832369D</td></tr><tr><td>1</td><td>U123</td><td>68323636</td></tr><tr><td>0</td><td>U345</td><td>68323743</td></tr></tbody></table></div>
+<p>To get one number you must:</p>
+<ul>
+<li>Work out that events are enumerated to save space: 0 is ride start, 1 is ride end.</li>
+<li>Pair start and end events per user.</li>
+<li>Discover that the timestamp is the hexadecimal form of a UTC Unix epoch (seconds since 1 January 1970) and convert it. Decoded for this note: <code>0x68323635</code> is 1,748,121,141, which is 24 May 2025, 21:12:21 UTC.</li>
+<li>Convert the epoch into a date format you can group by month, compute each ride’s duration and average per month.</li>
+</ul>
+<p>Then the data-quality questions arrive. U123’s ride ends one time unit after it starts: is that a real ride? U345 starts a second ride before the first one ended. Some rides have not ended yet. Each needs a decision before the average means anything.</p>
+<p>There are also architectural and organisational problems:</p>
+<ul>
+<li><strong>The database is optimised for the backend.</strong> Your full-history query causes latency spikes in the app, and the app’s core operations take priority over analytics.</li>
+<li><strong>Access rights.</strong> Why do you need this data?</li>
+<li><strong>Governance and security.</strong> How will you keep the data secure, avoid copies, and honour GDPR’s right to be forgotten?</li>
+</ul>
+<p>A “simple metric” becomes a project. And the same metric is useful to many teams: reporting, fraud detection (users abusing the system), and ML models that use it as a feature. So it is better if someone produces it once, properly:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Ride</th><th>StartDateTime</th><th>Ride duration</th></tr></thead><tbody><tr><td>R123</td><td>24-01-2024 10:53Z</td><td>00:10:05</td></tr><tr><td>R234</td><td>23-06-2024 23:06Z</td><td>00:24:56</td></tr></tbody></table></div>
+<p>That is data engineering: double starts handled (quality), hex epochs turned into readable times (format), transformations run on schedule (availability), served to whoever needs it (usefulness), the backend included.</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Shift-left reaches everyone </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Data engineers cannot prepare data for every purpose. Expect to extract, transform and load (ETL) data yourself to make it valuable for your ML system. “Shift-left” (moving work earlier in the chain, onto the people building the product) is coming for all of us.</p>
+</div>
+</blockquote>
+<h3 id="data-analysts-turning-data-into-information">Data analysts: turning data into information<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data-analysts-turning-data-into-information" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>“Data-driven” means making decisions backed by data instead of only hunches. It is hard: an HBR article reports that only about a quarter of organisations consider themselves data-driven, and executives name culture, a people problem, as the main barrier.</p>
+<p>The sharper point is that decision makers need <strong>information</strong>, and getting from data to information is work. <strong>The EV example:</strong> driving an electric car, you must decide whether to stop at the only charging station before your destination. The display shows the battery percentage. That is data, and it does not answer your question. What you need is the estimated remaining range in kilometres, which the car can derive from the data. That is information.</p>
+<p>Converting data into information and insight is the analyst’s job. Dashboards are one product of it. The core task is to understand the business, the question and the data, calculate the right numbers and present them so the decision is easy. Analysts work closely with the business and tend to specialise in a domain, which makes them good partners at the start of an ML project.</p>
+<h3 id="data-scientists-models-that-solve-a-business-problem">Data scientists: models that solve a business problem<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data-scientists-models-that-solve-a-business-problem" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ML can be <strong>a function of a product</strong> (YouTube Shorts choosing your next video, so well that it becomes addictive, with revenue and ethical concerns rising together) or <strong>the product itself</strong> (Google Translate, ChatGPT).</p>
+<p>Building a model that solves the problem is the data scientist’s focus. Their tasks:</p>
+<ul>
+<li>Understanding the problem, its scale and impact, and the goal</li>
+<li>Collecting data if it is not available, and understanding it (exploration, cleaning, linking the problem to the data)</li>
+<li>Feature engineering: features with high predictive power that <strong>can also be computed in the live environment</strong> within its non-functional requirements (latency, cost)</li>
+<li>Experiment design, model selection and training, evaluation</li>
+<li>Live (controlled) experimentation: measuring the model’s business impact in production</li>
+<li>Monitoring and retraining when performance deteriorates; reporting results</li>
+</ul>
+<p>The goal is solving the business problem through ML; models and code are means to that end. So picking the right path matters as much as coding skill.</p>
+<h3 id="ml-engineers-production-and-operations">ML engineers: production and operations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ml-engineers-production-and-operations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A beautiful, powerful car without tyres is useless. A model nobody uses has solved nothing.</p>
+<p>As companies hired data scientists, many from outside computer science, it became clear that most struggled with software engineering. The early fix was to hand the model to a backend or software engineer to “put it in production”. That produced frustrated engineers and, at the extreme, multi-million euro projects that failed completely (the reading on this is Kästner’s chapter, see <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams">EPRM-Book Ch21 - Interdisciplinary Teams</a>). ML engineers filled the gap, focusing on two things:</p>
+<ol>
+<li><strong>Productionization:</strong> “the process of turning a prototype into a mass-production product”, in IT terms bringing it to the live environment. Many data science teams build a prototype that hits the target metric and only then pass it to an ML engineer, who builds the system with or around it.</li>
+<li><strong>Operations:</strong> keeping the ML system working as expected in production: <strong>maintenance, monitoring and firefighting</strong>.</li>
+</ol>
+<h3 id="backend-and-platform-teams">Backend and platform teams<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backend-and-platform-teams" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The <strong>backend engineer</strong> works alongside the ML engineer to integrate the model into the product.</p>
+<p><strong>Infrastructure or platform teams</strong> exist because most people prefer cooking to cleaning the kitchen: ML engineers and data scientists would rather build solutions than maintain what sits underneath. Take a database. For a five-person company it takes minutes on a cloud platform. Once many teams use it, someone has to handle scaling, authentication, backups, security, governance (GDPR deletions), access rights, standardisation, duplicated data, wasted resources (“why does this query take 50 GB and five hours?”) and the mystery <code>kemal_table_54456</code>.</p>
+<p>A platform team takes this off the application teams, which does two things:</p>
+<ul>
+<li>It makes the application teams <strong>faster</strong>, because these tasks are no longer theirs.</li>
+<li>It makes the infrastructure <strong>more reliable</strong>, because this is the platform team’s expertise.</li>
+</ul>
+<h3 id="the-full-stack-ml-engineer">The full-stack ML engineer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-full-stack-ml-engineer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The lecturer’s conclusion from industry: <strong>merge the data scientist and ML engineer roles</strong>. The history explains why.</p>
+<ol>
+<li><strong>Early years:</strong> data scientists new to industry. Everything on a laptop, no git, no tests, no deployments, hoping a software engineer deploys it somehow.</li>
+<li><strong>Later:</strong> data scientists write some tests. The pain shows (models do not deploy themselves), so the model is passed to a software engineer, who has no idea what ML is.</li>
+<li><strong>Later still:</strong> ML engineers are introduced, and the handover problems move to the data scientist and ML engineer boundary.</li>
+<li><strong>Now:</strong> full-stack ML engineering is a sought-after skill, and systems get deployed instead of drowning in organisational issues for months or years.</li>
+</ol>
+<p>A full-stack ML engineer will not be excellent at everything, but has <strong>adequate skill in every area</strong> (enough to do each part, even at low maturity), so one person can <strong>own the problem and the solution end to end</strong>. In the lecturer’s experience, splits and handovers caused trouble and failed projects every time. The course project, an end-to-end system you build yourself, trains this profile.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Full-stack ML engineer </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Combines the data scientist and ML engineer roles: adequate skills across modelling, productionization and operations, so that one person owns the ML problem and its solution end to end, without handovers.</p>
+</div>
+</blockquote>
+<h2 id="how-ml-work-moves-to-production">How ML work moves to production<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-ml-work-moves-to-production" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="development-acceptance-production">Development, acceptance, production<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#development-acceptance-production" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Pressing a button that makes a change live is a bad idea. Modern software processes use <strong>layered environments</strong>:</p>
+<pre><code>Development  ->  Acceptance            ->  Production
+free             integrated services       LIVE, real users
+experimentation  and testing               protected
+</code></pre>
+<ul>
+<li>Each environment runs <strong>the same tech stack</strong>, so what works in acceptance works in production.</li>
+<li><strong>Only production is live</strong>, and production is protected: changes reach it only after passing through the earlier stages.</li>
+</ul>
+<h3 id="the-devops-loop">The DevOps loop<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-devops-loop" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>DevOps (development plus operations) describes software delivery as an endless loop: <strong>plan, code, build, test</strong> on the development side, then <strong>release, deploy, operate, monitor</strong> on the operations side, and what monitoring reveals feeds the next plan. Nothing is ever “done”; it is shipped and watched.</p>
+<h3 id="the-model-development-loop">The model development loop<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-model-development-loop" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ML work has its own loop, a data side and a model side:</p>
+<ul>
+<li><strong>Data:</strong> collect, curate, transform, validate</li>
+<li><strong>ML:</strong> explore, train, evaluate, formulate</li>
+</ul>
+<p>Formulating the problem (what to predict, from what) leads back to collecting the data you need, and exploring the data leads into training.</p>
+<h3 id="mlops-joins-the-two-loops">MLOps joins the two loops<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mlops-joins-the-two-loops" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>MLOps </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>MLOps = DataML + DevOps. The machine learning lifecycle joins the data-and-model loop to the DevOps loop, so that models are built, shipped, operated and monitored continuously like other software.</p>
+</div>
+</blockquote>
+<p>In the joined picture (Satish Chandra Gupta’s “MLOps eternal knot”) the two loops become one continuous cycle. An evaluated model goes into code, build and test; it is released, deployed, operated and monitored; what monitoring shows feeds the plan, which leads to formulating the problem again and collecting new data:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    subgraph Data\n      C[collect] --> CU[curate] --> T[transform] --> V[validate]\n    end\n    subgraph ML\n      E[explore] --> TR[train] --> EV[evaluate]\n    end\n    subgraph Dev\n      CO[code] --> B[build] --> TE[test]\n    end\n    subgraph Ops\n      R[release] --> D[deploy] --> O[operate] --> M[monitor]\n    end\n    V --> E\n    EV --> CO\n    TE --> R\n    M --> P[plan] --> F[formulate] --> C&quot;">flowchart LR
+    subgraph Data
+      C[collect] --> CU[curate] --> T[transform] --> V[validate]
+    end
+    subgraph ML
+      E[explore] --> TR[train] --> EV[evaluate]
+    end
+    subgraph Dev
+      CO[code] --> B[build] --> TE[test]
+    end
+    subgraph Ops
+      R[release] --> D[deploy] --> O[operate] --> M[monitor]
+    end
+    V --> E
+    EV --> CO
+    TE --> R
+    M --> P[plan] --> F[formulate] --> C
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>So a trained model is one stage in a cycle that never ends: it is shipped like any software and fed back into data collection and retraining. See <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a> for the concept in general.</p>
+<h2 id="clean-code-running-is-not-enough">Clean code: running is not enough<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#clean-code-running-is-not-enough" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Code that runs is the minimum. Production code is read, changed, debugged and tested by other people, and by you in six months. Bjarne Stroustrup, the inventor of C++, quoted in Robert C. Martin’s <em>Clean Code</em>: “I like my code to be elegant and efficient. […] Clean code does one thing well.” See <a href="../../../Concepts/Clean-Code" class="internal alias" data-slug="Concepts/Clean-Code">Clean Code</a> for the general concept.</p>
+<p>Martin’s principles, as the course uses them:</p>
+<ul>
+<li><strong>Naming:</strong> use intention-revealing names; avoid mental mapping (the reader should not have to translate <code>d</code> into “days since signup” in their head). Phil Karlton: “There are only two hard things in Computer Science: cache invalidation and naming things.”</li>
+<li><strong>Functions:</strong> keep them small; each does one thing; no side effects; don’t repeat yourself (DRY).</li>
+<li><strong>Comments:</strong> comments do not make up for bad code. Explain <em>why</em>, not <em>what</em>. Warn of consequences. Prefer a well-named function or variable to a comment. No commented-out code.</li>
+<li><strong>Keep it simple:</strong> write for today, not for “what we may need in future”. Simple is best and simple is elegant. Do not flex your engineering skills. (The reference here is Brooks’s “No Silver Bullet”. From outside the course material: it separates the complexity inherent in a problem from the complexity we add with our solutions.)</li>
+</ul>
+<h3 id="worked-examples-from-the-courses-mainpy">Worked examples from the course’s <code>main.py</code><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#worked-examples-from-the-courses-mainpy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The course repository has a small fraud-detection pipeline (<code>payment_type</code>, <code>category</code>, <code>amount</code>, <code>fraud</code> columns, a random forest) in a messy <code>main.py</code> and a cleaned version. The refactorings, many of them named after smells in Martin’s list:</p>
+<p><strong>Separate I/O from transformation.</strong> The original preprocessing function reads the file <em>and</em> cleans the data, so it has two reasons to change and cannot be tested without a file on disk.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># before</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> data_crunching</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">() -> pd.DataFrame:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> read_data(PathsConfig.raw_data)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.sample(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">frac</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">RunConfig.sample_rate)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.loc[:, [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;payment_type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;category&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;fraud&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    ...</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># after: a pure transformation; main() does the reading</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> data_preprocessing</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(data: pd.DataFrame) -> pd.DataFrame:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.loc[:, [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;payment_type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;category&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;fraud&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.sample(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">frac</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">RunConfig.sample_rate)</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    ...</span></span></code></pre></figure>
+<p>Note also the rename: “crunching” says nothing; <code>data_preprocessing</code> says what happens. The wrapper <code>read_data(path)</code>, which only called <code>pd.read_csv(path)</code>, was deleted as a <strong>shallow abstraction</strong>: it hides nothing and adds a layer to read through. (A wrapper earns its place when it adds something, such as validation, retries or remote storage.)</p>
+<p><strong>Extract logic so it can be tested, and watch the precedence bug.</strong> The feature function packed a z-score lambda, group-wise z-scores and one-hot encoding into one block:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># before: inside model_preparation()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">z_score </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> lambda</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> x: x[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> x[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].mean() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> x[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].std()</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># after: src/features.py</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> get_z_score</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(data: pd.DataFrame) -> pd.Series:</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].mean()) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].std()</span></span></code></pre></figure>
+<p>Division binds tighter than subtraction, so the original computes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal">s</span></span></span></span> instead of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">s</span></span></span></span>. For amounts 2, 4, 6 (mean 4, standard deviation 2) the correct z-scores are −1, 0, 1; the buggy line gives 0, 2, 4. <strong>No exception, no crash</strong>: the pipeline finishes and trains on wrong features. Only a unit test with known values catches it, and only once the function is small enough to test on its own. The function was also renamed from <code>model_preparation</code> (a model? a train/test split?) to <code>feature_engineering</code>.</p>
+<p><strong>Replace magic numbers with named configuration.</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># before</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;is_large_trx&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 123.45</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).astype(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">float</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># after</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;is_large_transaction&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> RunConfig.threshold_in_eur_to_consider_large_transactions</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).astype(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">float</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>The name says the unit and the meaning, and when risk analysts change the threshold it changes in one place. Hyperparameters go the same way into a model config. The original <code>RandomForestClassifier(max_depth=1)</code>, a forest of single-split trees that cannot model interactions such as “high amount and new payment method”, was probably a speed setting from early testing that nobody removed. Martin’s matching rule: understand the algorithm you use.</p>
+<p><strong>No flag arguments.</strong> A boolean parameter means the function does two things:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># before: two workflows and two return types behind one flag</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> model_training</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(data, is_run_cv: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">bool</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> False</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) -> </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">None</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    ...</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cv_scores </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> is_run_cv </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">else</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> model</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># after: two methods on a Model class</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model.get_cv_scores(data)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model.train_model(data)</span></span></code></pre></figure>
+<p>The before version even claims to return <code>None</code> while returning a dict or a classifier, which breaks type hints for every caller.</p>
+<p><strong>Other fixes in the same file:</strong></p>
+<ul>
+<li><strong>DRY:</strong> the same eight-line one-hot encoding block was copied for <code>category</code> and <code>payment_type</code>; it became one <code>get_encoded_features()</code> function called in a loop over column names.</li>
+<li><strong>Names one character apart:</strong> <code>encoder</code> (the fitted object) and <code>encoded</code> (its output), easy to swap by autocomplete.</li>
+<li><strong>Truncated names:</strong> <code>z_scores_by_cat</code> became <code>z_scores_by_category</code>.</li>
+<li><strong>Obsolete comment:</strong> “Clean the payment type and category by removing the ’ characters” above <code>str.replace(&quot;'&quot;, &quot;&quot;)</code> repeats the code. The replacement explains why: the CSV encodes strings with quotes.</li>
+<li><strong>Commented-out code</strong> (<code># x = data.drop(&quot;amount&quot;, axis=1)</code>) is deleted: git keeps the history.</li>
+<li><strong>Too many arguments:</strong> <code>save_model(model, directory, separator, file_name, cv_scores={}, is_s3=False)</code> became a zero-argument <code>save_model()</code> method, with paths from config. The <code>cv_scores={}</code> default is a classic Python trap: the dict is created once, when the function is defined, and shared across calls.</li>
+<li><strong>Global scope:</strong> code written directly under <code>if __name__ == &quot;__main__&quot;:</code> creates module-level variables (<code>data</code>, <code>model</code>) that functions in the file can accidentally read or shadow. Wrap it in <code>def main():</code> and call <code>main()</code>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Config classes and &quot;frozen&quot; </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The cleaned code keeps its configs in dataclasses marked <code>frozen=True</code>. From outside the course material, checked in Python: <code>frozen</code> only blocks assignment on <em>instances</em> (raising <code>FrozenInstanceError</code>); constants used on the class itself, as <code>RunConfig.x</code>, can still be reassigned. The config still does its main job, one named place for every constant.</p>
+</div>
+</blockquote>
+<h3 id="a-good-repository-layout">A good repository layout<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-good-repository-layout" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The course repository shows what a good layout may look like:</p>
+<pre><code>uva-mlprod-code/
+├── data/  models/  artifacts/     data and trained outputs (model.pkl)
+├── infra/                         build (Dockerfile), deployment (yaml),
+│                                  telemetry (prometheus, alerts), docker-compose
+├── scripts/                       one-off helpers (e.g. csv_to_parquet.py)
+├── src/
+│   ├── configs/configs.py         every constant and hyperparameter
+│   ├── data_processing/           preprocessing
+│   ├── feature_engineering/       feature extraction
+│   ├── modelling/model.py         the Model class
+│   ├── utils/
+│   └── main_training.py, main_api.py,
+│       main_drift_calculation.py  entry points
+├── tests/
+│   ├── unit/  integration/  conftest.py
+├── Makefile  README.md  requirements.txt  .gitignore  .coveragerc
+</code></pre>
+<p>Each folder has one job: pipeline code by stage under <code>src/</code>, separate <code>main_*.py</code> entry points for training, serving and drift calculation, and tests split into unit and integration.</p>
+<h2 id="unit-testing-proof-the-code-does-what-you-think">Unit testing: proof the code does what you think<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#unit-testing-proof-the-code-does-what-you-think" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>More coffee does not mean fewer bugs. How do you know your code works, even on a tired day? You write tests that check it for you, every time. See <a href="../../../Concepts/Unit-Testing" class="internal alias" data-slug="Concepts/Unit-Testing">Unit Testing</a> for the general concept.</p>
+<p>A <strong>unit</strong> is an atomic element of code: a function or a class. Units come in two shapes:</p>
+<ul>
+<li><strong>Units that perform an action</strong>, like <code>shutdown()</code>, which calls <code>os.system(&quot;shutdown&quot;)</code>. The test question: <em>is the action correct?</em></li>
+<li><strong>Units that return an output from parameters</strong>, like <code>sum(a, b)</code>. The test questions: <em>is the output correct for the given parameters?</em> and does it hold for both the <strong>happy flow</strong> (normal input) and the <strong>edge cases</strong>? For addition: <code>1 + 2 == 3</code> (happy), <code>-1 + -99999998 == -99999999</code> (large negatives), and <code>&quot;a&quot; + 2</code> should raise an error.</li>
+</ul>
+<h3 id="dependencies-and-mocks">Dependencies and mocks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dependencies-and-mocks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Units call other code. An <strong>internal dependency</strong> is your own code. An <strong>external dependency</strong> is something outside your program: a database, a web API, the operating system. A unit test must not hit external dependencies: it would be slow, flaky, and sometimes destructive (nobody wants the test for <code>shutdown()</code> to shut down the machine). So you replace the dependency with a <strong>mock</strong>, a stand-in object that records how it was called and returns whatever you tell it to.</p>
+<pre><code>           External dependency (OS, database, API)
+                  ^   replaced by a mock in the test
+                  |
+params --> [ Software unit ] --> output / action
+                  |
+           Internal dependency (your own code)
+</code></pre>
+<h3 id="anatomy-of-a-unit-test">Anatomy of a unit test<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#anatomy-of-a-unit-test" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Every unit test has three steps:</p>
+<ol>
+<li><strong>Setup:</strong> prepare the inputs, the expected results, and mocks for external dependencies.</li>
+<li><strong>Collect:</strong> call the unit with the parameters and collect its output (or what it did to the mock).</li>
+<li><strong>Compare:</strong> compare the output with the expectations. Pass or fail.</li>
+</ol>
+<p>In pytest (written for this note and run with pytest; it is not course code):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> unittest.mock </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Mock, patch</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pandas </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pd</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pytest</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> src.features </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> get_z_score</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> src.ops </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> add, shutdown          </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># add(a, b) returns a + b</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> src.rates </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> to_eur               </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># to_eur(amount, currency, rate_client)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> test_z_score_known_values</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pd.DataFrame({</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">4.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">6.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]})            </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># setup</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    expected </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pd.Series([</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">], </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">name</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> get_z_score(data)                                    </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># collect</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    pd.testing.assert_series_equal(result, expected)              </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># compare</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">@pytest.mark.parametrize</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;a, b, expected&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, [</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),                      </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># happy flow</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">99999998</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">99999999</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),     </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># edge case</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> test_add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(a, b, expected):</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    assert</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> add(a, b) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">==</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> expected</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> test_add_rejects_str_and_int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pytest.raises(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">TypeError</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">):</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        add(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;a&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> test_shutdown_calls_the_os</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> patch(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;src.ops.os.system&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> fake_system:   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># setup: mock the OS</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        shutdown()                                     </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># collect</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    fake_system.assert_called_once_with(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;shutdown&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)    </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># compare: right action?</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> test_to_eur_with_mocked_rate_service</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    rate_client </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Mock()                               </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># external API stand-in</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    rate_client.get_rate.return_value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0.5</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    assert</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> to_eur(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">10.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;USD&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, rate_client) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5.0</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    rate_client.get_rate.assert_called_once_with(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;USD&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;EUR&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>The first test fails on the buggy lambda (it returns 0, 2, 4). The last one tests a function <code>to_eur(amount, currency, rate_client)</code> that would normally call a live exchange-rate service; passing the client in as a parameter is what makes it mockable. (The course’s example is called <code>sum</code>, which shadows Python’s built-in <code>sum</code>; another naming lesson.) <code>patch</code> swaps <code>os.system</code> inside <code>src.ops</code> for a mock while the <code>with</code> block runs, so the test checks the call without shutting anything down.</p>
+<p><strong>Coverage.py</strong> measures which lines your test run executed, which shows the code no test touches.</p>
+<h3 id="good-tests-are-first">Good tests are FIRST<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#good-tests-are-first" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>FIRST </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Fast:</strong> they run in seconds, so you run them all the time.</li>
+<li><strong>Isolated (independent):</strong> no test depends on another or on the order they run in.</li>
+<li><strong>Repeatable:</strong> same result on any machine, any time, with no network or shared state.</li>
+<li><strong>Self-validating:</strong> they pass or fail on their own; nobody reads output to decide.</li>
+<li><strong>Thorough:</strong> they cover the happy flow and the edge cases.</li>
+</ul>
+</div>
+</blockquote>
+<p>From outside the course: Martin’s book spells the last letter as <strong>Timely</strong> (write tests just before the code they test). The course uses Thorough; use the course’s version with TAs.</p>
+<p>Mocks serve FIRST directly: a mocked API is fast, isolated and repeatable, and the real one is none of those.</p>
+<h2 id="what-to-be-able-to-do">What to be able to do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Explain where an ML project typically fails (collaboration and deployment) and what “outcome over output” means for your project.</li>
+<li>Describe each data role’s job in one or two sentences, and place it on the raw-data-to-product journey.</li>
+<li>Walk through the ride-hailing example: the transformations and data-quality decisions behind one metric.</li>
+<li>Argue for or against a full-stack ML engineer, using the history of handovers.</li>
+<li>Explain development, acceptance and production environments, and draw the DevOps loop, the model development loop and how MLOps joins them.</li>
+<li>Refactor messy pipeline code: separate I/O from pure transformations, name things by intent, extract constants to config, remove flag arguments, duplication, commented-out code and global-scope code.</li>
+<li>Write pytest unit tests with setup, collect and compare steps, parametrised happy-flow and edge cases, an expected exception, and a mock for an external dependency.</li>
+<li>Defend your code to a TA: why each function exists, what each test proves, which FIRST property each test satisfies.</li>
+</ul>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>According to Yesilbek, what are the two main reasons ML/AI projects fail? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Roles and teams could not collaborate (with each other or stakeholders), and the models could not be deployed.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does the 87% figure in Davenport and Zhang's MIT Sloan article actually measure? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A VentureBeat analysis suggesting 87% of AI models are never put into production.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does deployment matter so much for return on AI, according to Davenport and Zhang? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Without production deployment there is no economic value.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between a brilliant model and a brilliant outcome? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The model is output; the outcome is the change in user or business behaviour it actually causes.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why are all ML roles considered data roles? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Without data in a usable state there is no ML, so every ML role depends on and works with data.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What four properties should data engineers guarantee for the data they serve? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>High quality, right format, available on time, useful for the purpose.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the ride-hailing example, what format was the timestamp in? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The hexadecimal form of a UTC Unix epoch.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can't an analyst just run large queries on the backend database? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It is optimised for backend operations; big queries cause latency spikes, and core operations take priority.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name three data-quality issues in the ride-hailing event data. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A near-zero-length ride, a second ride start before the first ended, rides that never ended.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does &quot;shift-left&quot; mean for an ML engineer's relationship to data engineering? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Data engineering work moves onto you: expect to do your own ETL for your ML system.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the EV example, what is the data and what is the information? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Data: battery percentage. Information: estimated remaining range in kilometres.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a data analyst's core task, according to Yesilbek? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Understanding the business, question and data, and turning data into information for decision makers.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between ML as a function of a product and ML as a product? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Function: ML adds a feature (YouTube Shorts recommendations). Product: the ML system is the product (Google Translate, ChatGPT).</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must a data scientist's features be computable in the live environment? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A feature that cannot be computed in production, within latency and cost limits, is useless to the deployed model.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the ultimate goal of a data scientist? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Solving the business problem through ML; models and code are only the means.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What two things does an ML engineer focus on? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Productionization of ML solutions and operations of ML systems.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What three activities make up ML operations? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Maintenance, monitoring, firefighting.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why did handing models to backend engineers go badly? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Data scientists lacked software engineering skills and the engineers lacked ML knowledge, so nobody owned the whole system.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What two benefits does a platform team bring to application teams? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Application teams get faster; infrastructure gets more reliable.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which two roles does a full-stack ML engineer combine? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Data scientist and ML engineer.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does Yesilbek favour full-stack ML engineers over specialised handovers? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>One person owns problem and solution end to end; splits and handovers repeatedly caused project failures.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What makes production different from development and acceptance environments? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Only production is live, and it is protected; changes reach it after passing the earlier stages.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why should all environments run the same tech stack? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>So that what passes testing in acceptance behaves the same in production.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give the steps of the DevOps loop. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Plan, code, build, test, release, deploy, operate, monitor.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give the steps of the model development loop. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Collect, curate, transform, validate (data); explore, train, evaluate, formulate (ML).</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the MLOps eternal knot, how do the Ops steps lead back to the data side? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Monitoring feeds planning, planning leads to formulating the problem, and formulating leads to collecting new data.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What equation summarises MLOps in Gupta's lifecycle diagrams? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>MLOps = DataML + DevOps.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why should file reading be kept out of a preprocessing function? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The function then does one thing and can be unit tested on a small DataFrame without files on disk.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a shallow abstraction? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A wrapper that adds nothing, like a function that only calls pd.read_csv; it just adds indirection.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does the expression x - mean / std compute, and why is that a dangerous bug? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>x minus (mean/std); it runs without error, so wrong features silently reach the model.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why are flag arguments a code smell? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A boolean parameter shows the function does two things, often with two return types.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What should a code comment explain? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Why the code does something, or a warning of consequences; the code itself shows what.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What should you do with commented-out code? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Delete it; version control keeps the history.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the three steps of a unit test? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Setup, collect, compare.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why mock an external dependency in a unit test? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Real dependencies make tests slow, unrepeatable or destructive; a mock isolates the unit.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does FIRST stand for in Yesilbek's version? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Fast, Isolated (independent), Repeatable, Self-validating, Thorough.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/EPRM/EPRM---Overview" class="internal alias" data-slug="Courses/EPRM/EPRM---Overview">Course overview</a></li>
+<li><strong>Reading note:</strong> <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams">EPRM-Book Ch21 - Interdisciplinary Teams</a> (Kästner on why teams of different roles clash and how DevOps culture helps)</li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a> · <a href="../../../Concepts/Clean-Code" class="internal alias" data-slug="Concepts/Clean-Code">Clean Code</a> · <a href="../../../Concepts/Unit-Testing" class="internal alias" data-slug="Concepts/Unit-Testing">Unit Testing</a></li>
+<li><strong>Source:</strong> lecture slides and speaker notes, “Week 1: Data Driven Roles, ML Lifecycle, and Coding”, Kemal T. Yesilbek, 28 October 2026; course intro slides for the framing. Clean code lecture companion “Monolithic vs Clean Refactoring” (instructor-provided, marked AI-generated), mapping <code>src/main.py</code> to <code>src/main_cleaned.py</code> in <code>kemalty/uva-mlprod-code</code>.</li>
+<li><strong>Readings:</strong> Thomas H. Davenport and Ren Zhang, “Achieving Return on AI Projects”, MIT Sloan Management Review, 20 July 2021, <a href="https://sloanreview.mit.edu/article/achieving-return-on-ai-projects/" class="external">https://sloanreview.mit.edu/article/achieving-return-on-ai-projects/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (partly paywalled). Joshua Seiden, <em>Outcomes Over Output</em>. Christian Kästner, <em>Machine Learning in Production: From Models to Products</em>, part “Process and Teams”, <a href="https://mlip-cmu.github.io/book/" class="external">https://mlip-cmu.github.io/book/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Robert C. Martin, <em>Clean Code: A Handbook of Agile Software Craftsmanship</em> (2008).</li>
+<li><strong>Further:</strong> HBR, “Why Becoming a Data-Driven Organization Is So Hard” (2022), <a href="https://hbr.org/2022/02/why-becoming-a-data-driven-organization-is-so-hard" class="external">https://hbr.org/2022/02/why-becoming-a-data-driven-organization-is-so-hard<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. The DevOps, model development and MLOps lifecycle diagrams are by Satish Chandra Gupta, <a href="https://ml4devs.com/mlops-lifecycle" class="external">https://ml4devs.com/mlops-lifecycle<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Frederick P. Brooks, “No Silver Bullet: Essence and Accidents of Software Engineering”, IEEE Computer 20 (1987).</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-301" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#eprm-l01-data-roles-ml-lifecycle-clean-code-and-unit-testing" data-for="eprm-l01-data-roles-ml-lifecycle-clean-code-and-unit-testing">EPRM-L01: Data Roles, ML Lifecycle, Clean Code and Unit Testing</a></li><li class="depth-1"><a href="#why-most-ml-projects-never-deliver-value" data-for="why-most-ml-projects-never-deliver-value">Why most ML projects never deliver value</a></li><li class="depth-1"><a href="#who-does-what-between-raw-data-and-a-product" data-for="who-does-what-between-raw-data-and-a-product">Who does what between raw data and a product</a></li><li class="depth-2"><a href="#data-engineers-data-others-can-consume" data-for="data-engineers-data-others-can-consume">Data engineers: data others can consume</a></li><li class="depth-2"><a href="#data-analysts-turning-data-into-information" data-for="data-analysts-turning-data-into-information">Data analysts: turning data into information</a></li><li class="depth-2"><a href="#data-scientists-models-that-solve-a-business-problem" data-for="data-scientists-models-that-solve-a-business-problem">Data scientists: models that solve a business problem</a></li><li class="depth-2"><a href="#ml-engineers-production-and-operations" data-for="ml-engineers-production-and-operations">ML engineers: production and operations</a></li><li class="depth-2"><a href="#backend-and-platform-teams" data-for="backend-and-platform-teams">Backend and platform teams</a></li><li class="depth-2"><a href="#the-full-stack-ml-engineer" data-for="the-full-stack-ml-engineer">The full-stack ML engineer</a></li><li class="depth-1"><a href="#how-ml-work-moves-to-production" data-for="how-ml-work-moves-to-production">How ML work moves to production</a></li><li class="depth-2"><a href="#development-acceptance-production" data-for="development-acceptance-production">Development, acceptance, production</a></li><li class="depth-2"><a href="#the-devops-loop" data-for="the-devops-loop">The DevOps loop</a></li><li class="depth-2"><a href="#the-model-development-loop" data-for="the-model-development-loop">The model development loop</a></li><li class="depth-2"><a href="#mlops-joins-the-two-loops" data-for="mlops-joins-the-two-loops">MLOps joins the two loops</a></li><li class="depth-1"><a href="#clean-code-running-is-not-enough" data-for="clean-code-running-is-not-enough">Clean code: running is not enough</a></li><li class="depth-2"><a href="#worked-examples-from-the-courses-mainpy" data-for="worked-examples-from-the-courses-mainpy">Worked examples from the course’s main.py</a></li><li class="depth-2"><a href="#a-good-repository-layout" data-for="a-good-repository-layout">A good repository layout</a></li><li class="depth-1"><a href="#unit-testing-proof-the-code-does-what-you-think" data-for="unit-testing-proof-the-code-does-what-you-think">Unit testing: proof the code does what you think</a></li><li class="depth-2"><a href="#dependencies-and-mocks" data-for="dependencies-and-mocks">Dependencies and mocks</a></li><li class="depth-2"><a href="#anatomy-of-a-unit-test" data-for="anatomy-of-a-unit-test">Anatomy of a unit test</a></li><li class="depth-2"><a href="#good-tests-are-first" data-for="good-tests-are-first">Good tests are FIRST</a></li><li class="depth-1"><a href="#what-to-be-able-to-do" data-for="what-to-be-able-to-do">What to be able to do</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Clean-Code" class="internal">Clean Code</a></li><li><a href="../../../Concepts/MLOps" class="internal">MLOps</a></li><li><a href="../../../Concepts/Unit-Testing" class="internal">Unit Testing</a></li><li><a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch20---Data-Science-and-Software-Engineering-Process-Models" class="internal">EPRM-Book Ch20 - Data Science and Software Engineering Process Models</a></li><li><a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams" class="internal">EPRM-Book Ch21 - Interdisciplinary Teams</a></li><li><a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt" class="internal">EPRM-Book Ch22 - Technical Debt</a></li><li><a href="../../../Courses/EPRM/EPRM---Flashcards" class="internal">EPRM - Flashcards</a></li><li><a href="../../../Courses/EPRM/EPRM---Overview" class="internal">EPRM - Overview</a></li><li><a href="../../../Courses/EPRM/" class="internal">Engineering Production-Ready ML/AI Systems</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mvs7pwjt" type="module" data-persist="true"></script></html>

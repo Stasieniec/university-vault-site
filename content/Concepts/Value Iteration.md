@@ -38,3 +38,4 @@ Output: π(s) = argmax_a Σ_{s',r} p(s',r|s,a) [r + γV(s')]
 ## Appears In
 
 - [[RL-L02 - Dynamic Programming]], [[RL-Book Ch4 - Dynamic Programming]], [[RL-CA01 - Dynamic Programming]]
+- [[AGAI-Lab01 - Simple Agents, Complex Dynamics]] (vacuum world planning)

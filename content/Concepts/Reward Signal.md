@@ -51,3 +51,4 @@ The agent maximizes the **return** $G_t$:
 
 - [[RL-L01 - Intro, MDPs & Bandits]]
 - [[RL-Book Ch3 - Finite MDPs]]
+- [[AGAI-Lab01 - Simple Agents, Complex Dynamics]] (reward functions and reward hacking)

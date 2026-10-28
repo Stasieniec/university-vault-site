@@ -118,7 +118,7 @@ the</w>  talle s t </w>  man</w>
 
 ### What BPE bought in translation
 
-BPE has three major advantages: a much smaller **vocabulary** (less memory, better speed), better **translation quality**, and far fewer **out-of-vocabulary (OOV)** items. These benefits apply to **both** high- and low-resource language pairs.
+Compared with word-level vocabularies (one entry per whole word), BPE has three major advantages: a much smaller **vocabulary** (less memory, better speed), better **translation quality**, and far fewer **out-of-vocabulary (OOV)** items. These benefits apply to **both** high- and low-resource language pairs.
 
 In Sennrich et al.'s English to German experiments, the best neural systems used subwords (60K to 90K entries) and beat word-level systems (300K source, 500K target entries). Not every subword system won: **separate BPE** (merges per language) fell below the best word-level single model, and **joint BPE** (one set of merges for both languages) beat separate BPE; Sennrich et al.'s reason (outside the course material): a name is then split the same way on both sides, so its pieces map one to one. Character bigrams (a 50K vocabulary) did as well: they **tied joint BPE** as the best single model and gave the **best ensemble**. A **syntax-based statistical system** still beat every single neural model; only ensembles of 8 subword models beat it (the word-level ensemble did not).
 
@@ -478,7 +478,7 @@ Each has a practice question below except SentencePiece.
 > [!card]- Which pair does BPE merge at each training step?
 > The **most frequent** adjacent symbol pair, counted over word types weighted by frequency.
 
-> [!card]- What three major advantages does BPE bring to NMT?
+> [!card]- What three major advantages does BPE bring to NMT, compared with word-level vocabularies?
 > Smaller **vocabulary**, better **translation quality**, far fewer **OOV items**.
 
 > [!card]- What are the four properties of Unigram LM (Kudo)?
