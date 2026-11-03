@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [policy, policies, π]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, exam-topic]
 status: complete
 ---
@@ -71,3 +71,4 @@ See [[On-Policy vs Off-Policy]] for details.
 ## Appears In
 
 - [[RL-L01 - Intro, MDPs & Bandits]], [[RL-L02 - Dynamic Programming]], [[RL-L03 - Monte Carlo Methods]], [[RL-L04 - Temporal Difference Learning]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]

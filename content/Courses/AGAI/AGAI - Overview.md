@@ -71,7 +71,17 @@ Three parts, each building on the last:
 | L1 (Tue 27 Oct) | Course intro; agents, multi-agent systems and LLM agents | [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]] |
 | Reading | Russell and Norvig Ch 2, Intelligent Agents | [[AGAI-Book Ch2 - Intelligent Agents]] |
 | Lab 1 (Wed 28 Oct) | Simple agents, complex dynamics: Nash equilibria, social dilemmas, repeated games, replicator dynamics, signalling, reward hacking | [[AGAI-Lab01 - Simple Agents, Complex Dynamics]] |
-| L2 (Thu 29 Oct) | Game theory and solution concepts; populations of agents (evolutionary game theory) | Slides not on Canvas yet |
+| L2 (Thu 29 Oct) | Game theory and solution concepts; populations of agents (evolutionary game theory) | [[AGAI-L02 - Game Theory and Population Dynamics]] |
+| Reading | Albrecht, Christianos and Schäfer, *Multi-Agent Reinforcement Learning*, Ch 3 (games) and Ch 4 (solution concepts) | Covered inside the Lecture 2 note |
+
+### Week 2: Learning agents and multi-agent RL
+
+| | Topic | Notes |
+|---|---|---|
+| L3 (Tue 3 Nov) | RL recap (MDPs, Bellman equations, value iteration, Q-learning, learning parameters); intro to MARL: stochastic games, payoff structures, non-stationarity, credit assignment, equilibrium selection, independent learning | [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] |
+| Lab 2 (Wed 4 Nov) | Learning agents: independent Q-learners in matrix games, the Coin Game, state explosion, PPO | [[AGAI-Lab02 - Learning Agents]] |
+| L4 (Thu 5 Nov) | Deep RL and deep MARL | Slides not on Canvas yet |
+| Reading | MARL book Ch 5-9, suggested for weeks 2 and 3 | |
 
 ---
 
@@ -82,6 +92,9 @@ Three parts, each building on the last:
 | [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]] | complete |
 | [[AGAI-Book Ch2 - Intelligent Agents]] | complete |
 | [[AGAI-Lab01 - Simple Agents, Complex Dynamics]] | complete |
+| [[AGAI-L02 - Game Theory and Population Dynamics]] | complete |
+| [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] | complete |
+| [[AGAI-Lab02 - Learning Agents]] | complete |
 
 ---
 
@@ -91,6 +104,8 @@ Three parts, each building on the last:
 
 **LLM agents:** [[LLM Agent]] · [[ReAct]] · [[Chain-of-Thought Prompting]] · [[Large Language Models (LLM)]] · [[Retrieval-Augmented Generation]]
 
-**Game theory and populations:** [[Nash Equilibrium]] · [[Pareto Optimality]] · [[Prisoner's Dilemma]] · [[Stag Hunt]] · [[Repeated Game]] · [[Replicator Dynamics]]
+**Game theory and populations:** [[Normal-Form Game]] · [[Stochastic Game]] · [[Best Response]] · [[Social Dilemma]] · [[Nash Equilibrium]] · [[Pareto Optimality]] · [[Prisoner's Dilemma]] · [[Stag Hunt]] · [[Repeated Game]] · [[Replicator Dynamics]]
 
-**Rewards and learning:** [[Reward Hacking]] · [[Reward Signal]] · [[Value Iteration]] · [[Markov Decision Process]] · [[Reinforcement Learning]]
+**Rewards and learning:** [[Reward Hacking]] · [[Reward Signal]] · [[Value Iteration]] · [[Markov Decision Process]] · [[Reinforcement Learning]] · [[Q-Learning]] · [[Epsilon-Greedy Policy]] · [[Softmax Policy]]
+
+**Multi-agent RL:** [[Independent Learning]] · [[Multi-Agent Credit Assignment]]

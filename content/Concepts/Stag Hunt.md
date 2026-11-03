@@ -70,3 +70,5 @@ For $R=4, S=0, T=3, P=2$: $p^{*} = 2/(1 + 2) = 2/3$.
 
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (gridworld stag hunt with independent Q-learners)

@@ -6,65 +6,65 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>EPRM-Book Ch21 - Interdisciplinary Teams</title>
-    <link>https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams</link>
-    <guid>https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch21---Interdisciplinary-Teams</guid>
-    <description><![CDATA[ EPRM-Book Ch21: Interdisciplinary Teams In short Christian Kästner’s chapter asks why building ML products needs teams of people with different expertise, why those teams so often clash, and what helps. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>EPRM-L02 - Distributed Data Processing</title>
+    <link>https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing</link>
+    <guid>https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing</guid>
+    <description><![CDATA[ EPRM-L02: Distributed Data Processing In short What do you do when the data no longer fits one core, one machine’s memory, or one hour? Scale only when you must: pick the simplest tool that handles the data size and operations. ]]></description>
+    <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
   </item><item>
-    <title>EPRM-Book Ch22 - Technical Debt</title>
-    <link>https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt</link>
-    <guid>https://notes.swasilewski.com/Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt</guid>
-    <description><![CDATA[ EPRM-Book Ch22: Technical Debt In short Technical debt is the metaphor for taking a shortcut now (a faster release, more features) and paying for it later in rework, slower development or operating costs, with interest. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>AGAI-Lab02 - Learning Agents</title>
+    <link>https://notes.swasilewski.com/Courses/AGAI/Exercises/AGAI-Lab02---Learning-Agents</link>
+    <guid>https://notes.swasilewski.com/Courses/AGAI/Exercises/AGAI-Lab02---Learning-Agents</guid>
+    <description><![CDATA[ AGAI-Lab02: Learning Agents In short Agents now learn from their own rewards by trial and error, each independently, and the lab asks whether such learners reach a good equilibrium and whether a more powerful learner helps. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>EPRM - Flashcards</title>
-    <link>https://notes.swasilewski.com/Courses/EPRM/EPRM---Flashcards</link>
-    <guid>https://notes.swasilewski.com/Courses/EPRM/EPRM---Flashcards</guid>
-    <description><![CDATA[  EPRM - Flashcards All 89 flashcards for Engineering Production-Ready ML/AI Systems, one set per note. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>EPRM - Exam Questions</title>
+    <link>https://notes.swasilewski.com/Courses/EPRM/EPRM---Exam-Questions</link>
+    <guid>https://notes.swasilewski.com/Courses/EPRM/EPRM---Exam-Questions</guid>
+    <description><![CDATA[  EPRM - Exam Questions All 10 exam-style questions for Engineering Production-Ready ML/AI Systems, one set per note. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>Engineering Production-Ready ML/AI Systems</title>
-    <link>https://notes.swasilewski.com/Courses/EPRM/</link>
-    <guid>https://notes.swasilewski.com/Courses/EPRM/</guid>
-    <description><![CDATA[  Lecture notes: 1 · Flashcards: 89 Schedule, assessment and deadlines live in the course overview. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Apache Parquet</title>
+    <link>https://notes.swasilewski.com/Concepts/Apache-Parquet</link>
+    <guid>https://notes.swasilewski.com/Concepts/Apache-Parquet</guid>
+    <description><![CDATA[ Apache Parquet Definition Apache Parquet Apache Parquet is an open-source columnar file format for analytical data. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>AGAI - Exam Questions</title>
-    <link>https://notes.swasilewski.com/Courses/AGAI/AGAI---Exam-Questions</link>
-    <guid>https://notes.swasilewski.com/Courses/AGAI/AGAI---Exam-Questions</guid>
-    <description><![CDATA[  AGAI - Exam Questions All 21 exam-style questions for Agentic Artificial Intelligence, one set per note. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Apache Spark</title>
+    <link>https://notes.swasilewski.com/Concepts/Apache-Spark</link>
+    <guid>https://notes.swasilewski.com/Concepts/Apache-Spark</guid>
+    <description><![CDATA[ Apache Spark Definition Apache Spark Apache Spark is an open-source engine for distributed data processing. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>AGAI - Flashcards</title>
-    <link>https://notes.swasilewski.com/Courses/AGAI/AGAI---Flashcards</link>
-    <guid>https://notes.swasilewski.com/Courses/AGAI/AGAI---Flashcards</guid>
-    <description><![CDATA[  AGAI - Flashcards All 110 flashcards for Agentic Artificial Intelligence, one set per note. Each card asks one thing and has a short answer. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Best Response</title>
+    <link>https://notes.swasilewski.com/Concepts/Best-Response</link>
+    <guid>https://notes.swasilewski.com/Concepts/Best-Response</guid>
+    <description><![CDATA[ Best Response Definition Best response A best-response policy \pi_i maximises the expected return for agent i against a given set of policies for all other agents, \pi_{-i} = (\pi_1, \dots, \pi_{i-1}, \pi_{i+1}, \dots, \pi_n): BR_i(\pi_{-i}) = \arg\max_{\pi_i} U_i(\langle \pi_i, \pi_{-i} \rangle) wh... ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>AGAI - Overview</title>
-    <link>https://notes.swasilewski.com/Courses/AGAI/AGAI---Overview</link>
-    <guid>https://notes.swasilewski.com/Courses/AGAI/AGAI---Overview</guid>
-    <description><![CDATA[ Agentic Artificial Intelligence - Overview Course: Agentic Artificial Intelligence (5204AGAI6Y), 2026/27 Semester 1, Period 2. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Independent Learning</title>
+    <link>https://notes.swasilewski.com/Concepts/Independent-Learning</link>
+    <guid>https://notes.swasilewski.com/Concepts/Independent-Learning</guid>
+    <description><![CDATA[ Independent Learning Definition Independent learning In multi-agent reinforcement learning, independent learning means that each agent learns its own policy with a single-agent RL algorithm, using only its own actions and rewards, and treats the other agents as part of the environment. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>AGAI-Book Ch2 - Intelligent Agents</title>
-    <link>https://notes.swasilewski.com/Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents</link>
-    <guid>https://notes.swasilewski.com/Courses/AGAI/Book-Notes/AGAI-Book-Ch2---Intelligent-Agents</guid>
-    <description><![CDATA[ AGAI-Book Ch2: Intelligent Agents In short What is an agent, what makes one behave well, and how do you build one? An agent, which perceives through sensors and acts through actuators, is rational when it picks the action expected to maximise a performance measure, given what it has perceived and wh... ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Lazy Evaluation</title>
+    <link>https://notes.swasilewski.com/Concepts/Lazy-Evaluation</link>
+    <guid>https://notes.swasilewski.com/Concepts/Lazy-Evaluation</guid>
+    <description><![CDATA[ Lazy Evaluation Definition Lazy evaluation Lazy evaluation delays computing an expression until its result is actually needed. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>AGAI-Lab01 - Simple Agents, Complex Dynamics</title>
-    <link>https://notes.swasilewski.com/Courses/AGAI/Exercises/AGAI-Lab01---Simple-Agents,-Complex-Dynamics</link>
-    <guid>https://notes.swasilewski.com/Courses/AGAI/Exercises/AGAI-Lab01---Simple-Agents,-Complex-Dynamics</guid>
-    <description><![CDATA[ AGAI-Lab01: Simple Agents, Complex Dynamics In short The lab uses agents with almost no memory and two or three actions to show three things. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Multi-Agent Credit Assignment</title>
+    <link>https://notes.swasilewski.com/Concepts/Multi-Agent-Credit-Assignment</link>
+    <guid>https://notes.swasilewski.com/Concepts/Multi-Agent-Credit-Assignment</guid>
+    <description><![CDATA[ Multi-Agent Credit Assignment Definition Multi-agent credit assignment The problem of working out whose actions led to a reward when several agents act in the same environment. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item><item>
-    <title>Agentic Artificial Intelligence</title>
-    <link>https://notes.swasilewski.com/Courses/AGAI/</link>
-    <guid>https://notes.swasilewski.com/Courses/AGAI/</guid>
-    <description><![CDATA[  Exam: Fri 20 Nov 2026 · Lecture notes: 1 · Flashcards: 110 · Exam questions: 21 Schedule, assessment and deadlines live in the course overview. ]]></description>
-    <pubDate>Wed, 28 Oct 2026 14:31:17 GMT</pubDate>
+    <title>Normal-Form Game</title>
+    <link>https://notes.swasilewski.com/Concepts/Normal-Form-Game</link>
+    <guid>https://notes.swasilewski.com/Concepts/Normal-Form-Game</guid>
+    <description><![CDATA[ Normal-Form Game Definition Normal-form game A normal-form game defines an interaction between two or more agents with no time and no state, only actions and rewards. ]]></description>
+    <pubDate>Tue, 03 Nov 2026 16:21:51 GMT</pubDate>
   </item>
     </channel>
   </rss>

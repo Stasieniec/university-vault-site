@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [MDP, Markov decision process]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, exam-topic]
 status: complete
 ---
@@ -93,3 +93,5 @@ At each time step $t$:
 - [[RL-L01 - Intro, MDPs & Bandits]]
 - [[RL-Book Ch3 - Finite MDPs]]
 - [[RL-ES01 - Exercise Set Week 1]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap; stochastic games as the multi-agent generalisation)

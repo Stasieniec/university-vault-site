@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Q-learning, q-learning]
-course: [RL]
+course: [RL, AGAI]
 tags: [tabular-methods, key-formula, exam-topic]
 status: complete
 ---
@@ -74,6 +74,7 @@ Q-learning converges to $q_*$ under standard conditions:
 - Compared with: [[SARSA]] (on-policy), [[Expected SARSA]]
 - Extended by: Double Q-learning, [[Deep Q-Network (DQN)]]
 - Danger with FA: [[Deadly Triad]]
+- Multi-agent use: [[Independent Learning]] (each agent runs Q-learning and treats the others as part of the environment)
 
 ## Appears In
 
@@ -81,3 +82,4 @@ Q-learning converges to $q_*$ under standard conditions:
 - [[RL-Book Ch6 - Temporal-Difference Learning]]
 - [[RL-CA03 - Temporal Difference]]
 - [[RL-ES02 - Exercise Set Week 2]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap; independent Q-learning)

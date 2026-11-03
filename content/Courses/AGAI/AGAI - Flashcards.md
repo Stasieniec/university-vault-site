@@ -9,13 +9,21 @@ status: complete
 
 # AGAI - Flashcards
 
-All 110 flashcards for Agentic Artificial Intelligence, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[AGAI - Exam Questions|exam questions]] page.
+All 253 flashcards for Agentic Artificial Intelligence, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[AGAI - Exam Questions|exam questions]] page.
 
 Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 
 ## L01 Agents, Multiagent Systems and Agentic AI
 
 ![[AGAI-L01 - Agents, Multiagent Systems and Agentic AI#Flashcards]]
+
+## L02 Game Theory and Population Dynamics
+
+![[AGAI-L02 - Game Theory and Population Dynamics#Flashcards]]
+
+## L03 Intro to Multi-Agent Reinforcement Learning
+
+![[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning#Flashcards]]
 
 ## Book Ch2: Intelligent Agents
 
@@ -24,3 +32,7 @@ Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 ## Lab01: Simple Agents, Complex Dynamics
 
 ![[AGAI-Lab01 - Simple Agents, Complex Dynamics#Flashcards]]
+
+## Lab02: Learning Agents
+
+![[AGAI-Lab02 - Learning Agents#Flashcards]]

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [discount factor, gamma, γ, discounting]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations]
 status: complete
 ---
@@ -27,6 +27,11 @@ status: complete
 > [!warning] $\gamma = 1$ in Continuing Tasks
 > If $\gamma = 1$ and the task never terminates, the return can diverge to infinity. Only use $\gamma = 1$ for episodic tasks.
 
+> [!formula] Effective horizon
+> $$H_{\text{eff}} = \frac{1}{1-\gamma}$$
+>
+> Roughly how many steps ahead an agent with discount $\gamma$ looks, since $\sum_{k=0}^{\infty}\gamma^k = \frac{1}{1-\gamma}$: $\gamma = 0.9$ gives 10 steps, $\gamma = 0.99$ gives 100. $\gamma$ also shapes the solution found: with a resource that regrows (an apple orchard), a low $\gamma$ over-harvests and a high $\gamma$ harvests sustainably.
+
 ## Connections
 
 - Scales: [[Return]]
@@ -37,3 +42,4 @@ status: complete
 
 - [[RL-L01 - Intro, MDPs & Bandits]]
 - [[RL-Book Ch3 - Finite MDPs]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (effective horizon, apple orchard)

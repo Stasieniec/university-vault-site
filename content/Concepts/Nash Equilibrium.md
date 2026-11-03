@@ -49,7 +49,9 @@ For the Stag Hunt above, $p^{*} = 2/(1+2) = 2/3$: each hunter goes for the stag 
 
 ## Key Properties / Variants
 
-- **Existence** (Nash, 1950; standard result beyond the course material): every finite game has at least one Nash equilibrium, possibly in mixed strategies. Pure equilibria need not exist (matching pennies has none).
+- **Existence** (Nash, 1950): every finite game has at least one Nash equilibrium, possibly in mixed strategies. Pure equilibria need not exist: Matching Pennies and Rock-Paper-Scissors have none, and Rock-Paper-Scissors' equilibrium is each action with probability 1/3.
+- **Formal version with policies** (AGAI L02): a joint policy $\pi$ is a Nash equilibrium if $\forall i, \forall \pi_i' : U_i(\langle \pi_i', \pi_{-i} \rangle) \le U_i(\pi)$, i.e. every agent's policy is a [[Best Response|best response]] to the others'.
+- **Three limitations** (AGAI L02): sub-optimality (equilibria need not maximise returns), non-uniqueness (several, even infinitely many, equilibria with different returns) and incompleteness (no actions specified off the equilibrium path, and nothing on how equilibria are reached).
 - **Not necessarily efficient.** An equilibrium can be Pareto-dominated by another outcome: (D,D) in the Prisoner's Dilemma is worse for both than (C,C). Compare [[Pareto Optimality]].
 - **Can be multiple.** The Stag Hunt has two pure equilibria and one mixed one. "Play a Nash equilibrium" does not say which will be reached; that is the **equilibrium selection** problem, where beliefs, risk and dynamics decide.
 - **Dominant strategies.** If an action earns strictly more than every alternative whatever the other does (D in the Prisoner's Dilemma), every equilibrium uses it.
@@ -67,3 +69,5 @@ For the Stag Hunt above, $p^{*} = 2/(1+2) = 2/3$: each hunter goes for the stag 
 
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (stability as a MARL solution concept; climbing game)

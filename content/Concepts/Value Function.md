@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [value function, state-value function, action-value function, V(s), Q(s a)]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, key-formula, exam-topic]
 status: complete
 ---
@@ -86,3 +86,4 @@ $$\pi_*(s) = \arg\max_a q_*(s, a)$$
 - [[RL-L02 - Dynamic Programming]] (computation)
 - [[RL-L05 - Tabular to Approximation]] (approximation)
 - All exercise sets
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap)

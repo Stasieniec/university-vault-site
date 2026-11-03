@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [Bellman equation, Bellman equations]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, key-formula, exam-topic]
 status: complete
 ---
@@ -114,3 +114,4 @@ The Bellman equation is a system of $|\mathcal{S}|$ linear equations (for $v_\pi
 - [[RL-L02 - Dynamic Programming]]
 - [[RL-Book Ch3 - Finite MDPs]], [[RL-Book Ch4 - Dynamic Programming]]
 - [[RL-ES01 - Exercise Set Week 1]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap)

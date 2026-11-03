@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>EPRM-L02 - Distributed Data Processing — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="EPRM-L02 - Distributed Data Processing — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EPRM-L02 - Distributed Data Processing — notes.swasilewski.com"/><meta name="twitter:description" content="EPRM-L02: Distributed Data Processing In short What do you do when the data no longer fits one core, one machine’s memory, or one hour? Scale only when you must: pick the simplest tool that handles the data size and operations."/><meta property="og:description" content="EPRM-L02: Distributed Data Processing In short What do you do when the data no longer fits one core, one machine’s memory, or one hour? Scale only when you must: pick the simplest tool that handles the data size and operations."/><meta property="og:image:alt" content="EPRM-L02: Distributed Data Processing In short What do you do when the data no longer fits one core, one machine’s memory, or one hour? Scale only when you must: pick the simplest tool that handles the data size and operations."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="EPRM-L02: Distributed Data Processing In short What do you do when the data no longer fits one core, one machine’s memory, or one hour? Scale only when you must: pick the simplest tool that handles the data size and operations."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mw0wb7k5" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mw0wb7k5" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mw0wb7k5").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-462"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-462" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/">Engineering Production Ready ML/AI Systems</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>EPRM L02   Distributed Data Processing</a></div></nav><h1 class="article-title">EPRM-L02 - Distributed Data Processing</h1><p show-comma="true" class="content-meta"><time datetime="2026-11-04T00:00:00.000Z">Nov 04, 2026</time><span>36 min read</span></p></div></div><article class="popover-hint"><h1 id="eprm-l02-distributed-data-processing">EPRM-L02: Distributed Data Processing<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#eprm-l02-distributed-data-processing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>What do you do when the data no longer fits one core, one machine’s memory, or one hour? <strong>Scale only when you must:</strong> pick the simplest tool that handles the data size and operations. <strong>Store analytical data in columns:</strong> backend (OLTP) stores fetch single records by key, analytics (OLAP) reads a few columns of millions of rows, and columnar Parquet files let a job read only what it needs. <strong>Split the work:</strong> a mean over a terabyte becomes partial sums and counts on many machines, and Spark does the chunking and scheduling, plans lazily and runs one task per partition on its executors. <strong>Design for crashes:</strong> a daily batch pipeline can fail at the trigger, read, processing or write, and reading the delta between source and sink, saving intermediate results and trusting only acknowledged writes make each failure recoverable.</p>
+<p>There is no written exam: this feeds Assignment 2 (your own distributed or multi-core data processor), the course project and the TA questioning about your code.</p>
+</div>
+</blockquote>
+<h2 id="when-one-machine-stops-being-enough">When one machine stops being enough<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#when-one-machine-stops-being-enough" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Standard Python runs your code on <strong>one CPU core</strong>. A typical laptop has around ten cores, so a plain script leaves nine idle. (From outside the course material: in standard CPython the global interpreter lock lets only one thread run Python bytecode at a time, so extra threads do not speed up CPU-bound work; multiprocessing, one interpreter per core, gets around it.) Three questions follow:</p>
+<ul>
+<li>Can I use the other nine cores to make processing faster?</li>
+<li>Can I use another, idle machine as well?</li>
+<li>My machine has 16 GB of memory. How do I process 100 GB of data?</li>
+</ul>
+<p>The options form a line, ordered by how much <strong>data size times latency requirement</strong> (how much data, how fast) they can handle:</p>
+<pre><code>more data x tighter latency  ------------------------->
+Single core        Multiprocessing      Distributed, GPU
+GHz capped fast    cores capped         uncapped: add machines
+</code></pre>
+<p><strong>Vertical scaling</strong> (a bigger machine) hits ceilings: clock speeds top out around 6 GHz, and the largest cloud instances have a couple of hundred virtual CPUs at hourly prices about two thousand times those of the smallest. <strong>Horizontal scaling</strong> (more machines) has no such ceiling.</p>
+<p>So “how do you process 100 TB in an hour?” has a simple answer: with many machines. With three caveats: why do you need that much data at all, it will be expensive, and it will take extra effort.</p>
+<h2 id="pick-the-simplest-tool-that-fits">Pick the simplest tool that fits<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pick-the-simplest-tool-that-fits" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Two questions decide the tool: is the data small or large, and are the operations simple or complex?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Small data</th><th>Large data</th></tr></thead><tbody><tr><td><strong>Simple operations</strong></td><td>Python built-ins</td><td>Multi-core libraries (Polars), concurrency</td></tr><tr><td><strong>Complex operations</strong></td><td>Data processing libraries (pandas)</td><td>Distributed computing (Spark)</td></tr></tbody></table></div>
+<p>Polars is a DataFrame library that uses all cores of one machine; concurrency means writing your own threads or processes. Taken in order of added complexity, the cells run: built-ins, pandas, Polars or concurrency, Spark.</p>
+<p>The guiding idea is the difference between <strong>essential complexity</strong> (what the problem itself demands) and <strong>accidental complexity</strong> (what your solution adds on top). Spark on a 2 GB CSV adds a cluster, a scheduler and new ways to fail to a problem pandas solves in one line, and all of it has to be maintained.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Essential vs accidental complexity, as the course uses it </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A solution must only be as complex as the problem requires. Pick the simplest and easiest solution. Avoid concurrency, distributed computing and GPU computing as long as you can.</p>
+</div>
+</blockquote>
+<p>This is Brooks’s distinction and the “write for today” rule from <a href="../../../Concepts/Clean-Code" class="internal alias" data-slug="Concepts/Clean-Code">Clean Code</a>, applied to infrastructure.</p>
+<h2 id="where-the-data-lives-oltp-and-olap">Where the data lives: OLTP and OLAP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#where-the-data-lives-oltp-and-olap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Recall the ride-hailing example from week 1: the backend database is optimised for the app, and an analyst’s big query causes latency spikes for users (on top of the access rights and governance questions). That conflict has a name.</p>
+<p><strong>OLTP (online transaction processing)</strong> stores serve the backend. The backend mostly works with transactional data, such as fetching one user’s profile: a <strong>wide</strong> result (many columns, few rows), read or written quickly and atomically. <strong>OLAP (online analytics processing)</strong> is what analytics and ML training need: aggregates over huge numbers of records, a <strong>tall</strong> result (many rows, few columns), loaded in bulk by ETL jobs (extract, transform, load). Stores optimised for OLTP are not optimised for big analytical queries.</p>
+<p>The course takes this comparison from Kleppmann’s <em>Designing Data-Intensive Applications</em>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Property</th><th>OLTP</th><th>OLAP</th></tr></thead><tbody><tr><td>Main read pattern</td><td>Few records per query, fetched by key</td><td>Aggregate over many records</td></tr><tr><td>Main write pattern</td><td>Low-latency writes from user input</td><td>Bulk import, ETL</td></tr><tr><td>Primarily used by</td><td>End users, via apps</td><td>Analytics</td></tr><tr><td>Data sizes</td><td>GBs to TBs</td><td>TBs to PBs</td></tr></tbody></table></div>
+<p>The practical consequence for an ML pipeline: copy data out of the backend store into storage built for analytics, and run the heavy reads there. See <a href="../../../Concepts/OLTP-vs-OLAP" class="internal alias" data-slug="Concepts/OLTP-vs-OLAP">OLTP vs OLAP</a>.</p>
+<h2 id="row-and-columnar-layouts">Row and columnar layouts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#row-and-columnar-layouts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>The archive example.</strong> It is the 1970s and you keep many one-page documents. How should you shelve them so that you can gather what people ask for quickly? It depends on the requests.</p>
+<ul>
+<li><strong>Single requests:</strong> about 100 requests a day, each for one to five documents by ID, with a catalogue mapping IDs to locations. Shelve by ID and walk straight to each one.</li>
+<li><strong>Bulk requests:</strong> five to ten requests a day, each for 100 to 500 documents by topic. Shelving by ID would send you all over the building; shelve by topic and one request is one walk to one shelf.</li>
+</ul>
+<p>Files on disk work the same way. A table with columns <code>age</code>, <code>username</code>, <code>signup_date</code> can be laid out in two ways:</p>
+<pre><code>Table: age (a), username (u), signup_date (d), users 1..5
+
+Row layout:     a1 u1 d1 | a2 u2 d2 | ... | a5 u5 d5
+Column layout:  a1 a2 a3 a4 a5 | u1 u2 u3 u4 u5 | d1 d2 d3 d4 d5
+                \encoded chunk/ \encoded chunk/ \encoded chunk/
+</code></pre>
+<p>A <strong>row layout</strong> keeps each record together, which suits OLTP: fetch or write one user, all fields at once. A <strong>column layout</strong> keeps each column together, which suits OLAP: “average age per signup month” reads two columns and never touches <code>username</code>.</p>
+<p>Each column is then <strong>encoded</strong> as one chunk. From outside the course material (the Parquet documentation): values of one column share a type and often repeat, so they compress far better than mixed rows. A <code>category</code> column with five distinct values becomes a small dictionary plus short integer codes, and runs of one value become (value, run length) pairs. Smaller files mean less disk and network traffic, usually what limits analytical jobs.</p>
+<h2 id="apache-parquet">Apache Parquet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#apache-parquet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A text file or CSV works, but CSV is a row format with no types and no index: to sum one column you parse every byte of every row. <strong>Apache Parquet</strong> is the columnar file format the course uses. See <a href="../../../Concepts/Apache-Parquet" class="internal alias" data-slug="Concepts/Apache-Parquet">Apache Parquet</a> for more.</p>
+<p>Inside one Parquet file:</p>
+<pre><code>+------------------------------------------+
+| magic number &quot;PAR1&quot; (4 bytes)            |
+| Row group 0                              |
+|   Column chunk a                         |
+|     Page 0: header | repetition levels   |
+|             | definition levels | values |
+|     Page 1 ...                           |
+|   Column chunk b ...                     |
+| Row group 1 ...                          |
+| Footer: file metadata                    |
+|   version, schema, key/value pairs       |
+|   per row group, per column: type, path, |
+|   encodings, codec, number of values,    |
+|   offset of first data page and index    |
+|   page, compressed/uncompressed size     |
+| footer length (4 bytes)                  |
+| magic number &quot;PAR1&quot; (4 bytes)            |
++------------------------------------------+
+</code></pre>
+<ul>
+<li>A <strong>row group</strong> is a horizontal slice of the table (a block of rows).</li>
+<li>Inside it, each column has its own <strong>column chunk</strong>, split into <strong>pages</strong>, the unit that gets encoded and compressed.</li>
+<li>The <strong>footer</strong> holds the metadata, so a reader reads the end of the file first, learns the schema and where each column chunk starts, and jumps straight to the chunks it needs.</li>
+</ul>
+<p>From outside the course material (Parquet documentation): the column metadata also carries statistics such as the minimum and maximum value of each column chunk. A query for <code>amount > 100</code> can then skip every row group whose maximum is 100 or less without reading it. Repetition and definition levels encode nested fields and nulls.</p>
+<p><strong>Partitioned folders.</strong> A dataset is usually many Parquet files, split into folders by the value of a column. The course repository’s transactions are partitioned by day:</p>
+<pre><code>data/
+├── intermediate/
+│   ├── features/
+│   └── preprocessing/
+└── trx/
+    ├── chck_date_day=2019-01-01/
+    │   ├── part-00000-...c000.snappy.parquet
+    │   └── part-00001-...c000.snappy.parquet
+    ├── chck_date_day=2019-01-02/
+    └── ...
+</code></pre>
+<p><code>snappy</code> is the compression codec. From the Spark documentation: the folder name becomes a column, and a filter on <code>chck_date_day</code> skips whole folders (partition pruning), so reading only the new days means reading only the new folders.</p>
+<h2 id="splitting-one-computation-across-machines">Splitting one computation across machines<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#splitting-one-computation-across-machines" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>The mean example.</strong> Calculate the mean of a terabyte of float64 numbers. No single core does that quickly, so the data is cut into chunks and each worker gets one. With six numbers standing in for the terabyte:</p>
+<pre><code>[0.123, 1.456, 2.567, 3.678, 9.123, 7.123]
+        |                |                |
+   [0.123, 1.456]   [2.567, 3.678]   [9.123, 7.123]
+        v                v                v
+    worker 1         worker 2         worker 3
+  sum 1.579, n 2   sum 6.245, n 2   sum 16.246, n 2
+        \                |                /
+         ---------> coordinator &lt;---------
+           (1.579 + 6.245 + 16.246) / 6 = 4.012
+</code></pre>
+<p>Each worker returns its <strong>sum and count</strong>, and the coordinator adds them up:</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.833em;vertical-align:-0.6547em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1784em;"><span style="top:-2.5703em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3214em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.535em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9191em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3214em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0576em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6547em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> is the number of chunks (workers)</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the sum of the values in chunk <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the number of values in chunk <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></li>
+</ul>
+<p>Why sums and counts? The mean of the workers’ means equals the overall mean only when every chunk has the same size. With chunks [1, 2, 3] and [10], the means are 2 and 10, their average is 6, but the true mean is 16/4 = 4. Sums and counts combine correctly for any chunk sizes, and each worker sends back just two numbers.</p>
+<p>The arithmetic is the easy part. Doing this by hand, with pandas and your own processes, also means solving:</p>
+<ul>
+<li>How to chunk the data.</li>
+<li>Orchestration: which nodes are available, and what happens if one goes down mid-compute.</li>
+<li>How to get data to the nodes (compression, for example).</li>
+<li>Wide operations such as sorting, where every output depends on all the data.</li>
+<li>Which operation to run first (filter before anything else, to shrink the data early).</li>
+<li>Whether you need a custom algorithm for every new computation.</li>
+</ul>
+<p>A tool solves these once. No free lunch: you still need to learn its details.</p>
+<h2 id="apache-spark-sql-in-python-on-many-machines">Apache Spark: SQL in Python, on many machines<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#apache-spark-sql-in-python-on-many-machines" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Apache Spark</strong> is the distributed engine the course uses (see <a href="../../../Concepts/Apache-Spark" class="internal alias" data-slug="Concepts/Apache-Spark">Apache Spark</a>). <strong>PySpark</strong> (Spark’s Python API) reads like SQL written in Python: <code>select</code>, <code>when</code>, <code>groupBy</code> behave like their SQL counterparts. <strong>SparkSQL</strong> lets you write the same query as a SQL string. (From the Spark documentation: both go through the same optimiser, so the choice is about readability.) Spark is a stack of libraries on one engine:</p>
+<pre><code>Python Spark Connect client
+Spark SQL and DataFrame | pandas API on Spark | Structured Streaming | MLlib (machine learning)
+Spark Core and RDDs
+</code></pre>
+<p>An RDD (resilient distributed dataset) is Spark’s low-level abstraction, a collection split into partitions; DataFrames are built on it.</p>
+<p>The course code reads the transactions, keeps five columns and the rows since a start date, then computes a per-group z-score. The <code>join</code> line is added here so the snippet runs end to end (the course code’s version of that step was not shown).</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pyspark.sql </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> functions </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> F</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    spark.read.parquet(PathsConfig.raw_data_path)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    .select([</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;chck_date&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;payment_type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;category&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;fraud&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    .filter(F.col(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;chck_date&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">>=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> start_date)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">stats </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.groupby(group_by_cols).agg(</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    F.mean(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).alias(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;mean&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    F.stddev(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).alias(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;std&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.join(stats, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">on</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">group_by_cols)   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># bring each group's mean and std onto its rows</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.withColumn(</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    z_score_col_name, (F.col(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> F.col(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;mean&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> F.col(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;std&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>Note the brackets in the z-score, which the week 1 pandas version got wrong. One more gotcha: <code>F.stddev</code> is the sample standard deviation, which is <code>NULL</code> for a group with a single row, so that group’s z-scores come out <code>NULL</code> without any error. The <code>groupby</code> statistics in SparkSQL:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data.createOrReplaceTempView(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;trx&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">stats </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> spark.sql(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;&quot;&quot;</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    SELECT category, AVG(amount) AS mean, STDDEV(amount) AS std</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    FROM trx</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    GROUP BY category</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;&quot;&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<h2 id="narrow-and-wide-operations">Narrow and wide operations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#narrow-and-wide-operations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The course sorts Spark operations into four groups:</p>
+<ul>
+<li><strong>Narrow operations:</strong> count, average, sample, arithmetic.</li>
+<li><strong>Wide operations:</strong> group by, aggregate, join.</li>
+<li><strong>Filtering operations:</strong> where, filter.</li>
+<li><strong>File and data management operations:</strong> read, write, partition.</li>
+</ul>
+<p>The narrow/wide split is what decides cost. From outside the course material (Spark documentation): in a <strong>narrow</strong> transformation each output partition depends on one input partition, so every executor works on its own data without talking to the others. Arithmetic on a column, filters and sampling are like this. A <strong>wide</strong> transformation needs data from many partitions in one place: to group by <code>category</code>, everything about one category must end up on the same executor. Spark does this with a <strong>shuffle</strong>: data is written out, sent across the network to the executor responsible for its key, and read back there. Shuffles are usually the most expensive step of a job.</p>
+<p>Spark’s plans also explain why count and average sit on the narrow list although a whole-dataset count combines every partition: as in the mean example, each partition computes a partial count or sum locally, and only those tiny results move (the plan shows a <code>partial_avg</code> step before a small exchange into one partition). A group by uses the same trick per key, but still shuffles the partials so that all of one key’s partials meet on one executor, which with many keys is a lot of data. A sort, or a join of two large tables, moves the rows themselves. When one side of a join is small, such as the per-category <code>stats</code> above, Spark copies it to every executor instead (a <strong>broadcast join</strong>, automatic below 10 MB by default) and the large side stays put.</p>
+<h2 id="lazy-evaluation-nothing-runs-until-you-ask-for-a-result">Lazy evaluation: nothing runs until you ask for a result<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#lazy-evaluation-nothing-runs-until-you-ask-for-a-result" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Spark tries to optimise the job you send it. To do that it needs to see the whole job first, so it <strong>does not execute any operation until an action asks for a result</strong>, such as <code>collect</code>, <code>write</code>, <code>head</code>, <code>show</code> or <code>count</code>. Everything before that (<code>select</code>, <code>filter</code>, <code>withColumn</code>, <code>join</code>) only adds a step to a plan. The general idea is <a href="../../../Concepts/Lazy-Evaluation" class="internal alias" data-slug="Concepts/Lazy-Evaluation">Lazy Evaluation</a>.</p>
+<p>The demo:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">spark </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> SparkSession.builder.master(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;local[2]&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).getOrCreate()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> spark.read.parquet(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;data/trx&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">doubled_data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> data.select((F.col(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).alias(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;double_amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">filtered_data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> doubled_data.filter(F.col(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 100</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">filtered_data.explain(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;formatted&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># prints the plan; computes nothing</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(filtered_data.head(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))         </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># the action: now Spark runs</span></span></code></pre></figure>
+<p>The code doubles first and filters second. The physical plan (the tree is read from the bottom up) does something else:</p>
+<pre><code>== Physical Plan ==
+* Project (4)
++- * Filter (3)
+   +- * ColumnarToRow (2)
+      +- Scan parquet (1)
+
+(1) Scan parquet
+    ReadSchema: struct&lt;amount:double>
+    PushedFilters: [IsNotNull(amount),
+                    GreaterThan(amount,100.0)]
+(3) Filter
+    Condition: isnotnull(amount) AND amount > 100.0
+(4) Project
+    Output: amount * 2.0 AS double_amount
+</code></pre>
+<p>Three optimisations, all possible only because nothing ran early:</p>
+<ol>
+<li><strong>The filter moved before the projection</strong>, so only surviving rows get doubled.</li>
+<li><strong>Only one column is read</strong> (column pruning): <code>ReadSchema</code> has just <code>amount</code>, because nothing else is used. With Parquet’s columnar layout, the other columns are never touched on disk.</li>
+<li><strong>The filter is pushed into the scan</strong> (predicate pushdown, shown as <code>PushedFilters</code>): the Parquet reader can use the row group statistics in each file’s footer to skip row groups that cannot contain <code>amount > 100</code>.</li>
+</ol>
+<p>Run line by line, the job would read every column, double every value and only then drop the rows that fail the filter.</p>
+<p>A quirk of the demo: the filter refers to <code>amount</code>, which <code>doubled_data</code> no longer has. Spark resolves it from the step before; it works, but reads badly.</p>
+<p>From outside the course material: a runtime error, such as a Python function failing on one bad value, surfaces only when an action runs, so the failing line is not always the line with the bug. A misspelt column name is still caught at once, because Spark checks each step against the schema.</p>
+<h2 id="driver-executors-tasks-and-partitions">Driver, executors, tasks and partitions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#driver-executors-tasks-and-partitions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A Spark application has three parts:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    D[\&quot;Driver program&lt;br/>(SparkContext)\&quot;] &lt;--> CM[Cluster manager]\n    CM &lt;--> W1\n    CM &lt;--> W2\n    subgraph W1[Worker node]\n      E1[\&quot;Executor + cache&lt;br/>task, task\&quot;]\n    end\n    subgraph W2[Worker node]\n      E2[\&quot;Executor + cache&lt;br/>task, task\&quot;]\n    end\n    E1 &lt;--> E2&quot;">flowchart LR
+    D[&quot;Driver program&lt;br/>(SparkContext)&quot;] &lt;--> CM[Cluster manager]
+    CM &lt;--> W1
+    CM &lt;--> W2
+    subgraph W1[Worker node]
+      E1[&quot;Executor + cache&lt;br/>task, task&quot;]
+    end
+    subgraph W2[Worker node]
+      E2[&quot;Executor + cache&lt;br/>task, task&quot;]
+    end
+    E1 &lt;--> E2
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<ul>
+<li>The <strong>driver</strong> runs your program. It builds the plan, splits it into tasks and hands them out.</li>
+<li>The <strong>cluster manager</strong> allocates machines and resources (from outside the course material: Spark’s own standalone manager, YARN or Kubernetes).</li>
+<li><strong>Executors</strong> run on the worker nodes. Each runs <strong>tasks</strong> and keeps a cache of data in memory, and executors exchange data with each other during shuffles.</li>
+</ul>
+<p>A <strong>partition</strong> is one slice of the data, and a <strong>task</strong> is one unit of work on one partition. The rule of thumb is one task per partition, plus tasks for other work.</p>
+<p><code>master(&quot;local[2]&quot;)</code> runs everything on your own machine with <strong>two cores</strong>, so at most two tasks run in parallel. In the demo the transactions folder holds 367 day folders, and Spark ran three jobs: listing the files (367 tasks, one per folder, two at a time), reading the Parquet schema (one task) and <code>head(5)</code> itself (one task). More cores means more tasks at once; more tasks than cores means tasks queue.</p>
+<p>From outside the course material (Spark documentation): the listing and schema jobs ran at <code>spark.read.parquet</code>, before any action, because Spark lists the files and reads the schema straight away; only the data processing waits. <code>head(5)</code> needed one task because Spark tries one partition first and reads more only if it has not found five rows. And “partition” means two things: the folders of a partitioned dataset, and the slices Spark cuts when reading, which tasks work on. Spark sizes those slices by bytes, packing small files together and splitting big ones at <code>spark.sql.files.maxPartitionBytes</code> (128 MB by default), so thousands of tiny files cost scheduling overhead and one giant file still parallelises.</p>
+<h2 id="making-failures-recoverable">Making failures recoverable<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#making-failures-recoverable" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Your application will crash. How do you make sure the crash is recoverable?</p>
+<p><strong>The scenario.</strong> A fraud model scores transactions. Every day at 00:00 the previous day’s transactions arrive; at 01:00 the job runs and predicts fraud or not for each one. The data never changes after arrival, so each transaction is predicted once. The pipeline:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    S((Scheduler)) -- 1. triggers --> P\n    SRC[(Source)] -- 2. reads --> P\n    subgraph P[ML process]\n      DP[Data processing] -- 3. process --> FE[Feature engineering] -- 4. process --> PR[Prediction]\n    end\n    PR -- 5. writes --> SINK[(Sink)]&quot;">flowchart LR
+    S((Scheduler)) -- 1. triggers --> P
+    SRC[(Source)] -- 2. reads --> P
+    subgraph P[ML process]
+      DP[Data processing] -- 3. process --> FE[Feature engineering] -- 4. process --> PR[Prediction]
+    end
+    PR -- 5. writes --> SINK[(Sink)]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>The trigger, the read, the processing and the write can each break, and for each the lecturer contrasts a bad, sometimes an acceptable, and a good design.</p>
+<h3 id="failure-on-trigger">Failure on trigger<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#failure-on-trigger" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>It is the holidays and the whole team is out for five days. The scheduler fails and the job does not run for four days. When you are back and fix it, five days of data are unprocessed. How do you process all of them, rather than just yesterday’s?</p>
+<ul>
+<li><strong>Bad:</strong> the code assumes how data arrives and when it is triggered, and reads only the previous day. You have to change the code and run it by hand for each missing day.</li>
+<li><strong>Acceptable:</strong> rely on the scheduler and replay the missed triggers. This works most of the time. It fails at <strong>cold start</strong> (processing data from before the job’s first release, which no trigger ever existed for), and migrations are painful.</li>
+<li><strong>Good:</strong> the process <strong>reads the delta between source and sink</strong>, whatever time it starts, and keeps a <strong>state of the latest processed timestamp</strong>. It does not depend on the scheduler at all. The cost: a run after a long outage may take a long time.</li>
+</ul>
+<p>“The delta between source and sink” means: everything in the source that has no result in the sink yet. A run after a normal day finds one day of data; a run after the holidays finds five; a first run ever finds all of history. One piece of code covers all three.</p>
+<h3 id="failure-on-read">Failure on read<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#failure-on-read" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The data arrives late. Your job starts reading while the arrival is still being written and gets half of the day.</p>
+<ul>
+<li><strong>Bad:</strong> the same “previous day only” assumption. The rest of the day is never processed unless you notice and rerun by hand.</li>
+<li><strong>Acceptable:</strong> replay triggers. But how would you even know the data was incomplete?</li>
+<li><strong>Good:</strong> the same delta-plus-state design. It makes no assumption that the data is complete: what arrives after this run is simply part of the next run’s delta. What it does not solve is corrupt data, which needs its own checks.</li>
+</ul>
+<p>From outside the course material: Spark writes an empty <code>_SUCCESS</code> file into an output folder only once a write job has finished, so a reader can wait for that marker. The saved state is safer when it tracks when records <em>arrived</em>, or when the job compares keys between source and sink: with the transactions’ own timestamps (event time), a record that arrives late with an early timestamp falls behind the saved state and is skipped forever. These designs also make the job <strong>idempotent</strong> (running it twice gives the same result as running it once): a second run finds an empty delta and writes nothing, so a nervous manual rerun cannot duplicate predictions.</p>
+<h3 id="failure-on-process">Failure on process<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#failure-on-process" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A bug crashes the run. The process takes days to complete, so now you wait days again.</p>
+<ul>
+<li><strong>Bad:</strong> the long-running process is a single task with no checkpoints or intermediate data. Simpler, and fine for short pipelines, but all of it succeeds or all of it fails.</li>
+<li><strong>Good:</strong> either (1) use <strong>checkpoints</strong>, where the result of each operation is stored automatically, so a replay resumes from the last one; or (2) split the process into several tasks that each save their output and read the previous task’s, so you rerun only the failed task. The costs: you need intermediate storage, and <strong>not the local hard disk</strong> (the machine that crashed may not come back, and other workers cannot read it), and the design is more complex.</li>
+</ul>
+<p>The repository’s <code>data/intermediate/preprocessing/</code> and <code>data/intermediate/features/</code> folders hold such saved results.</p>
+<p>From outside the course material (Spark documentation): Spark recovers from a lost executor by itself, recomputing the lost partitions from the plan that produced them. That covers machine failures within one run, and does nothing when your own code crashes the application.</p>
+<h3 id="failure-on-write">Failure on write<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#failure-on-write" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The run succeeds, but the connection breaks mid-write. Not all predictions reach the sink, and because the run is green, nobody notices.</p>
+<ul>
+<li><strong>Bad:</strong> a “connectionless” write method (fire and forget, with no confirmation from the receiver). Writes are fast, but they can be inconsistent.</li>
+<li><strong>Good:</strong> (1) write to a database system with <strong>ACID</strong> properties, and (2) base the run’s success on <strong>ACK/NACK</strong>, the receiver’s acknowledgement or negative acknowledgement of each write. A green run then guarantees that the results reached the target. The cost is latency, which for a batch job should not matter.</li>
+</ul>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>ACID </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Atomicity:</strong> each transaction is either carried out completely, or the database reverts to the state before it started.</li>
+<li><strong>Consistency:</strong> the database is in a consistent state before and after the transaction.</li>
+<li><strong>Isolation:</strong> concurrent transactions do not interfere with each other.</li>
+<li><strong>Durability:</strong> a successful transaction is persisted even if the system then fails.</li>
+</ul>
+</div>
+</blockquote>
+<p>With ACK and NACK the sender keeps data until the receiver confirms it: data 1 gets an ACK, data 2 a NACK, so data 2 is sent again until it is acknowledged. If the write is one transaction, atomicity means a broken connection leaves the sink as it was, so a retry starts clean.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Failure point</th><th>What goes wrong</th><th>Good design</th></tr></thead><tbody><tr><td>Trigger</td><td>Days not processed</td><td>Read the source-sink delta, keep state</td></tr><tr><td>Read</td><td>Half the data read</td><td>Same: the rest joins the next delta</td></tr><tr><td>Process</td><td>Crash loses days of work</td><td>Checkpoints or tasks with saved outputs</td></tr><tr><td>Write</td><td>Partial write, green run</td><td>ACID sink, success only on ACK</td></tr></tbody></table></div>
+<h2 id="what-to-be-able-to-do">What to be able to do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Justify the simplest tool for a given data size and set of operations, using essential versus accidental complexity.</li>
+<li>Contrast OLTP and OLAP, and row and columnar layouts, and say why ML pipelines read from analytical storage.</li>
+<li>Describe a Parquet file and a partitioned Parquet folder, and what a reader can skip.</li>
+<li>Compute a distributed mean from partial sums and counts, and say why averaging means fails.</li>
+<li>Write the core PySpark patterns (read, select, filter, groupBy and agg, join, withColumn) and their SQL equivalent.</li>
+<li>Classify operations as narrow or wide, explain a shuffle, and read a physical plan.</li>
+<li>Explain the driver, cluster manager, executors, tasks and partitions, and what <code>local[2]</code> limits.</li>
+<li>For each failure point of a batch pipeline, explain the bad and good designs and their trade-offs.</li>
+</ul>
+<h2 id="exam-questions">Exam questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exam-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your dataset is 3 GB and fits in memory. Why not use Spark anyway? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> essential versus accidental complexity; Spark adds a cluster, scheduling, lazy plans and new failure modes; pandas or Polars handle the case; scale only when data size and latency demand it.</p>
+<p>The solution should only be as complex as the problem. A 3 GB dataset that fits in memory is small data: pandas handles complex operations on it and Polars can use every core of the machine for simple ones. Spark would add accidental complexity: a session and cluster to configure, lazy plans to debug, partitions and shuffles to tune, and more things that can fail, while solving nothing pandas cannot. The course’s rule is to avoid concurrency, distributed computing and GPU computing as long as you can, and move along the line from single core to multiprocessing to distributed computing only when data size and latency requirements push you there.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How would you compute the mean of a dataset spread across several machines, and why not average the machines' means? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> split the data into chunks; each worker computes a local sum and count; the coordinator divides the total sum by the total count; averaging means is only correct for equal-size chunks; only two numbers per worker cross the network.</p>
+<p>Split the data into chunks and give each worker one. Each worker computes the sum <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and count <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> of its chunk and sends only those two numbers back. The coordinator computes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. Averaging the workers’ means gives the right answer only when every chunk has the same size: with chunks [1, 2, 3] and [10] the means are 2 and 10, their average is 6, but the true mean is 4. Sending sums and counts is also cheap, because the raw data never moves. In Spark terms, this is why a global average is cheap: partial results are computed locally per partition and only those are combined.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does your pipeline store its data as partitioned Parquet instead of CSV? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> columnar layout reads only needed columns; per-column encoding compresses well; footer metadata and statistics let readers skip row groups; partition folders let readers skip whole days; types and schema are stored.</p>
+<p>Analytical and ML jobs read a few columns of many rows, the OLAP pattern. CSV is a row format: to use one column you parse every byte of every row, and nothing says what type a field is. Parquet stores each column of a row group as a separate chunk, so a reader fetches only the columns it uses. Values of one column are similar, so they encode and compress well, which cuts disk and network traffic. The footer holds the schema, the location of each column chunk and statistics such as minimum and maximum values, so a filter can skip row groups that cannot match. Partitioning the folder by day (<code>chck_date_day=...</code>) lets a reader skip whole days, which also makes reading only new data cheap.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between OLTP and OLAP, and why should an ML training job not query the app's backend database directly? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> OLTP serves the backend: few records by key, low-latency writes, wide results; OLAP serves analytics: aggregates over many records, bulk loads, tall results; backend stores are optimised for OLTP; big queries cause latency spikes for users.</p>
+<p>OLTP (online transaction processing) is the backend’s workload: fetch or update a few records by key, such as one user’s profile, with low-latency writes from user input, returning wide results (many columns, few rows). OLAP (online analytics processing) is the analytics workload: aggregate over huge numbers of records, loaded in bulk by ETL, returning tall results (many rows, few columns), on TBs to PBs of data. A backend database is laid out and tuned for OLTP, typically row-wise. A training job’s full-history scan is slow there and competes with the app’s own queries, causing latency spikes for real users, whose requests take priority. So the data is copied out to storage built for analytics, such as Parquet files, and the heavy reads happen there.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which of your Spark operations are narrow and which are wide, and why does it matter? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> narrow: each output partition needs one input partition, no data movement (arithmetic, filter, sample); wide: needs rows from many partitions (groupBy, join, sort); wide triggers a shuffle through disk and network; shuffles dominate cost; global count/avg only move partial results.</p>
+<p>In a narrow operation every partition can be processed on its own executor without seeing other data: column arithmetic like the z-score <code>withColumn</code>, filters, sampling. In a wide operation an output depends on rows spread over many partitions: a groupBy needs all data for one key together (Spark first reduces each partition to partial aggregates per key), a join needs matching keys together, a sort needs global order. Spark meets that with a shuffle: rows are written out, sent over the network to the executor that owns their key, and read back. That is usually the most expensive part of a job, so you filter and select before grouping or joining, to shuffle less data. A join with a small table, such as per-group statistics, avoids shuffling the large side, because Spark broadcasts the small table to every executor. A whole-dataset count or average is cheap despite combining all partitions, because each partition sends only its partial count or sum.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>When does Spark actually execute your code, and what does it gain from waiting? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> transformations only build a plan; actions (head, collect, count, show, write) trigger execution; seeing the whole plan lets Spark optimise; filter reordering, column pruning and predicate pushdown into Parquet; explain() shows the plan.</p>
+<p>Spark is lazy. Transformations such as <code>select</code>, <code>filter</code>, <code>withColumn</code> and <code>join</code> return immediately and only add steps to a plan. Execution starts when an action needs a result: <code>head</code>, <code>collect</code>, <code>count</code>, <code>show</code> or <code>write</code>. Because Spark sees the whole plan first, it can optimise it. In the demo the code doubled <code>amount</code> and then filtered on it, but the physical plan filtered first, read only the <code>amount</code> column from Parquet (column pruning), and pushed the <code>amount > 100</code> condition into the Parquet scan (predicate pushdown), where row group statistics can skip data. <code>explain(&quot;formatted&quot;)</code> shows that plan without running anything. A practical consequence: a runtime error surfaces only at the action, so the line that fails is not always the line with the bug, although a misspelt column name is caught at once.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam" data-callout="exam" data-callout-metadata="]- Your Spark job runs with master(&quot;local[2">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>&quot;) and has 367 tasks to run. What happens, and what would change on a cluster? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> local[2] means everything on one machine with two cores; at most two tasks run at once, the rest queue; roughly one task per partition; driver plans and schedules, executors run tasks; a cluster adds executors on worker nodes via the cluster manager.</p>
+<p><code>local[2]</code> runs everything on your own machine with two cores, so at most two tasks run in parallel and the other tasks wait in a queue. Spark creates roughly one task per partition, plus tasks for work such as listing files and reading the schema. On a cluster, the driver still builds the plan and splits it into tasks, but a cluster manager gives it executors on several worker nodes, each running several tasks in parallel and caching data, and exchanging data with each other in shuffles. More executor cores means more tasks at once; more tasks than cores just means tasks queue. Very many tiny partitions waste time on scheduling, which is why Spark packs small files together when reading.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your daily scoring job did not run for four days. How does your design recover without code changes? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> do not hard-code “process yesterday”; read the delta between source and sink; keep state of the latest processed timestamp; independent of the scheduler; cold start and backfills handled; cost is a long catch-up run.</p>
+<p>A job that reads only the previous day would need code changes and manual runs for each missing day. Replaying the scheduler’s missed triggers works most of the time, but it cannot handle a cold start (data from before the first release, for which no trigger exists) and makes migrations painful. My job instead reads the delta: everything in the source that has no result in the sink yet, found using a saved state with the latest processed timestamp. Whenever it starts, it processes what is missing: one day normally, five days after the outage, all history on the first run. The trade-off is that a catch-up run can take a long time. Because a second run finds an empty delta, the job is also idempotent: rerunning it does not duplicate predictions.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your job ran for two days and then crashed on a bug. How would you design it so you do not lose two days? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> a single long task is all-or-nothing; use checkpoints that store each operation’s result; or split into tasks that save and read intermediate results; rerun only the failed part; intermediate storage must be shared and durable, not the local disk; costs complexity.</p>
+<p>As a single task with no intermediate data, the job either completely succeeds or completely fails, which is fine for short pipelines and painful for long ones. Two fixes: checkpoints, where each operation’s result is stored automatically and a replay resumes from the last one; or splitting the pipeline into tasks (preprocessing, features, prediction) that each write their output to intermediate storage and read their input from the previous task’s output, so only the failed task reruns. The intermediate storage must not be the local hard disk: the crashed machine may be gone and other workers cannot read it. The price is storage and a more complex design. Spark itself recomputes lost partitions when an executor dies, but that does not survive the application crashing.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The run was green but half the predictions are missing from the sink. How did that happen and how do you prevent it? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> connection broke mid-write; a fire-and-forget write never learns of the failure; use an ACID sink so a broken write rolls back; mark success only on ACK, retry on NACK; latency cost is acceptable for batch.</p>
+<p>The processing succeeded but the connection broke during the write. With a connectionless, fire-and-forget method, the writer never learns which writes failed, so the run reports success. Two fixes: write to a database with ACID properties, so a transaction either commits completely or is rolled back (atomicity) and a committed one survives failures (durability); and make the run’s success depend on acknowledgements, so a NACK or missing ACK triggers a retry or fails the run. Then a green run means the results reached the target. Waiting for acknowledgements adds latency, which a batch job can afford.</p>
+</div>
+</blockquote>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why do extra threads not speed up CPU-bound Python code in standard CPython? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The global interpreter lock lets one thread run Python bytecode at a time.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What limits each step of single core, multiprocessing, distributed computing? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Clock speed caps a core; core count caps a machine; distributed computing is uncapped.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between vertical and horizontal scaling? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Vertical: a bigger machine. Horizontal: more machines.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which tool fits small data with complex operations, in Yesilbek's grid? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A data processing library such as pandas.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which tool fits large data with simple operations, in Yesilbek's grid? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Multi-core libraries such as Polars, or concurrency.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which tool fits large data with complex operations, in Yesilbek's grid? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Distributed computing, such as Spark.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is accidental complexity? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Complexity your solution adds beyond what the problem itself requires.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which three things should you avoid as long as you can, according to Yesilbek? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Concurrency, distributed computing, GPU computing.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the main read pattern of OLTP? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A small number of records per query, fetched by key.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the main write pattern of OLAP? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Bulk import, ETL.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Is a typical OLTP result wide or tall? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Wide: many columns, few rows.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why should analytics not run heavy queries on an OLTP store? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It is optimised for the backend; big queries cause latency spikes for users.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the 1970s archive example, how should you shelve documents requested in bulk by topic? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>By topic, so one request is one trip to one shelf: the columnar idea.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does a columnar layout suit analytical queries? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A query reads only the few columns it needs and skips the rest.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why do columnar files compress better than row files? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Each chunk holds one column’s values: same type, often repetitive.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the main parts of a Parquet file, from outer to inner? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Row groups, column chunks, pages; plus a footer with metadata.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is Parquet's metadata in a footer at the end of the file? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A reader reads it first and then jumps straight to the column chunks it needs.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What lets a Parquet reader skip row groups for a filter like amount > 100? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Minimum and maximum statistics per column chunk in the footer metadata.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does a folder name like chck_date_day=2019-01-01 do in a Parquet dataset? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Partitions by day; a filter on that column skips whole folders.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In a distributed mean, what does each worker send back? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Its chunk’s sum and count.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>When does averaging the workers' means give the correct overall mean? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Only when all chunks have the same size.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between PySpark and SparkSQL? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>PySpark is Spark’s Python DataFrame API; SparkSQL writes the same query as SQL.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does F.stddev return for a group with a single row? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>NULL, because it is the sample standard deviation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a narrow transformation in Spark? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>One where each output partition depends on one input partition: no data movement.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give three wide operations in Spark. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Group by, aggregate, join.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a shuffle? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Redistributing rows across executors by key, through disk and network, for a wide operation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is a global count or average cheap even though it combines all partitions? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Each partition sends only a partial count or sum.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does a broadcast join avoid shuffling the large table? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Spark copies the small table to every executor, so the large side stays put.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>When does Spark execute a chain of transformations? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Only when an action needs a result, such as head, collect, count or write.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is Spark's evaluation lazy? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Seeing the whole job first lets it optimise the plan before running anything.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is predicate pushdown? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Applying a filter inside the file scan, so data can be skipped at read time.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does ReadSchema with only one column show in a Spark plan over Parquet? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Column pruning: Spark reads only the columns the query uses.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can a bug in a Spark transformation crash a later line? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Runtime errors surface only when an action runs the plan.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does the Spark driver do? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Runs your program, builds the plan, splits it into tasks and schedules them.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What runs on a Spark worker node? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An executor that runs tasks and caches data.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the relationship between Spark tasks and partitions? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Roughly one task per partition, plus tasks for work like listing files.</p>
+</div>
+</blockquote>
+<blockquote class="callout card" data-callout="card" data-callout-metadata="]- With master(&quot;local[2">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>&quot;), how many tasks run in parallel? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Two.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does spark.read.parquet start jobs before any action? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It lists the files and reads the schema straight away; only data processing waits.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the four points where a batch ML pipeline can fail? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Trigger, read, process, write.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the good design for a missed trigger? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Read the delta between source and sink, keeping state of the latest processed timestamp.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does replaying scheduler triggers fail at cold start? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Data from before the first release never had a trigger to replay.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does &quot;the delta between source and sink&quot; mean? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Everything in the source that has no result in the sink yet.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does it mean for a pipeline run to be idempotent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Running it twice gives the same result as running it once.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why should a timestamp state track arrival time rather than event time? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Late records with early event times would fall behind the state and be skipped.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the downside of running a long pipeline as one task without checkpoints? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>All succeeds or all fails: a crash loses all progress.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must intermediate results not live on the local hard disk? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The crashed machine may be gone, and other workers cannot read it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can a write failure leave a green run? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A connectionless write never learns that the write failed.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does atomicity guarantee for a database write? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The transaction completes fully, or the database reverts to its state before it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does durability guarantee? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A successful transaction survives a later system failure.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What should a run's success be based on when writing results? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>ACK/NACK from the receiver: success only when every write is acknowledged.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/EPRM/EPRM---Overview" class="internal alias" data-slug="Courses/EPRM/EPRM---Overview">Course overview</a></li>
+<li><strong>Previous lecture:</strong> <a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</a> (the ride-hailing example and the backend database problem)</li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/Apache-Spark" class="internal alias" data-slug="Concepts/Apache-Spark">Apache Spark</a> · <a href="../../../Concepts/Apache-Parquet" class="internal alias" data-slug="Concepts/Apache-Parquet">Apache Parquet</a> · <a href="../../../Concepts/OLTP-vs-OLAP" class="internal alias" data-slug="Concepts/OLTP-vs-OLAP">OLTP vs OLAP</a> · <a href="../../../Concepts/Lazy-Evaluation" class="internal alias" data-slug="Concepts/Lazy-Evaluation">Lazy Evaluation</a> · <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a> · <a href="../../../Concepts/Clean-Code" class="internal alias" data-slug="Concepts/Clean-Code">Clean Code</a></li>
+<li><strong>Source:</strong> lecture slides, “Week 2: Distributed Data Processing”, Kemal T. Yesilbek, 4 November 2026. The PySpark snippets, the physical plan and the Spark UI observations are from the code shown in the lecture, from <code>kemalty/uva-mlprod-code</code> (branch <code>v4</code>).</li>
+<li><strong>Readings for the week:</strong> Martin Kleppmann, <em>Designing Data-Intensive Applications</em> (1st edition, O’Reilly, 2017), Chapters 3 (storage and retrieval), 4 (encoding and evolution), 6 (partitioning) and 7 (transactions). The OLTP versus OLAP table is from the book. Spark quick start, <a href="https://spark.apache.org/docs/latest/quick-start.html" class="external">https://spark.apache.org/docs/latest/quick-start.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, and RDD programming guide, <a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" class="external">https://spark.apache.org/docs/latest/rdd-programming-guide.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+<li><strong>Further (used for the additions marked as outside the course material):</strong> Apache Parquet file format documentation, <a href="https://parquet.apache.org/docs/file-format/" class="external">https://parquet.apache.org/docs/file-format/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (file layout figure: <a href="https://github.com/apache/parquet-format" class="external">https://github.com/apache/parquet-format<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>). Spark SQL performance tuning and data sources guides, <a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html" class="external">https://spark.apache.org/docs/latest/sql-performance-tuning.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Spark cluster mode overview, <a href="https://spark.apache.org/docs/latest/cluster-overview.html" class="external">https://spark.apache.org/docs/latest/cluster-overview.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Row versus column layout figure: Dremio, “Intro to Apache Parquet”, <a href="https://www.dremio.com/resources/guides/intro-apache-parquet/" class="external">https://www.dremio.com/resources/guides/intro-apache-parquet/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. ACK/NAK figure: Ian Finlayson, CPSC 414 notes, <a href="https://ianfinlayson.net/class/cpsc414/notes/09-transport2" class="external">https://ianfinlayson.net/class/cpsc414/notes/09-transport2<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-316" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#eprm-l02-distributed-data-processing" data-for="eprm-l02-distributed-data-processing">EPRM-L02: Distributed Data Processing</a></li><li class="depth-1"><a href="#when-one-machine-stops-being-enough" data-for="when-one-machine-stops-being-enough">When one machine stops being enough</a></li><li class="depth-1"><a href="#pick-the-simplest-tool-that-fits" data-for="pick-the-simplest-tool-that-fits">Pick the simplest tool that fits</a></li><li class="depth-1"><a href="#where-the-data-lives-oltp-and-olap" data-for="where-the-data-lives-oltp-and-olap">Where the data lives: OLTP and OLAP</a></li><li class="depth-1"><a href="#row-and-columnar-layouts" data-for="row-and-columnar-layouts">Row and columnar layouts</a></li><li class="depth-1"><a href="#apache-parquet" data-for="apache-parquet">Apache Parquet</a></li><li class="depth-1"><a href="#splitting-one-computation-across-machines" data-for="splitting-one-computation-across-machines">Splitting one computation across machines</a></li><li class="depth-1"><a href="#apache-spark-sql-in-python-on-many-machines" data-for="apache-spark-sql-in-python-on-many-machines">Apache Spark: SQL in Python, on many machines</a></li><li class="depth-1"><a href="#narrow-and-wide-operations" data-for="narrow-and-wide-operations">Narrow and wide operations</a></li><li class="depth-1"><a href="#lazy-evaluation-nothing-runs-until-you-ask-for-a-result" data-for="lazy-evaluation-nothing-runs-until-you-ask-for-a-result">Lazy evaluation: nothing runs until you ask for a result</a></li><li class="depth-1"><a href="#driver-executors-tasks-and-partitions" data-for="driver-executors-tasks-and-partitions">Driver, executors, tasks and partitions</a></li><li class="depth-1"><a href="#making-failures-recoverable" data-for="making-failures-recoverable">Making failures recoverable</a></li><li class="depth-2"><a href="#failure-on-trigger" data-for="failure-on-trigger">Failure on trigger</a></li><li class="depth-2"><a href="#failure-on-read" data-for="failure-on-read">Failure on read</a></li><li class="depth-2"><a href="#failure-on-process" data-for="failure-on-process">Failure on process</a></li><li class="depth-2"><a href="#failure-on-write" data-for="failure-on-write">Failure on write</a></li><li class="depth-1"><a href="#what-to-be-able-to-do" data-for="what-to-be-able-to-do">What to be able to do</a></li><li class="depth-1"><a href="#exam-questions" data-for="exam-questions">Exam questions</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Apache-Parquet" class="internal">Apache Parquet</a></li><li><a href="../../../Concepts/Apache-Spark" class="internal">Apache Spark</a></li><li><a href="../../../Concepts/Lazy-Evaluation" class="internal">Lazy Evaluation</a></li><li><a href="../../../Concepts/OLTP-vs-OLAP" class="internal">OLTP vs OLAP</a></li><li><a href="../../../Courses/EPRM/EPRM---Exam-Questions" class="internal">EPRM - Exam Questions</a></li><li><a href="../../../Courses/EPRM/EPRM---Flashcards" class="internal">EPRM - Flashcards</a></li><li><a href="../../../Courses/EPRM/EPRM---Overview" class="internal">EPRM - Overview</a></li><li><a href="../../../Courses/EPRM/" class="internal">Engineering Production-Ready ML/AI Systems</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mw0wb7k5" type="module" data-persist="true"></script></html>

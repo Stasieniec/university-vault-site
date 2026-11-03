@@ -50,6 +50,8 @@ where $(A\mathbf{x})_i$ is the expected payoff of strategy $i$ against the curre
 - **Stability.** A rest point is **stable** if the population returns after a small push in either direction, unstable otherwise. Its **basin of attraction** is the set of starting states that end there. Read it off the **phase line** ($dx/dt$ against $x$): above zero, cooperators increase.
 - **Prisoner's Dilemma.** $f_C - f_D = x(R-T) + (1-x)(S-P) < 0$ everywhere (greed and fear), so cooperation always declines. $x = 0$ is stable and matches the Nash equilibrium (D,D); $x = 1$ is unstable because one defector out-earns everyone and spreads. A population starting at 90% cooperators still ends at all-defect.
 - **Stag Hunt.** $f_C - f_D$ is negative below $x^{*}$ and positive above. Rest points: $x = 0$ stable, $x^{*} = 2/3$ unstable (for $R=4, S=0, T=3, P=2$), $x = 1$ stable. Starting at 60% cooperators the population goes to all-defect. The interior point is the game's mixed Nash equilibrium, but an adaptive population never settles there: any push sends it to one of the pure equilibria.
+- **Donation game** (AGAI L02). Cooperating costs $c$ and gives the partner $b > c$: $f_C - f_D = -c$, so $\dot x = -c\,x(1-x)$ and cooperators decline from any start.
+- **Hawk-Dove** (AGAI L02). With (C,C) = 3,3; (C,D) = 2,8; (D,C) = 8,2; (D,D) = $-2$,$-2$: $\dot x = x(1-x)(4 - 9x)$. Both pure states are unstable and $x = 4/9$ is stable, so C and D coexist; here the mixed equilibrium is where the population ends.
 - **Belief and frequency coincide.** The tipping point $x^{*}$ equals the belief threshold $p^{*}$ of a rational Stag Hunt player, because in a randomly mixed population the chance that a partner cooperates is just $x$.
 - **Several populations.** Separate groups can each follow their own two-strategy equation coupled through payoffs, as in the signalling game of AGAI Lab 1, where high-quality senders, low-quality senders (who may deceive) and receivers (trusting or sceptical) co-evolve.
 - **Link to equilibria** (background beyond the course material): every stable rest point is a Nash equilibrium, and every strict Nash equilibrium is stable.
@@ -65,3 +67,4 @@ where $(A\mathbf{x})_i$ is the expected payoff of strategy $i$ against the curre
 
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]

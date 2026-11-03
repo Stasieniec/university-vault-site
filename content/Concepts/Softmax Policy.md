@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: ["Soft-max policy", "Boltzmann policy"]
-course: [RL]
+course: [RL, AGAI]
 tags: [policy-gradient, discrete-actions, stochastic, exploration]
 status: complete
 ---
@@ -81,3 +81,4 @@ $$\pi_\theta(a|s) = \frac{\exp(f_\theta(s,a) / \tau)}{\sum_{a'} \exp(f_\theta(s,
 - [[Actor-Critic]] — Policy component
 - [[PPO]] — Soft policy parameterization
 - [[Deep Reinforcement Learning]] — When using neural networks for preferences
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (Boltzmann exploration over Q-values)

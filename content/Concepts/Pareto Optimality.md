@@ -57,6 +57,7 @@ where:
 - **Usually several Pareto optima.** Pareto dominance is only a partial order (two outcomes can each be better for a different player); there is typically a whole set of optima (the Pareto frontier), and it does not pick one.
 - **Equilibria can be Pareto-inefficient.** The Prisoner's Dilemma is the standard case: individual best responses lead to an outcome everyone would like to leave together.
 - **Coordination failure.** In the [[Stag Hunt]] the Pareto optimum is an equilibrium, yet agents may still miss it for lack of trust.
+- **Welfare and fairness optimality** (AGAI L02): a joint policy is welfare-optimal if it maximises $W(\pi) = \sum_i U_i(\pi)$ and fairness-optimal if it maximises $F(\pi) = \prod_i U_i(\pi)$. The product favours equal splits: (5, 5) and (9, 1) have the same welfare but fairness 25 against 9.
 - **Used beyond game theory** (background): the same idea defines efficiency in economics and the trade-off frontier in multi-objective optimisation.
 
 ## Connections
@@ -70,3 +71,5 @@ where:
 
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (Pareto inefficiency in general-sum games; climbing game)

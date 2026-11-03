@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [value iteration]
-course: [RL]
+course: [RL, AGAI]
 tags: [tabular-methods, exam-topic]
 status: complete
 ---
@@ -39,3 +39,4 @@ Output: π(s) = argmax_a Σ_{s',r} p(s',r|s,a) [r + γV(s')]
 
 - [[RL-L02 - Dynamic Programming]], [[RL-Book Ch4 - Dynamic Programming]], [[RL-CA01 - Dynamic Programming]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]] (vacuum world planning)
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap)

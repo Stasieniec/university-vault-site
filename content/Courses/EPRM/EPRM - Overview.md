@@ -67,6 +67,13 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments unlo
 | Lecture 1 (Wed 28 Oct) | Data-driven roles and teams, the MLOps lifecycle and Dev/Acc/Prod, clean code, unit testing | [[EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing]] |
 | Readings | Seiden, *Outcomes Over Output*; MIT Sloan Management Review, "Achieving Return on AI Projects"; Kästner, "Process and Teams" in *Machine Learning in Production*; Martin, *Clean Code* | Kästner's part is three chapters: [[EPRM-Book Ch20 - Data Science and Software Engineering Process Models]], [[EPRM-Book Ch21 - Interdisciplinary Teams]], [[EPRM-Book Ch22 - Technical Debt]]. The others are covered inside the lecture note |
 
+### Week 2: Distributed data processing
+
+| | Topic | Notes |
+|---|---|---|
+| Lecture 2 (Wed 4 Nov) | Data size and tool choice, OLTP vs OLAP, row vs columnar storage and Parquet, distributed processing with Spark (operations, lazy evaluation, architecture), fault tolerance and recovery | [[EPRM-L02 - Distributed Data Processing]] |
+| Readings | Kleppmann, *Designing Data-Intensive Applications*, Ch 3, 4, 6, 7 | No note yet: the book is not freely available |
+
 ---
 
 ## Status
@@ -77,9 +84,10 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments unlo
 | [[EPRM-Book Ch20 - Data Science and Software Engineering Process Models]] | complete |
 | [[EPRM-Book Ch21 - Interdisciplinary Teams]] | complete |
 | [[EPRM-Book Ch22 - Technical Debt]] | complete |
+| [[EPRM-L02 - Distributed Data Processing]] | complete |
 
 ---
 
 ## Concept Index
 
-[[MLOps]] · [[Clean Code]] · [[Unit Testing]]
+[[MLOps]] · [[Clean Code]] · [[Unit Testing]] · [[Apache Spark]] · [[Apache Parquet]] · [[OLTP vs OLAP]] · [[Lazy Evaluation]]

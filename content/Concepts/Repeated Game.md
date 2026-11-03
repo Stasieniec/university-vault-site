@@ -70,3 +70,4 @@ where:
 ## Appears In
 
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]

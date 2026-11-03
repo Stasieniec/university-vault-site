@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [RL, reinforcement learning]
-course: [RL, RecSys]
+course: [RL, RecSys, AGAI]
 tags: [foundations]
 status: complete
 ---
@@ -45,3 +45,4 @@ graph TD
 - [[RL-L01 - Intro, MDPs & Bandits]]
 - [[RL-Book Ch1 - Introduction]]
 - [[RS-L03b - From LLMs to LRMs]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap for multi-agent RL)

@@ -9,13 +9,21 @@ status: complete
 
 # AGAI - Exam Questions
 
-All 21 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
+All 48 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
 
 Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 
 ## L01 Agents, Multiagent Systems and Agentic AI
 
 ![[AGAI-L01 - Agents, Multiagent Systems and Agentic AI#Exam questions]]
+
+## L02 Game Theory and Population Dynamics
+
+![[AGAI-L02 - Game Theory and Population Dynamics#Exam questions]]
+
+## L03 Intro to Multi-Agent Reinforcement Learning
+
+![[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning#Exam questions]]
 
 ## Book Ch2: Intelligent Agents
 
@@ -24,3 +32,7 @@ Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 ## Lab01: Simple Agents, Complex Dynamics
 
 ![[AGAI-Lab01 - Simple Agents, Complex Dynamics#Exam questions]]
+
+## Lab02: Learning Agents
+
+![[AGAI-Lab02 - Learning Agents#Exam questions]]

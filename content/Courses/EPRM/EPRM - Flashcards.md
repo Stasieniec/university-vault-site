@@ -9,13 +9,17 @@ status: complete
 
 # EPRM - Flashcards
 
-All 89 flashcards for Engineering Production-Ready ML/AI Systems, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it.
+All 139 flashcards for Engineering Production-Ready ML/AI Systems, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[EPRM - Exam Questions|exam questions]] page.
 
 Back to the [[Courses/EPRM/index|Engineering Production-Ready ML/AI Systems home]].
 
 ## L01 Data Roles, ML Lifecycle, Clean Code and Unit Testing
 
 ![[EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing#Flashcards]]
+
+## L02 Distributed Data Processing
+
+![[EPRM-L02 - Distributed Data Processing#Flashcards]]
 
 ## Book Ch20: Data Science and Software Engineering Process Models
 

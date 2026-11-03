@@ -40,10 +40,11 @@ Russell and Norvig give the test for when another entity has to be treated as an
 - Strategic analysis: [[Nash Equilibrium]], [[Pareto Optimality]], [[Prisoner's Dilemma]], [[Stag Hunt]], [[Repeated Game]]
 - Population analysis: [[Replicator Dynamics]]
 - Modern systems: [[LLM Agent]], [[Agentic Search]]
-- Learning: [[Reinforcement Learning]] with several agents (non-stationary environment)
+- Learning: [[Reinforcement Learning]] with several agents (non-stationary environment); [[Stochastic Game]], [[Independent Learning]], [[Multi-Agent Credit Assignment]]
 
 ## Appears In
 
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
 - [[AGAI-Book Ch2 - Intelligent Agents]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (multi-agent reinforcement learning)

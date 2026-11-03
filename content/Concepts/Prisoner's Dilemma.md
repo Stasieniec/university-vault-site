@@ -50,6 +50,7 @@ Both terms are negative, so $f_C - f_D < 0$ for every $p$: defection always earn
 
 ## Key Properties / Variants
 
+- **Donation game form** (AGAI L02): $R = b - c$, $S = -c$, $T = b$, $P = 0$ with $b > c > 0$ (cooperating costs $c$ and gives the partner $b$).
 - **Unique Nash equilibrium (D,D)**, in dominant strategies. See [[Nash Equilibrium]].
 - **(D,D) is the only outcome that is not Pareto optimal**; (C,C) is the social optimum. See [[Pareto Optimality]].
 - **One-shot versus repeated.** Played once, defection is the rational choice. Played repeatedly with memory, reciprocal strategies such as Tit-for-Tat and Win-Stay Lose-Shift can make cooperation pay, and Axelrod's 1980 tournament was won by Tit-for-Tat. See [[Repeated Game]].
@@ -69,3 +70,5 @@ Both terms are negative, so $f_C - f_D < 0$ for every $p$: defection always earn
 
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L02 - Game Theory and Population Dynamics]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (iterated PD as a stochastic game)

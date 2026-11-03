@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [ε-greedy, epsilon-greedy, e-greedy, Epsilon-Greedy, epsilon-greedy policy, ε-greedy Exploration]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, exam-topic]
 status: complete
 ---
@@ -26,3 +26,4 @@ status: complete
 ## Appears In
 
 - [[RL-L01 - Intro, MDPs & Bandits]], [[RL-L03 - Monte Carlo Methods]], [[RL-L04 - Temporal Difference Learning]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (exploration probabilities)

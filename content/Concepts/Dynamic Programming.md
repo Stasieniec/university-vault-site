@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [DP, dynamic programming]
-course: [RL, MNLP]
+course: [RL, MNLP, AGAI]
 tags: [tabular-methods, exam-topic]
 status: complete
 ---
@@ -86,3 +86,4 @@ Combines evaluation and improvement into a single update:
 - [[RL-ES01 - Exercise Set Week 1]]
 - [[MNLP-L03 - Morphology and Word Formation]]
 - [[MNLP-L04 - Subword Segmentation]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap)

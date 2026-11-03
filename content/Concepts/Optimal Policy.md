@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [optimal policy, π*]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, exam-topic]
 status: complete
 ---
@@ -46,3 +46,4 @@ status: complete
 - [[RL-L01 - Intro, MDPs & Bandits]]
 - [[RL-L02 - Dynamic Programming]]
 - [[RL-Book Ch3 - Finite MDPs]]
+- [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (recap)

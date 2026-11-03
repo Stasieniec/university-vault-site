@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [POMDP, Partially Observable MDP, Partially Observable Markov Decision Process]
-course: [RL]
+course: [RL, AGAI]
 tags: [foundations, exam-topic]
 status: complete
 ---
@@ -69,3 +69,4 @@ Use recent observations as state (frame stacking) or recurrent networks ([[Deep 
 
 - [[RL-L13 - Partial Observability]]
 - [[RL-Book Ch17 - Frontiers]] (§17.3)
+- [[AGAI-L02 - Game Theory and Population Dynamics]]
