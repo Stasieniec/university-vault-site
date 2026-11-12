@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>EPRM-L03 - Containerization and Software Engineering Processes — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="EPRM-L03 - Containerization and Software Engineering Processes — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EPRM-L03 - Containerization and Software Engineering Processes — notes.swasilewski.com"/><meta name="twitter:description" content="EPRM-L03: Containerization and Software Engineering Processes In short How do you get code that works on your laptop to run the same way everywhere, and how do you stop a team’s mistakes from reaching real users? Machines differ in architecture, operating system, configuration and packages, so even ..."/><meta property="og:description" content="EPRM-L03: Containerization and Software Engineering Processes In short How do you get code that works on your laptop to run the same way everywhere, and how do you stop a team’s mistakes from reaching real users? Machines differ in architecture, operating system, configuration and packages, so even ..."/><meta property="og:image:alt" content="EPRM-L03: Containerization and Software Engineering Processes In short How do you get code that works on your laptop to run the same way everywhere, and how do you stop a team’s mistakes from reaching real users? Machines differ in architecture, operating system, configuration and packages, so even ..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="EPRM-L03: Containerization and Software Engineering Processes In short How do you get code that works on your laptop to run the same way everywhere, and how do you stop a team’s mistakes from reaching real users? Machines differ in architecture, operating system, configuration and packages, so even ..."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mwdebost" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mwdebost" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mwdebost").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-483"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-483" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/">Engineering Production Ready ML/AI Systems</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>EPRM L03   Containerization and Software Engineering Processes</a></div></nav><h1 class="article-title">EPRM-L03 - Containerization and Software Engineering Processes</h1><p show-comma="true" class="content-meta"><time datetime="2026-11-11T00:00:00.000Z">Nov 11, 2026</time><span>36 min read</span></p></div></div><article class="popover-hint"><h1 id="eprm-l03-containerization-and-software-engineering-processes">EPRM-L03: Containerization and Software Engineering Processes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#eprm-l03-containerization-and-software-engineering-processes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>How do you get code that works on your laptop to run the same way everywhere, and how do you stop a team’s mistakes from reaching real users? Machines differ in architecture, operating system, configuration and packages, so even a one-line hello world can break elsewhere. A <strong>container</strong> packs the application with everything it needs and runs it isolated on the host’s operating system, which makes it far lighter than a virtual machine. An ML application also talks to databases, MLflow and cloud storage, which mocked unit tests cannot check; <strong>integration tests</strong> can, with each dependency in its own container, wired together by Docker Compose. Mistakes are inevitable, so processes keep them out of production: development, acceptance and production environments, GitFlow branches mapped onto them, reviewed pull requests, and technical debt taken on only deliberately.</p>
+<p>There is no written exam: this feeds Assignment 3 (debugging a Docker container, and adding SQL through Docker Compose), the course project and the TA questioning about your code.</p>
+</div>
+</blockquote>
+<h2 id="software-needs-a-package">Software needs a package<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#software-needs-a-package" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>How do you ship a product from the Netherlands to the US? Whatever the vehicle, you package it. The package’s core job is to <strong>separate the product from the shipping process</strong>: the carrier does not need to know what is inside, it takes the box and moves it to the address on the label.</p>
+<p>Software needs the same mechanism. You want to package your code and ship it to whatever the end point is: a bare-metal server, a cloud compute instance, a phone. Software deployment is much harder than shipping a box, and <strong>containerization</strong> is the latest answer.</p>
+<h2 id="it-works-on-my-machine">”It works on my machine”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#it-works-on-my-machine" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>There is no single computer. Machines of the same brand run different operating systems, different versions of them, set up in different ways, and all of that changes how programs run. You might think this only matters for big, complex code. It does not.</p>
+<p><strong>The hello world example.</strong> The lecturer, Kemal Yesilbek, ran the same line in two containers, one with Python 2.7 and one with Python 3.13:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>$ docker run -it --entrypoint /bin/bash python:2.7.11-slim</span></span>
+<span data-line><span>root@5fa35c9439e2:/# python --version</span></span>
+<span data-line><span>Python 2.7.11</span></span>
+<span data-line><span>root@5fa35c9439e2:/# python -c &quot;print('hello', flush=True)&quot;</span></span>
+<span data-line><span>  File &quot;&lt;string>&quot;, line 1</span></span>
+<span data-line><span>    print('hello', flush=True)</span></span>
+<span data-line><span>                        ^</span></span>
+<span data-line><span>SyntaxError: invalid syntax</span></span>
+<span data-line><span>root@5fa35c9439e2:/# python -c &quot;print('hello')&quot;</span></span>
+<span data-line><span>hello</span></span>
+<span data-line> </span>
+<span data-line><span>$ docker run -it --entrypoint /bin/bash python:3-slim</span></span>
+<span data-line><span>root@58919815cced:/# python --version</span></span>
+<span data-line><span>Python 3.13.5</span></span>
+<span data-line><span>root@58919815cced:/# python -c &quot;print('hello', flush=True)&quot;</span></span>
+<span data-line><span>hello</span></span></code></pre></figure>
+<p>The <code>flush</code> keyword tells Python to push the text out of its buffer immediately, so it appears on the terminal at once. It was introduced in Python 3.3. A colleague on a newer Python writes perfectly legitimate code with it, and on your older interpreter that code does not run. (From outside the course material: the error on 2.7 is a syntax error because in Python 2 <code>print</code> is a statement, so <code>print('hello')</code> only works because the brackets are read as grouping one value.)</p>
+<p>That example is small, but realistic. Differences can sit at every level:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Architecture  ->  OS and version  ->  OS configuration  ->  Packages and versions</span></span>
+<span data-line><span>(x86_64, ARM)     (Windows, Linux)    (settings, setup)     (dependencies)</span></span></code></pre></figure>
+<p>Each level can change how the code executes and what it returns. A real case from NumPy’s issue tracker (issue 21209, “float32 differences between x86_64 (intel) and arm64 (M1 pro)”): the same Python, pandas and NumPy versions (1.22.3) gave different <code>float32</code> results on Intel and Apple M1 machines, while <code>float64</code> results matched. Same code, same packages, different hardware, different numbers.</p>
+<p>So how do you make sure code runs everywhere, runs the same and gives the same result? One way is to make your laptop the server and ship your laptop. The meme version: “It works on my machine.” “Then we’ll ship your machine.” “And that is how Docker was born.”</p>
+<h2 id="from-servers-to-virtual-machines-to-containers">From servers to virtual machines to containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#from-servers-to-virtual-machines-to-containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>You have an app and want to bring it to the live environment. There have been three ways of doing it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Way before</th><th>Virtual machines</th><th>Containers</th></tr></thead><tbody><tr><td>Obtain servers</td><td>Obtain servers</td><td>Obtain servers</td></tr><tr><td>Configure servers</td><td>Select a hypervisor</td><td>Select an orchestrator</td></tr><tr><td>Move code onto the server</td><td>Select a VM type</td><td>Create containers</td></tr><tr><td>Install dependencies</td><td>Create images</td><td>Push them to a registry</td></tr><tr><td>Spin up the app</td><td>Deploy the VM on the server</td><td>Deploy to the orchestrator</td></tr><tr><td>Check resources constantly</td><td>It brings the entire OS with it</td><td>Forget about servers</td></tr><tr><td>You had Linux version A, the server B</td><td>Messes up your machine, weird memory errors</td><td>Runs anywhere exactly the same</td></tr></tbody></table></div>
+<p>A <strong>hypervisor</strong> is the software that runs virtual machines on a physical machine. An <strong>orchestrator</strong> is the system that runs containers on a pool of machines and keeps them running (Kubernetes, in week 6). A <strong>registry</strong> is a store of container images that servers pull from, like a package index for whole applications. (Strictly, what you push is the container’s image, explained below.)</p>
+<p>A virtual machine solves the same problem as a container, by packing a whole computer. The main difference: <strong>VMs are heavy because each brings its own operating system; containers are light because they run on the host’s existing operating system.</strong> VMs therefore waste resources: instead of every app bringing its own OS, containers share one. (From outside the course material: a VM also takes minutes to boot, a container seconds.) Isolation is the other gain: one container is one application instance, neatly separated from the rest.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>  Virtual machines                    Containers</span></span>
+<span data-line><span>+-------+-------+-------+     +-----+-----+-----+-----+</span></span>
+<span data-line><span>| App A | App B | App C |     |App A|App B|App C|App D|</span></span>
+<span data-line><span>| libs  | libs  | libs  |     |libs |libs |libs |libs |</span></span>
+<span data-line><span>|Guest  |Guest  |Guest  |     +-----+-----+-----+-----+</span></span>
+<span data-line><span>|  OS   |  OS   |  OS   |     |   Container engine    |</span></span>
+<span data-line><span>+-------+-------+-------+     |      (Docker)         |</span></span>
+<span data-line><span>|      Hypervisor       |     +-----------------------+</span></span>
+<span data-line><span>+-----------------------+     |   Host operating      |</span></span>
+<span data-line><span>|  Host OS / hardware   |     |   system              |</span></span>
+<span data-line><span>+-----------------------+     +-----------------------+</span></span>
+<span data-line><span>                              |   Infrastructure      |</span></span>
+<span data-line><span>                              +-----------------------+</span></span></code></pre></figure>
+<h2 id="how-a-container-works">How a container works<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-a-container-works" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A container:</p>
+<ul>
+<li><strong>uses the resources of the host system</strong> (its CPU, memory and operating system);</li>
+<li>behaves <strong>like an isolated machine inside the host machine</strong>;</li>
+<li>is <strong>isolated</strong>: it cannot access or interfere with the host, and is agnostic to it. You cannot mess up the host even if you try.</li>
+</ul>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Container, as the course puts it </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A container is like an isolated machine that uses the resources of the host machine. We build the container and ship it to an orchestrator, and it works everywhere the same.</p>
+</div>
+</blockquote>
+<p>See <a href="../../../Concepts/Containerization" class="internal" data-slug="Concepts/Containerization">Containerization</a> for the general concept and <a href="../../../Concepts/Docker" class="internal" data-slug="Concepts/Docker">Docker</a> for the tool.</p>
+<p>From outside the course material (Docker documentation and Linux background), the parts the course leaves implicit:</p>
+<ul>
+<li>An <strong>image</strong> is the package: a read-only file system snapshot (base OS files, Python, your libraries, your code) plus metadata such as the default command. A <strong>container</strong> is a running instance of an image, with a thin writable layer on top. Many containers can run from one image, and what a container writes is lost when it is removed, unless it goes to a mounted <strong>volume</strong>.</li>
+<li>An image is built in <strong>layers</strong>, one per build instruction, and layers are cached: change one line of code and only the layers from that instruction on are rebuilt.</li>
+<li>Isolation comes from two Linux kernel features. <strong>Namespaces</strong> limit what a process can see (its own process list, network, file system and hostname). <strong>Control groups (cgroups)</strong> limit how much it can use (CPU, memory). A container is an ordinary process on the host, fenced in by these.</li>
+<li>Because containers share the host’s kernel, “the same everywhere” has limits. A Linux image needs a Linux kernel: Docker Desktop on macOS and Windows runs a small Linux VM underneath. And an image is built for one CPU architecture: on an Apple Silicon Mac you build <code>arm64</code> images by default, so the NumPy problem above can still bite unless you build for the server’s platform (<code>--platform linux/amd64</code>).</li>
+<li>Isolation is the default, and you can open it on purpose: a mounted host folder, a published port or <code>--privileged</code> gives the container access to the host. Sharing a kernel also makes the isolation weaker than a VM’s.</li>
+</ul>
+<h2 id="docker-in-practice">Docker in practice<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-in-practice" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The lecture’s live coding built and ran containers from the course repository, whose code was not available for this note. What follows is from outside the course material (Docker documentation), written to fit the repository layout from <a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">week 1</a>, where the Dockerfile lives in <code>infra/</code>.</p>
+<p><strong>A Dockerfile</strong> is the recipe for an image, read from top to bottom:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="dockerfile" data-theme="github-light github-dark"><code data-language="dockerfile" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># base image: Debian plus Python 3.13</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">FROM</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> python:3.13-slim</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># all later paths are relative to /app</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">WORKDIR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> /app</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># dependencies first: this layer stays cached</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">COPY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> requirements.txt .</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">RUN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pip install --no-cache-dir -r requirements.txt</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># code last: it changes most often</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">COPY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> src/ src/</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">COPY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> models/ models/</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># print output straight away (the flush problem)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">ENV</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> PYTHONUNBUFFERED=1</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># default command when a container starts</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">CMD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;python&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;src/main_training.py&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+<p>Why this order: each instruction is a layer, and a changed layer invalidates every layer after it. With <code>requirements.txt</code> copied and installed before the code, editing <code>src/</code> reuses the cached install, and rebuilds take seconds. Copy everything first and every code edit reinstalls every package.</p>
+<p>Pin the base image tag. The demo’s <code>python:3-slim</code> resolved to Python 3.13.5 on that day and will resolve to something newer next year, which is the “works on my machine” problem coming back through the door. A <code>.dockerignore</code> file keeps <code>data/</code>, <code>.venv/</code> and <code>.git/</code> out of the build context, so they are not sent to the builder or copied into the image.</p>
+<p><strong>Building and running:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> build</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -t</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> infra/Dockerfile</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> .</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # &quot;.&quot; = build context (repo root)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --rm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                         # run the default command</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --rm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 8000:8000</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">            # publish container port 8000 on the host</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --rm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -v</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;$(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">pwd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">)/data:/app/data&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # mount host data into the container</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --rm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> MLFLOW_TRACKING_URI=http://host.docker.internal:5000</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span></span></code></pre></figure>
+<p><strong>Debugging a container that misbehaves:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ps</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -a</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                       # list containers, including ones that exited</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logs</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">containe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">r</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">            # its stdout and stderr: usually the traceback</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -it</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">containe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">r</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> bash</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # open a shell inside a running container</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -it</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --entrypoint</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> /bin/bash</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # start a shell instead of the app</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> image</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> inspect</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fraud-model:0.1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # default command, env vars, working directory</span></span></code></pre></figure>
+<p>The <code>--entrypoint /bin/bash</code> run is the trick from the hello world demo: land in a shell inside the image and check by hand whether the files, versions and paths are what you expect. Common causes of a broken container:</p>
+<ul>
+<li><strong>It exits at once.</strong> A container lives exactly as long as its main process. If the script finishes or crashes, the container stops; <code>docker logs</code> shows why.</li>
+<li><strong>File not found.</strong> The file was never copied in (missing <code>COPY</code>, or excluded by <code>.dockerignore</code>), or a relative path assumes a different working directory than <code>WORKDIR</code>.</li>
+<li><strong>The API runs but cannot be reached.</strong> It listens on <code>127.0.0.1</code>, which inside a container is the container itself. It must listen on <code>0.0.0.0</code>, with the port published by <code>-p</code>.</li>
+<li><strong><code>localhost</code> points at the wrong place.</strong> For the same reason, reach another container by its service name (Docker Compose, below) and the host by <code>host.docker.internal</code> on Docker Desktop.</li>
+<li><strong>No output appears.</strong> Python buffers output when it is not writing to a terminal; set <code>PYTHONUNBUFFERED=1</code> or use <code>flush=True</code>.</li>
+</ul>
+<h2 id="mlflow-tracking-experiments-and-models">MLflow: tracking experiments and models<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mlflow-tracking-experiments-and-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>MLflow</strong> is a tool for three jobs:</p>
+<ul>
+<li><strong>Experiment tracking:</strong> record each training run with its parameters, metrics and output files, so you can compare runs and reproduce the best one.</li>
+<li><strong>Model registry and management:</strong> keep versions of trained models in one place.</li>
+<li><strong>Model serving:</strong> expose a registered model behind an API.</li>
+</ul>
+<p>It is popular, and in the lecturer’s words definitely optional for more than 90% of projects. The course uses it to log three things per run: the <strong>model</strong> (the model file as a pickle), an <strong>artifact</strong> (any file) and a <strong>metric</strong> (the F1 score). In the demo, a run of experiment “Alpha” shows the metrics <code>test_f1_mean</code> (0.68) and <code>test_f1_std</code>, and two artifacts: <code>alpha.pkl</code>, the pickled model, and <code>cv_scores.json</code>, the per-fold fit and score times and train and test precision, recall and F1.</p>
+<p>See <a href="../../../Concepts/MLflow" class="internal" data-slug="Concepts/MLflow">MLflow</a> for more. The demo’s code was not available. Below, from outside the course material (MLflow documentation), is one way to log the same three things. The <code>cv_scores.json</code> keys match what scikit-learn’s <code>cross_validate</code> returns with training scores on and precision, recall and F1 scoring, so the demo probably used it (an inference).</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> json, pickle</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sklearn.model_selection </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cross_validate</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">mlflow.set_tracking_uri(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;http://localhost:5000&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># the MLflow server</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">mlflow.set_experiment(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Alpha&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow.start_run():</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    scores </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cross_validate(model, X, y, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">cv</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">return_train_score</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">True</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">                            scoring</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;precision&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;recall&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;f1&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    mlflow.log_metric(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;test_f1_mean&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, scores[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;test_f1&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].mean())</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    mlflow.log_metric(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;test_f1_std&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, scores[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;test_f1&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].std())</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> open</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;cv_scores.json&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;w&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> f:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        json.dump({k: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">str</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(v) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> k, v </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">in</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> scores.items()}, f)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    mlflow.log_artifact(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;cv_scores.json&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)             </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># any file</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    model.fit(X, y)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> open</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;alpha.pkl&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;wb&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> f:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        pickle.dump(model, f)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    mlflow.log_artifact(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;alpha.pkl&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)                  </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># the model as a pickle</span></span></code></pre></figure>
+<p>The MLflow server is itself just another service, which you can start in its own container and point the training container at through <code>MLFLOW_TRACKING_URI</code>. That makes it one of the external systems in the next section.</p>
+<h2 id="your-application-is-never-alone">Your application is never alone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#your-application-is-never-alone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Unless you are building a demo, your application is never the only software. A Python ML application typically sends SQL queries to a database, logs runs to an MLflow tracking server and uploads files to cloud storage. These systems will not run on your machine in production, so you have to build, and test, with external dependencies.</p>
+<p><a href="../../../Concepts/Unit-Testing" class="internal alias" data-slug="Concepts/Unit-Testing">Unit Testing</a> covers the units of your own code, with external dependencies mocked. But how can you be sure that the SQL you wrote is actually correct? Take <code>SELECT * FR0M table WHERE a>b</code>, with a zero in place of the O in FROM. A mock returns whatever rows you tell it to, so that query passes every unit test, and so do a wrong column name and a type mismatch with the real table.</p>
+<h3 id="the-testing-pyramid">The testing pyramid<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-testing-pyramid" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Three levels of tests </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Unit tests</strong> test your code.</li>
+<li><strong>Integration tests</strong> test your code’s integration and interaction with other systems.</li>
+<li><strong>End-to-end (E2E) tests</strong> simulate the user’s interaction, taking the system as a whole from input to output.</li>
+</ul>
+<p>All of them must be <strong>automated</strong>.</p>
+</div>
+</blockquote>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>            /\</span></span>
+<span data-line><span>           /  \        UI / end-to-end tests   (few)</span></span>
+<span data-line><span>          /----\</span></span>
+<span data-line><span>         /      \      integration tests</span></span>
+<span data-line><span>        /--------\</span></span>
+<span data-line><span>       /          \    unit tests              (many)</span></span>
+<span data-line><span>      /------------\</span></span></code></pre></figure>
+<p>Moving up the pyramid, tests become <strong>more difficult to implement</strong> and it becomes <strong>more difficult to find the root cause</strong> of a failure: a failing unit test points at one function, a failing end-to-end test only says that something somewhere is wrong. So you write many unit tests, fewer integration tests (for example, the function that queries the database, run against a database) and a few end-to-end tests. Yesilbek’s own view: with AI-assisted engineering, testing, especially UI and end-to-end tests, is much more important now.</p>
+<p>See <a href="../../../Concepts/Integration-Testing" class="internal alias" data-slug="Concepts/Integration-Testing">Integration Testing</a>.</p>
+<h3 id="automating-integration-tests-more-containers">Automating integration tests: more containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#automating-integration-tests-more-containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The FIRST rules from week 1 say tests must be isolated and repeatable. An integration test, though, needs a real database. A shared development database fails both rules: other people change its data, and from a test machine you often cannot guarantee access to the tools in the test or development environments, or connect to them at all.</p>
+<p>The answer is more containers. Put each external dependency in its own container and set it up exactly as the test expects. Containers are the modern way of deployment, so an image very likely exists already for each dependency, external (PostgreSQL, Redis, MLflow) or internal to your company. <strong>Docker Compose</strong> offers light orchestration of containers: one <code>docker-compose.yml</code> file describes several services (a web app, a database, a cache), and <code>docker compose up</code> starts them all on a shared network.</p>
+<p>From outside the course material (Docker Compose documentation), an integration test setup with a PostgreSQL database, the compose file sitting in <code>infra/</code>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">services</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  db</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    image</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">postgres:16</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    environment</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      POSTGRES_USER</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">test</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      POSTGRES_PASSWORD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">test</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # throwaway test credentials only</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      POSTGRES_DB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">trx</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    healthcheck</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      test</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;CMD-SHELL&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;pg_isready -U test -d trx&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      interval</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">2s</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      retries</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">15</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  tests</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    build</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      context</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">..</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                    # repo root, relative to infra/</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      dockerfile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">infra/Dockerfile</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    volumes</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">..:/app</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                      # mount the repo, so tests/ is inside</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    environment</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      DATABASE_URL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">postgresql://test:test@db:5432/trx</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # &quot;db&quot; = the service name</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    depends_on</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      db</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">        condition</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">service_healthy</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # wait until Postgres accepts connections</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    command</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;python&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;-m&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;pytest&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;tests/integration&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># src/data_processing/queries.py</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pandas </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pd</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sqlalchemy </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> text</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> fetch_large_transactions</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(engine, min_amount):</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    query </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> text(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;SELECT id, amount FROM trx WHERE amount > :m&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pd.read_sql(query, engine, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">params</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;m&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: min_amount})</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># tests/integration/test_queries.py</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> os</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pytest</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sqlalchemy </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> create_engine, text</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> src.data_processing.queries </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> fetch_large_transactions</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">@pytest.fixture</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> engine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():                                   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># setup: a known table</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    eng </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> create_engine(os.environ[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;DATABASE_URL&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> eng.begin() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> conn:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        conn.execute(text(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;DROP TABLE IF EXISTS trx&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        conn.execute(text(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;CREATE TABLE trx (id INT, amount FLOAT, fraud INT)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        conn.execute(text(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;INSERT INTO trx VALUES (1, 50, 0), (2, 150, 1), (3, 300, 0)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    yield</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> eng</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    eng.dispose()</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> test_fetch_large_transactions</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(engine):      </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># collect and compare</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> fetch_large_transactions(engine, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">min_amount</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    assert</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> sorted</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(result[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">==</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> compose</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> infra/docker-compose.yml</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> up</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --build</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    --abort-on-container-exit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --exit-code-from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tests</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> compose</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> infra/docker-compose.yml</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> down</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -v</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">      # remove containers and data</span></span></code></pre></figure>
+<p>The details that usually go wrong:</p>
+<ul>
+<li><strong>Service names are host names.</strong> Inside the compose network the database is <code>db:5432</code>; <code>localhost</code> in the <code>tests</code> container is the <code>tests</code> container itself.</li>
+<li><strong>Started is not ready.</strong> Plain <code>depends_on</code> only waits for the database container to start, and Postgres needs a few seconds more to accept connections. The health check plus <code>condition: service_healthy</code> waits for readiness.</li>
+<li><strong>The test container needs the tests.</strong> The Dockerfile above copies only <code>src/</code> and <code>models/</code>, so the compose file mounts the repository into <code>/app</code>. <code>pytest</code> and the Postgres driver (<code>psycopg2-binary</code>) must be in <code>requirements.txt</code>, and <code>python -m pytest</code> puts <code>/app</code> on the import path so <code>from src...</code> works.</li>
+<li><strong>Clean state per run.</strong> The fixture creates its own table, and <code>down -v</code> deletes the database volume, so every run starts from the same state: the test is repeatable.</li>
+<li><code>--exit-code-from tests</code> makes the command’s exit code the test result, so a CI pipeline (an automated build and test server) fails when the tests fail.</li>
+</ul>
+<h2 id="mistakes-happen-just-not-in-production">Mistakes happen, just not in production<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mistakes-happen-just-not-in-production" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>In June 2021 some HBO Max subscribers received a mysterious email with the subject line “Integration Test Email #1”. Hours later the company said it was intended to be an empty test email, and “yes, it was the intern.”</p>
+<p>Whose fault is this: the intern, the manager, HR, or the engineering processes? The lecturer’s answer is <strong>the engineering processes</strong>. Mistakes happen. They just cannot be allowed to happen in live environments. A process in which a test email can reach real subscribers is broken, whoever pressed the button.</p>
+<h2 id="dev-acc-prod-layered-environments">Dev, Acc, Prod: layered environments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dev-acc-prod-layered-environments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">Week 1</a> introduced the layered environments: pressing a button that makes changes live is a bad idea, each environment runs the same tech stack, and only production is live and protected. This lecture adds what each one is for. See <a href="../../../Concepts/Development,-Acceptance-and-Production-Environments" class="internal alias" data-slug="Concepts/Development,-Acceptance-and-Production-Environments">Development, Acceptance and Production Environments</a>.</p>
+<p><strong>Local (your laptop).</strong> Unrestricted and personal: the easiest place to develop and debug.</p>
+<p><strong>Development (Dev), also called Test.</strong> A disorganised free-for-all, used mostly to develop against the tech stack and to experiment. It has the same tools you would have in production, or maybe more, but access to just your own systems. It is sandbox-like: do not expect guarantees, and things there are temporary.</p>
+<p><strong>Acceptance (Acc), also called Staging.</strong> A replica of production: the same tech stack, with all systems deployed, active and integrated with each other, so you can actually test the whole product. The only differences from production are <strong>scale and data</strong>: low scale, and no production data.</p>
+<p><strong>Production (Prod).</strong> The live systems, built at live scale, and the only environment that talks to users. The danger zone.</p>
+<p>How code moves through them:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    L[\&quot;Laptop\&quot;] --> DEV[\&quot;Dev: same tech stack, your systems only\&quot;]\n    L --> CD((\&quot;CD\&quot;))\n    CD --> ACC[\&quot;Acc: same tech stack, all systems integrated\&quot;]\n    CD --> PROD[\&quot;Prod: live-scale tech stack, all systems integrated\&quot;]\n    PROD &lt;--> U[\&quot;Users\&quot;]&quot;">flowchart TD
+    L[&quot;Laptop&quot;] --> DEV[&quot;Dev: same tech stack, your systems only&quot;]
+    L --> CD((&quot;CD&quot;))
+    CD --> ACC[&quot;Acc: same tech stack, all systems integrated&quot;]
+    CD --> PROD[&quot;Prod: live-scale tech stack, all systems integrated&quot;]
+    PROD &lt;--> U[&quot;Users&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>You work directly against Dev from your laptop, but code reaches Acc and Prod only through <strong>continuous deployment (CD)</strong>, an automated pipeline that deploys merged code (GitFlow, below, says which merge goes where).</p>
+<p>Read the HBO Max case against this (the lecturer did not draw this link; it follows from the setup): an acceptance environment holds no production data, so a test email sent there has no real subscribers to reach.</p>
+<h2 id="gitflow-branches-that-mirror-environments">GitFlow: branches that mirror environments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gitflow-branches-that-mirror-environments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>GitFlow</strong> organises a team’s work with git so that branches line up with the environments. It has <strong>two long-living branches</strong>:</p>
+<ul>
+<li><strong>main</strong> points to Prod;</li>
+<li><strong>develop</strong> points to Acc.</li>
+</ul>
+<p>So the state of main is the state of production, and the state of develop is the state of acceptance. <strong>Feature branches</strong> introduce new features, refactoring, bug fixes and the like. <strong>Merging into main and develop is protected</strong>, and a merge <strong>triggers CD against the target environment</strong>: merge into develop and the change is deployed to acceptance; merge into main and it goes live.</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;gitGraph\n    commit tag: \&quot;v0.1\&quot;\n    branch develop\n    commit\n    branch feature\n    commit\n    commit\n    checkout main\n    branch hotfix\n    commit\n    checkout main\n    merge hotfix tag: \&quot;v0.2\&quot;\n    checkout develop\n    merge hotfix\n    merge feature\n    branch release\n    commit\n    checkout main\n    merge release tag: \&quot;v1.0\&quot;\n    checkout develop\n    merge release&quot;">gitGraph
+    commit tag: &quot;v0.1&quot;
+    branch develop
+    commit
+    branch feature
+    commit
+    commit
+    checkout main
+    branch hotfix
+    commit
+    checkout main
+    merge hotfix tag: &quot;v0.2&quot;
+    checkout develop
+    merge hotfix
+    merge feature
+    branch release
+    commit
+    checkout main
+    merge release tag: &quot;v1.0&quot;
+    checkout develop
+    merge release
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>The full model, from the Atlassian reading: feature branches start from develop and merge back into develop, and never touch main. A <strong>release</strong> branch starts from develop when enough features are in, takes only fixes and release tasks, then merges into main (tagged with a version number, v1.0 above) and back into develop. A <strong>hotfix</strong> branch is the only one that starts from main: it quickly patches production (v0.2) and merges into both main and develop, so the fix is not lost in the next release.</p>
+<p>The Atlassian reading also calls GitFlow a legacy workflow, which has lost popularity to <strong>trunk-based development</strong> (everyone merges small changes into one main branch often) and can be awkward to use with CI/CD. The course uses it for the mapping of branches onto protected environments.</p>
+<p>See <a href="../../../Concepts/GitFlow" class="internal" data-slug="Concepts/GitFlow">GitFlow</a>.</p>
+<h2 id="pull-requests-review-before-merge">Pull requests: review before merge<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pull-requests-review-before-merge" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Protected branches need a way in. A <strong>pull request (PR)</strong> is a request to the team to merge your changes: it opens the code changes for review. Team members must review and choose to approve or reject, and a PR cannot be merged if it is not approved.</p>
+<ul>
+<li><strong>Author and reviewers share the responsibility</strong> for what gets merged.</li>
+<li><strong>Seniority does not play a role:</strong> anyone can review anyone’s code.</li>
+<li>It is a great way to <strong>increase quality</strong> and to <strong>learn from each other</strong>.</li>
+<li>For some, <strong>ego may be at play</strong>: a reviewer may approach aggressively, and an author may take comments personally.</li>
+</ul>
+<p>The reading (Blockly’s contributor guide on good PRs) adds the author’s side: tell the team what you will work on before you start; keep changes small and focused and fix one problem per PR; split a large change into logical commits; include unit tests for your changes; write a concise and complete description, by hand, so you know you understand what you submit; and treat the review as collaboration, pushing new commits to the same branch until it is approved.</p>
+<h2 id="technical-debt">Technical debt<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#technical-debt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Technical debt (Atlassian's wording, used in the lecture) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Technical debt is a metaphorical concept in software development that refers to the <strong>future cost incurred by choosing an easy or quick solution now instead of a better, more time-consuming approach</strong>.</p>
+</div>
+</blockquote>
+<p>The cartoon version: a builder asks why it takes so long to add a new window to a house held together by props and an umbrella. Every earlier shortcut makes the next change slower.</p>
+<p>Like financial debt:</p>
+<ol>
+<li><strong>Do not take the loan if you don’t have to.</strong> Do not introduce immediate tech debt.</li>
+<li><strong>If you must take the loan, make it explicit and recorded.</strong></li>
+<li><strong>Do not go too much into debt.</strong></li>
+</ol>
+<p>This is the short version of Kästner’s chapter (week 1 reading), which adds Fowler’s quadrants (debt is deliberate or inadvertent, prudent or reckless, and ideally all of it is deliberate and prudent), the ML-specific kinds of debt and how to track repayment: see <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt">EPRM-Book Ch22 - Technical Debt</a>. In the course project, a hard-coded path or a skipped integration test is a loan; a line in the README or an issue saying so is the record.</p>
+<h2 id="what-to-be-able-to-do">What to be able to do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Explain the “works on my machine” problem with the hello world and the NumPy examples, and the four levels where machines differ.</li>
+<li>Contrast bare servers, virtual machines and containers, and explain why containers are lighter.</li>
+<li>Explain image, container and layer, write a Dockerfile with a sensible layer order, build and run it, and debug a broken container.</li>
+<li>Say what MLflow tracks, log a metric, an artifact and a model, and say when you do not need it.</li>
+<li>Place unit, integration and end-to-end tests on the pyramid and explain the trade-offs.</li>
+<li>Run an automated integration test against a database with Docker Compose, and explain service names, health checks and clean state.</li>
+<li>Describe Local, Dev, Acc and Prod, and say what separates acceptance from production.</li>
+<li>Map GitFlow’s main and develop onto environments, and explain feature, release and hotfix branches, pull requests and CD.</li>
+<li>Apply the three technical debt rules to your own project.</li>
+</ul>
+<h2 id="exam-questions">Exam questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exam-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The same one-line Python script runs on your colleague's laptop and fails on yours. Why can that happen, and how do containers fix it? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> machines differ in architecture, OS, OS configuration and package versions; example: print with flush exists only from Python 3.3, a syntax error in 2.7; a container packages code with its interpreter and dependencies; it runs isolated on any host the same way; pin image versions.</p>
+<p>Machines differ at several levels: CPU architecture, operating system and version, how the OS is configured, and which packages and versions are installed. Each can change how code runs. Even <code>print('hello', flush=True)</code> works on Python 3.3 and later and is a syntax error on Python 2.7, because <code>flush</code> did not exist; and NumPy once gave different <code>float32</code> results on Intel and Apple M1 machines with identical package versions. A container packages the application together with its interpreter, libraries and configuration into an image, and runs it as an isolated process on any host with a container engine, so every machine runs the same software stack. The image tag should be pinned, since a floating tag like <code>python:3-slim</code> changes over time, and the image’s CPU architecture should match the server’s.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between a virtual machine and a container, and why has containerization replaced VMs for deploying applications? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> VM packs a whole computer, with its own guest OS on a hypervisor; container shares the host OS kernel and packs only the app and its dependencies; containers are lighter, start faster, waste fewer resources; one container per application instance; shipped as images via a registry to an orchestrator.</p>
+<p>A virtual machine emulates a whole computer on a hypervisor, and each VM brings its own operating system. That makes VMs heavy: every application carries a full OS, which wastes memory and disk, and VMs are slow to start and awkward to manage. A container runs on the host’s existing operating system and packages only the application and its dependencies, isolated from the host and from other containers. Many containers share one OS, so they use far fewer resources and start in seconds. The deployment flow becomes simple: build the image, push it to a registry, and let an orchestrator run it; the same image runs the same way everywhere. One container is one application instance, which keeps systems neat. The trade-off is weaker isolation than a VM, because containers share the host kernel.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your Docker image takes ten minutes to rebuild after every one-line code change. Why, and how do you fix it? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> each Dockerfile instruction is a cached layer; a change invalidates that layer and all later ones; copying all code before installing dependencies reinstalls packages on every change; copy requirements.txt and install first, then copy code; .dockerignore keeps the context small.</p>
+<p>An image is built in layers, one per instruction, and Docker caches each layer. When an instruction or the files it copies change, that layer and every layer after it are rebuilt. If the Dockerfile copies the whole project before <code>pip install</code>, any code edit changes the copy layer, so all dependencies are reinstalled. The fix is to copy only <code>requirements.txt</code> first, install the dependencies, and copy the source code afterwards: code edits then only rebuild the last, cheap layers, and dependencies are reinstalled only when <code>requirements.txt</code> changes. A <code>.dockerignore</code> that excludes data, virtual environments and <code>.git</code> also keeps the build context small and stops large files ending up in the image.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your unit tests mock the database and all pass. Why do you still need integration tests, and why are there fewer of them than unit tests? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> a mock returns what you tell it, so wrong SQL, column names or types pass; integration tests check interaction with real systems; pyramid: many unit, fewer integration, few E2E; higher up is harder to implement and harder to find root causes; all automated.</p>
+<p>A unit test mocks external dependencies so it can check your own logic fast and in isolation. But the mock returns whatever rows you tell it to, so it cannot tell you whether your SQL is correct: a typo, a wrong column name or a type mismatch with the real table passes every unit test. Integration tests run your code against the real system, such as an actual database, and check that the interaction works. In the testing pyramid, unit tests form the wide base, integration tests the middle and end-to-end tests, which simulate the user, the top. Moving up, tests are harder to implement, and a failure is harder to trace to its root cause, so you write many unit tests and fewer integration and end-to-end tests. All levels must be automated.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How would you automate an integration test of your data loading code against a PostgreSQL database? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> FIRST requires isolation, so no shared dev database; run Postgres in its own container from an existing image; Docker Compose starts DB and test containers together; connect via service name, wait for a health check; create known data in setup, tear down volumes; exit code from tests for CI.</p>
+<p>Tests must be isolated and repeatable, and a shared development database is neither: others change its data and the test machine may not even reach it. So the database runs in its own container, from an existing PostgreSQL image, set up exactly as the test expects. A Docker Compose file defines two services, the database and a container built from the project’s Dockerfile, with the repository mounted so the tests are inside, that runs <code>pytest tests/integration</code>. The tests connect to the database by its service name (<code>db:5432</code>), since <code>localhost</code> inside a container is the container itself. The test service depends on the database with a health check condition, because a started database is not yet ready for connections. A fixture creates a table with known rows, the test calls the real query function and compares the result, and <code>docker compose down -v</code> removes the data so every run starts clean. Running compose with <code>--exit-code-from tests</code> makes the test result the command’s exit code, so CI can run it automatically.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>An intern sends &quot;Integration Test Email #1&quot; to all subscribers. Whose fault is it, and which processes would have prevented it? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> the engineering processes’ fault; mistakes happen, they must not happen in live environments; layered Dev, Acc, Prod with the same tech stack; Acc is a production replica at low scale with no production data; production protected, changes only via reviewed PRs and CD.</p>
+<p>The fault lies with the engineering processes. Mistakes are inevitable; the process has to ensure they cannot happen in the live environment. Layered environments do that. Developers work locally and in a development environment, a free-for-all sandbox with access to their own systems only. The acceptance environment is a replica of production with the same tech stack and all systems integrated, so the whole product can be tested there, but at low scale and with no production data, so a test email sent there has no real subscribers to reach. Production is live and protected: nobody pushes changes to it by hand. With GitFlow, changes reach it only through an approved pull request into main, which triggers continuous deployment.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does GitFlow connect branches to environments, and how is an urgent production bug fixed? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> main points to Prod, develop to Acc; features branch from develop and merge back via PR; merges are protected and trigger CD to the target environment; release branches go from develop to main with a version tag; hotfix branches from main, merged into main and develop.</p>
+<p>GitFlow has two long-living branches: main, whose state is the state of production, and develop, whose state is the state of acceptance. New features, refactoring and bug fixes are built on feature branches from develop and merged back into it through pull requests. Merging into main or develop is protected and triggers continuous deployment to the matching environment, so develop is always what acceptance runs and main what users get. A release branch is cut from develop, stabilised, and merged into main with a version tag and back into develop. An urgent production bug gets a hotfix branch from main, the only branch that starts there; once fixed it is merged into main (a new version, deployed to production) and into develop, so the fix is not lost in the next release.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a pull request for, and what can go wrong with code review? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> a request to merge changes, opened for review; must be approved before merge; author and reviewers share responsibility; anyone can review regardless of seniority; raises quality and spreads knowledge; ego: aggressive reviewers, authors taking comments personally; keep PRs small and focused.</p>
+<p>A pull request asks the team to merge a set of changes into a protected branch and opens those changes for review. Team members review and approve or reject; without approval the PR cannot be merged. Author and reviewers then share responsibility for what is merged, and seniority does not matter: anyone can review. Reviews increase quality, since another person catches what the author missed, and team members learn from each other’s code. The risk is ego: a reviewer may approach the review aggressively, and an author may take comments personally. Good PRs make review easier: small and focused on one problem, split into logical commits, with tests and a concise, complete description written by the author.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your project needs to ship by Friday and you are tempted to hard-code paths and skip the integration tests. How should you treat that decision? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> that is technical debt: future cost of a quick solution now; avoid the loan if you can; if taken, make it explicit and record it; do not go too deep; ideally deliberate and prudent, tracked and repaid.</p>
+<p>Hard-coding paths and skipping tests is technical debt: an easy, quick solution now that incurs a future cost compared with the better, slower approach. Every later change to that code becomes slower and riskier. The lecture’s rules follow the loan analogy: do not take the loan if you do not have to; if you must, make it explicit and record it, for example as an issue or a note in the README saying what was skipped and why; and do not go too much into debt, because accumulated shortcuts make every new change expensive. In Fowler’s terms the aim is deliberate and prudent debt, tracked and repaid once the deadline has passed.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What would you use MLflow for in an ML project, and when would you not bother? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> experiment tracking (parameters, metrics, artifacts per run); model registry and management; model serving; log model as pickle, artifacts, metrics such as F1; optional for most projects; the tracking server is another external dependency.</p>
+<p>MLflow tracks experiments: each training run records its parameters, metrics such as the mean and standard deviation of the cross-validated F1 score, and artifacts such as a JSON file of fold scores and the pickled model, so runs can be compared and the best one reproduced. It also offers a model registry to version and manage trained models, and model serving. It is popular but, in Yesilbek’s words, definitely optional for more than 90% of projects. When used, the MLflow tracking server is one more external system the application depends on: it can run in its own container, and the code that talks to it needs integration tests.</p>
+</div>
+</blockquote>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the core job of a package, in the shipping analogy for containers? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>To separate the product from the shipping process.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does print('hello', flush=True) fail on Python 2.7? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The flush keyword was introduced in Python 3.3.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>At which four levels can two machines differ and change how code runs? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Architecture, OS and version, OS configuration, packages and versions.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What did NumPy issue 21209 show about identical package versions? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Intel and Apple M1 machines gave different float32 results with the same versions.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the main difference between a virtual machine and a container? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A VM brings its own OS; a container runs on the host’s OS.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why do containers use fewer resources than VMs? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>All containers share one host OS instead of each carrying its own.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a hypervisor? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The software that runs virtual machines on a physical machine.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does a container orchestrator do? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Runs containers across machines and keeps them running.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a container registry? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A store of container images that servers pull from.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does Yesilbek describe a container in one line? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Like an isolated machine that uses the resources of the host machine.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between an image and a container? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An image is the read-only package; a container is a running instance of it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What happens to files a container writes when it is removed? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>They are lost, unless written to a mounted volume.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which Linux features isolate containers, and what does each limit? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Namespaces limit what a process sees; cgroups limit how much it uses.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can an image built on an Apple Silicon Mac misbehave on a cloud server? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It is built for arm64 by default; the server may be amd64.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why copy requirements.txt and install before copying the code in a Dockerfile? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The dependency layer stays cached, so code edits rebuild only the last layers.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why pin a base image tag such as python:3.13-slim? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A floating tag like python:3-slim changes over time, breaking reproducibility.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does a container stop immediately after starting? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Its main process finished or crashed; docker logs shows why.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do you get a shell inside an image instead of running its app? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>docker run -it —entrypoint /bin/bash image.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can an API in a container be unreachable from the host? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It listens on 127.0.0.1 instead of 0.0.0.0, or the port was not published with -p.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are MLflow's three jobs? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Experiment tracking, model registry and management, model serving.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which three things does the EPRM course log to MLflow per run? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The model as a pickle, an artifact file, the F1 metric.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Is MLflow necessary for most ML projects, according to Yesilbek? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>No: popular, but optional for over 90% of projects.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why can mocked unit tests not prove your SQL is correct? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The mock returns whatever you tell it, never querying a real database.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does an integration test check? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Your code’s interaction with other systems, such as a real database.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does an end-to-end test do? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Simulates the user’s interaction with the whole system, input to output.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What gets harder as you move up the testing pyramid? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Implementing the tests and finding the root cause of a failure.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do you keep integration tests isolated from shared environments? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Run each external dependency in its own container, set up as the test expects.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does Docker Compose do? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Light orchestration: defines and starts several containers together on one network.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Inside a Docker Compose network, how does one container reach the database? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>By its service name, such as db:5432.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is plain depends_on not enough before running database tests? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It waits for the container to start, not for the database to accept connections.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Whose fault was HBO Max's &quot;Integration Test Email #1&quot;, per Yesilbek? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The engineering processes’: mistakes must not be able to reach live environments.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the local environment for? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Unrestricted, personal development and debugging on your laptop.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What characterises the development (Dev) environment? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A free-for-all sandbox with access to your own systems only; nothing guaranteed.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does acceptance differ from production? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Only in scale and data: low scale, no production data.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must all systems be deployed and integrated in acceptance? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>So the whole product can be tested as it will run in production.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do changes reach acceptance and production? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Through continuous deployment triggered by merges, never by hand.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In GitFlow, which environments do main and develop point to? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Main to production, develop to acceptance.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What happens when a PR is merged into a GitFlow long-living branch? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>CD deploys it to that branch’s environment.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which GitFlow branch is the only one that starts from main? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The hotfix branch.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Where is a GitFlow hotfix merged when done? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Into both main and develop.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What workflow has largely replaced GitFlow? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Trunk-based development.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Can a pull request be merged without approval? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>No: reviewers must approve it first.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Who is responsible for code merged through a pull request? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Author and reviewers share the responsibility.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What role does seniority play in pull request reviews? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>None: anyone can review.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What ego problems can affect code review? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Reviewers approaching aggressively; authors taking comments personally.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is technical debt, in Atlassian's definition? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The future cost of choosing an easy, quick solution over a better, slower one.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are Yesilbek's three rules for technical debt? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Avoid the loan if you can; if taken, make it explicit and recorded; do not go too deep.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/EPRM/EPRM---Overview" class="internal alias" data-slug="Courses/EPRM/EPRM---Overview">Course overview</a></li>
+<li><strong>Previous lecture:</strong> <a href="../../../Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing">EPRM-L02 - Distributed Data Processing</a></li>
+<li><strong>Earlier material this builds on:</strong> <a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</a> (Dev, Acc, Prod; FIRST; repository layout with <code>infra/</code>) · <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch22---Technical-Debt">EPRM-Book Ch22 - Technical Debt</a></li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/Containerization" class="internal" data-slug="Concepts/Containerization">Containerization</a> · <a href="../../../Concepts/Docker" class="internal" data-slug="Concepts/Docker">Docker</a> · <a href="../../../Concepts/MLflow" class="internal" data-slug="Concepts/MLflow">MLflow</a> · <a href="../../../Concepts/Integration-Testing" class="internal alias" data-slug="Concepts/Integration-Testing">Integration Testing</a> · <a href="../../../Concepts/Unit-Testing" class="internal alias" data-slug="Concepts/Unit-Testing">Unit Testing</a> · <a href="../../../Concepts/Development,-Acceptance-and-Production-Environments" class="internal alias" data-slug="Concepts/Development,-Acceptance-and-Production-Environments">Development, Acceptance and Production Environments</a> · <a href="../../../Concepts/GitFlow" class="internal" data-slug="Concepts/GitFlow">GitFlow</a> · <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a></li>
+<li><strong>Source:</strong> lecture slides and speaker notes, “Week 3: Containerization &amp; SWE Processes”, Kemal T. Yesilbek, 11 November 2026. The hello world terminal sessions and the MLflow run are from the lecture’s demos. The two live coding parts used <code>kemalty/uva-mlprod-code</code> (branch <code>v4</code>), which was not available for this note.</li>
+<li><strong>Readings for the week:</strong> Docker, Get started, <a href="https://docs.docker.com/get-started/" class="external">https://docs.docker.com/get-started/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; Docker CLI reference, <a href="https://docs.docker.com/reference/cli/docker/" class="external">https://docs.docker.com/reference/cli/docker/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; Docker Compose, Getting started, <a href="https://docs.docker.com/compose/gettingstarted/" class="external">https://docs.docker.com/compose/gettingstarted/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; Atlassian, Gitflow workflow, <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow" class="external">https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; Blockly, Write a good pull request, <a href="https://docs.blockly.com/guides/contribute/get-started/write_a_good_pr" class="external">https://docs.blockly.com/guides/contribute/get-started/write_a_good_pr<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+<li><strong>Cases:</strong> NumPy issue 21209, <a href="https://github.com/numpy/numpy/issues/21209" class="external">https://github.com/numpy/numpy/issues/21209<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Li Cohen, “An HBO Max intern mistakenly sent a test email to subscribers”, CBS News, 19 June 2021. Technical debt definition: Atlassian, <a href="https://www.atlassian.com/agile/software-development/technical-debt" class="external">https://www.atlassian.com/agile/software-development/technical-debt<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+<li><strong>Further (used for the additions marked as outside the course material):</strong> Docker documentation on images, layers and build cache, <a href="https://docs.docker.com/build/cache/" class="external">https://docs.docker.com/build/cache/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; Docker Compose <code>depends_on</code> and health checks, <a href="https://docs.docker.com/compose/how-tos/startup-order/" class="external">https://docs.docker.com/compose/how-tos/startup-order/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; MLflow tracking documentation, <a href="https://mlflow.org/docs/latest/ml/tracking/" class="external">https://mlflow.org/docs/latest/ml/tracking/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; scikit-learn <code>cross_validate</code>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html" class="external">https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-333" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#eprm-l03-containerization-and-software-engineering-processes" data-for="eprm-l03-containerization-and-software-engineering-processes">EPRM-L03: Containerization and Software Engineering Processes</a></li><li class="depth-1"><a href="#software-needs-a-package" data-for="software-needs-a-package">Software needs a package</a></li><li class="depth-1"><a href="#it-works-on-my-machine" data-for="it-works-on-my-machine">”It works on my machine”</a></li><li class="depth-1"><a href="#from-servers-to-virtual-machines-to-containers" data-for="from-servers-to-virtual-machines-to-containers">From servers to virtual machines to containers</a></li><li class="depth-1"><a href="#how-a-container-works" data-for="how-a-container-works">How a container works</a></li><li class="depth-1"><a href="#docker-in-practice" data-for="docker-in-practice">Docker in practice</a></li><li class="depth-1"><a href="#mlflow-tracking-experiments-and-models" data-for="mlflow-tracking-experiments-and-models">MLflow: tracking experiments and models</a></li><li class="depth-1"><a href="#your-application-is-never-alone" data-for="your-application-is-never-alone">Your application is never alone</a></li><li class="depth-2"><a href="#the-testing-pyramid" data-for="the-testing-pyramid">The testing pyramid</a></li><li class="depth-2"><a href="#automating-integration-tests-more-containers" data-for="automating-integration-tests-more-containers">Automating integration tests: more containers</a></li><li class="depth-1"><a href="#mistakes-happen-just-not-in-production" data-for="mistakes-happen-just-not-in-production">Mistakes happen, just not in production</a></li><li class="depth-1"><a href="#dev-acc-prod-layered-environments" data-for="dev-acc-prod-layered-environments">Dev, Acc, Prod: layered environments</a></li><li class="depth-1"><a href="#gitflow-branches-that-mirror-environments" data-for="gitflow-branches-that-mirror-environments">GitFlow: branches that mirror environments</a></li><li class="depth-1"><a href="#pull-requests-review-before-merge" data-for="pull-requests-review-before-merge">Pull requests: review before merge</a></li><li class="depth-1"><a href="#technical-debt" data-for="technical-debt">Technical debt</a></li><li class="depth-1"><a href="#what-to-be-able-to-do" data-for="what-to-be-able-to-do">What to be able to do</a></li><li class="depth-1"><a href="#exam-questions" data-for="exam-questions">Exam questions</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Containerization" class="internal">Containerization</a></li><li><a href="../../../Concepts/Development,-Acceptance-and-Production-Environments" class="internal">Development, Acceptance and Production Environments</a></li><li><a href="../../../Concepts/Docker" class="internal">Docker</a></li><li><a href="../../../Concepts/GitFlow" class="internal">GitFlow</a></li><li><a href="../../../Concepts/Integration-Testing" class="internal">Integration Testing</a></li><li><a href="../../../Concepts/MLOps" class="internal">MLOps</a></li><li><a href="../../../Concepts/MLflow" class="internal">MLflow</a></li><li><a href="../../../Concepts/Unit-Testing" class="internal">Unit Testing</a></li><li><a href="../../../Courses/EPRM/EPRM---Exam-Questions" class="internal">EPRM - Exam Questions</a></li><li><a href="../../../Courses/EPRM/EPRM---Flashcards" class="internal">EPRM - Flashcards</a></li><li><a href="../../../Courses/EPRM/EPRM---Overview" class="internal">EPRM - Overview</a></li><li><a href="../../../Courses/EPRM/" class="internal">Engineering Production-Ready ML/AI Systems</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mwdebost" type="module" data-persist="true"></script></html>

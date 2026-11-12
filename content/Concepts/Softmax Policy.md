@@ -82,3 +82,4 @@ $$\pi_\theta(a|s) = \frac{\exp(f_\theta(s,a) / \tau)}{\sum_{a'} \exp(f_\theta(s,
 - [[PPO]] — Soft policy parameterization
 - [[Deep Reinforcement Learning]] — When using neural networks for preferences
 - [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (Boltzmann exploration over Q-values)
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

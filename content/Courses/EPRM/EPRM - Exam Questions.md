@@ -9,10 +9,14 @@ status: complete
 
 # EPRM - Exam Questions
 
-All 10 exam-style questions for Engineering Production-Ready ML/AI Systems, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[EPRM - Flashcards|flashcards]] page.
+All 20 exam-style questions for Engineering Production-Ready ML/AI Systems, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[EPRM - Flashcards|flashcards]] page.
 
 Back to the [[Courses/EPRM/index|Engineering Production-Ready ML/AI Systems home]].
 
 ## L02 Distributed Data Processing
 
 ![[EPRM-L02 - Distributed Data Processing#Exam questions]]
+
+## L03 Containerization and Software Engineering Processes
+
+![[EPRM-L03 - Containerization and Software Engineering Processes#Exam questions]]

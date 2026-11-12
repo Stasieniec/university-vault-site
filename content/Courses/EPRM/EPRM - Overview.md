@@ -26,16 +26,16 @@ Building live systems backed by ML or AI. It needs data science and ML knowledge
 
 ## Assessment
 
-Weights are not published. Each Canvas item is worth 10 points. Assignments unlock on Wednesday 12:00 of their week.
+Weights are not published. Each Canvas item is worth 10 points. Assignments 1-3 unlocked on Wednesday 12:00 of their week; Assignments 4 and 5 unlock on Tuesday 12:00 (17 and 24 Nov).
 
 | Component | Due (Amsterdam time) | Notes |
 |---|---|---|
 | Assignment 0: setting up your environment | no deadline, 0 points | WSL (on Windows), Python, venv, run `main.py` |
 | Assignment 1: data-driven roles, ML lifecycle, coding and unit testing | Tue 3 Nov 23:59 | Hints from the week 1 lecture: Uber's structure, "a new feature request" |
 | Assignment 2: distributed data processing | Tue 10 Nov 23:59 | Unlocks Wed 4 Nov 12:00 |
-| Assignment 4: deployment | Tue 24 Nov 23:59 | Unlocks Wed 18 Nov 12:00 |
-| Assignment 3: containerization | Fri 27 Nov 23:59 | Unlocks Wed 11 Nov 12:00. Due after Assignment 4, as Canvas has it |
-| Assignment 5: telemetry | Tue 1 Dec 23:59 | Unlocks Wed 25 Nov 12:00 |
+| Assignment 3: containerization | Tue 17 Nov 23:59 | Moved from Fri 27 Nov. Since 12 Nov the zip also needs a `report.pdf`: your approach and architecture, max half a page for task 1 and one page for task 2, as if explaining it to a team lead. Not graded separately; mistakes in it count against the assignment |
+| Assignment 4: deployment | Tue 24 Nov 23:59 | Unlocks Tue 17 Nov 12:00 |
+| Assignment 5: telemetry | Tue 1 Dec 23:59 | Unlocks Tue 24 Nov 12:00 |
 | Quiz: guest lectures | Thu 10 Dec 23:59 | Graded quiz on the two guest lectures |
 | Course project | Tue 15 Dec 06:00 | Presented in week 8 |
 
@@ -55,7 +55,7 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments unlo
 |---|---|---|
 | 1 (28 Oct) | Data-driven roles, ML lifecycle, clean code, unit testing | A1, due Tue 3 Nov |
 | 2 | Distributed data processing (Spark, Parquet) | A2, due Tue 10 Nov |
-| 3 | Containerization and software engineering processes (containers, MLflow, testing, GitFlow) | A3, due Fri 27 Nov |
+| 3 (11 Nov) | Containerization and software engineering processes (containers, MLflow, testing, GitFlow) | A3, due Tue 17 Nov |
 | 4 | Deployment patterns, APIs | A4, due Tue 24 Nov |
 | 5 | Telemetry and CI/CD | A5, due Tue 1 Dec |
 | 8 | Course project presentations | Project, due Tue 15 Dec 06:00 |
@@ -74,6 +74,12 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments unlo
 | Lecture 2 (Wed 4 Nov) | Data size and tool choice, OLTP vs OLAP, row vs columnar storage and Parquet, distributed processing with Spark (operations, lazy evaluation, architecture), fault tolerance and recovery | [[EPRM-L02 - Distributed Data Processing]] |
 | Readings | Kleppmann, *Designing Data-Intensive Applications*, Ch 3, 4, 6, 7 | No note yet: the book is not freely available |
 
+### Week 3: Containerization and software engineering processes
+
+| | Topic | Notes |
+|---|---|---|
+| Lecture 3 (Wed 11 Nov) | Why containers, how they work, MLflow, integration testing with containers, Dev/Acc/Prod, GitFlow and pull requests, technical debt | [[EPRM-L03 - Containerization and Software Engineering Processes]] |
+
 ---
 
 ## Status
@@ -85,9 +91,10 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments unlo
 | [[EPRM-Book Ch21 - Interdisciplinary Teams]] | complete |
 | [[EPRM-Book Ch22 - Technical Debt]] | complete |
 | [[EPRM-L02 - Distributed Data Processing]] | complete |
+| [[EPRM-L03 - Containerization and Software Engineering Processes]] | complete |
 
 ---
 
 ## Concept Index
 
-[[MLOps]] · [[Clean Code]] · [[Unit Testing]] · [[Apache Spark]] · [[Apache Parquet]] · [[OLTP vs OLAP]] · [[Lazy Evaluation]]
+[[MLOps]] · [[Clean Code]] · [[Unit Testing]] · [[Apache Spark]] · [[Apache Parquet]] · [[OLTP vs OLAP]] · [[Lazy Evaluation]] · [[Containerization]] · [[Docker]] · [[MLflow]] · [[Integration Testing]] · [[Development, Acceptance and Production Environments]] · [[GitFlow]]

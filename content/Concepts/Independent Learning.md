@@ -47,6 +47,8 @@ $$Q_A(a) \approx \sum_b \pi_B(b)\,R(a,b)$$
 - **Miscoordination.** Averaging over the partner hides good joint actions. In the climbing game (shared payoffs 11, −30, 0 / −30, 7, 6 / 0, 0, 5) independent learners settle on the safe action c and reach (c, c) = 5, while the optimum (a, a) = 11 needs both agents to risk −30. Learners tend towards "safe" equilibria; low, decaying exploration helps somewhat but the outcome varies between runs.
 - **Scalability.** A centralized learner must track and explore $|A|^N$ joint actions; independent learners together handle $|A| \times N$. With 2 agents and 6 actions: 36 against 2 × 6. In level-based foraging IQL reached the optimal return sooner than centralized Q-learning.
 - **Not only Q-learning.** The same idea gives IPPO (independent proximal policy optimisation) and independent versions of DDPG and SAC. Independent learning is a widely used baseline across MARL: messy, but it scales to large, complex environments where central learning is intractable.
+- **Deep independent learners.** In multi-agent deep RL independent learning is the decentralised training and execution mode (DTDE, see [[Centralised Training with Decentralised Execution]]). It is often the setting there is anyway, when each organisation programs its own agent. Variants: [[Independent DQN|IDQN]], independent REINFORCE, IA2C and IPPO, each agent conditioning on its own observation history $h_i^t$.
+- **Stale replay against fresh data.** IDQN's replay buffer holds experience from the others' old policies, which goes out of date as they learn (fixes: smaller buffers, importance sampling weights). Independent policy gradient methods are on-policy, $\nabla_{\phi_i}J(\phi_i) \propto \mathbb{E}_\pi[u_i^t\nabla_{\phi_i}\log\pi(a_i^t \mid h_i^t;\phi_i)]$, so they always learn from the others' current policies, but independent learning exacerbates their variance. With a shared team reward an IA2C critic does not solve credit assignment, and each IPPO agent's clip bounds only its own policy change.
 
 ## Connections
 
@@ -54,8 +56,9 @@ $$Q_A(a) \approx \sum_b \pi_B(b)\,R(a,b)$$
 - Setting: [[Stochastic Game]], [[Multi-Agent System]]
 - Problems it runs into: non-stationarity, [[Multi-Agent Credit Assignment]], equilibrium selection ([[Nash Equilibrium]], [[Stag Hunt]])
 - Exploration: [[Epsilon-Greedy Policy]], [[Exploration vs Exploitation]]
-- Next step: [[Deep Reinforcement Learning]]
+- Next step: [[Deep Reinforcement Learning]], [[Independent DQN]]
 
 ## Appears In
 
 - [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

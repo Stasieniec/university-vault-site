@@ -186,3 +186,6 @@ def compute_advantages(rewards, values, gamma=0.99, lambda=0.95):
 2. Mnih, V., et al. (2016). *Asynchronous Methods for Deep Reinforcement Learning* (A3C). ICML.
 3. Schulman, G., et al. (2017). *Proximal Policy Optimization Algorithms*. Arxiv.
 
+## Appears In
+
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

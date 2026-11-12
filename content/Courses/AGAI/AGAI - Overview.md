@@ -17,7 +17,7 @@ exam_date: 2026-11-20
 > **Teaching team:** Fernando Santos, Annet Onnes, Ece Erdem, Roman Chiva Gil, Dimitris Michailidis, Madhura Pawar, Alexandre Pires
 > **Lectures:** Tuesdays and Thursdays 15:00-16:45
 > **Werkcollege (lab):** Wednesdays. Stas: Group 5, 13:00-14:45, SP G2.13 (lab TA Dimitris Michailidis)
-> **Exams:** midterm Fri 2026-11-20 13:00-15:00 (30%), final Fri 2026-12-18 13:00-15:00 (40%), resit Wed 2027-02-10 13:00-15:00. Format not announced yet.
+> **Exams:** midterm Fri 2026-11-20 13:00-15:00 (30%), final Fri 2026-12-18 13:00-15:00 (40%), resit Wed 2027-02-10 13:00-15:00. Midterm format below.
 
 ## What the course is about
 
@@ -31,7 +31,7 @@ Three parts, each building on the last:
 
 | Component | Weight | Dates | Notes |
 |---|---|---|---|
-| Midterm exam | 30% | Fri 20 Nov, 13:00-15:00 | Format and scope not announced yet |
+| Midterm exam | 30% | Fri 20 Nov, 13:00-15:00 | Structure below. Mock exam and solutions on Canvas (Modules > Week 3, Midterm structure) |
 | Final exam | 40% | Fri 18 Dec, 13:00-15:00 | The week plan in Lecture 1 says 19 Dec, the assessment slide says 18 Dec. Check DataNose closer to the date |
 | Assignment 1: multi-agent RL | 15% | out Mon 2 Nov, due Fri 13 Nov 23:59 | Team of 4 |
 | Assignment 2: agentic societies | 15% | out Mon 23 Nov, due Fri 4 Dec 23:59 | Team of 4, uses LLM API keys |
@@ -41,6 +41,20 @@ Three parts, each building on the last:
 - **Labs are not graded.** They are open-ended notebooks: predict and justify, run, explain, modify. No coding questions; the questions ask for interpretation and evidence. A wrong prediction you can explain later is worth more than a lucky guess. Treated by the lecturer as the best practice for the midterm.
 - **AI use is allowed**, with two conditions: you stay responsible for the analysis, and you are transparent about how you used it.
 - **API keys** for LLMs come through UvA AI Chat, with a fixed budget per student. Needed for the labs in weeks 4-7 and Assignment 2.
+
+## Midterm structure
+
+Two hours, closed book, 100 points; the grade is points divided by 10, pass 5.5. Multiple-choice questions with round boxes have one answer; square boxes may have several. Open questions ask for a short justification. Content runs up to week 3.
+
+| Part | Questions | Material |
+|---|---|---|
+| Game theory and evolutionary game theory | 5 MC, 1 open | Lecture 2, Lab 1, MARL book 3.1-3.4, 4.1, 4.2, 4.4, 4.7-4.9 |
+| Multi-agent RL | 5 MC, 1 open | Lecture 3, Lab 2, MARL book Ch 2 and 5 |
+| Deep RL | 7 MC, 1 open | Lecture 4, Lab 2, MARL book Ch 8 |
+| Deep MARL | 8 MC, 1 open | Lectures 5 and 6, Lab 2, MARL book Ch 9 |
+| Assignment 1 | 1 open | Your own Blue agent: which Red agent it does well against, which algorithm you chose |
+
+The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep RL and Intro to Deep MARL]] and [[AGAI-L05 - Deep MARL, Part II]].
 
 ## Readings
 
@@ -80,8 +94,17 @@ Three parts, each building on the last:
 |---|---|---|
 | L3 (Tue 3 Nov) | RL recap (MDPs, Bellman equations, value iteration, Q-learning, learning parameters); intro to MARL: stochastic games, payoff structures, non-stationarity, credit assignment, equilibrium selection, independent learning | [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] |
 | Lab 2 (Wed 4 Nov) | Learning agents: independent Q-learners in matrix games, the Coin Game, state explosion, PPO | [[AGAI-Lab02 - Learning Agents]] |
-| L4 (Thu 5 Nov) | Deep RL and deep MARL | Slides not on Canvas yet |
+| L4 (Thu 5 Nov) | Deep RL: function approximation, DQN (replay buffer, target network), policy gradients (REINFORCE, A2C, PPO); intro to deep MARL: training modes (CTCE, DTDE, CTDE), independent DQN and independent policy gradients | [[AGAI-L04 - Deep RL and Intro to Deep MARL]] |
 | Reading | MARL book Ch 5-9, suggested for weeks 2 and 3 | |
+
+### Week 3: Deep MARL and the transition to agentic systems
+
+| | Topic | Notes |
+|---|---|---|
+| L5 (Tue 10 Nov) | Deep MARL part II: CTDE with actor-critic, value decomposition (IGM, VDN, QMIX), agent modelling and opponent shaping, parameter and experience sharing, MCTS and self-play | [[AGAI-L05 - Deep MARL, Part II]] |
+| Lab 3 (Wed 11 Nov) | No notebook: support for Assignment 1 | |
+| L6 (Thu 12 Nov) | Wrap-up of learning agents; transition to agentic AI (guest lecture, Giovanni Sileno) | Slides not on Canvas yet |
+| Reading | MARL book Ch 9 | Covered inside the Lecture 5 note |
 
 ---
 
@@ -95,6 +118,8 @@ Three parts, each building on the last:
 | [[AGAI-L02 - Game Theory and Population Dynamics]] | complete |
 | [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] | complete |
 | [[AGAI-Lab02 - Learning Agents]] | complete |
+| [[AGAI-L04 - Deep RL and Intro to Deep MARL]] | complete |
+| [[AGAI-L05 - Deep MARL, Part II]] | complete |
 
 ---
 
@@ -108,4 +133,6 @@ Three parts, each building on the last:
 
 **Rewards and learning:** [[Reward Hacking]] · [[Reward Signal]] · [[Value Iteration]] · [[Markov Decision Process]] · [[Reinforcement Learning]] · [[Q-Learning]] · [[Epsilon-Greedy Policy]] · [[Softmax Policy]]
 
-**Multi-agent RL:** [[Independent Learning]] · [[Multi-Agent Credit Assignment]]
+**Deep RL:** [[Deep Reinforcement Learning]] · [[Function Approximation]] · [[Deep Q-Network (DQN)]] · [[Experience Replay]] · [[Target Network]] · [[Policy Gradient Methods]] · [[REINFORCE]] · [[Actor-Critic]] · [[Advantage Actor-Critic (A2C)]] · [[PPO]]
+
+**Multi-agent RL:** [[Independent Learning]] · [[Multi-Agent Credit Assignment]] · [[Independent DQN]] · [[Centralised Training with Decentralised Execution]] · [[Individual-Global-Max Property]] · [[Value Decomposition Networks (VDN)]] · [[QMIX]] · [[Agent Modelling]] · [[Parameter Sharing]] · [[Policy Space Response Oracles (PSRO)]] · [[Monte Carlo Tree Search (MCTS)]] · [[AlphaGo Zero]]

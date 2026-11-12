@@ -51,3 +51,4 @@ To learn off-policy, one must account for the difference in distributions:
 - [[RL-L03 - Monte Carlo Methods]]
 - [[RL-L07 - Off-Policy RL with Approximation]]
 - [[RL-Book Ch5 - Monte Carlo Methods]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

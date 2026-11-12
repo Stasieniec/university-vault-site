@@ -60,3 +60,4 @@ For each iteration:
 ## Appears In
 
 - RL course Week 5–6 (policy gradient methods)
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

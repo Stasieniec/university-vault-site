@@ -45,3 +45,4 @@ CNNs serve as the **feature extraction backbone** for [[Deep Reinforcement Learn
 
 - [[RL-L08 - Deep RL Value-Based]] (DQN architecture)
 - [[RL-Book Ch16 - Applications and Case Studies]] (Atari)
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

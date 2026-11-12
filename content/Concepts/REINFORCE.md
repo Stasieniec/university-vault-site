@@ -191,3 +191,4 @@ REINFORCE is largely superseded by more advanced algorithms ([[PPO]], [[A3C]]), 
 - [[Advantage Actor-Critic (A2C)]] — Direct successor
 - [[Policy Gradient Methods]] — Core RL course topic
 - [[Deep Reinforcement Learning]] — When optimizing neural network policies
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

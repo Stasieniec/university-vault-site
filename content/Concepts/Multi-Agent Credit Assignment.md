@@ -47,3 +47,4 @@ with the same $r$ for every agent, whatever its own action contributed. The rewa
 ## Appears In
 
 - [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]]
+- [[AGAI-L05 - Deep MARL, Part II]] (value decomposition with VDN and QMIX; counterfactual critics)

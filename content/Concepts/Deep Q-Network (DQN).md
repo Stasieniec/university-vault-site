@@ -107,3 +107,4 @@ Extension for **offline RL** (learning from fixed datasets without environment i
 
 - [[RL-L08 - Deep RL Value-Based]]
 - [[RL-Book Ch16 - Applications and Case Studies]] (§16.5)
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

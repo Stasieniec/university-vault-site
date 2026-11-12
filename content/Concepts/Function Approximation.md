@@ -75,3 +75,4 @@ $$\hat{v}(s, \mathbf{w}) = f_\mathbf{w}(s)$$
 - [[RL-L06 - On-Policy TD with Approximation]]
 - [[RL-L07 - Off-Policy RL with Approximation]]
 - [[RL-Book Ch9 - On-Policy Prediction with Approximation]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

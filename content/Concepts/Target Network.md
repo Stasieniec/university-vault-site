@@ -19,3 +19,4 @@ status: complete
 ## Appears In
 
 - [[RL-L08 - Deep RL Value-Based]], [[Deep Q-Network (DQN)]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

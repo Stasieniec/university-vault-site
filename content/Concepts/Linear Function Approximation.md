@@ -50,3 +50,4 @@ The power of linear FA depends entirely on the feature vector $\mathbf{x}(s)$. S
 
 - [[RL-L06 - On-Policy TD with Approximation]]
 - [[RL-Book Ch9 - On-Policy Prediction with Approximation]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

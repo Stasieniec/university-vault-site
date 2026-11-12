@@ -53,3 +53,4 @@ The Actor update typically follows the gradient of the performance objective, of
 
 - [[RL-L09 - Policy Gradient Methods]] (mentioned)
 - future weeks
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [MCTS, Monte Carlo Tree Search]
-course: [RL]
+course: [RL, AGAI]
 tags: [planning, deep-rl, exam-topic]
 status: complete
 ---
@@ -70,3 +70,4 @@ MCTS is a form of **planning at decision time** — it plans from the current st
 - [[RL-L12 - Model-Based RL]]
 - [[RL-Book Ch8 - Planning and Learning]] (§8.11)
 - [[RL-Book Ch16 - Applications and Case Studies]] (§16.6 — AlphaGo)
+- [[AGAI-L05 - Deep MARL, Part II]] (MCTS for large two-player zero-sum games)

@@ -82,3 +82,4 @@ return scores o_T for the next item (rank items by o_T)
 ## Appears In
 
 - [[RS-L03a - Sequential Recommendation Models]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

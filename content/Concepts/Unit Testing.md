@@ -94,3 +94,4 @@ Background beyond the course material: in Martin's *Clean Code* the T stands for
 ## Appears In
 
 - [[EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing]]
+- [[EPRM-L03 - Containerization and Software Engineering Processes]]

@@ -1,7 +1,7 @@
 ---
 type: concept
 aliases: [AlphaGo Zero, AlphaZero, Alpha Go Zero]
-course: [RL]
+course: [RL, AGAI]
 tags: [deep-rl, planning, exam-topic]
 status: complete
 ---
@@ -79,3 +79,4 @@ A single neural network with two heads:
 - [[RL-L12 - Model-Based RL]]
 - [[RL-Book Ch16 - Applications and Case Studies]] (§16.6)
 - Silver et al., "Mastering the game of Go without human knowledge" (2017)
+- [[AGAI-L05 - Deep MARL, Part II]] (MCTS plus self-play in zero-sum board games)

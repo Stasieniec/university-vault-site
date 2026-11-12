@@ -46,3 +46,4 @@ In on-policy learning, you learn by doing — the data you collect comes from th
 - [[RL-L04 - Temporal Difference Learning]]
 - [[RL-L06 - On-Policy TD with Approximation]]
 - [[RL-Book Ch6 - Temporal-Difference Learning]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

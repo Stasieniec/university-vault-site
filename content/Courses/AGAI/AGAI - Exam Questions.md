@@ -9,7 +9,7 @@ status: complete
 
 # AGAI - Exam Questions
 
-All 48 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
+All 76 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
 
 Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 
@@ -24,6 +24,14 @@ Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 ## L03 Intro to Multi-Agent Reinforcement Learning
 
 ![[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning#Exam questions]]
+
+## L04 Deep RL and Intro to Deep MARL
+
+![[AGAI-L04 - Deep RL and Intro to Deep MARL#Exam questions]]
+
+## L05 Deep MARL, Part II
+
+![[AGAI-L05 - Deep MARL, Part II#Exam questions]]
 
 ## Book Ch2: Intelligent Agents
 

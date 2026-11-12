@@ -29,3 +29,4 @@ Stabilization techniques: [[Experience Replay]], [[Target Network]] (as in [[Dee
 ## Appears In
 
 - [[RL-L06 - On-Policy TD with Approximation]] (§9.7), [[RL-L08 - Deep RL Value-Based]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

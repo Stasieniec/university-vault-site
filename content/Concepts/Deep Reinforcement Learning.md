@@ -48,3 +48,4 @@ Using deep learning in RL is notoriously unstable due to three main factors:
 - [[RL-L08 - Deep RL Value-Based]]
 - [[RL-Book Ch9 - On-policy Prediction with Approximation]]
 - [[RL-Book Ch11 - Off-policy Methods with Approximation]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

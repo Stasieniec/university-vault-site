@@ -170,7 +170,7 @@ General-sum learners struggle with **Pareto inefficiency**, outcomes where every
 > [[AGAI-L02 - Game Theory and Population Dynamics|Lecture 2]] writes the same object as $(I, S, \{A_i\}, \{R_i\}, T, \mu)$, with transitions $T$ and an initial-state distribution $\mu$; here the transitions are $P$ and the discount $\gamma$ is part of the tuple.
 
 > [!example] The iterated Prisoner's Dilemma
-> $N = 2$; the state is **last round's actions of both players**, $\mathcal{S} = \{CC, CD, DC, DD\}$; $\mathcal{A}^i = \{C, D\}$; the joint action fixes the next state (play C and D, next state CD); rewards come from the PD matrix (3 each for mutual cooperation, 5 and 0 when one defects on a cooperator, 1 each for mutual defection). A policy can react to the state: "cooperate if the other cooperated last time". A one-shot [[Normal-Form Game|normal-form game]] is the single-state case.
+> $N = 2$; the state is **last round's actions of both players**, $\mathcal{S} = \{CC, CD, DC, DD\}$; $\mathcal{A}^i = \{C, D\}$; the joint action fixes the next state (play C and D, next state CD); rewards come from the PD matrix (3 each for mutual cooperation, 5 and 0 when one defects on a cooperator, 1 each for mutual defection). A policy can react to the state: "cooperate if the other cooperated last time". A repeated [[Normal-Form Game|normal-form game]] is the single-state case.
 
 > [!formula] Agent $i$'s objective
 > $$J^i(\pi^1, \dots, \pi^N) = \mathbb{E}\Big[\sum_t \gamma^t R_t^i \,\Big|\, \pi^1, \dots, \pi^N\Big]$$

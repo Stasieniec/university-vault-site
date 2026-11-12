@@ -50,3 +50,4 @@ status: complete
 
 - Future Week 5 Lecture
 - [[RL-Book Ch13 - Policy Gradient Methods]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

@@ -172,3 +172,4 @@ Variance reduction techniques:
 - [[Advantage Actor-Critic (A2C)]] — With baselines
 - [[PPO]] — Trust-region variant
 - [[Deep Reinforcement Learning]] — When using neural network policies
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]

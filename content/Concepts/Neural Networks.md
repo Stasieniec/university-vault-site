@@ -49,3 +49,4 @@ Neural networks are trained using **Stochastic Gradient Descent (SGD)** or varia
 
 - [[RL-L08 - Deep RL Value-Based]]
 - [[IR-L05 - Neural IR Intro & Reranking]]
+- [[AGAI-L04 - Deep RL and Intro to Deep MARL]]
