@@ -54,7 +54,7 @@ Two hours, closed book, 100 points; the grade is points divided by 10, pass 5.5.
 | Deep MARL | 8 MC, 1 open | Lectures 5 and 6, Lab 2, MARL book Ch 9 |
 | Assignment 1 | 1 open | Your own Blue agent: which Red agent it does well against, which algorithm you chose |
 
-The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep RL and Intro to Deep MARL]] and [[AGAI-L05 - Deep MARL, Part II]].
+The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep RL and Intro to Deep MARL]], [[AGAI-L05 - Deep MARL, Part II]] and (PSRO) [[AGAI-L06a - From Deep MARL to Reasoning]].
 
 ## Readings
 
@@ -103,7 +103,8 @@ The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep 
 |---|---|---|
 | L5 (Tue 10 Nov) | Deep MARL part II: CTDE with actor-critic, value decomposition (IGM, VDN, QMIX), agent modelling and opponent shaping, parameter and experience sharing, MCTS and self-play | [[AGAI-L05 - Deep MARL, Part II]] |
 | Lab 3 (Wed 11 Nov) | No notebook: support for Assignment 1 | |
-| L6 (Thu 12 Nov) | Wrap-up of learning agents; transition to agentic AI (guest lecture, Giovanni Sileno) | Slides not on Canvas yet |
+| L6 part 1 (Thu 12 Nov) | From deep MARL to reasoning: MCTS in Go, AlphaGo, AlphaGo Zero and AlphaZero, population-based training, PSRO, the AlphaStar league, RL and LLMs | [[AGAI-L06a - From Deep MARL to Reasoning]] |
+| L6 part 2 (Thu 12 Nov) | Guest lecture, Giovanni Sileno: what makes something an agent (stances, weak agency, BDI, the CAES model), and whether a tool-using chatbot is one | [[AGAI-L06b - What Would Make a Chatbot an Agent]] |
 | Reading | MARL book Ch 9 | Covered inside the Lecture 5 note |
 
 ---
@@ -120,6 +121,8 @@ The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep 
 | [[AGAI-Lab02 - Learning Agents]] | complete |
 | [[AGAI-L04 - Deep RL and Intro to Deep MARL]] | complete |
 | [[AGAI-L05 - Deep MARL, Part II]] | complete |
+| [[AGAI-L06a - From Deep MARL to Reasoning]] | complete |
+| [[AGAI-L06b - What Would Make a Chatbot an Agent]] | complete |
 
 ---
 
@@ -135,4 +138,6 @@ The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep 
 
 **Deep RL:** [[Deep Reinforcement Learning]] · [[Function Approximation]] · [[Deep Q-Network (DQN)]] · [[Experience Replay]] · [[Target Network]] · [[Policy Gradient Methods]] · [[REINFORCE]] · [[Actor-Critic]] · [[Advantage Actor-Critic (A2C)]] · [[PPO]]
 
-**Multi-agent RL:** [[Independent Learning]] · [[Multi-Agent Credit Assignment]] · [[Independent DQN]] · [[Centralised Training with Decentralised Execution]] · [[Individual-Global-Max Property]] · [[Value Decomposition Networks (VDN)]] · [[QMIX]] · [[Agent Modelling]] · [[Parameter Sharing]] · [[Policy Space Response Oracles (PSRO)]] · [[Monte Carlo Tree Search (MCTS)]] · [[AlphaGo Zero]]
+**Multi-agent RL:** [[Independent Learning]] · [[Multi-Agent Credit Assignment]] · [[Independent DQN]] · [[Centralised Training with Decentralised Execution]] · [[Individual-Global-Max Property]] · [[Value Decomposition Networks (VDN)]] · [[QMIX]] · [[Agent Modelling]] · [[Parameter Sharing]] · [[Policy Space Response Oracles (PSRO)]] · [[Monte Carlo Tree Search (MCTS)]] · [[AlphaGo Zero]] · [[Self-Play]] · [[Population-Based Training]]
+
+**Agency:** [[Intentional Stance]] · [[Agent-Based Modelling]] · [[BDI Model]] · [[CAES Model]]

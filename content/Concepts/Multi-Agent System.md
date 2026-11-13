@@ -48,3 +48,4 @@ Russell and Norvig give the test for when another entity has to be treated as an
 - [[AGAI-Book Ch2 - Intelligent Agents]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
 - [[AGAI-L03 - Intro to Multi-Agent Reinforcement Learning]] (multi-agent reinforcement learning)
+- [[AGAI-L06b - What Would Make a Chatbot an Agent]] (social ability; agent-based modelling; agentic AI as orchestrated agents)

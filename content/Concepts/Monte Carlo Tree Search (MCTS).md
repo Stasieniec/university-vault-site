@@ -59,6 +59,9 @@ MCTS is a form of **planning at decision time** — it plans from the current st
 - Board games (Chess, Shogi) — AlphaZero
 - General game playing, real-time strategy games
 
+> [!warning] Why plain MCTS struggles in Go (AGAI)
+> Hand-made heuristics for scoring positions require manual annotation; random rollouts give a weak signal about which lines are promising; and random rollouts assume a random opponent. AlphaGo answers this with a policy network that guides selection and a value network that evaluates expanded nodes (see [[AlphaGo Zero]]).
+
 ## Connections
 
 - Builds on [[Multi-Armed Bandit]] (UCB) and [[Monte Carlo Methods]]
@@ -71,3 +74,4 @@ MCTS is a form of **planning at decision time** — it plans from the current st
 - [[RL-Book Ch8 - Planning and Learning]] (§8.11)
 - [[RL-Book Ch16 - Applications and Case Studies]] (§16.6 — AlphaGo)
 - [[AGAI-L05 - Deep MARL, Part II]] (MCTS for large two-player zero-sum games)
+- [[AGAI-L06a - From Deep MARL to Reasoning]] (its challenges in Go; network-guided MCTS in AlphaGo)

@@ -66,3 +66,4 @@ The expectation is the point: rationality maximises **expected** performance, gi
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
 - [[AGAI-Book Ch2 - Intelligent Agents]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L06b - What Would Make a Chatbot an Agent]] (Newell's knowledge level; rationality as explicit reasons against intelligence)

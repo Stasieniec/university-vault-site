@@ -6,65 +6,65 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Development, Acceptance and Production Environments</title>
-    <link>https://notes.swasilewski.com/Concepts/Development,-Acceptance-and-Production-Environments</link>
-    <guid>https://notes.swasilewski.com/Concepts/Development,-Acceptance-and-Production-Environments</guid>
-    <description><![CDATA[ Development, Acceptance and Production Environments Definition Layered environments Modern software processes deploy the same tech stack in several environments: development (Dev, also test), acceptance (Acc, also staging) and production (Prod). ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
+    <title>Agent-Based Modelling</title>
+    <link>https://notes.swasilewski.com/Concepts/Agent-Based-Modelling</link>
+    <guid>https://notes.swasilewski.com/Concepts/Agent-Based-Modelling</guid>
+    <description><![CDATA[ Agent-Based Modelling Definition Agent-based modelling (ABM) Studying a system by specifying the behaviour of its individual agents and simulating their interactions, so that the system’s behaviour emerges from them. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
   </item><item>
-    <title>Parameter Sharing</title>
-    <link>https://notes.swasilewski.com/Concepts/Parameter-Sharing</link>
-    <guid>https://notes.swasilewski.com/Concepts/Parameter-Sharing</guid>
-    <description><![CDATA[ Parameter Sharing Definition Parameter sharing In deep MARL, all agents use the same set of parameter values in their neural networks: one policy or value network \theta for the whole team instead of one \theta_i per agent. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
+    <title>BDI Model</title>
+    <link>https://notes.swasilewski.com/Concepts/BDI-Model</link>
+    <guid>https://notes.swasilewski.com/Concepts/BDI-Model</guid>
+    <description><![CDATA[ BDI Model Definition Beliefs, desires, intentions (BDI) In (symbolic) AI, multi-agent systems and philosophy of action, beliefs, desires and intentions map onto three distinct mental states and practical levels of reasoning: Informational level: what the agent believes to be the case in the world. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
   </item><item>
-    <title>Policy Space Response Oracles (PSRO)</title>
-    <link>https://notes.swasilewski.com/Concepts/Policy-Space-Response-Oracles-(PSRO)</link>
-    <guid>https://notes.swasilewski.com/Concepts/Policy-Space-Response-Oracles-(PSRO)</guid>
-    <description><![CDATA[ Policy Space Response Oracles (PSRO) Source: MARL book (Albrecht, Christianos and Schäfer, Ch 9, population-based training) and the AGAI mock midterm key; the AGAI lecture on deep MARL does not cover it. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
+    <title>CAES Model</title>
+    <link>https://notes.swasilewski.com/Concepts/CAES-Model</link>
+    <guid>https://notes.swasilewski.com/Concepts/CAES-Model</guid>
+    <description><![CDATA[ CAES Model Definition Commitments, Abilities, Expectations, Susceptibilities (CAES model; Boer and Sileno, &quot;Anchoring Distributed Agency&quot;) Commitments: what the agent wants to achieve in the world (intent selection). ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+  </item><item>
+    <title>Intentional Stance</title>
+    <link>https://notes.swasilewski.com/Concepts/Intentional-Stance</link>
+    <guid>https://notes.swasilewski.com/Concepts/Intentional-Stance</guid>
+    <description><![CDATA[ Intentional Stance Definition Intentional stance (Dennett, The Intentional Stance, 1987) Interpreting entities as agents, ascribing them beliefs, desires, intentions and enough rationality to do what they ought to do given those beliefs and desires. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+  </item><item>
+    <title>Population-Based Training</title>
+    <link>https://notes.swasilewski.com/Concepts/Population-Based-Training</link>
+    <guid>https://notes.swasilewski.com/Concepts/Population-Based-Training</guid>
+    <description><![CDATA[ Population-Based Training Definition Population-based training A multi-agent training approach that tests one policy against a population of other policies. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+  </item><item>
+    <title>Self-Play</title>
+    <link>https://notes.swasilewski.com/Concepts/Self-Play</link>
+    <guid>https://notes.swasilewski.com/Concepts/Self-Play</guid>
+    <description><![CDATA[ Self-Play Definition Self-play Training an agent’s policy by letting it play against itself: the same policy chooses the actions for each agent. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+  </item><item>
+    <title>Actor-Critic</title>
+    <link>https://notes.swasilewski.com/Concepts/Actor-Critic</link>
+    <guid>https://notes.swasilewski.com/Concepts/Actor-Critic</guid>
+    <description><![CDATA[ Actor-Critic Definition Actor-Critic Methods Actor-Critic methods are a class of Reinforcement Learning algorithms that combine both policy-based and value-based approaches. ]]></description>
+    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
+  </item><item>
+    <title>Advantage Actor-Critic (A2C)</title>
+    <link>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</link>
+    <guid>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</guid>
+    <description><![CDATA[ Advantage Actor-Critic (A2C) Definition Advantage Actor-Critic (A2C) A2C is an on-policy Actor-Critic algorithm that combines a parameterized policy (the actor, \pi_\theta) with a learned state-value function (the critic, \hat{V}_w). ]]></description>
+    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
+  </item><item>
+    <title>Advantage Function</title>
+    <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
+    <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
+    <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
+    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
   </item><item>
     <title>Agent Modelling</title>
     <link>https://notes.swasilewski.com/Concepts/Agent-Modelling</link>
     <guid>https://notes.swasilewski.com/Concepts/Agent-Modelling</guid>
     <description><![CDATA[ Agent Modelling Definition Agent modelling An agent explicitly models the policies of the other agents, so that it can condition its own action selection on their predicted behaviour and adapt when that behaviour changes. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
-  </item><item>
-    <title>Centralised Training with Decentralised Execution</title>
-    <link>https://notes.swasilewski.com/Concepts/Centralised-Training-with-Decentralised-Execution</link>
-    <guid>https://notes.swasilewski.com/Concepts/Centralised-Training-with-Decentralised-Execution</guid>
-    <description><![CDATA[ Centralised Training with Decentralised Execution Definition Centralised training with decentralised execution (CTDE) A training and execution mode for multi-agent deep RL in which agents are trained using centrally shared information (for example the other agents’ observations or actions, a global ... ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
-  </item><item>
-    <title>Containerization</title>
-    <link>https://notes.swasilewski.com/Concepts/Containerization</link>
-    <guid>https://notes.swasilewski.com/Concepts/Containerization</guid>
-    <description><![CDATA[ Containerization Definition Container A container is a packaged application (code, interpreter, libraries, configuration) running as an isolated process on a host machine. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
-  </item><item>
-    <title>Docker</title>
-    <link>https://notes.swasilewski.com/Concepts/Docker</link>
-    <guid>https://notes.swasilewski.com/Concepts/Docker</guid>
-    <description><![CDATA[ Docker Definition Docker Docker is the most widely used platform for containers: a Dockerfile describes how to build an image, the docker command-line tool builds, runs and inspects images and containers, and Docker Compose defines and starts several containers together. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
-  </item><item>
-    <title>GitFlow</title>
-    <link>https://notes.swasilewski.com/Concepts/GitFlow</link>
-    <guid>https://notes.swasilewski.com/Concepts/GitFlow</guid>
-    <description><![CDATA[ GitFlow Definition GitFlow GitFlow is a git branching model with two long-living branches, main (the official release history) and develop (the integration branch for features), plus short-lived feature, release and hotfix branches. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
-  </item><item>
-    <title>Independent DQN</title>
-    <link>https://notes.swasilewski.com/Concepts/Independent-DQN</link>
-    <guid>https://notes.swasilewski.com/Concepts/Independent-DQN</guid>
-    <description><![CDATA[ Independent DQN Definition Independent DQN (IDQN) The deep version of independent Q-learning: each agent i trains its own DQN, an action-value network Q(\cdot\,;\theta_i) with its own target network and replay buffer, on its own observation history and reward, and treats the other agents as part of ... ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
-  </item><item>
-    <title>Individual-Global-Max Property</title>
-    <link>https://notes.swasilewski.com/Concepts/Individual-Global-Max-Property</link>
-    <guid>https://notes.swasilewski.com/Concepts/Individual-Global-Max-Property</guid>
-    <description><![CDATA[ Individual-Global-Max Property Definition Individual-Global-Max (IGM) property A value decomposition satisfies IGM if \arg\max_{a_1, \dots, a_n} Q(s, a_1, \dots, a_n) = \Big(\arg\max_{a_1}Q_1(o_1, a_1),\; \dots,\; \arg\max_{a_n}Q_n(o_n, a_n)\Big) The joint action maximising the joint action-value fu... ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:19:16 GMT</pubDate>
+    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
   </item>
     </channel>
   </rss>

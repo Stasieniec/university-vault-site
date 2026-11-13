@@ -9,7 +9,7 @@ status: complete
 
 # AGAI - Flashcards
 
-All 384 flashcards for Agentic Artificial Intelligence, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[AGAI - Exam Questions|exam questions]] page.
+All 496 flashcards for Agentic Artificial Intelligence, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[AGAI - Exam Questions|exam questions]] page.
 
 Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 
@@ -32,6 +32,14 @@ Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 ## L05 Deep MARL, Part II
 
 ![[AGAI-L05 - Deep MARL, Part II#Flashcards]]
+
+## L06a From Deep MARL to Reasoning
+
+![[AGAI-L06a - From Deep MARL to Reasoning#Flashcards]]
+
+## L06b What Would Make a Chatbot an Agent
+
+![[AGAI-L06b - What Would Make a Chatbot an Agent#Flashcards]]
 
 ## Book Ch2: Intelligent Agents
 

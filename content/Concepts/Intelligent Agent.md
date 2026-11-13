@@ -73,3 +73,4 @@ The program receives only the current percept; if behaviour must depend on the h
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
 - [[AGAI-Book Ch2 - Intelligent Agents]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L06b - What Would Make a Chatbot an Agent]] (the intentional stance, objects, actors and agents, weak agency)

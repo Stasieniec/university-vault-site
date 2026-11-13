@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>AGAI-L06b - What Would Make a Chatbot an Agent — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="AGAI-L06b - What Would Make a Chatbot an Agent — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="AGAI-L06b - What Would Make a Chatbot an Agent — notes.swasilewski.com"/><meta name="twitter:description" content="AGAI-L06b: What Would Make a Chatbot an Agent In short A guest lecture by Giovanni Sileno (UvA) on one question: is a tool-using chatbot, marketed as “agentic AI”, an agent, and if not, what would make it one? Objects occupy space and events time; actors produce changes; agents are actors we ascribe..."/><meta property="og:description" content="AGAI-L06b: What Would Make a Chatbot an Agent In short A guest lecture by Giovanni Sileno (UvA) on one question: is a tool-using chatbot, marketed as “agentic AI”, an agent, and if not, what would make it one? Objects occupy space and events time; actors produce changes; agents are actors we ascribe..."/><meta property="og:image:alt" content="AGAI-L06b: What Would Make a Chatbot an Agent In short A guest lecture by Giovanni Sileno (UvA) on one question: is a tool-using chatbot, marketed as “agentic AI”, an agent, and if not, what would make it one? Objects occupy space and events time; actors produce changes; agents are actors we ascribe..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L06b---What-Would-Make-a-Chatbot-an-Agent"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L06b---What-Would-Make-a-Chatbot-an-Agent"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="AGAI-L06b: What Would Make a Chatbot an Agent In short A guest lecture by Giovanni Sileno (UvA) on one question: is a tool-using chatbot, marketed as “agentic AI”, an agent, and if not, what would make it one? Objects occupy space and events time; actors produce changes; agents are actors we ascribe..."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mwf0e0zv" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mwf0e0zv" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mwf0e0zv").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L06b---What-Would-Make-a-Chatbot-an-Agent-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L06b---What-Would-Make-a-Chatbot-an-Agent-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/AGAI/Lectures/AGAI-L06b---What-Would-Make-a-Chatbot-an-Agent-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/AGAI/Lectures/AGAI-L06b---What-Would-Make-a-Chatbot-an-Agent"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-485"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-485" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/AGAI/">Agentic Artificial Intelligence</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/AGAI/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>AGAI L06b   What Would Make a Chatbot an Agent</a></div></nav><h1 class="article-title">AGAI-L06b - What Would Make a Chatbot an Agent</h1><p show-comma="true" class="content-meta"><time datetime="2026-11-12T00:00:00.000Z">Nov 12, 2026</time><span>35 min read</span></p></div></div><article class="popover-hint"><h1 id="agai-l06b-what-would-make-a-chatbot-an-agent">AGAI-L06b: What Would Make a Chatbot an Agent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agai-l06b-what-would-make-a-chatbot-an-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A guest lecture by Giovanni Sileno (UvA) on one question: is a tool-using chatbot, marketed as “agentic AI”, an agent, and if not, what would make it one? Objects occupy space and events time; actors produce changes; agents are actors we ascribe intentions to (Dennett’s intentional stance). Behaviour splits into executing a script, selecting it from a repertoire, and modifying it over time.</p>
+<p>Beliefs and desires are not enough: an agent also needs intentions, a settled commitment to a goal and a plan, reached by weighing choices and their side effects (Bratman, the BDI model). Sileno’s CAES model (commitments, abilities, expectations, susceptibilities) gives this a cleaner structure and maps onto the harness of a coding agent. Today’s “AI agent” is an LLM plus a harness; “agentic AI” orchestrates several agents.</p>
+<p>The midterm lists Lecture 6 only under Deep MARL, which is part 1; whether this part is examined there is not stated. It feeds the final exam, whose format is not announced.</p>
+</div>
+</blockquote>
+<h2 id="the-question-is-a-tool-using-chatbot-an-agent">The question: is a tool-using chatbot an agent?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-question-is-a-tool-using-chatbot-an-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>“Agent” means rather different things across disciplines, even inside computing; at the very least it works as a <strong>metaphor</strong>. It comes from Latin <em>agere</em>: acting towards, driving behaviour. The same word covers the rational agent of philosophy, political agency (people acting to change their society), the artificial “rational” agent of AI (the perceive-act loop of <a href="../../../Concepts/Intelligent-Agent" class="internal alias" data-slug="Concepts/Intelligent-Agent">Russell and Norvig</a>), and, for humans, acting <strong>on behalf of</strong> someone else (a secret agent).</p>
+<p>Sileno’s guiding question:</p>
+<blockquote>
+<p>Is a tool-using chatbot (commonly marketed as “Agentic AI”) an agent? If not, what would make it one?</p>
+</blockquote>
+<p>He builds the notion of agent from the ground up to answer it.</p>
+<h2 id="objects-events-and-actions">Objects, events and actions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#objects-events-and-actions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>He starts from a common-sense ontology (an inventory of the basic kinds of things).</p>
+<ul>
+<li><strong>Objects</strong> are relatively persistent entities that occupy a position in space. Agents are objects too: an actor on a stage is also a body in a place.</li>
+<li><strong>Events</strong> are to time what objects are to space: <strong>objects : space = events : time</strong> (Zacks and Tversky, 2001). Events occupy time and <em>involve</em> objects, because they produce <strong>changes</strong> on objects, though a sequence of events can bring back the initial conditions (open a door, then close it).</li>
+<li><strong>Actions</strong> are events driven by agents; their completed forms are <strong>acts</strong>. Communication acts are <strong>speech acts</strong> (acts done by saying something, such as asking or promising).</li>
+</ul>
+<h2 id="dennetts-stances">Dennett’s stances<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dennetts-stances" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Daniel Dennett (<em>The Intentional Stance</em>, 1987) describes three ways of interpreting an entity, each built on the one below (see <a href="../../../Concepts/Intentional-Stance" class="internal alias" data-slug="Concepts/Intentional-Stance">Intentional Stance</a>):</p>
+<ul>
+<li><strong>Physical stance:</strong> interpret it using physical laws. Where a billiard ball goes follows from where and how hard the cue strikes it.</li>
+<li><strong>Design stance:</strong> interpret it by what it is supposed to do, what it has been designed to do. You read the time off a clock without knowing its mechanism. Sometimes the clock breaks; then design-stance predictions fail and only the physical stance explains what it does.</li>
+<li><strong>Intentional stance:</strong> interpret the entity as an agent.</li>
+</ul>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Intentional stance (Dennett) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Interpreting entities as <strong>agents</strong>, ascribing them <strong>beliefs, desires, intentions</strong> and <em>enough rationality</em> to do what they <em>ought to do</em> given those beliefs and desires.</p>
+</div>
+</blockquote>
+<p>We take this stance constantly: towards a child, players at a poker table (what does she think I’m holding?), a cat whose posture says “I’m scared”, and whole countries (“the EU fears…”). It is a choice of description, the lesson of Russell and Norvig’s calculator caveat in <a href="../../../Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI" class="internal alias" data-slug="Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI">Lecture 1</a>: “agent” is a tool for analysing systems. (Outside the lecture: Dennett justifies the stance by its predictive success. A chess program’s next move is far easier to predict by assuming it wants to win than from its code.)</p>
+<h2 id="objects-actors-and-agents">Objects, actors and agents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#objects-actors-and-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The stances give Sileno a three-way split:</p>
+<ul>
+<li><strong>Objects</strong> are passive entities: they undergo changes due to others’ actions. An apple.</li>
+<li><strong>Actors</strong> are active entities: they produce changes. A volcano; the services of a software system, each acting on requests.</li>
+<li><strong>Agents</strong> are actors <strong>ascribed with intentions</strong>. An erupting volcano is an actor; a fire spirit that erupts because it is angry is an agent.</li>
+</ul>
+<p>The key word is <em>ascribed</em>: agency is attributed by an observer, as in the intentional stance.</p>
+<h3 id="what-intentions-are-in-an-artificial-agent">What intentions are in an artificial agent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-intentions-are-in-an-artificial-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Allen Newell (“The Knowledge Level”, 1982) gives a minimal structure:</p>
+<blockquote>
+<p>“An agent [..] has an extremely simple structure. [..] First, the agent has some <strong>physical body</strong> with which it can act in the environment (and be acted upon). [..] Second, the agent has a <strong>body of knowledge</strong>. This body is like a <strong>memory</strong>. Whatever the agent knows at some time, it continues to know. [..] Third, and finally, the agent has a <strong>set of goals</strong>. A goal is a body of knowledge of a state of affairs in the environment. Goals are structurally distinguished from the main body of knowledge. This permits them to enter into the behavior of the agent in a distinct way, namely, that which the organism strives to realize.”</p>
+</blockquote>
+<p>Sileno reads this as a <strong>body</strong> that senses and acts (providing percepts to the mind, realising actions in the environment) plus a <strong>mind</strong> that controls the body using knowledge and goals. <strong>Rationality</strong> (compare <a href="../../../Concepts/Rational-Agent" class="internal alias" data-slug="Concepts/Rational-Agent">Rational Agent</a>) is expressed by the interaction of knowledge, goals and situated action, and it hints at verbalisation: it refers to <strong>explicit reasons</strong> weighed when taking a decision. <strong>Intelligence</strong>, “executing the correct action in a situation”, generalises this and needs no verbalisation. So his minimal starting point for an artificial <em>intelligent</em> agent is:</p>
+<ul>
+<li>a <strong>body</strong>, sensing and acting in an environment;</li>
+<li>a <strong>mind</strong> controlling the body, depending on some form of <strong>memory</strong> and some form of <strong>purpose</strong>, possibly implicit.</li>
+</ul>
+<p>Functionally, memory maps at least to <strong>beliefs</strong> and purpose to <strong>desires</strong>. Sileno then asks in what sense an LLM-centred chatbot is an intelligent agent, and leaves it open. On the minimal definition it arguably qualifies, with tools as body, context as memory and the prompt as implicit purpose (worked here, not given in the lecture). Whether beliefs and desires are enough comes up under intentions below.</p>
+<h2 id="which-things-are-agents">Which things are agents?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#which-things-are-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Sileno puts a series of cases without verdicts: an ant, a bee in its hive, a clock, a pen, a heart, a forest, a community, a program, a robotic arm, a thermostat. He then gives Wooldridge and Jennings’ criteria:</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Weak agency (Wooldridge and Jennings, 1995) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Reactivity:</strong> perceives and responds to changes in its environment.</li>
+<li><strong>Proactivity:</strong> takes initiative driven by goals or intentions rather than simple input-output mapping.</li>
+<li><strong>Autonomy:</strong> operates without continuous external intervention.</li>
+<li><strong>Social ability:</strong> interacts with other agents to coordinate, compete, or negotiate.</li>
+</ul>
+</div>
+</blockquote>
+<p>(Outside the lecture: Wooldridge and Jennings call this notion <em>weak</em> because it is the relatively uncontentious one; their <em>strong</em> notion also describes the agent in mental terms such as beliefs, desires and intentions, which is where BDI comes in.)</p>
+<p>One way to apply the criteria (worked here, not given in the lecture):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Entity</th><th>Reactive</th><th>Proactive</th><th>Autonomous</th><th>Social</th></tr></thead><tbody><tr><td>Pen</td><td>no</td><td>no</td><td>no</td><td>no</td></tr><tr><td>Clock</td><td>no</td><td>no</td><td>yes</td><td>no</td></tr><tr><td>Heart</td><td>yes</td><td>no</td><td>yes</td><td>no</td></tr><tr><td>Thermostat</td><td>yes</td><td>doubtful</td><td>yes</td><td>no</td></tr><tr><td>Robotic arm</td><td>if it senses</td><td>if goal-driven</td><td>partly</td><td>no</td></tr><tr><td>Ant, bee</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td></tr><tr><td>Community</td><td>yes</td><td>arguably</td><td>yes</td><td>yes</td></tr><tr><td>Chatbot with tools</td><td>yes</td><td>via its harness</td><td>within a task</td><td>among agents only</td></tr></tbody></table></div>
+<p>The thermostat is the borderline case. It reacts and runs alone, but its “goal” (the set temperature) is a fixed input-output mapping, which is what proactivity excludes; saying “it wants the room at 20 °C” adds as little as it does for the calculator. The chatbot’s initiative comes from a goal stated in the prompt and the loop around the model, so its proactivity belongs to the harness.</p>
+<h2 id="agent-based-modelling">Agent-based modelling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agent-based-modelling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Agent-based modelling (ABM)</strong> studies a system by simulating its interacting agents (see <a href="../../../Concepts/Agent-Based-Modelling" class="internal alias" data-slug="Concepts/Agent-Based-Modelling">Agent-Based Modelling</a>). There are two main ways to specify the agents’ behaviour.</p>
+<p><strong>Cellular automata</strong>, generally as <strong>if-then rules</strong>: each cell on a grid updates its state from its neighbours’. In Rule 22, a cell becomes 1 if there is exactly one 1 in its three-cell neighbourhood (left, centre, right). Simple local rules like this produce complex global patterns; Conway’s Game of Life and Schelling’s segregation model are other examples. <strong>Agent-oriented programming</strong>, for example of BDI agents, is a more expressive approach in the same arena: rules over beliefs, desires and intentions.</p>
+<p><strong>Equations</strong>, possibly differential (ODE or PDE: ordinary or partial differential equations), traditionally more associated with economics, such as a model of a price over time.</p>
+<p>For <strong>spreading dynamics</strong> (how a disease, rumour or behaviour spreads), the <strong>topology</strong> enabling interactions, who can meet whom, becomes particularly relevant, which leads to <strong>network science</strong>.</p>
+<h3 id="approaches-to-abm-in-game-theory">Approaches to ABM in game theory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#approaches-to-abm-in-game-theory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Game theory traditionally has two approaches too (see <a href="../../../Courses/AGAI/Lectures/AGAI-L02---Game-Theory-and-Population-Dynamics" class="internal alias" data-slug="Courses/AGAI/Lectures/AGAI-L02---Game-Theory-and-Population-Dynamics">Lecture 2</a>):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Classic game theory</th><th>Evolutionary game theory</th></tr></thead><tbody><tr><td>Rationality</td><td>perfectly rational</td><td>bounded, possibly non-rational</td></tr><tr><td>Cognition</td><td>forward-looking: anticipate, decide, then act</td><td>replicative (mimesis?), possibly adaptive</td></tr><tr><td>Agents</td><td>different, very few</td><td>similar, very many</td></tr><tr><td>Typical tool</td><td>payoff matrix (<a href="../../../Concepts/Prisoner's-Dilemma" class="internal alias" data-slug="Concepts/Prisoner's-Dilemma">Prisoner’s Dilemma</a>)</td><td><a href="../../../Concepts/Replicator-Dynamics" class="internal alias" data-slug="Concepts/Replicator-Dynamics">Replicator Dynamics</a></td></tr></tbody></table></div>
+<p>“Mimesis” means imitation (the question mark is Sileno’s): strategies spread because agents copy what works, without anyone reasoning ahead.</p>
+<h2 id="a-theatrical-view-of-agency">A theatrical view of agency<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-theatrical-view-of-agency" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Sileno separates the aspects of behaviour with a theatre metaphor:</p>
+<ol>
+<li>At a given time, the agent’s behaviour follows a definite <strong>script</strong>: <strong>EXEC</strong> (the actor performs).</li>
+<li>So at an earlier point this script was <strong>selected</strong>: <strong>SELECT</strong> (the director picks the play). SELECT presupposes a <strong>repertoire</strong> of scripts.</li>
+<li>So at an earlier point still, the script was either <strong>created</strong> or <strong>adapted</strong> from a previous one: <strong>MODIFY</strong> (the playwright writes). MODIFY may be due to external events, for example transcription errors acting as <strong>mutation</strong>.</li>
+</ol>
+<p>SELECT and MODIFY behaviour are themselves scripts that are executed, and that at some point were selected and created or modified, and so on, <strong>recursively</strong>, down to some <strong>hard-coded ground</strong>.</p>
+<h3 id="a-layered-view-of-action-including-learning">A layered view of action, including learning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-layered-view-of-action-including-learning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n  BS((base script)) --> MOD[MODIFY]\n  MOD --> REP((repertoire))\n  REP --> SEL[SELECT]\n  SEL --> SC((script))\n  SC --> EX[EXEC]\n  EX --> EF[effects]\n  EF -.->|which available script is most effective?| SEL\n  EF -.->|how do I create or rewrite a script to be more effective?| MOD&quot;">flowchart LR
+  BS((base script)) --> MOD[MODIFY]
+  MOD --> REP((repertoire))
+  REP --> SEL[SELECT]
+  SEL --> SC((script))
+  SC --> EX[EXEC]
+  EX --> EF[effects]
+  EF -.->|which available script is most effective?| SEL
+  EF -.->|how do I create or rewrite a script to be more effective?| MOD
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>Learning is feedback from effects, as in the learning agent of <a href="../../../Concepts/Agent-Program" class="internal alias" data-slug="Concepts/Agent-Program">Russell and Norvig</a>. At the SELECT level it asks which available script is most effective; at the MODIFY level, how to create or rewrite a script to be more effective.</p>
+<p>Sileno’s exercise asks three questions of an agent. <strong>EXEC:</strong> what script is being executed right now? <strong>SELECT:</strong> how is a script chosen from a repertoire? <strong>MODIFY:</strong> how is a script rewritten or updated over time? He poses them for three cases without answers. Worked answers (not given in the lecture):</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>A Q-learning agent on a grid world, acting epsilon-greedily </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>EXEC:</strong> the move made in the current cell. <strong>SELECT:</strong> <a href="../../../Concepts/Epsilon-Greedy-Policy" class="internal alias" data-slug="Concepts/Epsilon-Greedy-Policy">epsilon-greedy</a>: with probability <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span></span></span></span> the move with the highest Q-value, otherwise a random one of the four moves. <strong>MODIFY:</strong> the <a href="../../../Concepts/Q-Learning" class="internal" data-slug="Concepts/Q-Learning">Q-Learning</a> update, which rewrote Q-values from rewards while the policy was learned; once the policy is only applied, MODIFY is off. With single moves as scripts, Q-learning is learning at the SELECT level; with the whole policy as the script, each update is a MODIFY. The update and epsilon-greedy rules are the hard-coded ground.</p>
+</div>
+</blockquote>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Tit-for-tat </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>EXEC:</strong> this round’s move, cooperate or defect. <strong>SELECT:</strong> copy the opponent’s previous move (cooperate on the first). <strong>MODIFY:</strong> none: <a href="../../../Concepts/Repeated-Game" class="internal alias" data-slug="Concepts/Repeated-Game">tit-for-tat</a> is a fixed rule, its own hard-coded ground. Change happens only at the population level, where replicator dynamics and mutation alter the mix of strategies.</p>
+</div>
+</blockquote>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your train stops for a long time at the wrong station </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>EXEC:</strong> the commuting script (sit, wait for your stop), whose assumptions the stop breaks. <strong>SELECT:</strong> pick a disruption script: wait, switch train, take a bike, message that you’ll be late. <strong>MODIFY:</strong> if none fits, improvise; afterwards adapt the commute (leave earlier, check for disruptions).</p>
+</div>
+</blockquote>
+<h2 id="what-todays-ai-agents-are">What today’s “AI agents” are<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-todays-ai-agents-are" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The common definition: an <strong>AI agent</strong> is “an autonomous system where a LLM decides what to do next, which tools to use, and when the task is complete”. Sileno calls this the recent common sense of the term, “but strictly speaking wrong”. Such an agent takes user input, works with databases, local files, APIs and sensors, and produces output actions.</p>
+<p>The most fundamental architectural component handles the interaction with the LLM: a query comes in, the component prompts the LLM, and the generated response goes back out. Intelligent behaviour, though, generally comes from an <strong>orchestration</strong> of several components, as in a simple coding agent harness:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n  Q[query] -->|1| O{orchestrator}\n  O -->|3 reasoning prompt| RL[LLM: reasoning]\n  RL -->|reasoning response| O\n  O --> AL[LLM: action]\n  IDE[IDE] -->|2 environment context| AL\n  AL -->|4 action| IDE&quot;">flowchart LR
+  Q[query] -->|1| O{orchestrator}
+  O -->|3 reasoning prompt| RL[LLM: reasoning]
+  RL -->|reasoning response| O
+  O --> AL[LLM: action]
+  IDE[IDE] -->|2 environment context| AL
+  AL -->|4 action| IDE
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>In formula form:</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">AI agent</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0174em;vertical-align:-1.3341em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-1.6659em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">the &quot;brain&quot;</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span class="svg-align" style="top:-2.352em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">LLM</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.648em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3341em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.3591em;vertical-align:-1.6647em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-1.4715em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">the harness, or scaffolding</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span class="svg-align" style="top:-2.1576em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">planning</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">memory</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">tool use</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">guardrails</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="minner">…</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8424em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6647em;"><span></span></span></span></span></span></span></span></span></p>
+<p>This is the <a href="../../../Concepts/LLM-Agent" class="internal alias" data-slug="Concepts/LLM-Agent">LLM Agent</a> of Lecture 1, with everything around the model named the <strong>harness</strong>. It motivates the lecture: a rich research field on agents and multi-agent systems predates LLMs (for example programming BDI agents in AgentSpeak with Jason, by Bordini, Hübner and Wooldridge); the current “agentic AI” discourse overlooks it or is only slightly informed by it; and its <strong>architectural insights</strong> can show how to use the new technology best.</p>
+<h2 id="intentions-what-beliefs-and-desires-miss">Intentions: what beliefs and desires miss<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#intentions-what-beliefs-and-desires-miss" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="bratmans-chocolate">Bratman’s chocolate<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bratmans-chocolate" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Is a belief-desire architecture sufficient? Michael Bratman (<em>Intention, Plans, and Practical Reason</em>, 1987):</p>
+<blockquote>
+<p>“Suppose I have a <strong>fleeting craving</strong> for a chocolate bar, one which induces a fleetingly <strong>predominant desire</strong> to eat one for dessert. And suppose that just as fleetingly I notice this desire and judge (in a spirit of resignation, perhaps) that it will lead me so to act. But then I <strong>stop and reflect</strong>, <strong>recall</strong> my dieting plans, and <strong>resolve</strong> to skip dessert. On the present desire-belief account I had a <strong>fleeting intention</strong> to have a chocolate dessert. But I am inclined to say <strong>I had no such intention</strong>, for I was never appropriately settled in favor of such a dessert.”</p>
+</blockquote>
+<p>On a desire-belief account, an intention is a predominant desire plus a belief that it will lead to action, so the craving counts as one. Bratman denies it: he was never <em>settled</em> on the dessert. Intention is a distinct state, being settled on (committed to) a course of action, and his earlier dieting plans are what overrode the desire.</p>
+<h3 id="the-bdi-model">The BDI model<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-bdi-model" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>In symbolic AI, multi-agent systems and philosophy of action, beliefs, desires and intentions map onto three distinct mental states and practical levels of reasoning (see <a href="../../../Concepts/BDI-Model" class="internal alias" data-slug="Concepts/BDI-Model">BDI Model</a>):</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Beliefs, desires, intentions (BDI) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Informational level:</strong> what the agent <strong>believes</strong> to be the case in the world.</li>
+<li><strong>Volitional level:</strong> what the agent <strong>desires</strong> to be the case in the world.</li>
+<li><strong>Deliberative level:</strong> what the agent is <strong>committed to</strong> in the world.</li>
+</ul>
+</div>
+</blockquote>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Toothache </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>Belief:</strong> “I have pain with my tooth. (I believe) my tooth has a cavity.” <strong>Desire:</strong> “I don’t want to have pain. I want my tooth to be cured.” <strong>Intention:</strong> “I am going to my dentist.”</p>
+</div>
+</blockquote>
+<p>Once I commit to a conduct, there are more consequences than the desired outcome: the dentist also brings the drill and the bill. <strong>Intention includes side effects besides the intent or goal.</strong> Hence Sileno’s architectural claim: if you architecturally miss the function of intention deliberation, you miss performing (offline or online) an <strong>evaluation and weighing of possible choices</strong>. He asks when this is critical and leaves it open. One answer (worked here, not given in the lecture): when side effects are costly or irreversible, as for an agent that can delete files or spend money.</p>
+<h3 id="intent-selection-and-plan-selection">Intent selection and plan selection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#intent-selection-and-plan-selection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Following Georgeff and Rao (1991), deliberation involves two selections:</p>
+<ul>
+<li><strong>Intent selection.</strong> At a given moment I may form several, possibly conflicting desires, and must give a priority on which goal to advance. A donkey both hungry and thirsty, standing between hay and water, has to pick one first.</li>
+<li><strong>Plan selection.</strong> Given any intent, I may have several plans to advance it, and must give a priority on which plan to commit to. To get to the university: bike or tram?</li>
+</ul>
+<p>Sileno flags a possible <strong>categorial leap</strong> between them: a goal may be about a <strong>situation</strong> (a state of the world), while a plan is always a <strong>conduct</strong>, a <strong>composite action</strong>. There are ways to correct this, such as reading the goal as <em>achieving</em> a situation.</p>
+<p>The same structure shows up in practitioner guides, such as AWS’s “perceive-reason-act loop” for agentic AI, where a reasoning core works with goals, a plan library, beliefs and intentions:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n  P[perceive] --> R[reason]\n  R &lt;--> G[goals]\n  PL[plan library] --> R\n  R &lt;--> B[beliefs]\n  R &lt;--> I[intentions]\n  R --> A[actions]&quot;">flowchart LR
+  P[perceive] --> R[reason]
+  R &lt;--> G[goals]
+  PL[plan library] --> R
+  R &lt;--> B[beliefs]
+  R &lt;--> I[intentions]
+  R --> A[actions]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<h3 id="why-it-gets-messy">Why it gets messy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-it-gets-messy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Laid out in full, the BDI pieces form a tangle:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TB\n  D[\&quot;DESIRES: possibly conflicting\&quot;] -->|intent selection| IN[\&quot;INTENT: not conflicting\&quot;]\n  PL[\&quot;PLANS: possible alternatives\&quot;] -->|plan selection| P[\&quot;PLAN: selected choice\&quot;]\n  D -.->|preferences about plans| P\n  PC[\&quot;PERCEPTS: possibly conflicting\&quot;] -->|belief revision| B[\&quot;BELIEFS: not conflicting\&quot;]\n  B -.->|how the intent translates concretely| IN\n  B -.->|which alternatives are possible| PL\n  subgraph INTENTION\n    IN\n    P\n  end&quot;">flowchart TB
+  D[&quot;DESIRES: possibly conflicting&quot;] -->|intent selection| IN[&quot;INTENT: not conflicting&quot;]
+  PL[&quot;PLANS: possible alternatives&quot;] -->|plan selection| P[&quot;PLAN: selected choice&quot;]
+  D -.->|preferences about plans| P
+  PC[&quot;PERCEPTS: possibly conflicting&quot;] -->|belief revision| B[&quot;BELIEFS: not conflicting&quot;]
+  B -.->|how the intent translates concretely| IN
+  B -.->|which alternatives are possible| PL
+  subgraph INTENTION
+    IN
+    P
+  end
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>Intent selection resolves conflicting desires into one non-conflicting <strong>intent</strong>; plan selection picks one of the alternative plans; <strong>intention = intent + selected plan</strong>. Desires set preferences about both the intent and the plans. Percepts can conflict too (one person says it’s sunny, another that it’s raining) and must be resolved into consistent beliefs, the subject of the <strong>belief revision</strong> and <strong>data fusion</strong> literature. Beliefs about the current state of the world then determine which alternatives are possible and how the intent translates concretely.</p>
+<p>In Sileno’s words it “rapidly becomes very messy”, so he proposes a different template.</p>
+<h2 id="caes-commitments-abilities-expectations-susceptibilities">CAES: commitments, abilities, expectations, susceptibilities<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#caes-commitments-abilities-expectations-susceptibilities" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Sileno’s <strong>CAES model</strong> (Boer and Sileno, “Anchoring Distributed Agency”) regroups the BDI pieces into columns: <strong>commitments</strong> (structural, contingent) take over desires and intent, <strong>abilities</strong> (skills, competences) take over plans and plan selection, and <strong>expectations</strong> (structural, contingent) take over percepts and beliefs. A fourth component, <strong>susceptibilities</strong>, has no BDI counterpart. See <a href="../../../Concepts/CAES-Model" class="internal alias" data-slug="Concepts/CAES-Model">CAES Model</a>.</p>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>CAES model (Boer and Sileno) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Commitments:</strong> what the agent <em>wants to achieve</em> in the world (intent selection).</li>
+<li><strong>Abilities:</strong> what the agent <em>can achieve</em> in the world, and <em>how</em> (plan selection).</li>
+<li><strong>Expectations:</strong> what the agent <em>knows about</em> the world (belief revision).</li>
+<li><strong>Susceptibilities:</strong> what the agent <em>is looking at</em> in the world, and <em>how</em> it responds to it (attention allocation).</li>
+</ul>
+</div>
+</blockquote>
+<pre><code>      C                    E
+      | intent             | belief
+      | selection          | revision
+ A ---*                    *--- S
+ plan |                    ^  attention
+ selection                 |  allocation
+------v-------WORLD--------|------
+    acts               perceives
+</code></pre>
+<p>Commitments (what) and abilities (how) meet in the action going out to the world. What comes in passes through susceptibilities (what the agent attends and reacts to) and is integrated into expectations. The lecture does not define “structural” and “contingent”; a plausible reading (not given in the lecture) is standing commitments or expectations against ones that arise from the situation.</p>
+<h3 id="applying-caes-to-a-coding-agent">Applying CAES to a coding agent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#applying-caes-to-a-coding-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Sileno maps the components onto the simple coding agent harness above.</p>
+<p><strong>Commitments:</strong> the task input (“fix the bug”), constraint input (“preserve the API”), guardrail checks (“don’t edit unrelated files”), and completion criteria (“the bug is fixed and relevant tests pass”).</p>
+<p><strong>Abilities:</strong> a SKILL.md file exposing how to use the tools, the tools themselves, and the system running them.</p>
+<p><strong>Expectations:</strong> the working state or context, memory, the code repository, retrieved evidence, or better, models of these.</p>
+<p><strong>Susceptibilities:</strong> watchers and triggers, tool-result handlers, interrupts and escalation routing, including their functional connection to the other components.</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Running example: a test fails </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>The failure is received and routed (<strong>S</strong>).</li>
+<li>The context is updated (<strong>E</strong>).</li>
+<li>What is the problem? Repair the bug (<strong>C</strong>).</li>
+<li>Choose an available debugging skill (<strong>A</strong>).</li>
+<li>And so on: a <strong>problem-solving cycle</strong>.</li>
+</ol>
+</div>
+</blockquote>
+<p>Some of this mapping can be done already. However, it refers either to <strong>low-level constructs</strong>, for which there is not yet a sufficiently interoperable declarative language, or to <strong>higher-level directives</strong>, where we don’t know how the LLM is going to interpret them. (An illustration not from the lecture: a guardrail coded as a file-permission check is precise but system-specific; written in the prompt as “don’t edit unrelated files”, it is left to the model’s reading.)</p>
+<h2 id="agentic-ai">Agentic AI<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agentic-ai" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Agentic AI (common definition) </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>An autonomous system that performs complex, multi-step tasks by <strong>orchestrating</strong> multiple computational tools, including language models (LLMs), to make decisions and execute a series of actions to reach a desired outcome.</p>
+</div>
+</blockquote>
+<p>Sileno: “again bad name”. An AI agent is one agent with its tools; agentic AI coordinates several agents around an orchestrator, much like a <a href="../../../Concepts/Multi-Agent-System" class="internal alias" data-slug="Concepts/Multi-Agent-System">multi-agent system</a>. There are two opposite approaches:</p>
+<ul>
+<li><strong>Agentic workflow:</strong> the workflow governs the agents. A fixed pipeline decides who does what and when.</li>
+<li><strong>Autonomous agent:</strong> the workflow is governed by the agents, for example agents autonomously improving their own harness.</li>
+</ul>
+<p>He leaves two questions open: is agentic AI an agent, and is it an AI agent? His closing claim: “If we are seeking to create ‘rational’ agents, we cannot but expect to proceed towards CAES-like frameworks.”</p>
+<h3 id="back-to-the-question">Back to the question<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#back-to-the-question" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Sileno gives no verdict. Putting his pieces together (worked here, not given in the lecture): a tool-using chatbot meets the minimal bar for an intelligent agent (a body of sorts, memory, an implicit purpose), and we can take the intentional stance towards it. As an intentional, rational agent it lacks an architectural place for deliberation: explicit commitments, intent and plan selection that weigh choices and side effects, and susceptibilities that decide what it attends to. A harness built along CAES lines would supply them, which is where his closing claim points.</p>
+<h2 id="what-to-be-able-to-write">What to be able to write<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-write" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Dennett’s three stances with examples; objects, actors and agents; why agency is ascribed.</li>
+<li>Weak agency applied to a thermostat and a chatbot.</li>
+<li>EXEC, SELECT, MODIFY and learning, applied to a Q-learning agent.</li>
+<li>Why Bratman’s chocolate shows intentions are needed; the BDI levels; side effects; intent and plan selection.</li>
+<li>CAES applied to a coding agent and a failing test, and the limits of the mapping.</li>
+<li>AI agent against agentic AI, workflow against autonomous agent, and whether a chatbot is an agent.</li>
+<li>The two approaches to ABM; classic against evolutionary game theory.</li>
+</ul>
+<p>Full model answers are in the exam questions below.</p>
+<h2 id="exam-questions">Exam questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exam-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Describe Dennett's three stances, with an example of each. How do they relate to Sileno's distinction between objects, actors and agents? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> physical stance: physical laws (billiard ball); design stance: what it was designed to do, fails when it breaks (clock); intentional stance: ascribe beliefs, desires, intentions and enough rationality to do what it ought to do (poker player, cat, countries); objects passive, actors produce changes, agents are actors ascribed intentions; agency is ascribed by an observer.</p>
+<p>Dennett distinguishes three ways of interpreting an entity. In the <strong>physical stance</strong> we predict its behaviour from physical laws, as with a billiard ball struck by a cue. In the <strong>design stance</strong> we predict it from what it is supposed to do, what it was designed to do: we read the time from a clock without knowing its mechanism. Design-stance predictions hold only while the thing works; when the clock breaks, only the physical stance explains it. In the <strong>intentional stance</strong> we interpret the entity as an agent, ascribing it beliefs, desires and intentions and enough rationality to do what it ought to do given them, as we do with poker players, a cat’s body language, or countries in geopolitics.</p>
+<p>Sileno’s common-sense ontology mirrors this. <strong>Objects</strong> are passive: they undergo changes due to others’ actions (an apple). <strong>Actors</strong> are active: they produce changes (a volcano, the services of a software system). <strong>Agents</strong> are actors ascribed with intentions. The word “ascribed” matters: whether something is an agent depends on whether an observer takes the intentional stance towards it, which echoes Russell and Norvig’s point that “agent” is a tool for analysis.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>State Wooldridge and Jennings' four characteristics of weak agency. Use them to discuss whether a thermostat and a tool-using LLM chatbot are agents. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> reactivity: perceives and responds to changes; proactivity: initiative driven by goals or intentions beyond input-output mapping; autonomy: no continuous external intervention; social ability: coordinate, compete, negotiate with other agents; thermostat reactive and autonomous, proactivity doubtful, not social; chatbot reactive, partly autonomous, proactivity depends on its harness, social only in multi-agent setups.</p>
+<p><strong>Reactivity:</strong> the entity perceives and responds to changes in its environment. <strong>Proactivity:</strong> it takes initiative driven by goals or intentions rather than a simple input-output mapping. <strong>Autonomy:</strong> it operates without continuous external intervention. <strong>Social ability:</strong> it interacts with other agents to coordinate, compete or negotiate.</p>
+<p>Sileno poses the cases without verdicts; what follows is one defensible application. A thermostat is reactive (it switches the heating when the temperature changes) and autonomous (it runs alone), but its “goal”, the set temperature, is a fixed input-output mapping, so proactivity is doubtful, and it has no social ability. It is a borderline case where the intentional stance is possible but adds little, as for Russell and Norvig’s calculator. A tool-using chatbot is reactive to prompts and tool results and autonomous within a task. Its initiative comes from a goal stated in the prompt and the loop around the model, so its proactivity belongs to the harness. It is social only when placed among other agents. So it meets weak agency partly, and the open question is what would give it genuine goal-driven initiative, which is where BDI and CAES come in.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Explain Sileno's &quot;theatrical&quot; view of agency (EXEC, SELECT, MODIFY) and how learning fits in. Apply it to an agent whose policy was learned with Q-learning and is applied with epsilon-greedy selection. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> EXEC: behaviour follows a definite script; SELECT: the script was chosen from a repertoire; MODIFY: the script was created or adapted, possibly by external events such as mutation; SELECT and MODIFY are scripts too, recursively, down to hard-coded ground; learning as feedback from effects to SELECT (which script is most effective) and MODIFY (how to make a script more effective); Q-learning: EXEC the move, SELECT epsilon-greedy over Q-values, MODIFY the Q update; update rules are the ground.</p>
+<p>At any given time an agent’s behaviour follows a definite script, as an actor follows a play (EXEC). That script must have been chosen at an earlier point from a repertoire of scripts (SELECT), and before that it must have been created or adapted from a previous script (MODIFY), possibly by external events, as transcription errors act as mutations. SELECT and MODIFY are themselves scripts that are executed and were once selected and modified, recursively, down to some hard-coded ground. Learning enters as feedback from the effects of execution: learning at the SELECT level asks which of the available scripts is most effective; learning at the MODIFY level asks how to create or rewrite a script to be more effective.</p>
+<p>For the Q-learning agent (Sileno leaves the exercise open; this is one defensible answer), EXEC is the move it makes in its current grid cell. SELECT is epsilon-greedy: with probability <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span></span></span></span> the move with the highest Q-value, otherwise a random move from the repertoire of four. MODIFY is the Q-learning update, which revised Q-values from rewards while the policy was learned and so changed what SELECT prefers; once the policy is only applied, MODIFY is off. Read with moves as scripts, Q-learning is learning at the SELECT level; read with the policy as the script, each update is a MODIFY. The update rule and the epsilon-greedy rule are the hard-coded ground.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is a belief-desire architecture not sufficient for agency? Use Bratman's chocolate example, describe the three BDI levels, and explain why intention deliberation matters for an artificial agent. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> Bratman: a fleeting predominant desire plus belief would count as an intention, but he was never settled on it; intention is being settled or committed; informational level beliefs, volitional level desires, deliberative level commitments (toothache, cure, dentist); intention includes side effects besides the goal; without intention deliberation an agent never weighs its possible choices; intent selection and plan selection (Georgeff and Rao).</p>
+<p>Bratman describes a fleeting craving that makes the desire for chocolate predominant for a moment, together with a judgement that it will lead him to act. He then reflects, recalls his dieting plans and resolves to skip dessert. On a desire-belief account he had a fleeting intention to eat chocolate; Bratman says he had no such intention, because he was never settled in favour of it. Intention is therefore a distinct mental state, a settled commitment, which a belief-desire architecture cannot represent.</p>
+<p>The BDI model separates three levels: the informational level (what the agent believes is the case: my tooth has a cavity), the volitional level (what it desires to be the case: my tooth cured) and the deliberative level (what it is committed to: going to the dentist). Committing to a conduct brings more consequences than the desired outcome, so an intention includes side effects besides the goal. Sileno’s claim is that if an architecture misses intention deliberation, it misses performing, offline or online, an evaluation and weighing of possible choices, so side effects go unexamined. Deliberation involves two selections: intent selection, prioritising which of possibly conflicting goals to advance, and plan selection, prioritising which of several plans to commit to.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Describe Sileno's CAES model and apply it to a simple LLM coding agent, using the example of a failing test. What limits such a mapping today? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> commitments: what the agent wants to achieve (intent selection); abilities: what it can achieve and how (plan selection); expectations: what it knows about the world (belief revision); susceptibilities: what it looks at and how it responds (attention allocation); coding agent: task, constraints, guardrails, completion criteria; SKILL.md, tools, runtime; context, memory, repository, evidence; watchers, handlers, interrupts, escalation; test fails: S, E, C, A cycle; low-level constructs lack an interoperable declarative language, higher-level directives are interpreted unpredictably by the LLM.</p>
+<p>CAES (Boer and Sileno) regroups the tangled BDI picture: commitments take over desires and intent, abilities take over plans, expectations take over percepts and beliefs, and susceptibilities are new. <strong>Commitments</strong> are what the agent wants to achieve in the world, decided by intent selection. <strong>Abilities</strong> are what it can achieve and how, used in plan selection. <strong>Expectations</strong> are what it knows about the world, maintained by belief revision. <strong>Susceptibilities</strong> are what it is looking at in the world and how it responds, set by attention allocation. Commitments and abilities meet on the acting side, expectations and susceptibilities on the perceiving side.</p>
+<p>In a coding agent harness, commitments are the task (“fix the bug”), constraints (“preserve the API”), guardrail checks (“don’t edit unrelated files”) and completion criteria (“the bug is fixed and relevant tests pass”). Abilities are the SKILL.md files exposing tool usage, the tools, and the system running them. Expectations are the working context, memory, the code repository and retrieved evidence, or models of them. Susceptibilities are watchers and triggers, tool-result handlers, interrupts and escalation routing. When a test fails, the failure is received and routed (S), the context is updated (E), the agent identifies the problem and commits to repairing the bug (C), and it chooses an available debugging skill (A): a problem-solving cycle.</p>
+<p>The mapping is limited because it relies either on low-level constructs, for which no sufficiently interoperable declarative language exists yet, or on higher-level directives in natural language, whose interpretation by the LLM we cannot know in advance.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Distinguish an &quot;AI agent&quot; from &quot;agentic AI&quot; as commonly defined, and the two opposite approaches to agentic AI. Is a tool-using chatbot an agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> AI agent: autonomous system where an LLM decides what to do next, which tools to use, when the task is complete (Sileno: strictly speaking wrong); AI agent ≈ LLM + harness (planning, memory, tool use, guardrails); agentic AI: orchestrates multiple tools including LLMs to make decisions and execute actions towards an outcome; agentic workflow: workflow governs agents; autonomous agent: agents govern workflow (improving the harness); chatbot meets the minimal definition but lacks deliberation (Sileno leaves the verdict open); CAES-like frameworks for rational agents.</p>
+<p>In current usage an AI agent is an autonomous system in which an LLM decides what to do next, which tools to use and when the task is complete; Sileno calls this the common sense of the term but strictly speaking wrong. Architecturally it is an LLM, the “brain”, plus a harness or scaffolding of planning, memory, tool use, guardrails and more; intelligent behaviour comes from orchestrating these components. Agentic AI is an autonomous system performing complex multi-step tasks by orchestrating multiple computational tools, including LLMs, to make decisions and execute actions towards a desired outcome: several agents around an orchestrator. In an agentic workflow the workflow governs the agents; with autonomous agents the agents govern the workflow, for example by improving their own harness.</p>
+<p>Sileno leaves the verdict open; putting his criteria together, a tool-using chatbot has a body of sorts (its tools), memory (its context) and an implicit purpose (the prompt), so it meets his minimal definition of an intelligent agent, and we can take the intentional stance towards it. It lacks what makes an intentional, rational agent: explicit commitments, deliberate intent and plan selection that weigh choices and their side effects, and explicit attention to what matters. Sileno concludes that building rational agents means moving towards CAES-like frameworks.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Describe the two main approaches to agent-based modelling and the two traditional approaches to ABM in game theory. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> cellular automata with if-then rules (Rule 22, Game of Life, Schelling); agent-oriented programming (BDI) more expressive in the same arena; equations (ODE, PDE), traditionally economics; network science for spreading dynamics; classic game theory: perfectly rational, forward-looking, few different agents; evolutionary: bounded, replicative and adaptive, many similar agents.</p>
+<p>In agent-based modelling, agents’ behaviour is specified either as cellular automata, generally if-then rules by which each cell updates from its neighbours (Rule 22: a cell becomes 1 if exactly one cell in its three-cell neighbourhood is 1; Conway’s Game of Life; Schelling’s segregation model), or as equations, possibly differential ones, traditionally more associated with economics. Agent-oriented programming, for example of BDI agents, is a more expressive approach in the same arena as cellular automata. When studying spreading dynamics, the topology of who can interact with whom matters, which brings in network science.</p>
+<p>Classic game theory assumes perfectly rational agents with forward-looking cognition, anticipating and deciding before acting, usually few and different from one another, as in the Prisoner’s Dilemma. Evolutionary game theory assumes bounded, possibly non-rational agents whose cognition is replicative (imitation) and possibly adaptive, usually many and similar, studied with replicator dynamics.</p>
+</div>
+</blockquote>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does the Latin root of &quot;agent&quot;, <em>agere</em>, mean?</p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Acting towards, driving behaviour.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What extra meaning does &quot;agent&quot; take on when applied to humans? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Acting on behalf of someone else.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Complete the analogy from Zacks and Tversky: objects : space = ? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Events : time.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is an action, and what is an act, in Sileno's common-sense ontology? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An action is an event driven by an agent; an act is its completed form.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are communication acts called? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Speech acts.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does Dennett's physical stance interpret an entity? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Using physical laws.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does Dennett's design stance interpret an entity? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>By what it is supposed, or designed, to do.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does a broken clock show the limit of the design stance? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Design predictions hold only while it works; once broken, only the physical stance explains it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Give Dennett's definition of the intentional stance. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Interpreting entities as agents, ascribing beliefs, desires, intentions and enough rationality to do what they ought to.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do objects, actors and agents differ in Sileno's ontology? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Objects undergo changes, actors produce changes, agents are actors ascribed with intentions.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In Sileno's ontology, what turns an erupting volcano from an actor into an agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Ascribing it intentions, as with a fire spirit erupting because it is angry.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the three parts of an agent according to Newell's knowledge level? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A physical body, a body of knowledge (memory), a set of goals.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does Sileno distinguish rationality from intelligence? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Rationality weighs explicit, verbalisable reasons; intelligence, doing the correct action in a situation, needs no verbalisation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is Sileno's minimal starting point for an artificial intelligent agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A body sensing and acting, and a mind with some memory and some purpose, possibly implicit.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name Wooldridge and Jennings' four characteristics of weak agency. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Reactivity, proactivity, autonomy, social ability.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What distinguishes proactivity from reactivity in weak agency? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Proactivity is initiative driven by goals or intentions; reactivity is responding to environmental changes.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which weak-agency characteristic means operating without continuous external intervention? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Autonomy.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the two main approaches to specifying agents' behaviour in agent-based modelling? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Cellular automata (if-then rules) and equations (possibly ODEs or PDEs).</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which agent-based modelling approach is traditionally associated with economics? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Equations, possibly differential ones.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does agent-oriented programming (BDI agents) relate to cellular automata in agent-based modelling? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It is more expressive, but in the same arena of rule-based behaviour.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the rule of cellular automaton Rule 22? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A cell becomes 1 if exactly one cell in its three-cell neighbourhood is 1.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does network science matter for agent-based models of spreading dynamics? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The topology of who can interact with whom shapes how things spread.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do classic and evolutionary game theory differ in their agents' rationality? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Classic: perfectly rational. Evolutionary: bounded, possibly non-rational.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do classic and evolutionary game theory differ in the number and kind of agents? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Classic: few, different agents. Evolutionary: many, similar agents.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In Sileno's theatrical view of agency, what do EXEC, SELECT and MODIFY stand for? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Executing a script, selecting it from a repertoire, creating or adapting it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does SELECT presuppose in Sileno's theatrical view of agency? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A repertoire of scripts.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Where does the EXEC-SELECT-MODIFY regress end, given that SELECT and MODIFY are scripts too? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>In some hard-coded ground.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What question does learning at the SELECT level ask? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Which of the available scripts is most effective?</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What question does learning at the MODIFY level ask? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>How do I create or rewrite a script to be more effective?</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>For a tit-for-tat agent, what is its SELECT rule? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Play whatever the opponent played in the previous round.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does Bratman's chocolate example show about the desire-belief account of intention? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A fleeting predominant desire is no intention: intention requires being settled on the action.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name the three BDI levels and their mental states. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Informational: beliefs. Volitional: desires. Deliberative: commitments (intentions).</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does an intention include more than its goal, in the BDI model? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Committing to a conduct brings side effects besides the intended outcome.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does an architecture lose if it lacks intention deliberation, according to Sileno? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The evaluation and weighing of possible choices.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is intent selection (Georgeff and Rao)? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Prioritising which of several, possibly conflicting goals to advance.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is plan selection (Georgeff and Rao)? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Prioritising which of several plans for an intent to commit to.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What categorial leap does Sileno flag between goals and plans? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A goal may be about a situation; a plan is always a conduct, a composite action.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How can the categorial leap between goals and plans be corrected? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Read the goal as achieving a situation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the BDI picture, what does an intention consist of? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The selected intent plus the selected plan.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What do desires set preferences about, in the full BDI picture? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Both the intent and the plans.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What must conflicting percepts be resolved into? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Consistent beliefs.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which literatures study resolving conflicting percepts into beliefs? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Belief revision and data fusion.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What do beliefs about the current world determine in BDI deliberation? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Which plan alternatives are possible and how the intent translates concretely.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does CAES stand for? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Commitments, abilities, expectations, susceptibilities.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which selection or process goes with each CAES component? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Commitments: intent selection. Abilities: plan selection. Expectations: belief revision. Susceptibilities: attention allocation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are susceptibilities in the CAES model? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>What the agent is looking at in the world, and how it responds.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which CAES component has no counterpart in BDI? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Susceptibilities.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In a coding agent, which CAES component covers &quot;preserve the API&quot; and &quot;the relevant tests pass&quot;? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Commitments (constraint input and completion criteria).</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In a coding agent, which CAES component covers watchers, interrupts and escalation routing? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Susceptibilities.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In the CAES failing-test cycle, what is the order of components? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Susceptibilities, expectations, commitments, abilities, then around again.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why is mapping CAES onto LLM harnesses hard today? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Low-level constructs lack an interoperable declarative language; we can’t predict how the LLM interprets higher-level directives.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is an AI agent in the common definition Sileno calls &quot;strictly speaking wrong&quot;? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An autonomous system where an LLM decides what to do next, which tools to use, and when the task is complete.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the harness, or scaffolding, of an AI agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Everything around the LLM: planning, memory, tool use, guardrails.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How is agentic AI commonly defined? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An autonomous system orchestrating multiple tools, including LLMs, to decide and act towards an outcome.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How does an agentic workflow differ from an autonomous agent? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>In a workflow the workflow governs the agents; autonomous agents govern the workflow.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/AGAI/AGAI---Overview" class="internal alias" data-slug="Courses/AGAI/AGAI---Overview">Course overview</a></li>
+<li><strong>Earlier lectures:</strong> <a href="../../../Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI" class="internal alias" data-slug="Courses/AGAI/Lectures/AGAI-L01---Agents,-Multiagent-Systems-and-Agentic-AI">AGAI-L01 - Agents, Multiagent Systems and Agentic AI</a> (agent definitions, LLM agents, ReAct), <a href="../../../Courses/AGAI/Lectures/AGAI-L02---Game-Theory-and-Population-Dynamics" class="internal alias" data-slug="Courses/AGAI/Lectures/AGAI-L02---Game-Theory-and-Population-Dynamics">AGAI-L02 - Game Theory and Population Dynamics</a> (classic and evolutionary game theory)</li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/Intentional-Stance" class="internal alias" data-slug="Concepts/Intentional-Stance">Intentional Stance</a>, <a href="../../../Concepts/BDI-Model" class="internal alias" data-slug="Concepts/BDI-Model">BDI Model</a>, <a href="../../../Concepts/CAES-Model" class="internal alias" data-slug="Concepts/CAES-Model">CAES Model</a>, <a href="../../../Concepts/Agent-Based-Modelling" class="internal alias" data-slug="Concepts/Agent-Based-Modelling">Agent-Based Modelling</a>, <a href="../../../Concepts/Intelligent-Agent" class="internal alias" data-slug="Concepts/Intelligent-Agent">Intelligent Agent</a>, <a href="../../../Concepts/Rational-Agent" class="internal alias" data-slug="Concepts/Rational-Agent">Rational Agent</a>, <a href="../../../Concepts/Agent-Program" class="internal alias" data-slug="Concepts/Agent-Program">Agent Program</a>, <a href="../../../Concepts/LLM-Agent" class="internal alias" data-slug="Concepts/LLM-Agent">LLM Agent</a>, <a href="../../../Concepts/Multi-Agent-System" class="internal alias" data-slug="Concepts/Multi-Agent-System">Multi-Agent System</a></li>
+<li><strong>Source:</strong> Agentic Artificial Intelligence, Lecture 6 part 2, Giovanni Sileno (UvA), “From agents, to AI agents, to Agentic AI”, guest lecture, 12 November 2026</li>
+<li><strong>Works cited:</strong> D. Dennett, <em>The Intentional Stance</em> (1987). J. M. Zacks and B. Tversky, “Event structure in perception and conception”, <em>Psychological Bulletin</em> 127(1), 3-21 (2001). A. Newell, “The Knowledge Level”, <em>Artificial Intelligence</em> 18(1), 87-127 (1982). M. Wooldridge and N. R. Jennings, “Intelligent agents: theory and practice”, <em>The Knowledge Engineering Review</em> 10(2), 115-152 (1995). M. Bratman, <em>Intention, Plans, and Practical Reason</em> (Harvard University Press, 1987). M. Georgeff and A. Rao, “Modeling rational agents within a BDI-architecture”, KR’91 (1991). A. Boer and G. Sileno, “Anchoring Distributed Agency: Institutional Metaphors for Designing Large-Scale AI and AI Techniques for Running Institutions” (2026), <a href="https://arxiv.org/abs/1803.03407" class="external">https://arxiv.org/abs/1803.03407<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (the arXiv id dates from the first version, March 2018; the 2026 version is a major revision). R. Bordini, J. F. Hübner and M. Wooldridge, <em>Programming Multi-Agent Systems in AgentSpeak using Jason</em> (Wiley). P. Bornet et al., <em>Agentic Artificial Intelligence</em>. AWS Prescriptive Guidance, “Perceive, reason, act”, <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-foundations/perceive-reason-act.html" class="external">https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-foundations/perceive-reason-act.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-332" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#agai-l06b-what-would-make-a-chatbot-an-agent" data-for="agai-l06b-what-would-make-a-chatbot-an-agent">AGAI-L06b: What Would Make a Chatbot an Agent</a></li><li class="depth-1"><a href="#the-question-is-a-tool-using-chatbot-an-agent" data-for="the-question-is-a-tool-using-chatbot-an-agent">The question: is a tool-using chatbot an agent?</a></li><li class="depth-1"><a href="#objects-events-and-actions" data-for="objects-events-and-actions">Objects, events and actions</a></li><li class="depth-1"><a href="#dennetts-stances" data-for="dennetts-stances">Dennett’s stances</a></li><li class="depth-1"><a href="#objects-actors-and-agents" data-for="objects-actors-and-agents">Objects, actors and agents</a></li><li class="depth-2"><a href="#what-intentions-are-in-an-artificial-agent" data-for="what-intentions-are-in-an-artificial-agent">What intentions are in an artificial agent</a></li><li class="depth-1"><a href="#which-things-are-agents" data-for="which-things-are-agents">Which things are agents?</a></li><li class="depth-1"><a href="#agent-based-modelling" data-for="agent-based-modelling">Agent-based modelling</a></li><li class="depth-2"><a href="#approaches-to-abm-in-game-theory" data-for="approaches-to-abm-in-game-theory">Approaches to ABM in game theory</a></li><li class="depth-1"><a href="#a-theatrical-view-of-agency" data-for="a-theatrical-view-of-agency">A theatrical view of agency</a></li><li class="depth-2"><a href="#a-layered-view-of-action-including-learning" data-for="a-layered-view-of-action-including-learning">A layered view of action, including learning</a></li><li class="depth-1"><a href="#what-todays-ai-agents-are" data-for="what-todays-ai-agents-are">What today’s “AI agents” are</a></li><li class="depth-1"><a href="#intentions-what-beliefs-and-desires-miss" data-for="intentions-what-beliefs-and-desires-miss">Intentions: what beliefs and desires miss</a></li><li class="depth-2"><a href="#bratmans-chocolate" data-for="bratmans-chocolate">Bratman’s chocolate</a></li><li class="depth-2"><a href="#the-bdi-model" data-for="the-bdi-model">The BDI model</a></li><li class="depth-2"><a href="#intent-selection-and-plan-selection" data-for="intent-selection-and-plan-selection">Intent selection and plan selection</a></li><li class="depth-2"><a href="#why-it-gets-messy" data-for="why-it-gets-messy">Why it gets messy</a></li><li class="depth-1"><a href="#caes-commitments-abilities-expectations-susceptibilities" data-for="caes-commitments-abilities-expectations-susceptibilities">CAES: commitments, abilities, expectations, susceptibilities</a></li><li class="depth-2"><a href="#applying-caes-to-a-coding-agent" data-for="applying-caes-to-a-coding-agent">Applying CAES to a coding agent</a></li><li class="depth-1"><a href="#agentic-ai" data-for="agentic-ai">Agentic AI</a></li><li class="depth-2"><a href="#back-to-the-question" data-for="back-to-the-question">Back to the question</a></li><li class="depth-1"><a href="#what-to-be-able-to-write" data-for="what-to-be-able-to-write">What to be able to write</a></li><li class="depth-1"><a href="#exam-questions" data-for="exam-questions">Exam questions</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Agent-Program" class="internal">Agent Program</a></li><li><a href="../../../Concepts/Agent-Based-Modelling" class="internal">Agent-Based Modelling</a></li><li><a href="../../../Concepts/BDI-Model" class="internal">BDI Model</a></li><li><a href="../../../Concepts/CAES-Model" class="internal">CAES Model</a></li><li><a href="../../../Concepts/Intelligent-Agent" class="internal">Intelligent Agent</a></li><li><a href="../../../Concepts/Intentional-Stance" class="internal">Intentional Stance</a></li><li><a href="../../../Concepts/LLM-Agent" class="internal">LLM Agent</a></li><li><a href="../../../Concepts/Multi-Agent-System" class="internal">Multi-Agent System</a></li><li><a href="../../../Concepts/Rational-Agent" class="internal">Rational Agent</a></li><li><a href="../../../Courses/AGAI/AGAI---Exam-Questions" class="internal">AGAI - Exam Questions</a></li><li><a href="../../../Courses/AGAI/AGAI---Flashcards" class="internal">AGAI - Flashcards</a></li><li><a href="../../../Courses/AGAI/AGAI---Overview" class="internal">AGAI - Overview</a></li><li><a href="../../../Courses/AGAI/" class="internal">Agentic Artificial Intelligence</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mwf0e0zv" type="module" data-persist="true"></script></html>

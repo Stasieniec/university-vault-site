@@ -314,7 +314,7 @@ The last setting is specific: **zero-sum games with two agents and fully observa
 [[Monte Carlo Tree Search (MCTS)|MCTS]] simulates possible outcomes of the game from the current position and updates value estimates of the actions at each state it visits. Each simulation has three steps:
 
 1. **Simulation and selection:** walk down the tree from the root, choosing an action at each node (ExploreAction) until reaching a state not yet in the tree.
-2. **Expansion:** add that new leaf node $\hat s^l$ to the tree (InitializeNode).
+2. **Expansion:** add that new leaf node $\hat s^l$ to the tree (InitializeNode). From it, a random rollout plays the game to the end; that game's outcome is $u$.
 3. **Backpropagation:** send the simulation's outcome $u$ back up along the visited path, updating every node on it.
 
 > [!formula] MCTS statistics
@@ -325,7 +325,7 @@ The last setting is specific: **zero-sum games with two agents and fully observa
 
 ### Self-play: AlphaZero
 
-**Self-play** trains an agent's policy against itself: **the same policy chooses the actions for each agent**. This requires agents with **symmetrical roles** that can build **egocentric observations** (the board seen from the side of the player to move: "my pieces", "the opponent's pieces"), so one policy can play either side. Zero-sum board games typically have symmetric roles: the agents are direct opponents, each trying to defeat the other, and generally have access to the same types of actions.
+**[[Self-Play|Self-play]]** trains an agent's policy against itself: **the same policy chooses the actions for each agent**. This requires agents with **symmetrical roles** that can build **egocentric observations** (the board seen from the side of the player to move: "my pieces", "the opponent's pieces"), so one policy can play either side. Zero-sum board games typically have symmetric roles: the agents are direct opponents, each trying to defeat the other, and generally have access to the same types of actions.
 
 [[AlphaGo Zero|AlphaZero]] combines MCTS with self-play (the details are from the MARL book): a neural network guides the tree search and evaluates new leaves in place of random playouts, the games it plays against itself provide the training data, and the improved network makes the next search stronger.
 
@@ -333,7 +333,7 @@ The last setting is specific: **zero-sum games with two agents and fully observa
 
 ## Populations of policies: PSRO
 
-(From MARL book Ch 9; the lecture does not cover PSRO.) Self-play trains only against the current version of oneself, so in games with **non-transitive** strategies (B beats A, C beats B, A beats C, as in rock-paper-scissors) it can cycle and forget how to beat old strategies. Population-based training keeps a growing set of policies instead.
+(From MARL book Ch 9; Lecture 5 does not cover PSRO, [[AGAI-L06a - From Deep MARL to Reasoning|Lecture 6]] does.) Self-play trains only against the current version of oneself, so in games with **non-transitive** strategies (B beats A, C beats B, A beats C, as in rock-paper-scissors) it can cycle and forget how to beat old strategies. [[Population-Based Training|Population-based training]] trains against a population of policies instead.
 
 **[[Policy Space Response Oracles (PSRO)]]** keeps a population of policies for each agent and repeats:
 

@@ -9,7 +9,7 @@ status: complete
 
 # AGAI - Exam Questions
 
-All 76 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
+All 88 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
 
 Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 
@@ -32,6 +32,14 @@ Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 ## L05 Deep MARL, Part II
 
 ![[AGAI-L05 - Deep MARL, Part II#Exam questions]]
+
+## L06a From Deep MARL to Reasoning
+
+![[AGAI-L06a - From Deep MARL to Reasoning#Exam questions]]
+
+## L06b What Would Make a Chatbot an Agent
+
+![[AGAI-L06b - What Would Make a Chatbot an Agent#Exam questions]]
 
 ## Book Ch2: Intelligent Agents
 

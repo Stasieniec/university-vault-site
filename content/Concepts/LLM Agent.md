@@ -57,3 +57,4 @@ This is the [[ReAct]] pattern. Its reasoning step is [[Chain-of-Thought Promptin
 ## Appears In
 
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
+- [[AGAI-L06b - What Would Make a Chatbot an Agent]] (AI agent as LLM plus harness; BDI and CAES applied to a coding agent)

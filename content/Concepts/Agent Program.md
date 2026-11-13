@@ -78,3 +78,4 @@ Learning, in Russell and Norvig's summary, is "a process of modification of each
 - [[AGAI-Book Ch2 - Intelligent Agents]]
 - [[AGAI-L01 - Agents, Multiagent Systems and Agentic AI]]
 - [[AGAI-Lab01 - Simple Agents, Complex Dynamics]]
+- [[AGAI-L06b - What Would Make a Chatbot an Agent]] (the EXEC, SELECT, MODIFY view of how behaviour is produced)

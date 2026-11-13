@@ -11,6 +11,19 @@ status: complete
 > [!definition] AlphaGo Zero
 > A system that combines [[Monte Carlo Tree Search (MCTS)]] with deep neural networks to play Go (and later Chess and Shogi) at superhuman level. The neural network provides a **policy prior** $\pi_\theta(a|s)$ to guide tree search and a **value estimate** $V_\theta(s)$ to evaluate leaf nodes, replacing random rollouts.
 
+## The predecessor: AlphaGo (2016)
+
+AlphaGo (Silver et al., "Mastering the game of Go with deep neural networks and tree search", Nature 2016) is "guided MCTS" trained with expert data, with two separate networks:
+
+> [!formula] AlphaGo's training (as taught in AGAI)
+> 1. Policy network, supervised on expert moves: $L(\theta) = -\sum_{(s,a) \sim D}\log\pi(a \mid s;\theta)$
+> 2. Policy network improved by [[Self-Play|self-play]] with [[REINFORCE]]: $\theta \leftarrow \theta + \eta\, z\sum_t\nabla_\theta\log\pi(a_t \mid s_t;\theta)$, with $z$ the self-play outcome
+> 3. Value network: $L(\phi) = (z - V_\phi(s))^2$
+>
+> The policy network guides node selection in MCTS; the value network evaluates newly expanded nodes.
+
+AlphaGo Zero removes stage 1: it starts from a random policy and learns entirely through self-play, with no human game examples. **AlphaZero** (Silver et al., Science 2018) applies the same learning and search method to chess, shogi and Go; only the engine enforcing each game's rules changes. All three assume the two players have symmetric roles; [[Population-Based Training|population-based training]] drops that assumption.
+
 ## Key Innovation: Neural Network Guided MCTS
 
 Standard MCTS uses random rollouts to estimate values and UCB1 for selection. AlphaGo Zero replaces both with neural networks:
@@ -80,3 +93,4 @@ A single neural network with two heads:
 - [[RL-Book Ch16 - Applications and Case Studies]] (§16.6)
 - Silver et al., "Mastering the game of Go without human knowledge" (2017)
 - [[AGAI-L05 - Deep MARL, Part II]] (MCTS plus self-play in zero-sum board games)
+- [[AGAI-L06a - From Deep MARL to Reasoning]] (AlphaGo's training stages, AlphaGo Zero, AlphaZero, and the limits of self-play)
