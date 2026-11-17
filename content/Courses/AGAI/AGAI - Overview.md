@@ -54,7 +54,7 @@ Two hours, closed book, 100 points; the grade is points divided by 10, pass 5.5.
 | Deep MARL | 8 MC, 1 open | Lectures 5 and 6, Lab 2, MARL book Ch 9 |
 | Assignment 1 | 1 open | Your own Blue agent: which Red agent it does well against, which algorithm you chose |
 
-The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep RL and Intro to Deep MARL]], [[AGAI-L05 - Deep MARL, Part II]] and (PSRO) [[AGAI-L06a - From Deep MARL to Reasoning]].
+**Prep page: [[AGAI - Midterm Prep]].** Every topic in one short page, with the mock's open questions answered. Each lecture and lab note holds its part of the mock in its exam questions, and the flashcards and uvarena questions cover only midterm material (since 2026-11-17).
 
 ## Readings
 
@@ -123,6 +123,7 @@ The mock exam's Deep RL and Deep MARL questions are worked in [[AGAI-L04 - Deep 
 | [[AGAI-L05 - Deep MARL, Part II]] | complete |
 | [[AGAI-L06a - From Deep MARL to Reasoning]] | complete |
 | [[AGAI-L06b - What Would Make a Chatbot an Agent]] | complete |
+| [[AGAI - Midterm Prep]] | complete |
 
 ---
 

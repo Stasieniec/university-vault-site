@@ -6,65 +6,65 @@
       <description>Last 10 notes on Study Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Agent-Based Modelling</title>
-    <link>https://notes.swasilewski.com/Concepts/Agent-Based-Modelling</link>
-    <guid>https://notes.swasilewski.com/Concepts/Agent-Based-Modelling</guid>
-    <description><![CDATA[ Agent-Based Modelling Definition Agent-based modelling (ABM) Studying a system by specifying the behaviour of its individual agents and simulating their interactions, so that the system’s behaviour emerges from them. ]]></description>
-    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+    <title>AGAI - Midterm Prep</title>
+    <link>https://notes.swasilewski.com/Courses/AGAI/Exam-Prep/AGAI---Midterm-Prep</link>
+    <guid>https://notes.swasilewski.com/Courses/AGAI/Exam-Prep/AGAI---Midterm-Prep</guid>
+    <description><![CDATA[ AGAI - Midterm Prep Fri 20 Nov 2026, 13:00-15:00, USC Universum Sporthal 1. Closed book. ]]></description>
+    <pubDate>Tue, 17 Nov 2026 18:07:11 GMT</pubDate>
   </item><item>
-    <title>BDI Model</title>
-    <link>https://notes.swasilewski.com/Concepts/BDI-Model</link>
-    <guid>https://notes.swasilewski.com/Concepts/BDI-Model</guid>
-    <description><![CDATA[ BDI Model Definition Beliefs, desires, intentions (BDI) In (symbolic) AI, multi-agent systems and philosophy of action, beliefs, desires and intentions map onto three distinct mental states and practical levels of reasoning: Informational level: what the agent believes to be the case in the world. ]]></description>
-    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+    <title>B Testing</title>
+    <link>https://notes.swasilewski.com/Concepts/A/B-Testing</link>
+    <guid>https://notes.swasilewski.com/Concepts/A/B-Testing</guid>
+    <description><![CDATA[ A/B Testing Definition A/B Testing A/B testing is the standard method for Online Evaluation of a recommender system: a live experiment that compares a new system (variant) against the currently deployed one (control) by randomly splitting live traffic into groups and measuring a business objective o... ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item><item>
-    <title>CAES Model</title>
-    <link>https://notes.swasilewski.com/Concepts/CAES-Model</link>
-    <guid>https://notes.swasilewski.com/Concepts/CAES-Model</guid>
-    <description><![CDATA[ CAES Model Definition Commitments, Abilities, Expectations, Susceptibilities (CAES model; Boer and Sileno, &quot;Anchoring Distributed Agency&quot;) Commitments: what the agent wants to achieve in the world (intent selection). ]]></description>
-    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+    <title>A3C</title>
+    <link>https://notes.swasilewski.com/Concepts/A3C</link>
+    <guid>https://notes.swasilewski.com/Concepts/A3C</guid>
+    <description><![CDATA[ A3C Definition A3C (Asynchronous Advantage Actor-Critic) A3C is an on-policy, deep Actor-Critic algorithm (Mnih et al., 2016) that runs many actor-learners in parallel, each on its own copy of the environment, asynchronously updating a shared set of global parameters. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item><item>
-    <title>Intentional Stance</title>
-    <link>https://notes.swasilewski.com/Concepts/Intentional-Stance</link>
-    <guid>https://notes.swasilewski.com/Concepts/Intentional-Stance</guid>
-    <description><![CDATA[ Intentional Stance Definition Intentional stance (Dennett, The Intentional Stance, 1987) Interpreting entities as agents, ascribing them beliefs, desires, intentions and enough rationality to do what they ought to do given those beliefs and desires. ]]></description>
-    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
-  </item><item>
-    <title>Population-Based Training</title>
-    <link>https://notes.swasilewski.com/Concepts/Population-Based-Training</link>
-    <guid>https://notes.swasilewski.com/Concepts/Population-Based-Training</guid>
-    <description><![CDATA[ Population-Based Training Definition Population-based training A multi-agent training approach that tests one policy against a population of other policies. ]]></description>
-    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
-  </item><item>
-    <title>Self-Play</title>
-    <link>https://notes.swasilewski.com/Concepts/Self-Play</link>
-    <guid>https://notes.swasilewski.com/Concepts/Self-Play</guid>
-    <description><![CDATA[ Self-Play Definition Self-play Training an agent’s policy by letting it play against itself: the same policy chooses the actions for each agent. ]]></description>
-    <pubDate>Fri, 13 Nov 2026 13:24:34 GMT</pubDate>
+    <title>Action-Value Methods</title>
+    <link>https://notes.swasilewski.com/Concepts/Action-Value-Methods</link>
+    <guid>https://notes.swasilewski.com/Concepts/Action-Value-Methods</guid>
+    <description><![CDATA[ Action-Value Methods Definition Action-Value Methods Action-value methods estimate the value of each action — the expected reward (or return) of selecting it — and then use those estimates to drive action selection. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item><item>
     <title>Actor-Critic</title>
     <link>https://notes.swasilewski.com/Concepts/Actor-Critic</link>
     <guid>https://notes.swasilewski.com/Concepts/Actor-Critic</guid>
     <description><![CDATA[ Actor-Critic Definition Actor-Critic Methods Actor-Critic methods are a class of Reinforcement Learning algorithms that combine both policy-based and value-based approaches. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
+  </item><item>
+    <title>Adagrad</title>
+    <link>https://notes.swasilewski.com/Concepts/Adagrad</link>
+    <guid>https://notes.swasilewski.com/Concepts/Adagrad</guid>
+    <description><![CDATA[ Adagrad Definition Adagrad (Adaptive Gradient Algorithm) Adagrad is an adaptive learning-rate optimization method that gives each parameter its own learning rate, scaled inversely to the square root of the sum of all past squared gradients for that parameter. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
+  </item><item>
+    <title>Adam</title>
+    <link>https://notes.swasilewski.com/Concepts/Adam</link>
+    <guid>https://notes.swasilewski.com/Concepts/Adam</guid>
+    <description><![CDATA[ Adam Definition Adam (Adaptive Moment Estimation) Adam is an optimization algorithm for gradient-based optimization of stochastic objective functions. ]]></description>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item><item>
     <title>Advantage Actor-Critic (A2C)</title>
     <link>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</link>
     <guid>https://notes.swasilewski.com/Concepts/Advantage-Actor-Critic-(A2C)</guid>
     <description><![CDATA[ Advantage Actor-Critic (A2C) Definition Advantage Actor-Critic (A2C) A2C is an on-policy Actor-Critic algorithm that combines a parameterized policy (the actor, \pi_\theta) with a learned state-value function (the critic, \hat{V}_w). ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item><item>
     <title>Advantage Function</title>
     <link>https://notes.swasilewski.com/Concepts/Advantage-Function</link>
     <guid>https://notes.swasilewski.com/Concepts/Advantage-Function</guid>
     <description><![CDATA[ Advantage Function Definition The Advantage Function measures how much better taking a particular action is compared to the value of the state: A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s) It answers: “How much does this action improve upon the average (state value)?” Intuition Positive advantage: The action ... ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item><item>
     <title>Agent Modelling</title>
     <link>https://notes.swasilewski.com/Concepts/Agent-Modelling</link>
     <guid>https://notes.swasilewski.com/Concepts/Agent-Modelling</guid>
     <description><![CDATA[ Agent Modelling Definition Agent modelling An agent explicitly models the policies of the other agents, so that it can condition its own action selection on their predicted behaviour and adapt when that behaviour changes. ]]></description>
-    <pubDate>Thu, 12 Nov 2026 10:21:29 GMT</pubDate>
+    <pubDate>Fri, 13 Nov 2026 13:26:26 GMT</pubDate>
   </item>
     </channel>
   </rss>

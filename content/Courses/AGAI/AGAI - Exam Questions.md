@@ -9,7 +9,7 @@ status: complete
 
 # AGAI - Exam Questions
 
-All 88 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
+All 46 exam-style questions for Agentic Artificial Intelligence, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[AGAI - Flashcards|flashcards]] page.
 
 Back to the [[Courses/AGAI/index|Agentic Artificial Intelligence home]].
 
