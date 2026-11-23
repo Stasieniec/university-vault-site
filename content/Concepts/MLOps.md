@@ -61,3 +61,4 @@ status: complete
 
 - [[EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing]]
 - [[EPRM-L03 - Containerization and Software Engineering Processes]]
+- [[EPRM-L04 - Deployment Patterns]]

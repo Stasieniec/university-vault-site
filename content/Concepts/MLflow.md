@@ -53,3 +53,4 @@ with mlflow.start_run():
 ## Appears In
 
 - [[EPRM-L03 - Containerization and Software Engineering Processes]]
+- [[EPRM-L04 - Deployment Patterns]] (feature state logged with the model, loading the latest run in an API)

@@ -56,7 +56,7 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments 1-3 
 | 1 (28 Oct) | Data-driven roles, ML lifecycle, clean code, unit testing | A1, due Tue 3 Nov |
 | 2 | Distributed data processing (Spark, Parquet) | A2, due Tue 10 Nov |
 | 3 (11 Nov) | Containerization and software engineering processes (containers, MLflow, testing, GitFlow) | A3, due Tue 17 Nov |
-| 4 | Deployment patterns, APIs | A4, due Tue 24 Nov |
+| 4 (18 Nov) | Deployment patterns, APIs (batch with Airflow, Flask APIs) | A4, due Tue 24 Nov |
 | 5 | Telemetry and CI/CD | A5, due Tue 1 Dec |
 | 8 | Course project presentations | Project, due Tue 15 Dec 06:00 |
 
@@ -80,6 +80,13 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments 1-3 
 |---|---|---|
 | Lecture 3 (Wed 11 Nov) | Why containers, how they work, MLflow, integration testing with containers, Dev/Acc/Prod, GitFlow and pull requests, technical debt | [[EPRM-L03 - Containerization and Software Engineering Processes]] |
 
+### Week 4: Deployment patterns
+
+| | Topic | Notes |
+|---|---|---|
+| Lecture 4 (Wed 18 Nov) | Batch, API, streaming and edge deployment, batch workflows as DAGs in Airflow (triggers, scheduling), HTTP APIs with Flask, feature state from training to serving, reloading a model in a running API | [[EPRM-L04 - Deployment Patterns]] |
+| Readings | Kästner, "Deploying a Model" in *Machine Learning in Production* (Ch 10); Huyen, *Designing Machine Learning Systems*, deployment chapter; Flask quickstart | Kästner: [[EPRM-Book Ch10 - Deploying a Model]]. Huyen: no note, the book is not freely available. Flask quickstart: covered inside the lecture note |
+
 ---
 
 ## Status
@@ -92,9 +99,11 @@ Weights are not published. Each Canvas item is worth 10 points. Assignments 1-3 
 | [[EPRM-Book Ch22 - Technical Debt]] | complete |
 | [[EPRM-L02 - Distributed Data Processing]] | complete |
 | [[EPRM-L03 - Containerization and Software Engineering Processes]] | complete |
+| [[EPRM-L04 - Deployment Patterns]] | draft (independent review pending) |
+| [[EPRM-Book Ch10 - Deploying a Model]] | draft (independent review pending) |
 
 ---
 
 ## Concept Index
 
-[[MLOps]] · [[Clean Code]] · [[Unit Testing]] · [[Apache Spark]] · [[Apache Parquet]] · [[OLTP vs OLAP]] · [[Lazy Evaluation]] · [[Containerization]] · [[Docker]] · [[MLflow]] · [[Integration Testing]] · [[Development, Acceptance and Production Environments]] · [[GitFlow]]
+[[MLOps]] · [[Clean Code]] · [[Unit Testing]] · [[Apache Spark]] · [[Apache Parquet]] · [[OLTP vs OLAP]] · [[Lazy Evaluation]] · [[Containerization]] · [[Docker]] · [[MLflow]] · [[Integration Testing]] · [[Development, Acceptance and Production Environments]] · [[GitFlow]] · [[ML Deployment Patterns]] · [[Apache Airflow]] · [[HTTP API]] · [[Training-Serving Skew]] · [[Feature Store]]

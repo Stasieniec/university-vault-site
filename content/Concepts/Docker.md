@@ -70,3 +70,4 @@ A `docker-compose.yml` lists **services**, each an image or a build, with its en
 ## Appears In
 
 - [[EPRM-L03 - Containerization and Software Engineering Processes]]
+- [[EPRM-L04 - Deployment Patterns]] (DockerOperator tasks in Airflow, a Flask API in a container)

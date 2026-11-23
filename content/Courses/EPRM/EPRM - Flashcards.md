@@ -9,7 +9,7 @@ status: complete
 
 # EPRM - Flashcards
 
-All 186 flashcards for Engineering Production-Ready ML/AI Systems, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[EPRM - Exam Questions|exam questions]] page.
+All 258 flashcards for Engineering Production-Ready ML/AI Systems, one set per note. Each card asks one thing and has a short answer. Say the answer before you reveal it, and only press Got it if you had all of it. Study everything at once, a single lecture, or tick any mix. Progress lives only in this browser tab and disappears when you close it. The long-form questions are on the [[EPRM - Exam Questions|exam questions]] page.
 
 Back to the [[Courses/EPRM/index|Engineering Production-Ready ML/AI Systems home]].
 
@@ -24,6 +24,14 @@ Back to the [[Courses/EPRM/index|Engineering Production-Ready ML/AI Systems home
 ## L03 Containerization and Software Engineering Processes
 
 ![[EPRM-L03 - Containerization and Software Engineering Processes#Flashcards]]
+
+## L04 Deployment Patterns
+
+![[EPRM-L04 - Deployment Patterns#Flashcards]]
+
+## Book Ch10: Deploying a Model
+
+![[EPRM-Book Ch10 - Deploying a Model#Flashcards]]
 
 ## Book Ch20: Data Science and Software Engineering Process Models
 

@@ -9,7 +9,7 @@ status: complete
 
 # EPRM - Exam Questions
 
-All 20 exam-style questions for Engineering Production-Ready ML/AI Systems, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[EPRM - Flashcards|flashcards]] page.
+All 28 exam-style questions for Engineering Production-Ready ML/AI Systems, one set per note. Each answer opens with the key points a grader looks for, then a full model answer. Write or say your answer before revealing. The short drilling cards are on the [[EPRM - Flashcards|flashcards]] page.
 
 Back to the [[Courses/EPRM/index|Engineering Production-Ready ML/AI Systems home]].
 
@@ -20,3 +20,7 @@ Back to the [[Courses/EPRM/index|Engineering Production-Ready ML/AI Systems home
 ## L03 Containerization and Software Engineering Processes
 
 ![[EPRM-L03 - Containerization and Software Engineering Processes#Exam questions]]
+
+## L04 Deployment Patterns
+
+![[EPRM-L04 - Deployment Patterns#Exam questions]]

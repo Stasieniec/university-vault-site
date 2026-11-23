@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>EPRM-L04 - Deployment Patterns — notes.swasilewski.com</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM Plex Mono:wght@400;500;600&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Study Notes"/><meta property="og:title" content="EPRM-L04 - Deployment Patterns — notes.swasilewski.com"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EPRM-L04 - Deployment Patterns — notes.swasilewski.com"/><meta name="twitter:description" content="EPRM-L04: Deployment Patterns In short A trained model earns nothing until something uses its predictions, so how do you get them to whoever needs them? There are four ways: batch (a workflow that starts on a trigger, runs and exits), API (a service that is always up and answers requests), streaming..."/><meta property="og:description" content="EPRM-L04: Deployment Patterns In short A trained model earns nothing until something uses its predictions, so how do you get them to whoever needs them? There are four ways: batch (a workflow that starts on a trigger, runs and exits), API (a service that is always up and answers requests), streaming..."/><meta property="og:image:alt" content="EPRM-L04: Deployment Patterns In short A trained model earns nothing until something uses its predictions, so how do you get them to whoever needs them? There are four ways: batch (a workflow that starts on a trigger, runs and exits), API (a service that is always up and answers requests), streaming..."/><meta property="twitter:domain" content="notes.swasilewski.com"/><meta property="og:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L04---Deployment-Patterns"/><meta property="twitter:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L04---Deployment-Patterns"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="EPRM-L04: Deployment Patterns In short A trained model earns nothing until something uses its predictions, so how do you get them to whoever needs them? There are four ways: batch (a workflow that starts on a trigger, runs and exits), API (a service that is always up and answers requests), streaming..."/><meta name="generator" content="Quartz"/><link href="../../../index.css?v=mwth6w8b" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvdXNlci91bml2ZXJzaXR5LXZhdWx0LXNpdGUvcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js?v=mwth6w8b" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json?v=mwth6w8b").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://notes.swasilewski.com/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L04---Deployment-Patterns-og-image.webp"/><meta property="og:image:url" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L04---Deployment-Patterns-og-image.webp"/><meta name="twitter:image" content="https://notes.swasilewski.com/Courses/EPRM/Lectures/EPRM-L04---Deployment-Patterns-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Courses/EPRM/Lectures/EPRM-L04---Deployment-Patterns"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Study Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-503"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-503" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/">Courses</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/">Engineering Production Ready ML/AI Systems</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../Courses/EPRM/Lectures/">Lectures</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>EPRM L04   Deployment Patterns</a></div></nav><h1 class="article-title">EPRM-L04 - Deployment Patterns</h1><p show-comma="true" class="content-meta"><time datetime="2026-11-18T00:00:00.000Z">Nov 18, 2026</time><span>33 min read</span></p></div></div><article class="popover-hint"><h1 id="eprm-l04-deployment-patterns">EPRM-L04: Deployment Patterns<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#eprm-l04-deployment-patterns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In short </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A trained model earns nothing until something uses its predictions, so how do you get them to whoever needs them? There are four ways: <strong>batch</strong> (a workflow that starts on a trigger, runs and exits), <strong>API</strong> (a service that is always up and answers requests), <strong>streaming</strong> (a system that reacts to every message on a stream) and <strong>edge</strong> (the model runs on the user’s device). The course works with the two most common. A batch workflow is a DAG of tasks, which the course runs with <strong>Airflow</strong>: each task is a container, arrows say what waits for what, and a schedule or event starts it. An API is a set of HTTP endpoints, such as <code>/predict</code> and <code>/health</code>, which the course builds with <strong>Flask</strong>. Between the two sits a quiet danger: serving has to turn inputs into features exactly as training did, with the statistics saved at training time, or predictions go wrong without any error.</p>
+<p>There is no written exam: this feeds Assignment 4 (scheduling the training DAG, reloading the API’s model from the DAG, passing a new feature’s state from training to the API) and the course project, which starts after this week.</p>
+</div>
+</blockquote>
+<h2 id="a-model-has-to-reach-someone">A model has to reach someone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-model-has-to-reach-someone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">Week 1</a> opened with the finding that most ML projects never deliver value, often because the model is never deployed: without production deployment there is no economic value. Week 3 showed how to package code in a <a href="../../../Concepts/Docker" class="internal" data-slug="Concepts/Docker">Docker</a> container so it runs the same everywhere. This week answers the next question: once the model is packaged, <strong>in what shape does it serve predictions?</strong></p>
+<p>The lecturer, Kemal Yesilbek, points out that the answer, like the rest of MLOps, comes from backend engineering. Ordinary software already had to decide whether work runs as a nightly job, as a web service, or on the user’s phone. An ML model is one more piece of software making that choice.</p>
+<h2 id="four-ways-to-serve-a-model">Four ways to serve a model<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#four-ways-to-serve-a-model" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>The four ways to serve or deploy an ML/AI system </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Batch:</strong> predefined processes that start and stop. They run and exit.</li>
+<li><strong>API:</strong> a way to let other systems interact with yours. It is always up.</li>
+<li><strong>Streaming:</strong> uses a message bus. The system listens to one or more message streams and acts on them.</li>
+<li><strong>Edge:</strong> the model is deployed directly on a device.</li>
+</ul>
+</div>
+</blockquote>
+<p>A <strong>message bus</strong> is a shared channel (Kafka is a common one, from outside the course material) where producers publish events, such as “payment made”, and any number of consumers read them as they arrive.</p>
+<p>The difference that matters most is <strong>who starts the work, and when</strong>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Batch</th><th>API</th><th>Streaming</th><th>Edge</th></tr></thead><tbody><tr><td>Starts on</td><td>a trigger</td><td>a request</td><td>a message</td><td>the app</td></tr><tr><td>Lifetime</td><td>runs, exits</td><td>always up</td><td>always listening</td><td>on the device</td></tr><tr><td>Predictions are</td><td>precomputed</td><td>fresh per request</td><td>fresh per event</td><td>local, offline</td></tr><tr><td>Example</td><td>nightly scores for all users</td><td><code>/predict</code> for a web shop</td><td>fraud check per payment</td><td>text recognition on a phone</td></tr></tbody></table></div>
+<p>The consequences follow from the first row. Batch computes predictions <strong>ahead of time</strong> for everything that exists when it runs. That is cheap and simple, and nobody waits for the model, but a user who signs up at noon has no prediction until the next run. An API computes a prediction <strong>when asked</strong>, so it is always fresh, but it must stay up and answer fast. Streaming reacts to events without anyone asking. Edge removes the network: the device needs no connection and the data never leaves it, but the model has to fit the device, and updating it means updating every device.</p>
+<p>The course looks only at <strong>batch and APIs</strong>, the most common two. The reading by Christian Kästner (see <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch10---Deploying-a-Model" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch10---Deploying-a-Model">EPRM-Book Ch10 - Deploying a Model</a>) cuts the space slightly differently: the model as a <strong>library</strong> inside an application (which covers edge), the model as a <strong>service</strong> (the API), <strong>batch processing</strong>, and <strong>cached predictions</strong>, where every prediction is computed ahead of time and serving is a lookup in a table. His point about choosing: the decision follows from the system’s requirements (latency, offline use, privacy, cost, how often the model changes), and hybrids are common. See <a href="../../../Concepts/ML-Deployment-Patterns" class="internal alias" data-slug="Concepts/ML-Deployment-Patterns">ML Deployment Patterns</a>.</p>
+<h2 id="batch-a-workflow-that-starts-and-stops">Batch: a workflow that starts and stops<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#batch-a-workflow-that-starts-and-stops" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A batch process (also called a workflow, pipeline or process) has three parts:</p>
+<ul>
+<li>it <strong>starts and stops</strong>: it runs to completion and exits;</li>
+<li>it is <strong>composed of tasks</strong>, each a unit of execution (one script, one container run);</li>
+<li>it begins when a <strong>trigger</strong> fires.</li>
+</ul>
+<p>The trigger can be many things, or several at once:</p>
+<ul>
+<li><strong>a schedule:</strong> every night at 02:30, every Monday;</li>
+<li><strong>a file arrival:</strong> a new export lands in a storage bucket;</li>
+<li><strong>CDC (change data capture):</strong> a change in a source database, such as new or updated rows, is detected (usually by reading the database’s change log, from outside the course material) and starts the workflow.</li>
+</ul>
+<p>Written out as a template, every batch workflow says:</p>
+<blockquote>
+<p>When <em>trigger</em> happens, start the workflow <em>name</em>, which starts task A; when A finishes, starts tasks B and C; when B and C finish, starts task D. If the workflow fails, do <em>action</em>.</p>
+</blockquote>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    T[Trigger] --> A((A))\n    A --> B((B))\n    A --> C((C))\n    B --> D((D))\n    C --> D\n    F[Action on fail]&quot;">flowchart LR
+    T[Trigger] --> A((A))
+    A --> B((B))
+    A --> C((C))
+    B --> D((D))
+    C --> D
+    F[Action on fail]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>The action on failure is part of the definition: alert someone, retry, or clean up partial output.</p>
+<h3 id="the-structure-is-a-dag">The structure is a DAG<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-structure-is-a-dag" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>DAG </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>The structure of the tasks is called a <strong>DAG</strong>, a <strong>directed acyclic graph</strong>: tasks are nodes, and an arrow from A to B means B starts only after A finishes. <em>Directed</em> because the arrows have a direction; <em>acyclic</em> because no path leads back to where it started.</p>
+</div>
+</blockquote>
+<p>The lecturer warns that the name is easy to confuse with the data structure, and Airflow’s documentation now writes “Dag” for the workflow for that reason. Two properties of the graph do the work:</p>
+<ul>
+<li><strong>No cycles, so it can finish.</strong> If D also had to finish before A, then A would wait on D, which waits on B, which waits on A: nothing could ever start.</li>
+<li><strong>Independent branches run in parallel.</strong> B and C both depend only on A, so once A is done they can run at the same time. D waits for both.</li>
+</ul>
+<p>Splitting a job into tasks is also the recovery design from <a href="../../../Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing">week 2</a>: when each task saves its output and the next one reads it, a crash means rerunning one task instead of the whole multi-day job. The DAG is where that split becomes explicit.</p>
+<h2 id="airflow-the-courses-batch-orchestrator">Airflow: the course’s batch orchestrator<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#airflow-the-courses-batch-orchestrator" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="../../../Concepts/Apache-Airflow" class="internal alias" data-slug="Concepts/Apache-Airflow">Apache Airflow</a> is an open-source tool that runs DAGs: it reads DAG definitions written in Python, starts each task when its upstream tasks have succeeded, starts the whole DAG when its schedule or trigger fires, and shows every run and task in a web interface.</p>
+<p>The course’s training pipeline is one DAG, <code>nova_training</code>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    S[\&quot;log_datetime_start (Bash)\&quot;] --> P[\&quot;preprocessing (Docker)\&quot;]\n    P --> FE[\&quot;feature_engineering (Docker)\&quot;]\n    P --> CH[\&quot;Chatter (Bash)\&quot;]\n    FE --> TR[\&quot;training (Docker)\&quot;]\n    CH --> TR\n    TR --> E[\&quot;log_datetime_end (Bash)\&quot;]&quot;">flowchart TD
+    S[&quot;log_datetime_start (Bash)&quot;] --> P[&quot;preprocessing (Docker)&quot;]
+    P --> FE[&quot;feature_engineering (Docker)&quot;]
+    P --> CH[&quot;Chatter (Bash)&quot;]
+    FE --> TR[&quot;training (Docker)&quot;]
+    CH --> TR
+    TR --> E[&quot;log_datetime_end (Bash)&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>Two of the tasks are part of it:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model_training_task </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> DockerOperator(</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    docker_url</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;unix://var/run/docker.sock&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    command</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;python src/main_training.py --training&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    image</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;nova:latest&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    network_mode</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;infra_default&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    task_id</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;training&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    mounts</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[Mount(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">source</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;data&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">target</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;/nova/data&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)],</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    dag</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">dag,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">log_datetime_end_task </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> BashOperator(</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    task_id</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;log_datetime_end&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    bash_command</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;echo date&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    dag</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">dag,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    log_datetime_start_task</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    >></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> preprocessing_task</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    >></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [feat_eng_task, completely_unnecessary_task_to_display_parallelism]</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    >></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> model_training_task</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    >></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> log_datetime_end_task</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>How to read it:</p>
+<ul>
+<li><strong>An operator is a kind of task.</strong> <code>BashOperator</code> runs a shell command. <code>DockerOperator</code> starts a container from an image and runs a command in it. The three real stages (preprocessing, feature engineering, training) are the same image, <code>nova:latest</code>, run with a different flag to <code>main_training.py</code> each time. The Bash tasks only print the time. <code>Chatter</code>, which the code honestly names <code>completely_unnecessary_task_to_display_parallelism</code>, exists to show two tasks running side by side.</li>
+<li><strong><code>>></code> is “then”.</strong> <code>a >> b</code> means b runs after a. A list fans out (<code>preprocessing >> [feat_eng, chatter]</code>: both start when preprocessing is done) and fans in (<code>[feat_eng, chatter] >> training</code>: training waits for both).</li>
+<li><strong>The DockerOperator’s settings</strong> (explained from outside the course material, Docker and Airflow documentation). <code>docker_url</code> points at the Docker daemon’s socket, so Airflow asks the host’s Docker to start each task as a new container next to the others. <code>network_mode=&quot;infra_default&quot;</code> attaches that container to the network Docker Compose created for the <code>infra/</code> project, so it can reach the MLflow server by its service name, as in week 3. <code>Mount(source=&quot;data&quot;, ...)</code> attaches a named Docker volume called <code>data</code> at <code>/nova/data</code>: every task container sees the same volume, which is how the feature engineering task reads what preprocessing wrote.</li>
+</ul>
+<p>Each stage being a separate container run that hands files to the next is the week 2 recovery design in practice: if training crashes, the preprocessed data and features are still on the volume.</p>
+<h3 id="making-a-dag-run-on-its-own">Making a DAG run on its own<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#making-a-dag-run-on-its-own" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The DAG in the course code has no schedule, so it only runs when someone presses the trigger button. Scheduling it is the first part of Assignment 4. What follows is from outside the course material (Airflow documentation, for Airflow 3, the version the course uses):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pendulum</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> airflow.sdk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> DAG</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> DAG(</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    dag_id</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;my_pipeline&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    schedule</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;30 2 * * *&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    start_date</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">pendulum.datetime(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2026</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">11</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">tz</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Europe/Amsterdam&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    catchup</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">False</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    default_args</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;retries&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">},</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> dag:</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    ...</span></span></code></pre></figure>
+<ul>
+<li><strong><code>schedule</code></strong> takes a <strong>cron expression</strong>, five fields: <code>minute hour day-of-month month day-of-week</code>. <code>30 2 * * *</code> is minute 30, hour 2, every day of every month, any weekday: daily at 02:30. <code>0 * * * *</code> is hourly, <code>0 9 * * 1</code> is Mondays at 09:00. Presets such as <code>&quot;@daily&quot;</code> (midnight) also work, and <code>None</code> means manual runs only.</li>
+<li><strong><code>start_date</code></strong> is the earliest moment a scheduled run may happen. Airflow needs it to know where the schedule begins.</li>
+<li><strong>Time zone.</strong> Airflow works in UTC by default, so a cron time without a time zone means UTC. A <code>start_date</code> built with <code>pendulum</code> and <code>tz=&quot;Europe/Amsterdam&quot;</code> makes the cron times Amsterdam times, daylight saving included.</li>
+<li><strong><code>catchup</code>.</strong> If <code>start_date</code> lies in the past, Airflow could create a run for every missed slot since then. In Airflow 3 the default is not to (<code>catchup=False</code>): it runs only the most recent slot and continues from there.</li>
+<li><strong>New DAGs start paused.</strong> Airflow’s default configuration creates every new DAG in the paused state, and a paused DAG is never scheduled until someone switches it on in the interface (or the DAG is created with <code>is_paused_upon_creation=False</code>).</li>
+<li><strong>The action on fail.</strong> <code>retries</code> reruns a failed task; <code>on_failure_callback</code> on the DAG runs a function when a run fails, such as sending an alert.</li>
+<li><strong>Removing a task</strong> means deleting its operator and its place in the <code>>></code> chain. Leaving the operator defined but unconnected still adds it to the DAG as a task with no dependencies.</li>
+</ul>
+<h2 id="apis-a-service-that-is-always-up">APIs: a service that is always up<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#apis-a-service-that-is-always-up" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout definition" data-callout="definition">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>API, as the course puts it </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>A <strong>service</strong> that is always up and ready to receive requests. Upon a request, with or without input, it runs a specific process (an <strong>endpoint</strong>) and returns a result, with or without data. <strong>HTTP APIs</strong> are the most common.</p>
+</div>
+</blockquote>
+<p>Batch pushes predictions out on its own schedule. An API waits for others to pull a prediction when they need one, which makes it the pattern for anything interactive. See <a href="../../../Concepts/HTTP-API" class="internal alias" data-slug="Concepts/HTTP-API">HTTP API</a>.</p>
+<h3 id="what-goes-over-the-wire">What goes over the wire<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-goes-over-the-wire" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Every HTTP API call is a request from a <strong>client</strong> (a browser, <code>curl</code>, another service) to a <strong>server</strong>, and a response back:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>The client sends</th><th>The server returns</th></tr></thead><tbody><tr><td><strong>HTTP method:</strong> GET, POST, PUT, DELETE</td><td><strong>Status code:</strong> 200, 500, …</td></tr><tr><td><strong>URL / endpoint:</strong> <code>/predict</code>, <code>/score</code>, <code>/health</code>, <code>/order</code></td><td><strong>Response data:</strong> JSON, HTML</td></tr><tr><td><strong>Params</strong> (optional): <code>?&lt;param>=&lt;val></code> in the URL</td><td></td></tr><tr><td><strong>Body / payload</strong> (optional): the data</td><td></td></tr></tbody></table></div>
+<p>Three examples make it concrete:</p>
+<ul>
+<li><strong>Fetching data with GET.</strong> Opening <code>dog.ceo/api/breeds/list/all</code> in a browser sends a GET to the endpoint <code>/api/breeds/list/all</code> with no parameters and no body. The response is JSON: a <code>message</code> object mapping each breed to its sub-breeds (<code>&quot;australian&quot;: [&quot;kelpie&quot;, &quot;shepherd&quot;]</code>, <code>&quot;beagle&quot;: []</code>).</li>
+<li><strong>Parameters in the URL.</strong> <code>google.com/search?q=hello+world&amp;hl=en</code> is a GET to <code>/search</code> with two parameters: <code>q</code> (the query, with <code>+</code> standing for a space) and <code>hl</code> (interface language). The response is an HTML page.</li>
+<li><strong>A body with POST.</strong> The colour palette service Colormind has two endpoints. <code>curl 'http://colormind.io/list/'</code> (a GET) returns the available models as JSON. Then <code>curl 'http://colormind.io/api/' --data-binary '{&quot;input&quot;:[[44,43,44],[90,83,82],&quot;N&quot;,&quot;N&quot;,&quot;N&quot;],&quot;model&quot;:&quot;default&quot;}'</code> sends a POST (curl switches to POST when given data) whose body fixes two colours and marks three free slots with <code>&quot;N&quot;</code>. The response is a full five-colour palette that keeps the given two (nearly unchanged) and fills the rest: a model prediction behind an API.</li>
+</ul>
+<p><strong>The methods</strong> (from outside the course material): GET fetches something and carries its inputs in the URL; POST sends a body for the server to process; PUT creates or replaces the thing at a URL; DELETE removes it. A prediction request with a feature vector is usually a POST with a JSON body.</p>
+<p><strong>Status codes</strong> group by their first digit: 2xx means success (200 OK), 4xx means the client got something wrong (400 bad request, 404 not found, 405 method not allowed), 5xx means the server failed (500 internal server error, 503 service unavailable). The course names 200 and 500, the two you see most.</p>
+<p>A <strong><code>/health</code> endpoint</strong> answers “are you up?” with a cheap 200. It is what a Docker Compose health check from <a href="../../../Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes">week 3</a> can call before dependent services start, and what an orchestrator polls to restart a dead service.</p>
+<h3 id="a-model-behind-an-api-with-flask">A model behind an API with Flask<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-model-behind-an-api-with-flask" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The course’s API is written in Flask, a small Python web framework; its quickstart is a reading for the week. The sketch below is from that reading and from Kästner’s chapter, and the course code follows the same shape, with <code>/health</code> and a POST <code>/predict</code>.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pickle</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> flask </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Flask, request</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">app </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Flask(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">__name__</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> open</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;models/model.pkl&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;rb&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> f:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    model </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pickle.load(f)          </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># loaded once, when the process starts</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">@app.route</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;/health&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)               </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># GET only, by default</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> health</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;status&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;ok&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}          </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># a dict is returned as JSON, status 200</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">@app.route</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;/predict&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">methods</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;POST&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> predict</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">():</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    payload </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> request.get_json(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">silent</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">True</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># the JSON body, None if invalid</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> payload </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">is</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> None</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> or</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;features&quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> not</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> in</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> payload:</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;error&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;send JSON with 'features'&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">400</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    y </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> model.predict([payload[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;features&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]])</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;prediction&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: y.tolist()}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">flask</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --app</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> app</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --host</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0.0.0.0</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --port</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5001</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> http://localhost:5001/health</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -X</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> POST</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> http://localhost:5001/predict</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">     -H</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Content-Type: application/json&quot;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '{&quot;features&quot;: [120.5, 3, 0]}'</span></span></code></pre></figure>
+<p>What to notice:</p>
+<ul>
+<li><strong><code>@app.route</code> binds a URL to a function.</strong> By default a route answers only GET; <code>methods=[&quot;POST&quot;]</code> (or the shortcut <code>@app.post</code>) changes that, and a request with another method gets <strong>405</strong>.</li>
+<li><strong>Return values become responses.</strong> A string becomes an HTML response, a dict or list becomes JSON, and a tuple <code>(body, status)</code> sets the status code. An unhandled exception in the function becomes a <strong>500</strong>.</li>
+<li><strong><code>request.get_json()</code></strong> reads a JSON body, <code>request.args</code> the URL parameters. The client has to send the header <code>Content-Type: application/json</code>; without it, or with broken JSON, plain <code>get_json()</code> aborts the request with a 4xx error, while <code>silent=True</code> returns <code>None</code> so the view can send its own 400.</li>
+<li><strong><code>--host 0.0.0.0</code>.</strong> By default the development server listens only on <code>127.0.0.1</code>, which inside a container is the container itself (the week 3 pitfall).</li>
+<li><strong>The model is loaded once, at start-up</strong>, and every request reuses it. Loading a pickle per request would make every prediction slow.</li>
+<li><strong>Development server only.</strong> <code>flask run</code> is meant for development; the Flask docs warn against using it, and especially its debug mode, in production, where a WSGI server such as gunicorn runs the app (Kästner’s Dockerfile does this).</li>
+<li><strong>Testing</strong> (from outside the course material, Flask testing docs): <code>app.test_client()</code> sends fake requests without a running server, so endpoints can be unit-tested like functions: <code>client.post(&quot;/predict&quot;, json={...})</code> returns a response whose <code>status_code</code> and <code>get_json()</code> you assert on.</li>
+</ul>
+<h2 id="same-features-in-training-and-serving">Same features in training and serving<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#same-features-in-training-and-serving" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The model was trained on <strong>features</strong>, and an API receives <strong>raw inputs</strong>: a transaction with an amount and a category, never a z-scored amount and a one-hot vector. So the API must run the same feature encoding as training. Kästner calls the failure <strong><a href="../../../Concepts/Training-Serving-Skew" class="internal alias" data-slug="Concepts/Training-Serving-Skew">training-serving skew</a></strong>: when the encoding at inference differs from the one at training, runtime data no longer matches the training data, and predictions are wrong while nothing crashes. The mismatch can be one feature scaled differently or completely scrambled inputs.</p>
+<p>Some encodings depend on numbers learned from the training data. A z-score needs the training mean and standard deviation; an index or one-hot encoding needs the list of categories seen in training; a “how common is this category” feature needs the training counts. Call these numbers the <strong>feature state</strong>. Serving has to use exactly that state:</p>
+<ul>
+<li><strong>Never recompute it from the request.</strong> One request has one row: its mean is itself and its standard deviation is undefined. Even a batch of requests has different statistics from the training set, so the same raw value would map to a different feature.</li>
+<li><strong>Save it with the model.</strong> Log the state as artifacts of the same <a href="../../../Concepts/MLflow" class="internal" data-slug="Concepts/MLflow">MLflow</a> run as the model, so a model and its state always travel together and cannot be mixed up across versions.</li>
+<li><strong>Write the encoding once.</strong> One function, imported by both the training code and the API (Kästner’s advice), so the two cannot drift apart.</li>
+</ul>
+<p>From outside the course material (MLflow documentation), a minimal version of all three:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># src/features.py: imported by training AND by the API</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> fit_state</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(train_df):                        </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># training only</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount_mean&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">float</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(train_df[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].mean()),</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">            &quot;amount_std&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">float</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(train_df[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">].std())}</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> encode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(df, state):                          </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># training and serving</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    out </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> df.copy()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    out[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount_z&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (out[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> state[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount_mean&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> state[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;amount_std&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> out</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># training</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow.start_run() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> run:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    state </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> fit_state(train_df)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    mlflow.log_dict(state, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;feature_state.json&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    model.fit(encode(train_df, state)[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">FEATURES</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">], train_df[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;fraud&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    ...</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                                         # log the model in the same run</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># API start-up</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">state </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow.artifacts.load_dict(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;runs:/</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">run_id</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">}</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">/feature_state.json&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>In large organisations a <a href="../../../Concepts/Feature-Store" class="internal alias" data-slug="Concepts/Feature-Store">Feature Store</a> takes this further: a central catalogue of feature code that can also precompute and cache feature values for many models.</p>
+<h2 id="getting-a-new-model-into-a-running-api">Getting a new model into a running API<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#getting-a-new-model-into-a-running-api" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The Flask app loads its model once, when it starts. That is what makes it fast, and it has a consequence: <strong>retraining does not change what the API serves.</strong> A nightly DAG can log a better model to MLflow every night while the API keeps answering with the model it loaded weeks ago, until the process restarts.</p>
+<p>Two ways out (the second is part two of Assignment 4):</p>
+<ul>
+<li><strong>Restart or redeploy the service</strong> after training. Simple, but the API is briefly down unless several instances are restarted one at a time.</li>
+<li><strong>Hot reload:</strong> the API gets an endpoint that makes it load the latest model, with its feature state, while it keeps running. The training DAG then ends with one more task that calls that endpoint once training has succeeded. Scheduling, training, logging and serving become one automatic loop: the schedule starts the DAG, training logs a new run to MLflow, and the last task tells the API to pick it up.</li>
+</ul>
+<p>Design points for a reload (from outside the course material):</p>
+<ul>
+<li><strong>Load fully, then swap.</strong> Build the new model and state in memory first, and replace the old ones only when loading succeeded. If loading fails, the old model keeps serving and the reload returns an error status.</li>
+<li><strong>Swap model and state together</strong>, both from the same MLflow run, or the API briefly encodes with one run’s statistics and predicts with another run’s model: training-serving skew by timing.</li>
+<li><strong>Cached loaders keep the old model.</strong> If the model sits in a module-level variable or behind a memoising cache such as <code>functools.cache</code>, it stays there until that variable is replaced or the cache is cleared.</li>
+<li><strong>Reload changes state, so it is a POST</strong>, and in a real system it is not open to the public.</li>
+</ul>
+<p>Finding “the latest model” in MLflow, from outside the course material (MLflow documentation):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pickle</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">runs </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow.search_runs(</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    experiment_names</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Alpha&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">],</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    filter_string</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;attributes.status = 'FINISHED'&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># skip runs still training</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    order_by</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;attributes.start_time DESC&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">],</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    max_results</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">run_id </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> runs.iloc[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">][</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;run_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">path </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mlflow.artifacts.download_artifacts(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">run_id</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">run_id, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">artifact_path</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;alpha.pkl&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> open</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(path, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;rb&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> f:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    model </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pickle.load(f)</span></span></code></pre></figure>
+<h2 id="what-to-be-able-to-do">What to be able to do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-be-able-to-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Name the four ways to serve a model, say who starts the work in each, and pick one for a scenario.</li>
+<li>Describe a batch workflow: triggers (schedule, file arrival, CDC), tasks, the DAG, the action on failure, and why the graph must be acyclic.</li>
+<li>Read an Airflow DAG: operators, <code>>></code> with lists, which tasks run in parallel, and how DockerOperator tasks share data and reach other services.</li>
+<li>Give a DAG a schedule with a cron expression, and know what <code>start_date</code>, the time zone, <code>catchup</code> and paused DAGs do.</li>
+<li>Take an HTTP request and response apart: method, endpoint, parameters, body, status code, response data.</li>
+<li>Build a Flask API with <code>/health</code> and a POST <code>/predict</code>, load the model once, return the right status codes, and test it.</li>
+<li>Explain training-serving skew, and pass feature state from training to serving through MLflow.</li>
+<li>Explain why a retrained model does not reach a running API, and how a reload triggered by the training DAG fixes it.</li>
+</ul>
+<h2 id="exam-questions">Exam questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#exam-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name the four ways to serve an ML model and choose one for each: nightly churn scores for all customers; a web shop that recommends products as a page loads; a fraud check on every payment event on a message bus; text recognition in an app that must work offline. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> batch runs on a trigger and exits; API is always up and answers requests; streaming listens to a message bus and acts per message; edge runs on the device; churn: batch, shop: API, payments: streaming, offline app: edge.</p>
+<p>Batch is a predefined workflow that starts on a trigger, runs and exits; API is a service that is always up and answers requests from other systems; streaming listens to one or more message streams and acts on each message; edge deploys the model on the device itself. Nightly churn scores for everyone suit batch: predictions can be computed ahead of time and nobody waits for them. A recommendation while a page loads needs a fresh prediction on demand, so an API. A fraud check per payment event arriving on a bus is streaming: the system reacts to each message without anyone requesting it. Text recognition that must work offline has to run on the device: edge, which also keeps the user’s images local, at the cost of the device’s limited hardware and harder model updates.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a batch workflow, what can trigger it, and why is its task structure a directed acyclic graph? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> a workflow that starts on a trigger, runs and exits; made of tasks, the units of execution; triggers: schedule, file arrival, change data capture; arrows say which task waits for which; acyclic so it can finish, independent branches run in parallel; defines an action on fail.</p>
+<p>A batch workflow (pipeline, process) starts when its trigger fires, runs to completion and exits. It is made of tasks, each a unit of execution such as a script or a container run. Triggers include a schedule, a file arriving and change data capture, where a change in a source database starts the run. The tasks and their dependencies form a DAG: nodes are tasks, and an arrow from A to B means B starts only after A finishes. The graph must be acyclic, because a cycle would make a task wait on itself through the others and nothing in the cycle could ever start. Tasks that do not depend on each other can run in parallel. The workflow also defines what to do when it fails, such as retrying or alerting, and splitting it into tasks that save their outputs means a crash only reruns the failed task.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In an Airflow DAG written as <code>start >> prep >> [feats, chatter] >> train >> end</code>, which tasks can run at the same time, and how do DockerOperator tasks pass data to each other?</p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> >> means runs after; a list fans out and fans in; feats and chatter run in parallel after prep; train waits for both; each DockerOperator task is a new container; data passes through a shared mounted volume; network_mode puts it on the Compose network to reach services by name.</p>
+<p>In Airflow <code>a >> b</code> means b runs after a. After <code>prep</code> finishes, both tasks in the list <code>[feats, chatter]</code> can start, so they run in parallel; <code>train</code> waits until both have succeeded, since by default a task needs all its upstream tasks to succeed, and <code>end</code> runs last. A DockerOperator task starts a fresh container from an image (for example the same image with a different command-line flag per stage), so nothing in memory carries over between tasks. Data passes through storage they share: a Docker volume mounted into every task container, where each stage writes its output and the next reads it. Setting the network mode to the Docker Compose network lets the task containers reach services such as the MLflow server by their service names. Saving each stage’s output also means a failed stage can be rerun without redoing the earlier ones.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Your training DAG only runs when you press the trigger button. How do you make it run every night at 01:15 Amsterdam time, and what could still stop it from running? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> set schedule to the cron expression 15 1 * * *; give a start_date; make it Amsterdam time with a pendulum start_date with that time zone, since Airflow defaults to UTC; catchup decides whether missed slots are replayed, off by default in Airflow 3; new DAGs start paused and must be switched on.</p>
+<p>Give the DAG a schedule and a start date. The schedule is a cron expression with five fields, minute, hour, day of month, month and day of week, so <code>15 1 * * *</code> means 01:15 every day. Airflow interprets cron times in UTC unless the DAG has a time zone, so the start date should be time-zone aware, for example <code>pendulum.datetime(2026, 11, 1, tz=&quot;Europe/Amsterdam&quot;)</code>; that also handles daylight saving. The start date is the earliest point a scheduled run may happen. If it lies in the past, <code>catchup</code> decides whether every missed night is replayed; in Airflow 3 it is off by default, so only the latest slot runs. Even then the DAG will not run while it is paused, and Airflow creates new DAGs paused by default, so it has to be switched on in the interface. A failure inside a task is handled with retries and a failure callback.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Describe what a client sends and what a server returns in an HTTP API call, with an example of a GET and a POST. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> client sends method, endpoint, optional URL parameters, optional body; server returns status code and response data such as JSON or HTML; GET carries inputs in the URL; POST carries a body; 2xx success, 4xx client error, 5xx server error.</p>
+<p>The client sends an HTTP method (GET, POST, PUT, DELETE), the URL of an endpoint such as <code>/predict</code> or <code>/health</code>, optional parameters in the URL as <code>?param=value</code>, and an optional body or payload with data. The server runs the process behind that endpoint and returns a status code and response data, typically JSON or HTML. A GET such as <code>google.com/search?q=hello+world&amp;hl=en</code> passes its inputs as URL parameters and returns an HTML page; <code>dog.ceo/api/breeds/list/all</code> is a GET without parameters that returns JSON. A POST sends a body: posting <code>{&quot;input&quot;: [...], &quot;model&quot;: &quot;default&quot;}</code> to Colormind’s <code>/api/</code> returns a generated colour palette as JSON. Status codes in the 2xx range mean success (200), 4xx mean the client made an error (404 not found, 405 wrong method), 5xx mean the server failed (500).</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Sketch a Flask API that serves a fraud model. Which endpoints and methods do you use, where is the model loaded, and which status codes can a client get? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> a GET /health returning 200; a POST /predict reading a JSON body; load the model once at start-up and reuse it; return JSON from a dict; 400 for a bad body, 405 for a wrong method, 500 for a server crash; listen on 0.0.0.0 in a container; production behind a WSGI server.</p>
+<p>Create a Flask app, load the pickled model once when the process starts, and define two routes. <code>/health</code> answers GET with a small JSON body and status 200, so health checks and orchestrators can see the service is up. <code>/predict</code> accepts POST, reads the transaction from the JSON body with <code>request.get_json()</code>, encodes it into features with the training-time feature state, calls the model and returns the prediction as a dict, which Flask turns into JSON with status 200. If the body is missing or malformed the function returns an error with 400; a GET to <code>/predict</code> gets 405 because the route only allows POST; an unhandled exception inside the model code becomes a 500. Loading the model per request would make every call slow, so it stays in memory. In a container the server must listen on 0.0.0.0, and in production it runs under a WSGI server such as gunicorn, since Flask’s development server is not meant for production.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is training-serving skew, and how do you pass a feature such as a z-scored amount correctly from training to an API? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> encoding at serving differs from encoding at training, so predictions go wrong silently; the z-score needs the training mean and standard deviation; never compute statistics from the request; save the state as artifacts in the same MLflow run as the model and load them together; one shared encoding function for training and serving.</p>
+<p>Training-serving skew is a mismatch between how inputs become features during training and during inference. The model then sees runtime data that does not match its training data and returns wrong predictions without any error. A z-scored amount depends on the mean and standard deviation of the training data. The API must use those exact numbers: computing them from the request is wrong, since one row has no standard deviation and any batch of requests has different statistics. So training computes the state, logs it as an artifact (for example a JSON file) in the same MLflow run as the model, and the API loads model and state from the same run. The encoding itself is written once, as a function imported by both the training code and the API, so the two cannot drift apart. At larger scale a feature store plays this role.</p>
+</div>
+</blockquote>
+<blockquote class="callout exam is-collapsible is-collapsed" data-callout="exam" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>A DAG retrains your model every night and logs it to MLflow, yet the API keeps returning the same predictions as last month. Why, and how do you fix it? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p><strong>Key points:</strong> the API loads the model once at start-up and keeps it in memory; new MLflow runs are never read; fix by restarting the service or by a reload endpoint; the DAG’s last task calls the reload after training succeeds; load fully before swapping, swap model and feature state together, keep the old model if loading fails.</p>
+<p>The API loads its model, and its feature state, once when the process starts and reuses it for every request, so models logged to MLflow afterwards are never read; if the loading function is cached, the cache keeps returning the old one. One fix is to restart or redeploy the service after every training run. The other is a hot reload: an endpoint, called with POST, that makes the running API look up the latest finished run in the MLflow experiment, load its model and feature state, and replace the ones in memory. The training DAG then gets a final task, after training, that calls this endpoint, so each night’s model goes live automatically. The new model and state should be loaded completely before swapping, both from the same run, and if loading fails the old model keeps serving and the reload reports an error.</p>
+</div>
+</blockquote>
+<h2 id="flashcards">Flashcards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flashcards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the four ways to serve or deploy an ML/AI system? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Batch, API, streaming, edge.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which two deployment patterns does the EPRM course focus on, and why? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Batch and API: they are the most common.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Where do ML deployment patterns come from, according to Yesilbek? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Backend engineering, like other MLOps principles.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What characterises batch deployment? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Predefined processes that start on a trigger, run and exit.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What characterises an API? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A service that is always up and ready to receive requests.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does a streaming system do? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Listens to one or more message streams on a bus and acts on each message.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is edge deployment? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Deploying the model directly on the device that uses it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>A user signs up after the nightly batch scoring ran. When do they get a prediction? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Only at the next batch run.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why might you choose edge deployment over an API? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It works offline, keeps data on the device and has no network latency.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the downside of edge deployment for model updates? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Every device has to download and install the new model.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a task in a batch workflow? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The unit of execution, such as one script or container run.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Name three kinds of trigger for a batch workflow. </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A schedule, a file arrival, change data capture.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is change data capture (CDC)? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Detecting changes in a source database and using them to start processing.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Besides tasks and a trigger, what else does a batch workflow define? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>An action to take when the workflow fails.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does DAG stand for? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Directed acyclic graph.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must a workflow's task graph be acyclic? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A cycle would make a task wait on itself, so it could never start.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In a DAG where A comes before B and C, and both come before D, which tasks can run in parallel? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>B and C, since both depend only on A.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does Apache Airflow do? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Runs DAGs of tasks on schedules or triggers and records every run.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In Airflow, what does a >> b mean? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Task b runs after task a finishes.</p>
+</div>
+</blockquote>
+<blockquote class="callout card" data-callout="card" data-callout-metadata="]- In Airflow, what does a >> [b, c">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>mean? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>b and c both start after a, and can run in parallel.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is the difference between a BashOperator and a DockerOperator? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>BashOperator runs a shell command; DockerOperator starts a container and runs a command in it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do DockerOperator tasks in one Airflow DAG pass data to each other? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Through a shared mounted volume where each task writes and the next reads.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why set network_mode to the Compose network on a DockerOperator? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>So the task container can reach services like MLflow by service name.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does the Airflow schedule &quot;30 2 * * *&quot; mean? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Every day at 02:30.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What are the five fields of a cron expression, in order? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Minute, hour, day of month, month, day of week.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>In which time zone does Airflow read a cron schedule by default? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>UTC, unless the start_date carries another time zone.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does catchup control in Airflow? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Whether runs are created for every missed slot since start_date.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why might a newly added Airflow DAG with a schedule never run? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>New DAGs start paused until someone switches them on.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What four things can a client send in an HTTP request? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Method, URL or endpoint, optional parameters, optional body.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What two things does an HTTP API return? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A status code and response data, such as JSON or HTML.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Where does a GET request carry its inputs? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>In the URL, as query parameters like ?q=hello.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Which HTTP method fits sending a JSON feature vector for a prediction? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>POST, with the features in the body.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What do 4xx and 5xx status codes each mean? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>4xx: the client made an error. 5xx: the server failed.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What status code does Flask return for a GET to a POST-only route? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>405, method not allowed.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a /health endpoint for? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Letting health checks and orchestrators see whether the service is up.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What does a Flask view that returns a dict send to the client? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A JSON response with status 200.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why load the model at API start-up instead of per request? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Loading per request would make every prediction slow.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must a Flask app in a container listen on 0.0.0.0? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>127.0.0.1 inside a container is only the container itself.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why not run Flask's built-in server in production? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>It is a development server; production uses a WSGI server like gunicorn.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do you test Flask endpoints without starting a server? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>With app.test_client(), sending fake requests and checking status and JSON.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is training-serving skew? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Feature encoding at inference differing from training, giving silently wrong predictions.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why must an API not compute z-score statistics from incoming requests? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>They differ from training statistics; a single row has no standard deviation.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Where should training-time feature state be stored for an API to use? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>As artifacts in the same MLflow run as the model.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How do you keep training and serving feature code from drifting apart? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Write the encoding once and import it from both.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a feature store? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>A central catalogue of reusable feature code that can precompute and cache features.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why does a nightly retrained model not reach a running API by itself? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>The API loaded its model once at start-up and keeps using it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>What is a hot reload of a model? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Making the running API load the latest model without restarting it.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>How can a training DAG make the API serve the new model? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Add a final task that calls the API’s reload endpoint.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why load a new model fully before swapping it in? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>If loading fails, the old model keeps serving.</p>
+</div>
+</blockquote>
+<blockquote class="callout card is-collapsible is-collapsed" data-callout="card" data-callout-fold>
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Why reload the model and its feature state together? </p></div>
+                  <div class="fold-callout-icon"></div>
+                </div>
+<div class="callout-content">
+<p>Mixing runs gives training-serving skew.</p>
+</div>
+</blockquote>
+<h2 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Course:</strong> <a href="../../../Courses/EPRM/EPRM---Overview" class="internal alias" data-slug="Courses/EPRM/EPRM---Overview">Course overview</a></li>
+<li><strong>Previous lecture:</strong> <a href="../../../Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L03---Containerization-and-Software-Engineering-Processes">EPRM-L03 - Containerization and Software Engineering Processes</a> (containers, Compose service names and health checks, MLflow)</li>
+<li><strong>Earlier material this builds on:</strong> <a href="../../../Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L01---Data-Roles,-ML-Lifecycle,-Clean-Code-and-Unit-Testing">EPRM-L01 - Data Roles, ML Lifecycle, Clean Code and Unit Testing</a> (no deployment, no value; the MLOps loop) · <a href="../../../Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing" class="internal alias" data-slug="Courses/EPRM/Lectures/EPRM-L02---Distributed-Data-Processing">EPRM-L02 - Distributed Data Processing</a> (splitting a job into recoverable tasks)</li>
+<li><strong>Reading note:</strong> <a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch10---Deploying-a-Model" class="internal alias" data-slug="Courses/EPRM/Book-Notes/EPRM-Book-Ch10---Deploying-a-Model">EPRM-Book Ch10 - Deploying a Model</a></li>
+<li><strong>Concepts:</strong> <a href="../../../Concepts/ML-Deployment-Patterns" class="internal alias" data-slug="Concepts/ML-Deployment-Patterns">ML Deployment Patterns</a> · <a href="../../../Concepts/Apache-Airflow" class="internal alias" data-slug="Concepts/Apache-Airflow">Apache Airflow</a> · <a href="../../../Concepts/HTTP-API" class="internal alias" data-slug="Concepts/HTTP-API">HTTP API</a> · <a href="../../../Concepts/Training-Serving-Skew" class="internal alias" data-slug="Concepts/Training-Serving-Skew">Training-Serving Skew</a> · <a href="../../../Concepts/Feature-Store" class="internal alias" data-slug="Concepts/Feature-Store">Feature Store</a> · <a href="../../../Concepts/MLflow" class="internal" data-slug="Concepts/MLflow">MLflow</a> · <a href="../../../Concepts/Docker" class="internal" data-slug="Concepts/Docker">Docker</a> · <a href="../../../Concepts/MLOps" class="internal" data-slug="Concepts/MLOps">MLOps</a></li>
+<li><strong>Source:</strong> lecture slides and speaker notes, “Week 4: Deployment Patterns”, Kemal T. Yesilbek, 18 November 2026. The <code>nova_training</code> DAG and its code are from the lecture; the dog.ceo, Google and Colormind requests are its API examples. The two live coding parts used <code>kemalty/uva-mlprod-code</code> (<code>deploying-ml-systems/1-orchestration</code>), which was not available for this note; the description of the course API’s routes comes from the week 4 branch of the course code.</li>
+<li><strong>Readings for the week:</strong> Christian Kästner, <em>Machine Learning in Production</em>, Chapter 10 “Deploying a Model”, <a href="https://mlip-cmu.github.io/book/10-deploying-a-model.html" class="external">https://mlip-cmu.github.io/book/10-deploying-a-model.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (see the reading note). Chip Huyen, <em>Designing Machine Learning Systems</em> (O’Reilly, 2022), listed as “Chapter 6: Deployment”; the book’s deployment chapter is Chapter 7, “Model Deployment and Prediction Service”. Not freely available, so no note. Flask, Quickstart, <a href="https://flask.palletsprojects.com/en/stable/quickstart/" class="external">https://flask.palletsprojects.com/en/stable/quickstart/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+<li><strong>Further (used for the additions marked as outside the course material):</strong> Airflow documentation on Dags, Dag runs and catchup, and time zones, <a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html" class="external">https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, <a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dag-run.html" class="external">https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dag-run.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, <a href="https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/timezone.html" class="external">https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/timezone.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; Flask testing documentation, <a href="https://flask.palletsprojects.com/en/stable/testing/" class="external">https://flask.palletsprojects.com/en/stable/testing/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>; MLflow tracking and artifacts API, <a href="https://mlflow.org/docs/latest/ml/tracking/" class="external">https://mlflow.org/docs/latest/ml/tracking/<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-349" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#eprm-l04-deployment-patterns" data-for="eprm-l04-deployment-patterns">EPRM-L04: Deployment Patterns</a></li><li class="depth-1"><a href="#a-model-has-to-reach-someone" data-for="a-model-has-to-reach-someone">A model has to reach someone</a></li><li class="depth-1"><a href="#four-ways-to-serve-a-model" data-for="four-ways-to-serve-a-model">Four ways to serve a model</a></li><li class="depth-1"><a href="#batch-a-workflow-that-starts-and-stops" data-for="batch-a-workflow-that-starts-and-stops">Batch: a workflow that starts and stops</a></li><li class="depth-2"><a href="#the-structure-is-a-dag" data-for="the-structure-is-a-dag">The structure is a DAG</a></li><li class="depth-1"><a href="#airflow-the-courses-batch-orchestrator" data-for="airflow-the-courses-batch-orchestrator">Airflow: the course’s batch orchestrator</a></li><li class="depth-2"><a href="#making-a-dag-run-on-its-own" data-for="making-a-dag-run-on-its-own">Making a DAG run on its own</a></li><li class="depth-1"><a href="#apis-a-service-that-is-always-up" data-for="apis-a-service-that-is-always-up">APIs: a service that is always up</a></li><li class="depth-2"><a href="#what-goes-over-the-wire" data-for="what-goes-over-the-wire">What goes over the wire</a></li><li class="depth-2"><a href="#a-model-behind-an-api-with-flask" data-for="a-model-behind-an-api-with-flask">A model behind an API with Flask</a></li><li class="depth-1"><a href="#same-features-in-training-and-serving" data-for="same-features-in-training-and-serving">Same features in training and serving</a></li><li class="depth-1"><a href="#getting-a-new-model-into-a-running-api" data-for="getting-a-new-model-into-a-running-api">Getting a new model into a running API</a></li><li class="depth-1"><a href="#what-to-be-able-to-do" data-for="what-to-be-able-to-do">What to be able to do</a></li><li class="depth-1"><a href="#exam-questions" data-for="exam-questions">Exam questions</a></li><li class="depth-1"><a href="#flashcards" data-for="flashcards">Flashcards</a></li><li class="depth-1"><a href="#links" data-for="links">Links</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../../Concepts/Apache-Airflow" class="internal">Apache Airflow</a></li><li><a href="../../../Concepts/Docker" class="internal">Docker</a></li><li><a href="../../../Concepts/Feature-Store" class="internal">Feature Store</a></li><li><a href="../../../Concepts/HTTP-API" class="internal">HTTP API</a></li><li><a href="../../../Concepts/ML-Deployment-Patterns" class="internal">ML Deployment Patterns</a></li><li><a href="../../../Concepts/MLOps" class="internal">MLOps</a></li><li><a href="../../../Concepts/MLflow" class="internal">MLflow</a></li><li><a href="../../../Concepts/Training-Serving-Skew" class="internal">Training-Serving Skew</a></li><li><a href="../../../Courses/EPRM/Book-Notes/EPRM-Book-Ch10---Deploying-a-Model" class="internal">EPRM-Book Ch10 - Deploying a Model</a></li><li><a href="../../../Courses/EPRM/EPRM---Exam-Questions" class="internal">EPRM - Exam Questions</a></li><li><a href="../../../Courses/EPRM/EPRM---Flashcards" class="internal">EPRM - Flashcards</a></li><li><a href="../../../Courses/EPRM/EPRM---Overview" class="internal">EPRM - Overview</a></li><li><a href="../../../Courses/EPRM/" class="internal">Engineering Production-Ready ML/AI Systems</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js?v=mwth6w8b" type="module" data-persist="true"></script></html>
